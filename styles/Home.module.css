@@ -1,0 +1,254 @@
+
+.main {
+  min-height: 100vh;
+  flex: 1;
+  /* margin-top: 55px; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  overflow-x: hidden;
+}
+
+.services_section h3{
+  font-family: "Integral Regular"!important;
+  letter-spacing: 2px;
+}
+
+.title {
+  /* margin: 0; */
+  line-height: 0.85;
+  font-size: 4.5rem;
+  word-wrap: none;
+  color: #ede7e0;
+  text-align: start;
+}
+
+
+.description {
+  margin: 2rem 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: #ede7e0;
+}
+
+.code {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.hero_container{
+  position: relative;
+  height:90vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  background-image: url(/public/images/small_circle.svg);
+  background-size: 25px;
+  /* -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, 
+    from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); */
+  padding: 0;
+  margin:0;
+}
+
+.overlay_fade{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(#181a1700 50%,#181a17) ;
+}
+
+.hero_section{
+  position: relative;
+  background-color: #181A17;
+
+}
+
+.hero_content{
+  z-index: 2;
+}
+.hero_ctas{
+  width: 100%;
+  z-index: 2;
+  display: flex;
+}
+.hero_ctas a{
+  margin-right: 2rem;
+}
+
+
+.hero_flower_1{
+  position: absolute;
+  bottom:15%;
+}
+
+.hero_content{
+  padding:var(--global-padding);
+
+}
+
+.hero_gradient{
+  position: absolute;
+  /* right:10%; */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+ 
+  display: flex;
+  margin-top: -1rem;
+  justify-content: flex-end;
+  background-size: 200% 200%!important;
+  animation: gradient 7s ease-in-out infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.hero_video{
+  position: absolute;
+  /* right:10%; */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  margin-top: -1rem;
+  justify-content: flex-end;
+
+}
+
+.gradient_bg{
+  width: 100%;
+  height: 100%;
+  background-image: url(/public/images/small_circle.svg);
+    /* background-size: 30px; */
+}
+
+.hero_video video{
+  border-bottom-left-radius: 4rem;
+}
+
+.hero_flower_1:hover{
+  transform: rotate(5deg);
+}
+
+.box1_title{
+  font-size: 3rem!important;
+  text-align: left;
+  /* width: 40rem; */
+  line-height: 1.05;
+}
+.box2_title{
+  text-align: left;
+  /* width: 40rem; */
+  line-height: 1.05;
+  color: #282420;
+}
+.box2_title p {
+  color: #282420 !important;;
+}
+
+.box1_title span{
+  background: linear-gradient(to right, #9AADB5 0%,#9F90B9 30%,#DDBCC9 60%, #C7B698 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-size: 400% 400%;
+    animation: gradient 6s ease infinite;
+}
+
+
+
+@media (max-width: 1600px) {
+  .title {
+    font-size: 3.85rem;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .box1_title{
+    text-align: center;
+  }
+  
+  .title{
+    
+  padding: 1rem;
+  }
+
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-top:20px;
+    text-align: center;
+  }
+  .hero_content{
+    width: 100%;
+    padding:5rem 0;
+    flex-direction: column;
+    justify-content: center;
+      text-align: center;
+      
+  }
+
+  
+
+  .hero_container{
+    align-items:initial;
+    justify-content: center;
+    height: 80vh;
+    padding-top: 2rem;
+    overflow-y: hidden;
+  }
+
+  .hero_homepage{
+    height: 100vh;
+    justify-content: initial;
+  }
+  
+
+  .hero_ctas{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* .contact_btn{
+    display: none;
+  } */
+  .hero_ctas{
+    display: flex;
+    gap: 20px;
+  }
+  .hero_ctas a{
+    margin-right:0;
+  }
+
+  .hero_video{
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .hero_video video{
+    border-bottom-left-radius: 0;
+  }
+
+}

@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  # repo: Koala-Studios/koala-site
+  branch: main # Branch to update (optional; defaults to master)
+
+# These lines should *not* be indented
+media_folder: "public/images/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+
+- label: "Blog Previews"
+  name: "blogPreviews"
+  widget: "list"
+  summary: '{{fields.title}}'
+  field: {label: "Title", name: "title", widget: "string"}
+  field: {label: "Title", name: "title", widget: "relation", collection: "blog", value_field:"title"}
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "public/posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }

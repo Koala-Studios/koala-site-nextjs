@@ -1,0 +1,114 @@
+.contact_title{
+    color:white;
+    max-width: 50%;
+}
+
+.calendly_section{
+  height: 80vh;
+  overflow-y: hidden;
+  background-color: #39744f;
+  display: flex;
+  width: 100%;
+}
+
+
+
+.form_container {
+  padding: var(--global-padding);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8rem;
+  gap:3rem;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #181a17;
+
+}
+
+.form {
+  padding: 2rem;
+  border-radius: 0.2rem;
+  color: #ede7e0;
+  display: grid;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.form input {
+  display: block;
+  padding: 10px;
+  margin-top: 0.8rem;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #ede7e0;
+  border: none!important;
+}
+
+.form textarea{
+  background-color: #ede7e0;
+  border: none!important;
+  
+}
+
+.form_texts {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.form_texts label { 
+  text-align: left;
+}
+
+.message {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.send_button {
+  color: white;
+  background-color: #39744f;
+  padding: 1rem 1.5rem;
+  border-radius: 0.1rem;
+  width: 100%;
+  border:none;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .form input {
+    display: block;
+  }
+
+  .form {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .form_texts {
+    text-align: left;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .contact_title{
+    max-width: initial;
+    padding:var(--global-padding);
+  }
+
+  .form_container{
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+
+}

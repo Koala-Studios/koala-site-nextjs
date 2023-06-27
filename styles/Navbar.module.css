@@ -1,0 +1,183 @@
+
+.logo{
+    transition: 300ms;
+    z-index: 1000;
+}
+.contact_mobile{
+    display: none;
+}
+.logo:hover{
+transform: rotate(-5deg);
+}
+
+.navbar {
+    /* background-color: var(--main-color); */
+    background-color: #0d0d0d;
+    z-index:14000;
+    height: 65px;
+    width: 100vw;
+    position: fixed;
+    top:0;
+/* padding: 0 15rem; */
+padding:var(--global-padding);
+display: flex;
+align-items: center;
+justify-content: space-between;
+transition: background-color 300ms ease;
+border-bottom: 1px #ffffff36 solid!important
+}
+
+.navbar.light{
+background-color:var(--main-color);
+}
+
+
+
+.links_container{
+    display: flex;
+    align-items: center;
+}
+
+.links_container_buttons {
+    display: flex;
+    align-items: center;
+}
+
+.links_container_buttons a{
+    padding-left:2rem;
+}
+
+.links_container a {
+    white-space: nowrap!important;
+    line-height: 1;
+    padding: 0.5rem 1rem;
+    transition: 300ms;
+    border-radius: .1rem;
+    margin:0 0.5rem;
+    color: #ede7e0;
+    border:1px solid #ffffff00;
+    letter-spacing: 1px;
+}
+.links_container a:hover {
+    background-color: #ffffff2e;
+}
+
+.links_menu_item{
+    display: none;
+}
+
+.mobile_contact{
+    display: none;
+    }
+    
+    .mobile_dashboard{
+        display: none;
+        
+    }
+
+
+@media (max-width: 1024px) {
+
+    /* .navbar{ */
+        /* padding:2rem; */
+        /* padding:var(--global-padding); */
+    /* } */
+    .contact_mobile{
+        display: block;
+    }
+   
+    .links_container_buttons{
+        display: none;
+    }
+
+    .contact_link{
+        display: none;
+    }
+
+    .links_menu_item{
+        cursor: pointer;
+        display: flex;
+        gap:8px;
+        flex-direction: column;
+        z-index: 1000;
+    }
+
+    .links_menu_item span{
+        display: block;
+        height:3px;
+        width: 30px;
+        background-color: white;
+        transition: all 200ms ease !important;
+        /* position: absolute; */
+    }
+
+    
+.links_menu_item.active span:nth-child(1) {
+	transform: translateY(11px) rotate(45deg);
+}
+
+.links_menu_item.active span:nth-child(2) {
+	opacity: 0;
+}
+.links_menu_item.active span:nth-child(3) {
+	transform: translateY(-11px) rotate(-45deg);
+}
+
+.links_container{
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: var(--main-color); */
+     background: url('/public/images/leaves_bg.jpg'); 
+    background-size:cover;
+    background-position-x: left;
+    padding: 0;
+    margin: 0;
+    top:0;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-150vw) skewX(-10deg);
+    transition: all 800ms ease, background-position 800ms ease;
+    pointer-events: none;
+    padding: 0;
+    gap:1.5rem;
+}
+
+.links_container a{
+    font-size: 2.5rem;
+    margin:0;
+    padding: 0rem 2rem;
+    border:0;
+    text-shadow: 0 20px 20px #00000035;
+}
+
+.links_container a:hover{
+    background-color: transparent;
+}
+
+.links_container.active{
+    transform: translateX(0) skewY(0);
+    pointer-events: all;
+    background-position-x: right;
+}
+
+.mobile_dashboard{
+display: flex;
+}
+
+.mobile_contact{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding:1.5rem!important;
+    justify-content: center;
+    background:linear-gradient(#EF8BD300,#67606580) ;
+}
+
+}
