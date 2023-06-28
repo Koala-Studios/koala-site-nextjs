@@ -1,6 +1,6 @@
 .testimonial_card {
     text-align: left;
-    background: url(/public/images/testimonials_background.jpg);
+    background: url(/images/testimonials_background.jpg);
     padding: 3rem;
     min-width: 50rem;
     cursor: pointer;
@@ -147,6 +147,7 @@ margin-top: 2rem;
 }
 
 .scroll_text {
+    font-family: "Integral Regular";
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;

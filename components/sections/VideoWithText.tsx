@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import styles from "../../styles/Sections.module.css";
 interface Props {
@@ -16,7 +18,6 @@ interface Props {
   dataSpeed?: number;
 }
 
-
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry: any) => {
@@ -34,7 +35,6 @@ const observer = new IntersectionObserver(
 );
 
 const VideoWithText: React.FC<Props> = (props) => {
-  
   const dataSpeed = props.dataSpeed ? props.dataSpeed : 0;
   const videoRef = useRef<any>();
 

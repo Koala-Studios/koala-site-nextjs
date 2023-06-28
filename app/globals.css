@@ -9,7 +9,7 @@
   font-family: "Integral ExtraBold";
   font-style: normal;
   font-weight: normal;
-  src: url("/public/fonts/IntegralCF-ExtraBold.woff2")
+  src: url("/fonts/IntegralCF-ExtraBold.woff2")
     format("woff2");
 }
 @font-face {
@@ -17,7 +17,7 @@
   font-family: "Integral Regular";
   font-style: normal;
   font-weight: normal;
-  src: url("/public/fonts/IntegralCF-Regular.woff2")
+  src: url("/fonts/IntegralCF-Regular.woff2")
     format("woff2");
 }
 
@@ -26,7 +26,7 @@
   font-family: "Poppins-Regular";
   font-style: normal;
   font-weight: normal;
-  src: url("/public/fonts/Poppins-Regular.woff2")
+  src: url("/fonts/Poppins-Regular.woff2")
     format("woff2");
 }
 @font-face {
@@ -34,7 +34,7 @@
   font-family: "Poppins-SemiBold";
   font-style: normal;
   font-weight: normal;
-  src: url("/public/fonts/Poppins-SemiBold.woff2")
+  src: url("/fonts/Poppins-SemiBold.woff2")
     format("woff2");
 }
 html,

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "../../styles/Footer.module.css";
 import Button from "../Button";
+import Link from "next/link";
 
 interface Props {
   hideContactUs?: boolean;
@@ -20,7 +20,7 @@ const Footer: React.FC<Props> = (props) => {
               We help amazing companies succeed and flourish in the digital age.
             </p>
           </div>
-          <Link to="/contact">
+          <Link href="/contact">
             <Button type="primary light">Contact Us</Button>
           </Link>
         </div>
@@ -47,10 +47,10 @@ const Footer: React.FC<Props> = (props) => {
               <h3>Links</h3>
               <hr></hr>
             </div>
-            <Link to="/projects">View Our Work</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/about">About Us</Link>
-            <Link to="/contact">Contact Us</Link>
+            <Link href="/projects">View Our Work</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/about">About Us</Link>
+            <Link href="/contact">Contact Us</Link>
           </div>
         </div>
       </div>

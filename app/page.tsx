@@ -1,95 +1,97 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
+import VideoWithText from "@/components/sections/VideoWithText";
+import Link from "next/link";
+import Button from "@/components/Button";
+import ScrollingText from "@/components/sections/ScrollingText";
+import HomepageHero from "@/components/home/HomepageHero";
+import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
+    <div style={{ overflowX: "hidden", backgroundColor: "#181A17" }}>
+      <HomepageHero />
+      <ScrollingText
+        TextArray={[
+          "Shopify Ecommerce",
+          "UI/UX Design",
+          "Web Development",
+          "Consulting",
+          "3D Renders",
+          "Graphic Design",
+        ]}
+      />
+      <VideoWithText
+        video_placement="right"
+        src="/videos/cupcake_video.mp4"
+        title=""
+        loop
+        videoStyles={{
+          borderRadius: "1.5rem",
+          border: "2px solid #d1bdad",
+          width: "50%",
+          height: "50%",
+          marginBottom: "25px",
+        }} //marginBottom for mobile version + dataSpeed
+        styles={{ backgroundColor: "#181A17" }}
+        dataSpeed={1.2}
+      >
+        <h2 className={styles.box1_title}>
+          BIG Or Small, <br /> <span>Koala Studios </span>
+          <br />
+          will help you SURPASS your Ecommerce
+          <br /> goals
+        </h2>
+      </VideoWithText>
+      <VideoWithText
+        video_placement="left"
+        src="/videos/3dbag_in2.mp4"
+        title="Your Website's Look Matters"
+        text=""
+        videoStyles={{ borderRadius: "1.5rem", border: "2px solid #282420" }}
+        styles={{ backgroundColor: "#ede7e0" }}
+        textColor="#282420"
+        loop={false}
+      >
+        <p style={{ color: "#282420" }}>
+          In today&apos;s world of ecommerce, having a unique website for your
+          products is essential due to the high levels of competition. Your
+          website is the face of your business and should reflect your
+          brand&apos;s uniqueness. <br />
+          <br />
+          So, whether you&apos;re just starting out or looking to revamp your
+          existing website, we can help you create a distinct and compelling
+          online presence that sets you apart from the competition.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <div style={{ display: "flex", gap: "1rem" }}>
+          <Link href="/services">
+            <Button
+              style={{
+                borderColor: "#39744f",
+                whiteSpace: "nowrap",
+                border: "2px solid black",
+              }}
+              type={"secondary"}
+            >
+              Our Services
+            </Button>
+          </Link>
+          <Link href="/projects">
+            <Button
+              style={{
+                backgroundColor: "#39744f",
+                whiteSpace: "nowrap",
+                border: "2px solid #39744f",
+              }}
+              type={"primary"}
+            >
+              View Our Work
+            </Button>
+          </Link>
         </div>
-      </div>
+      </VideoWithText>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      {/* <Testimonials /> */}
+    </div>
+  );
 }
