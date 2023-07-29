@@ -13,6 +13,7 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { Canvas, useThree, useLoader } from "@react-three/fiber";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Mesh, Vector2 } from "three";
+import "../../styles/ProjectList.css";
 
 const projects = ProjectFile.projects;
 const title = "Featured| Work|";
