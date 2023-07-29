@@ -56,9 +56,8 @@ const Navbar: React.FC<Props> = (props) => {
         <Link href="/projects">Our Work</Link>
         <Link href="/services">Services</Link>
         <Link href="/about">About Us</Link>
-        {/* <Link href="/blogs">
-          Blogs
-        </Link> */}
+        <Link href="/blogs">Blog</Link>
+        
         <Link className={styles.contact_mobile} href="/contact">
           Contact Us
         </Link>
