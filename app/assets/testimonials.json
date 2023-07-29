@@ -1,0 +1,19 @@
+{
+    "testimonials":[
+        {
+            "role":"CEO of Magnum Nutraceuticals",
+            "name":"John Doe",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt orci sapien, sit amet dapibus nulla gravida vel. Cras vitae enim vel tellus porttitor mattis non nec mauris. Ut sit amet urna pharetra, iaculis velit a, eleifend diam. Aliquam sed aliquam orci, vitae posuere nibh. Morbi aliquet turpis lectus, sed faucibus justo tincidunt in. Nullam consectetur rhoncus turpis, nec facilisis ligula vehicula at. Nunc quis fermentum lacus, eget rhoncus purus. Integer ut mauris enim."
+        },
+        {
+            "role":"CEO of Allo Nutrition",
+            "name":"John Doe",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt orci sapien, sit amet dapibus nulla gravida vel. Cras vitae enim vel tellus porttitor mattis non nec mauris. Ut sit amet urna pharetra, iaculis velit a, eleifend diam. Aliquam sed aliquam orci, vitae posuere nibh. Morbi aliquet turpis lectus, sed faucibus justo tincidunt in. Nullam consectetur rhoncus turpis, nec facilisis ligula vehicula at. Nunc quis fermentum lacus, eget rhoncus purus. Integer ut mauris enim."
+        },
+        {
+            "role":"CEO of Yomama",
+            "name":"John Doe",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt orci sapien, sit amet dapibus nulla gravida vel. Cras vitae enim vel tellus porttitor mattis non nec mauris. Ut sit amet urna pharetra, iaculis velit a, eleifend diam. Aliquam sed aliquam orci, vitae posuere nibh. Morbi aliquet turpis lectus, sed faucibus justo tincidunt in. Nullam consectetur rhoncus turpis, nec facilisis ligula vehicula at. Nunc quis fermentum lacus, eget rhoncus purus. Integer ut mauris enim."
+        }
+    ]
+}

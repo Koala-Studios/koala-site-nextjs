@@ -1,0 +1,14 @@
+{
+    "handle":"elikai",
+    "next_handle":"lovejapan",
+    "title":"",
+    "list_image":"/images/project/items_test_list.png",
+    "logo":"/images/project/logos/elikai_logo.png",
+    "description":"adifsod",
+    "bg_color":"#16171c",
+    "text_color":"#ede7e0",
+    "logo_color":"#d4a363",
+    "hero_image":"",
+    "hero_image_mobile":"/images/project/allo_list.png",
+    "chips":[1,2]
+}

@@ -4,7 +4,7 @@ import ScrollingText from "@/components/sections/ScrollingText";
 
 export default function Page() {
   return (
-    <div>
+    <div style={{ backgroundColor: "#181A17", overflowX: "hidden" }}>
       <GradientHero
         gradient="linear-gradient(45deg, #181a17, #203f44,#433960)"
         title="We work with innovative brands to bring engaging products to life."

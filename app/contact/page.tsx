@@ -20,7 +20,7 @@ export default function Page() {
         <div className={styles.form_texts}>
           <label>
             Name
-            <input type="text" name="name" />
+            <input type="text" name="name" required />
           </label>
           <label>
             Company Name

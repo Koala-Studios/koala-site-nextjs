@@ -1,0 +1,15 @@
+{
+    "handle":"lovejapan",
+    "next_handle":"allo",
+    "title":"LoveJapan",
+    "list_image":"/images/project/items_test_list.png",
+    "logo":"/images/project/logos/lovejapan_logo_small.png",
+    "description":"adifsod",
+    "bg_color":"#1a1714",
+    "text_color":"#ede7e0",
+    "logo_color":"#d4a363",
+    "hero_image":"/images/project/lovejapan/lovejapan_hero.jpg",
+    "hero_image_mobile":"/images/project/lovejapan/lovejapan_hero.jpg",
+    "chips":[1,2],
+    "site_link":"https://lovejapanforlife.com"
+}
