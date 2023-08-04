@@ -100,7 +100,7 @@
   z-index: 1;
  
   display: flex;
-  margin-top: -1rem;
+  /* margin-top: -1rem; */
   justify-content: flex-end;
   background-size: 200% 200%!important;
   animation: gradient 7s ease-in-out infinite;
