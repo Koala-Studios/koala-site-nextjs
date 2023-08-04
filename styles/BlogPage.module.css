@@ -66,11 +66,11 @@
 }
 
 .option_btn:hover {
-    color: darkgrey;
+    color: #a4d029;
 }
 
 .option_chosen {
-    color: green;
-    border-bottom: 2px solid green;
+    color: #a4d029;
+    border-bottom: 2px solid #a4d029;
     margin-bottom: -2px;
 }
