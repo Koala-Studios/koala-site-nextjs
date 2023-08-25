@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../styles/Navbar.module.css";
 import Button from "./Button";
@@ -21,7 +23,7 @@ const Navbar: React.FC<Props> = (props) => {
 
   // const mainContext = useContext(MainContext);
 
-  // const [menuLinkActive, setMenuLinkActive] = useState(false);
+  const [menuLinkActive, setMenuLinkActive] = useState(false);
 
   // useEffect(() => {
   //   // TODO:Add checks to improve performance
@@ -40,7 +42,7 @@ const Navbar: React.FC<Props> = (props) => {
   return (
     <nav className={styles.navbar}>
       <Link
-        // onClick={() => setMenuLinkActive(false)}
+        onClick={() => setMenuLinkActive(false)}
         className={styles.logo}
         href="/"
       >
@@ -52,13 +54,15 @@ const Navbar: React.FC<Props> = (props) => {
         />
       </Link>
 
-      <div className={`${styles.links_container} ${styles.active}`}>
-        <Link href="/projects">Our Work</Link>
-        <Link href="/services">Services</Link>
-        <Link href="/about">About Us</Link>
-        <Link href="/blogs">Blogs</Link>
+      <div className={`${styles.links_container} ${
+          menuLinkActive ? styles.active : ""
+        }`}>
+        <Link href="/projects" onClick={() => setMenuLinkActive(false)}>Our Work</Link>
+        <Link href="/services" onClick={() => setMenuLinkActive(false)}>Services</Link>
+        <Link href="/about" onClick={() => setMenuLinkActive(false)}>About Us</Link>
+        <Link href="/blogs" onClick={() => setMenuLinkActive(false)}>Blogs</Link>
         
-        <Link className={styles.contact_mobile} href="/contact">
+        <Link className={styles.contact_mobile} href="/contact" onClick={() => setMenuLinkActive(false)}>
           Contact Us
         </Link>
         {/* 
@@ -93,7 +97,14 @@ const Navbar: React.FC<Props> = (props) => {
         </Link> */}
       </div>
 
-      <div className={`${styles.links_menu_item} ${styles.active}`}>
+      <div 
+        onClick={() => {
+          setMenuLinkActive(!menuLinkActive);
+        }}
+        className={`${styles.links_menu_item} ${
+          menuLinkActive ? styles.active : ""
+        }`}
+        >
         <span></span>
         <span></span>
         <span></span>
