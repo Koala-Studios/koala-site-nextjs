@@ -43,6 +43,7 @@ body {
   margin: 0;
   font-family: "Integral Regular";
   /* background-color: var(--main-color); */
+  text-align: center;
   background-color: #0d0d0d;
 }
 
@@ -59,7 +60,8 @@ h2{
 }
 
 h1,h2,h3,h4 {
-  font-family: "Integral ExtraBold";
+  font-family: "Integral Regular";
+  letter-spacing: 1px;
   color: #ede7e0;
 }
 
@@ -79,7 +81,6 @@ button{
 .firebase-emulator-warning{
   display: none;
 }
-
 
 @media (max-width: 1700px) {
   

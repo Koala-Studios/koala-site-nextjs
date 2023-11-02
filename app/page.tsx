@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import ScrollingText from "@/components/sections/ScrollingText";
 import HomepageHero from "@/components/home/HomepageHero";
 import Testimonials from "@/components/sections/Testimonials";
+import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
