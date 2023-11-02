@@ -1,8 +1,9 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { IProjectPage } from "../utils";
 import styles from "../../styles/ProjectSections.module.css";
 import ScrollingText from "./ScrollingText";
-import { useLocation } from "react-router-dom";
 
 interface Props {
   project: IProjectPage;
@@ -13,7 +14,6 @@ interface Props {
 const ProjectHero: React.FC<Props> = ({ project, title, bg_color }) => {
   const [animate, setAnimate] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const location = useLocation();
 
   const setScroll = () => {
     if (hasScrolled === false) {
@@ -32,7 +32,7 @@ const ProjectHero: React.FC<Props> = ({ project, title, bg_color }) => {
         setAnimate(true);
       }, 300);
     }
-  }, [location.key]);
+  }, []);
 
   return (
     <div

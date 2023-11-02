@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../styles/Navbar.module.css";
@@ -54,15 +54,27 @@ const Navbar: React.FC<Props> = (props) => {
         />
       </Link>
 
-      <div className={`${styles.links_container} ${
+      <div
+        className={`${styles.links_container} ${
           menuLinkActive ? styles.active : ""
-        }`}>
-        <Link href="/projects" onClick={() => setMenuLinkActive(false)}>Our Work</Link>
-        <Link href="/services" onClick={() => setMenuLinkActive(false)}>Services</Link>
-        <Link href="/about" onClick={() => setMenuLinkActive(false)}>About Us</Link>
-        <Link href="/blogs" onClick={() => setMenuLinkActive(false)}>Blogs</Link>
-        
-        <Link className={styles.contact_mobile} href="/contact" onClick={() => setMenuLinkActive(false)}>
+        }`}
+      >
+        <Link href="/projects" onClick={() => setMenuLinkActive(false)}>
+          Our Work
+        </Link>
+        <Link href="/services" onClick={() => setMenuLinkActive(false)}>
+          Services
+        </Link>
+        <Link href="/about" onClick={() => setMenuLinkActive(false)}>
+          About Us
+        </Link>
+        {/* <Link href="/blogs" onClick={() => setMenuLinkActive(false)}>Blogs</Link> */}
+
+        <Link
+          className={styles.contact_mobile}
+          href="/contact"
+          onClick={() => setMenuLinkActive(false)}
+        >
           Contact Us
         </Link>
         {/* 
@@ -97,14 +109,14 @@ const Navbar: React.FC<Props> = (props) => {
         </Link> */}
       </div>
 
-      <div 
+      <div
         onClick={() => {
           setMenuLinkActive(!menuLinkActive);
         }}
         className={`${styles.links_menu_item} ${
           menuLinkActive ? styles.active : ""
         }`}
-        >
+      >
         <span></span>
         <span></span>
         <span></span>

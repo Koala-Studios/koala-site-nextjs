@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap, { Power2, Back } from "gsap";
 import { Mesh, Vector3 } from "three";
 import { damp } from "three/src/math/MathUtils";
+import { useRouter } from "next/navigation";
 
 interface Props {
   xpos: number;
@@ -36,6 +37,8 @@ const ProjectItem: React.FC<Props> = ({
     useRef<Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>();
   const refText =
     useRef<Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>();
+
+  const router = useRouter();
 
   const texture = useLoader(THREE.TextureLoader, url);
   const logo_texture = useLoader(THREE.TextureLoader, logo);
@@ -115,7 +118,7 @@ const ProjectItem: React.FC<Props> = ({
     document.body.style.cursor = "initial";
   };
   const handlePointerDown = (event: ThreeEvent<PointerEvent>) => {
-    // navigate(handle);
+    router.push("/projects/" + handle, { scroll: false });
     pointerPos = [event.clientX, event.clientY];
   };
   const handlePointerUp = (event: ThreeEvent<PointerEvent>) => {
