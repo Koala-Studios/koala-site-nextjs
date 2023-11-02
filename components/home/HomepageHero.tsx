@@ -5,20 +5,13 @@ import Button from "../../components/Button";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 
-const isMobile = () => {
-  return window.innerWidth < 500;
-};
-let homepageVideo = isMobile()
-  ? "/videos/koalavideo2_60fps.mp4"
-  : "/videos/koala_wide.mp4";
-
 const HomepageHero = () => {
-  const [mobile, setMobile] = useState(isMobile());
+  const [mobile, setMobile] = useState(window.innerWidth < 500);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
       console.log("Resize");
-      setMobile(isMobile());
+      setMobile(window.innerWidth < 500);
     });
   }, []);
 

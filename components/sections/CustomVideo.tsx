@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 interface Props {
   src: string;
@@ -7,26 +9,26 @@ interface Props {
   loop?: boolean;
 }
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry: any) => {
-      if (!entry.isIntersecting) {
-        entry.target.pause();
-        entry.target.currentTime = 0;
-        //   playState = false;
-      } else {
-        entry.target.play();
-        //   playState = true;
-      }
-    });
-  },
-  { rootMargin: "-15% 0% -15% 0%" }
-);
-
 const CustomVideo: React.FC<Props> = (props) => {
   const videoRef = useRef<any>();
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry: any) => {
+          if (!entry.isIntersecting) {
+            entry.target.pause();
+            entry.target.currentTime = 0;
+            //   playState = false;
+          } else {
+            entry.target.play();
+            //   playState = true;
+          }
+        });
+      },
+      { rootMargin: "-15% 0% -15% 0%" }
+    );
+
     if (videoRef) {
       observer.observe(videoRef.current!);
     }

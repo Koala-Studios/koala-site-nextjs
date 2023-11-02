@@ -18,27 +18,27 @@ interface Props {
   dataSpeed?: number;
 }
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry: any) => {
-      if (!entry.isIntersecting) {
-        entry.target.pause();
-        entry.target.currentTime = 0;
-        //   playState = false;
-      } else {
-        entry.target.play();
-        //   playState = true;
-      }
-    });
-  },
-  { rootMargin: "-15% 0% -15% 0%" }
-);
-
 const VideoWithText: React.FC<Props> = (props) => {
   const dataSpeed = props.dataSpeed ? props.dataSpeed : 0;
   const videoRef = useRef<any>();
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry: any) => {
+          if (!entry.isIntersecting) {
+            entry.target.pause();
+            entry.target.currentTime = 0;
+            //   playState = false;
+          } else {
+            entry.target.play();
+            //   playState = true;
+          }
+        });
+      },
+      { rootMargin: "-15% 0% -15% 0%" }
+    );
+
     if (videoRef) {
       observer.observe(videoRef.current!);
     }

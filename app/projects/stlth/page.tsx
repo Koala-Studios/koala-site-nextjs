@@ -39,9 +39,10 @@ export default function Page() {
           }}
         >
           <p>
-            STLTH's founders were introduced to vaping products almost a decade
-            ago and it helped them transition away from traditional cigarettes,
-            which confirmed their belief in the potential of vaping systems.
+            STLTH&apos;s founders were introduced to vaping products almost a
+            decade ago and it helped them transition away from traditional
+            cigarettes, which confirmed their belief in the potential of vaping
+            systems.
             <br />
             <br /> STLTH uses analytical machinery to develop and maintain less
             harmful products and is a leader in compliance, consulting

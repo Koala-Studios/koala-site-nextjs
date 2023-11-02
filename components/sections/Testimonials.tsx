@@ -1,5 +1,5 @@
 import React from "react";
-import testimonials from "../../assets/testimonials.json";
+import testimonials from "../../app/assets/testimonials.json";
 import styles from "../../styles/Sections.module.css";
 
 const Testimonials = () => {
@@ -7,8 +7,9 @@ const Testimonials = () => {
     <section className={styles.testimonials_section}>
       <h2>Testimonials</h2>
       <div className={styles.testimonial_container}>
-        {testimonials.testimonials.map((item) => (
+        {testimonials.testimonials.map((item, idx) => (
           <TestimonialCard
+            key={idx}
             name={item.name}
             description={item.description}
             role={item.role}
@@ -28,7 +29,7 @@ interface CardProps {
 const TestimonialCard: React.FC<CardProps> = ({ name, role, description }) => {
   return (
     <div className={styles.testimonial_card}>
-      <p>"{description}"</p>
+      <p>{description}</p>
       <div>
         <p>{name}</p>
         <p>{role}</p>

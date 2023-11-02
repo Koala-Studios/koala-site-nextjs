@@ -1,6 +1,8 @@
+"use client";
+
 import * as THREE from "three";
 import { ThreeEvent, useFrame, useLoader, useThree } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap, { Power2, Back } from "gsap";
 import { Mesh, Vector3 } from "three";
 import { damp } from "three/src/math/MathUtils";
@@ -19,10 +21,6 @@ interface Props {
 let startAnimDone = false;
 let pointerPos = [0, 0];
 
-const isMobile = () => {
-  return window.innerWidth < 1024;
-};
-
 const ProjectItem: React.FC<Props> = ({
   logo,
   xpos,
@@ -33,6 +31,8 @@ const ProjectItem: React.FC<Props> = ({
   logo_color,
   handle,
 }) => {
+  const [mobile, setMobile] = useState(window.innerWidth < 1024);
+
   const ref =
     useRef<Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>();
   const refText =
@@ -67,6 +67,11 @@ const ProjectItem: React.FC<Props> = ({
   };
 
   useEffect(() => {
+    window.addEventListener("resize", () => {
+      console.log("Resize");
+      setMobile(window.innerWidth < 1024);
+    });
+
     startAnimDone = false;
     if (ref.current && refText.current) {
       gsap
@@ -76,7 +81,7 @@ const ProjectItem: React.FC<Props> = ({
           },
         })
         .to(ref.current.position, {
-          y: isMobile() ? -0.2 : 0.5,
+          y: mobile ? -0.2 : 0.5,
           duration: 2,
           ease: Power2.easeOut,
         })
@@ -147,7 +152,7 @@ const ProjectItem: React.FC<Props> = ({
     }
   });
 
-  const logoSize = isMobile() ? 2.2 : 1.6;
+  const logoSize = mobile ? 2.2 : 1.6;
 
   return (
     <>
@@ -176,7 +181,7 @@ const ProjectItem: React.FC<Props> = ({
       <mesh
         //@ts-ignore
         ref={refText}
-        position={[xpos, isMobile() ? -6.4 : -5.35, 1]}
+        position={[xpos, mobile ? -6.4 : -5.35, 1]}
       >
         {/* <planeBufferGeometry
           args={[logoSize * 1.5, logoSize]}

@@ -7,13 +7,6 @@ import Button from "./Button";
 import { MainContext } from "./ContextContainer";
 import Link from "next/link";
 
-const isMobile = (): boolean => {
-  //TO BE REMOVED FROM THIS PAGE
-  if (typeof window == "undefined") return false;
-
-  return window.innerHeight > window.innerWidth ? true : false;
-};
-
 interface Props {
   navbarFull?: boolean;
 }

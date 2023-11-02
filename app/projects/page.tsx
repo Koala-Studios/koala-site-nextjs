@@ -17,16 +17,22 @@ import "../../styles/ProjectList.css";
 
 const projects = ProjectFile.projects;
 const title = "Featured| Work|";
-const isMobile = () => {
-  return window.innerWidth < 1024;
-};
 
 export default function Page() {
+  const [mobile, setMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      console.log("Resize");
+      setMobile(window.innerWidth < 1024);
+    });
+  }, []);
+
   return (
     <div style={{ width: "100vw" }} className="canvas-container">
       <TitleSection />
       <Canvas
-        camera={{ fov: 30, position: [0, 0, isMobile() ? 37 : 30] }}
+        camera={{ fov: 30, position: [0, 0, mobile ? 37 : 30] }}
         className="canvas"
       >
         <Environment

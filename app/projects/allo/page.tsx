@@ -72,10 +72,10 @@ export default function Page() {
           imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
-            Allo's vision was to create a unique digital experience that would
-            allow users to understand and appreciate their innovative products.
-            To achieve this, we helped Allo design and launch a website that
-            goes beyond just providing product information.
+            Allo&apos;s vision was to create a unique digital experience that
+            would allow users to understand and appreciate their innovative
+            products. To achieve this, we helped Allo design and launch a
+            website that goes beyond just providing product information.
             <br />
             <br /> We worked closely with Allo to understand their brand and
             their goals, and crafted a website that truly represents their

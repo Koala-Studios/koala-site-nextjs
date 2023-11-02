@@ -40,10 +40,10 @@ export default function Page() {
             Japan during a trip over three years ago. They were captivated by
             the beauty of the country, its people, culture, and delicious food.
             Upon returning to North America, they realized that there were many
-            others who shared the same love for Japan. LoveJapan4Life's mission
-            is to provide the best and most authentic Japanese-themed products
-            to spread the joy of Japan around the world, even to those who
-            cannot travel there.
+            others who shared the same love for Japan. LoveJapan4Life&apos;s
+            mission is to provide the best and most authentic Japanese-themed
+            products to spread the joy of Japan around the world, even to those
+            who cannot travel there.
           </p>
 
           <Link
@@ -71,8 +71,8 @@ export default function Page() {
               most pressing issues and devised a comprehensive plan to address
               them. Leveraging insights from our analytics data, we identified
               the key bottlenecks in the customer conversion process and
-              formulated targeted solutions to improve the client's website.{" "}
-              <br />
+              formulated targeted solutions to improve the client&apos;s
+              website. <br />
               <br />
               By working closely with the client, we provided a clear roadmap
               for implementing these changes, which led to a significant boost
