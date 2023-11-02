@@ -31,7 +31,7 @@ const ProjectItem: React.FC<Props> = ({
   logo_color,
   handle,
 }) => {
-  const [mobile, setMobile] = useState(window.innerWidth < 1024);
+  const [mobile, setMobile] = useState(false);
 
   const ref =
     useRef<Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>>();
@@ -67,6 +67,8 @@ const ProjectItem: React.FC<Props> = ({
   };
 
   useEffect(() => {
+    setMobile(window.innerWidth < 1024);
+
     window.addEventListener("resize", () => {
       console.log("Resize");
       setMobile(window.innerWidth < 1024);

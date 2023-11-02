@@ -6,9 +6,11 @@ import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 
 const HomepageHero = () => {
-  const [mobile, setMobile] = useState(window.innerWidth < 500);
+  const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
+    setMobile(window.innerWidth < 500);
+
     window.addEventListener("resize", () => {
       console.log("Resize");
       setMobile(window.innerWidth < 500);

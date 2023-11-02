@@ -19,9 +19,11 @@ const projects = ProjectFile.projects;
 const title = "Featured| Work|";
 
 export default function Page() {
-  const [mobile, setMobile] = useState(window.innerWidth < 1024);
+  const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
+    setMobile(window.innerWidth < 1024);
+
     window.addEventListener("resize", () => {
       console.log("Resize");
       setMobile(window.innerWidth < 1024);
