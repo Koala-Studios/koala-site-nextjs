@@ -15,9 +15,10 @@ export default function Page() {
 
         <form
           className={styles.form}
-          // action="https://getform.io/f/5e593f69-858c-4bd1-add7-d080a2080075"
+          name="contact"
           data-netlify="true"
           method="POST"
+          action="/contact/success"
         >
           <div className={styles.form_texts}>
             <label>
