@@ -1,12 +1,9 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import VideoWithText from "@/components/sections/VideoWithText";
 import Link from "next/link";
 import Button from "@/components/Button";
 import ScrollingText from "@/components/sections/ScrollingText";
 import HomepageHero from "@/components/home/HomepageHero";
-import Testimonials from "@/components/sections/Testimonials";
-import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
