@@ -20,6 +20,7 @@ export default function Page() {
           method="POST"
           action="/contact/success"
         >
+          <input type="hidden" name="form-name" value="contact" />
           <div className={styles.form_texts}>
             <label>
               Name
