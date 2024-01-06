@@ -1,6 +1,39 @@
 {
     "projects":[
         {
+            "handle":"ara",
+            "next_handle":"magnum",
+            "title":"ARA",
+            "list_image":"/images/project/ara_list.jpg",
+            "logo":"/images/project/logos/allo_logo.png",
+            "description":"adifsod",
+            "color1":"#111",
+            "color2":"#fff",
+            "logo_color":"#d4a363"
+        },
+        {
+            "handle":"magnum",
+            "next_handle":"nektr",
+            "title":"MAGNUM",
+            "list_image":"/images/project/magnum_list.jpg",
+            "logo":"/images/project/logos/allo_logo.png",
+            "description":"adifsod",
+            "color1":"#111",
+            "color2":"#fff",
+            "logo_color":"#d4a363"
+        },
+        {
+            "handle":"nektr",
+            "next_handle":"allo",
+            "title":"NEKTR",
+            "list_image":"/images/project/nektr_list.jpg",
+            "logo":"/images/project/logos/allo_logo.png",
+            "description":"adifsod",
+            "color1":"#111",
+            "color2":"#fff",
+            "logo_color":"#d4a363"
+        },
+        {
             "handle":"allo",
             "next_handle":"stlth",
             "title":"ALLO",
@@ -32,17 +65,6 @@
             "color1":"#444",
             "color2":"#fff",
             "logo_color":"#dfccbb"
-        },
-        {
-            "handle":"lovejapan",
-            "next_handle":"allo",
-            "title":"EliKai",
-            "list_image":"/images/project/lovejapan_list.jpg",
-            "logo":"/images/project/logos/lovejapan_logo_small.png",
-            "description":"adifsod",
-            "color1":"#333",
-            "color2":"#fff",
-            "logo_color":"#ceaea3"
         }
     
     ]
