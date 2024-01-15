@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import project from "../../assets/projects/magnum.json";
+import project from "../../assets/projects/ara.json";
 import Button from "../../../components/Button";
 import ImageWithText from "../../../components/sections/ImageWithText";
 import NextProject from "../../../components/sections/NextProject";
