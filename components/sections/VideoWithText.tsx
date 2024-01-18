@@ -15,23 +15,27 @@ interface Props {
   textColor?: string;
   loop?: boolean;
   subtitle?: any;
+  playback_speed?:number;
   dataSpeed?: number;
 }
 
 const VideoWithText: React.FC<Props> = (props) => {
   const dataSpeed = props.dataSpeed ? props.dataSpeed : 0;
   const videoRef = useRef<any>();
-
   useEffect(() => {
+    videoRef.current.playbackRate = props.playback_speed ?? 1;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry: any) => {
           if (!entry.isIntersecting) {
             entry.target.pause();
+            // entry.target.playbackRate = props.playback_speed ?? 1;
+            // entry.target.playbackSpeed = props.playback_speed ?? 1;
             entry.target.currentTime = 0;
             //   playState = false;
           } else {
             entry.target.play();
+            entry.target.style.playbackRate = 0.5;
             //   playState = true;
           }
         });
@@ -47,6 +51,8 @@ const VideoWithText: React.FC<Props> = (props) => {
       observer.disconnect();
     };
   }, []);
+  
+  // videoRef.current.style.playBackSpeed = props.playback_speed ? props.playback_speed : 1;
 
   return (
     <section
@@ -70,6 +76,7 @@ const VideoWithText: React.FC<Props> = (props) => {
         {props.children}
       </div>
       <video
+        id={'test123'}
         className={styles.image_with_text_image}
         ref={videoRef}
         style={props.videoStyles}
