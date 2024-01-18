@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <>
       <div style={{ background: project["bg_color"], overflowX: "hidden" }}>
-        <ProjectHero project={project} />
+        <ProjectHero no_anim={true} project={project} />
 
         <ScrollingText
           TextArray={[

@@ -75,6 +75,7 @@
 
 
 
+
 .hero_container{
     height: 90vh;
     width: 100vw;
@@ -90,6 +91,11 @@
 	margin-bottom: 2rem;
     line-height:1.4;
     margin-top: 0.5rem;
+}
+
+.hero_container.left .hero_info{
+    padding: var(--global-padding);
+    align-items: flex-start;
 }
 
 .canvas{
@@ -112,6 +118,10 @@
     transition: 1500ms;
 }
 
+.hero_info.no_anim{
+    opacity: 1;
+    transform: none;
+}
 
 
 .hero_info h1{
@@ -192,6 +202,10 @@
 }
 
 .hero_container.dark .hero_info{
+    opacity: 1;
+    transform: rotateY(0);
+}
+.hero_container.no_anim .hero_info{
     opacity: 1;
     transform: rotateY(0);
 }
@@ -334,6 +348,10 @@ cursor: pointer;
     }
     .hero_container h1{
         font-size: 1.8rem;
+    }
+
+    .hero_container.left .hero_info{
+        align-items: center;
     }
     
 }

@@ -10,19 +10,20 @@ import TitleWithText from "../../../components/sections/TitleWithText";
 import styles from "../../../styles/ProjectSections.module.css";
 import StatBadge from "../../../components/projects/StatBadge";
 import Footer from "@/components/sections/Footer";
+import VideoWithText from "@/components/sections/VideoWithText";
+import "./nektr.css";
 
 export default function Page() {
   return (
     <>
-      <div style={{ background: project["bg_color"], overflowX: "hidden" }}>
+      <div
+        id="NEKTR"
+        style={{ background: project["bg_color"], overflowX: "hidden" }}
+      >
         <ProjectHero
+          position="left"
           project={project}
-          title={
-            <h1>
-              Protein Powder <br />
-              For Hot Coffee
-            </h1>
-          }
+          title={<h1>DAILY GREENS + SUPERFOODS</h1>}
         />
 
         <ScrollingText
@@ -35,98 +36,60 @@ export default function Page() {
             "Graphic Design",
           ]}
         />
-        <ImageWithText
-          image_placement={"right"}
-          src={"../images/project/allo/vanilla_noncreamer.webp"}
-          alt={""}
-          title={"About Allo"}
-          subtitle={"Health & Fitness"}
-          text={
-            "Allo Nutrition is a Toronto-based company offering unique health products designed to enhance your everyday lifestyle. They have created the first protein powder that mixes seamlessly into hot coffee, with options for all types of coffee drinkers."
-          }
-          imgStyles={{ borderRadius: "1.5rem" }}
+        <VideoWithText
+          video_placement={"right"}
+          src={"../images/project/nektr/pineapple_peach_video.mp4"}
+          title={"About NEKTR"}
+          subtitle={"Health & Wellness"}
+          loop
+          videoStyles={{
+            border: "1px #ffffff36 solid",
+            borderRadius: "1.5rem",
+          }}
         >
-          <div>
-            <Link
-              style={{ width: "fit-content", display: "block" }}
-              href={project.site_link}
-              target="_blank"
-            >
-              <Button type={"primary light"}>
-                View Live Site
-                <img
-                  src="../images/cta_link_black.png"
-                  height="12"
-                  width="12"
-                />
-              </Button>
-            </Link>
-          </div>
-        </ImageWithText>
+          <p>
+            NEKTR is a flavorful powerhouse of micronutrients and antioxidants,
+            bursting with 54 fruits and vegetables, from land and sea, blended
+            for optimal nutrition.
+            <br />
+            <br />
+            People struggle to get their daily greens. In fact, according to the
+            CDC, 90% of North Americans aren&apos;t getting their daily
+            recommended intake of fruits and vegetables.
+          </p>
+          <Link
+            style={{ width: "fit-content", display: "block" }}
+            href={project.site_link}
+            target="_blank"
+          >
+            <Button type={"primary light"}>
+              View Live Site
+              <img src="../images/cta_link_black.png" height="12" width="12" />
+            </Button>
+          </Link>
+        </VideoWithText>
 
         <ImageWithText
           image_placement={"left"}
-          src={"../images/project/allo/hazelnut_creamer.webp"}
+          src={"../images/project/nektr/mobile_hero.jpg"}
           alt={""}
           title={"How did we Help?"}
           imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
-            Allo&apos;s vision was to create a unique digital experience that
-            would allow users to understand and appreciate their innovative
-            products. To achieve this, we helped Allo design and launch a
-            website that goes beyond just providing product information.
+            NEKTR wanted to show how{" "}
+            <span style={{ color: "#cb4732" }}>flavorful</span> their product
+            was. A lot of time was spent getting the visuals to portray the
+            product&apos;s main quality. This was seamlessly integrated into a
+            custom built website we made for them.
             <br />
-            <br /> We worked closely with Allo to understand their brand and
-            their goals, and crafted a website that truly represents their
-            values and ethos.
+            <br /> We worked closely with NEKTR to understand their brand and
+            their goals, and crafted a website that shows their product in the
+            best light.
           </p>
         </ImageWithText>
 
-        <h2 data-speed={1.1} style={{ color: "#ede7e0", fontSize: "2rem" }}>
-          {" "}
-          Our Results
-        </h2>
-
-        <div data-speed={1.1} className={styles.stat_badge_container}>
-          <div style={{ display: "flex", gap: "inherit" }}>
-            <StatBadge
-              LargeText="4.02%"
-              SmallText="Conversion Rate"
-              UnderText={
-                <Link
-                  target="_blank"
-                  href={
-                    "https://lp.littledata.io/average/ecommerce-conversion-rate-(all-devices)/Shopify"
-                  }
-                >
-                  (vs 2022 Shopify Avg 1.4%)
-                </Link>
-              }
-            />
-            <StatBadge
-              dataLag={0.05}
-              LargeText="1 Year"
-              SmallText="Since Launch"
-            />
-          </div>
-
-          <div style={{ display: "flex", gap: "inherit" }}>
-            <StatBadge
-              dataLag={0.1}
-              LargeText="+300,000"
-              SmallText="Sessions"
-            />
-            <StatBadge
-              dataLag={0.15}
-              LargeText="14"
-              SmallText="Coffees Spilled"
-            />
-          </div>
-        </div>
-        <h2 style={{ color: "#ede7e0", marginTop: 60, marginBottom: 50 }}>
-          Featured
-        </h2>
+        <h2 style={{ marginTop: 60, marginBottom: 50 }}>Featured</h2>
 
         <div
           style={{
@@ -143,57 +106,66 @@ export default function Page() {
             autoPlay
             muted
           >
-            <source src="..\videos\allo\allo_scroll.mp4"></source>
+            <source src="..\images\project\nektr\nektr_scroll.mp4"></source>
           </video>
         </div>
 
-        <p style={{ color: "#ede7e0", marginBottom: 50 }}>
-          Scrolling video in home page
-        </p>
+        <p style={{ marginBottom: 50 }}>Scrolling video in home page</p>
+
+        <div style={{ padding: "var(--global-padding)" }}>
+          <img
+            style={{
+              maxWidth: "100%",
+              borderRadius: "1rem",
+              border: "1px solid #282420",
+            }}
+            src="..\images\project\nektr\nektr_page.png"
+          ></img>
+        </div>
+        <p style={{ marginTop: 15, marginBottom: 75 }}> Desktop Product Page</p>
+        <div style={{ padding: "var(--global-padding)" }}>
+          <img
+            style={{
+              maxWidth: "100%",
+              borderRadius: "1rem",
+            }}
+            src="..\images\project\nektr\nektr_plate.png"
+          ></img>
+        </div>
+
+        <p style={{ marginTop: 15, marginBottom: 75 }}> Nutrients in Product</p>
+
+        <div style={{ padding: "var(--global-padding)" }}>
+          <img
+            style={{
+              maxWidth: "100%",
+              borderRadius: "1rem",
+            }}
+            src="..\images\project\nektr\nektr_oversized (1).jpg"
+          ></img>
+        </div>
+
         <div data-speed={1.1} className={styles.mobile_flex_images_allo}>
           <div data-lag={0.15}>
             <img
               style={{ borderRadius: "1rem", width: "100%" }}
-              src="..\images\project\allo\allo-shop-page.png"
+              src="..\images\project\nektr\Magnum-NEKTR-JournalismShots-Extra-7.jpg"
             ></img>
-
-            <p style={{ color: "#ede7e0", marginTop: 15 }}>Shop Page</p>
           </div>
           <div data-lag={0.1}>
             <img
               style={{ borderRadius: "1rem", width: "100%" }}
-              src="..\images\project\allo\allo-creamer-product-page.png"
+              src="..\images\project\nektr\Magnum-NEKTR-JournalismShots-Extra-6.jpg"
             ></img>
-
-            <p style={{ color: "#ede7e0", marginTop: 15 }}>
-              {" "}
-              Mobile Product Page
-            </p>
           </div>
           <div>
             <img
               style={{ borderRadius: "1rem", width: "100%" }}
-              src="..\images\project\allo\variety-pack-mobile.png"
+              src="..\images\project\nektr\mobile_hero.jpg"
             ></img>
-
-            <p style={{ color: "#ede7e0", marginTop: 15 }}>
-              {" "}
-              Variety Pack Page
-            </p>
           </div>
         </div>
 
-        <div style={{ padding: "var(--global-padding)" }}>
-          <img
-            style={{ maxWidth: "100%", borderRadius: "1rem" }}
-            src="../images/project/allo/allo-product-desktop.png"
-          ></img>
-        </div>
-
-        <p style={{ color: "#ede7e0", marginTop: 15, marginBottom: 150 }}>
-          {" "}
-          Desktop Product Page
-        </p>
         <NextProject next_link={`/projects/${project.next_handle}`} />
       </div>
       <Footer />
