@@ -19,8 +19,8 @@ export default function Page() {
           project={project}
           title={
             <h1>
-              Protein Powder <br />
-              For Hot Coffee
+              Your Sip of Nourishment <br />
+              in Every Cup
             </h1>
           }
         />
@@ -37,12 +37,12 @@ export default function Page() {
         />
         <ImageWithText
           image_placement={"right"}
-          src={"../images/project/allo/vanilla_noncreamer.webp"}
+          src={"../images/project/ara/ara_plants.jpg"}
           alt={""}
-          title={"About Allo"}
+          title={"About Ära"}
           subtitle={"Health & Fitness"}
           text={
-            "Allo Nutrition is a Toronto-based company offering unique health products designed to enhance your everyday lifestyle. They have created the first protein powder that mixes seamlessly into hot coffee, with options for all types of coffee drinkers."
+            "Ära Nutrition is a Toronto-based company offering unique health products designed to enhance your everyday lifestyle. They have created the first protein powder that mixes seamlessly into hot coffee, with options for all types of coffee drinkers."
           }
           imgStyles={{ borderRadius: "1.5rem" }}
         >
@@ -66,24 +66,23 @@ export default function Page() {
 
         <ImageWithText
           image_placement={"left"}
-          src={"../images/project/allo/hazelnut_creamer.webp"}
+          src={"../images/project/ara/ara_sachet_1.jpg"}
           alt={""}
           title={"How did we Help?"}
           imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
-            Allo&apos;s vision was to create a unique digital experience that
-            would allow users to understand and appreciate their innovative
-            products. To achieve this, we helped Allo design and launch a
-            website that goes beyond just providing product information.
+            Formerly known as Allo, Ära sought a fresh aesthetic to align with their evolving brand. 
+            Our team played a pivotal role in not only crafting their new look but also seamlessly integrating it into their revamped platform,
+            ensuring a cohesive and sharp identity.
             <br />
-            <br /> We worked closely with Allo to understand their brand and
+            <br /> We worked closely with Ära to understand their brand and
             their goals, and crafted a website that truly represents their
             values and ethos.
           </p>
         </ImageWithText>
 
-        <h2 data-speed={1.1} style={{ color: "#ede7e0", fontSize: "2rem" }}>
+        {/* <h2 data-speed={1.1} style={{ color: "#ede7e0", fontSize: "2rem" }}>
           {" "}
           Our Results
         </h2>
@@ -123,7 +122,7 @@ export default function Page() {
               SmallText="Coffees Spilled"
             />
           </div>
-        </div>
+        </div> */}
         <h2 style={{ color: "#ede7e0", marginTop: 60, marginBottom: 50 }}>
           Featured
         </h2>
@@ -143,7 +142,7 @@ export default function Page() {
             autoPlay
             muted
           >
-            <source src="..\videos\allo\allo_scroll.mp4"></source>
+            <source src="..\images\project\ara\ara_site_video.mp4"></source>
           </video>
         </div>
 
@@ -154,7 +153,7 @@ export default function Page() {
           <div data-lag={0.15}>
             <img
               style={{ borderRadius: "1rem", width: "100%" }}
-              src="..\images\project\allo\allo-shop-page.png"
+              src="..\images\project\ara\ara_product_list_mobile.png"
             ></img>
 
             <p style={{ color: "#ede7e0", marginTop: 15 }}>Shop Page</p>
@@ -162,7 +161,7 @@ export default function Page() {
           <div data-lag={0.1}>
             <img
               style={{ borderRadius: "1rem", width: "100%" }}
-              src="..\images\project\allo\allo-creamer-product-page.png"
+              src="..\images\project\ara\ara_product_mobile.png"
             ></img>
 
             <p style={{ color: "#ede7e0", marginTop: 15 }}>
@@ -173,7 +172,7 @@ export default function Page() {
           <div>
             <img
               style={{ borderRadius: "1rem", width: "100%" }}
-              src="..\images\project\allo\variety-pack-mobile.png"
+              src="..\images\project\ara\ara_variety_mobile.png"
             ></img>
 
             <p style={{ color: "#ede7e0", marginTop: 15 }}>
@@ -186,7 +185,7 @@ export default function Page() {
         <div style={{ padding: "var(--global-padding)" }}>
           <img
             style={{ maxWidth: "100%", borderRadius: "1rem" }}
-            src="../images/project/allo/allo-product-desktop.png"
+            src="../images/project/ara/ara_product_desktop.png"
           ></img>
         </div>
 
