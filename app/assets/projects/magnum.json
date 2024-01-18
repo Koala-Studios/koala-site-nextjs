@@ -3,13 +3,13 @@
     "next_handle":"nektr",
     "title":"Magnum Nutraceuticals",
     "list_image":"/images/project/allo_list.png",
-    "logo":"/images/project/logos/allo_logo.png",
+    "logo":"/images/project/magnum/logo_magnum_1.png",
     "description":"adifsod",
     "bg_color":"#1a1714",
     "text_color":"#ede7e0",
     "logo_color":"#d4a363",
-    "hero_image":"/images/project/allo/allo_image_wide.jpg",
-    "hero_image_mobile":"/images/project/allo_list.png",
+    "hero_image":"/images/project/magnum/magnum_desktop_gym.png",
+    "hero_image_mobile":"/images/project/magnum/hero_image_mobile.png",
     "chips":[1,2],
     "site_link": "https://magnumsupps.com"
 }
