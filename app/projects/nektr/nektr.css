@@ -1,6 +1,22 @@
-#NEKTR p,h2,h1,h2,h3,span,div{
+#NEKTR p{
     color: black;
 }
+#NEKTR h1{
+    color: black;
+}
+#NEKTR h2{
+    color: black;
+}
+#NEKTR h3{
+    color: black;
+}
+#NEKTR span{
+    color: black;
+}
+#NEKTR div{
+    color: black;
+}
+
 
 #NEKTR .Sections_scrolltext_container__yd7Ve{
     border-bottom:1px solid #00000040!important;
