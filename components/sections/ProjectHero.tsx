@@ -9,9 +9,17 @@ interface Props {
   project: IProjectPage;
   title?: any;
   bg_color?: string;
+  position?: "left" | "center";
+  no_anim?: boolean;
 }
 
-const ProjectHero: React.FC<Props> = ({ project, title, bg_color }) => {
+const ProjectHero: React.FC<Props> = ({
+  project,
+  title,
+  bg_color,
+  position,
+  no_anim,
+}) => {
   const [animate, setAnimate] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
@@ -25,21 +33,27 @@ const ProjectHero: React.FC<Props> = ({ project, title, bg_color }) => {
   useEffect(() => {
     document.addEventListener("scroll", setScroll);
 
-    if (animate == false) {
-      window.scrollTo(0, 0);
+    // if (no_anim != true && animate == false) {
+    //   window.scrollTo(0, 0);
 
-      setTimeout(() => {
-        setAnimate(true);
-      }, 300);
-    }
+    //   setTimeout(() => {
+    //     setAnimate(true);
+    //   }, 300);
+    // }
   }, []);
 
   return (
     <div
       style={{ background: bg_color }}
-      className={`${styles.hero_container} ${animate ? styles.dark : ""}`}
+      className={`${styles.hero_container} ${
+        position == "left" ? styles.left : ""
+      }`}
     >
-      <div className={styles.hero_info}>
+      <div
+        className={`${styles.hero_info} ${
+          animate ? styles.dark : styles.no_anim
+        }`}
+      >
         <img src={project.logo} />
         {title}
       </div>
