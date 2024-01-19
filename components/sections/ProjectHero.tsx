@@ -44,7 +44,10 @@ const ProjectHero: React.FC<Props> = ({
 
   return (
     <div
-      style={{ background: bg_color }}
+      style={{
+        background: `url(${project.hero_image})`,
+        backgroundSize: "cover",
+      }}
       className={`${styles.hero_container} ${
         position == "left" ? styles.left : ""
       }`}
@@ -55,12 +58,12 @@ const ProjectHero: React.FC<Props> = ({
         }`}
       >
         <img src={project.logo} />
-        {title}
+        {/* {title} */}
       </div>
 
-      <div className={styles.title_image}>
+      {/* <div className={styles.title_image}>
         <img className={styles.hero_image} src={project.hero_image} />
-      </div>
+      </div> */}
 
       <div
         className={`${styles.scroll_indicator} ${

@@ -173,10 +173,10 @@ const ProjectItem: React.FC<Props> = ({
         rotation={[-1, -1, 0]}
       >
         <meshStandardMaterial
-          envMapIntensity={1.3}
-          roughness={0.12}
+          envMapIntensity={1.2}
+          roughness={0.15}
           attach="material"
-          metalness={0.3}
+          metalness={0.1}
           map={texture}
         />
       </mesh>
@@ -185,9 +185,7 @@ const ProjectItem: React.FC<Props> = ({
         ref={refText}
         position={[xpos, mobile ? -6.4 : -5.35, 1]}
       >
-        {/* <planeBufferGeometry
-          args={[logoSize * 1.5, logoSize]}
-        ></planeBufferGeometry> */}
+        <planeGeometry args={[logoSize * 1.5, logoSize]}></planeGeometry>
         <meshStandardMaterial
           opacity={0}
           envMapIntensity={2.5}

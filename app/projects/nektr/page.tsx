@@ -11,13 +11,13 @@ import styles from "../../../styles/ProjectSections.module.css";
 import StatBadge from "../../../components/projects/StatBadge";
 import Footer from "@/components/sections/Footer";
 import VideoWithText from "@/components/sections/VideoWithText";
-import "./nektr.css";
+import "./light.css";
 
 export default function Page() {
   return (
     <>
       <div
-        id="NEKTR"
+        id="LIGHT"
         style={{ background: project["bg_color"], overflowX: "hidden" }}
       >
         <ProjectHero

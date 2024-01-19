@@ -1,0 +1,58 @@
+#LIGHT p{
+    color: black!important;
+}
+#LIGHT h1{
+    color: black!important;
+}
+#LIGHT h2{
+    color: black!important;
+}
+#LIGHT h3{
+    color: black!important;
+}
+#LIGHT span{
+    color: black!important;
+}
+#LIGHT div{
+    color: black!important;
+}
+
+
+#LIGHT .Sections_scrolltext_container__yd7Ve{
+    border-bottom:1px solid #00000040!important;
+}
+
+#LIGHT .Sections_subtitle_pill__gCDXa{
+    color: black;
+    border: 2px solid #000000;
+}
+
+#LIGHT .btn--primary{
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+}
+#LIGHT .btn--primary img{
+    filter: invert(1);
+}
+
+#LIGHT .ProjectSections_hero_info__HSas0 img{
+    /* height: 18rem; */
+    /* margin-top: -5rem; */
+    /* filter: invert(1); */
+}
+#LIGHT .ProjectSections_hero_info__HSas0 h1{
+    margin-top: -5rem;
+}
+
+
+@media (max-width: 1080px) {
+
+    #LIGHT .ProjectSections_hero_info__HSas0 img{
+        height: 10rem;
+        margin-top: 0;
+    }
+    #LIGHT .ProjectSections_hero_info__HSas0 h1{
+        margin-top: -2rem;
+    }
+}

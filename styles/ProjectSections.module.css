@@ -83,8 +83,8 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    perspective: 1000px;
-   /* animation: start-anim 1.5s ease-out; */
+
+    /* animation: start-anim 1.5s ease-out; */
 }
 
 .hero_container p{
@@ -96,6 +96,7 @@
 .hero_container.left .hero_info{
     padding: var(--global-padding);
     align-items: flex-start;
+    text-align: left;
 }
 
 .canvas{
@@ -132,7 +133,7 @@
 }
 
 .hero_info img{
-    height: 10rem;
+    height: 25rem;
 }
 
 .scroll_container{

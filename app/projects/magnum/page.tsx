@@ -11,12 +11,17 @@ import styles from "../../../styles/ProjectSections.module.css";
 import StatBadge from "../../../components/projects/StatBadge";
 import Footer from "@/components/sections/Footer";
 import VideoWithText from "@/components/sections/VideoWithText";
+import "../nektr/light.css";
 
 export default function Page() {
   return (
     <>
-      <div style={{ background: project["bg_color"], overflowX: "hidden" }}>
+      <div
+        id="LIGHT"
+        style={{ background: project["bg_color"], overflowX: "hidden" }}
+      >
         <ProjectHero
+          position="left"
           project={project}
           title={
             <h1>
@@ -44,7 +49,8 @@ export default function Page() {
           title={"About Magnum"}
           subtitle={"Health & Fitness, Nutrition"}
           text={
-            "Magnum Nutraceuticals, a top-tier supplement brand powering champions worldwide. Endorsed by elite athletes and premier trainers, their renowned brand delivers award-winning, scientifically-formulated supplements to those striving for greatness."}
+            "Magnum Nutraceuticals, a top-tier supplement brand powering champions worldwide. Endorsed by elite athletes and premier trainers, their renowned brand delivers award-winning, scientifically-formulated supplements to those striving for greatness."
+          }
           videoStyles={{ borderRadius: "1.5rem" }}
         >
           <div>
@@ -73,12 +79,14 @@ export default function Page() {
           videoStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
-            We elevated Magnum's online presence by delivering a brand-aligned makeover that set them apart from the competition.
-            
-             <br />
-            <br /> 
-            Magnum originally had two separate websites. In an effort to enhance traffic and streamline operations, we migrated them into a single, unified platform, effectively minimizing operational complexities and optimizing user experience.
-           
+            We elevated Magnum&apos;s online presence by delivering a
+            brand-aligned makeover that set them apart from the competition.
+            <br />
+            <br />
+            Magnum originally had two separate websites. In an effort to enhance
+            traffic and streamline operations, we migrated them into a single,
+            unified platform, effectively minimizing operational complexities
+            and optimizing user experience.
           </p>
         </VideoWithText>
 
@@ -116,11 +124,7 @@ export default function Page() {
               LargeText="+150,000"
               SmallText="Sessions"
             />
-            <StatBadge
-              dataLag={0.15}
-              LargeText="23"
-              SmallText="PRs Broken"
-            />
+            <StatBadge dataLag={0.15} LargeText="23" SmallText="PRs Broken" />
           </div>
         </div>
         <h2 style={{ color: "#ede7e0", marginTop: 60, marginBottom: 50 }}>
@@ -146,9 +150,7 @@ export default function Page() {
           </video>
         </div>
 
-        <p style={{ color: "#ede7e0", marginBottom: 50 }}>
-          Scrolling Video
-        </p>
+        <p style={{ color: "#ede7e0", marginBottom: 50 }}>Scrolling Video</p>
         <div data-speed={1.1} className={styles.mobile_flex_images_allo}>
           <div data-lag={0.15}>
             <img

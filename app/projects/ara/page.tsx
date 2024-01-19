@@ -16,6 +16,7 @@ export default function Page() {
     <>
       <div style={{ background: project["bg_color"], overflowX: "hidden" }}>
         <ProjectHero
+          position="left"
           project={project}
           title={
             <h1>
@@ -72,9 +73,10 @@ export default function Page() {
           imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
-            Formerly known as Allo, Ära sought a fresh aesthetic to align with their evolving brand. 
-            Our team played a pivotal role in not only crafting their new look but also seamlessly integrating it into their revamped platform,
-            ensuring a cohesive and sharp identity.
+            Formerly known as Allo, Ära sought a fresh aesthetic to align with
+            their evolving brand. Our team played a pivotal role in not only
+            crafting their new look but also seamlessly integrating it into
+            their revamped platform, ensuring a cohesive and sharp identity.
             <br />
             <br /> We worked closely with Ära to understand their brand and
             their goals, and crafted a website that truly represents their

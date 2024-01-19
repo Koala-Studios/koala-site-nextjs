@@ -5,33 +5,33 @@
             "next_handle":"magnum",
             "title":"ARA",
             "list_image":"/images/project/ara_list.jpg",
-            "logo":"/images/project/logos/allo_logo.png",
+            "logo":"/images/project/logos/ara_logo.png",
             "description":"adifsod",
             "color1":"#111",
             "color2":"#fff",
-            "logo_color":"#d4a363"
+            "logo_color":"#fff6ec"
         },
         {
             "handle":"magnum",
             "next_handle":"nektr",
             "title":"MAGNUM",
             "list_image":"/images/project/magnum_list.jpg",
-            "logo":"/images/project/logos/allo_logo.png",
+            "logo":"/images/project/logos/magnum_logo.png",
             "description":"adifsod",
             "color1":"#111",
             "color2":"#fff",
-            "logo_color":"#d4a363"
+            "logo_color":"#fff"
         },
         {
             "handle":"nektr",
             "next_handle":"allo",
             "title":"NEKTR",
             "list_image":"/images/project/nektr_list.jpg",
-            "logo":"/images/project/logos/allo_logo.png",
+            "logo":"/images/project/logos/nektr_logo.png",
             "description":"adifsod",
             "color1":"#111",
             "color2":"#fff",
-            "logo_color":"#d4a363"
+            "logo_color":"#398758"
         },
         {
             "handle":"allo",

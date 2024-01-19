@@ -8,7 +8,7 @@
     "bg_color":"#16171c",
     "text_color":"#ede7e0",
     "logo_color":"#d4a363",
-    "hero_image":"",
+    "hero_image":"/images/project/elikai/elikai_bg.jpg",
     "hero_image_mobile":"/images/project/allo_list.png",
     "chips":[1,2]
 }
