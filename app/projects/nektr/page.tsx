@@ -57,7 +57,7 @@ export default function Page() {
             CDC, 90% of North Americans aren&apos;t getting their daily
             recommended intake of fruits and vegetables.
           </p>
-          <Link
+          {/* <Link
             style={{ width: "fit-content", display: "block" }}
             href={project.site_link}
             target="_blank"
@@ -66,7 +66,7 @@ export default function Page() {
               View Live Site
               <img src="../images/cta_link_black.png" height="12" width="12" />
             </Button>
-          </Link>
+          </Link> */}
         </VideoWithText>
 
         <ImageWithText
