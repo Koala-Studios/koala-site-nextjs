@@ -12,7 +12,8 @@ transform: rotate(-5deg);
 
 .navbar {
     /* background-color: var(--main-color); */
-    background-color: #0d0d0d;
+    background-color: #0d0d0db8;
+    backdrop-filter: blur(5px);
     z-index:14000;
     height: 65px;
     width: 100vw;

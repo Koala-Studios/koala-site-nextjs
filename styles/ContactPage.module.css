@@ -6,7 +6,7 @@
 .calendly_section{
   height: 80vh;
   overflow-y: hidden;
-  background-color: #39744f;
+  background-color: #3d7431;
   display: flex;
   width: 100%;
 }
@@ -75,7 +75,7 @@
 }
 .send_button {
   color: white;
-  background-color: #39744f;
+  background-color: #3d7431;
   padding: 1rem 1.5rem;
   border-radius: 0.1rem;
   width: 100%;

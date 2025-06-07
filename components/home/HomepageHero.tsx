@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
+import Footer from "../sections/Footer";
 
 const HomepageHero = () => {
   const [mobile, setMobile] = useState(false);
@@ -23,7 +24,12 @@ const HomepageHero = () => {
         <div className={styles.overlay_fade}></div>
         <div className={styles.hero_video}>
           {/* <img src="/images/koala_square.png" /> */}
-          <video autoPlay loop muted style={{ width: "auto", height: "100%" }}>
+          <video
+            autoPlay
+            loop
+            muted
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          >
             <source
               src={
                 mobile
@@ -51,8 +57,8 @@ const HomepageHero = () => {
             <Link href="/projects">
               <Button
                 style={{
-                  backgroundColor: "#39744f",
-                  borderColor: "#39744f",
+                  backgroundColor: "#3d7431",
+                  borderColor: "#3d7431",
                   color: "white",
                 }}
                 type="primary light"
@@ -63,9 +69,6 @@ const HomepageHero = () => {
           </div>
         </div>
       </section>
-      {/* <div className={styles.hero_flower_1}>
-        <Image src="/flower1.png" width={370} height={558} />
-      </div> */}
     </div>
   );
 };

@@ -49,6 +49,7 @@ const Footer: React.FC<Props> = (props) => {
             </div>
             <Link href="/projects">View Our Work</Link>
             <Link href="/services">Services</Link>
+            {/* <Link href="/process">Our Process</Link> */}
             <Link href="/about">About Us</Link>
             <Link href="/contact">Contact Us</Link>
           </div>
@@ -57,7 +58,7 @@ const Footer: React.FC<Props> = (props) => {
       <hr></hr>
       <div>
         <p style={{ textAlign: "center", fontSize: "0.8rem" }}>
-          © 2023 Koala Studios. All Rights Reserved.
+          © 2025 Koala Studios. All Rights Reserved.
         </p>
         {/* TODO:ADD SOCIAL MEDIA LINKS */}
       </div>

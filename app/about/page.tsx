@@ -8,7 +8,7 @@ export default function Page() {
     <>
       <div style={{ backgroundColor: "#181A17", overflowX: "hidden" }}>
         <GradientHero
-          gradient="linear-gradient(45deg, #181a17, #203f44,#433960)"
+          gradient="linear-gradient(45deg, #3d7431,#7943CB)"
           title="We work with innovative brands to bring engaging products to life."
         />
         <ScrollingText
@@ -26,7 +26,6 @@ export default function Page() {
           src={"../images/koala_square.png"}
           alt={""}
           title={"Our Mission"}
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p style={{ fontFamily: "Poppins-Regular" }}>
             Our mission is to help brands succeed online by providing

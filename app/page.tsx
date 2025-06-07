@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import ScrollingText from "@/components/sections/ScrollingText";
 import HomepageHero from "@/components/home/HomepageHero";
+import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
@@ -25,11 +26,8 @@ export default function Home() {
         title=""
         loop
         videoStyles={{
-          borderRadius: "1.5rem",
-          border: "2px solid #d1bdad",
           width: "50%",
           height: "50%",
-          marginBottom: "25px",
         }} //marginBottom for mobile version + dataSpeed
         styles={{ backgroundColor: "#181A17" }}
         dataSpeed={1.2}
@@ -46,7 +44,6 @@ export default function Home() {
         src="/videos/3dbag_in2.mp4"
         title="Your Website's Look Matters"
         text=""
-        videoStyles={{ borderRadius: "1.5rem", border: "2px solid #282420" }}
         styles={{ backgroundColor: "#ede7e0" }}
         textColor="#282420"
         loop={false}
@@ -65,7 +62,7 @@ export default function Home() {
           <Link href="/services">
             <Button
               style={{
-                borderColor: "#39744f",
+                borderColor: "#3d7431",
                 whiteSpace: "nowrap",
                 border: "2px solid black",
               }}
@@ -77,9 +74,9 @@ export default function Home() {
           <Link href="/projects">
             <Button
               style={{
-                backgroundColor: "#39744f",
+                backgroundColor: "#3d7431",
                 whiteSpace: "nowrap",
-                border: "2px solid #39744f",
+                border: "2px solid #3d7431",
               }}
               type={"primary"}
             >
@@ -88,7 +85,7 @@ export default function Home() {
           </Link>
         </div>
       </VideoWithText>
-
+      <Footer />
       {/* <Testimonials /> */}
     </div>
   );

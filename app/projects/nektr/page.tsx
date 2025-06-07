@@ -44,7 +44,6 @@ export default function Page() {
           loop
           videoStyles={{
             border: "1px #ffffff36 solid",
-            borderRadius: "1.5rem",
           }}
         >
           <p>
@@ -74,7 +73,6 @@ export default function Page() {
           src={"../images/project/nektr/mobile_hero.jpg"}
           alt={""}
           title={"How did we Help?"}
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
             NEKTR wanted to show how{" "}

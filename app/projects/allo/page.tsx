@@ -44,7 +44,6 @@ export default function Page() {
           text={
             "Allo Nutrition is a Toronto-based company offering unique health products designed to enhance your everyday lifestyle. They have created the first protein powder that mixes seamlessly into hot coffee, with options for all types of coffee drinkers."
           }
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <div>
             <Link
@@ -69,7 +68,6 @@ export default function Page() {
           src={"../images/project/allo/hazelnut_creamer.webp"}
           alt={""}
           title={"How did we Help?"}
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
             Allo&apos;s vision was to create a unique digital experience that

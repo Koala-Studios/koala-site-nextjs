@@ -58,6 +58,9 @@ const Navbar: React.FC<Props> = (props) => {
         <Link href="/services" onClick={() => setMenuLinkActive(false)}>
           Services
         </Link>
+        {/* <Link href="/process" onClick={() => setMenuLinkActive(false)}>
+          Our Process
+        </Link> */}
         <Link href="/about" onClick={() => setMenuLinkActive(false)}>
           About Us
         </Link>

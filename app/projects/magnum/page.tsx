@@ -51,7 +51,6 @@ export default function Page() {
           text={
             "Magnum Nutraceuticals, a top-tier supplement brand powering champions worldwide. Endorsed by elite athletes and premier trainers, their renowned brand delivers award-winning, scientifically-formulated supplements to those striving for greatness."
           }
-          videoStyles={{ borderRadius: "1.5rem" }}
         >
           <div>
             <Link
@@ -76,7 +75,6 @@ export default function Page() {
           src={"../images/project/magnum/heat_slowmo.mp4"}
           loop
           title={"How did we Help?"}
-          videoStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
             We elevated Magnum&apos;s online presence by delivering a

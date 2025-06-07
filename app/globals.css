@@ -85,8 +85,8 @@ button{
 @media (max-width: 1700px) {
   
   :root {
-    --global-padding:0 12rem;
-    --global-padding-single:12rem;
+    --global-padding:0 8rem;
+    --global-padding-single:8rem;
   }
 
 
@@ -94,8 +94,8 @@ button{
 @media (max-width: 1300px) {
   
   :root {
-    --global-padding:0 10rem;
-    --global-padding-single:10rem;
+    --global-padding:0 6rem;
+    --global-padding-single:6rem;
   }
 
 
@@ -103,15 +103,15 @@ button{
 @media (max-width: 1024px) {
   
   :root {
-    --global-padding:0 2rem;
-    --global-padding-single:2rem;
+    --global-padding:0 1.5rem;
+    --global-padding-single:1.5rem;
   }
 
 }
 
 
 .btn {
-  padding: 0.7rem 1.5rem;
+  padding: 0.8rem 1.7rem;
   border-radius: .1rem;
   /* font-weight: 700!important; */
   cursor: pointer;
@@ -121,6 +121,8 @@ button{
   gap: 10px;
   border: none; 
   white-space: nowrap!important;
+  font-size: 16px;
+  
   /* perspective:1px; */
 }
 .btn:hover {

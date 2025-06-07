@@ -11,9 +11,8 @@ export default function Page() {
     <>
       <div>
         <GradientHero
-          gradient="linear-gradient(45deg, #3F5C77, #2d5448)"
-          title="Our Services"
-          bg_color="#0d0d0d"
+          gradient="linear-gradient(45deg, #765A9F, #CBB543)"
+          title="Our Process"
           height="400px"
         />
         <ScrollingText

@@ -35,7 +35,6 @@ export default function Page() {
           loop={false}
           videoStyles={{
             border: "1px #ffffff36 solid",
-            borderRadius: "1.5rem",
           }}
         >
           <p>
@@ -70,7 +69,6 @@ export default function Page() {
           }
           videoStyles={{
             border: "1px #ffffff36 solid",
-            borderRadius: "1.5rem",
           }}
         ></VideoWithText>
         <h2
@@ -171,7 +169,6 @@ export default function Page() {
             }
             imgStyles={{
               border: "1px #ffffff36 solid",
-              borderRadius: "1.5rem",
             }}
             dataSpeed={0.1}
           ></ImageWithText>

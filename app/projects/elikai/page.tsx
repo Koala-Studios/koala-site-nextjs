@@ -36,7 +36,7 @@ export default function Page() {
           text={
             "Elikai is a company that produces household goods and decorations. They specialize in creating a wide range of products that are typically used in homes, such as office items, kitchenware, bathroom items, and more. Elikai sells exclusively on Amazon."
           }
-          imgStyles={{ border: "1px #ffffff36 solid", borderRadius: "1.5rem" }}
+          imgStyles={{ border: "1px #ffffff36 solid" }}
           alt={""}
         ></ImageWithText>
 
@@ -45,7 +45,6 @@ export default function Page() {
           src={"../images/project/elikai/shot3_less_contrast.jpg"}
           alt={""}
           title={"Our Role"}
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
             Our role with Elikai is to provide 3D rendering services that

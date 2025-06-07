@@ -45,7 +45,6 @@ export default function Page() {
           text={
             "Ära Nutrition is a Toronto-based company offering unique health products designed to enhance your everyday lifestyle. They have created the first protein powder that mixes seamlessly into hot coffee, with options for all types of coffee drinkers."
           }
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <div>
             <Link
@@ -70,7 +69,6 @@ export default function Page() {
           src={"../images/project/ara/ara_sachet_1.jpg"}
           alt={""}
           title={"How did we Help?"}
-          imgStyles={{ borderRadius: "1.5rem" }}
         >
           <p>
             Formerly known as Allo, Ära sought a fresh aesthetic to align with
