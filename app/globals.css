@@ -93,7 +93,7 @@ textarea:focus-visible {
 
 .koala-page-title {
   font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-3xl);
+  font-size: var(--koala-text-2xl);
   font-weight: 600;
   letter-spacing: 0;
   line-height: 0.96;
@@ -103,7 +103,7 @@ textarea:focus-visible {
 
 .koala-section-title {
   font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-3xl);
+  font-size: var(--koala-text-2xl);
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1;
@@ -161,10 +161,12 @@ textarea:focus-visible {
   display: block;
   overflow: hidden;
   position: relative;
+  
 }
 
 .koala-work-tile__image::after {
-  background: #11131229;
+  /* background: #11131229; */
+  background: linear-gradient(#0000000c 80%,#00000096 );
   content: "";
   inset: 0;
   pointer-events: none;
@@ -188,18 +190,20 @@ textarea:focus-visible {
   left: var(--koala-space-4);
   max-width: min(14rem, calc(100% - 2rem));
   position: absolute;
-  top: var(--koala-space-4);
+  bottom: var(--koala-space-4);
   z-index: 2;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .koala-work-tile__meta strong {
   font-family: var(--koala-font-support);
-  font-size: var(--koala-text-md);
+  font-size: var(--koala-text-xl);
 }
 
 .koala-work-tile__meta span {
   color: inherit;
-  font-size: var(--koala-text-sm);
+  font-size: var(--koala-text-md);
   opacity: 0.82;
 }
 

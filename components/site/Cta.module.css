@@ -131,6 +131,11 @@
 
 .variantOutlined:hover {
   border-color: var(--koala-color-ink);
+  color: var(--koala-color-ink);
+}
+
+.variantOutlined.hasCircle:hover {
+  border-color: var(--koala-color-ink);
   color: var(--koala-color-surface);
 }
 
@@ -140,6 +145,11 @@
 }
 
 .variantOutlinedPanel:hover {
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-ink);
+}
+
+.variantOutlinedPanel.hasCircle:hover {
   border-color: var(--koala-color-ink);
   color: var(--koala-color-surface);
 }
@@ -151,6 +161,11 @@
 }
 
 .variantOverlay:hover {
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-ink);
+}
+
+.variantOverlay.hasCircle:hover {
   border-color: var(--koala-color-ink);
   color: var(--koala-color-surface);
 }

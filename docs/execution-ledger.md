@@ -15,6 +15,7 @@
 - Added real inline padding to transparent circle CTAs and removed the right-icon label nudge so hover text does not land flush against the left edge.
 - Reworked the hover icon carrier so the SVG aligns to the CTA's right edge independently of the slow black fill animation, preventing the arrow from lingering in the center during hover.
 - Removed the broken full-width icon rail approach; the icon is fixed-size again at rest, moves quickly to the right edge on hover with a transparent background, and leaves the slow black fill as the only expanding visible layer.
+- Narrowed white hover text to outlined/overlay CTAs that also use the circle fill animation; plain outlined controls like the carousel Previous/Next buttons now keep dark text on hover.
 
 ### Verification Evidence
 
