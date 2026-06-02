@@ -35,31 +35,6 @@
   overflow-wrap: anywhere;
 }
 
-.cta {
-  align-items: center;
-  border: 1px solid var(--koala-color-ink);
-  border-radius: 999px;
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 0.65rem;
-  justify-self: flex-start;
-  min-height: 3.25rem;
-  padding: 0.35rem 1.1rem 0.35rem 0.35rem;
-  text-decoration: none;
-}
-
-.ctaIcon {
-  align-items: center;
-  background: var(--koala-color-green);
-  border-radius: 999px;
-  color: var(--koala-color-surface);
-  display: inline-flex;
-  flex: 0 0 auto;
-  height: 2.45rem;
-  justify-content: center;
-  width: 2.45rem;
-}
-
 .imageWrap {
   aspect-ratio: 16 / 10;
   background: var(--koala-color-surface-soft);

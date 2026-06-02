@@ -74,7 +74,6 @@
   justify-self: flex-end;
 }
 
-.arrowLink,
 .menuButton {
   align-items: center;
   border-radius: 999px;
@@ -88,36 +87,6 @@
   padding-inline: 1.1rem;
   transition: background-color 180ms ease, color 180ms ease;
   width: auto;
-}
-
-.arrowLink {
-  background: transparent;
-  color: var(--koala-color-ink);
-  gap: 0.7rem;
-  min-height: 2.9rem;
-  padding-inline: 0;
-}
-
-.arrowLink:hover {
-  color: var(--koala-color-green);
-}
-
-.arrowLink svg {
-  background: var(--koala-color-green);
-  border: 1px solid var(--koala-color-green);
-  border-radius: 50%;
-  box-sizing: border-box;
-  color: var(--koala-color-surface);
-  height: 2.75rem;
-  order: -1;
-  padding: 0.78rem;
-  transition: background-color 180ms ease, border-color 180ms ease;
-  width: 2.75rem;
-}
-
-.arrowLink:hover svg {
-  background: var(--koala-color-ink);
-  border-color: var(--koala-color-ink);
 }
 
 .menuButton {

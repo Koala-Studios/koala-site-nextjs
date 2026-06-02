@@ -105,37 +105,6 @@
   z-index: 1;
 }
 
-.imageCta {
-  align-items: center;
-  background: var(--koala-color-bg);
-  border: 1px solid var(--koala-color-ink);
-  border-radius: var(--koala-radius-lg);
-  color: var(--koala-color-ink);
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 1rem;
-  min-height: 4.75rem;
-  padding: 0.65rem 1.2rem 0.65rem 0.65rem;
-  text-decoration: none;
-}
-
-.imageCta:hover {
-  border-color: var(--koala-color-green);
-  color: var(--koala-color-ink);
-}
-
-.imageCtaIcon {
-  align-items: center;
-  aspect-ratio: 1;
-  background: var(--koala-color-green);
-  border-radius: 999px;
-  color: var(--koala-color-surface);
-  display: inline-flex;
-  flex: 0 0 3rem;
-  font-size: var(--koala-text-md);
-  justify-content: center;
-}
-
 .values {
   border-block: 1px solid var(--koala-color-line);
   display: grid;
@@ -267,10 +236,6 @@
     left: auto;
     margin-top: 1rem;
     position: static;
-  }
-
-  .imageCta {
-    width: 100%;
   }
 
   .values span,

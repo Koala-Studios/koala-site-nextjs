@@ -22,11 +22,6 @@ export const siteSettings: SiteSettings = {
     instagram: "https://www.instagram.com/",
     linkedin: "https://www.linkedin.com/",
   },
-  contact: {
-    email: "hello@koalastudios.ca",
-    city: "Toronto",
-    timezone: "America/Toronto",
-  },
   cta: {
     primaryLabel: "Start a conversation",
     primaryHref: "/contact",
@@ -79,20 +74,17 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
         {
           id: "positioning",
           heading: "A message that lands quickly",
-          copy:
-            "The homepage should say who we help, what we do, and why it matters without making people work for it.",
+          copy: "The homepage should say who we help, what we do, and why it matters without making people work for it.",
         },
         {
           id: "proof",
           heading: "Proof that backs it up",
-          copy:
-            "Selected work, a short service list, and a direct contact path should all point to the same promise.",
+          copy: "Selected work, a short service list, and a direct contact path should all point to the same promise.",
         },
         {
           id: "craft",
           heading: "A site that stays useful",
-          copy:
-            "The site should stay easy to update, easy to read, and solid after launch.",
+          copy: "The site should stay easy to update, easy to read, and solid after launch.",
         },
       ],
     },
@@ -121,20 +113,17 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
         {
           id: "strategy",
           heading: "Strategy",
-          copy:
-            "We clarify the offer, audience, and proof.",
+          copy: "We clarify the offer, audience, and proof.",
         },
         {
           id: "delivery",
           heading: "Design and build",
-          copy:
-            "We shape the layout, visuals, and frontend.",
+          copy: "We shape the layout, visuals, and frontend.",
         },
         {
           id: "fit",
           heading: "Best fit",
-          copy:
-            "Best when positioning, design, and build all matter.",
+          copy: "Best when positioning, design, and build all matter.",
         },
       ],
     },
@@ -150,7 +139,8 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     },
     hero: {
       eyebrow: "About",
-      headline: "We're a digital studio that builds with clarity, craft, and momentum.",
+      headline:
+        "We're a digital studio that builds with clarity, craft, and momentum.",
       summary:
         "We keep the team small, the process direct, and the work grounded in clear decisions and careful delivery.",
       ctas: [
@@ -163,20 +153,17 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
         {
           id: "values",
           heading: "Values",
-          copy:
-            "Clarity first, careful craft, and follow-through every time.",
+          copy: "Clarity first, careful craft, and follow-through every time.",
         },
         {
           id: "process",
           heading: "How we work",
-          copy:
-            "We keep the process focused enough to stay clear and flexible enough to move quickly.",
+          copy: "We keep the process focused enough to stay clear and flexible enough to move quickly.",
         },
         {
           id: "promise",
           heading: "What clients get",
-          copy:
-            "A clearer story, a stronger site, and something that stays easy to maintain.",
+          copy: "A clearer story, a stronger site, and something that stays easy to maintain.",
         },
       ],
     },
@@ -205,14 +192,12 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
         {
           id: "expectations",
           heading: "What happens next",
-          copy:
-            "We review the note, check fit, and reply with the clearest next step we can offer.",
+          copy: "We review the note, check fit, and reply with the clearest next step we can offer.",
         },
         {
           id: "brief",
           heading: "What helps most",
-          copy:
-            "A short summary, the current URL, and your timeline are usually enough.",
+          copy: "A short summary, the current URL, and your timeline are usually enough.",
         },
       ],
     },
@@ -230,19 +215,14 @@ export const caseStudies: CaseStudyContent[] = [
     tags: ["Shopify", "Design", "Content"],
     featured: true,
     headline: "A calmer product story for a niche coffee ritual.",
-    intro:
-      "Ara needed a premium page that explained the offer fast.",
+    intro: "Ara needed a premium page that explained the offer fast.",
     services: ["Design", "Frontend", "Content"],
     challenge:
       "The old page took too long to explain the product and why it deserved trust.",
     approach:
       "We centered the daily ritual, tightened the rhythm, and made proof easier to scan.",
     deliverables: ["Product story", "Benefit flow", "Mobile proof"],
-    outcomes: [
-      "Clearer offer",
-      "Better mobile scanning",
-      "More premium feel",
-    ],
+    outcomes: ["Clearer offer", "Better mobile scanning", "More premium feel"],
     metrics: [
       { label: "Priority", value: "Product clarity" },
       { label: "Scope", value: "Launch-ready narrative" },
@@ -283,19 +263,14 @@ export const caseStudies: CaseStudyContent[] = [
     tags: ["Design", "Strategy", "Development"],
     featured: true,
     headline: "A bolder ecommerce story with cleaner proof.",
-    intro:
-      "Magnum needed a premium presentation without a wall of visuals.",
+    intro: "Magnum needed a premium presentation without a wall of visuals.",
     services: ["Strategy", "Design system", "Build"],
     challenge:
       "The strongest proof was hard to find inside a spectacle-heavy page.",
     approach:
       "We edited the page into a clearer hierarchy with fewer, stronger moments.",
     deliverables: ["Editorial layout", "Proof flow", "Related work"],
-    outcomes: [
-      "Better scanning",
-      "Clearer proof",
-      "More polished feel",
-    ],
+    outcomes: ["Better scanning", "Clearer proof", "More polished feel"],
     metrics: [
       { label: "Priority", value: "System confidence" },
       { label: "Scope", value: "Editorial case study" },
@@ -336,8 +311,7 @@ export const caseStudies: CaseStudyContent[] = [
     tags: ["Lifestyle", "Design", "Development"],
     featured: true,
     headline: "A disciplined browse path for an expressive product line.",
-    intro:
-      "Nektr needed energy without sacrificing mobile clarity.",
+    intro: "Nektr needed energy without sacrificing mobile clarity.",
     services: ["Strategy", "Direction", "Frontend"],
     challenge:
       "Oversized media made the work expressive but harder to understand quickly.",
@@ -388,8 +362,7 @@ export const caseStudies: CaseStudyContent[] = [
     category: "Development",
     tags: ["Development", "Design", "Shopify"],
     headline: "A calmer product story with stronger proof.",
-    intro:
-      "Allo needed a curated page that felt premium at a glance.",
+    intro: "Allo needed a curated page that felt premium at a glance.",
     services: ["Design system", "Frontend", "Conversion"],
     challenge:
       "The old presentation repeated too much and hid the strongest moments.",
@@ -440,14 +413,16 @@ export const caseStudies: CaseStudyContent[] = [
     category: "Shopify",
     tags: ["Shopify", "Content", "Development"],
     headline: "A tighter long-form story for a bold consumer brand.",
-    intro:
-      "Stlth needed rhythm and proof without a heavy page.",
+    intro: "Stlth needed rhythm and proof without a heavy page.",
     services: ["Content", "Interaction", "Frontend"],
     challenge:
       "The previous version was too long, making the best evidence harder to extract.",
-    approach:
-      "We tightened the sequence from challenge to craft to outcome.",
-    deliverables: ["Long-form pacing", "Results modules", "Related-work handoff"],
+    approach: "We tightened the sequence from challenge to craft to outcome.",
+    deliverables: [
+      "Long-form pacing",
+      "Results modules",
+      "Related-work handoff",
+    ],
     outcomes: [
       "Less reading fatigue",
       "Better section rhythm",

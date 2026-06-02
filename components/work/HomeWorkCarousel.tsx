@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Swiper as SwiperCore } from "swiper";
 
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import type { CaseStudyContent } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/routes";
 
@@ -97,26 +97,30 @@ export function HomeWorkCarousel({ caseStudies }: HomeWorkCarouselProps) {
       </div>
 
       <div className={styles.controls} aria-label="Work carousel controls">
-        <button
-          className={`${styles.control} koala-work-prev`}
+        <Cta
+          className="koala-work-prev"
           type="button"
           aria-label="Previous work"
+          arrowDirection="left"
           disabled={!swiper || isBeginning}
+          iconPosition="left"
           onClick={() => swiper?.slidePrev()}
+          size="small"
+          variant="outlined"
         >
-          <ArrowIcon direction="left" />
           Previous
-        </button>
-        <button
-          className={`${styles.control} koala-work-next`}
+        </Cta>
+        <Cta
+          className="koala-work-next"
           type="button"
           aria-label="Next work"
           disabled={!swiper || isEnd}
           onClick={() => swiper?.slideNext()}
+          size="small"
+          variant="outlined"
         >
           Next
-          <ArrowIcon />
-        </button>
+        </Cta>
       </div>
     </div>
   );

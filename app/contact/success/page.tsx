@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import { createNoIndexMetadata, createPageMetadata } from "@/lib/metadata";
 
 import styles from "../contact.module.css";
@@ -22,14 +21,17 @@ export default function ContactSuccessPage() {
         <div className={styles.heroCopy}>
           <p>Message sent</p>
           <h1 id="success-title">Thank you</h1>
-          <Link className={styles.contactAction} href="/">
-            <span className={styles.contactIcon} aria-hidden="true">
-              <ArrowIcon />
-            </span>
-            <span className={styles.contactText}>
-              <strong>Back home</strong>
-            </span>
-          </Link>
+          <Cta
+            className={styles.contactAction}
+            href="/"
+            icon="circle"
+            iconPosition="left"
+            shape="box"
+            size="large"
+            variant="outlinedPanel"
+          >
+            Back home
+          </Cta>
         </div>
         <div className={styles.heroImageWrap} aria-hidden="true">
           <Image

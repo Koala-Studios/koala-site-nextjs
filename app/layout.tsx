@@ -21,12 +21,6 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: siteSettings.name,
   url: siteSettings.url,
-  email: siteSettings.contact.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: siteSettings.contact.city,
-    addressCountry: "CA",
-  },
   sameAs: Object.values(siteSettings.social).filter(Boolean),
 };
 

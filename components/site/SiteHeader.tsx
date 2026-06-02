@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { navigationContent } from "@/lib/content";
 
-import { ArrowIcon } from "./ArrowIcon";
+import { Cta } from "./Cta";
 import styles from "./SiteHeader.module.css";
 
 function isActivePath(currentPath: string, href: string): boolean {
@@ -59,13 +59,16 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link
-          className={`${styles.arrowLink} ${styles.desktopAction}`}
+        <Cta
+          className={styles.desktopAction}
           href={navigationContent.featuredCta.href}
+          icon="circle"
+          iconPosition="left"
+          size="medium"
+          variant="transparent"
         >
-          <span>{navigationContent.featuredCta.label}</span>
-          <ArrowIcon />
-        </Link>
+          {navigationContent.featuredCta.label}
+        </Cta>
 
         <button
           className={`${styles.menuButton} ${menuOpen ? styles.menuOpen : ""}`}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import type { CaseStudyContent } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/routes";
 
@@ -88,12 +88,9 @@ export function WorkFilterGrid({ caseStudies }: WorkFilterGridProps) {
       )}
 
       <div className={styles.footerCta}>
-        <Link className={styles.footerLink} href="/contact">
-          <span>Start a project</span>
-          <span className={styles.footerIcon} aria-hidden="true">
-            <ArrowIcon />
-          </span>
-        </Link>
+        <Cta href="/contact" icon="circle" size="medium" variant="transparent">
+          Start a project
+        </Cta>
       </div>
     </>
   );

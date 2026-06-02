@@ -31,23 +31,6 @@
   max-width: 30rem;
 }
 
-.cta {
-  align-items: center;
-  border: 1px solid var(--koala-color-ink);
-  border-radius: 999px;
-  color: var(--koala-color-ink);
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 0.65rem;
-  min-height: 3rem;
-  padding: 0 1.1rem;
-}
-
-.cta:hover {
-  background: var(--koala-color-ink);
-  color: var(--koala-color-surface);
-}
-
 .bottom {
   align-items: center;
   display: flex;

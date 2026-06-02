@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import type { CaseStudyContent } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/routes";
 
@@ -23,22 +22,22 @@ export function CaseStudyRelated({ current, related }: CaseStudyRelatedProps) {
         {related ? (
           <>
             <h2 id="case-study-next-title">{related.title}</h2>
-            <Link className={styles.cta} href={getCaseStudyPath(related.slug)}>
-              <span className={styles.ctaIcon} aria-hidden="true">
-                <ArrowIcon />
-              </span>
-              <span>Read next case</span>
-            </Link>
+            <Cta
+              href={getCaseStudyPath(related.slug)}
+              icon="circle"
+              iconPosition="left"
+              size="small"
+              variant="outlined"
+            >
+              Read next case
+            </Cta>
           </>
         ) : (
           <>
             <h2 id="case-study-next-title">More work after {current.title}</h2>
-            <Link className={styles.cta} href="/work">
-              <span className={styles.ctaIcon} aria-hidden="true">
-                <ArrowIcon />
-              </span>
-              <span>Back to work</span>
-            </Link>
+            <Cta href="/work" icon="circle" iconPosition="left" size="small" variant="outlined">
+              Back to work
+            </Cta>
           </>
         )}
       </Reveal>

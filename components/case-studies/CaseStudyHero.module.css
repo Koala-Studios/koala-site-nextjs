@@ -17,7 +17,6 @@
   min-width: 0;
 }
 
-.backLink,
 .eyebrow,
 .meta span {
   color: var(--koala-color-green);
@@ -25,14 +24,6 @@
   font-size: var(--koala-text-xs);
   margin: 0;
   text-transform: capitalize;
-}
-
-.backLink {
-  align-items: center;
-  display: inline-flex;
-  gap: 0.55rem;
-  justify-self: flex-start;
-  min-height: 2.75rem;
 }
 
 .copy h1 {

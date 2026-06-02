@@ -28,11 +28,6 @@ export interface SiteSettings {
     linkedin?: string;
     behance?: string;
   };
-  contact: {
-    email: string;
-    city: string;
-    timezone: string;
-  };
   cta: {
     primaryLabel: string;
     primaryHref: PublicRoute | string;

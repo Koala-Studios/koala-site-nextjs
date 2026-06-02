@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import type { CaseStudyContent } from "@/lib/content";
 
 import styles from "./CaseStudyHero.module.css";
@@ -18,10 +17,9 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
   return (
     <section className={styles.hero} aria-labelledby="case-study-title">
       <Reveal className={styles.copy}>
-        <Link className={styles.backLink} href="/work">
+        <Cta href="/work" size="small" variant="text">
           Back to work
-          <ArrowIcon />
-        </Link>
+        </Cta>
         <p className={styles.eyebrow}>{caseStudy.category}</p>
         <h1 id="case-study-title">{caseStudy.title}</h1>
         <p className={styles.headline}>{caseStudy.headline}</p>

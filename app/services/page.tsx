@@ -1,13 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
-import {
-  ServiceIcon,
-  type ServiceIconName,
-} from "@/components/site/ServiceIcon";
+import { Cta } from "@/components/site/Cta";
 import { servicesContent } from "@/content/pages/services";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -20,13 +15,6 @@ export const metadata: Metadata = createPageMetadata({
   description: servicesContent.seo.description,
   path: servicesContent.seo.canonicalPath ?? "/services",
 });
-
-const disciplines: { label: string; icon: ServiceIconName }[] = [
-  { label: "Strategy", icon: "strategy" },
-  { label: "Design", icon: "design" },
-  { label: "Development", icon: "development" },
-  { label: "Growth", icon: "growth" },
-];
 
 const servicesJsonLd = {
   "@context": "https://schema.org",
@@ -70,6 +58,7 @@ export default function ServicesPage() {
           <h1 id="services-title">Services</h1>
         </Reveal>
       </section>
+
       <section
         className={styles.mediaPanel}
         aria-label="Koala Studios service approach"
@@ -86,12 +75,16 @@ export default function ServicesPage() {
             priority
             unoptimized
           />
-          <Link className={styles.mediaCta} href="/contact">
-            <span aria-hidden="true">
-              <ArrowIcon />
-            </span>
+          <Cta
+            className={styles.mediaCta}
+            href="/contact"
+            icon="circle"
+            iconPosition="left"
+            size="small"
+            variant="overlay"
+          >
             Start a project
-          </Link>
+          </Cta>
         </Reveal>
       </section>
 
@@ -124,10 +117,9 @@ export default function ServicesPage() {
           <h2 id="services-cta-title">{servicesContent.cta.title}</h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <Link className={styles.secondaryCta} href="/contact">
+          <Cta href="/contact" size="medium" variant="outlined">
             Contact Koala
-            <ArrowIcon />
-          </Link>
+          </Cta>
         </Reveal>
       </section>
     </div>

@@ -94,6 +94,8 @@
   - Ran a final requirement-by-requirement Chrome audit, fixed remaining mobile/tablet touch-target and contact form labeling issues, and verified the explicit user complaints against current route evidence.
   - Removed the global desktop browser-frame shell, frame-gap header mask, and frame radius token after the frame was rejected visually.
   - Replaced active raw arrow entities with a shared SVG icon matching the header CTA path.
+  - Unified active site CTAs behind `components/site/Cta.tsx` with shared variants, sizes, shapes, and icon placement while keeping local CSS only for layout placement.
+  - Added and corrected the shared circle-icon CTA hover animation where the circle expands into a black pill, the arrow moves to the right edge, the label turns white while shifting left, and CTAs no longer stretch full width by default.
 - Likely touch paths for the next redesign worker:
   - `app`
   - `components/site`
@@ -109,6 +111,9 @@
 - Latest commands run:
   - `& 'C:\Program Files\nodejs\npm.cmd' run build`
   - `& 'C:\Program Files\nodejs\npm.cmd' run lint`
+  - `curl.exe -I --max-time 5 http://localhost:3000/work`
+  - `curl.exe -I --max-time 5 http://localhost:3000/services`
+  - `curl.exe -I --max-time 5 http://localhost:3000/work/ara`
   - `rg -n "<arrow glyph/entity scan>" app components content lib styles .agent docs`
   - `curl.exe -I --max-time 5 http://localhost:3000/`
   - `curl.exe -I --max-time 5 http://localhost:3000/work`
@@ -122,6 +127,8 @@
 - Result: audit reports 0 vulnerabilities; typecheck passes; lint completes with no warnings; build completes successfully on Next 16.2.6/Turbopack; Lighthouse top-level route scores are 91+ performance and 100 accessibility/best-practices/SEO; latest active routes return HTTP 200 and retired routes return HTTP 308.
 - Latest site-frame removal evidence: active code has no `.site-frame`, `--koala-frame-gap`, or `--koala-radius-frame` references; build and lint pass; existing local port 3000 returned HTTP 200 for `/`, `/work`, and `/contact`; the in-app browser bridge still fails with the recorded Windows sandbox startup error.
 - Latest CTA arrow evidence: active CTAs use `components/site/ArrowIcon.tsx`; lint and build pass; source scan found no remaining raw arrow glyphs or arrow HTML entities in searched active paths.
+- Latest unified CTA evidence: active route/shell/form/work/case-study CTAs use `components/site/Cta.tsx`; duplicate route/component CTA CSS was pruned to layout-only hooks; lint and build pass; local port 3000 returned HTTP 200 for `/`, `/services`, `/contact`, and `/work/ara`; the in-app browser bridge still fails with the recorded Windows sandbox startup error.
+- Latest CTA animation evidence: shared `Cta` circle-icon hover styles animate the expanding black pill through a slower width expansion, white shifting label, and right-edge arrow movement; grid stretch and mobile full-width CTA overrides were removed; lint/build pass; local port 3000 returned HTTP 200 for `/`, `/contact`, `/work`, and `/services`; the in-app browser bridge still fails with the recorded Windows sandbox startup error.
 - Browser note: the in-app browser bridge failed with a Windows sandbox startup error, so visual smoke used Chrome DevTools Protocol screenshots. Hydrated Next dev QA should use `http://localhost:3029`; `http://127.0.0.1:3029` can block dev client hydration.
 - Latest slice evidence: lint, typecheck, and production build pass; fresh dev preview route smoke on port 3029 returned HTTP 200 for active routes and HTTP 308 for retired routes; sitemap includes six case-study entries including `/work/elikai`; scans found no mojibake/raw-arrow glyphs, active gradients, or decorative shadow matches.
 - Latest final audit evidence: `C:\tmp\koala-pass53-final-audit.json` checked 48 route/viewport combinations across wide, desktop, tablet, and true 390px mobile with no overflow, no computed gradient/shadow effects, no blank visible images, no unlabeled visible controls, no undersized mobile/tablet touch targets, and exactly one visible h1 per checked page.

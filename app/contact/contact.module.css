@@ -35,45 +35,7 @@
 }
 
 .contactAction {
-  align-items: center;
-  background: var(--koala-color-bg);
-  border: 1px solid var(--koala-color-ink);
-  border-radius: var(--koala-radius-lg);
-  color: var(--koala-color-ink);
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 1rem;
-  justify-self: flex-start;
-  min-height: 4.8rem;
-  padding: 0.7rem 1.25rem 0.7rem 0.7rem;
-  text-decoration: none;
   width: min(100%, 18rem);
-}
-
-.contactAction:hover {
-  border-color: var(--koala-color-green);
-  color: var(--koala-color-ink);
-}
-
-.contactAction:hover .contactIcon {
-  background: var(--koala-color-ink);
-}
-
-.contactIcon {
-  align-items: center;
-  aspect-ratio: 1;
-  background: var(--koala-color-green);
-  border-radius: 999px;
-  color: var(--koala-color-surface);
-  display: inline-flex;
-  flex: 0 0 3.1rem;
-  font-size: var(--koala-text-md);
-  justify-content: center;
-}
-
-.contactText strong {
-  font-size: var(--koala-text-base);
-  line-height: 1.1;
 }
 
 .heroImageWrap {
@@ -253,7 +215,4 @@
     font-size: 2.65rem;
   }
 
-  .contactAction {
-    width: 100%;
-  }
 }

@@ -3,11 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
-import {
-  ServiceIcon,
-  type ServiceIconName,
-} from "@/components/site/ServiceIcon";
+import { Cta } from "@/components/site/Cta";
 import { HomeWorkCarousel } from "@/components/work/HomeWorkCarousel";
 import { getPublishedCaseStudies } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -21,13 +17,6 @@ export const metadata: Metadata = createPageMetadata({
   path: "/",
 });
 
-const services: { label: string; icon: ServiceIconName }[] = [
-  { label: "Strategy", icon: "strategy" },
-  { label: "Design", icon: "design" },
-  { label: "Development", icon: "development" },
-  { label: "Growth", icon: "growth" },
-];
-
 export default function Home() {
   const caseStudies = getPublishedCaseStudies();
 
@@ -38,12 +27,15 @@ export default function Home() {
           <h1 id="home-title">
             Web experiences <span>that move.</span>
           </h1>
-          <Link className={styles.heroCta} href="/work">
-            <span className={styles.heroCtaIcon} aria-hidden="true">
-              <ArrowIcon />
-            </span>
-            <span>View work</span>
-          </Link>
+          <Cta
+            href="/work"
+            icon="circle"
+            iconPosition="left"
+            size="large"
+            variant="transparent"
+          >
+            View work
+          </Cta>
         </Reveal>
 
         <Reveal className={styles.heroIntro} delay={0.08}>
@@ -68,15 +60,6 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <section className={styles.strip} aria-label="Services">
-        {services.map((service) => (
-          <span key={service.label}>
-            <ServiceIcon name={service.icon} />
-            {service.label}
-          </span>
-        ))}
-      </section>
-
       <section className={styles.work} aria-labelledby="home-work-title">
         <Reveal className={styles.sectionHeading}>
           <h2 id="home-work-title">Featured Work</h2>
@@ -91,10 +74,9 @@ export default function Home() {
       >
         <Reveal className={styles.splitCopy}>
           <h2 id="home-services-title">Design. Build. Launch.</h2>
-          <Link className={styles.secondaryCta} href="/services">
+          <Cta href="/services" size="medium" variant="outlined">
             View services
-            <ArrowIcon />
-          </Link>
+          </Cta>
         </Reveal>
         <Reveal className={styles.splitImageWrap} delay={0.08}>
           <Image
@@ -124,12 +106,17 @@ export default function Home() {
         </Reveal>
         <Reveal className={styles.contactCopy} delay={0.08}>
           <h2 id="home-contact-title">Contact.</h2>
-          <Link className={styles.primaryCta} href="/contact">
-            <span className={styles.primaryCtaIcon} aria-hidden="true">
-              <ArrowIcon />
-            </span>
-            <span>Start your project</span>
-          </Link>
+          <Cta
+            className={styles.primaryCta}
+            href="/contact"
+            icon="circle"
+            iconPosition="left"
+            shape="box"
+            size="large"
+            variant="outlinedPanel"
+          >
+            Start your project
+          </Cta>
         </Reveal>
       </section>
     </div>

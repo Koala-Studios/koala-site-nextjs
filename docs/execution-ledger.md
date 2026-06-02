@@ -1,5 +1,59 @@
 # Execution Ledger
 
+## 2026-06-02 - CTA Circle Hover Animation
+
+### Context Inspected
+
+- Continued after the unified CTA component pass.
+- Inspected `components/site/Cta.tsx`, `components/site/Cta.module.css`, shared arrow SVG, and site tokens.
+- Confirmed the interaction should live in the shared CTA layer so all circle-icon CTAs inherit the same hover behavior.
+
+### Implemented
+
+- Added label and circle-position state classes to the shared `Cta` component.
+- Added a smooth circle expansion hover animation for circle-icon CTAs: the green circle expands into a black pill, the label turns white and shifts left, and the arrow moves toward the right edge.
+- Kept inline-icon/full/text CTAs out of the circle-expansion treatment.
+- Added reduced-motion handling so transitions collapse for users who request reduced motion.
+- Corrected the first animation pass after review: stopped grid parents from stretching CTAs full width, removed mobile full-width CTA overrides, changed the fill from an instant scale transform to a slower width expansion, forced circle CTAs into pill geometry, and moved the arrow relative to the whole CTA instead of its icon wrapper.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 17 app pages.
+- Existing local dev server on port 3000 returned HTTP 200 for `/`, `/contact`, `/work`, and `/services`.
+
+### Blockers / Follow-Up
+
+- The Codex in-app browser bridge still fails with the recorded Windows sandbox startup error, so no fresh in-app browser screenshot was captured in this pass.
+
+## 2026-06-02 - Unified CTA Component Pass
+
+### Context Inspected
+
+- Followed root and local app/component/style agent guidance.
+- Re-ran `git status --short --branch`; the repo still contains substantial pre-existing redesign work.
+- Audited active route, shell, form, Work, and case-study CTA/link/button usage.
+- Confirmed CTA visuals were duplicated across route CSS modules even after the shared arrow icon pass.
+
+### Implemented
+
+- Added `components/site/Cta.tsx` and `components/site/Cta.module.css`.
+- Centralized CTA variants, sizes, shapes, disabled state, and arrow icon placement in the shared component.
+- Converted homepage, About, Services, Contact, Contact success, header, footer, contact form submit, Work footer CTA, homepage carousel controls, case-study back link, and related-case CTAs to use `Cta`.
+- Removed duplicated local CTA styling from route/component CSS modules while preserving local layout hooks for positioning, responsive width, and section placement.
+- Restored the Services discipline row after lint exposed the stale import/data pair during the refactor.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 17 app pages.
+- Source scan confirms the old bespoke CTA class hooks are gone outside layout-only wrappers and non-CTA controls.
+- Existing local dev server on port 3000 returned HTTP 200 for `/`, `/services`, `/contact`, and `/work/ara`.
+
+### Blockers / Follow-Up
+
+- The Codex in-app browser bridge still fails with the recorded Windows sandbox startup error, so no fresh in-app browser screenshot was captured in this pass.
+
 ## 2026-06-02 - CTA Arrow SVG Standardization
 
 ### Context Inspected

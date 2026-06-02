@@ -94,30 +94,6 @@
   padding-top: 1rem;
 }
 
-.footerLink {
-  align-items: center;
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 0.75rem;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.footerIcon {
-  align-items: center;
-  background: var(--koala-color-green);
-  border-radius: 999px;
-  color: var(--koala-color-surface);
-  display: inline-flex;
-  height: 3rem;
-  justify-content: center;
-  width: 3rem;
-}
-
-.footerLink:hover .footerIcon {
-  background: var(--koala-color-ink);
-}
-
 .empty {
   border: 1px dashed var(--koala-color-line);
   border-radius: var(--koala-radius-md);

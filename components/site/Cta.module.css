@@ -1,0 +1,290 @@
+.cta {
+  align-items: center;
+  border: 1px solid transparent;
+  color: var(--koala-color-ink);
+  display: inline-flex;
+  font-family: var(--koala-font-support);
+  gap: 0.65rem;
+  justify-content: center;
+  justify-self: flex-start;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition: background-color 240ms var(--koala-ease-out), border-color 240ms var(--koala-ease-out), color 240ms var(--koala-ease-out);
+  white-space: nowrap;
+  width: auto;
+}
+
+.cta::before {
+  background: var(--koala-color-ink);
+  border-radius: var(--koala-radius-pill);
+  content: "";
+  height: var(--cta-icon-size, 2.75rem);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 220ms var(--koala-ease-out), width 760ms var(--koala-ease-smooth), height 760ms var(--koala-ease-smooth), left 760ms var(--koala-ease-smooth), right 760ms var(--koala-ease-smooth);
+  width: var(--cta-icon-size, 2.75rem);
+  z-index: 0;
+}
+
+.hasCircleLeft::before {
+  left: var(--cta-icon-offset, 0);
+  transform-origin: center left;
+}
+
+.hasCircleRight::before {
+  right: var(--cta-icon-offset, 0);
+  transform-origin: center right;
+}
+
+.shapePill {
+  border-radius: var(--koala-radius-pill);
+}
+
+.shapeBox {
+  border-radius: var(--koala-radius-lg);
+}
+
+.hasCircle {
+  border-radius: var(--koala-radius-pill);
+}
+
+.sizeSmall {
+  --cta-icon-offset: 0.25rem;
+  --cta-icon-size: 2.45rem;
+  font-size: var(--koala-text-sm);
+  min-height: 3rem;
+  padding: 0 1rem;
+}
+
+.sizeMedium {
+  --cta-icon-offset: 0.25rem;
+  --cta-icon-size: 2.75rem;
+  font-size: var(--koala-text-sm);
+  min-height: 3.25rem;
+  padding: 0 1.15rem;
+}
+
+.sizeLarge {
+  --cta-icon-offset: 0.7rem;
+  --cta-icon-size: 3.1rem;
+  font-size: var(--koala-text-base);
+  gap: 1rem;
+  min-height: 4.8rem;
+  padding: 0.7rem 1.25rem 0.7rem 0.7rem;
+}
+
+.variantTransparent {
+  background: transparent;
+  border-color: transparent;
+  padding-inline: 0;
+}
+
+.variantTransparent.sizeLarge {
+  --cta-icon-offset: 0;
+  --cta-icon-size: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0;
+}
+
+.variantTransparent.sizeMedium {
+  --cta-icon-offset: 0;
+  min-height: 2.9rem;
+  padding: 0;
+}
+
+.variantTransparent:hover {
+  color: var(--koala-color-surface);
+}
+
+.hasCircle:hover {
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-surface);
+}
+
+.hasCircle:hover::before {
+  height: 100%;
+  opacity: 1;
+  width: 100%;
+}
+
+.hasCircleLeft:hover::before {
+  left: 0;
+}
+
+.hasCircleRight:hover::before {
+  right: 0;
+}
+
+.variantOutlined {
+  background: transparent;
+  border-color: var(--koala-color-ink);
+}
+
+.variantOutlined:hover {
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-surface);
+}
+
+.variantOutlinedPanel {
+  background: var(--koala-color-bg);
+  border-color: var(--koala-color-ink);
+}
+
+.variantOutlinedPanel:hover {
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-surface);
+}
+
+.variantOverlay {
+  background: var(--koala-color-surface);
+  border-color: var(--koala-color-line);
+  color: var(--koala-color-ink);
+}
+
+.variantOverlay:hover {
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-surface);
+}
+
+.variantFull {
+  background: var(--koala-color-ink);
+  border-color: var(--koala-color-ink);
+  color: var(--koala-color-surface);
+}
+
+.variantFull:hover {
+  background: transparent;
+  color: var(--koala-color-ink);
+}
+
+.variantText {
+  background: transparent;
+  border-color: transparent;
+  color: var(--koala-color-green);
+  font-size: var(--koala-text-xs);
+  min-height: 2.75rem;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.variantText:hover {
+  color: var(--koala-color-ink);
+}
+
+.cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.label {
+  position: relative;
+  transition: color 260ms var(--koala-ease-out), transform 360ms var(--koala-ease-smooth);
+  z-index: 2;
+}
+
+.hasCircleLeft:hover .label {
+  transform: translateX(calc(var(--cta-icon-size, 2.75rem) * -0.52));
+}
+
+.hasCircleRight:hover .label {
+  transform: translateX(-0.22rem);
+}
+
+.icon {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  position: relative;
+  transition: color 260ms var(--koala-ease-out), transform 360ms var(--koala-ease-smooth);
+  z-index: 2;
+}
+
+.iconCircle {
+  background: var(--koala-color-green);
+  border-radius: var(--koala-radius-pill);
+  color: var(--koala-color-surface);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 520ms var(--koala-ease-out), color 260ms var(--koala-ease-out), left 680ms var(--koala-ease-smooth), right 680ms var(--koala-ease-smooth);
+}
+
+.hasCircleLeft .label {
+  margin-left: calc(var(--cta-icon-size, 2.75rem) + 0.35rem);
+}
+
+.hasCircleRight .label {
+  margin-right: calc(var(--cta-icon-size, 2.75rem) + 0.35rem);
+}
+
+.hasCircleLeft .iconCircle {
+  left: var(--cta-icon-offset, 0);
+}
+
+.hasCircleRight .iconCircle {
+  right: var(--cta-icon-offset, 0);
+}
+
+.sizeSmall .iconCircle {
+  height: 2.45rem;
+  width: 2.45rem;
+}
+
+.sizeMedium .iconCircle {
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.sizeLarge .iconCircle {
+  height: 3.1rem;
+  width: 3.1rem;
+}
+
+.variantTransparent.sizeLarge .iconCircle {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.hasCircle:hover .iconCircle {
+  background: var(--koala-color-ink);
+}
+
+.hasCircleLeft:hover .iconCircle {
+  left: calc(100% - var(--cta-icon-size, 2.75rem) - var(--cta-icon-offset, 0));
+}
+
+.hasCircleRight:hover .iconCircle {
+  right: calc(var(--cta-icon-offset, 0) - 0.35rem);
+}
+
+.iconInline {
+  color: currentColor;
+}
+
+.icon svg {
+  display: block;
+}
+
+.iconLeft {
+  order: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .cta::before,
+  .label,
+  .icon,
+  .iconCircle {
+    transition-duration: 1ms;
+  }
+}

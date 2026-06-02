@@ -37,22 +37,6 @@
   text-transform: capitalize;
 }
 
-.secondaryCta {
-  align-items: center;
-  border-radius: 999px;
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 0.65rem;
-  justify-self: flex-start;
-  min-height: 3.25rem;
-  padding: 0 1.15rem;
-}
-
-.secondaryCta {
-  border: 1px solid var(--koala-color-ink);
-  color: var(--koala-color-ink);
-}
-
 .disciplines {
   border-block: 1px solid var(--koala-color-line);
   display: grid;
@@ -106,30 +90,9 @@
 }
 
 .mediaCta {
-  align-items: center;
-  background: var(--koala-color-surface);
-  border: 1px solid var(--koala-color-line);
-  border-radius: 999px;
   bottom: clamp(1rem, 3vw, 2rem);
-  color: var(--koala-color-ink);
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 0.75rem;
-  min-height: 3.35rem;
-  padding: 0 1.15rem 0 0.45rem;
   position: absolute;
   right: clamp(1rem, 3vw, 2rem);
-}
-
-.mediaCta span {
-  align-items: center;
-  background: var(--koala-color-green);
-  border-radius: 50%;
-  color: var(--koala-color-surface);
-  display: inline-flex;
-  height: 2.5rem;
-  justify-content: center;
-  width: 2.5rem;
 }
 
 .summary {
@@ -259,13 +222,7 @@
 
   .mediaCta {
     bottom: 1rem;
-    min-height: 3rem;
     right: 1rem;
-  }
-
-  .mediaCta span {
-    height: 2.2rem;
-    width: 2.2rem;
   }
 
   .imageWrap {

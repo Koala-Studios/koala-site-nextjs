@@ -1,7 +1,7 @@
 "use client";
 
 import { Field, Input, Textarea } from "@/components/forms";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import { analyticsConfig } from "@/lib/analytics";
 import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
 
@@ -93,10 +93,9 @@ export function ContactForm() {
         </Field>
 
         <div className={styles.footer}>
-          <button className={styles.submit} type="submit">
+          <Cta type="submit" variant="full">
             Send message
-            <ArrowIcon />
-          </button>
+          </Cta>
         </div>
       </form>
     </div>

@@ -73,29 +73,6 @@
   margin-top: 1rem;
 }
 
-.control {
-  align-items: center;
-  background: transparent;
-  border: 1px solid var(--koala-color-line);
-  border-radius: 999px;
-  color: var(--koala-color-ink);
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  gap: 0.45rem;
-  min-height: 3rem;
-  justify-content: center;
-  padding-inline: 1rem;
-}
-
-.control:hover {
-  border-color: var(--koala-color-ink);
-}
-
-.control:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
 @media (max-width: 700px) {
   .slide {
     width: 82vw;

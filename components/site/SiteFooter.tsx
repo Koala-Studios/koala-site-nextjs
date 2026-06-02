@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { navigationContent, siteSettings } from "@/lib/content";
 
-import { ArrowIcon } from "./ArrowIcon";
+import { Cta } from "./Cta";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
@@ -22,10 +22,9 @@ export function SiteFooter() {
             <p className={styles.statement}>{siteSettings.description}</p>
           </div>
 
-          <Link className={styles.cta} href={navigationContent.featuredCta.href}>
+          <Cta href={navigationContent.featuredCta.href} size="small" variant="outlined">
             {navigationContent.featuredCta.label}
-            <ArrowIcon />
-          </Link>
+          </Cta>
         </div>
 
         <div className={styles.bottom}>

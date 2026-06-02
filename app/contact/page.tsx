@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import { contactPageContent } from "@/content/pages/contact";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -28,18 +27,6 @@ const contactJsonLd = {
     "@type": "Organization",
     name: siteSettings.name,
     url: toAbsoluteUrl("/"),
-    email: siteSettings.contact.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: siteSettings.contact.city,
-      addressCountry: "CA",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "project inquiries",
-      email: siteSettings.contact.email,
-      availableLanguage: "English",
-    },
   },
 };
 
@@ -53,17 +40,16 @@ export default function ContactPage() {
       <section className={styles.hero} aria-labelledby="contact-title">
         <Reveal className={styles.heroCopy}>
           <h1 id="contact-title">Contact</h1>
-          <Link
+          <Cta
             className={styles.contactAction}
-            href={`mailto:${siteSettings.contact.email}`}
+            icon="circle"
+            iconPosition="left"
+            shape="box"
+            size="large"
+            variant="outlinedPanel"
           >
-            <span className={styles.contactIcon} aria-hidden="true">
-              <ArrowIcon />
-            </span>
-            <span className={styles.contactText}>
-              <strong>Contact Koala</strong>
-            </span>
-          </Link>
+            Contact Koala
+          </Cta>
         </Reveal>
 
         <Reveal className={styles.heroImageWrap} delay={0.08}>
@@ -79,25 +65,6 @@ export default function ContactPage() {
             unoptimized
           />
         </Reveal>
-      </section>
-
-      <section className={styles.details} aria-label="Contact details">
-        <div className={styles.detail}>
-          <span>Email</span>
-          <p>
-            <a href={`mailto:${siteSettings.contact.email}`}>
-              {siteSettings.contact.email}
-            </a>
-          </p>
-        </div>
-        <div className={styles.detail}>
-          <span>Location</span>
-          <p>Toronto</p>
-        </div>
-        <div className={styles.detail}>
-          <span>Response</span>
-          <p>{contactPageContent.responseWindow}</p>
-        </div>
       </section>
 
       <section className={styles.formSection} aria-label="Project inquiry form">

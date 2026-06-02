@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { Cta } from "@/components/site/Cta";
 import { getPageContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -17,18 +16,7 @@ export const metadata: Metadata = createPageMetadata({
   path: aboutContent.seo.canonicalPath ?? "/about",
 });
 
-const values = [
-  "Clarity",
-  "Craft",
-  "Momentum",
-  "Clean handoff",
-];
-
-const steps = [
-  "Frame",
-  "Design",
-  "Build",
-];
+const steps = ["Frame", "Design", "Build"];
 
 export default function AboutPage() {
   return (
@@ -42,23 +30,10 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <svg
-        className={styles.flightAccent}
-        aria-hidden="true"
-        focusable="false"
-        viewBox="0 0 520 180"
+      <section
+        className={styles.imageSplit}
+        aria-label="Koala Studios work style"
       >
-        <path
-          className={styles.flightPath}
-          d="M78 40 C148 92 206 12 290 58 C346 90 372 146 452 92"
-        />
-        <path
-          className={styles.flightPlane}
-          d="M42 18 L76 34 L50 42 L40 74 L30 40 L42 18 Z"
-        />
-      </svg>
-
-      <section className={styles.imageSplit} aria-label="Koala Studios work style">
         <div className={styles.mediaPair}>
           <Reveal className={styles.imageWrap}>
             <Image
@@ -83,25 +58,30 @@ export default function AboutPage() {
           </Reveal>
         </div>
         <Reveal className={styles.imageCtaWrap} delay={0.08}>
-          <Link className={styles.imageCta} href="/contact">
-            <span className={styles.imageCtaIcon} aria-hidden="true">
-              <ArrowIcon />
-            </span>
-            <span>Start a project</span>
-          </Link>
+          <Cta
+            className={styles.imageCta}
+            href="/contact"
+            icon="circle"
+            iconPosition="left"
+            shape="box"
+            size="large"
+            variant="outlinedPanel"
+          >
+            Start a project
+          </Cta>
         </Reveal>
-      </section>
-
-      <section className={styles.values} aria-label="Studio values">
-        {values.map((value) => (
-          <span key={value}>{value}</span>
-        ))}
       </section>
 
       <section className={styles.process} aria-labelledby="about-process-title">
         <Reveal>
           <h2 id="about-process-title">How we work</h2>
-          <p>{aboutContent.body.sections.find((section) => section.id === "process")?.copy}</p>
+          <p>
+            {
+              aboutContent.body.sections.find(
+                (section) => section.id === "process",
+              )?.copy
+            }
+          </p>
         </Reveal>
         <div className={styles.steps}>
           {steps.map((step, index) => (
