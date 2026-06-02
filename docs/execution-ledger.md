@@ -1,5 +1,104 @@
 # Execution Ledger
 
+## 2026-06-02 - CTA Hover Timing And Arrow Travel
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is still `main...origin/main [ahead 2, behind 1]` with broad pre-existing redesign edits.
+- Re-read `.agent/project_state.yaml`, `.agent/current_slice.md`, `.agent/verification_registry.yaml`, local component/style guides, and the shared CTA implementation.
+- Attempted the requested Chrome plugin workflow for `localhost:3000`; Chrome, the Codex extension, and the native host checks passed, but the plugin control runtime failed twice with the Windows sandbox startup error before tab control was available.
+
+### Implemented
+
+- Slowed the shared circle CTA fill, label, and icon movement transitions.
+- Corrected left-icon CTA hover label travel so the label clears the right-edge arrow lane instead of overlapping the arrow near the middle of the CTA.
+- Added real inline padding to transparent circle CTAs and removed the right-icon label nudge so hover text does not land flush against the left edge.
+- Reworked the hover icon carrier so the SVG aligns to the CTA's right edge independently of the slow black fill animation, preventing the arrow from lingering in the center during hover.
+- Removed the broken full-width icon rail approach; the icon is fixed-size again at rest, moves quickly to the right edge on hover with a transparent background, and leaves the slow black fill as the only expanding visible layer.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 17 app pages.
+- Existing local port 3000 returned HTTP 200 for `/`, `/work`, and `/contact`.
+
+### Blockers / Follow-Up
+
+- The requested Chrome visual test could not be completed because the Chrome plugin runtime failed with `windows sandbox failed: spawn setup refresh`; Chrome itself, the extension, and the native host manifest all checked out as installed and healthy.
+
+## 2026-06-02 - Tokenized Text And Spacing Cleanup
+
+### Context Inspected
+
+- Continued from the Roboto Condensed and shared CSS utility pass.
+- Re-ran `git status --short --branch`; the branch is still `main...origin/main [ahead 2, behind 1]` with the current in-progress CSS/font changes.
+- Re-read root, app, component, and style agent guides plus the verification registry.
+- Audited active CSS for raw `font-size` declarations and repeated non-token spacing values after the user flagged text not following the root CSS scale.
+
+### Implemented
+
+- Converted active CSS font sizing to the root `--koala-text-*` scale.
+- Updated global page/route/section title utilities to use `--koala-text-3xl` and `--koala-text-2xl` instead of hard-coded title sizes.
+- Moved homepage hero, About lede, case-study hero/story, and mobile Work filter font sizes onto text tokens.
+- Converted repeated layout spacing such as common `1rem`, `1.25rem`, `1.5rem`, `2rem`, `2.5rem`, `3rem`, and `6rem` values to `--koala-space-*` tokens where they represented reusable spacing rather than precise icon geometry or optical offsets.
+
+### Verification Evidence
+
+- Source scan found no active app/component/style `font-size` declarations outside the `--koala-text-*` token scale.
+- Source scan found no remaining repeated raw `scroll-margin-top: 6rem`, `min-height: 6rem`, or numeric `font-size` declarations in active CSS.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 17 app pages.
+- Existing local port 3000 returned HTTP 200 for `/`, `/work`, `/services`, `/contact`, and `/work/ara`.
+- Headless Chrome mobile screenshots checked tokenized heading/filter behavior:
+  - `C:\tmp\koala-token-sizing-home-mobile.png`
+  - `C:\tmp\koala-token-sizing-work-mobile.png`
+  - `C:\tmp\koala-token-sizing-services-mobile.png`
+  - `C:\tmp\koala-token-sizing-contact-mobile.png`
+  - `C:\tmp\koala-token-sizing-ara-mobile.png`
+
+### Blockers / Follow-Up
+
+- The Codex in-app Browser bridge remains unavailable in this Windows session, so headless Chrome remains the visual QA fallback.
+- Small optical offsets and icon/control geometry still intentionally use local values where forcing the spacing scale would degrade alignment.
+
+## 2026-06-02 - Roboto Condensed And Shared CSS Utilities
+
+### Context Inspected
+
+- Followed root, app, component, and style agent guidance.
+- Re-ran `git status --short --branch`; the branch is still `main...origin/main [ahead 2, behind 1]` with pre-existing redesign work.
+- Inspected `styles/site/tokens.css`, `app/globals.css`, active route CSS modules, work tile components, case-study components, and the current verification registry.
+- Confirmed the old font stack was still tokenized around Relative Sans, Poppins, and Integral while route/component modules repeated page shell, hero title, section title, label, media frame, and work tile styles.
+
+### Implemented
+
+- Added self-hosted Roboto Condensed regular, semibold, and bold files under `public/fonts/`.
+- Replaced the site font tokens so body, display, heading, and support typography all use Roboto Condensed.
+- Added shared global utilities for page shells, route heroes, route titles, section titles, small green labels, muted body copy, media frames/images, and Work tile image/meta overlays.
+- Converted active homepage, Work, Services, About, Contact, Contact success, case-study hero/story/related, Work grid, and homepage carousel markup to use the shared utilities.
+- Removed duplicated local CSS for repeated route title styles, section title styles, labels, media frames, Work card overlays, and stale unused blocks such as old service discipline/value/detail/success-link/strip styles.
+- Fixed the Services mobile media overlay CTA placement so the new condensed font label does not clip in the 390px visual check.
+
+### Verification Evidence
+
+- `rg` found no remaining `Poppins`, `Integral`, or `Relative Sans` references in active app/component/style source.
+- `rg` found no remaining targeted duplicate selectors for old route hero title, local work tile, stale discipline/value/detail/success-link/strip CSS blocks.
+- `git diff --check` completed with only the repository's existing CRLF warnings.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 17 app pages.
+- Existing local port 3000 returned HTTP 200 for `/`, `/work`, `/services`, and `/contact`.
+- The configured in-app Browser bridge failed with `Transport closed`; headless Chrome fallback screenshots were captured instead.
+- Headless Chrome screenshots:
+  - `C:\tmp\koala-font-css-cleanup-home-desktop.png`
+  - `C:\tmp\koala-font-css-cleanup-home-mobile.png`
+  - `C:\tmp\koala-font-css-cleanup-contact-mobile.png`
+  - `C:\tmp\koala-font-css-cleanup-services-mobile-fixed-v2.png`
+
+### Blockers / Follow-Up
+
+- The Codex in-app Browser bridge remains unavailable in this Windows session.
+- A second Next dev server on port 3029 could not start because the existing Next dev server for this workspace is already running on port 3000.
+
 ## 2026-06-02 - CTA Circle Hover Animation
 
 ### Context Inspected

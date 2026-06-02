@@ -21,7 +21,7 @@ export default function Home() {
   const caseStudies = getPublishedCaseStudies();
 
   return (
-    <div className={styles.page}>
+    <div className="koala-page">
       <section className={styles.hero} aria-labelledby="home-title">
         <Reveal className={styles.heroText}>
           <h1 id="home-title">
@@ -62,7 +62,7 @@ export default function Home() {
 
       <section className={styles.work} aria-labelledby="home-work-title">
         <Reveal className={styles.sectionHeading}>
-          <h2 id="home-work-title">Featured Work</h2>
+          <h2 className="koala-section-title" id="home-work-title">Featured Work</h2>
           <Link href="/work">See all cases</Link>
         </Reveal>
         <HomeWorkCarousel caseStudies={caseStudies} />
@@ -73,7 +73,7 @@ export default function Home() {
         aria-labelledby="home-services-title"
       >
         <Reveal className={styles.splitCopy}>
-          <h2 id="home-services-title">Design. Build. Launch.</h2>
+          <h2 className="koala-section-title" id="home-services-title">Design. Build. Launch.</h2>
           <Cta href="/services" size="medium" variant="outlined">
             View services
           </Cta>
@@ -105,7 +105,7 @@ export default function Home() {
           />
         </Reveal>
         <Reveal className={styles.contactCopy} delay={0.08}>
-          <h2 id="home-contact-title">Contact.</h2>
+          <h2 className="koala-section-title" id="home-contact-title">Contact.</h2>
           <Cta
             className={styles.primaryCta}
             href="/contact"

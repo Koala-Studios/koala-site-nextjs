@@ -14,6 +14,7 @@
   transition: background-color 240ms var(--koala-ease-out), border-color 240ms var(--koala-ease-out), color 240ms var(--koala-ease-out);
   white-space: nowrap;
   width: auto;
+  text-transform: uppercase;
 }
 
 .cta::before {
@@ -26,7 +27,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  transition: opacity 220ms var(--koala-ease-out), width 760ms var(--koala-ease-smooth), height 760ms var(--koala-ease-smooth), left 760ms var(--koala-ease-smooth), right 760ms var(--koala-ease-smooth);
+  transition: opacity 320ms var(--koala-ease-out), width 800ms var(--koala-ease-smooth), height 800ms var(--koala-ease-smooth), left 800ms var(--koala-ease-smooth), right 800ms var(--koala-ease-smooth);
   width: var(--cta-icon-size, 2.75rem);
   z-index: 0;
 }
@@ -55,25 +56,25 @@
 
 .sizeSmall {
   --cta-icon-offset: 0.25rem;
-  --cta-icon-size: 2.45rem;
+  --cta-icon-size: 3rem;
   font-size: var(--koala-text-sm);
-  min-height: 3rem;
-  padding: 0 1rem;
+  min-height: var(--koala-space-12);
+  padding: 0 var(--koala-space-4);
 }
 
 .sizeMedium {
   --cta-icon-offset: 0.25rem;
-  --cta-icon-size: 2.75rem;
+  --cta-icon-size: 2.5rem;
   font-size: var(--koala-text-sm);
   min-height: 3.25rem;
-  padding: 0 1.15rem;
+  padding: 0 1rem;
 }
 
 .sizeLarge {
   --cta-icon-offset: 0.7rem;
   --cta-icon-size: 3.1rem;
   font-size: var(--koala-text-base);
-  gap: 1rem;
+  gap: var(--koala-space-4);
   min-height: 4.8rem;
   padding: 0.7rem 1.25rem 0.7rem 0.7rem;
 }
@@ -97,12 +98,15 @@
   padding: 0;
 }
 
+.variantTransparent.hasCircle {
+  padding-inline: 1rem;
+}
+
 .variantTransparent:hover {
   color: var(--koala-color-surface);
 }
 
 .hasCircle:hover {
-  border-color: var(--koala-color-ink);
   color: var(--koala-color-surface);
 }
 
@@ -187,16 +191,16 @@
 
 .label {
   position: relative;
-  transition: color 260ms var(--koala-ease-out), transform 360ms var(--koala-ease-smooth);
+  transition: color 420ms var(--koala-ease-out), transform 720ms var(--koala-ease-smooth);
   z-index: 2;
 }
 
 .hasCircleLeft:hover .label {
-  transform: translateX(calc(var(--cta-icon-size, 2.75rem) * -0.52));
+  transform: translateX(calc(var(--cta-icon-size) * -1));
 }
 
 .hasCircleRight:hover .label {
-  transform: translateX(-0.22rem);
+  transform: translateX(0);
 }
 
 .icon {
@@ -216,7 +220,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  transition: background-color 520ms var(--koala-ease-out), color 260ms var(--koala-ease-out), left 680ms var(--koala-ease-smooth), right 680ms var(--koala-ease-smooth);
+  transition: background-color 120ms var(--koala-ease-out), color 420ms var(--koala-ease-out), left 180ms var(--koala-ease-out), right 180ms var(--koala-ease-out);
 }
 
 .hasCircleLeft .label {
@@ -256,15 +260,15 @@
 }
 
 .hasCircle:hover .iconCircle {
-  background: var(--koala-color-ink);
+  background: transparent;
 }
 
 .hasCircleLeft:hover .iconCircle {
-  left: calc(100% - var(--cta-icon-size, 2.75rem) - var(--cta-icon-offset, 0));
+  left: calc(100% - var(--cta-icon-size, 0rem) - 0.5rem);
 }
 
 .hasCircleRight:hover .iconCircle {
-  right: calc(var(--cta-icon-offset, 0) - 0.35rem);
+  right: 0rem;
 }
 
 .iconInline {

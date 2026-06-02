@@ -20,14 +20,15 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
         <Cta href="/work" size="small" variant="text">
           Back to work
         </Cta>
-        <p className={styles.eyebrow}>{caseStudy.category}</p>
+        <p className="koala-label">{caseStudy.category}</p>
         <h1 id="case-study-title">{caseStudy.title}</h1>
         <p className={styles.headline}>{caseStudy.headline}</p>
       </Reveal>
 
-      <Reveal className={styles.visual} delay={0.08}>
+      <Reveal className={`${styles.visual} koala-media-frame`} delay={0.08}>
         {media ? (
           <Image
+            className="koala-media-image"
             src={media.src}
             alt={media.alt}
             fill
@@ -40,17 +41,17 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
 
       <div className={styles.meta} aria-label={`${caseStudy.title} project summary`}>
         <div>
-          <span>Sector</span>
+          <span className="koala-label">Sector</span>
           <strong>{caseStudy.sector}</strong>
         </div>
         {focusMetric ? (
           <div>
-            <span>Focus</span>
+            <span className="koala-label">Focus</span>
             <strong>{focusMetric.value}</strong>
           </div>
         ) : null}
         <div>
-          <span>Services</span>
+          <span className="koala-label">Services</span>
           <strong className={styles.serviceList}>
             {caseStudy.services.map((service) => (
               <span key={service}>{service}</span>

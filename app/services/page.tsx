@@ -48,14 +48,14 @@ const servicesJsonLd = {
 
 export default function ServicesPage() {
   return (
-    <div className={styles.page}>
+    <div className={`koala-page ${styles.page}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
       />
-      <section className={styles.hero} aria-labelledby="services-title">
-        <Reveal className={styles.heroCopy}>
-          <h1 id="services-title">Services</h1>
+      <section className={`${styles.hero} koala-route-hero`} aria-labelledby="services-title">
+        <Reveal className="koala-stack">
+          <h1 className="koala-page-title" id="services-title">Services</h1>
         </Reveal>
       </section>
 
@@ -63,9 +63,9 @@ export default function ServicesPage() {
         className={styles.mediaPanel}
         aria-label="Koala Studios service approach"
       >
-        <Reveal className={styles.imageWrap}>
+        <Reveal className={`${styles.imageWrap} koala-media-frame`}>
           <Image
-            className={styles.image}
+            className="koala-media-image"
             src="/images/redesign/services/koala-services-desk-1600.webp"
             alt="Koala Studios service desk with ecommerce design and development screens"
             width={1600}
@@ -90,10 +90,10 @@ export default function ServicesPage() {
 
       <section className={styles.summary} aria-label="Service summary">
         <Reveal>
-          <h2>{servicesContent.hero.headline}</h2>
+          <h2 className="koala-section-title koala-section-title--compact">{servicesContent.hero.headline}</h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <p>{servicesContent.hero.summary}</p>
+          <p className="koala-muted-copy">{servicesContent.hero.summary}</p>
         </Reveal>
       </section>
 
@@ -104,7 +104,7 @@ export default function ServicesPage() {
             key={offering.title}
             delay={index * 0.04}
           >
-            <span>{String(index + 1).padStart(2, "0")}</span>
+            <span className="koala-label">{String(index + 1).padStart(2, "0")}</span>
             <h2>{offering.title}</h2>
             <p>{offering.copy}</p>
           </Reveal>
@@ -113,8 +113,10 @@ export default function ServicesPage() {
 
       <section className={styles.cta} aria-labelledby="services-cta-title">
         <Reveal>
-          <p>{servicesContent.cta.eyebrow}</p>
-          <h2 id="services-cta-title">{servicesContent.cta.title}</h2>
+          <p className="koala-label">{servicesContent.cta.eyebrow}</p>
+          <h2 className="koala-section-title koala-section-title--compact" id="services-cta-title">
+            {servicesContent.cta.title}
+          </h2>
         </Reveal>
         <Reveal delay={0.08}>
           <Cta href="/contact" size="medium" variant="outlined">

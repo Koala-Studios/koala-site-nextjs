@@ -18,10 +18,10 @@ export function CaseStudyRelated({ current, related }: CaseStudyRelatedProps) {
   return (
     <section className={styles.related} aria-labelledby="case-study-next-title">
       <Reveal className={styles.copy}>
-        <p>Next</p>
+        <p className="koala-label">Next</p>
         {related ? (
           <>
-            <h2 id="case-study-next-title">{related.title}</h2>
+            <h2 className="koala-section-title" id="case-study-next-title">{related.title}</h2>
             <Cta
               href={getCaseStudyPath(related.slug)}
               icon="circle"
@@ -34,7 +34,9 @@ export function CaseStudyRelated({ current, related }: CaseStudyRelatedProps) {
           </>
         ) : (
           <>
-            <h2 id="case-study-next-title">More work after {current.title}</h2>
+            <h2 className="koala-section-title" id="case-study-next-title">
+              More work after {current.title}
+            </h2>
             <Cta href="/work" icon="circle" iconPosition="left" size="small" variant="outlined">
               Back to work
             </Cta>
@@ -43,8 +45,9 @@ export function CaseStudyRelated({ current, related }: CaseStudyRelatedProps) {
       </Reveal>
 
       {related && relatedImage ? (
-        <Reveal className={styles.imageWrap} delay={0.08}>
+        <Reveal className={`${styles.imageWrap} koala-media-frame`} delay={0.08}>
           <Image
+            className="koala-media-image"
             src={relatedImage.src}
             alt={relatedImage.alt}
             fill

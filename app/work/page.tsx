@@ -19,10 +19,10 @@ export default function WorkPage() {
   const caseStudies = getPublishedCaseStudies();
 
   return (
-    <div className={styles.page}>
-      <section className={styles.hero} aria-labelledby="work-title">
-        <Reveal className={styles.intro}>
-          <h1 id="work-title">Work</h1>
+    <div className="koala-page koala-page--compact">
+      <section className={`${styles.hero} koala-route-hero`} aria-labelledby="work-title">
+        <Reveal className={`${styles.intro} koala-stack`}>
+          <h1 className="koala-page-title" id="work-title">Work</h1>
         </Reveal>
       </section>
       <Reveal>

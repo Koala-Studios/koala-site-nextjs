@@ -4,8 +4,8 @@
   --koala-color-surface-soft: #f7f6f2;
   --koala-color-ink: #111312;
   --koala-color-muted: #6e6b63;
-  --koala-color-line: #d9d2c7;
-  --koala-color-green: #3c7432;
+  --koala-color-line: #e8e7e3;
+  --koala-color-green: #3a5f1f;
   --koala-color-green-dark: #14351c;
   --koala-color-green-soft: #dfe9d9;
   --koala-color-clay: #b98c67;
@@ -20,13 +20,13 @@
   --koala-color-warm: var(--koala-color-bg);
   --koala-color-highlight: var(--koala-color-green-soft);
 
-  --koala-font-body: "Relative Sans", "Poppins-Regular", "Avenir Next", "Segoe UI", sans-serif;
-  --koala-font-display: "Integral Regular", "Integral ExtraBold", "Arial Narrow", sans-serif;
-  --koala-font-heading: "Poppins-SemiBold", "Avenir Next", "Segoe UI", sans-serif;
-  --koala-font-support: "Relative Sans", "Poppins-SemiBold", "Avenir Next", "Segoe UI", sans-serif;
+  --koala-font-body: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
+  --koala-font-display: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
+  --koala-font-heading: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
+  --koala-font-support: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
 
   --koala-text-xs: 0.78rem;
-  --koala-text-sm: 0.92rem;
+  --koala-text-sm: 1rem;
   --koala-text-base: 1rem;
   --koala-text-md: 1.18rem;
   --koala-text-lg: 1.45rem;
@@ -47,12 +47,18 @@
   --koala-space-20: 5rem;
   --koala-space-24: 6rem;
 
-  --koala-radius-xs: 0.5rem;
+  --koala-radius-xs: 0;
+  --koala-radius-sm: 0;
+  --koala-radius-md: 0;
+  --koala-radius-lg: 0;
+  --koala-radius-xl: 0;
+  --koala-radius-pill: 0;
+  /* --koala-radius-xs: 0.5rem;
   --koala-radius-sm: 0.5rem;
   --koala-radius-md: 0.75rem;
   --koala-radius-lg: 1rem;
   --koala-radius-xl: 1.25rem;
-  --koala-radius-pill: 999px;
+  --koala-radius-pill: 999px; */
 
   --koala-shadow-soft: none;
   --koala-shadow-panel: none;
@@ -78,42 +84,26 @@
 
 @font-face {
   font-display: swap;
-  font-family: "Integral ExtraBold";
+  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/IntegralCF-ExtraBold.woff2") format("woff2");
+  src: url("/fonts/RobotoCondensed-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Integral Regular";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/IntegralCF-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Relative Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Relative Sans"), local("Relative"), local("Relative Book Pro");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Poppins-Regular";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/Poppins-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Poppins-SemiBold";
+  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 600;
-  src: url("/fonts/Poppins-SemiBold.woff2") format("woff2");
+  src: url("/fonts/RobotoCondensed-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/RobotoCondensed-Bold.ttf") format("truetype");
 }
 
 * {

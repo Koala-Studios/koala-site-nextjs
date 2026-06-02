@@ -9,18 +9,21 @@
 .header {
   align-items: center;
   display: grid;
-  gap: 1rem;
+  gap: var(--koala-space-4);
   grid-template-columns: auto 1fr auto;
   margin-inline: auto;
   max-width: var(--koala-container-wide);
-  padding: 0.95rem clamp(1rem, 3vw, 2rem);
+  padding: 0.6rem clamp(1rem, 3vw, 2rem);
   pointer-events: auto;
+  /* border-bottom: 0.5px solid var(--koala-color-line); */
+
 }
 
 .brand {
   align-items: center;
   display: inline-flex;
-  min-height: 2.5rem;
+  min-height: var(--koala-space-10);
+  
 }
 
 .brand img {
@@ -39,8 +42,10 @@
   color: var(--koala-color-ink);
   font-family: var(--koala-font-support);
   font-size: var(--koala-text-sm);
+  font-weight: 500;
+  text-transform: uppercase;
   line-height: 1;
-  min-height: 2rem;
+  min-height: var(--koala-space-8);
   padding-top: 0.45rem;
   position: relative;
 }
@@ -83,7 +88,7 @@
   gap: 0.55rem;
   height: auto;
   justify-content: center;
-  min-height: 2.75rem;
+  min-height: var(--koala-space-12);
   padding-inline: 1.1rem;
   transition: background-color 180ms ease, color 180ms ease;
   width: auto;
@@ -91,7 +96,6 @@
 
 .menuButton {
   background: var(--koala-color-green);
-  border: 1px solid var(--koala-color-green);
   color: var(--koala-color-surface);
   display: inline-flex;
   gap: 0.22rem;
@@ -180,7 +184,7 @@
     align-items: center;
     border-radius: var(--koala-radius-sm);
     display: flex;
-    min-height: 3rem;
+    min-height: var(--koala-space-12);
     padding: 0 0.9rem;
   }
 

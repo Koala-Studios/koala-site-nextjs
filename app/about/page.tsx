@@ -20,10 +20,10 @@ const steps = ["Frame", "Design", "Build"];
 
 export default function AboutPage() {
   return (
-    <div className={styles.page}>
-      <section className={styles.hero} aria-labelledby="about-title">
-        <Reveal className={styles.heroCopy}>
-          <h1 id="about-title">About</h1>
+    <div className={`koala-page ${styles.page}`}>
+      <section className={`${styles.hero} koala-route-hero`} aria-labelledby="about-title">
+        <Reveal className="koala-stack">
+          <h1 className="koala-page-title" id="about-title">About</h1>
         </Reveal>
         <Reveal className={styles.heroStatement} delay={0.08}>
           <p>{aboutContent.hero.headline}</p>
@@ -35,9 +35,9 @@ export default function AboutPage() {
         aria-label="Koala Studios work style"
       >
         <div className={styles.mediaPair}>
-          <Reveal className={styles.imageWrap}>
+          <Reveal className={`${styles.imageWrap} koala-media-frame`}>
             <Image
-              className={styles.image}
+              className="koala-media-image"
               src="/images/redesign/about/koala-about-studio-interior.png"
               alt="Koala Studios studio interior with a Koala wall mark"
               width={1664}
@@ -46,9 +46,9 @@ export default function AboutPage() {
               sizes="(max-width: 900px) 100vw, 42vw"
             />
           </Reveal>
-          <Reveal className={styles.imageWrap} delay={0.04}>
+          <Reveal className={`${styles.imageWrap} koala-media-frame`} delay={0.04}>
             <Image
-              className={styles.image}
+              className="koala-media-image"
               src="/images/redesign/about/koala-about-workshop.png"
               alt="Koala Studios project workshop reviewing ecommerce layouts"
               width={1672}
@@ -74,8 +74,8 @@ export default function AboutPage() {
 
       <section className={styles.process} aria-labelledby="about-process-title">
         <Reveal>
-          <h2 id="about-process-title">How we work</h2>
-          <p>
+          <h2 className="koala-section-title" id="about-process-title">How we work</h2>
+          <p className="koala-muted-copy">
             {
               aboutContent.body.sections.find(
                 (section) => section.id === "process",
@@ -86,7 +86,7 @@ export default function AboutPage() {
         <div className={styles.steps}>
           {steps.map((step, index) => (
             <Reveal className={styles.step} key={step} delay={index * 0.04}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span className="koala-label">{String(index + 1).padStart(2, "0")}</span>
               <h3>{step}</h3>
             </Reveal>
           ))}

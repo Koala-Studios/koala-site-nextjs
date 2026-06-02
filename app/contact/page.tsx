@@ -32,14 +32,14 @@ const contactJsonLd = {
 
 export default function ContactPage() {
   return (
-    <div className={styles.page}>
+    <div className={`koala-page ${styles.page}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
       <section className={styles.hero} aria-labelledby="contact-title">
-        <Reveal className={styles.heroCopy}>
-          <h1 id="contact-title">Contact</h1>
+        <Reveal className={`${styles.heroCopy} koala-stack`}>
+          <h1 className="koala-page-title" id="contact-title">Contact</h1>
           <Cta
             className={styles.contactAction}
             icon="circle"
@@ -69,7 +69,7 @@ export default function ContactPage() {
 
       <section className={styles.formSection} aria-label="Project inquiry form">
         <Reveal className={styles.formIntro}>
-          <h2>Tell us what to build.</h2>
+          <h2 className="koala-section-title">Tell us what to build.</h2>
         </Reveal>
         <Reveal delay={0.08}>
           <ContactForm />

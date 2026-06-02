@@ -14,7 +14,7 @@
 .top {
   align-items: flex-end;
   display: grid;
-  gap: 2rem;
+  gap: var(--koala-space-8);
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
@@ -27,14 +27,14 @@
   color: var(--koala-color-muted);
   font-size: var(--koala-text-base);
   line-height: 1.45;
-  margin: 1rem 0 0;
+  margin: var(--koala-space-4) 0 0;
   max-width: 30rem;
 }
 
 .bottom {
   align-items: center;
   display: flex;
-  gap: 1rem;
+  gap: var(--koala-space-4);
   justify-content: space-between;
 }
 
@@ -54,7 +54,7 @@
 .nav a {
   align-items: center;
   display: inline-flex;
-  min-height: 2.75rem;
+  min-height: var(--koala-space-12);
 }
 
 .nav a:hover {

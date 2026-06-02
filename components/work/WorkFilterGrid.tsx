@@ -59,11 +59,11 @@ export function WorkFilterGrid({ caseStudies }: WorkFilterGridProps) {
 
             return (
               <Link
-                className={styles.item}
+                className="koala-work-tile"
                 href={getCaseStudyPath(caseStudy.slug)}
                 key={caseStudy.slug}
               >
-                <span className={styles.image}>
+                <span className="koala-work-tile__image">
                   {cardImage ? (
                     <Image
                       src={cardImage.src}
@@ -75,7 +75,7 @@ export function WorkFilterGrid({ caseStudies }: WorkFilterGridProps) {
                     />
                   ) : null}
                 </span>
-                <span className={styles.meta}>
+                <span className="koala-work-tile__meta">
                   <strong>{caseStudy.title}</strong>
                   <span>{caseStudy.category}</span>
                 </span>

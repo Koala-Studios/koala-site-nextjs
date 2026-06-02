@@ -28,77 +28,20 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.item {
-  color: var(--koala-color-ink);
-  display: block;
-  position: relative;
-  text-decoration: none;
-}
-
-.image {
-  aspect-ratio: 16 / 11;
-  background: var(--koala-color-surface-soft);
-  border: 1px solid var(--koala-color-line);
-  border-radius: var(--koala-radius-sm);
-  display: block;
-  overflow: hidden;
-  position: relative;
-}
-
-.image::after {
-  background: #11131229;
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 1;
-}
-
-.image img {
-  object-fit: cover;
-  transition: transform 700ms var(--koala-ease-out);
-}
-
-.item:hover .image img {
-  transform: scale(1.035);
-}
-
-.meta {
-  color: var(--koala-color-surface);
-  display: grid;
-  gap: 0.2rem;
-  left: 1rem;
-  max-width: min(14rem, calc(100% - 2rem));
-  position: absolute;
-  top: 1rem;
-  z-index: 2;
-}
-
-.meta strong {
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-md);
-}
-
-.meta span {
-  color: inherit;
-  font-size: var(--koala-text-sm);
-  opacity: 0.82;
-}
-
 .footerCta {
   align-items: flex-end;
   border-top: 1px solid var(--koala-color-line);
   display: flex;
   justify-content: flex-end;
   margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding-top: 1rem;
+  padding-top: var(--koala-space-4);
 }
 
 .empty {
   border: 1px dashed var(--koala-color-line);
   border-radius: var(--koala-radius-md);
   color: var(--koala-color-muted);
-  padding: 2rem;
+  padding: var(--koala-space-8);
 }
 
 @media (max-width: 960px) {
@@ -122,9 +65,9 @@
 
   .filter {
     flex: 0 0 auto;
-    font-size: 0.64rem;
-    min-height: 2.75rem;
-    min-width: 2.75rem;
+    font-size: var(--koala-text-xs);
+    min-height: var(--koala-space-12);
+    min-width: var(--koala-space-12);
     padding: 0 0.52rem;
     white-space: nowrap;
   }

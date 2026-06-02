@@ -1,9 +1,3 @@
-.page {
-  margin-inline: auto;
-  max-width: var(--koala-container-wide);
-  padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem) 0;
-}
-
 .hero {
   align-items: center;
   display: grid;
@@ -14,12 +8,12 @@
 
 .heroText {
   display: grid;
-  gap: 2rem;
+  gap: var(--koala-space-8);
 }
 
 .heroText h1 {
   font-family: var(--koala-font-heading);
-  font-size: clamp(4rem, 5.3vw, 4.8rem);
+  font-size: var(--koala-text-3xl);
   font-weight: 600;
   letter-spacing: 0;
   line-height: 0.96;
@@ -90,62 +84,18 @@
   opacity: 1;
 }
 
-.strip {
-  border-block: 1px solid var(--koala-color-line);
-  display: grid;
-  gap: 1px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: clamp(2.5rem, 5vw, 5rem);
-}
-
-.strip span {
-  align-items: center;
-  border-left: 1px solid var(--koala-color-line);
-  display: flex;
-  flex-direction: column;
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-sm);
-  gap: 0.65rem;
-  justify-content: center;
-  min-height: 7rem;
-  text-align: center;
-  text-transform: capitalize;
-}
-
-.strip svg {
-  color: var(--koala-color-green);
-  height: 2.15rem;
-  width: 2.15rem;
-}
-
-.strip span:first-child {
-  border-left: 0;
-}
-
 .work,
 .splitSection,
 .contact {
   padding-block: clamp(3rem, 7vw, 6rem);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: var(--koala-space-24);
 }
 
 .sectionHeading {
   align-items: flex-end;
   display: grid;
-  gap: 1rem;
+  gap: var(--koala-space-4);
   grid-template-columns: minmax(0, 1fr) auto;
-}
-
-.sectionHeading h2,
-.splitCopy h2,
-.contactCopy h2 {
-  font-family: var(--koala-font-heading);
-  font-size: 5rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1;
-  margin: 0;
-  max-width: 10ch;
 }
 
 .sectionHeading a {
@@ -154,7 +104,7 @@
   display: inline-flex;
   font-family: var(--koala-font-support);
   justify-self: flex-start;
-  min-height: 2.75rem;
+  min-height: var(--koala-space-12);
 }
 
 .splitSection,
@@ -169,7 +119,13 @@
 .splitCopy,
 .contactCopy {
   display: grid;
-  gap: 1.5rem;
+  gap: var(--koala-space-6);
+}
+
+.splitCopy h2,
+.contactCopy h2,
+.sectionHeading h2 {
+  max-width: 10ch;
 }
 
 .splitImageWrap,
@@ -192,18 +148,14 @@
 }
 
 @media (max-width: 900px) {
-  .page {
-    padding-top: 2.5rem;
-  }
-
   .hero {
-    gap: 3rem;
+    gap: var(--koala-space-12);
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
   .heroText h1 {
-    font-size: 3rem;
+    font-size: var(--koala-text-2xl);
     max-width: 12ch;
   }
 
@@ -219,38 +171,9 @@
     grid-template-columns: 1fr;
   }
 
-  .strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .strip span,
-  .strip span:first-child {
-    border-left: 0;
-    border-top: 1px solid var(--koala-color-line);
-  }
-
-  .strip span:nth-child(odd) {
-    border-left: 0;
-  }
-
-  .strip span:nth-child(even) {
-    border-left: 1px solid var(--koala-color-line);
-  }
-
-  .strip span:first-child,
-  .strip span:nth-child(2) {
-    border-top: 0;
-  }
-
   .sectionHeading {
     align-items: flex-start;
     grid-template-columns: 1fr;
-  }
-
-  .sectionHeading h2,
-  .splitCopy h2,
-  .contactCopy h2 {
-    font-size: 3.2rem;
   }
 
   .contactImageWrap,
@@ -262,13 +185,6 @@
 
 @media (max-width: 480px) {
   .heroText h1 {
-    font-size: 2.5rem;
     max-width: none;
-  }
-
-  .sectionHeading h2,
-  .splitCopy h2,
-  .contactCopy h2 {
-    font-size: 2.65rem;
   }
 }

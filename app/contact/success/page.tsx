@@ -16,11 +16,11 @@ export const metadata: Metadata = createNoIndexMetadata(
 
 export default function ContactSuccessPage() {
   return (
-    <div className={styles.page}>
+    <div className={`koala-page ${styles.page}`}>
       <section className={styles.hero} aria-labelledby="success-title">
-        <div className={styles.heroCopy}>
-          <p>Message sent</p>
-          <h1 id="success-title">Thank you</h1>
+        <div className={`${styles.heroCopy} koala-stack`}>
+          <p className="koala-label">Message sent</p>
+          <h1 className="koala-page-title" id="success-title">Thank you</h1>
           <Cta
             className={styles.contactAction}
             href="/"

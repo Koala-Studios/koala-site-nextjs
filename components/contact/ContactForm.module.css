@@ -1,16 +1,16 @@
 .formBlock {
   display: grid;
-  gap: 1rem;
+  gap: var(--koala-space-4);
 }
 
 .form {
   display: grid;
-  gap: 1rem;
+  gap: var(--koala-space-4);
 }
 
 .row {
   display: grid;
-  gap: 1rem;
+  gap: var(--koala-space-4);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -21,7 +21,7 @@
 .footer {
   align-items: center;
   display: flex;
-  gap: 1rem;
+  gap: var(--koala-space-4);
   justify-content: flex-start;
 }
 

@@ -21,7 +21,7 @@ export function CaseStudyStory({ caseStudy }: CaseStudyStoryProps) {
         <Reveal className={styles.metrics} delay={0.08}>
           {caseStudy.metrics.map((metric) => (
             <div key={metric.label}>
-              <span>{metric.label}</span>
+              <span className="koala-label">{metric.label}</span>
               <strong>{metric.value}</strong>
             </div>
           ))}
@@ -30,18 +30,18 @@ export function CaseStudyStory({ caseStudy }: CaseStudyStoryProps) {
 
       <section className={styles.narrative} aria-label="Challenge and approach">
         <Reveal className={styles.narrativeItem}>
-          <span>Challenge</span>
-          <p>{caseStudy.challenge}</p>
+          <span className="koala-label">Challenge</span>
+          <p className="koala-muted-copy">{caseStudy.challenge}</p>
         </Reveal>
         <Reveal className={styles.narrativeItem} delay={0.08}>
-          <span>Approach</span>
-          <p>{caseStudy.approach}</p>
+          <span className="koala-label">Approach</span>
+          <p className="koala-muted-copy">{caseStudy.approach}</p>
         </Reveal>
       </section>
 
       <section className={styles.lists} aria-label="Deliverables and outcomes">
         <Reveal className={styles.listGroup}>
-          <span>Deliverables</span>
+          <span className="koala-label">Deliverables</span>
           <ul>
             {caseStudy.deliverables.map((item) => (
               <li key={item}>{item}</li>
@@ -49,7 +49,7 @@ export function CaseStudyStory({ caseStudy }: CaseStudyStoryProps) {
           </ul>
         </Reveal>
         <Reveal className={styles.listGroup} delay={0.08}>
-          <span>Outcomes</span>
+          <span className="koala-label">Outcomes</span>
           <ul>
             {caseStudy.outcomes.map((item) => (
               <li key={item}>{item}</li>
@@ -61,8 +61,13 @@ export function CaseStudyStory({ caseStudy }: CaseStudyStoryProps) {
       {supportingMedia.length ? (
         <section className={styles.mediaGrid} aria-label={`${caseStudy.title} supporting media`}>
           {supportingMedia.map((media, index) => (
-            <Reveal className={styles.mediaFrame} key={media.src} delay={index * 0.04}>
+            <Reveal
+              className={`${styles.mediaFrame} koala-media-frame`}
+              key={media.src}
+              delay={index * 0.04}
+            >
               <Image
+                className="koala-media-image"
                 src={media.src}
                 alt={media.alt}
                 fill

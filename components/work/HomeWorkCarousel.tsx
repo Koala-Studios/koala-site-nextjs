@@ -74,8 +74,8 @@ export function HomeWorkCarousel({ caseStudies }: HomeWorkCarouselProps) {
 
             return (
               <div className={`swiper-slide ${styles.slide}`} key={caseStudy.slug}>
-                <Link className={styles.item} href={getCaseStudyPath(caseStudy.slug)}>
-                  <span className={styles.image}>
+                <Link className="koala-work-tile" href={getCaseStudyPath(caseStudy.slug)}>
+                  <span className="koala-work-tile__image">
                     {image ? (
                       <Image
                         src={image.src}
@@ -85,7 +85,7 @@ export function HomeWorkCarousel({ caseStudies }: HomeWorkCarouselProps) {
                       />
                     ) : null}
                   </span>
-                  <span className={styles.meta}>
+                  <span className="koala-work-tile__meta">
                     <strong>{caseStudy.title}</strong>
                     <span>{caseStudy.category}</span>
                   </span>

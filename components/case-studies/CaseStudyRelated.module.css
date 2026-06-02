@@ -13,52 +13,20 @@
 .copy {
   align-content: center;
   display: grid;
-  gap: 1.25rem;
+  gap: var(--koala-space-5);
   min-width: 0;
 }
 
-.copy p {
-  color: var(--koala-color-green);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-xs);
-  margin: 0;
-  text-transform: capitalize;
-}
-
 .copy h2 {
-  font-family: var(--koala-font-heading);
-  font-size: 5rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1;
-  margin: 0;
-  overflow-wrap: anywhere;
+  max-width: 12ch;
 }
 
 .imageWrap {
   aspect-ratio: 16 / 10;
-  background: var(--koala-color-surface-soft);
-  border-radius: var(--koala-radius-xs);
-  overflow: hidden;
-  position: relative;
-}
-
-.imageWrap img {
-  object-fit: cover;
 }
 
 @media (max-width: 900px) {
   .related {
     grid-template-columns: 1fr;
-  }
-
-  .copy h2 {
-    font-size: 3.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .copy h2 {
-    font-size: 2.65rem;
   }
 }
