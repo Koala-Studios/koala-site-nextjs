@@ -1,0 +1,89 @@
+.related {
+  border-top: 1px solid var(--koala-color-line);
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  margin-inline: auto;
+  max-width: var(--koala-container-wide);
+  overflow: hidden;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.copy {
+  align-content: center;
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.copy p {
+  color: var(--koala-color-green);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.copy h2 {
+  font-family: var(--koala-font-heading);
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.cta {
+  align-items: center;
+  border: 1px solid var(--koala-color-ink);
+  border-radius: 999px;
+  display: inline-flex;
+  font-family: var(--koala-font-support);
+  gap: 0.65rem;
+  justify-self: flex-start;
+  min-height: 3.25rem;
+  padding: 0.35rem 1.1rem 0.35rem 0.35rem;
+  text-decoration: none;
+}
+
+.ctaIcon {
+  align-items: center;
+  background: var(--koala-color-green);
+  border-radius: 999px;
+  color: var(--koala-color-surface);
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 2.45rem;
+  justify-content: center;
+  width: 2.45rem;
+}
+
+.imageWrap {
+  aspect-ratio: 16 / 10;
+  background: var(--koala-color-surface-soft);
+  border-radius: var(--koala-radius-xs);
+  overflow: hidden;
+  position: relative;
+}
+
+.imageWrap img {
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .related {
+    grid-template-columns: 1fr;
+  }
+
+  .copy h2 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .copy h2 {
+    font-size: 2.65rem;
+  }
+}

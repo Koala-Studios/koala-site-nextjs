@@ -1,0 +1,92 @@
+last_reviewed: "YYYY-MM-DD"
+
+# Keep only the profiles the target repo actually needs.
+profiles:
+  docs_workflow_only:
+    summary: "Only workflow docs, AGENTS guides, or .agent files changed."
+    required_commands:
+      - "<ENVIRONMENT_HEALTHCHECK_COMMAND_OR_REMOVE>"
+    required_manual_checks:
+      - "Confirm every referenced file path exists."
+      - "Confirm repo-wide and local AGENTS guides do not contradict the durable scope doc, execution ledger, or .agent registries."
+      - "Confirm source-of-truth roles stay distinct."
+
+  interface_or_service_changes:
+    summary: "Service endpoints, handlers, controllers, or interface-level behavior changed."
+    required_command_templates:
+      - "<FOCUSED_TEST_COMMAND_FOR_TOUCHED_SURFACE>"
+    required_commands:
+      - "<PRIMARY_TYPECHECK_OR_COMPILE_COMMAND>"
+      - "<PRIMARY_INTEGRATION_OR_SMOKE_COMMAND>"
+    recommended_closeout_commands:
+      - "<FULL_TEST_COMMAND>"
+      - "<FULL_LINT_COMMAND>"
+      - "<FULL_BUILD_COMMAND>"
+
+  data_model_or_repository_changes:
+    summary: "Data model, schema, repository, or persistence behavior changed."
+    required_command_templates:
+      - "<FOCUSED_TEST_COMMAND_FOR_DATA_CHANGE>"
+    required_commands:
+      - "<DATA_MIGRATION_OR_SYNC_COMMAND>"
+      - "<DATA_SEED_OR_FIXTURE_COMMAND>"
+      - "<PRIMARY_INTEGRATION_OR_SMOKE_COMMAND>"
+      - "<PRIMARY_TYPECHECK_OR_COMPILE_COMMAND>"
+    recommended_closeout_commands:
+      - "<FULL_TEST_COMMAND>"
+      - "<FULL_LINT_COMMAND>"
+      - "<FULL_BUILD_COMMAND>"
+
+  client_or_ui_changes:
+    summary: "Client routes, screens, pages, navigation, or client-side helpers changed."
+    required_commands:
+      - "<CLIENT_TYPECHECK_OR_COMPILE_COMMAND>"
+      - "<CLIENT_TEST_COMMAND>"
+    optional_commands:
+      - "<CLIENT_BUILD_COMMAND>"
+    required_manual_checks:
+      - "Confirm the changed client flow still matches the current service or data contract."
+
+  background_job_or_scheduler_changes:
+    summary: "Background jobs, queues, scheduled work, or automation delivery behavior changed."
+    required_commands:
+      - "<BACKGROUND_JOB_TEST_COMMAND>"
+      - "<BACKGROUND_JOB_SMOKE_COMMAND>"
+      - "<PRIMARY_TYPECHECK_OR_COMPILE_COMMAND>"
+    optional_commands:
+      - "<PRIMARY_INTEGRATION_OR_SMOKE_COMMAND>"
+    required_manual_checks:
+      - "Confirm queue names, schedule rules, and persisted job state stay consistent."
+
+  auth_or_access_control_changes:
+    summary: "Authentication, authorization, membership, or role-sensitive behavior changed."
+    required_commands:
+      - "<AUTH_OR_ACCESS_VERIFICATION_COMMAND>"
+      - "<PRIMARY_TYPECHECK_OR_COMPILE_COMMAND>"
+    required_manual_checks:
+      - "Confirm route, UI, and data access rules still match the touched surface."
+      - "Do not claim live sign-in or access smoke evidence unless it was actually run."
+
+  storage_or_file_handling_changes:
+    summary: "Uploads, downloads, file routing, storage keys, or retention behavior changed."
+    required_commands:
+      - "<STORAGE_SMOKE_OR_INTEGRATION_COMMAND>"
+      - "<PRIMARY_INTEGRATION_OR_SMOKE_COMMAND>"
+      - "<PRIMARY_TYPECHECK_OR_COMPILE_COMMAND>"
+    required_manual_checks:
+      - "Confirm keys, access scopes, and retention rules still match the intended behavior."
+
+  infra_or_setup_script_changes:
+    summary: "Environment bootstrap, doctor, smoke, setup, or local infrastructure scripts changed."
+    required_commands:
+      - "<ENVIRONMENT_HEALTHCHECK_COMMAND>"
+    required_manual_checks:
+      - "Run the changed script or its closest equivalent."
+      - "Confirm every documented command still exists in the target repo."
+
+  shared_contract_or_library_changes:
+    summary: "Shared contracts, public types, or common libraries changed."
+    required_commands:
+      - "<PRIMARY_TYPECHECK_OR_COMPILE_COMMAND>"
+    required_manual_checks:
+      - "Run focused downstream checks for every consumer touched by the shared change."

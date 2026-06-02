@@ -1,14 +1,41 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
-import { Inter } from "next/font/google";
-import Footer from "@/components/sections/Footer";
+import type { Metadata } from "next";
+import "swiper/css";
+import "swiper/css/navigation";
+
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SmoothScroll } from "@/components/site/SmoothScroll";
+import { siteSettings } from "@/lib/content";
+import { createPageMetadata } from "@/lib/metadata";
 
-const inter = Inter({ subsets: ["latin"] });
+export const metadata: Metadata = createPageMetadata({
+  title: siteSettings.defaultSeo.title,
+  description: siteSettings.defaultSeo.description,
+  path: siteSettings.defaultSeo.canonicalPath ?? "/",
+});
 
-export const metadata = {
-  title: "Koala Studios",
-  description: "We Build Koality ECommerce Websites",
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteSettings.name,
+  url: siteSettings.url,
+  email: siteSettings.contact.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: siteSettings.contact.city,
+    addressCountry: "CA",
+  },
+  sameAs: Object.values(siteSettings.social).filter(Boolean),
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteSettings.name,
+  url: siteSettings.url,
+  description: siteSettings.description,
 };
 
 export default function RootLayout({
@@ -18,10 +45,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <GoogleAnalytics />
-        <Navbar />
-        {children}
+        <SmoothScroll />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationJsonLd, websiteJsonLd]),
+          }}
+        />
+        <SiteHeader />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

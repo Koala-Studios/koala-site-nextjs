@@ -1,0 +1,172 @@
+:root {
+  --koala-color-bg: #f7f6f2;
+  --koala-color-surface: #ffffff;
+  --koala-color-surface-soft: #f7f6f2;
+  --koala-color-ink: #111312;
+  --koala-color-muted: #6e6b63;
+  --koala-color-line: #d9d2c7;
+  --koala-color-green: #3c7432;
+  --koala-color-green-dark: #14351c;
+  --koala-color-green-soft: #dfe9d9;
+  --koala-color-clay: #b98c67;
+  --koala-color-sky: #dfe6e3;
+  --koala-color-danger: #9f4635;
+
+  --koala-color-panel: var(--koala-color-green-dark);
+  --koala-color-panel-soft: #29462d;
+  --koala-color-ink-muted: var(--koala-color-muted);
+  --koala-color-accent: var(--koala-color-green);
+  --koala-color-accent-strong: var(--koala-color-green);
+  --koala-color-warm: var(--koala-color-bg);
+  --koala-color-highlight: var(--koala-color-green-soft);
+
+  --koala-font-body: "Relative Sans", "Poppins-Regular", "Avenir Next", "Segoe UI", sans-serif;
+  --koala-font-display: "Integral Regular", "Integral ExtraBold", "Arial Narrow", sans-serif;
+  --koala-font-heading: "Poppins-SemiBold", "Avenir Next", "Segoe UI", sans-serif;
+  --koala-font-support: "Relative Sans", "Poppins-SemiBold", "Avenir Next", "Segoe UI", sans-serif;
+
+  --koala-text-xs: 0.78rem;
+  --koala-text-sm: 0.92rem;
+  --koala-text-base: 1rem;
+  --koala-text-md: 1.18rem;
+  --koala-text-lg: 1.45rem;
+  --koala-text-xl: 2rem;
+  --koala-text-2xl: 3rem;
+  --koala-text-3xl: 5rem;
+
+  --koala-space-1: 0.25rem;
+  --koala-space-2: 0.5rem;
+  --koala-space-3: 0.75rem;
+  --koala-space-4: 1rem;
+  --koala-space-5: 1.25rem;
+  --koala-space-6: 1.5rem;
+  --koala-space-8: 2rem;
+  --koala-space-10: 2.5rem;
+  --koala-space-12: 3rem;
+  --koala-space-16: 4rem;
+  --koala-space-20: 5rem;
+  --koala-space-24: 6rem;
+
+  --koala-radius-xs: 0.5rem;
+  --koala-radius-sm: 0.5rem;
+  --koala-radius-md: 0.75rem;
+  --koala-radius-lg: 1rem;
+  --koala-radius-xl: 1.25rem;
+  --koala-radius-pill: 999px;
+
+  --koala-shadow-soft: none;
+  --koala-shadow-panel: none;
+  --koala-shadow-card: none;
+
+  --koala-container-max: 72rem;
+  --koala-container-wide: 92rem;
+  --koala-border-width: 1px;
+  --koala-focus-ring: 0 0 0 3px rgba(60, 116, 50, 0.25);
+
+  --koala-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --koala-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --koala-text-lg: 1.28rem;
+    --koala-text-xl: 1.72rem;
+    --koala-text-2xl: 2.15rem;
+    --koala-text-3xl: 3.1rem;
+  }
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Integral ExtraBold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/IntegralCF-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Integral Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/IntegralCF-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Relative Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Relative Sans"), local("Relative"), local("Relative Book Pro");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Poppins-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Poppins-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Poppins-SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Poppins-SemiBold.woff2") format("woff2");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  background: var(--koala-color-bg);
+  color: var(--koala-color-ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--koala-color-bg);
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-body);
+  font-size: var(--koala-text-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--koala-color-accent-strong);
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(60, 116, 50, 0.24);
+  color: var(--koala-color-ink);
+}

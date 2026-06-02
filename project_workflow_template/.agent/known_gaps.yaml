@@ -1,0 +1,26 @@
+last_reviewed: "YYYY-MM-DD"
+
+verification_gaps:
+  - id: "<VERIFICATION_GAP_ID>"
+    severity: "<low|medium|high>"
+    summary: "<Important claim that is still unverified>"
+    affected_paths:
+      - "<path/to/affected/file-or-directory>"
+
+active_follow_through:
+  - id: "<FOLLOW_THROUGH_ID>"
+    severity: "<low|medium|high>"
+    summary: "<High-risk or important follow-through that is not done yet>"
+    affected_paths:
+      - "<path/to/affected/file-or-directory>"
+
+structural_hotspots:
+  - id: "<HOTSPOT_ID>"
+    severity: "<low|medium|high>"
+    path: "<path/to/hotspot>"
+    summary: "<Why this file or module is risky>"
+
+workflow_notes:
+  - id: "<WORKFLOW_NOTE_ID>"
+    severity: "<low|medium|high>"
+    summary: "<Important workflow caveat, compatibility note, or warning>"

@@ -1,82 +1,135 @@
-import GradientHero from "@/components/sections/GradientHero";
-import ImageWithText from "@/components/sections/ImageWithText";
-import ScrollingText from "@/components/sections/ScrollingText";
-import VideoWithText from "@/components/sections/VideoWithText";
+import Image from "next/image";
 import Link from "next/link";
-import styles from "../../styles/Home.module.css";
-import Footer from "@/components/sections/Footer";
+import type { Metadata } from "next";
 
-export default function Page() {
+import { Reveal } from "@/components/animation/Reveal";
+import { ArrowIcon } from "@/components/site/ArrowIcon";
+import {
+  ServiceIcon,
+  type ServiceIconName,
+} from "@/components/site/ServiceIcon";
+import { servicesContent } from "@/content/pages/services";
+import { siteSettings } from "@/lib/content";
+import { createPageMetadata } from "@/lib/metadata";
+import { toAbsoluteUrl } from "@/lib/routes";
+
+import styles from "./services.module.css";
+
+export const metadata: Metadata = createPageMetadata({
+  title: servicesContent.seo.title,
+  description: servicesContent.seo.description,
+  path: servicesContent.seo.canonicalPath ?? "/services",
+});
+
+const disciplines: { label: string; icon: ServiceIconName }[] = [
+  { label: "Strategy", icon: "strategy" },
+  { label: "Design", icon: "design" },
+  { label: "Development", icon: "development" },
+  { label: "Growth", icon: "growth" },
+];
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Ecommerce design and Shopify development",
+  description: servicesContent.seo.description,
+  url: toAbsoluteUrl("/services"),
+  provider: {
+    "@type": "Organization",
+    name: siteSettings.name,
+    url: toAbsoluteUrl("/"),
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Canada",
+  },
+  serviceType: servicesContent.offerings.map((offering) => offering.title),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Koala Studios services",
+    itemListElement: servicesContent.offerings.map((offering) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: offering.title,
+        description: offering.copy,
+      },
+    })),
+  },
+};
+
+export default function ServicesPage() {
   return (
-    <>
-      <div>
-        <GradientHero
-          gradient="linear-gradient(45deg, #2e2b38, #5c3b3b, #2d5448)"
-          title="Our Services"
-          bg_color="#0d0d0d"
-          height="400px"
-        />
-        <ScrollingText
-          TextArray={[
-            "Shopify Ecommerce",
-            "UI/UX Design",
-            "Web Development",
-            "Consulting",
-            "3D Renders",
-            "Graphic Design",
-          ]}
-        />
-        <VideoWithText
-          video_placement="right"
-          src="/videos/3dbag_in2.mp4"
-          title=""
-          videoStyles={{ borderRadius: "1.5rem", border: "2px solid #282420" }}
-          loop={false}
-        >
-          <section
-            style={{
-              width: "100%!important",
-              display: "flex",
-              alignItems: "center",
-            }}
+    <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
+      <section className={styles.hero} aria-labelledby="services-title">
+        <Reveal className={styles.heroCopy}>
+          <h1 id="services-title">Services</h1>
+        </Reveal>
+      </section>
+      <section
+        className={styles.mediaPanel}
+        aria-label="Koala Studios service approach"
+      >
+        <Reveal className={styles.imageWrap}>
+          <Image
+            className={styles.image}
+            src="/images/redesign/services/koala-services-desk-1600.webp"
+            alt="Koala Studios service desk with ecommerce design and development screens"
+            width={1600}
+            height={900}
+            sizes="(max-width: 900px) 100vw, 62vw"
+            fetchPriority="high"
+            priority
+            unoptimized
+          />
+          <Link className={styles.mediaCta} href="/contact">
+            <span aria-hidden="true">
+              <ArrowIcon />
+            </span>
+            Start a project
+          </Link>
+        </Reveal>
+      </section>
+
+      <section className={styles.summary} aria-label="Service summary">
+        <Reveal>
+          <h2>{servicesContent.hero.headline}</h2>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p>{servicesContent.hero.summary}</p>
+        </Reveal>
+      </section>
+
+      <section className={styles.offerings} aria-label="Service offerings">
+        {servicesContent.offerings.map((offering, index) => (
+          <Reveal
+            className={styles.offering}
+            key={offering.title}
+            delay={index * 0.04}
           >
-            <img src="/images/shopify_bag.svg" height="50" />
-            <h2 style={{ margin: 0, marginLeft: 25 }}>Shopify Experts</h2>
-          </section>
-          <p>
-            As Shopify experts with professional experience, we create
-            high-quality Shopify experiences that drive results. Our team
-            specializes in designing and developing stunning, user-friendly
-            online stores that engage customers and drive sales. We work closely
-            with our clients to understand their unique needs and goals.
-            <br />
-            <br /> Whether you&apos;re launching a new online store or
-            optimizing an existing one, our Shopify experts have the skills and
-            experience to help you succeed.
-          </p>
-        </VideoWithText>
-        <ImageWithText
-          image_placement="left"
-          src="/images/retro_computer.jpg"
-          alt="TODO"
-          title=""
-          imgStyles={{ borderRadius: "1.5rem" }}
-        >
-          <section className={styles.services_section}>
-            <h3 style={{ color: "#b3e2f1" }}>🖥️ Web Development</h3>
-            <p>Building websites that convert visitors into customers.</p>
-            <h3 style={{ color: "#f3c5bc" }}>🎨 UI/UX Design</h3>
-            <p>
-              Innovative design that captures attention and inspires action.
-            </p>
-            <h3 style={{ color: "#d3d3d3" }}>🗿 3D Renders</h3>
-            <p>Enhance your brand&apos;s identity and message.</p>
-            <h3 style={{ color: "#f3c797" }}>📋 Consulting</h3>
-            <p>The help you need, when you need it.</p>
-          </section>
-        </ImageWithText>
-      </div>
-      <Footer />
-    </>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h2>{offering.title}</h2>
+            <p>{offering.copy}</p>
+          </Reveal>
+        ))}
+      </section>
+
+      <section className={styles.cta} aria-labelledby="services-cta-title">
+        <Reveal>
+          <p>{servicesContent.cta.eyebrow}</p>
+          <h2 id="services-cta-title">{servicesContent.cta.title}</h2>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <Link className={styles.secondaryCta} href="/contact">
+            Contact Koala
+            <ArrowIcon />
+          </Link>
+        </Reveal>
+      </section>
+    </div>
   );
 }

@@ -1,0 +1,50 @@
+last_reviewed: "YYYY-MM-DD"
+
+# Replace, rename, add, or remove modules so this file matches the actual repo.
+modules:
+  repo_workflow:
+    owner_areas:
+      - "<repo-root-or-docs-owner>"
+    primary_paths:
+      - AGENTS.md
+      - .agent
+      - "<DURABLE_SCOPE_DOC>"
+      - "<EXECUTION_LEDGER_DOC>"
+      - "<OPERATOR_GUIDE_DOC>"
+    status: active
+    authoritative_files:
+      - AGENTS.md
+      - .agent/project_state.yaml
+      - .agent/module_registry.yaml
+      - .agent/verification_registry.yaml
+      - .agent/known_gaps.yaml
+      - "<DURABLE_SCOPE_DOC>"
+      - "<EXECUTION_LEDGER_DOC>"
+    verification_profiles:
+      - docs_workflow_only
+
+  "<MODULE_ID_ONE>":
+    owner_areas:
+      - "<owner-area-one>"
+    primary_paths:
+      - "<path/one>"
+      - "<path/two>"
+    status: "<active|hotspot|shared_foundation|planned>"
+    authoritative_files:
+      - "<authoritative-file-one>"
+      - "<authoritative-file-two>"
+    verification_profiles:
+      - "<verification-profile-one>"
+
+  "<MODULE_ID_TWO>":
+    owner_areas:
+      - "<owner-area-two>"
+    primary_paths:
+      - "<path/three>"
+      - "<path/four>"
+    status: "<active|hotspot|shared_foundation|planned>"
+    authoritative_files:
+      - "<authoritative-file-three>"
+      - "<authoritative-file-four>"
+    verification_profiles:
+      - "<verification-profile-two>"

@@ -1,29 +1,50 @@
-import Footer from "@/components/sections/Footer";
-import styles from "../../../styles/ContactPage.module.css";
+import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/Button";
+import type { Metadata } from "next";
 
-export default function Page() {
+import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { createNoIndexMetadata, createPageMetadata } from "@/lib/metadata";
+
+import styles from "../contact.module.css";
+
+export const metadata: Metadata = createNoIndexMetadata(
+  createPageMetadata({
+    title: "Message Sent",
+    description: "Confirmation page for Koala Studios contact form submissions.",
+    path: "/contact/success",
+  })
+);
+
+export default function ContactSuccessPage() {
   return (
-    <>
-      <div
-        style={{ justifyContent: "center" }}
-        className={styles.form_container}
-      >
-        <div className={styles.contact_title}>
-          <h1>Thank You for your Message!</h1>
-          <p>
-            We will get back to you within 48 hours to discuss your business
-            needs.
-          </p>
-          <Link style={{ display: "flex", justifyContent: "center" }} href="/">
-            <Button type="primary light" classes={styles.contact_btn}>
-              Back to Site
-            </Button>
+    <div className={styles.page}>
+      <section className={styles.hero} aria-labelledby="success-title">
+        <div className={styles.heroCopy}>
+          <p>Message sent</p>
+          <h1 id="success-title">Thank you</h1>
+          <Link className={styles.contactAction} href="/">
+            <span className={styles.contactIcon} aria-hidden="true">
+              <ArrowIcon />
+            </span>
+            <span className={styles.contactText}>
+              <strong>Back home</strong>
+            </span>
           </Link>
         </div>
-      </div>
-      <Footer hideContactUs />
-    </>
+        <div className={styles.heroImageWrap} aria-hidden="true">
+          <Image
+            className={styles.heroImage}
+            src="/images/redesign/contact/koala-contact-paper-plane-v4-1500.webp"
+            alt=""
+            width={1500}
+            height={938}
+            sizes="(max-width: 900px) 100vw, 58vw"
+            fetchPriority="high"
+            priority
+            unoptimized
+          />
+        </div>
+      </section>
+    </div>
   );
 }

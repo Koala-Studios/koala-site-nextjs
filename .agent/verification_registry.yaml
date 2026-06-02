@@ -1,0 +1,68 @@
+last_reviewed: "2026-05-28"
+
+profiles:
+  docs_workflow_only:
+    summary: "Only workflow docs, AGENTS guides, or .agent files changed."
+    required_commands:
+      - "git status --short --branch"
+    required_manual_checks:
+      - "Confirm every referenced file path exists."
+      - "Confirm root and local AGENTS guides do not contradict docs/project-scope.md, docs/execution-ledger.md, or .agent registries."
+      - "Confirm known build blockers are recorded rather than hidden."
+
+  client_or_ui_changes:
+    summary: "Routes, components, layouts, CSS, forms, navigation, or visual UI changed."
+    required_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run build"
+    optional_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run lint"
+    required_manual_checks:
+      - "Inspect affected pages in desktop and mobile viewports after build succeeds."
+      - "Confirm linked routes and imported components exist."
+      - "For contact UI, confirm Netlify form fields, action, and spam trap are preserved or intentionally replaced."
+
+  route_or_metadata_changes:
+    summary: "App routes, route constants, sitemap, robots, canonical URLs, Open Graph, or metadata changed."
+    required_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run build"
+    required_manual_checks:
+      - "Compare app route files with lib/routes.ts."
+      - "Compare navigation content with actual routes."
+      - "Check app/robots.ts and app/sitemap.ts for stale public or retired routes."
+
+  content_or_copy_changes:
+    summary: "Marketing copy, navigation, site settings, services, or case-study content changed."
+    required_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run build"
+    required_manual_checks:
+      - "Confirm changed media paths exist under public/."
+      - "Confirm each public route referenced by content exists or is documented as a known gap."
+      - "Confirm case-study content has SEO description, canonical path, image alt text, and status."
+
+  analytics_or_form_changes:
+    summary: "Contact form, analytics config, Google Analytics, Plausible, or event helpers changed."
+    required_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run build"
+    required_manual_checks:
+      - "Confirm helper exports match every import with rg."
+      - "Confirm browser-only analytics code stays in client components or browser-safe helpers."
+      - "Confirm contact form submission action and hidden form-name remain valid."
+
+  asset_or_media_changes:
+    summary: "Images, videos, fonts, public files, or case-study media references changed."
+    required_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run build"
+    required_manual_checks:
+      - "Confirm every referenced asset path exists with exact casing."
+      - "Confirm large media additions are intentional and belong under public/."
+      - "Confirm images used in content include useful alt text."
+
+  dependency_or_config_changes:
+    summary: "package.json, package-lock.json, tsconfig, Next config, ESLint config, or environment setup changed."
+    required_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run build"
+    optional_commands:
+      - "& 'C:\\Program Files\\nodejs\\npm.cmd' run lint"
+    required_manual_checks:
+      - "Confirm scripts documented in docs/operator-guide.md still exist."
+      - "Confirm config changes do not hide current TypeScript, route, or module errors."

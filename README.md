@@ -1,26 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Koala Site Next.js
+
+Koala Studios marketing site built with Next.js 13, React, TypeScript, and static public assets. The repo is currently preparing for a complete redesign, so workers should start with the project workflow files before changing product code.
+
+## Worker Start
+
+1. Read `AGENTS.md`.
+2. Read `.agent/project_state.yaml` and `.agent/current_slice.md`.
+3. Read the closest local `AGENTS.md` for the area you will touch.
+4. Use `docs/project-scope.md` for durable scope, `docs/execution-ledger.md` for current state, and `docs/operator-guide.md` for local commands.
+
+## Current Architecture
+
+- `app/` contains Next.js app-router routes.
+- `components/` contains reusable and legacy UI components.
+- `lib/content/` contains the typed marketing content model and current canonical content.
+- `content/` contains convenience re-exports for content slices.
+- `lib/` contains route, SEO, metadata, site config, analytics, and content helpers.
+- `styles/` contains legacy global/CSS module styles plus redesign tokens under `styles/site/tokens.css`.
+- `public/` contains images, videos, fonts, Decap CMS admin files, and other static assets.
 
 ## Getting Started
 
-First, run the development server:
+In this Windows workspace, use the installed npm command directly:
+
+```powershell
+& 'C:\Program Files\nodejs\npm.cmd' run dev
+& 'C:\Program Files\nodejs\npm.cmd' run build
+& 'C:\Program Files\nodejs\npm.cmd' run lint
+```
+
+If `npm` is available on your PATH, the normal scripts are:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm run build
+npm run lint
+npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Current Build Note
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+`next build` currently completes successfully. The build still reports existing lint warnings in legacy project pages and shared components; see `.agent/known_gaps.yaml` and `docs/execution-ledger.md`.
 
-## Learn More
+## Verification Discipline
 
-To learn more about Next.js, take a look at the following resources:
+Use `.agent/verification_registry.yaml` to choose checks by change type. Do not mark a route, component, content migration, or workflow change complete without recording verification evidence or a specific blocker in `docs/execution-ledger.md`.
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.

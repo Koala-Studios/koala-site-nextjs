@@ -1,0 +1,546 @@
+# Current Slice
+
+## Fast Start
+
+1. `AGENTS.md`
+2. `.agent/project_state.yaml`
+3. `.agent/known_gaps.yaml`
+4. closest local `AGENTS.md`
+5. `docs/project-scope.md`
+6. `docs/execution-ledger.md`
+
+## Current Lane
+
+- Phase: Website redesign implementation.
+- Current slice completed: framework modernization, dependency audit cleanup, retired route module removal, legacy component/style/app-assets pruning, and the latest remaining route visual cleanup after the case-study visual pass and legacy lint/Three.js cleanup.
+- Implemented in this slice:
+  - Flattened the active marketing routes so the core pages no longer rely on gradient/shadow-heavy frames.
+  - Reworked `/` with shorter copy, an image-led first viewport, explicit CTAs, and a Swiper selected-work carousel.
+  - Reworked `/work`, `/services`, `/about`, `/contact`, and `/contact/success` toward the simpler editorial reference direction.
+  - Added generated assets under `public/images/redesign/`.
+  - Added Lenis smooth scrolling, GSAP/ScrollTrigger reveal motion, and Swiper.
+  - Preserved the existing route alignment, sitemap, robots, redirects, and Netlify contact form semantics.
+  - Reworked `/work/[slug]` case-study detail components to remove elevated cards and inline primitive layouts.
+  - Verified `/work/ara` and `/work/nektr` detail pages in desktop/mobile Chrome screenshots.
+  - Removed the unused Three.js dependency chain after replacing the legacy `ProjectItem` 3D component with an inert compatibility component.
+  - Cleaned legacy lint warnings so lint now reports zero warnings.
+  - Upgraded the verified stack to Next 16.2.6, React 19.2.6, React DOM 19.2.6, TypeScript 6.0.3, ESLint 9.39.4, and eslint-config-next 16.2.6.
+  - Replaced `next lint` with `eslint .` and added a flat `eslint.config.mjs`.
+  - Added `engines.node >=20.9.0` and moved compiler/lint/type packages into `devDependencies`.
+  - Added a narrow `next -> postcss@8.5.15` npm override after `npm audit fix` so `npm audit` reports zero vulnerabilities.
+  - Removed obsolete `app/projects/*`, `app/blogs/page.tsx`, and `pages/home/index.tsx`; redirects remain in `next.config.js`.
+  - Migrated `/work/[slug]` to async dynamic route params required by modern Next.
+  - Ran a fresh Chrome visual QA pass and restored the green home hero emphasis, service line icons, and tighter mobile work filters.
+  - Ran Lighthouse mobile and desktop audits for `/`, `/work`, `/services`, and `/contact`; all audited routes now score at least 91 performance and 100 accessibility/best-practices/SEO.
+  - Added responsive image `sizes` and priority hints for above-the-fold/LCP images.
+  - Removed unreferenced legacy home/blog/project/section component islands, old CSS modules under `styles/`, stale `app/assets` JSON, and the last leftover `app/projects` light CSS file after `rg` import verification.
+  - Generated and wired a larger contact paper-plane asset, tightened home/contact first-view rhythm, simplified visible section copy, and removed unused card/primitives work components.
+  - Replaced the Work grid CTA card with a line-based CTA below the grid.
+  - Replaced the About two-image media band with a stable responsive image split and verified it renders in Chrome.
+  - Tightened About and Services mobile text measures and verified true 390px mobile layouts through Chrome DevTools Protocol.
+  - Clipped the homepage Swiper so offscreen slides no longer expand document width.
+  - Removed the copy-heavy homepage pricing/package section to keep the homepage closer to the simple reference direction.
+  - Hid closed mobile navigation with visibility rules and verified closed-menu mobile Chrome diagnostics expose no visible nav links.
+  - Renamed active work item wrappers away from `card` class semantics after removing card-heavy framing.
+  - Removed duplicate route and homepage section eyebrows so pages no longer render repeated labels like `SERVICES Services`, `ABOUT About`, `CONTACT Contact`, or `SELECTED WORK Selected work.`.
+  - Simplified `/work` by removing the separate published-count block from the hero.
+  - Simplified `/contact` details to Location and Response, removed the extra form intro/note, and verified the shorter contact page on desktop/mobile Chrome.
+  - Pruned stale duplicate contact content helpers after confirming no active route or component consumed them.
+  - Fixed footer and case-study arrow/copyright mojibake in source with HTML entities, then verified the footer through a scrolled Chrome DevTools screenshot.
+  - Rechecked true 390px mobile layouts through Chrome DevTools Protocol; all active routes reported matching `innerWidth`, `scrollWidth`, and `bodyScrollWidth` with no closed-menu nav links exposed.
+  - Captured fresh Conceptzilla reference screenshots and current case-study screenshots, then made case-study back links explicit with `Back to work`.
+  - Added page-specific `Service` JSON-LD to `/services` and `ContactPage` JSON-LD to `/contact`, verified in generated HTML.
+  - Generated two About-specific raster assets with the built-in image generation path and saved them under `public/images/redesign/about/`.
+  - Replaced the reused services desk image on `/about` with a responsive studio/workshop image pair, verified in desktop Chrome and true 390px Chrome DevTools mobile emulation.
+  - Standardized the `/contact` and `/contact/success` CTAs on a reference-style outlined contact card with explicit labels and a green circular arrow, then verified desktop Chrome and true 390px Chrome DevTools mobile output.
+  - Fixed the shared mobile header grid so the logo and menu control stay on the same top row, reducing the closed 390px header from 151px to 79px and preserving a working opened menu.
+  - Tightened the `/work` mobile category filters into a single compact row; Chrome DevTools verified all five filters visible at 390px with no horizontal document overflow.
+  - Tightened `/services` first-screen rhythm by reducing hero/discipline/image spacing so the generated service image appears sooner on desktop and mobile without changing route content or SEO data.
+  - Simplified the homepage hero by removing the extra route-local intro sentence and giving the generated device image more first-screen presence on desktop/mobile.
+  - Polished the homepage selected-work carousel heading on mobile so the `See all cases` link no longer stretches into a full-width divider while preserving Swiper behavior.
+  - Verified the homepage Swiper controls in Chrome DevTools and added homepage section scroll margins so selected-work anchors/programmatic scrolling clear the sticky header.
+  - Made the shared sticky header background opaque so scrolled content no longer ghosts behind the mobile logo/menu while preserving the flat no-shadow shell.
+  - Matched the inner route title treatment more closely to the reference by rendering `/work`, `/services`, `/about`, and `/contact` hero titles in uppercase, then reduced the contact title scale so it does not crowd the paper-plane visual.
+  - Raised the shared header collapse breakpoint to 900px and made the menu control mobile-first visible, then verified true 390px closed/open menu states through Chrome DevTools Protocol.
+  - Changed the homepage hero CTA to `View work` linking to `/work`, aligning the first-viewport CTA with the work-focused reference and avoiding duplicate contact prompts between the header and hero.
+  - Generated a flatter contact paper-plane asset with the built-in image generation path, saved it under `public/images/redesign/contact/`, and replaced the duplicated contact CSS-background image with a single optimized `next/image` render path.
+  - Added Elikai as a sixth published case study so `/work` resolves to a balanced six-card reference-style grid, then routed `/projects/elikai` to `/work/elikai`.
+  - Tightened first-viewport reference rhythm by keeping the homepage `THAT MOVE.` phrase on one line, reducing inner route title scale, and bringing Work filters, Services icons/media, About media, and Contact hero content higher in the viewport.
+  - Added the desktop-only rounded browser-frame shell around the public header, main, and footer to better match the supplied reference while leaving mobile full width.
+  - Reduced visible copy density by shortening the homepage contact band, the repeated footer statement, and the Services closing CTA while preserving explicit named CTAs and SEO/form semantics.
+  - Moved Work and homepage carousel case-study labels onto the image tiles, made carousel controls visibly named, and reshaped the desktop homepage hero image frame with a large rounded left edge.
+  - Replaced the oversized Work page closing headline with a compact named `Start a project` CTA and green circular arrow, closer to the supplied Work reference.
+  - Refocused the Contact first viewport around the title, named `Contact Koala` CTA, and generated paper-plane visual; moved email into the details band and pushed details/form below the fold on desktop and true 390px mobile.
+  - Tightened the homepage first viewport so the desktop hero headline and generated device visual sit much closer to the header and reference composition while preserving the verified 390px mobile layout.
+  - Simplified the Services first viewport by removing the top hero CTA and long statement, making the generated services image the primary panel, and moving the service summary below the image-led first screen.
+  - Simplified the About first viewport by removing the duplicated hero CTA and oversized secondary headline, moving the generated studio/workshop image pair higher, and anchoring one named `Start a project` CTA to the imagery.
+  - Generated and wired a new homepage hero asset at `public/images/redesign/home/koala-home-hero-devices-v2.png`, made the homepage visual more dominant, and changed the homepage hero CTA to a reference-style green circular arrow plus explicit `View work` label.
+  - Tightened `/contact` so details/form stay below the first viewport on desktop and true 390px mobile, moved the mobile paper-plane visual closer to the CTA, renamed the shared contact CTA class away from card semantics, and simplified `/contact/success` to one clear `Back home` action label.
+  - Reworked the shared header action away from a heavy black pill into a transparent named `Start a project` action with a green circular arrow, and changed the mobile menu button to the same green circular control language.
+  - Tightened the `/work` index title/filter/grid rhythm so the desktop six-card grid starts higher and reads closer to the supplied 2x3 Work reference while preserving the mobile single-row filters.
+  - Added reference-style slide dots to the homepage hero image frame and removed the shared sticky header divider so the first viewport panels feel flatter and closer to the supplied reference.
+  - Converted the generated Services and Contact route PNG visuals into compressed project-bound WebP assets and served them directly so true 390px Chrome mobile no longer shows blank generated media panels.
+  - Added a reference-style decorative paper-plane and curved-line accent to the desktop `/about` first viewport while keeping true 390px mobile uncluttered.
+  - Reworked the `/contact` paper-plane scene into an open unframed first-viewport visual, normalized the generated WebP background to the site surface color, and rewired `/contact`, `/contact/success`, and the homepage contact band to the v4 asset.
+  - Strengthened large route, homepage, and case-study headings with a local semibold heading token, then adjusted homepage and case-study title scale after Chrome caught desktop overlap/wrapping.
+  - Added a desktop sticky-header frame mask so scrolled content no longer paints through the top browser-frame gap above the header.
+  - Tightened repeated Work grid and homepage carousel image corners to the shared 8px radius token so project tiles read less like oversized rounded cards.
+  - Replaced the Stlth work tile with the existing dark product asset, then fixed the homepage selected-work Swiper controls with an explicit hydrated Swiper instance and stable slide widths.
+  - Tightened the `/contact` tablet/mobile hero by removing the forced viewport-height minimum and reducing mobile hero spacing so the `Contact Koala` CTA, paper-plane visual, and details band sit together without a large blank gap.
+  - Reworked the homepage contact band so the paper-plane visual renders on the right instead of a mostly blank left crop, replaced the last black homepage CTA pill with an outlined green-circle action, and made the small contact WebP eager for the section.
+  - Tightened `/about` copy to match the reference tone by using the clarity/craft/momentum headline and replacing internal value-strip labels with concise client-facing terms.
+  - Reduced `/services` visible copy density by shortening the headline, summary, offering labels, offering descriptions, and closing CTA title while keeping service schema and route structure intact.
+  - Reduced `/work/[slug]` detail-page copy density, compacted mobile case-study facts/metrics, tightened case-study image corners, and moved related-work CTAs into the shared green-circle action language.
+  - Ran a final requirement-by-requirement Chrome audit, fixed remaining mobile/tablet touch-target and contact form labeling issues, and verified the explicit user complaints against current route evidence.
+  - Removed the global desktop browser-frame shell, frame-gap header mask, and frame radius token after the frame was rejected visually.
+  - Replaced active raw arrow entities with a shared SVG icon matching the header CTA path.
+- Likely touch paths for the next redesign worker:
+  - `app`
+  - `components/site`
+  - `components/work`
+  - `components/case-studies`
+  - `components/contact`
+  - `styles`
+  - `lib/content`
+  - `docs`
+
+## Current Verification State
+
+- Latest commands run:
+  - `& 'C:\Program Files\nodejs\npm.cmd' run build`
+  - `& 'C:\Program Files\nodejs\npm.cmd' run lint`
+  - `rg -n "<arrow glyph/entity scan>" app components content lib styles .agent docs`
+  - `curl.exe -I --max-time 5 http://localhost:3000/`
+  - `curl.exe -I --max-time 5 http://localhost:3000/work`
+  - `curl.exe -I --max-time 5 http://localhost:3000/contact`
+  - `& 'C:\Program Files\nodejs\npm.cmd' audit --json`
+  - `& 'C:\Program Files\nodejs\npm.cmd' run typecheck`
+  - `& 'C:\Program Files\nodejs\npm.cmd' run lint`
+  - `& 'C:\Program Files\nodejs\npm.cmd' run build`
+  - `& 'C:\Program Files\nodejs\npm.cmd' exec --yes lighthouse -- <route> --only-categories=performance,accessibility,best-practices,seo ...`
+  - Production smoke checks against `next start` on temporary ports.
+- Result: audit reports 0 vulnerabilities; typecheck passes; lint completes with no warnings; build completes successfully on Next 16.2.6/Turbopack; Lighthouse top-level route scores are 91+ performance and 100 accessibility/best-practices/SEO; latest active routes return HTTP 200 and retired routes return HTTP 308.
+- Latest site-frame removal evidence: active code has no `.site-frame`, `--koala-frame-gap`, or `--koala-radius-frame` references; build and lint pass; existing local port 3000 returned HTTP 200 for `/`, `/work`, and `/contact`; the in-app browser bridge still fails with the recorded Windows sandbox startup error.
+- Latest CTA arrow evidence: active CTAs use `components/site/ArrowIcon.tsx`; lint and build pass; source scan found no remaining raw arrow glyphs or arrow HTML entities in searched active paths.
+- Browser note: the in-app browser bridge failed with a Windows sandbox startup error, so visual smoke used Chrome DevTools Protocol screenshots. Hydrated Next dev QA should use `http://localhost:3029`; `http://127.0.0.1:3029` can block dev client hydration.
+- Latest slice evidence: lint, typecheck, and production build pass; fresh dev preview route smoke on port 3029 returned HTTP 200 for active routes and HTTP 308 for retired routes; sitemap includes six case-study entries including `/work/elikai`; scans found no mojibake/raw-arrow glyphs, active gradients, or decorative shadow matches.
+- Latest final audit evidence: `C:\tmp\koala-pass53-final-audit.json` checked 48 route/viewport combinations across wide, desktop, tablet, and true 390px mobile with no overflow, no computed gradient/shadow effects, no blank visible images, no unlabeled visible controls, no undersized mobile/tablet touch targets, and exactly one visible h1 per checked page.
+- Latest interaction evidence: Chrome DevTools Protocol verified homepage Swiper controls move Ara to Magnum on desktop/mobile, the mobile menu opens with `Open navigation` / `Close navigation` labels and correct `aria-expanded`, the Work Development filter reduces the visible case list from six to five and sets `aria-pressed`, and the contact form preserves Netlify fields/action/honeypot.
+- Latest case-study copy/mobile rhythm evidence: Chrome DevTools Protocol baseline JSON `C:\tmp\koala-pass52-route-audit.json`; after JSON `C:\tmp\koala-pass52-case-polish-after.json` and `C:\tmp\koala-pass52-case-labels-after.json`; checked detail routes reported `overflowX: 0`, no gradients/shadows, no blank visible images, and desktop total visible copy reductions from `151-168` words down to `123-134` words.
+- Latest Homepage first-viewport evidence: Chrome DevTools Protocol reported desktop `h1Rect.top` moved from `289.25` to `140.375`, desktop hero image top moved from `258.93` to `134.04`, and desktop plus true 390px mobile `overflowX: 0`.
+- Latest Homepage imagegen hero evidence: built-in imagegen output was copied into `public/images/redesign/home/koala-home-hero-devices-v2.png`; Chrome DevTools Protocol reported desktop and true 390px mobile `overflowX: 0`, desktop home image dimensions about `843x629`, mobile home image dimensions about `372x279`, and hero CTA text `View work` with a visible green circular arrow.
+- Latest Services image-led first-viewport evidence: Chrome DevTools Protocol reported desktop image top moved from `565.98` to `395.09`, mobile image top moved from `639.11` to `425.11`, desktop first-viewport CTA visible, old hero statement absent from first-viewport text, and desktop plus true 390px mobile `overflowX: 0`.
+- Latest About image-pair reference evidence: Chrome DevTools Protocol reported desktop image-pair top moved from `400.375` to `302.578`, mobile image-pair top moved from `401.328` to `293.937`, first-viewport text no longer includes `Small team. Clear work.`, and desktop plus true 390px mobile `overflowX: 0`.
+- Latest Work CTA evidence: Chrome DevTools Protocol reported `overflowX: 0` on desktop and true 390px mobile Work, `hasOldCtaCopy: false`, footer CTA text `Start a project`, and compact footer CTA height `65`.
+- Latest Contact first-viewport evidence: Chrome DevTools Protocol reported `overflowX: 0`, `firstViewportHasDetails: false`, `firstViewportHasVisibleFormSection: false`, and `emailVisibleInDetails: true` on desktop and true 390px mobile Contact.
+- Latest Contact alignment evidence: Chrome DevTools Protocol reported `/contact` desktop and true 390px mobile `overflowX: 0`, `detailsVisibleInFirstViewport: false`, `formVisibleInFirstViewport: false`, mobile contact image top moved from `462.578` to `349.281`, and `/contact/success` true 390px mobile action text `Back home` with `hasContactCardClass: false`.
+- Latest Header green-control evidence: Chrome DevTools Protocol reported checked desktop/mobile routes with `overflowX: 0`, header CTA text `Start a project`, transparent header CTA background, green CTA icon background `rgb(60, 116, 50)`, green menu background `rgb(60, 116, 50)`, and decoded route images on checked mobile pages.
+- Latest Work index rhythm evidence: Chrome DevTools Protocol reported `/work` desktop first card top moved from `321.359` to `276.344`, last card bottom moved from `936.281` to `892.953`, all six desktop cards visible in the first viewport, true 390px mobile `filterRows: 1`, all filters visible, and `overflowX: 0`.
+- Latest Homepage dots/header divider evidence: Chrome DevTools Protocol reported homepage desktop and true 390px mobile `overflowX: 0`, `headerWrapBorderBottom: 0px`, `heroDots: 4`, Work desktop `overflowX: 0`, and true 390px mobile closed navigation with no exposed links.
+- Latest generated media delivery evidence: Chrome DevTools Protocol reported `/services`, `/contact`, and `/contact/success` true 390px mobile `overflowX: 0` with direct WebP generated media URLs, `complete: true`, and natural image widths populated; the new WebP assets are `74,022` bytes and `14,612` bytes.
+- Latest About flight-accent evidence: Chrome DevTools Protocol reported `/about` desktop `overflowX: 0`, `accentVisible: true`, first content image complete, and no pending images; true 390px mobile reported `overflowX: 0`, `accentVisible: false`, first content image complete, and no pending images.
+- Latest Contact open visual evidence: Chrome DevTools Protocol reported `/contact` desktop and true 390px mobile `overflowX: 0`, v4 contact image complete with natural width `1500`, details/form below the first viewport, and `/contact/success` desktop `overflowX: 0` with the same v4 asset complete.
+- Latest Heading weight evidence: Chrome DevTools Protocol reported checked desktop/mobile route `h1` elements using `Poppins-SemiBold` at font weight `600` with `overflowX: 0`; desktop homepage reported `h1Rect.right: 542` and first image `left: 548`; `/work/magnum` desktop reported the `Magnum` title on one line at `96px` with `overflowX: 0`.
+- Latest Sticky header frame mask evidence: Chrome DevTools Protocol reported checked desktop/mobile route `overflowX: 0`; desktop homepage still reported `h1Rect.right: 542` and first image `left: 548`; screenshot review confirmed the selected-work scroll position no longer shows service-strip content in the desktop top frame gap.
+- Latest Work tile radius evidence: Chrome DevTools Protocol reported `/work` desktop/mobile and homepage carousel desktop/mobile `overflowX: 0`, first visible project image `borderRadius: 8px`, and all six desktop Work images still visible in the first viewport.
+- Latest Stlth tile and carousel evidence: Chrome DevTools Protocol at `http://localhost:3029` reported React hydration attached, Swiper initialized, homepage carousel Next controls advancing Stlth into view on desktop/mobile, Stlth image complete with `stlth_bg.jpg`, `/work` cardCount: 6, and `overflowX: 0`.
+- Latest Contact mobile compactness evidence: Chrome DevTools Protocol at `http://localhost:3029/contact` reported desktop and true 390px mobile `overflowX: 0`, the v4 contact WebP complete with natural width `1500`, true 390px mobile hero height `487`, image top `309.875`, details top `598.375`, form top `984.375`, no pending images, and the contact form still below the first mobile viewport.
+- Latest Homepage contact band evidence: Chrome DevTools Protocol at `http://localhost:3029` reported the homepage contact section desktop and true 390px mobile `overflowX: 0`, contact image complete with natural width `1500`, CTA text `Start your project`, outlined CTA border `1px rgb(17, 19, 18)`, CTA background `rgb(247, 246, 242)`, and green icon background `rgb(60, 116, 50)`.
+- Latest About copy evidence: Chrome DevTools Protocol at `http://localhost:3029/about` reported desktop and true 390px mobile `overflowX: 0`, no pending images, the updated headline `We're a digital studio that builds with clarity, craft, and momentum.`, and value labels `Clarity`, `Craft`, `Momentum`, and `Clean handoff` rendered without horizontal overflow.
+- Latest Services copy-density evidence: Chrome DevTools Protocol at `http://localhost:3029/services` reported desktop and true 390px mobile `overflowX: 0`, no pending images, first-viewport word count `9`, and total visible text count reduced from `92` to `56` words after shortening the Services content.
+- Screenshot evidence:
+  - `C:\tmp\conceptzilla-home.png`
+  - `C:\tmp\koala-home-1440-v6.png`
+  - `C:\tmp\koala-home-390-v7.png`
+  - `C:\tmp\koala-work-1440-v7.png`
+  - `C:\tmp\koala-work-390-v7.png`
+  - `C:\tmp\koala-services-1440-v6.png`
+  - `C:\tmp\koala-about-1440-v10.png`
+  - `C:\tmp\koala-contact-1440-v6.png`
+  - `C:\tmp\koala-contact-390-v7.png`
+  - `C:\tmp\koala-work-ara-1440-v16.png`
+  - `C:\tmp\koala-work-ara-390-tall-v16.png`
+  - `C:\tmp\koala-work-nektr-390-tall-v16.png`
+  - `C:\tmp\koala-next16-home-1440.png`
+  - `C:\tmp\koala-next16-work-390.png`
+  - `C:\tmp\koala-next16-contact-1440.png`
+  - `C:\tmp\koala-next16-case-390-fixed.png`
+  - `C:\tmp\conceptzilla-current-1440.png`
+  - `C:\tmp\koala-final-home-1440.png`
+  - `C:\tmp\koala-final-home-390.png`
+  - `C:\tmp\koala-final-services-1440.png`
+  - `C:\tmp\koala-final-work-390.png`
+  - `C:\tmp\koala-final-home-768.png`
+  - `C:\tmp\koala-final-work-768.png`
+  - `C:\tmp\koala-final-contact-768.png`
+  - `C:\tmp\koala-lighthouse-home-final.json`
+  - `C:\tmp\koala-lighthouse-work-after-priority.json`
+  - `C:\tmp\koala-lighthouse-services-final.json`
+  - `C:\tmp\koala-lighthouse-contact-final.json`
+  - `C:\tmp\koala-lighthouse-home-desktop-final.json`
+  - `C:\tmp\koala-lighthouse-work-desktop-final.json`
+  - `C:\tmp\koala-lighthouse-services-desktop-final.json`
+  - `C:\tmp\koala-lighthouse-contact-desktop-final.json`
+  - `C:\tmp\koala-prune-home-1440.png`
+  - `C:\tmp\koala-prune-work-390.png`
+  - `C:\tmp\koala-pass4-home-1440.png`
+  - `C:\tmp\koala-pass4-home-390.png`
+  - `C:\tmp\koala-pass4-contact-1440.png`
+  - `C:\tmp\koala-pass4-contact-390.png`
+  - `C:\tmp\koala-pass5-work-1440.png`
+  - `C:\tmp\koala-pass5-success-390.png`
+  - `C:\tmp\koala-pass7-about-1440.png`
+  - `C:\tmp\koala-cdp-about-390.png`
+  - `C:\tmp\koala-cdp-services-390.png`
+  - `C:\tmp\conceptzilla-goal-current-1440.png`
+  - `C:\tmp\conceptzilla-goal-current-390.png`
+  - `C:\tmp\koala-goal-final-home-desktop.png`
+  - `C:\tmp\koala-goal-final-home-mobile.png`
+  - `C:\tmp\koala-goal-final-work-desktop.png`
+  - `C:\tmp\koala-pass9-after-home-desktop.png`
+  - `C:\tmp\koala-pass9-after-home-mobile.png`
+  - `C:\tmp\koala-pass9-after-work-desktop.png`
+  - `C:\tmp\koala-pass9-after-work-mobile.png`
+  - `C:\tmp\koala-pass9-after-services-mobile.png`
+  - `C:\tmp\koala-pass9-after-about-mobile.png`
+  - `C:\tmp\koala-pass9-after-contact-desktop.png`
+  - `C:\tmp\koala-pass9-after-contact-mobile.png`
+  - `C:\tmp\koala-pass10-contact-desktop.png`
+  - `C:\tmp\koala-pass10-contact-mobile.png`
+  - `C:\tmp\koala-pass10-home-footer-cdp.png`
+  - `C:\tmp\koala-pass11-about-mobile-cdp.png`
+  - `C:\tmp\koala-pass12-conceptzilla-desktop.png`
+  - `C:\tmp\koala-pass12-conceptzilla-mobile.png`
+  - `C:\tmp\koala-pass12-case-ara-desktop-before.png`
+  - `C:\tmp\koala-pass12-case-ara-mobile-before.png`
+  - `C:\tmp\koala-pass12-case-ara-desktop-after.png`
+  - `C:\tmp\koala-pass12-services-schema-desktop.png`
+  - `C:\tmp\koala-pass12-contact-schema-desktop.png`
+  - `C:\tmp\koala-pass13-about-desktop.png`
+  - `C:\tmp\koala-pass13-about-mobile-cdp.png`
+  - `C:\tmp\koala-pass14-contact-desktop-after.png`
+  - `C:\tmp\koala-pass14-contact-mobile-cdp.png`
+  - `C:\tmp\koala-pass15-header-mobile-before.png`
+  - `C:\tmp\koala-pass15-header-mobile-after.png`
+  - `C:\tmp\koala-pass15-header-mobile-open.png`
+  - `C:\tmp\koala-pass15-header-desktop-after.png`
+  - `C:\tmp\koala-pass16-home-desktop-before.png`
+  - `C:\tmp\koala-pass16-work-desktop-before.png`
+  - `C:\tmp\koala-pass16-services-desktop-before.png`
+  - `C:\tmp\koala-pass16-about-desktop-before.png`
+  - `C:\tmp\koala-pass16-work-mobile-current.png`
+  - `C:\tmp\koala-pass16-work-mobile-after.png`
+  - `C:\tmp\koala-pass16-work-desktop-after.png`
+  - `C:\tmp\koala-pass17-services-desktop-after.png`
+  - `C:\tmp\koala-pass17-services-mobile-cli-after.png`
+  - `C:\tmp\koala-pass17-services-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass18-home-desktop-after.png`
+  - `C:\tmp\koala-pass18-home-mobile-cli-after.png`
+  - `C:\tmp\koala-pass18-home-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass19-home-carousel-mobile-before.png`
+  - `C:\tmp\koala-pass19-home-carousel-mobile-after.png`
+  - `C:\tmp\koala-pass19-home-desktop-after.png`
+  - `C:\tmp\koala-pass20-carousel-interaction-before.png`
+  - `C:\tmp\koala-pass20-carousel-interaction-after-click.png`
+  - `C:\tmp\koala-pass20-home-scroll-margin-mobile-after.png`
+  - `C:\tmp\koala-pass21-header-opaque-mobile.png`
+  - `C:\tmp\koala-pass22-work-desktop-final.png`
+  - `C:\tmp\koala-pass22-services-desktop-final.png`
+  - `C:\tmp\koala-pass22-about-desktop-final.png`
+  - `C:\tmp\koala-pass22-contact-desktop-final.png`
+  - `C:\tmp\koala-pass22-work-mobile-final.png`
+  - `C:\tmp\koala-pass22-contact-mobile-final.png`
+  - `C:\tmp\koala-pass23-header-tablet-final.png`
+  - `C:\tmp\koala-pass23-header-mobile-cdp-final.png`
+  - `C:\tmp\koala-pass23-header-mobile-open-cdp-final.png`
+  - `C:\tmp\koala-pass23-home-desktop-final.png`
+  - `C:\tmp\koala-pass24-home-desktop-before.png`
+  - `C:\tmp\koala-pass24-home-mobile-before.png`
+  - `C:\tmp\koala-pass24-home-desktop-after.png`
+  - `C:\tmp\koala-pass24-home-mobile-after.png`
+  - `C:\tmp\koala-pass25-contact-desktop-after.png`
+  - `C:\tmp\koala-pass25-contact-mobile-after.png`
+  - `C:\tmp\koala-pass25-home-contact-mobile-after.png`
+  - `C:\tmp\koala-pass26-work-desktop-before.png`
+  - `C:\tmp\koala-pass26-work-mobile-before.png`
+  - `C:\tmp\koala-pass26-work-desktop-after.png`
+  - `C:\tmp\koala-pass26-work-mobile-after.png`
+  - `C:\tmp\koala-pass26-elikai-mobile-after.png`
+  - `C:\tmp\koala-pass27-home-desktop-current.png`
+  - `C:\tmp\koala-pass27-work-desktop-current.png`
+  - `C:\tmp\koala-pass27-services-desktop-current.png`
+  - `C:\tmp\koala-pass27-about-desktop-current.png`
+  - `C:\tmp\koala-pass27-contact-desktop-current.png`
+  - `C:\tmp\koala-pass27-home-desktop-after.png`
+  - `C:\tmp\koala-pass27-work-desktop-after.png`
+  - `C:\tmp\koala-pass27-services-desktop-after.png`
+  - `C:\tmp\koala-pass27-about-desktop-after.png`
+  - `C:\tmp\koala-pass27-contact-desktop-after.png`
+  - `C:\tmp\koala-pass27-home-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass27-work-mobile-cdp-after-v2.png`
+  - `C:\tmp\koala-pass27-services-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass27-about-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass27-contact-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass28-home-desktop-after.png`
+  - `C:\tmp\koala-pass28-home-desktop-after-v2.png`
+  - `C:\tmp\koala-pass28-work-desktop-after.png`
+  - `C:\tmp\koala-pass28-services-desktop-after.png`
+  - `C:\tmp\koala-pass28-about-desktop-after.png`
+  - `C:\tmp\koala-pass28-contact-desktop-after.png`
+  - `C:\tmp\koala-pass28-home-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass28-work-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass28-services-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass28-about-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass28-contact-mobile-cdp-after.png`
+  - `C:\tmp\koala-pass29-home-desktop-full-current.png`
+  - `C:\tmp\koala-pass29-services-desktop-full-current.png`
+  - `C:\tmp\koala-pass29-contact-desktop-full-current.png`
+  - `C:\tmp\koala-pass29-home-mobile-current.png`
+  - `C:\tmp\koala-pass29-services-mobile-current.png`
+  - `C:\tmp\koala-pass29-contact-mobile-current.png`
+  - `C:\tmp\koala-pass29-home-desktop-full-after.png`
+  - `C:\tmp\koala-pass29-services-desktop-full-after.png`
+  - `C:\tmp\koala-pass29-contact-desktop-full-after.png`
+  - `C:\tmp\koala-pass29-home-mobile-after.png`
+  - `C:\tmp\koala-pass29-services-mobile-after.png`
+  - `C:\tmp\koala-pass29-contact-mobile-after.png`
+  - `C:\tmp\koala-pass30-home-desktop-current.png`
+  - `C:\tmp\koala-pass30-work-desktop-current.png`
+  - `C:\tmp\koala-pass30-services-desktop-current.png`
+  - `C:\tmp\koala-pass30-home-mobile-current.png`
+  - `C:\tmp\koala-pass30-work-mobile-current.png`
+  - `C:\tmp\koala-pass30-home-desktop-after-fresh.png`
+  - `C:\tmp\koala-pass30-work-desktop-after-fresh.png`
+  - `C:\tmp\koala-pass30-home-mobile-after-fresh.png`
+  - `C:\tmp\koala-pass30-work-mobile-after-fresh.png`
+  - `C:\tmp\koala-pass30-home-desktop-hero-shape.png`
+  - `C:\tmp\koala-pass30-home-mobile-hero-shape.png`
+  - `C:\tmp\koala-pass31-home-desktop-current.png`
+  - `C:\tmp\koala-pass31-contact-desktop-current.png`
+  - `C:\tmp\koala-pass31-services-desktop-current.png`
+  - `C:\tmp\koala-pass31-about-desktop-current.png`
+  - `C:\tmp\koala-pass31-work-mobile-current.png`
+  - `C:\tmp\koala-pass31-contact-mobile-current.png`
+  - `C:\tmp\koala-pass31-work-desktop-after.png`
+  - `C:\tmp\koala-pass31-work-mobile-after.png`
+  - `C:\tmp\koala-pass32-contact-desktop-before.png`
+  - `C:\tmp\koala-pass32-contact-mobile-before.png`
+  - `C:\tmp\koala-pass32-contact-desktop-after.png`
+  - `C:\tmp\koala-pass32-contact-mobile-after.png`
+  - `C:\tmp\koala-pass32-contact-desktop-after-v3.png`
+  - `C:\tmp\koala-pass32-contact-mobile-after-v3.png`
+  - `C:\tmp\koala-pass33-home-desktop-current.png`
+  - `C:\tmp\koala-pass33-home-mobile-current.png`
+  - `C:\tmp\koala-pass33-services-desktop-current.png`
+  - `C:\tmp\koala-pass33-services-mobile-current.png`
+  - `C:\tmp\koala-pass33-about-desktop-current.png`
+  - `C:\tmp\koala-pass33-about-mobile-current.png`
+  - `C:\tmp\koala-pass33-work-desktop-current.png`
+  - `C:\tmp\koala-pass33-work-mobile-current.png`
+  - `C:\tmp\koala-pass33-home-desktop-after.png`
+  - `C:\tmp\koala-pass33-home-mobile-after.png`
+  - `C:\tmp\koala-pass34-services-desktop-before.png`
+  - `C:\tmp\koala-pass34-services-mobile-before.png`
+  - `C:\tmp\koala-pass34-services-desktop-after.png`
+  - `C:\tmp\koala-pass34-services-mobile-after.png`
+  - `C:\tmp\koala-pass34-services-desktop-after-v2.png`
+  - `C:\tmp\koala-pass34-services-mobile-after-v2.png`
+  - `C:\tmp\koala-pass35-about-desktop.png`
+  - `C:\tmp\koala-pass35-about-mobile.png`
+  - `C:\tmp\koala-pass35-contact-desktop.png`
+  - `C:\tmp\koala-pass35-contact-mobile.png`
+  - `C:\tmp\koala-pass35-about-desktop-after.png`
+  - `C:\tmp\koala-pass35-about-mobile-after.png`
+  - `C:\tmp\koala-pass36-home-desktop-current.png`
+  - `C:\tmp\koala-pass36-home-mobile-current.png`
+  - `C:\tmp\koala-pass36-work-desktop-current.png`
+  - `C:\tmp\koala-pass36-work-mobile-current.png`
+  - `C:\tmp\koala-pass36-services-desktop-current.png`
+  - `C:\tmp\koala-pass36-services-mobile-current.png`
+  - `C:\tmp\koala-pass36-about-desktop-current.png`
+  - `C:\tmp\koala-pass36-about-mobile-current.png`
+  - `C:\tmp\koala-pass36-contact-desktop-current.png`
+  - `C:\tmp\koala-pass36-contact-mobile-current.png`
+  - `C:\tmp\koala-pass36-home-desktop-after.png`
+  - `C:\tmp\koala-pass36-home-mobile-after.png`
+  - `C:\tmp\koala-pass36-home-desktop-after-v3.png`
+  - `C:\tmp\koala-pass36-home-mobile-after-v3.png`
+  - `C:\tmp\koala-pass37-home-desktop-current.png`
+  - `C:\tmp\koala-pass37-home-mobile-current.png`
+  - `C:\tmp\koala-pass37-work-desktop-current.png`
+  - `C:\tmp\koala-pass37-services-desktop-current.png`
+  - `C:\tmp\koala-pass37-services-mobile-current.png`
+  - `C:\tmp\koala-pass37-about-desktop-current.png`
+  - `C:\tmp\koala-pass37-contact-desktop-current.png`
+  - `C:\tmp\koala-pass37-contact-mobile-current.png`
+  - `C:\tmp\koala-pass37-contact-desktop-after.png`
+  - `C:\tmp\koala-pass37-contact-mobile-after.png`
+  - `C:\tmp\koala-pass37-success-desktop-after.png`
+  - `C:\tmp\koala-pass37-success-mobile-after.png`
+  - `C:\tmp\koala-pass37-success-mobile-after-v2.png`
+  - `C:\tmp\koala-pass38-home-desktop-current.png`
+  - `C:\tmp\koala-pass38-work-desktop-current.png`
+  - `C:\tmp\koala-pass38-services-desktop-current.png`
+  - `C:\tmp\koala-pass38-about-desktop-current.png`
+  - `C:\tmp\koala-pass38-contact-desktop-current.png`
+  - `C:\tmp\koala-pass38-home-mobile-current.png`
+  - `C:\tmp\koala-pass38-work-mobile-current.png`
+  - `C:\tmp\koala-pass38-services-mobile-current.png`
+  - `C:\tmp\koala-pass38-about-mobile-current.png`
+  - `C:\tmp\koala-pass38-contact-mobile-current.png`
+  - `C:\tmp\koala-pass38-services-mobile-current-lateviewport.png`
+  - `C:\tmp\koala-pass38-contact-mobile-current-lateviewport.png`
+  - `C:\tmp\koala-pass38-home-desktop-after.png`
+  - `C:\tmp\koala-pass38-work-desktop-after.png`
+  - `C:\tmp\koala-pass38-services-desktop-after.png`
+  - `C:\tmp\koala-pass38-contact-desktop-after.png`
+  - `C:\tmp\koala-pass38-home-mobile-after.png`
+  - `C:\tmp\koala-pass38-services-mobile-after.png`
+  - `C:\tmp\koala-pass38-contact-mobile-after.png`
+  - `C:\tmp\koala-pass39-home-desktop-current.png`
+  - `C:\tmp\koala-pass39-work-desktop-current.png`
+  - `C:\tmp\koala-pass39-services-desktop-current.png`
+  - `C:\tmp\koala-pass39-about-desktop-current.png`
+  - `C:\tmp\koala-pass39-contact-desktop-current.png`
+  - `C:\tmp\koala-pass39-home-mobile-current.png`
+  - `C:\tmp\koala-pass39-work-mobile-current.png`
+  - `C:\tmp\koala-pass39-services-mobile-current.png`
+  - `C:\tmp\koala-pass39-about-mobile-current.png`
+  - `C:\tmp\koala-pass39-contact-mobile-current.png`
+  - `C:\tmp\koala-pass39-work-desktop-after.png`
+  - `C:\tmp\koala-pass39-work-mobile-after.png`
+  - `C:\tmp\koala-pass40-home-desktop-current.png`
+  - `C:\tmp\koala-pass40-home-mobile-current.png`
+  - `C:\tmp\koala-pass40-home-desktop-after.png`
+  - `C:\tmp\koala-pass40-home-mobile-after.png`
+  - `C:\tmp\koala-pass40-work-desktop-after.png`
+  - `C:\tmp\koala-pass40-contact-mobile-after.png`
+  - `C:\tmp\koala-pass41-services-mobile-current.png`
+  - `C:\tmp\koala-pass41-contact-mobile-current.png`
+  - `C:\tmp\koala-pass41-services-mobile-after-imagefix.png`
+  - `C:\tmp\koala-pass41-contact-mobile-after-imagefix.png`
+  - `C:\tmp\koala-pass41-home-desktop-after.png`
+  - `C:\tmp\koala-pass41-services-desktop-after.png`
+  - `C:\tmp\koala-pass41-services-mobile-after.png`
+  - `C:\tmp\koala-pass41-contact-desktop-after.png`
+  - `C:\tmp\koala-pass41-contact-mobile-after.png`
+  - `C:\tmp\koala-pass41-success-mobile-after.png`
+  - `C:\tmp\koala-pass42-home-desktop-current.png`
+  - `C:\tmp\koala-pass42-home-mobile-current.png`
+  - `C:\tmp\koala-pass42-work-desktop-current.png`
+  - `C:\tmp\koala-pass42-work-mobile-current.png`
+  - `C:\tmp\koala-pass42-services-desktop-current.png`
+  - `C:\tmp\koala-pass42-services-mobile-current.png`
+  - `C:\tmp\koala-pass42-about-desktop-current.png`
+  - `C:\tmp\koala-pass42-about-mobile-current.png`
+  - `C:\tmp\koala-pass42-contact-desktop-current.png`
+  - `C:\tmp\koala-pass42-contact-mobile-current.png`
+  - `C:\tmp\koala-pass42-about-desktop-after-accent-v2.png`
+  - `C:\tmp\koala-pass42-about-mobile-after-accent.png`
+  - `C:\tmp\koala-pass43-home-desktop-current.png`
+  - `C:\tmp\koala-pass43-home-mobile-current.png`
+  - `C:\tmp\koala-pass43-work-desktop-current.png`
+  - `C:\tmp\koala-pass43-work-mobile-current.png`
+  - `C:\tmp\koala-pass43-services-desktop-current.png`
+  - `C:\tmp\koala-pass43-services-mobile-current.png`
+  - `C:\tmp\koala-pass43-about-desktop-current.png`
+  - `C:\tmp\koala-pass43-about-mobile-current.png`
+  - `C:\tmp\koala-pass43-contact-desktop-current.png`
+  - `C:\tmp\koala-pass43-contact-mobile-current.png`
+  - `C:\tmp\koala-pass43-contact-desktop-after-contact-top.png`
+  - `C:\tmp\koala-pass43-contact-mobile-after-contact-top.png`
+  - `C:\tmp\koala-pass43-success-desktop-after-contact-top.png`
+  - `C:\tmp\koala-pass43-home-desktop-after-contact-v4.png`
+  - `C:\tmp\koala-pass43-home-mobile-after-contact-v4.png`
+  - `C:\tmp\koala-pass44-home-desktop-current.png`
+  - `C:\tmp\koala-pass44-home-mobile-current.png`
+  - `C:\tmp\koala-pass44-work-desktop-current.png`
+  - `C:\tmp\koala-pass44-work-mobile-current.png`
+  - `C:\tmp\koala-pass44-services-desktop-current.png`
+  - `C:\tmp\koala-pass44-services-mobile-current.png`
+  - `C:\tmp\koala-pass44-about-desktop-current.png`
+  - `C:\tmp\koala-pass44-about-mobile-current.png`
+  - `C:\tmp\koala-pass44-contact-desktop-current.png`
+  - `C:\tmp\koala-pass44-contact-mobile-current.png`
+  - `C:\tmp\koala-pass44-home-desktop-after-heading-v2.png`
+  - `C:\tmp\koala-pass44-home-mobile-after-heading-v2.png`
+  - `C:\tmp\koala-pass44-work-desktop-after-heading.png`
+  - `C:\tmp\koala-pass44-work-mobile-after-heading.png`
+  - `C:\tmp\koala-pass44-services-desktop-after-heading.png`
+  - `C:\tmp\koala-pass44-services-mobile-after-heading.png`
+  - `C:\tmp\koala-pass44-about-desktop-after-heading.png`
+  - `C:\tmp\koala-pass44-about-mobile-after-heading.png`
+  - `C:\tmp\koala-pass44-contact-desktop-after-heading.png`
+  - `C:\tmp\koala-pass44-contact-mobile-after-heading.png`
+  - `C:\tmp\koala-pass44-work-magnum-desktop-after-heading-v2.png`
+  - `C:\tmp\koala-pass44-work-magnum-mobile-after-heading-v2.png`
+  - `C:\tmp\koala-pass45-home-desktop-current.png`
+  - `C:\tmp\koala-pass45-home-mobile-current.png`
+  - `C:\tmp\koala-pass45-work-desktop-current.png`
+  - `C:\tmp\koala-pass45-work-mobile-current.png`
+  - `C:\tmp\koala-pass45-services-desktop-current.png`
+  - `C:\tmp\koala-pass45-services-mobile-current.png`
+  - `C:\tmp\koala-pass45-about-desktop-current.png`
+  - `C:\tmp\koala-pass45-about-mobile-current.png`
+  - `C:\tmp\koala-pass45-contact-desktop-current.png`
+  - `C:\tmp\koala-pass45-contact-mobile-current.png`
+  - `C:\tmp\koala-pass45-work-magnum-desktop-current.png`
+  - `C:\tmp\koala-pass45-work-magnum-mobile-current.png`
+  - `C:\tmp\koala-pass45-home-desktop-carousel-after-header-mask.png`
+  - `C:\tmp\koala-pass45-home-desktop-after-header-mask.png`
+  - `C:\tmp\koala-pass45-home-mobile-after-header-mask.png`
+  - `C:\tmp\koala-pass45-work-desktop-after-header-mask.png`
+  - `C:\tmp\koala-pass45-contact-390-after-header-mask.png`
+  - `C:\tmp\koala-pass46-home-desktop-current.png`
+  - `C:\tmp\koala-pass46-home-mobile-current.png`
+  - `C:\tmp\koala-pass46-home-carousel-desktop-current.png`
+  - `C:\tmp\koala-pass46-work-desktop-current.png`
+  - `C:\tmp\koala-pass46-work-mobile-current.png`
+  - `C:\tmp\koala-pass46-services-desktop-current.png`
+  - `C:\tmp\koala-pass46-services-mobile-current.png`
+  - `C:\tmp\koala-pass46-about-desktop-current.png`
+  - `C:\tmp\koala-pass46-about-mobile-current.png`
+  - `C:\tmp\koala-pass46-contact-desktop-current.png`
+  - `C:\tmp\koala-pass46-contact-mobile-current.png`
+  - `C:\tmp\koala-pass46-magnum-desktop-current.png`
+  - `C:\tmp\koala-pass46-magnum-mobile-current.png`
+  - `C:\tmp\koala-pass46-work-desktop-after-radius.png`
+  - `C:\tmp\koala-pass46-work-mobile-after-radius.png`
+  - `C:\tmp\koala-pass46-home-carousel-desktop-after-radius.png`
+  - `C:\tmp\koala-pass46-home-carousel-mobile-after-radius.png`
+  - `C:\tmp\koala-pass47-home-carousel-stlth-visible-after-controlfix-localhost.png`
+  - `C:\tmp\koala-pass47-home-carousel-mobile-after-controlfix-localhost.png`
+  - `C:\tmp\koala-pass47-work-desktop-localhost.png`
+  - `C:\tmp\koala-pass47-work-mobile-localhost.png`
+  - `C:\tmp\koala-pass47-work-mobile-stlth-localhost.png`
+  - `C:\tmp\koala-pass48-contact-desktop-after-mobile-hero.png`
+  - `C:\tmp\koala-pass48-contact-mobile-after-mobile-hero.png`
+  - `C:\tmp\koala-pass48-contact-after-mobile-hero.json`
+  - `C:\tmp\koala-pass49-home-contact-desktop-after-eager.png`
+  - `C:\tmp\koala-pass49-home-contact-mobile-after-eager.png`
+  - `C:\tmp\koala-pass49-home-desktop-full-after-contact-eager.png`
+  - `C:\tmp\koala-pass49-home-mobile-full-after-contact-eager.png`
+  - `C:\tmp\koala-pass49-home-contact-after-eager.json`
+  - `C:\tmp\koala-pass50-about-desktop-after-copy.png`
+  - `C:\tmp\koala-pass50-about-mobile-after-copy.png`
+  - `C:\tmp\koala-pass50-about-desktop-full-after-copy.png`
+  - `C:\tmp\koala-pass50-about-mobile-full-after-copy.png`
+  - `C:\tmp\koala-pass50-about-after-copy.json`
+  - `C:\tmp\koala-pass51-current-evidence.json`
+  - `C:\tmp\koala-pass51-services-desktop-after-copy.png`
+  - `C:\tmp\koala-pass51-services-mobile-after-copy.png`
+  - `C:\tmp\koala-pass51-services-desktop-full-after-copy.png`
+  - `C:\tmp\koala-pass51-services-mobile-full-after-copy.png`
+  - `C:\tmp\koala-pass51-services-after-copy.json`
+- Redirect evidence: `/projects`, `/projects/ara`, `/projects/elikai`, `/blogs`, and `/home` return HTTP 308 to the redesign routes.
+- Sitemap evidence: `/work/ara`, `/work/magnum`, `/work/nektr`, `/work/allo`, `/work/stlth`, and `/work/elikai` are present.
+- Robots evidence: `app/robots.ts` is active and disallows `/admin`, `/blogs`, `/contact/success`, and `/process`.
+
+## Evidence Still Missing
+
+- No product-site completion evidence is missing after the final Chrome DevTools Protocol audit.
+- The Codex in-app browser bridge remains a tooling issue outside the site; Chrome DevTools Protocol is the verified browser QA path in this Windows workspace.
+
+## Workflow Reminder
+
+`docs/project-scope.md` is the durable contract, `docs/execution-ledger.md` is the execution record, `docs/operator-guide.md` is runtime orientation, and `.agent/*.yaml` files are the quick routing layer. Update them together when workflow, routes, verification, or known gaps change.

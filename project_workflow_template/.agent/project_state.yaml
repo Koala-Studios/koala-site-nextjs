@@ -1,0 +1,40 @@
+last_reviewed: "YYYY-MM-DD"
+workflow_mode: layered_agents_v1
+
+active_phase:
+  id: "<ACTIVE_PHASE_ID>"
+  label: "<Active phase label>"
+
+current_priority_slice:
+  id: "<CURRENT_SLICE_ID>"
+  summary: "<What the next worker should accomplish>"
+  source_documents:
+    - "<EXECUTION_LEDGER_DOC>"
+    - "<ORDERING_PLAN_DOC_OR_REMOVE_THIS_ENTRY>"
+  likely_touch_paths:
+    - "<path/to/file-or-directory>"
+
+workflow_objective:
+  summary: "<Why this workflow exists and what startup path it should enforce>"
+
+current_blockers:
+  - id: "<BLOCKER_ID>"
+    summary: "<Concrete blocker or evidence gap>"
+
+repo_invariants:
+  - "<Always-true rule that workers must not violate>"
+  - "<Second invariant>"
+  - "<Third invariant>"
+
+preferred_startup_files:
+  - AGENTS.md
+  - .agent/project_state.yaml
+  - .agent/current_slice.md
+  - .agent/module_registry.yaml
+  - .agent/verification_registry.yaml
+  - "nearest AGENTS.md"
+  - "<DURABLE_SCOPE_DOC>"
+  - "<EXECUTION_LEDGER_DOC>"
+
+notes:
+  - "<Optional note about ordering docs, compatibility stubs, or known startup rules>"

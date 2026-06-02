@@ -1,178 +1,120 @@
+@import "../styles/site/tokens.css";
+
 :root {
-  --main-color:#000;
-  --global-padding:0 20rem;
-  --global-padding-single:20rem;
+  --main-color: var(--koala-color-ink);
+  --global-padding: 0 2rem;
+  --global-padding-single: 2rem;
 }
 
-@font-face {
-  font-display: swap;
-  font-family: "Integral ExtraBold";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/IntegralCF-ExtraBold.woff2")
-    format("woff2");
-}
-@font-face {
-  font-display: swap;
-  font-family: "Integral Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/IntegralCF-Regular.woff2")
-    format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Poppins-Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/Poppins-Regular.woff2")
-    format("woff2");
-}
-@font-face {
-  font-display: swap;
-  font-family: "Poppins-SemiBold";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/Poppins-SemiBold.woff2")
-    format("woff2");
-}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Integral Regular";
-  /* background-color: var(--main-color); */
-  text-align: center;
-  background-color: #0d0d0d;
+  min-height: 100%;
+  background: var(--koala-color-surface-soft);
+  color: var(--koala-color-ink);
+  text-align: left;
 }
 
-p{
-  font-family: "Poppins-Regular";
+body {
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 70vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-heading);
   font-weight: 600;
-  font-size: 20px;
-  color: #ede7e0;
-  letter-spacing: 1px!important;
+  letter-spacing: 0;
 }
 
-h2{
-  font-size: 2.5rem!important;
-}
-
-h1,h2,h3,h4 {
-  font-family: "Integral Regular";
-  letter-spacing: 1px;
-  color: #ede7e0;
+p,
+li {
+  color: inherit;
+  font-family: var(--koala-font-body);
+  letter-spacing: 0;
 }
 
 a {
   color: inherit;
-  font-family: "Integral Regular";
   text-decoration: none;
 }
-button{
-  font-family: "Integral Regular";
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--koala-focus-ring);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-.firebase-emulator-warning{
+.firebase-emulator-warning {
   display: none;
 }
 
-@media (max-width: 1700px) {
-  
-  :root {
-    --global-padding:0 12rem;
-    --global-padding-single:12rem;
-  }
-
-
-}
-@media (max-width: 1300px) {
-  
-  :root {
-    --global-padding:0 10rem;
-    --global-padding-single:10rem;
-  }
-
-
-}
-@media (max-width: 1024px) {
-  
-  :root {
-    --global-padding:0 2rem;
-    --global-padding-single:2rem;
-  }
-
-}
-
-
 .btn {
-  padding: 0.7rem 1.5rem;
-  border-radius: .1rem;
-  /* font-weight: 700!important; */
-  cursor: pointer;
-  transition: 200ms;
   align-items: center;
-  display: flex;
-  gap: 10px;
-  border: none; 
-  white-space: nowrap!important;
-  /* perspective:1px; */
+  border: 0;
+  border-radius: var(--koala-radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.1rem;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  white-space: nowrap;
 }
+
 .btn:hover {
-  transform: scaleX(1.08);
+  transform: translateY(-1px);
 }
 
-
-
-.btn.small{
-  padding: 0.5rem 1rem;
-  font-size: smaller;
+.btn.small {
+  min-height: 2.3rem;
+  padding: 0.45rem 0.8rem;
+  font-size: var(--koala-text-sm);
 }
 
-
-.btn--primary {
-  color: #ede7e0;
-background-color: black;
+.btn--primary,
+.btn--primary.light {
+  background: var(--koala-color-green);
+  color: var(--koala-color-surface);
 }
 
-
-.btn--secondary {
-  background-color:transparent;
-color: black;
+.btn--secondary,
+.btn--secondary.light {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
 }
 
-
-.footer_content{
-  border-top: 1px #0000002e solid!important;
-  background-color: white;
-  /* padding:5rem 15rem; */
-}
-
-
-.btn--primary.light{
-  background-color: #ede7e0;
-  color:black;
-  border:2px #ede7e0 solid;
-}
-
-.btn--secondary.light{
-  /* background-color: #e6e4e4; */
-  color:white;
-  border:2px #fff solid;
-}
-
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #0b0c0b;
-  padding: 2;
+  background-color: var(--koala-color-green-dark);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --global-padding: 0 6rem;
+    --global-padding-single: 6rem;
+  }
 }

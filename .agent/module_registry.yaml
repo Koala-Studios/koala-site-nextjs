@@ -1,0 +1,118 @@
+last_reviewed: "2026-05-29"
+
+modules:
+  repo_workflow:
+    owner_areas:
+      - "repo root"
+      - "docs"
+    primary_paths:
+      - AGENTS.md
+      - .agent
+      - docs/project-scope.md
+      - docs/execution-ledger.md
+      - docs/operator-guide.md
+    status: active
+    authoritative_files:
+      - AGENTS.md
+      - .agent/project_state.yaml
+      - .agent/module_registry.yaml
+      - .agent/verification_registry.yaml
+      - .agent/known_gaps.yaml
+      - docs/project-scope.md
+      - docs/execution-ledger.md
+    verification_profiles:
+      - docs_workflow_only
+
+  app_routes:
+    owner_areas:
+      - app
+    primary_paths:
+      - app/layout.tsx
+      - app/page.tsx
+      - app/work
+      - app/services
+      - app/contact
+      - app/robots.ts
+      - app/sitemap.ts
+    status: hotspot
+    authoritative_files:
+      - app/AGENTS.md
+      - lib/routes.ts
+      - lib/metadata.ts
+      - lib/seo.ts
+      - lib/site-config.ts
+    verification_profiles:
+      - route_or_metadata_changes
+      - client_or_ui_changes
+
+  component_system:
+    owner_areas:
+      - components
+    primary_paths:
+      - components
+      - styles
+    status: hotspot
+    authoritative_files:
+      - components/AGENTS.md
+      - styles/AGENTS.md
+      - styles/site/tokens.css
+      - components/site/SiteHeader.tsx
+      - components/site/SiteFooter.tsx
+      - components/work
+      - components/contact
+    verification_profiles:
+      - client_or_ui_changes
+
+  content_model:
+    owner_areas:
+      - content
+      - lib/content
+    primary_paths:
+      - lib/content/types.ts
+      - lib/content/site-content.ts
+      - lib/content/index.ts
+      - content
+    status: shared_foundation
+    authoritative_files:
+      - content/AGENTS.md
+      - lib/content/types.ts
+      - lib/content/site-content.ts
+      - lib/content/index.ts
+    verification_profiles:
+      - content_or_copy_changes
+      - route_or_metadata_changes
+
+  seo_and_routing:
+    owner_areas:
+      - lib
+      - app
+    primary_paths:
+      - lib/routes.ts
+      - lib/site-config.ts
+      - lib/seo.ts
+      - lib/metadata.ts
+      - app/robots.ts
+      - app/sitemap.ts
+    status: active
+    authoritative_files:
+      - lib/AGENTS.md
+      - lib/routes.ts
+      - lib/site-config.ts
+      - lib/seo.ts
+      - lib/metadata.ts
+    verification_profiles:
+      - route_or_metadata_changes
+
+  static_assets:
+    owner_areas:
+      - public
+    primary_paths:
+      - public
+      - public/images/redesign
+    status: active
+    authoritative_files:
+      - content/AGENTS.md
+      - lib/content/site-content.ts
+      - public/images/redesign
+    verification_profiles:
+      - asset_or_media_changes

@@ -1,0 +1,290 @@
+.page {
+  margin-inline: auto;
+  max-width: var(--koala-container-wide);
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 3vw, 2rem) 0;
+  position: relative;
+}
+
+.hero {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 42rem;
+  position: relative;
+  z-index: 1;
+}
+
+.heroCopy,
+.heroStatement,
+.process {
+  align-content: flex-start;
+  display: grid;
+}
+
+.heroCopy {
+  gap: 1.6rem;
+}
+
+.heroCopy h1 {
+  font-family: var(--koala-font-heading);
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.96;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.heroStatement {
+  gap: 0;
+}
+
+.heroStatement p {
+  font-family: var(--koala-font-body);
+  font-size: clamp(1.25rem, 2vw, 1.9rem);
+  line-height: 1.2;
+  margin: 0;
+  max-width: 22ch;
+}
+
+.flightAccent {
+  color: var(--koala-color-green);
+  height: auto;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(11rem, 20vw, 21rem);
+  top: clamp(2rem, 4vw, 3.75rem);
+  width: min(32rem, 40vw);
+  z-index: 0;
+}
+
+.flightPath {
+  fill: none;
+  opacity: 0.72;
+  stroke: var(--koala-color-line);
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}
+
+.flightPlane {
+  fill: currentColor;
+}
+
+.imageSplit {
+  display: grid;
+  padding-block: clamp(1.75rem, 3.5vw, 2.75rem) clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.mediaPair {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.imageWrap {
+  aspect-ratio: 16 / 10;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.image {
+  border-radius: var(--koala-radius-xl);
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.imageCtaWrap {
+  bottom: clamp(3.5rem, 6vw, 5rem);
+  display: flex;
+  left: clamp(1rem, 3vw, 2rem);
+  position: absolute;
+  z-index: 1;
+}
+
+.imageCta {
+  align-items: center;
+  background: var(--koala-color-bg);
+  border: 1px solid var(--koala-color-ink);
+  border-radius: var(--koala-radius-lg);
+  color: var(--koala-color-ink);
+  display: inline-flex;
+  font-family: var(--koala-font-support);
+  gap: 1rem;
+  min-height: 4.75rem;
+  padding: 0.65rem 1.2rem 0.65rem 0.65rem;
+  text-decoration: none;
+}
+
+.imageCta:hover {
+  border-color: var(--koala-color-green);
+  color: var(--koala-color-ink);
+}
+
+.imageCtaIcon {
+  align-items: center;
+  aspect-ratio: 1;
+  background: var(--koala-color-green);
+  border-radius: 999px;
+  color: var(--koala-color-surface);
+  display: inline-flex;
+  flex: 0 0 3rem;
+  font-size: var(--koala-text-md);
+  justify-content: center;
+}
+
+.values {
+  border-block: 1px solid var(--koala-color-line);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.values span {
+  border-left: 1px solid var(--koala-color-line);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  min-height: 6rem;
+  padding: 1rem;
+  text-transform: capitalize;
+}
+
+.values span:first-child {
+  border-left: 0;
+}
+
+.process {
+  border-bottom: 1px solid var(--koala-color-line);
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1fr);
+  margin-bottom: 1rem;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.process h2 {
+  font-family: var(--koala-font-heading);
+  font-size: 4.6rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0 0 1rem;
+}
+
+.process p {
+  color: var(--koala-color-muted);
+  font-size: var(--koala-text-md);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 30rem;
+}
+
+.steps {
+  border-top: 1px solid var(--koala-color-line);
+  display: grid;
+}
+
+.step {
+  align-items: center;
+  border-bottom: 1px solid var(--koala-color-line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  min-height: 6rem;
+}
+
+.step span {
+  color: var(--koala-color-green);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+}
+
+.step h3 {
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-lg);
+  margin: 0;
+  text-transform: capitalize;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding-top: 2.5rem;
+  }
+
+  .flightAccent {
+    display: none;
+  }
+
+  .hero,
+  .process {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .heroCopy h1 {
+    font-size: 4.8rem;
+  }
+
+  .heroStatement p {
+    max-width: 16ch;
+  }
+
+  .values {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .values span:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .process h2 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroCopy h1 {
+    font-size: 3.55rem;
+  }
+
+  .heroStatement p {
+    font-size: 1.72rem;
+    max-width: none;
+    width: min(100%, 18rem);
+  }
+
+  .values {
+    grid-template-columns: 1fr;
+  }
+
+  .mediaPair {
+    grid-template-columns: 1fr;
+  }
+
+  .imageCtaWrap {
+    bottom: auto;
+    left: auto;
+    margin-top: 1rem;
+    position: static;
+  }
+
+  .imageCta {
+    width: 100%;
+  }
+
+  .values span,
+  .values span:nth-child(odd),
+  .values span:first-child {
+    border-left: 0;
+    border-top: 1px solid var(--koala-color-line);
+  }
+
+  .values span:first-child {
+    border-top: 0;
+  }
+
+  .process h2 {
+    font-size: 2.65rem;
+  }
+}
