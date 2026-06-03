@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         draftOrRetiredRoutes.admin,
         draftOrRetiredRoutes.blogs,
         draftOrRetiredRoutes.contactSuccess,
+        draftOrRetiredRoutes.internal,
         draftOrRetiredRoutes.process,
       ],
     },

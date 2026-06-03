@@ -12,6 +12,7 @@ export const draftOrRetiredRoutes = {
   admin: "/admin",
   blogs: "/blogs",
   contactSuccess: "/contact/success",
+  internal: "/internal",
   legacyHome: "/home",
   process: "/process",
   projects: "/projects",

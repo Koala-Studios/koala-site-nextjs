@@ -1,5 +1,6 @@
 .headerWrap {
-  background: var(--koala-color-bg);
+  background: linear-gradient(var(--koala-color-bg), #f7f6f2ba);
+  backdrop-filter: blur(5px);
   pointer-events: auto;
   position: sticky;
   top: 0;

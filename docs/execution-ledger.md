@@ -1,5 +1,64 @@
 # Execution Ledger
 
+## 2026-06-02 - Gradient Homepage Concept Page
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is still `main...origin/main [ahead 4, behind 1]` with a pre-existing unrelated `components/site/SiteHeader.module.css` edit.
+- Re-read root/app/content/style guidance, durable project docs, `.agent/verification_registry.yaml`, the current homepage route, homepage CSS, typed page content, published case-study helpers, CTA styles, and route metadata helpers.
+- Used the Browser skill against `/internal/resend-forward-gradient`; it loaded the route and confirmed the hidden body class, shader canvas, expected scroll height, homepage h1, and section headings.
+
+### Implemented
+
+- Turned the hidden shader demo into a full scrollable homepage concept using the current typed homepage, services, contact, navigation, site settings, and published case-study content.
+- Kept the extracted Forward-style WebGL2 shader as the page header, but changed the shader palette to Koala cream, green, clay, sky, and ink tones.
+- Split the route into a client shader header wrapper and server-rendered page content so durable copy and links still come from the canonical content helpers.
+- Added responsive concept sections for homepage message, featured work cards, services, and contact, with the public header/footer still hidden for the internal concept route.
+- Fixed mobile hero/nav overflow found during screenshot review by reducing the mobile title scale and stacking the concept nav.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 18 app pages, including `/internal/resend-forward-gradient`.
+- Existing local port 3000 returned HTTP 200 for `/internal/resend-forward-gradient`.
+- In-app Browser DOM verification passed, but animated WebGL screenshot capture still timed out, so headless Chrome captured final route renders:
+  - `C:\tmp\koala-gradient-homepage-concept-desktop-final.png`
+  - `C:\tmp\koala-gradient-homepage-concept-mobile-final.png`
+- Screenshot pixel checks confirmed non-flat Koala-colored gradient output: desktop `6579/10300` non-flat samples and `2166` greenish samples; mobile `12845/13000` non-flat samples and `3892` greenish samples.
+
+### Blockers / Follow-Up
+
+- No implementation blocker remains. The only verification limitation remains the in-app Browser screenshot timeout on animated WebGL, with Chrome headless used for visual capture.
+
+## 2026-06-02 - Resend Forward Gradient Test Page
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 4, behind 1]` with a pre-existing unrelated `components/site/SiteHeader.module.css` edit.
+- Re-read `.agent/project_state.yaml`, `.agent/current_slice.md`, `.agent/verification_registry.yaml`, root/app/component/style guidance, and durable project docs before touching app route, style, route, and robots surfaces.
+- Downloaded `https://resend.com/forward` HTML and JS chunks into `C:\tmp`; identified the WebGL2 `ForwardShaderCanvas` implementation, shader uniforms, palette defaults, smoothed normalized mouse warp, animated noise seed, and click-driven palette cycling.
+
+### Implemented
+
+- Added hidden noindex test route `/internal/resend-forward-gradient`.
+- Built a route-local WebGL2 canvas gradient replica using the extracted Resend mechanics: oversized full-screen triangle, animated gradient noise displacement, smoothed mouse UV pull, grain, cursor glow, and palette cycling.
+- Added route-local fixed-screen styling that hides public chrome for the test page and keeps the hero title responsive across desktop and mobile.
+- Added `/internal` to retired/protected routes and disallowed it in `robots.txt`.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 18 app pages, including `/internal/resend-forward-gradient`.
+- Existing local port 3000 returned HTTP 200 for `/internal/resend-forward-gradient`.
+- In-app Browser control connected, but animated WebGL screenshot capture timed out; headless Chrome fallback captured final route renders:
+  - `C:\tmp\koala-forward-gradient-desktop-final.png`
+  - `C:\tmp\koala-forward-gradient-mobile-final.png`
+- Screenshot pixel checks confirmed nonblank blue gradient output on both captures: desktop `9852/10300` nonblack samples, mobile `13339/13780` nonblack samples.
+
+### Blockers / Follow-Up
+
+- No implementation blocker remains. The only verification limitation was the in-app Browser screenshot timeout for this animated WebGL surface, so Chrome headless was used for visual capture.
+
 ## 2026-06-02 - CTA Hover Timing And Arrow Travel
 
 ### Context Inspected
