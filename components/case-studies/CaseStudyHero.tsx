@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { Reveal } from "@/components/animation/Reveal";
-import { Cta } from "@/components/site/Cta";
+import { Parallax } from "@/components/animation/Parallax";
+import { SplitReveal } from "@/components/animation/SplitReveal";
+import { ArrowIcon } from "@/components/site/ArrowIcon";
 import type { CaseStudyContent } from "@/lib/content";
 
 import styles from "./CaseStudyHero.module.css";
@@ -16,30 +18,52 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
 
   return (
     <section className={styles.hero} aria-labelledby="case-study-title">
-      <Reveal className={styles.copy}>
-        <Cta href="/work" size="small" variant="text">
-          Back to work
-        </Cta>
-        <p className="koala-label">{caseStudy.category}</p>
-        <h1 id="case-study-title">{caseStudy.title}</h1>
-        <p className={styles.headline}>{caseStudy.headline}</p>
-      </Reveal>
+      <div className={styles.stage}>
+        <Parallax className={styles.media} strength={9}>
+          {media ? (
+            <Image
+              src={media.src}
+              alt={media.alt}
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+          ) : null}
+        </Parallax>
+        <div className={styles.shade} aria-hidden="true" />
 
-      <Reveal className={`${styles.visual} koala-media-frame`} delay={0.08}>
-        {media ? (
-          <Image
-            className="koala-media-image"
-            src={media.src}
-            alt={media.alt}
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(max-width: 900px) 100vw, 48vw"
-          />
-        ) : null}
-      </Reveal>
+        <div className={styles.overlay}>
+          <Link
+            className={`${styles.back} koala-underline-link`}
+            href="/work"
+          >
+            <ArrowIcon direction="left" />
+            All work
+          </Link>
 
-      <div className={styles.meta} aria-label={`${caseStudy.title} project summary`}>
+          <div className={styles.heading}>
+            <p className="koala-eyebrow">{caseStudy.category}</p>
+            <SplitReveal
+              as="h1"
+              className={styles.title}
+              id="case-study-title"
+              text={caseStudy.title}
+            />
+            <p className={styles.headline}>{caseStudy.headline}</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={styles.meta}
+        aria-label={`${caseStudy.title} project summary`}
+      >
+        <div>
+          <span className="koala-label">Client</span>
+          <strong>{caseStudy.client}</strong>
+        </div>
         <div>
           <span className="koala-label">Sector</span>
           <strong>{caseStudy.sector}</strong>

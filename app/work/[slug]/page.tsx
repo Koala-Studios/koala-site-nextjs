@@ -7,6 +7,7 @@ import { getCaseStudyPath, toAbsoluteUrl } from "@/lib/routes";
 import { CaseStudyHero } from "@/components/case-studies/CaseStudyHero";
 import { CaseStudyRelated } from "@/components/case-studies/CaseStudyRelated";
 import { CaseStudyStory } from "@/components/case-studies/CaseStudyStory";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
 
 type CaseStudyPageProps = {
   params: Promise<{
@@ -94,6 +95,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ScrollProgress />
       <CaseStudyHero caseStudy={caseStudy} />
       <CaseStudyStory caseStudy={caseStudy} />
       <CaseStudyRelated current={caseStudy} related={related} />

@@ -1,190 +1,411 @@
+.homePage {
+  color: var(--koala-color-ink);
+  position: relative;
+}
+
+/* ---------- Hero ---------- */
+
 .hero {
   align-items: center;
   display: grid;
-  gap: clamp(1.5rem, 3.5vw, 3.5rem);
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.18fr);
-  min-height: clamp(32rem, 45vw, 38rem);
+  gap: clamp(1rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  min-height: min(46rem, calc(100dvh - 6rem));
+  padding-block: clamp(var(--koala-space-12), 6vw, var(--koala-space-20));
+  position: relative;
 }
 
-.heroText {
+.heroInner {
   display: grid;
-  gap: var(--koala-space-8);
+  gap: var(--koala-space-6);
+  justify-items: flex-start;
+  position: relative;
+  z-index: 1;
 }
 
-.heroText h1 {
+.heroVisual {
+  align-self: stretch;
+  min-height: min(32rem, 60vh);
+  position: relative;
+  z-index: 1;
+}
+
+.heroEyebrow {
+  animation: hero-fade-in 800ms var(--koala-ease-out) 200ms both;
+}
+
+.heroInner h1 {
   font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-3xl);
-  font-weight: 600;
+  font-size: clamp(3.6rem, 7.4vw, 7.8rem);
+  font-weight: 400;
   letter-spacing: 0;
-  line-height: 0.96;
+  line-height: 0.9;
   margin: 0;
-  max-width: 10.5ch;
-  text-transform: capitalize;
+  max-width: 100%;
+  min-width: 0;
+  text-transform: uppercase;
 }
 
-.heroText h1 span {
-  color: var(--koala-color-green);
+.heroLineMask {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.heroLine {
+  animation: hero-line-up 950ms var(--koala-ease-smooth) 150ms both;
   display: block;
 }
 
-.heroIntro {
-  display: grid;
-  min-width: 0;
+.heroLineSecond {
+  animation-delay: 280ms;
 }
 
-.splitImage,
-.contactImage {
-  border-radius: var(--koala-radius-xl);
+.heroCtas {
+  align-items: center;
+  animation: hero-fade-in 800ms var(--koala-ease-out) 700ms both;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--koala-space-6);
+  margin-top: var(--koala-space-4);
+}
+
+@keyframes hero-line-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroScroll {
+  align-items: center;
+  bottom: clamp(1rem, 3vw, 2.5rem);
+  color: var(--koala-color-muted);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  gap: 0.5rem;
+  letter-spacing: var(--koala-label-tracking);
+  position: absolute;
+  right: 0.5rem;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.heroScrollLine {
+  background: var(--koala-color-line);
   display: block;
-  height: auto;
-  width: 100%;
-}
-
-.heroImageWrap {
-  background: var(--koala-color-surface-soft);
-  border-radius: clamp(5rem, 13vw, 12rem) var(--koala-radius-xl) var(--koala-radius-xl) clamp(5rem, 13vw, 12rem);
-  height: clamp(31rem, 42vw, 38rem);
-  min-width: 0;
+  height: 3.4rem;
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 1px;
 }
 
-.heroImage {
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  object-position: center right;
-  transform: scale(1.04);
-  transform-origin: center right;
-  width: 100%;
-}
-
-.heroDots {
-  align-items: center;
-  bottom: clamp(1.1rem, 2.5vw, 1.55rem);
-  display: inline-flex;
-  gap: 0.65rem;
+.heroScrollLine::after {
+  animation: hero-scroll-drip 2.2s var(--koala-ease-smooth) infinite;
+  background: var(--koala-color-lime);
+  content: "";
+  height: 1.2rem;
+  left: 0;
   position: absolute;
-  right: clamp(1.1rem, 2.5vw, 1.55rem);
-  z-index: 2;
+  top: 0;
+  width: 1px;
 }
 
-.heroDots span {
-  aspect-ratio: 1;
-  background: var(--koala-color-surface);
-  border: 1px solid var(--koala-color-line);
-  border-radius: 999px;
-  display: block;
-  opacity: 0.66;
-  width: 0.62rem;
+@keyframes hero-scroll-drip {
+  from {
+    transform: translateY(-1.4rem);
+  }
+  to {
+    transform: translateY(3.6rem);
+  }
 }
 
-.heroDots span:first-child {
-  opacity: 1;
+/* ---------- Marquee ---------- */
+
+.marquee {
+  /* Cancel the page side padding without 100vw (vw includes the scrollbar
+     and overflows the layout, which makes phones zoom the page out). */
+  margin-inline: calc(-1 * clamp(var(--koala-space-4), 3vw, var(--koala-space-8)));
 }
 
+.marqueeItem {
+  align-items: center;
+  display: inline-flex;
+  font-family: var(--koala-font-heading);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  gap: 2.2rem;
+  line-height: 1;
+  padding: 1rem 0 0.8rem 2.2rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marqueeTick {
+  background: var(--koala-color-lime);
+  display: inline-block;
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+/* ---------- Shared section scaffolding ---------- */
+
+.pillars,
 .work,
-.splitSection,
+.testimonials,
 .contact {
-  padding-block: clamp(3rem, 7vw, 6rem);
+  border-top: 1px solid var(--koala-color-line-soft);
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
   scroll-margin-top: var(--koala-space-24);
 }
 
-.sectionHeading {
+.marquee + .pillars {
+  border-top: 0;
+}
+
+.sectionHead {
+  display: grid;
+  gap: var(--koala-space-4);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.sectionHead h2,
+.sectionHeadRow h2 {
+  max-width: 24ch;
+  text-transform: uppercase;
+}
+
+.sectionHeadRow {
   align-items: flex-end;
   display: grid;
   gap: var(--koala-space-4);
   grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.sectionHeading a {
-  border-bottom: 1px solid currentColor;
-  align-items: center;
-  display: inline-flex;
+.sectionHeadRow > div {
+  display: grid;
+  gap: var(--koala-space-4);
+}
+
+.sectionLink {
+  color: var(--koala-color-ink);
   font-family: var(--koala-font-support);
-  justify-self: flex-start;
-  min-height: var(--koala-space-12);
+  font-size: var(--koala-text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.splitSection,
+/* ---------- Client logo carousel ---------- */
+
+.clients {
+  border-top: 1px solid var(--koala-color-line-soft);
+  display: grid;
+  gap: var(--koala-space-5);
+  padding-block: clamp(2rem, 4vw, 3rem);
+}
+
+.clientsEyebrow {
+  justify-self: center;
+}
+
+.clientsMarquee {
+  border-block: 0;
+}
+
+.clientMark {
+  color: var(--koala-color-muted);
+  display: inline-block;
+  font-family: var(--koala-font-heading);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1;
+  padding: 0.4rem 0 0.2rem clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  transition: color 320ms var(--koala-ease-out);
+}
+
+.clientMark:hover {
+  color: var(--koala-color-ink);
+}
+
+/* ---------- Stats ---------- */
+
+.stats {
+  border-top: 1px solid var(--koala-color-line-soft);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  isolation: isolate;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  position: relative;
+}
+
+.statsAccent {
+  top: -5rem;
+}
+
+.stat {
+  border-left: 1px solid var(--koala-color-line);
+  display: grid;
+  gap: var(--koala-space-3);
+  padding: 0.4rem clamp(1rem, 2.5vw, 2rem);
+}
+
+.stat:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.statValue {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-heading);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.9;
+}
+
+.statLabel {
+  color: var(--koala-color-muted);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  letter-spacing: var(--koala-label-tracking);
+  text-transform: uppercase;
+}
+
+/* ---------- Contact band ---------- */
+
 .contact {
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.contactInner {
   align-items: center;
-  border-top: 1px solid var(--koala-color-line);
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1fr);
-}
-
-.splitCopy,
-.contactCopy {
-  display: grid;
-  gap: var(--koala-space-6);
-}
-
-.splitCopy h2,
-.contactCopy h2,
-.sectionHeading h2 {
-  max-width: 12ch;
-}
-
-.splitImageWrap,
-.contactImageWrap {
-  min-width: 0;
-}
-
-.contact {
-  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1fr);
-}
-
-.contactImageWrap {
-  border-radius: var(--koala-radius-xl);
-  order: 2;
-  overflow: hidden;
+  gap: var(--koala-space-8);
+  grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .contactCopy {
-  order: 1;
+  display: grid;
+  gap: var(--koala-space-8);
+  justify-items: flex-start;
 }
+
+.contactTitle {
+  font-family: var(--koala-font-heading);
+  font-size: var(--koala-text-3xl);
+  font-weight: 400;
+  line-height: 0.92;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.contactActions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--koala-space-8);
+}
+
+.contactEmail {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-md);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contactBadge {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
   .hero {
-    gap: var(--koala-space-12);
     grid-template-columns: 1fr;
-    min-height: auto;
+    min-height: min(44rem, calc(100dvh - 5rem));
+    row-gap: 0;
   }
 
-  .heroText h1 {
-    font-size: var(--koala-text-2xl);
-    max-width: 12ch;
+  .heroVisual {
+    min-height: 19rem;
   }
 
-  .heroImageWrap {
-    aspect-ratio: 4 / 3;
-    border-radius: var(--koala-radius-xl);
-    height: auto;
+  .heroScroll {
+    display: none;
   }
 
-  .heroIntro,
-  .splitSection,
-  .contact {
-    grid-template-columns: 1fr;
-  }
-
-  .sectionHeading {
+  .sectionHeadRow {
     align-items: flex-start;
     grid-template-columns: 1fr;
   }
 
-  .contactImageWrap,
-  .contactCopy {
-    order: initial;
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--koala-space-8);
   }
 
+  .stat:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .contactInner {
+    grid-template-columns: 1fr;
+  }
+
+  .contactBadge {
+    display: none;
+  }
 }
 
-@media (max-width: 480px) {
-  .heroText h1 {
-    max-width: none;
+@media (max-width: 540px) {
+  /* "WE BUILD SHOPIFY STORES" (longest hero line, ~7.05x the font size)
+     must fit one line; any wider and phones zoom the whole page out. */
+  .heroInner h1 {
+    font-size: clamp(2.4rem, 12vw, 3.05rem);
+  }
+
+  .heroCtas {
+    gap: var(--koala-space-4);
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    border-left: 0;
+    padding-inline: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroEyebrow,
+  .heroLine,
+  .heroLineSecond,
+  .heroCtas {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+
+  .heroScrollLine::after {
+    animation: none;
   }
 }

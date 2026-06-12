@@ -7,20 +7,24 @@ import {
 } from "./site-content";
 
 export * from "./types";
-export { caseStudies, navigationContent, pageContent, siteSettings } from "./site-content";
+export {
+  caseStudies,
+  homepageTestimonials,
+  navigationContent,
+  pageContent,
+  siteSettings,
+} from "./site-content";
 
 export function getPageContent(page: MarketingPageKey) {
   return pageContent[page];
 }
 
-export function getPageContentByRoute(route: Extract<PublicRoute, "/" | "/services" | "/about" | "/contact">) {
+export function getPageContentByRoute(route: Extract<PublicRoute, "/" | "/services" | "/contact">) {
   switch (route) {
     case "/":
       return pageContent.home;
     case "/services":
       return pageContent.services;
-    case "/about":
-      return pageContent.about;
     case "/contact":
       return pageContent.contact;
   }

@@ -1,0 +1,59 @@
+.badge {
+  display: inline-grid;
+  height: clamp(8rem, 12vw, 11rem);
+  place-items: center;
+  position: relative;
+  width: clamp(8rem, 12vw, 11rem);
+}
+
+.ring {
+  animation: badge-spin 18s linear infinite;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.badge:hover .ring {
+  animation-duration: 7s;
+}
+
+.text {
+  fill: var(--koala-color-muted);
+  font-family: var(--koala-font-support);
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.center {
+  align-items: center;
+  background: var(--koala-color-lime);
+  color: #0a0a09;
+  display: inline-flex;
+  height: 3.2rem;
+  justify-content: center;
+  transform: rotate(-45deg);
+  transition: transform 420ms var(--koala-ease-smooth);
+  width: 3.2rem;
+}
+
+.badge:hover .center {
+  transform: rotate(0deg);
+}
+
+@keyframes badge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+  }
+
+  .center {
+    transition-duration: 1ms;
+  }
+}

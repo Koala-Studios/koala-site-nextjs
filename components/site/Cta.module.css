@@ -231,7 +231,7 @@
 .iconCircle {
   background: var(--koala-color-green);
   border-radius: var(--koala-radius-pill);
-  color: var(--koala-color-surface);
+  color: var(--koala-color-ink);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -276,6 +276,7 @@
 
 .hasCircle:hover .iconCircle {
   background: transparent;
+  color: var(--koala-color-surface);
 }
 
 .hasCircleLeft:hover .iconCircle {

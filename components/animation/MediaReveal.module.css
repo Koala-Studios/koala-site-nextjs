@@ -1,0 +1,31 @@
+.host {
+  display: block;
+}
+
+.clip {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1100ms var(--koala-ease-smooth);
+}
+
+.active .clip {
+  clip-path: inset(0 0 0 0);
+}
+
+.inner {
+  height: 100%;
+  transform: scale(1.18);
+  transform-origin: left center;
+  transition: transform 1300ms var(--koala-ease-smooth);
+  width: 100%;
+}
+
+.active .inner {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clip,
+  .inner {
+    transition-duration: 1ms;
+  }
+}

@@ -1,0 +1,97 @@
+.page {
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.backdrop {
+  font-family: var(--koala-font-heading);
+  font-size: clamp(12rem, 32vw, 30rem);
+  line-height: 0.8;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  right: -0.06em;
+  text-transform: uppercase;
+  top: 0;
+  user-select: none;
+  z-index: 0;
+}
+
+.hero {
+  align-content: center;
+  display: grid;
+  gap: var(--koala-space-6);
+  justify-items: flex-start;
+  min-height: min(34rem, calc(100dvh - 16rem));
+  padding-block: clamp(2rem, 5vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: var(--koala-font-heading);
+  font-size: var(--koala-text-display);
+  font-weight: 400;
+  line-height: 0.85;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.copy {
+  color: var(--koala-color-muted);
+  font-size: var(--koala-text-md);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 30rem;
+}
+
+.statusRow {
+  align-items: center;
+  color: var(--koala-color-ink);
+  display: flex;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  gap: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusDot {
+  animation: success-pulse 2.2s ease-in-out infinite;
+  background: var(--koala-color-lime);
+  border-radius: 999px;
+  display: inline-block;
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+@keyframes success-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(163, 230, 53, 0);
+  }
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--koala-space-6);
+  margin-top: var(--koala-space-2);
+}
+
+@media (max-width: 760px) {
+  .backdrop {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDot {
+    animation: none;
+  }
+}

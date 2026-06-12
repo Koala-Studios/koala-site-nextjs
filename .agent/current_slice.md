@@ -11,7 +11,9 @@
 
 ## Current Lane
 
-- Phase: Website redesign implementation.
+- Phase: Website redesign implementation — 2026 "Blackout editorial, signal lime" visual lift.
+- Latest slice (2026-06-11, V3): full-screen mobile takeover menu, desktop nav sweep underlines, footer marquee lime-flood hover, contact-success v2, branded 404, MediaReveal media wipes on case studies, skip link. See ledger "V3 Polish" entry. Gotcha: never nest the menu overlay inside `.headerWrap` (backdrop-filter breaks position:fixed).
+- Previous slice (2026-06-10, V2): `/about` removed entirely (308 redirect to `/`); signature interaction systems (SplitReveal, CursorDot, Parallax, Magnetic, CountUp, ScrollProgress, RotatingBadge, route transition, grain) shipped and wired through reimagined `/`, `/work` (grid/index explorer), `/services` (funnel diagram), `/work/[slug]` (full-bleed parallax hero, sticky rail, next-case banner), and `/contact` (TALK backdrop, live clock, service chips). Read `docs/redesign-2026-direction.md` ("V2 mandate") first, then the "V2 Reimagining" entry in `docs/execution-ledger.md` for evidence and handoff notes.
 - Current slice completed: framework modernization, dependency audit cleanup, retired route module removal, legacy component/style/app-assets pruning, and the latest remaining route visual cleanup after the case-study visual pass and legacy lint/Three.js cleanup.
 - Implemented in this slice:
   - Flattened the active marketing routes so the core pages no longer rely on gradient/shadow-heavy frames.

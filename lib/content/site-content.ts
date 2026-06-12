@@ -4,24 +4,23 @@ import type {
   MarketingPageKey,
   PageContent,
   SiteSettings,
+  TestimonialContent,
 } from "./types";
 
 export const siteSettings: SiteSettings = {
   name: "Koala Studios",
   description:
-    "Clear ecommerce sites with stronger stories, sharper visuals, and cleaner builds.",
+    "Shopify stores, Meta ads, and email marketing for brands that want to grow.",
   url: "https://koalastudios.ca",
   locale: "en-CA",
   defaultSeo: {
-    title: "Koala Studios | Ecommerce Design and Build",
+    title: "Shopify Design, Meta Ads & Email Marketing Agency",
     description:
       "Koala Studios helps ecommerce brands redesign storefronts, build Shopify features, and improve the way customers move through the site.",
     canonicalPath: "/",
   },
-  social: {
-    instagram: "https://www.instagram.com/",
-    linkedin: "https://www.linkedin.com/",
-  },
+  // Add real profile URLs before linking socially anywhere (see docs/launch-blockers.md).
+  social: {},
   cta: {
     primaryLabel: "Start a conversation",
     primaryHref: "/contact",
@@ -34,13 +33,11 @@ export const navigationContent: NavigationContent = {
   primary: [
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
-    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
   footer: [
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
-    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
   featuredCta: {
@@ -54,7 +51,7 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     route: "/",
     status: "published",
     seo: {
-      title: "Koala Studios | Ecommerce Design with a Clearer Message",
+      title: "Shopify Design, Meta Ads & Email Marketing Agency",
       description:
         "Ecommerce design and build for brands that want a clearer offer, stronger proof, and a better path to contact.",
       canonicalPath: "/",
@@ -93,16 +90,16 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     route: "/services",
     status: "published",
     seo: {
-      title: "Services | Koala Studios",
+      title: "Shopify Design, Meta Ads & Email Marketing Services",
       description:
-        "Strategy, design, and frontend build for ecommerce brands that need a clearer site.",
+        "Shopify design and build, Meta ad management, and email marketing for ecommerce brands. One team across the full funnel.",
       canonicalPath: "/services",
     },
     hero: {
       eyebrow: "Services",
-      headline: "Strategy. Design. Build.",
+      headline: "Design. Build. Grow.",
       summary:
-        "For ecommerce brands that need clearer structure, sharper visuals, and cleaner frontend work.",
+        "Three ways to work with us — build the store, drive the traffic, keep the customers. Most brands start with one and grow into the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },
@@ -128,51 +125,11 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
       ],
     },
   },
-  about: {
-    route: "/about",
-    status: "published",
-    seo: {
-      title: "About | Koala Studios",
-      description:
-        "Learn how Koala Studios works and what it values: clarity, restraint, and follow-through.",
-      canonicalPath: "/about",
-    },
-    hero: {
-      eyebrow: "About",
-      headline:
-        "We're a digital studio that builds with clarity, craft, and momentum.",
-      summary:
-        "We keep the team small, the process direct, and the work grounded in clear decisions and careful delivery.",
-      ctas: [
-        { label: "See the work", href: "/work" },
-        { label: "Contact", href: "/contact" },
-      ],
-    },
-    body: {
-      sections: [
-        {
-          id: "values",
-          heading: "Values",
-          copy: "Clarity first, careful craft, and follow-through every time.",
-        },
-        {
-          id: "process",
-          heading: "How we work",
-          copy: "We keep the process focused enough to stay clear and flexible enough to move quickly.",
-        },
-        {
-          id: "promise",
-          heading: "What clients get",
-          copy: "A clearer story, a stronger site, and something that stays easy to maintain.",
-        },
-      ],
-    },
-  },
   contact: {
     route: "/contact",
     status: "published",
     seo: {
-      title: "Contact | Koala Studios",
+      title: "Contact — Start a Project",
       description:
         "Start a conversation about a redesign, new build, or cleaner ecommerce site.",
       canonicalPath: "/contact",
@@ -203,6 +160,33 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     },
   },
 };
+
+export const homepageTestimonials: TestimonialContent[] = [
+  {
+    quote:
+      "Koala helped us turn a messy storefront into something clearer, faster, and much easier for the team to keep improving.",
+    author: "Ecommerce founder",
+    role: "Growth-stage brand",
+  },
+  {
+    quote:
+      "The work finally connected our product story, visuals, and Shopify build instead of treating each piece like a separate problem.",
+    author: "Marketing lead",
+    role: "Consumer ecommerce",
+  },
+  {
+    quote:
+      "We needed direct senior help, not another long handoff loop. Koala kept decisions moving and shipped with care.",
+    author: "Operations lead",
+    role: "Shopify team",
+  },
+  {
+    quote:
+      "The site now feels sharper at the first click, and the editing system is much easier to work with after launch.",
+    author: "Brand team",
+    role: "Lifestyle commerce",
+  },
+];
 
 export const caseStudies: CaseStudyContent[] = [
   {
@@ -247,7 +231,7 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "magnum",
     seo: {
-      title: "Ara Case Study | Koala Studios",
+      title: "Ara Case Study",
       description:
         "Ara shows how Koala Studios turns a product-heavy page into a clearer proof story.",
       canonicalPath: "/work/ara",
@@ -295,7 +279,7 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "nektr",
     seo: {
-      title: "Magnum Case Study | Koala Studios",
+      title: "Magnum Case Study",
       description:
         "Magnum shows the redesigned case-study structure in a concise proof-first format.",
       canonicalPath: "/work/magnum",
@@ -347,7 +331,7 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "allo",
     seo: {
-      title: "Nektr Case Study | Koala Studios",
+      title: "Nektr Case Study",
       description:
         "Nektr shows how Koala Studios reframes energetic brand work into a clearer proof story.",
       canonicalPath: "/work/nektr",
@@ -398,7 +382,7 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "stlth",
     seo: {
-      title: "Allo Case Study | Koala Studios",
+      title: "Allo Case Study",
       description:
         "Allo highlights a more curated, conversion-aware case-study structure for Koala Studios.",
       canonicalPath: "/work/allo",
@@ -452,7 +436,7 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "elikai",
     seo: {
-      title: "Stlth Case Study | Koala Studios",
+      title: "Stlth Case Study",
       description:
         "Stlth demonstrates a more disciplined long-form case-study structure for Koala Studios.",
       canonicalPath: "/work/stlth",
@@ -504,7 +488,7 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "ara",
     seo: {
-      title: "Elikai Case Study | Koala Studios",
+      title: "Elikai Case Study",
       description:
         "Elikai shows a restrained lifestyle ecommerce presentation with image-led product context.",
       canonicalPath: "/work/elikai",

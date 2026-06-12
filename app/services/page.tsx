@@ -1,8 +1,12 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
+import { SplitReveal } from "@/components/animation/SplitReveal";
+import { FunnelDiagram } from "@/components/services/FunnelDiagram";
 import { Cta } from "@/components/site/Cta";
+import { Magnetic } from "@/components/site/Magnetic";
+import { AmbientAccent } from "@/components/three/AmbientAccent";
+import { AmbientScene } from "@/components/three/AmbientScene";
 import { servicesContent } from "@/content/pages/services";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -16,10 +20,23 @@ export const metadata: Metadata = createPageMetadata({
   path: servicesContent.seo.canonicalPath ?? "/services",
 });
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: servicesContent.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Ecommerce design and Shopify development",
+  name: "Shopify design, Meta ad management, and email marketing",
   description: servicesContent.seo.description,
   url: toAbsoluteUrl("/services"),
   provider: {
@@ -51,77 +68,171 @@ export default function ServicesPage() {
     <div className={`koala-page ${styles.page}`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([servicesJsonLd, faqJsonLd]),
+        }}
       />
-      <section className={`${styles.hero} koala-route-hero`} aria-labelledby="services-title">
-        <Reveal className="koala-stack">
-          <h1 className="koala-page-title" id="services-title">Services</h1>
-        </Reveal>
-      </section>
 
-      <section
-        className={styles.mediaPanel}
-        aria-label="Koala Studios service approach"
-      >
-        <Reveal className={`${styles.imageWrap} koala-media-frame`}>
-          <Image
-            className="koala-media-image"
-            src="/images/redesign/services/koala-services-desk-1600.webp"
-            alt="Koala Studios service desk with ecommerce design and development screens"
-            width={1600}
-            height={900}
-            sizes="(max-width: 900px) 100vw, 62vw"
-            fetchPriority="high"
-            priority
-            unoptimized
+      <section className={styles.hero} aria-labelledby="services-title">
+        <AmbientScene variant="blueprint" />
+        <div className={styles.heroInner}>
+          <p className="koala-eyebrow">{servicesContent.hero.eyebrow}</p>
+          <SplitReveal
+            accents={["Grow."]}
+            as="h1"
+            className={styles.heroTitle}
+            id="services-title"
+            text={"Design.\nBuild.\nGrow."}
           />
-          <Cta
-            className={styles.mediaCta}
-            href="/contact"
-            icon="circle"
-            iconPosition="left"
-            size="small"
-            variant="overlay"
-          >
-            Start a project
-          </Cta>
+          <Reveal delay={0.15}>
+            <p className={styles.heroSummary}>{servicesContent.hero.summary}</p>
+          </Reveal>
+        </div>
+        <Reveal className={styles.heroProof} delay={0.1}>
+          {servicesContent.proof.map((item) => (
+            <div className={styles.proofItem} key={item.label}>
+              <span className={styles.proofValue}>{item.value}</span>
+              <span className={styles.proofLabel}>{item.label}</span>
+            </div>
+          ))}
         </Reveal>
       </section>
 
-      <section className={styles.summary} aria-label="Service summary">
-        <Reveal>
-          <h2 className="koala-section-title koala-section-title--compact">{servicesContent.hero.headline}</h2>
+      <section className={styles.funnel} aria-labelledby="services-funnel-title">
+        <Reveal className={styles.sectionHead}>
+          <p className="koala-eyebrow">The model</p>
+          <h2 className="koala-section-title" id="services-funnel-title">
+            Every offer feeds the next.
+          </h2>
         </Reveal>
-        <Reveal delay={0.08}>
-          <p className="koala-muted-copy">{servicesContent.hero.summary}</p>
-        </Reveal>
+        <FunnelDiagram />
       </section>
 
       <section className={styles.offerings} aria-label="Service offerings">
         {servicesContent.offerings.map((offering, index) => (
-          <Reveal
-            className={styles.offering}
-            key={offering.title}
-            delay={index * 0.04}
-          >
-            <span className="koala-label">{String(index + 1).padStart(2, "0")}</span>
-            <h2>{offering.title}</h2>
-            <p>{offering.copy}</p>
+          <Reveal className={styles.offering} delay={index * 0.05} key={offering.title}>
+            <div className={styles.offeringHead}>
+              <span className={styles.offeringNumber}>{offering.number}</span>
+              <span className={styles.offeringKicker}>{offering.kicker}</span>
+            </div>
+            <div className={styles.offeringBody}>
+              <h2 className={styles.offeringTitle}>{offering.title}</h2>
+              <p className={styles.offeringCopy}>{offering.copy}</p>
+              <div className={styles.offeringChips}>
+                {offering.deliverables.map((deliverable) => (
+                  <span className="koala-chip" key={deliverable}>
+                    {deliverable}
+                  </span>
+                ))}
+              </div>
+              <p className={styles.offeringNote}>
+                <span className={styles.offeringNoteLabel}>Good fit</span>
+                {offering.note}
+              </p>
+              <Cta
+                className={styles.offeringLink}
+                href={offering.href}
+                size="medium"
+                variant="text"
+              >
+                Full service details
+              </Cta>
+            </div>
           </Reveal>
         ))}
       </section>
 
-      <section className={styles.cta} aria-labelledby="services-cta-title">
-        <Reveal>
-          <p className="koala-label">{servicesContent.cta.eyebrow}</p>
-          <h2 className="koala-section-title koala-section-title--compact" id="services-cta-title">
-            {servicesContent.cta.title}
+      <section className={styles.process} aria-labelledby="services-process-title">
+        <AmbientAccent
+          className={styles.processAccent}
+          shape="torus"
+          side="left"
+          parallax={6}
+          opacity={0.24}
+        />
+        <Reveal className={styles.sectionHead}>
+          <p className="koala-eyebrow">How it runs</p>
+          <h2 className="koala-section-title" id="services-process-title">
+            The same four steps, every time.
           </h2>
         </Reveal>
+        <div className={styles.processGrid}>
+          {servicesContent.delivery.map((step, index) => (
+            <Reveal className={styles.processStep} delay={index * 0.05} key={step.number}>
+              <span className={styles.processNumber}>{step.number}</span>
+              <h3 className={styles.processTitle}>{step.title}</h3>
+              <p className={styles.processCopy}>{step.copy}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.engagement} aria-labelledby="services-engagement-title">
+        <Reveal className={styles.sectionHead}>
+          <p className="koala-eyebrow">Ways to work</p>
+          <h2 className="koala-section-title" id="services-engagement-title">
+            Project or retainer.
+          </h2>
+        </Reveal>
+        <div className={styles.engagementGrid}>
+          {[servicesContent.engagement.project, servicesContent.engagement.retainer].map(
+            (mode) => (
+              <Reveal className={styles.engagementCard} key={mode.title}>
+                <h3 className={styles.engagementTitle}>{mode.title}</h3>
+                <p className={styles.engagementCopy}>{mode.copy}</p>
+                <ul className={styles.engagementList}>
+                  {mode.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </Reveal>
+            )
+          )}
+        </div>
+      </section>
+
+      <section className={styles.faq} aria-labelledby="services-faq-title">
+        <Reveal className={styles.sectionHead}>
+          <p className="koala-eyebrow">Questions</p>
+          <h2 className="koala-section-title" id="services-faq-title">
+            Asked before every project.
+          </h2>
+        </Reveal>
+        <div className={styles.faqList}>
+          {servicesContent.faq.map((item, index) => (
+            <Reveal delay={index * 0.04} key={item.question}>
+              <details className={styles.faqItem}>
+                <summary className={styles.faqQuestion}>
+                  {item.question}
+                  <span aria-hidden="true" className={styles.faqToggle} />
+                </summary>
+                <p className={styles.faqAnswer}>{item.answer}</p>
+              </details>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.cta} aria-labelledby="services-cta-title">
+        <Reveal>
+          <p className="koala-eyebrow">{servicesContent.cta.eyebrow}</p>
+          <h2 className={styles.ctaTitle} id="services-cta-title">
+            {servicesContent.cta.title}
+          </h2>
+          <p className={styles.ctaSummary}>{servicesContent.cta.summary}</p>
+        </Reveal>
         <Reveal delay={0.08}>
-          <Cta href="/contact" size="medium" variant="outlined">
-            Contact Koala
-          </Cta>
+          <Magnetic>
+            <Cta
+              href="/contact"
+              icon="circle"
+              iconPosition="left"
+              size="large"
+              variant="transparent"
+            >
+              Contact Koala
+            </Cta>
+          </Magnetic>
         </Reveal>
       </section>
     </div>

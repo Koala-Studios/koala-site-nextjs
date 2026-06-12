@@ -1,5 +1,5 @@
 .headerWrap {
-  background: linear-gradient(var(--koala-color-bg), #f7f6f2ba);
+  background: linear-gradient(var(--koala-color-bg), #0000002e);
   backdrop-filter: blur(5px);
   pointer-events: auto;
   position: sticky;
@@ -16,15 +16,14 @@
   max-width: var(--koala-container-wide);
   padding: 0.6rem clamp(1rem, 3vw, 2rem);
   pointer-events: auto;
-  /* border-bottom: 0.5px solid var(--koala-color-line); */
-
 }
 
 .brand {
   align-items: center;
   display: inline-flex;
   min-height: var(--koala-space-10);
-  
+  position: relative;
+  z-index: 56;
 }
 
 .brand img {
@@ -44,85 +43,70 @@
   font-family: var(--koala-font-support);
   font-size: var(--koala-text-sm);
   font-weight: 500;
-  text-transform: uppercase;
   line-height: 1;
   min-height: var(--koala-space-8);
   padding-top: 0.45rem;
   position: relative;
+  text-transform: uppercase;
 }
 
 .link::after {
-  background: var(--koala-color-green);
-  border-radius: var(--koala-radius-pill);
+  background: var(--koala-color-lime);
   bottom: 0;
   content: "";
-  height: 2px;
+  height: 1px;
   left: 0;
-  opacity: 0;
   position: absolute;
   right: 0;
-  transform: scaleX(0.35);
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.link:hover,
-.linkActive {
-  color: var(--koala-color-ink);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 380ms var(--koala-ease-smooth);
 }
 
 .link:hover::after,
 .linkActive::after {
-  opacity: 1;
   transform: scaleX(1);
+  transform-origin: left center;
 }
 
 .desktopAction {
   justify-self: flex-end;
 }
 
-.menuButton {
-  align-items: center;
-  border-radius: 999px;
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-sm);
-  gap: 0.55rem;
-  height: auto;
-  justify-content: center;
-  min-height: var(--koala-space-12);
-  padding-inline: 1.1rem;
-  transition: background-color 180ms ease, color 180ms ease;
-  width: auto;
-}
+/* ---------- Menu button ---------- */
 
 .menuButton {
+  align-items: center;
   background: var(--koala-color-green);
-  color: var(--koala-color-surface);
+  border: 0;
+  color: #ffffff;
   display: inline-flex;
-  gap: 0.22rem;
   flex-direction: column;
+  gap: 0.22rem;
   height: 3rem;
+  justify-content: center;
   padding: 0;
+  position: relative;
+  transition: background-color 240ms var(--koala-ease-out), color 240ms var(--koala-ease-out);
   width: 3rem;
+  z-index: 56;
 }
 
 .menuButton:hover {
-  background: var(--koala-color-ink);
-  border-color: var(--koala-color-ink);
-  color: var(--koala-color-surface);
+  background: var(--koala-color-lime);
+  color: #0a0a09;
 }
 
 .menuButton span {
   background: currentColor;
-  border-radius: 999px;
   display: block;
   height: 2px;
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition: opacity 200ms var(--koala-ease-out), transform 280ms var(--koala-ease-smooth);
   width: 1rem;
 }
 
 .menuOpen span:nth-child(1) {
-  transform: translateY(0.25rem) rotate(45deg);
+  transform: translateY(0.28rem) rotate(45deg);
 }
 
 .menuOpen span:nth-child(2) {
@@ -130,11 +114,100 @@
 }
 
 .menuOpen span:nth-child(3) {
-  transform: translateY(-0.25rem) rotate(-45deg);
+  transform: translateY(-0.28rem) rotate(-45deg);
 }
 
+/* ---------- Full-screen takeover ---------- */
+
+.overlay {
+  background: var(--koala-color-bg);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  inset: 0;
+  opacity: 0;
+  padding: 5.5rem clamp(1.25rem, 5vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 360ms var(--koala-ease-out), visibility 0s linear 360ms;
+  visibility: hidden;
+  z-index: 45;
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 360ms var(--koala-ease-out);
+  visibility: visible;
+}
+
+.overlayNav {
+  align-content: center;
+  display: grid;
+  gap: clamp(0.4rem, 2vh, 1rem);
+}
+
+.overlayLink {
+  align-items: baseline;
+  color: var(--koala-color-ink);
+  display: flex;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.overlayIndex {
+  color: var(--koala-color-lime);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  letter-spacing: var(--koala-label-tracking);
+}
+
+.overlayMask {
+  display: block;
+  overflow: hidden;
+}
+
+.overlayLabel {
+  display: block;
+  font-family: var(--koala-font-heading);
+  font-size: clamp(3.4rem, 11vh, 5.6rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  transform: translateY(110%);
+  transition: transform 600ms var(--koala-ease-smooth), color 240ms var(--koala-ease-out);
+}
+
+.overlayOpen .overlayLabel {
+  transform: translateY(0);
+}
+
+.overlayLink:hover .overlayLabel,
+.overlayLinkActive .overlayLabel {
+  color: var(--koala-color-lime);
+}
+
+.overlayFooter {
+  align-items: center;
+  border-top: 1px solid var(--koala-color-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--koala-space-5);
+  justify-content: space-between;
+  padding-top: var(--koala-space-5);
+}
+
+.overlayEmail {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Breakpoints ---------- */
+
 @media (min-width: 901px) {
-  .menuButton {
+  .menuButton,
+  .overlay {
     display: none;
   }
 }
@@ -143,69 +216,27 @@
   .header {
     grid-template-columns: auto 3rem;
     justify-content: space-between;
-    row-gap: 0;
-  }
-
-  .brand {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: flex-start;
   }
 
   .brand img {
     width: 7.2rem;
   }
 
-  .nav {
-    background: var(--koala-color-bg);
-    border-top: 1px solid var(--koala-color-line);
-    display: grid;
-    grid-column: 1 / -1;
-    grid-row: 2;
-    gap: 0;
-    justify-items: stretch;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0;
-    pointer-events: none;
-    transition: max-height 220ms ease, opacity 180ms ease, padding 180ms ease;
-    visibility: hidden;
-  }
-
-  .navOpen {
-    max-height: 20rem;
-    opacity: 1;
-    padding: 0.45rem;
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  .link {
-    align-items: center;
-    border-radius: var(--koala-radius-sm);
-    display: flex;
-    min-height: var(--koala-space-12);
-    padding: 0 0.9rem;
-  }
-
-  .link::after {
-    display: none;
-  }
-
-  .linkActive {
-    background: transparent;
-    color: var(--koala-color-green);
-  }
-
+  .nav,
   .desktopAction {
     display: none;
   }
+}
 
-  .menuButton {
-    display: inline-flex;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: flex-end;
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .overlayLabel,
+  .menuButton span,
+  .link::after {
+    transition-duration: 1ms;
+  }
+
+  .overlayLabel {
+    transition-delay: 0ms !important;
   }
 }

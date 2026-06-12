@@ -1,32 +1,96 @@
 .related {
-  border-top: 1px solid var(--koala-color-line);
-  display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
   margin-inline: auto;
   max-width: var(--koala-container-wide);
-  overflow: hidden;
-  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 3vw, 2rem);
+  padding: 0 clamp(1rem, 3vw, 2rem) clamp(2.5rem, 5vw, 4rem);
   width: 100%;
 }
 
-.copy {
+.banner {
+  color: #ffffff;
+  display: block;
+  min-height: clamp(20rem, 46vh, 30rem);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 1200ms var(--koala-ease-smooth);
+}
+
+.banner:hover .image,
+.banner:focus-visible .image {
+  transform: scale(1.05);
+}
+
+.shade {
+  background: linear-gradient(
+    rgba(10, 10, 9, 0.55),
+    rgba(10, 10, 9, 0.78)
+  );
+  inset: 0;
+  position: absolute;
+  transition: background 420ms var(--koala-ease-out);
+  z-index: 1;
+}
+
+.content {
   align-content: center;
   display: grid;
-  gap: var(--koala-space-5);
-  min-width: 0;
+  gap: var(--koala-space-4);
+  inset: 0;
+  justify-items: flex-start;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  position: absolute;
+  z-index: 2;
 }
 
-.copy h2 {
-  max-width: 12ch;
+.title {
+  font-family: var(--koala-font-heading);
+  font-size: clamp(3.4rem, 9vw, 8.5rem);
+  line-height: 0.85;
+  text-transform: uppercase;
 }
 
-.imageWrap {
-  aspect-ratio: 16 / 10;
+.headline {
+  color: rgba(244, 243, 238, 0.8);
+  font-size: var(--koala-text-md);
+  line-height: 1.4;
+  max-width: 30rem;
 }
 
-@media (max-width: 900px) {
-  .related {
-    grid-template-columns: 1fr;
+.action {
+  align-items: center;
+  display: inline-flex;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  gap: 0.8rem;
+  letter-spacing: 0.1em;
+  margin-top: var(--koala-space-4);
+  text-transform: uppercase;
+}
+
+.actionArrow {
+  align-items: center;
+  background: var(--koala-color-lime);
+  color: #0a0a09;
+  display: inline-flex;
+  height: 2.6rem;
+  justify-content: center;
+  transition: transform 420ms var(--koala-ease-smooth);
+  width: 2.6rem;
+}
+
+.banner:hover .actionArrow,
+.banner:focus-visible .actionArrow {
+  transform: translateX(0.4rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .shade,
+  .actionArrow {
+    transition-duration: 1ms;
   }
 }

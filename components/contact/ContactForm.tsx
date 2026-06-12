@@ -2,6 +2,7 @@
 
 import { Field, Input, Textarea } from "@/components/forms";
 import { Cta } from "@/components/site/Cta";
+import { Magnetic } from "@/components/site/Magnetic";
 import { analyticsConfig } from "@/lib/analytics";
 import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
 
@@ -12,6 +13,13 @@ const netlifyFormAttributes = {
   "data-netlify": "true",
   "netlify-honeypot": "bot-field",
 } as const;
+
+const projectTypes = [
+  { value: "Shopify design & build", name: "interest-shopify" },
+  { value: "Meta ads", name: "interest-meta-ads" },
+  { value: "Email marketing", name: "interest-email" },
+  { value: "Not sure yet", name: "interest-unsure" },
+] as const;
 
 export function ContactForm() {
   const handleSubmit = () => {
@@ -83,6 +91,40 @@ export function ContactForm() {
           </Field>
         </div>
 
+        <fieldset className={styles.typeFieldset}>
+          <legend className={styles.typeLegend}>What do you need?</legend>
+          <div className={styles.typeChips}>
+            {projectTypes.map((type) => (
+              <label className={styles.typeChip} key={type.name}>
+                <input
+                  className={styles.typeInput}
+                  name={type.name}
+                  type="checkbox"
+                  value={type.value}
+                />
+                <span className={styles.typeLabel}>{type.value}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <Field label="Budget (optional)">
+          <select
+            name="budget"
+            aria-label="Budget"
+            className={styles.select}
+            defaultValue=""
+          >
+            <option value="">Select a range</option>
+            <option value="Under $5k">Under $5k</option>
+            <option value="$5k - $15k">$5k &ndash; $15k</option>
+            <option value="$15k - $50k">$15k &ndash; $50k</option>
+            <option value="$50k+">$50k+</option>
+            <option value="Ongoing retainer">Ongoing retainer</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </Field>
+
         <Field label="Project details">
           <Textarea
             name="message"
@@ -93,9 +135,11 @@ export function ContactForm() {
         </Field>
 
         <div className={styles.footer}>
-          <Cta type="submit" variant="full">
-            Send message
-          </Cta>
+          <Magnetic>
+            <Cta type="submit" variant="full">
+              Send message
+            </Cta>
+          </Magnetic>
         </div>
       </form>
     </div>

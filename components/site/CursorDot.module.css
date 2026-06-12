@@ -1,0 +1,47 @@
+.dot {
+  align-items: center;
+  background: var(--koala-color-lime);
+  border-radius: 999px;
+  display: flex;
+  height: 10px;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transition: width 320ms var(--koala-ease-smooth), height 320ms var(--koala-ease-smooth), opacity 200ms var(--koala-ease-out), background-color 200ms var(--koala-ease-out);
+  width: 10px;
+  z-index: 9999;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.expanded {
+  background: var(--koala-color-lime);
+  height: 64px;
+  width: 64px;
+}
+
+.label {
+  color: #0a0a09;
+  font-family: var(--koala-font-support);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transition: opacity 200ms var(--koala-ease-out) 80ms;
+  user-select: none;
+}
+
+.expanded .label {
+  opacity: 1;
+}
+
+@media (pointer: coarse) {
+  .dot {
+    display: none;
+  }
+}

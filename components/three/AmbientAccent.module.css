@@ -1,0 +1,37 @@
+.host {
+  aspect-ratio: 1;
+  -webkit-mask-image: radial-gradient(
+    70% 70% at 50% 50%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    70% 70% at 50% 50%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  position: absolute;
+  width: clamp(10rem, 15vw, 16rem);
+  z-index: -1;
+}
+
+.left {
+  left: -1rem;
+}
+
+.right {
+  right: -1rem;
+}
+
+.host canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .host {
+    display: none;
+  }
+}

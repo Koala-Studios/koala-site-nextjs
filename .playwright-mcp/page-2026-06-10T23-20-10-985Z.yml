@@ -1,0 +1,154 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Koala Studios home" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - navigation "Primary" [ref=e5]:
+      - link "Work" [ref=e6] [cursor=pointer]:
+        - /url: /work
+      - link "Services" [ref=e7] [cursor=pointer]:
+        - /url: /services
+      - link "About" [ref=e8] [cursor=pointer]:
+        - /url: /about
+      - link "Contact" [ref=e9] [cursor=pointer]:
+        - /url: /contact
+    - link "Start a project" [ref=e10] [cursor=pointer]:
+      - /url: /contact
+      - img [ref=e12]
+      - generic [ref=e14]: Start a project
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - region "Work" [ref=e17]:
+        - heading "Work" [level=1] [ref=e19]
+      - generic [ref=e20]:
+        - generic "Work categories" [ref=e21]:
+          - button "All" [pressed] [ref=e22] [cursor=pointer]
+          - button "Shopify" [ref=e23] [cursor=pointer]
+          - button "Design" [ref=e24] [cursor=pointer]
+          - button "Development" [ref=e25] [cursor=pointer]
+          - button "Lifestyle" [ref=e26] [cursor=pointer]
+        - generic [ref=e27]:
+          - link "Ara ecommerce case study card image Ara Shopify" [ref=e28] [cursor=pointer]:
+            - /url: /work/ara
+            - img "Ara ecommerce case study card image" [ref=e30]
+            - generic [ref=e31]: "01"
+            - generic [ref=e32]:
+              - strong [ref=e33]: Ara
+              - generic [ref=e34]: Shopify
+            - img [ref=e36]
+          - link "Magnum ecommerce design case study card image Magnum Design" [ref=e38] [cursor=pointer]:
+            - /url: /work/magnum
+            - img "Magnum ecommerce design case study card image" [ref=e40]
+            - generic [ref=e41]: "02"
+            - generic [ref=e42]:
+              - strong [ref=e43]: Magnum
+              - generic [ref=e44]: Design
+            - img [ref=e46]
+          - link "Nektr food and beverage ecommerce case study card image Nektr Lifestyle" [ref=e48] [cursor=pointer]:
+            - /url: /work/nektr
+            - img "Nektr food and beverage ecommerce case study card image" [ref=e50]
+            - generic [ref=e51]: "03"
+            - generic [ref=e52]:
+              - strong [ref=e53]: Nektr
+              - generic [ref=e54]: Lifestyle
+            - img [ref=e56]
+          - link "Allo wellness ecommerce case study card image Allo Development" [ref=e58] [cursor=pointer]:
+            - /url: /work/allo
+            - img "Allo wellness ecommerce case study card image" [ref=e60]
+            - generic [ref=e61]: "04"
+            - generic [ref=e62]:
+              - strong [ref=e63]: Allo
+              - generic [ref=e64]: Development
+            - img [ref=e66]
+          - link "Stlth product devices on a dark studio background Stlth Shopify" [ref=e68] [cursor=pointer]:
+            - /url: /work/stlth
+            - img "Stlth product devices on a dark studio background" [ref=e70]
+            - generic [ref=e71]: "05"
+            - generic [ref=e72]:
+              - strong [ref=e73]: Stlth
+              - generic [ref=e74]: Shopify
+            - img [ref=e76]
+          - link "Elikai lifestyle ecommerce case study card image Elikai Lifestyle" [ref=e78] [cursor=pointer]:
+            - /url: /work/elikai
+            - img "Elikai lifestyle ecommerce case study card image" [ref=e80]
+            - generic [ref=e81]: "06"
+            - generic [ref=e82]:
+              - strong [ref=e83]: Elikai
+              - generic [ref=e84]: Lifestyle
+            - img [ref=e86]
+        - link "Start a project" [ref=e89] [cursor=pointer]:
+          - /url: /contact
+          - generic [ref=e90]: Start a project
+          - img [ref=e92]
+  - contentinfo [ref=e94]:
+    - link "Start a project" [ref=e95] [cursor=pointer]:
+      - /url: /contact
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - text: Start a project
+            - img [ref=e100]
+          - generic [ref=e102]:
+            - text: Start a project
+            - img [ref=e103]
+          - generic [ref=e105]:
+            - text: Start a project
+            - img [ref=e106]
+          - generic [ref=e108]:
+            - text: Start a project
+            - img [ref=e109]
+          - generic [ref=e111]:
+            - text: Start a project
+            - img [ref=e112]
+          - generic [ref=e114]:
+            - text: Start a project
+            - img [ref=e115]
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - text: Start a project
+            - img [ref=e119]
+          - generic [ref=e121]:
+            - text: Start a project
+            - img [ref=e122]
+          - generic [ref=e124]:
+            - text: Start a project
+            - img [ref=e125]
+          - generic [ref=e127]:
+            - text: Start a project
+            - img [ref=e128]
+          - generic [ref=e130]:
+            - text: Start a project
+            - img [ref=e131]
+          - generic [ref=e133]:
+            - text: Start a project
+            - img [ref=e134]
+    - generic [ref=e136]:
+      - generic [ref=e137]:
+        - generic [ref=e138]:
+          - img "Koala Studios" [ref=e139]
+          - paragraph [ref=e140]: Shopify stores, Meta ads, and email marketing for brands that want to grow.
+          - link "hello@koalastudios.ca" [ref=e141] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+        - navigation "Footer" [ref=e142]:
+          - paragraph [ref=e143]: Site
+          - link "Work" [ref=e144] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=e145] [cursor=pointer]:
+            - /url: /services
+          - link "About" [ref=e146] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e147] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e148]:
+          - paragraph [ref=e149]: Services
+          - link "Shopify design & build" [ref=e150] [cursor=pointer]:
+            - /url: /services
+          - link "Meta ad management" [ref=e151] [cursor=pointer]:
+            - /url: /services
+          - link "Email marketing" [ref=e152] [cursor=pointer]:
+            - /url: /services
+      - paragraph [ref=e153]: Koala Studios
+      - generic [ref=e154]:
+        - paragraph [ref=e155]: © 2026 Koala Studios
+        - paragraph [ref=e156]: Designed and built by Koala — like everything we ship.
+  - button "Open Next.js Dev Tools" [ref=e162] [cursor=pointer]:
+    - img [ref=e163]

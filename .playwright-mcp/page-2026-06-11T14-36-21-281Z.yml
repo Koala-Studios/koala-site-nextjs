@@ -1,0 +1,108 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e4]:
+    - link "Koala Studios home" [ref=e5] [cursor=pointer]:
+      - /url: /
+    - navigation "Primary" [ref=e6]:
+      - link "Work" [ref=e7] [cursor=pointer]:
+        - /url: /work
+      - link "Services" [ref=e8] [cursor=pointer]:
+        - /url: /services
+      - link "Contact" [ref=e9] [cursor=pointer]:
+        - /url: /contact
+    - link "Start a project" [ref=e10] [cursor=pointer]:
+      - /url: /contact
+      - img [ref=e12]
+      - generic [ref=e14]: Start a project
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - paragraph: "404"
+      - region "This page doesn't convert." [ref=e18]:
+        - paragraph [ref=e19]: 404 — Not found
+        - heading "This page doesn't convert." [level=1] [ref=e20]:
+          - generic [ref=e22]: This
+          - generic [ref=e24]: page
+          - generic [ref=e26]: doesn't
+          - generic [ref=e28]: convert.
+        - paragraph [ref=e29]: It's missing, moved, or never shipped. The rest of the site works hard — pick a better landing spot.
+        - generic [ref=e30]:
+          - link "Back home" [ref=e32] [cursor=pointer]:
+            - /url: /
+            - img [ref=e34]
+            - generic [ref=e36]: Back home
+          - link "See the work" [ref=e37] [cursor=pointer]:
+            - /url: /work
+            - generic [ref=e38]: See the work
+            - img [ref=e40]
+  - contentinfo [ref=e42]:
+    - link "Start a project" [ref=e43] [cursor=pointer]:
+      - /url: /contact
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - text: Start a project
+            - img [ref=e48]
+          - generic [ref=e50]:
+            - text: Start a project
+            - img [ref=e51]
+          - generic [ref=e53]:
+            - text: Start a project
+            - img [ref=e54]
+          - generic [ref=e56]:
+            - text: Start a project
+            - img [ref=e57]
+          - generic [ref=e59]:
+            - text: Start a project
+            - img [ref=e60]
+          - generic [ref=e62]:
+            - text: Start a project
+            - img [ref=e63]
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - text: Start a project
+            - img [ref=e67]
+          - generic [ref=e69]:
+            - text: Start a project
+            - img [ref=e70]
+          - generic [ref=e72]:
+            - text: Start a project
+            - img [ref=e73]
+          - generic [ref=e75]:
+            - text: Start a project
+            - img [ref=e76]
+          - generic [ref=e78]:
+            - text: Start a project
+            - img [ref=e79]
+          - generic [ref=e81]:
+            - text: Start a project
+            - img [ref=e82]
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - img "Koala Studios" [ref=e87]
+          - paragraph [ref=e88]: Shopify stores, Meta ads, and email marketing for brands that want to grow.
+          - link "hello@koalastudios.ca" [ref=e89] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+        - navigation "Footer" [ref=e90]:
+          - paragraph [ref=e91]: Site
+          - link "Work" [ref=e92] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=e93] [cursor=pointer]:
+            - /url: /services
+          - link "Contact" [ref=e94] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e95]:
+          - paragraph [ref=e96]: Services
+          - link "Shopify design & build" [ref=e97] [cursor=pointer]:
+            - /url: /services
+          - link "Meta ad management" [ref=e98] [cursor=pointer]:
+            - /url: /services
+          - link "Email marketing" [ref=e99] [cursor=pointer]:
+            - /url: /services
+      - paragraph [ref=e100]: Koala Studios
+      - generic [ref=e101]:
+        - paragraph [ref=e102]: © 2026 Koala Studios
+        - paragraph [ref=e103]: Designed and built by Koala — like everything we ship.
+  - button "Open Next.js Dev Tools" [ref=e109] [cursor=pointer]:
+    - img [ref=e110]

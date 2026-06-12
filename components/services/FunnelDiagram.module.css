@@ -1,0 +1,98 @@
+.funnel {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stage {
+  display: grid;
+  gap: 0.6rem;
+  justify-items: flex-start;
+  opacity: 0;
+  position: relative;
+  transform: translateY(1rem);
+  transition: opacity 600ms var(--koala-ease-out), transform 700ms var(--koala-ease-smooth);
+}
+
+.active .stage {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.node {
+  align-items: center;
+  border: 1px solid var(--koala-color-line);
+  display: inline-flex;
+  height: 2.4rem;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  width: 2.4rem;
+}
+
+.nodeDot {
+  background: var(--koala-color-lime);
+  height: 0.6rem;
+  transform: scale(0);
+  transition: transform 480ms var(--koala-ease-smooth) 240ms;
+  width: 0.6rem;
+}
+
+.active .nodeDot {
+  transform: scale(1);
+}
+
+.connector {
+  background: var(--koala-color-line);
+  height: 1px;
+  left: 3.4rem;
+  position: absolute;
+  right: clamp(0.5rem, 2vw, 1.5rem);
+  top: 1.2rem;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms var(--koala-ease-smooth);
+}
+
+.active .connector {
+  transform: scaleX(1);
+}
+
+.stageLabel {
+  color: var(--koala-color-lime);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  letter-spacing: var(--koala-label-tracking);
+  text-transform: uppercase;
+}
+
+.stageTitle {
+  font-family: var(--koala-font-heading);
+  font-size: var(--koala-text-xl);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.stageCopy {
+  color: var(--koala-color-muted);
+  font-size: var(--koala-text-sm);
+  line-height: 1.5;
+  max-width: 18rem;
+}
+
+@media (max-width: 700px) {
+  .funnel {
+    grid-template-columns: 1fr;
+  }
+
+  .connector {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage,
+  .nodeDot,
+  .connector {
+    transition-duration: 1ms;
+  }
+}

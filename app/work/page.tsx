@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { WorkFilterGrid } from "@/components/work/WorkFilterGrid";
+import { SplitReveal } from "@/components/animation/SplitReveal";
+import { AmbientAccent } from "@/components/three/AmbientAccent";
+import { AmbientScene } from "@/components/three/AmbientScene";
+import { WorkExplorer } from "@/components/work/WorkExplorer";
 import { getPublishedCaseStudies } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 
 import styles from "./work.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Work",
+  title: "Ecommerce Case Studies — Shopify Stores That Sell",
   description:
-    "Explore selected Koala Studios ecommerce case studies by category, service focus, and proof story.",
+    "Selected Koala Studios case studies: Shopify storefront redesigns, brand systems, and ecommerce builds for consumer brands. Browse by category, then start your own.",
   path: "/work",
   keywords: ["Koala Studios work", "ecommerce case studies", "Shopify portfolio"],
 });
@@ -21,13 +24,36 @@ export default function WorkPage() {
   return (
     <div className="koala-page koala-page--compact">
       <section className={`${styles.hero} koala-route-hero`} aria-labelledby="work-title">
-        <Reveal className={`${styles.intro} koala-stack`}>
-          <h1 className="koala-page-title" id="work-title">Work</h1>
-        </Reveal>
+        <AmbientScene variant="frames" />
+        <div className={styles.intro}>
+          <p className="koala-eyebrow">Selected cases</p>
+          <SplitReveal
+            accents={["works."]}
+            as="h1"
+            className="koala-page-title"
+            id="work-title"
+            text="Work that works."
+          />
+          <Reveal delay={0.1}>
+            <p className={styles.heroSummary}>
+              Storefronts, campaigns, and brand systems for ecommerce &mdash;
+              built to be looked at, then bought from.
+            </p>
+          </Reveal>
+        </div>
       </section>
-      <Reveal>
-        <WorkFilterGrid caseStudies={caseStudies} />
-      </Reveal>
+      <div className={styles.explorerWrap}>
+        <AmbientAccent
+          className={styles.explorerAccent}
+          shape="octa"
+          side="left"
+          parallax={8}
+          opacity={0.26}
+        />
+        <Reveal>
+          <WorkExplorer caseStudies={caseStudies} />
+        </Reveal>
+      </div>
     </div>
   );
 }

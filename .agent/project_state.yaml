@@ -49,6 +49,8 @@ preferred_startup_files:
   - "nearest AGENTS.md"
 
 notes:
+  - "2026-06-10 V2 Reimagining: /about removed (308 redirect to /); signature interaction systems (SplitReveal, CursorDot, Parallax, Magnetic, CountUp, ScrollProgress, RotatingBadge, route transitions, grain) wired through reimagined home/work/services/case-study/contact; evidence in docs/execution-ledger.md V2 entry."
+  - "2026-06-10 Blackout Editorial Visual Lift: dark lime-accent redesign of home/services/work/case-study/contact with new offers (Meta ads, email marketing); direction in docs/redesign-2026-direction.md; evidence in docs/execution-ledger.md."
   - "The repository contains significant pre-existing uncommitted redesign work; do not revert it without explicit instruction."
   - "Use full npm path commands in this workspace unless npm is added to PATH."
   - "Core public routes now use the new shell and visual foundation; /projects, /blogs, and /home have permanent redirects configured in next.config.js."

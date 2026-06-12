@@ -11,7 +11,7 @@ body {
   padding: 0;
   margin: 0;
   min-height: 100%;
-  background: var(--koala-color-surface-soft);
+  background: var(--koala-color-bg);
   color: var(--koala-color-ink);
   text-align: left;
 }
@@ -20,7 +20,19 @@ body {
   overflow-x: hidden;
 }
 
+/* Film grain over everything; purely decorative */
+body::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  content: "";
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  position: fixed;
+  z-index: 70;
+}
+
 main {
+  background: var(--koala-color-bg);
   min-height: 70vh;
 }
 
@@ -38,7 +50,7 @@ h3,
 h4 {
   color: var(--koala-color-ink);
   font-family: var(--koala-font-heading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
 }
 
@@ -64,6 +76,38 @@ textarea:focus-visible {
 
 .firebase-emulator-warning {
   display: none;
+}
+
+.koala-sr-only {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Hidden until keyboard focus, then drops in over the header */
+.koala-skip-link {
+  background: var(--koala-color-lime);
+  color: #0a0a09;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  left: 1rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1.2rem;
+  position: fixed;
+  text-transform: uppercase;
+  top: -4rem;
+  transition: top 240ms var(--koala-ease-out);
+  z-index: 100;
+}
+
+.koala-skip-link:focus-visible {
+  top: 1rem;
 }
 
 .koala-page {
@@ -93,18 +137,18 @@ textarea:focus-visible {
 
 .koala-page-title {
   font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-2xl);
-  font-weight: 600;
+  font-size: var(--koala-text-3xl);
+  font-weight: 400;
   letter-spacing: 0;
-  line-height: 0.96;
+  line-height: 0.92;
   margin: 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .koala-section-title {
   font-family: var(--koala-font-heading);
   font-size: var(--koala-text-2xl);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   line-height: 1;
   margin: 0;
@@ -116,11 +160,121 @@ textarea:focus-visible {
 }
 
 .koala-label {
-  color: var(--koala-color-green);
+  color: var(--koala-color-lime);
   font-family: var(--koala-font-support);
   font-size: var(--koala-text-xs);
+  letter-spacing: var(--koala-label-tracking);
   margin: 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
+}
+
+.koala-eyebrow {
+  align-items: center;
+  color: var(--koala-color-lime);
+  display: inline-flex;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  gap: 0.6rem;
+  letter-spacing: var(--koala-label-tracking);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.koala-eyebrow::before {
+  background: var(--koala-color-lime);
+  content: "";
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.koala-chip {
+  border: 1px solid var(--koala-color-line);
+  color: var(--koala-color-ink);
+  display: inline-block;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding: 0.55rem 0.8rem;
+  text-transform: uppercase;
+  transition: border-color 220ms var(--koala-ease-out), color 220ms var(--koala-ease-out);
+  white-space: nowrap;
+}
+
+.koala-chip:hover {
+  border-color: var(--koala-color-lime);
+  color: var(--koala-color-lime);
+}
+
+.koala-underline-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.koala-underline-link::after {
+  background: var(--koala-color-lime);
+  bottom: -0.2em;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 420ms var(--koala-ease-smooth);
+  width: 100%;
+}
+
+.koala-underline-link:hover::after,
+.koala-underline-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.koala-outline-text {
+  -webkit-text-stroke: 1px rgba(244, 243, 238, 0.22);
+  color: transparent;
+}
+
+.koala-marquee {
+  border-block: 1px solid var(--koala-color-line);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.koala-marquee__track {
+  animation: koala-marquee-scroll var(--koala-marquee-duration, 28s) linear infinite;
+  display: inline-flex;
+  will-change: transform;
+}
+
+.koala-marquee:hover .koala-marquee__track {
+  animation-play-state: paused;
+}
+
+.koala-marquee__group {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+@keyframes koala-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .koala-marquee__track {
+    animation: none;
+  }
+
+  .koala-underline-link::after {
+    transition-duration: 1ms;
+  }
 }
 
 .koala-muted-copy {
@@ -161,50 +315,113 @@ textarea:focus-visible {
   display: block;
   overflow: hidden;
   position: relative;
-  
 }
 
 .koala-work-tile__image::after {
-  /* background: #11131229; */
-  background: linear-gradient(#0000000c 80%,#00000096 );
+  background: linear-gradient(rgba(0, 0, 0, 0.02) 55%, rgba(0, 0, 0, 0.72));
   content: "";
   inset: 0;
+  opacity: 0.85;
   pointer-events: none;
   position: absolute;
+  transition: opacity 500ms var(--koala-ease-out);
   z-index: 1;
+}
+
+.koala-work-tile:hover .koala-work-tile__image::after,
+.koala-work-tile:focus-visible .koala-work-tile__image::after {
+  opacity: 1;
 }
 
 .koala-work-tile__image img {
   object-fit: cover;
-  transition: transform 700ms var(--koala-ease-out);
+  transition: transform 900ms var(--koala-ease-smooth);
 }
 
-.koala-work-tile:hover .koala-work-tile__image img {
-  transform: scale(1.035);
+.koala-work-tile:hover .koala-work-tile__image img,
+.koala-work-tile:focus-visible .koala-work-tile__image img {
+  transform: scale(1.05);
+}
+
+.koala-work-tile__index {
+  color: rgba(244, 243, 238, 0.85);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  left: var(--koala-space-4);
+  letter-spacing: var(--koala-label-tracking);
+  position: absolute;
+  top: var(--koala-space-4);
+  transition: color 320ms var(--koala-ease-out);
+  z-index: 2;
+}
+
+.koala-work-tile:hover .koala-work-tile__index,
+.koala-work-tile:focus-visible .koala-work-tile__index {
+  color: var(--koala-color-lime);
 }
 
 .koala-work-tile__meta {
-  color: var(--koala-color-surface);
-  display: grid;
-  gap: 0.2rem;
-  left: var(--koala-space-4);
-  max-width: min(14rem, calc(100% - 2rem));
-  position: absolute;
   bottom: var(--koala-space-4);
-  z-index: 2;
+  color: #ffffff;
+  display: grid;
+  gap: 0.3rem;
+  left: var(--koala-space-4);
   line-height: 1;
+  max-width: min(16rem, calc(100% - 5.5rem));
+  position: absolute;
   text-transform: uppercase;
+  transition: transform 500ms var(--koala-ease-smooth);
+  z-index: 2;
+}
+
+.koala-work-tile:hover .koala-work-tile__meta,
+.koala-work-tile:focus-visible .koala-work-tile__meta {
+  transform: translateY(-0.35rem);
 }
 
 .koala-work-tile__meta strong {
-  font-family: var(--koala-font-support);
+  font-family: var(--koala-font-heading);
   font-size: var(--koala-text-xl);
+  font-weight: 400;
 }
 
 .koala-work-tile__meta span {
-  color: inherit;
-  font-size: var(--koala-text-md);
-  opacity: 0.82;
+  color: var(--koala-color-lime);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  letter-spacing: var(--koala-label-tracking);
+}
+
+.koala-work-tile__arrow {
+  align-items: center;
+  background: var(--koala-color-green);
+  bottom: var(--koala-space-4);
+  color: #ffffff;
+  display: inline-flex;
+  height: 2.6rem;
+  justify-content: center;
+  opacity: 0;
+  position: absolute;
+  right: var(--koala-space-4);
+  transform: translate(-0.4rem, 0.4rem);
+  transition: opacity 360ms var(--koala-ease-out), transform 500ms var(--koala-ease-smooth);
+  width: 2.6rem;
+  z-index: 2;
+}
+
+.koala-work-tile:hover .koala-work-tile__arrow,
+.koala-work-tile:focus-visible .koala-work-tile__arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .koala-work-tile__image::after,
+  .koala-work-tile__image img,
+  .koala-work-tile__meta,
+  .koala-work-tile__arrow {
+    transition-duration: 1ms;
+  }
 }
 
 .btn {

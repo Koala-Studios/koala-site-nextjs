@@ -1,0 +1,154 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Koala Studios home" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - navigation "Primary" [ref=e5]:
+      - link "Work" [ref=e6] [cursor=pointer]:
+        - /url: /work
+      - link "Services" [ref=e7] [cursor=pointer]:
+        - /url: /services
+      - link "Contact" [ref=e8] [cursor=pointer]:
+        - /url: /contact
+    - link "Start a project" [ref=e9] [cursor=pointer]:
+      - /url: /contact
+      - img [ref=e11]
+      - generic [ref=e13]: Start a project
+  - main [ref=e14]:
+    - generic [ref=e16]:
+      - paragraph: Talk
+      - region "Let's talk shop." [ref=e17]:
+        - generic [ref=e18]:
+          - paragraph [ref=e19]: Contact
+          - heading "Let's talk shop." [level=1] [ref=e20]:
+            - generic [ref=e22]: Let's
+            - generic [ref=e24]: talk
+            - generic [ref=e26]: shop.
+          - paragraph [ref=e28]: Tell us what you're selling, where the store lives today, and what needs to change. The URL and the goal are enough.
+          - link "hello@koalastudios.ca" [ref=e29] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+          - generic [ref=e30]:
+            - generic [ref=e32]: Booking new projects
+            - generic [ref=e33]: Toronto --:--
+          - generic [ref=e34]:
+            - generic [ref=e35]:
+              - generic [ref=e36]: "01"
+              - generic [ref=e37]:
+                - heading "We read it" [level=2] [ref=e38]
+                - paragraph [ref=e39]: A real person reads the note and checks fit. No autoresponder essays.
+            - generic [ref=e40]:
+              - generic [ref=e41]: "02"
+              - generic [ref=e42]:
+                - heading "We reply" [level=2] [ref=e43]
+                - paragraph [ref=e44]: Replies usually land within two business days.
+            - generic [ref=e45]:
+              - generic [ref=e46]: "03"
+              - generic [ref=e47]:
+                - heading "We talk" [level=2] [ref=e48]
+                - paragraph [ref=e49]: A short call to align on scope, timeline, and the clearest next step.
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: Name
+              - textbox "Name" [ref=e56]
+            - generic [ref=e57]:
+              - generic [ref=e58]: Company
+              - textbox "Company" [ref=e59]
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: Email
+              - textbox "Email" [ref=e63]
+            - generic [ref=e64]:
+              - generic [ref=e65]: Phone
+              - textbox "Phone" [ref=e66]
+          - group "What do you need?" [ref=e67]:
+            - generic [ref=e68]: What do you need?
+            - generic [ref=e69]:
+              - generic [ref=e70] [cursor=pointer]:
+                - checkbox "Shopify design & build" [ref=e71]
+                - generic [ref=e72]: Shopify design & build
+              - generic [ref=e73] [cursor=pointer]:
+                - checkbox "Meta ads" [ref=e74]
+                - generic [ref=e75]: Meta ads
+              - generic [ref=e76] [cursor=pointer]:
+                - checkbox "Email marketing" [ref=e77]
+                - generic [ref=e78]: Email marketing
+              - generic [ref=e79] [cursor=pointer]:
+                - checkbox "Not sure yet" [ref=e80]
+                - generic [ref=e81]: Not sure yet
+          - generic [ref=e82]:
+            - generic [ref=e83]: Project details
+            - textbox "Project details" [ref=e84]
+          - button "Send message" [ref=e87] [cursor=pointer]:
+            - generic [ref=e88]: Send message
+            - img [ref=e90]
+  - contentinfo [ref=e92]:
+    - link "Start a project" [ref=e93] [cursor=pointer]:
+      - /url: /contact
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]:
+            - text: Start a project
+            - img [ref=e98]
+          - generic [ref=e100]:
+            - text: Start a project
+            - img [ref=e101]
+          - generic [ref=e103]:
+            - text: Start a project
+            - img [ref=e104]
+          - generic [ref=e106]:
+            - text: Start a project
+            - img [ref=e107]
+          - generic [ref=e109]:
+            - text: Start a project
+            - img [ref=e110]
+          - generic [ref=e112]:
+            - text: Start a project
+            - img [ref=e113]
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - text: Start a project
+            - img [ref=e117]
+          - generic [ref=e119]:
+            - text: Start a project
+            - img [ref=e120]
+          - generic [ref=e122]:
+            - text: Start a project
+            - img [ref=e123]
+          - generic [ref=e125]:
+            - text: Start a project
+            - img [ref=e126]
+          - generic [ref=e128]:
+            - text: Start a project
+            - img [ref=e129]
+          - generic [ref=e131]:
+            - text: Start a project
+            - img [ref=e132]
+    - generic [ref=e134]:
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - img "Koala Studios" [ref=e137]
+          - paragraph [ref=e138]: Shopify stores, Meta ads, and email marketing for brands that want to grow.
+          - link "hello@koalastudios.ca" [ref=e139] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+        - navigation "Footer" [ref=e140]:
+          - paragraph [ref=e141]: Site
+          - link "Work" [ref=e142] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=e143] [cursor=pointer]:
+            - /url: /services
+          - link "Contact" [ref=e144] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e145]:
+          - paragraph [ref=e146]: Services
+          - link "Shopify design & build" [ref=e147] [cursor=pointer]:
+            - /url: /services
+          - link "Meta ad management" [ref=e148] [cursor=pointer]:
+            - /url: /services
+          - link "Email marketing" [ref=e149] [cursor=pointer]:
+            - /url: /services
+      - paragraph [ref=e150]: Koala Studios
+      - generic [ref=e151]:
+        - paragraph [ref=e152]: © 2026 Koala Studios
+        - paragraph [ref=e153]: Designed and built by Koala — like everything we ship.
+  - button "Open Next.js Dev Tools" [ref=e159] [cursor=pointer]:
+    - img [ref=e160]

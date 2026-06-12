@@ -1,101 +1,156 @@
 .page {
+  isolation: isolate;
   overflow: hidden;
-}
-
-.hero {
-  align-items: stretch;
-  display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  grid-template-columns: minmax(0, 0.44fr) minmax(0, 1fr);
-  min-height: clamp(46rem, 60vw, 55rem);
-  overflow: hidden;
-  padding-block: clamp(2.5rem, 5vw, 4rem);
   position: relative;
 }
 
-.heroCopy {
-  max-width: 24rem;
+.status {
+  align-items: center;
+  color: var(--koala-color-ink);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  gap: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusDot {
+  animation: contact-status-pulse 2.2s ease-in-out infinite;
+  background: var(--koala-color-lime);
+  border-radius: 999px;
+  display: inline-block;
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+@keyframes contact-status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(163, 230, 53, 0);
+  }
+}
+
+.statusTime {
+  border-left: 1px solid var(--koala-color-line);
+  color: var(--koala-color-muted);
+  padding-left: 0.7rem;
+}
+
+.split {
   position: relative;
   z-index: 1;
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  padding-block: clamp(1rem, 3vw, 2.5rem) clamp(3rem, 6vw, 5rem);
 }
 
-.contactAction {
-  width: min(100%, 18rem);
+.intro {
+  align-content: flex-start;
+  display: grid;
+  gap: var(--koala-space-6);
+  justify-items: flex-start;
 }
 
-.heroImageWrap {
-  bottom: 0;
-  display: block;
-  height: auto;
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  right: clamp(-2rem, -2vw, -1rem);
-  top: 0;
-  width: min(64%, 56rem);
-  z-index: 0;
+.title {
+  font-family: var(--koala-font-heading);
+  font-size: var(--koala-text-display);
+  font-weight: 400;
+  line-height: 0.85;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.heroImage {
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  object-position: right bottom;
+.titleAccent {
+  color: var(--koala-color-lime);
+}
+
+.summary {
+  color: var(--koala-color-muted);
+  font-size: var(--koala-text-md);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 30rem;
+}
+
+.email {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-lg);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.steps {
+  display: grid;
+  margin-top: var(--koala-space-4);
   width: 100%;
 }
 
-.formSection {
+.step {
   border-top: 1px solid var(--koala-color-line);
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
-  padding-block: clamp(4rem, 8vw, 7rem);
+  gap: var(--koala-space-4);
+  grid-template-columns: 3rem minmax(0, 1fr);
+  padding-block: var(--koala-space-5);
 }
 
-.formIntro h2 {
-  max-width: 10ch;
+.step:last-child {
+  border-bottom: 1px solid var(--koala-color-line);
 }
 
-@media (max-width: 1120px) {
-  .hero {
-    align-content: start;
-    gap: clamp(1.25rem, 4vw, 2rem);
+.stepNumber {
+  color: var(--koala-color-lime);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  letter-spacing: var(--koala-label-tracking);
+  padding-top: 0.3rem;
+}
+
+.stepBody {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.stepTitle {
+  font-family: var(--koala-font-heading);
+  font-size: var(--koala-text-lg);
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.stepCopy {
+  color: var(--koala-color-muted);
+  font-size: var(--koala-text-sm);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 26rem;
+}
+
+.formColumn {
+  border: 1px solid var(--koala-color-line);
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+@media (max-width: 1020px) {
+  .split {
     grid-template-columns: 1fr;
-    min-height: auto;
-    padding-block: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
   }
 
-  .heroCopy {
-    max-width: none;
-  }
-
-  .heroImageWrap {
-    height: auto;
-    position: static;
-    right: auto;
-    top: auto;
-    width: 100%;
+  .formColumn {
+    border: 0;
+    padding: 0;
   }
 }
 
-@media (max-width: 900px) {
-  .formSection {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .heroImageWrap {
-    aspect-ratio: 4 / 3;
-    align-self: start;
-  }
-
-  .heroImage {
-    object-position: right bottom;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding-block: var(--koala-space-6) var(--koala-space-5);
+@media (prefers-reduced-motion: reduce) {
+  .statusDot {
+    animation: none;
   }
 }

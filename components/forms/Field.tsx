@@ -20,7 +20,17 @@ export function Field({ label, hint, error, children, className, style }: FieldP
         ...style,
       }}
     >
-      <span style={{ fontSize: "var(--koala-text-sm)", fontWeight: 600 }}>{label}</span>
+      <span
+        style={{
+          color: "var(--koala-color-muted)",
+          fontFamily: "var(--koala-font-support)",
+          fontSize: "var(--koala-text-xs)",
+          letterSpacing: "var(--koala-label-tracking)",
+          textTransform: "uppercase",
+        }}
+      >
+        {label}
+      </span>
       {children}
       {hint ? <span style={{ fontSize: "var(--koala-text-xs)", color: "var(--koala-color-ink-muted)" }}>{hint}</span> : null}
       {error ? <span style={{ fontSize: "var(--koala-text-xs)", color: "var(--koala-color-danger)" }}>{error}</span> : null}

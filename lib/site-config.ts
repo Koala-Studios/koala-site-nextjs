@@ -23,9 +23,6 @@ export const siteConfig = {
   metadataBase: new URL(siteUrl),
   defaultLocale: "en-CA",
   defaultOgImage: DEFAULT_OG_IMAGE,
-  social: {
-    twitter: "@koalastudiosca",
-  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;

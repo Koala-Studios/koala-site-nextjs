@@ -1,9 +1,10 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
+import { SplitReveal } from "@/components/animation/SplitReveal";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { Cta } from "@/components/site/Cta";
+import { LocalClock } from "@/components/contact/LocalClock";
+import { AmbientScene } from "@/components/three/AmbientScene";
 import { contactPageContent } from "@/content/pages/contact";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -30,6 +31,24 @@ const contactJsonLd = {
   },
 };
 
+const nextSteps = [
+  {
+    number: "01",
+    title: "We read it",
+    copy: "A real person reads the note and checks fit. No autoresponder essays.",
+  },
+  {
+    number: "02",
+    title: "We reply",
+    copy: contactPageContent.responseWindow,
+  },
+  {
+    number: "03",
+    title: "We talk",
+    copy: "A short call to align on scope, timeline, and the clearest next step.",
+  },
+];
+
 export default function ContactPage() {
   return (
     <div className={`koala-page ${styles.page}`}>
@@ -37,41 +56,55 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
-      <section className={styles.hero} aria-labelledby="contact-title">
-        <Reveal className={`${styles.heroCopy} koala-stack`}>
-          <h1 className="koala-page-title" id="contact-title">Contact</h1>
-          <Cta
-            className={styles.contactAction}
-            icon="circle"
-            iconPosition="left"
-            shape="box"
-            size="large"
-            variant="outlinedPanel"
-          >
-            Contact Koala
-          </Cta>
-        </Reveal>
 
-        <Reveal className={styles.heroImageWrap} delay={0.08}>
-          <Image
-            className={styles.heroImage}
-            src="/images/redesign/contact/koala-contact-paper-plane-v4-1500.webp"
-            alt="Paper plane visual representing a Koala Studios project inquiry"
-            width={1500}
-            height={938}
-            sizes="(max-width: 900px) 100vw, 58vw"
-            fetchPriority="high"
-            priority
-            unoptimized
+      <AmbientScene variant="dart" />
+
+      <section className={styles.split} aria-labelledby="contact-title">
+        <div className={styles.intro}>
+          <p className="koala-eyebrow">Contact</p>
+          <SplitReveal
+            accents={["shop."]}
+            as="h1"
+            className={styles.title}
+            id="contact-title"
+            text={"Let's talk\nshop."}
           />
-        </Reveal>
-      </section>
+          <Reveal delay={0.12}>
+            <p className={styles.summary}>
+              Tell us what you&apos;re selling, where the store lives today,
+              and what needs to change. The URL and the goal are enough.
+            </p>
+          </Reveal>
+          <a
+            className={`${styles.email} koala-underline-link`}
+            href="mailto:hello@koalastudios.ca"
+          >
+            hello@koalastudios.ca
+          </a>
 
-      <section className={styles.formSection} aria-label="Project inquiry form">
-        <Reveal className={styles.formIntro}>
-          <h2 className="koala-section-title">Tell us what to build.</h2>
-        </Reveal>
-        <Reveal delay={0.08}>
+          <div className={styles.status}>
+            <span className={styles.statusDot} aria-hidden="true" />
+            <span>Booking new projects</span>
+            <span className={styles.statusTime}>
+              Toronto&nbsp;
+              <LocalClock />
+            </span>
+          </div>
+
+          <div className={styles.steps}>
+            {nextSteps.map((step) => (
+              <div className={styles.step} key={step.number}>
+                <span className={styles.stepNumber}>{step.number}</span>
+                <div className={styles.stepBody}>
+                  <h2 className={styles.stepTitle}>{step.title}</h2>
+                  <p className={styles.stepCopy}>{step.copy}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <Reveal className={styles.formColumn} delay={0.08}>
           <ContactForm />
         </Reveal>
       </section>

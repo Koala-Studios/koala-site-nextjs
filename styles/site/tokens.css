@@ -1,16 +1,18 @@
 :root {
-  --koala-color-bg: #f7f6f2;
-  --koala-color-surface: #ffffff;
-  --koala-color-surface-soft: #f7f6f2;
-  --koala-color-ink: #111312;
-  --koala-color-muted: #6e6b63;
-  --koala-color-line: #e8e7e3;
-  --koala-color-green: #3a5f1f;
+  --koala-color-bg: #0a0a09;
+  --koala-color-surface: #0a0a09;
+  --koala-color-surface-soft: #141511;
+  --koala-color-ink: #f4f3ee;
+  --koala-color-muted: #a09d92;
+  --koala-color-line: rgba(244, 243, 238, 0.14);
+  --koala-color-line-soft: rgba(244, 243, 238, 0.08);
+  --koala-color-green: #a3e635;
+  --koala-color-lime: #a3e635;
   --koala-color-green-dark: #14351c;
   --koala-color-green-soft: #dfe9d9;
   --koala-color-clay: #b98c67;
   --koala-color-sky: #dfe6e3;
-  --koala-color-danger: #9f4635;
+  --koala-color-danger: #c4604e;
 
   --koala-color-panel: var(--koala-color-green-dark);
   --koala-color-panel-soft: #29462d;
@@ -21,8 +23,8 @@
   --koala-color-highlight: var(--koala-color-green-soft);
 
   --koala-font-body: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
-  --koala-font-display: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
-  --koala-font-heading: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
+  --koala-font-display: "Bebas Neue", "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
+  --koala-font-heading: "Bebas Neue", "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
   --koala-font-support: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
 
   --koala-text-xs: 0.78rem;
@@ -31,8 +33,10 @@
   --koala-text-md: 1.18rem;
   --koala-text-lg: 1.45rem;
   --koala-text-xl: 2rem;
-  --koala-text-2xl: 3rem;
-  --koala-text-3xl: 5rem;
+  --koala-text-2xl: 3.4rem;
+  --koala-text-3xl: clamp(4rem, 7vw, 6.5rem);
+  --koala-text-display: clamp(4.4rem, 10.5vw, 11rem);
+  --koala-label-tracking: 0.14em;
 
   --koala-space-1: 0.25rem;
   --koala-space-2: 0.5rem;
@@ -67,7 +71,7 @@
   --koala-container-max: 72rem;
   --koala-container-wide: 92rem;
   --koala-border-width: 1px;
-  --koala-focus-ring: 0 0 0 3px rgba(60, 116, 50, 0.25);
+  --koala-focus-ring: 0 0 0 3px rgba(163, 230, 53, 0.35);
 
   --koala-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --koala-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -77,9 +81,18 @@
   :root {
     --koala-text-lg: 1.28rem;
     --koala-text-xl: 1.72rem;
-    --koala-text-2xl: 2.15rem;
+    --koala-text-2xl: 2.3rem;
     --koala-text-3xl: 3.1rem;
+    --koala-text-display: clamp(3.4rem, 15vw, 4.6rem);
   }
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/BebasNeue-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -87,23 +100,21 @@
   font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/RobotoCondensed-Regular.ttf") format("truetype");
+  src: url("/fonts/RobotoCondensed-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
   font-family: "Roboto Condensed";
   font-style: normal;
-  font-weight: 600;
-  src: url("/fonts/RobotoCondensed-SemiBold.ttf") format("truetype");
+  src: url("/fonts/RobotoCondensed-SemiBold.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
   font-family: "Roboto Condensed";
   font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/RobotoCondensed-Bold.ttf") format("truetype");
+  src: url("/fonts/RobotoCondensed-Bold.woff2") format("woff2");
 }
 
 * {
@@ -157,6 +168,6 @@ button {
 }
 
 ::selection {
-  background: rgba(60, 116, 50, 0.24);
-  color: var(--koala-color-ink);
+  background: rgba(163, 230, 53, 0.32);
+  color: #ffffff;
 }

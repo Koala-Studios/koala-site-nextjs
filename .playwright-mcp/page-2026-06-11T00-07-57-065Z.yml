@@ -1,0 +1,211 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Koala Studios home" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - button "Open navigation" [ref=e5] [cursor=pointer]
+  - main [ref=e9]:
+    - generic [ref=e11]:
+      - region "Design. Build. Grow." [ref=e12]:
+        - generic [ref=e13]:
+          - paragraph [ref=e14]: Services
+          - heading "Design. Build. Grow." [level=1] [ref=e15]:
+            - generic [ref=e17]: Design.
+            - generic [ref=e19]: Build.
+            - generic [ref=e21]: Grow.
+          - paragraph [ref=e23]: Three ways to work with us — build the store, drive the traffic, keep the customers. Most brands start with one and grow into the rest.
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: "3"
+            - generic [ref=e27]: Core offers
+          - generic [ref=e28]:
+            - generic [ref=e29]: 6-12 weeks
+            - generic [ref=e30]: Typical build
+          - generic [ref=e31]:
+            - generic [ref=e32]: Monthly
+            - generic [ref=e33]: Growth retainers
+      - region "Every offer feeds the next." [ref=e34]:
+        - generic [ref=e35]:
+          - paragraph [ref=e36]: The model
+          - heading "Every offer feeds the next." [level=2] [ref=e37]
+        - group "Build, traffic, retention — one connected funnel" [ref=e38]:
+          - generic [ref=e39]:
+            - generic [ref=e41]: Build
+            - generic [ref=e42]: Shopify store
+            - generic [ref=e43]: A storefront that earns trust at first scroll.
+          - generic [ref=e44]:
+            - generic [ref=e46]: Traffic
+            - generic [ref=e47]: Meta ads
+            - generic [ref=e48]: Creative that puts the product in the feed.
+          - generic [ref=e49]:
+            - generic [ref=e51]: Retention
+            - generic [ref=e52]: Email flows
+            - generic [ref=e53]: Flows that bring buyers back on autopilot.
+      - region "Service offerings" [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]: "01"
+            - generic [ref=e58]: Build
+          - generic [ref=e59]:
+            - heading "Shopify design & build" [level=2] [ref=e60]
+            - paragraph [ref=e61]: Storefront design, custom theme build, and conversion work for brands on Shopify. Designed around your product story, built clean, and fast on every device.
+            - generic [ref=e62]:
+              - generic [ref=e63]: Store design
+              - generic [ref=e64]: Custom themes
+              - generic [ref=e65]: Conversion work
+              - generic [ref=e66]: Migrations
+              - generic [ref=e67]: Apps & integrations
+            - paragraph [ref=e68]:
+              - generic [ref=e69]: Good fit
+              - text: For brands launching, replatforming, or stuck with a store that looks fine and converts badly.
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: "02"
+            - generic [ref=e73]: Traffic
+          - generic [ref=e74]:
+            - heading "Meta ad management" [level=2] [ref=e75]
+            - paragraph [ref=e76]: Full-service Facebook and Instagram advertising. We design the creative, build the campaign structure, test weekly, and report in plain language.
+            - generic [ref=e77]:
+              - generic [ref=e78]: Ad creative
+              - generic [ref=e79]: Campaign structure
+              - generic [ref=e80]: Audience testing
+              - generic [ref=e81]: Landing pages
+              - generic [ref=e82]: Plain-language reporting
+            - paragraph [ref=e83]:
+              - generic [ref=e84]: Good fit
+              - text: For brands with proven product demand that want traffic they can predict and scale.
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]: "03"
+            - generic [ref=e88]: Retention
+          - generic [ref=e89]:
+            - heading "Email marketing" [level=2] [ref=e90]
+            - paragraph [ref=e91]: Klaviyo flows and campaigns designed and written to sound like your brand. Welcome, abandoned cart, post-purchase, win-back — wired into your store and measured.
+            - generic [ref=e92]:
+              - generic [ref=e93]: Klaviyo setup
+              - generic [ref=e94]: Core flows
+              - generic [ref=e95]: Campaign calendar
+              - generic [ref=e96]: Segmentation
+              - generic [ref=e97]: Design & copy
+            - paragraph [ref=e98]:
+              - generic [ref=e99]: Good fit
+              - text: For brands getting orders but not repeat orders, or where email is an untapped channel.
+      - region "The same four steps, every time." [ref=e100]:
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: How it runs
+          - heading "The same four steps, every time." [level=2] [ref=e103]
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e106]: "01"
+            - heading "Discover" [level=3] [ref=e107]
+            - paragraph [ref=e108]: We pin down the offer, the audience, and the proof before anything gets designed.
+          - generic [ref=e109]:
+            - generic [ref=e110]: "02"
+            - heading "Design" [level=3] [ref=e111]
+            - paragraph [ref=e112]: A storefront and creative system with a point of view — built around hierarchy, not decoration.
+          - generic [ref=e113]:
+            - generic [ref=e114]: "03"
+            - heading "Build" [level=3] [ref=e115]
+            - paragraph [ref=e116]: Clean, fast Shopify work that your team can run without calling us every week.
+          - generic [ref=e117]:
+            - generic [ref=e118]: "04"
+            - heading "Grow" [level=3] [ref=e119]
+            - paragraph [ref=e120]: Meta ads and email flows compound the build — one team, one story, every channel.
+      - region "Project or retainer." [ref=e121]:
+        - generic [ref=e122]:
+          - paragraph [ref=e123]: Ways to work
+          - heading "Project or retainer." [level=2] [ref=e124]
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - heading "Project" [level=3] [ref=e127]
+            - paragraph [ref=e128]: A scoped design and build with a clear start and finish. Strategy, design, development, launch.
+            - list [ref=e129]:
+              - listitem [ref=e130]: Fixed scope
+              - listitem [ref=e131]: 6-12 weeks
+              - listitem [ref=e132]: Launch-ready handoff
+          - generic [ref=e133]:
+            - heading "Growth retainer" [level=3] [ref=e134]
+            - paragraph [ref=e135]: Ongoing ads and email with monthly creative, testing, and reporting. Cancel any month.
+            - list [ref=e136]:
+              - listitem [ref=e137]: Monthly creative
+              - listitem [ref=e138]: Weekly testing
+              - listitem [ref=e139]: Plain-language reports
+      - region "Tell us what you're selling." [ref=e140]:
+        - generic [ref=e141]:
+          - paragraph [ref=e142]: Next step
+          - heading "Tell us what you're selling." [level=2] [ref=e143]
+          - paragraph [ref=e144]: Send the URL and the goal. We'll reply with the clearest next step we can offer.
+        - link "Contact Koala" [ref=e147] [cursor=pointer]:
+          - /url: /contact
+          - img [ref=e149]
+          - generic [ref=e151]: Contact Koala
+  - contentinfo [ref=e152]:
+    - link "Start a project" [ref=e153] [cursor=pointer]:
+      - /url: /contact
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - text: Start a project
+            - img [ref=e158]
+          - generic [ref=e160]:
+            - text: Start a project
+            - img [ref=e161]
+          - generic [ref=e163]:
+            - text: Start a project
+            - img [ref=e164]
+          - generic [ref=e166]:
+            - text: Start a project
+            - img [ref=e167]
+          - generic [ref=e169]:
+            - text: Start a project
+            - img [ref=e170]
+          - generic [ref=e172]:
+            - text: Start a project
+            - img [ref=e173]
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - text: Start a project
+            - img [ref=e177]
+          - generic [ref=e179]:
+            - text: Start a project
+            - img [ref=e180]
+          - generic [ref=e182]:
+            - text: Start a project
+            - img [ref=e183]
+          - generic [ref=e185]:
+            - text: Start a project
+            - img [ref=e186]
+          - generic [ref=e188]:
+            - text: Start a project
+            - img [ref=e189]
+          - generic [ref=e191]:
+            - text: Start a project
+            - img [ref=e192]
+    - generic [ref=e194]:
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - img "Koala Studios" [ref=e197]
+          - paragraph [ref=e198]: Shopify stores, Meta ads, and email marketing for brands that want to grow.
+          - link "hello@koalastudios.ca" [ref=e199] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+        - navigation "Footer" [ref=e200]:
+          - paragraph [ref=e201]: Site
+          - link "Work" [ref=e202] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=e203] [cursor=pointer]:
+            - /url: /services
+          - link "Contact" [ref=e204] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e205]:
+          - paragraph [ref=e206]: Services
+          - link "Shopify design & build" [ref=e207] [cursor=pointer]:
+            - /url: /services
+          - link "Meta ad management" [ref=e208] [cursor=pointer]:
+            - /url: /services
+          - link "Email marketing" [ref=e209] [cursor=pointer]:
+            - /url: /services
+      - paragraph [ref=e210]: Koala Studios
+      - generic [ref=e211]:
+        - paragraph [ref=e212]: © 2026 Koala Studios
+        - paragraph [ref=e213]: Designed and built by Koala — like everything we ship.
+  - button "Open Next.js Dev Tools" [ref=e219] [cursor=pointer]:
+    - img [ref=e220]

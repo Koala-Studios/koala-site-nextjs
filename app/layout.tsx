@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { CursorDot } from "@/components/site/CursorDot";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
@@ -16,12 +17,23 @@ export const metadata: Metadata = createPageMetadata({
   path: siteSettings.defaultSeo.canonicalPath ?? "/",
 });
 
+const socialProfiles = Object.values(siteSettings.social).filter(Boolean);
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   name: siteSettings.name,
   url: siteSettings.url,
-  sameAs: Object.values(siteSettings.social).filter(Boolean),
+  logo: `${siteSettings.url}/images/koala_logo_white.png`,
+  email: "hello@koalastudios.ca",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Toronto",
+    addressRegion: "ON",
+    addressCountry: "CA",
+  },
+  areaServed: ["Canada", "United States"],
+  ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
 };
 
 const websiteJsonLd = {
@@ -39,6 +51,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/BebasNeue-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <GoogleAnalytics />
         <SmoothScroll />
@@ -48,6 +69,10 @@ export default function RootLayout({
             __html: JSON.stringify([organizationJsonLd, websiteJsonLd]),
           }}
         />
+        <a className="koala-skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <CursorDot />
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />

@@ -5,10 +5,9 @@ export type PublicRoute =
   | "/work"
   | "/work/[slug]"
   | "/services"
-  | "/about"
   | "/contact";
 
-export type MarketingPageKey = "home" | "services" | "about" | "contact";
+export type MarketingPageKey = "home" | "services" | "contact";
 
 export interface SeoContent {
   title: string;
@@ -76,6 +75,12 @@ export interface CaseStudyMedia {
 export interface CaseStudyMetric {
   label: string;
   value: string;
+}
+
+export interface TestimonialContent {
+  quote: string;
+  author: string;
+  role: string;
 }
 
 export interface CaseStudyContent {

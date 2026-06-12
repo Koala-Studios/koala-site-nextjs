@@ -1,0 +1,171 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Koala Studios home" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - button "Open navigation" [ref=e5] [cursor=pointer]
+  - main [ref=e9]:
+    - generic [ref=e10]:
+      - region "Ara" [ref=e11]:
+        - generic [ref=e12]:
+          - img "Ara hero image showing the product in a premium coffee setting" [ref=e15]
+          - generic [ref=e16]:
+            - link "All work" [ref=e17] [cursor=pointer]:
+              - /url: /work
+              - img [ref=e18]
+              - text: All work
+            - generic [ref=e20]:
+              - paragraph [ref=e21]: Shopify
+              - heading "Ara" [level=1] [ref=e22]:
+                - generic [ref=e24]: Ara
+              - paragraph [ref=e25]: A calmer product story for a niche coffee ritual.
+        - generic "Ara project summary" [ref=e26]:
+          - generic [ref=e27]:
+            - generic [ref=e28]: Client
+            - strong [ref=e29]: Ara
+          - generic [ref=e30]:
+            - generic [ref=e31]: Sector
+            - strong [ref=e32]: Ecommerce
+          - generic [ref=e33]:
+            - generic [ref=e34]: Focus
+            - strong [ref=e35]: Product clarity
+          - generic [ref=e36]:
+            - generic [ref=e37]: Services
+            - strong [ref=e38]:
+              - generic [ref=e39]: Design
+              - generic [ref=e40]: Frontend
+              - generic [ref=e41]: Content
+      - generic [ref=e42]:
+        - region "Ara case study summary" [ref=e43]:
+          - paragraph [ref=e44]:
+            - generic [ref=e46]: Ara
+            - generic [ref=e48]: needed
+            - generic [ref=e50]: a
+            - generic [ref=e52]: premium
+            - generic [ref=e54]: page
+            - generic [ref=e56]: that
+            - generic [ref=e58]: explained
+            - generic [ref=e60]: the
+            - generic [ref=e62]: offer
+            - generic [ref=e64]: fast.
+        - region "Case study details" [ref=e65]:
+          - complementary [ref=e66]:
+            - generic [ref=e67]:
+              - generic [ref=e68]:
+                - generic [ref=e69]: Metrics
+                - generic [ref=e70]:
+                  - generic [ref=e71]:
+                    - term [ref=e72]: Priority
+                    - definition [ref=e73]: Product clarity
+                  - generic [ref=e74]:
+                    - term [ref=e75]: Scope
+                    - definition [ref=e76]: Launch-ready narrative
+              - generic [ref=e77]:
+                - generic [ref=e78]: Deliverables
+                - list [ref=e79]:
+                  - listitem [ref=e80]: Product story
+                  - listitem [ref=e81]: Benefit flow
+                  - listitem [ref=e82]: Mobile proof
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - generic [ref=e85]: "01"
+              - heading "The challenge" [level=2] [ref=e86]
+              - paragraph [ref=e87]: The old page took too long to explain the product and why it deserved trust.
+            - generic [ref=e88]:
+              - generic [ref=e89]: "02"
+              - heading "The approach" [level=2] [ref=e90]
+              - paragraph [ref=e91]: We centered the daily ritual, tightened the rhythm, and made proof easier to scan.
+            - generic [ref=e92]:
+              - generic [ref=e93]: "03"
+              - heading "The outcome" [level=2] [ref=e94]
+              - list [ref=e95]:
+                - listitem [ref=e96]: → Clearer offer
+                - listitem [ref=e97]: → Better mobile scanning
+                - listitem [ref=e98]: → More premium feel
+        - region "Ara supporting media" [ref=e99]:
+          - generic [ref=e100]:
+            - img "Ara product and ingredient story image" [ref=e103]
+            - generic [ref=e104]: Ara product and ingredient story image
+          - generic [ref=e105]:
+            - img "Ara desktop product page layout" [ref=e108]
+            - generic [ref=e109]: Ara desktop product page layout
+      - region "Magnum" [ref=e110]:
+        - link "Next case Magnum A bolder ecommerce story with cleaner proof. Read next case" [ref=e111] [cursor=pointer]:
+          - /url: /work/magnum
+          - generic [ref=e113]:
+            - generic [ref=e114]: Next case
+            - generic [ref=e115]: Magnum
+            - generic [ref=e116]: A bolder ecommerce story with cleaner proof.
+            - generic [ref=e117]:
+              - text: Read next case
+              - img [ref=e119]
+  - contentinfo [ref=e121]:
+    - link "Start a project" [ref=e122] [cursor=pointer]:
+      - /url: /contact
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - text: Start a project
+            - img [ref=e127]
+          - generic [ref=e129]:
+            - text: Start a project
+            - img [ref=e130]
+          - generic [ref=e132]:
+            - text: Start a project
+            - img [ref=e133]
+          - generic [ref=e135]:
+            - text: Start a project
+            - img [ref=e136]
+          - generic [ref=e138]:
+            - text: Start a project
+            - img [ref=e139]
+          - generic [ref=e141]:
+            - text: Start a project
+            - img [ref=e142]
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - text: Start a project
+            - img [ref=e146]
+          - generic [ref=e148]:
+            - text: Start a project
+            - img [ref=e149]
+          - generic [ref=e151]:
+            - text: Start a project
+            - img [ref=e152]
+          - generic [ref=e154]:
+            - text: Start a project
+            - img [ref=e155]
+          - generic [ref=e157]:
+            - text: Start a project
+            - img [ref=e158]
+          - generic [ref=e160]:
+            - text: Start a project
+            - img [ref=e161]
+    - generic [ref=e163]:
+      - generic [ref=e164]:
+        - generic [ref=e165]:
+          - img "Koala Studios" [ref=e166]
+          - paragraph [ref=e167]: Shopify stores, Meta ads, and email marketing for brands that want to grow.
+          - link "hello@koalastudios.ca" [ref=e168] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+        - navigation "Footer" [ref=e169]:
+          - paragraph [ref=e170]: Site
+          - link "Work" [ref=e171] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=e172] [cursor=pointer]:
+            - /url: /services
+          - link "Contact" [ref=e173] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e174]:
+          - paragraph [ref=e175]: Services
+          - link "Shopify design & build" [ref=e176] [cursor=pointer]:
+            - /url: /services
+          - link "Meta ad management" [ref=e177] [cursor=pointer]:
+            - /url: /services
+          - link "Email marketing" [ref=e178] [cursor=pointer]:
+            - /url: /services
+      - paragraph [ref=e179]: Koala Studios
+      - generic [ref=e180]:
+        - paragraph [ref=e181]: © 2026 Koala Studios
+        - paragraph [ref=e182]: Designed and built by Koala — like everything we ship.
+  - button "Open Next.js Dev Tools" [ref=e188] [cursor=pointer]:
+    - img [ref=e189]

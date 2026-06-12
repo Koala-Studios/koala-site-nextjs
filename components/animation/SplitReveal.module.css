@@ -1,0 +1,27 @@
+.host {
+  margin: 0;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+  vertical-align: bottom;
+  white-space: pre;
+}
+
+.word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.accent {
+  color: var(--koala-color-lime);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    transform: none !important;
+  }
+}

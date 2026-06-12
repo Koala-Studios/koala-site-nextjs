@@ -4,8 +4,8 @@ export const corePublicRoutes = {
   home: "/",
   workIndex: "/work",
   services: "/services",
-  about: "/about",
   contact: "/contact",
+  privacy: "/privacy",
 } as const;
 
 export const draftOrRetiredRoutes = {

@@ -73,7 +73,6 @@ export function createBaseMetadata(input: MetadataInput): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      creator: siteConfig.social.twitter,
       title,
       description: input.description,
       images: [imageUrl],

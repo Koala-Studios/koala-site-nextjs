@@ -1,5 +1,850 @@
 # Execution Ledger
 
+## 2026-06-11 - Launch-Readiness Fix Pass (report implementation)
+
+Implemented everything from `docs/launch-readiness-report.md` that code can
+fix; owner-action items moved to `docs/launch-blockers.md`.
+
+- Removed: `app/internal/*` routes, `public/images/FORUSE` (54 MB),
+  unreferenced project/redesign assets, test 3D objects, unused root
+  images/uploads — `public/images` went 165 MB -> 13.2 MB. Unused
+  Poppins/Integral fonts deleted; active fonts converted TTF -> woff2
+  (Bebas 54->19 KB etc.), tokens.css updated, Bebas preloaded in layout.
+- SEO fixes: brand-duplication in titles fixed everywhere + intent-keyword
+  rewrite (home/work/services/contact/case studies); placeholder socials and
+  fake twitter handle removed; Organization schema upgraded to
+  ProfessionalService with Toronto address/areaServed/logo/email; sitemap
+  uses a stable content date and includes the new routes; fresh 1200x630
+  OG card generated on-brand (`koala_meta.jpg`); app icons generated
+  (`app/icon.png`, `app/apple-icon.png`).
+- New routes: `/services/shopify-design-and-build`, `/services/meta-ads-management`,
+  `/services/email-marketing` (shared `[slug]` template: SplitReveal hero,
+  deliverables grid, 4-step process, fit list, linked case proof tile, CTA,
+  per-page Service JSON-LD) and `/privacy` (footer-linked).
+- Internal links: homepage pillars, footer services column, and services
+  overview offerings ("Full service details") now point at the detail pages.
+- Conversion: homepage client wordmark carousel ("Brands we've built for",
+  swap to real logos per blockers doc); budget select in the contact form;
+  services FAQ accordion with FAQPage JSON-LD (6 questions incl. Toronto);
+  success-page copy sets reply expectations; footer shows Toronto + Privacy.
+- A11y: menu overlay focus trap; cycling hero word is aria-hidden with an
+  sr-only static phrase; `.koala-sr-only` utility added.
+- Verification: lint/typecheck/build pass (22 pages); titles confirmed
+  deduplicated via rendered HTML; sitemap contains service + privacy routes;
+  `/internal/*` returns 404; service page + logo carousel screenshots
+  (`v10-service-meta-1440.jpeg`, `v10-home-clients-1440.jpeg`).
+
+## 2026-06-11 - V3.5 Mid-Page Parallax 3D Accents
+
+### Implemented
+
+- New `components/three/AmbientAccent.tsx` (+ module CSS): a single
+  slowly-rotating lime wireframe in a small canvas (~10-16rem), positioned
+  in a section's side margin, that **drifts vertically at a different speed
+  than the scroll** (GSAP ScrollTrigger scrub translates the host ±parallax
+  rem across the section's scroll-through). Pointer-tilted, paused
+  offscreen (IntersectionObserver), z-index -1 behind content (host section
+  uses `position: relative; isolation: isolate`), max 1rem side bleed (no
+  horizontal overflow), hidden under 700px, static frame under
+  prefers-reduced-motion, lazy three import, WebGL failure tolerated.
+- Placements (one per surface, low opacity 0.22-0.3):
+  - Home: icosphere, right edge, drifting between the stats strip and
+    testimonials (`statsAccent`).
+  - Services: torus, left edge of the process section.
+  - Work index: octahedron, bottom-left of the explorer area.
+  - Case studies: icosphere, right whitespace beside the big intro
+    statement (`CaseStudyStory`).
+
+### Verification Evidence
+
+- lint, build (18 routes), typecheck pass.
+- Scroll-lag verified live: over a 700px page scroll the home accent's own
+  transform moved from -60px to +75px (drifts against the scroll).
+- Screenshots: `v9-home-accent-1440.jpeg` (icosphere right of stats/
+  testimonials), `v9-case-accent-1440.jpeg` (icosphere beside the Nektr
+  statement).
+- No horizontal overflow on checked routes after placement.
+
+## 2026-06-11 - V3.4 Ambient 3D Backdrops Across Route Heroes
+
+### Implemented
+
+- New reusable `components/three/AmbientScene.tsx` (+ module CSS): a
+  decorative three.js backdrop with four variants, all fog-blended into the
+  page background, soft radial mask, lazy three import, pointer parallax,
+  scroll parallax (objects translate by per-object depth against the host's
+  viewport progress), IntersectionObserver pause when offscreen,
+  reduced-motion renders one static frame, WebGL failure caught (section
+  just has no backdrop). Parent sections set `position: relative` +
+  `isolation: isolate`; content sits at z-index 1.
+- Variants and placements:
+  - `blueprint` — floating design-in-progress wireframes (box, torus, cone,
+    icosahedron, lime octahedron) behind the /services hero.
+  - `frames` — drifting gallery frames + lime dots behind the /work hero
+    (hero given a min-height so the frames have room).
+  - `dart` — a quiet paper dart with pulsing trail cruising the /contact
+    background (pushed to z -1.8 after it read too heavy over the form);
+    also on /contact/success.
+  - `cube` — tumbling wireframe parcel with lime core + orbit ring on the
+    404 page; tumble speed reacts to the pointer.
+
+### Verification Evidence
+
+- lint, build (18 routes), typecheck pass.
+- Playwright 1440px screenshots: `v8-services-ambient-1440.jpeg` (wireframes
+  in hero negative space), `v8-work-ambient-1440.jpeg` (frames beside
+  title), `v8-contact-ambient-1440.jpeg` (dart + trail), `v8-404-ambient-1440.jpeg`
+  (cube beside "THIS PAGE DOESN'T CONVERT.").
+- No horizontal overflow introduced (scrollWidth == clientWidth on /work and
+  /contact at 1440; canvases confined to relatively-positioned heroes).
+
+## 2026-06-11 - V3.2 Hero Simplification + Interactive 3D v2 (Mobile Enabled)
+
+### Implemented
+
+- Hero copy: removed the sub-headline and the secondary "Start a project"
+  CTA; single "See our work" CTA remains; headline scaled up to
+  clamp(3.6rem, 7.4vw, 7.8rem).
+- HeroScene v2 (`components/home/HeroScene.tsx`): each vignette now has its
+  own per-frame `update(elapsed, pointer)` behaviour —
+  - Shopify stores: storefront with a striped lime awning, floating lime
+    product cube, three orbiting coins; whole shop tilts toward the pointer.
+  - Meta ads: climbing bar chart (staggered pulse, lime peak bar) with a
+    rising trend line and bobbing lime arrow head; the pointer's x position
+    "hovers" a bar, boosting its height and emissive glow.
+  - Email flows: the dart chases the pointer with banking rotation, trail
+    crumbs pulse in sequence, two lime-flapped envelopes orbit.
+  - Brands: counter-rotating wire shells, an orbit ring, three satellites
+    whose speed increases with pointer distance from center.
+- 3D enabled on mobile: the desktop-only bail was removed; the visual column
+  now stacks under the headline at ~19rem tall on <=900px. WebGL failures
+  are caught (hero degrades to 2D).
+
+### Verification Evidence
+
+- lint, build (18 routes), typecheck pass.
+- Playwright 1440px: "META ADS" headline with the bar-chart scene
+  (`v6-hero-ads-1440.jpeg`).
+- Playwright 390px: 3D canvas present (canvasCount 2 incl. dot field), email
+  dart scene rendered under the headline, scrollWidth 386 (no overflow)
+  (`v6-hero-390.jpeg`).
+
+## 2026-06-11 - V3.1 Fixes + Hero 3D Scene
+
+### Implemented
+
+- Fixed MediaReveal (case-study media was invisible): Chrome computes
+  IntersectionObserver visibility AFTER the target's own `clip-path`, so a
+  host clipped to `inset(0 100% 0 0)` reports ratio 0 forever. The observed
+  host is now unclipped and the clip lives on an inner `.clip` layer.
+  Never put the animated clip-path on the IO target.
+- Removed the TALK outline backdrop from `/contact` (was colliding with the
+  form) — element and CSS deleted; `/contact/success` keeps its SENT backdrop.
+- Hero rebalanced + 3D: hero is now a two-column grid (copy left, scene
+  right, headline rescaled to fit the column). New
+  `components/home/HeroScene.tsx` renders four abstract three.js vignettes —
+  storefront stack (Shopify stores), fanned feed cards with notification dot
+  (Meta ads), paper dart with lime crumb trail (email flows), faceted core
+  with lime wire shell (brands) — crossfading in sync with the cycling
+  headline via a `koala:hero-word` CustomEvent dispatched by `CyclingWord`.
+  Scene fog matches the page background and the canvas wears a radial CSS
+  mask, so objects melt into the dark with no hard edges. Pointer parallax
+  on camera; lazy `import("three")` (dep already present); desktop-only
+  (effect bails under 901px and the column is display:none on mobile);
+  reduced-motion renders static scenes with instant switches; full dispose
+  on unmount.
+
+### Verification Evidence
+
+- lint + build (18 routes) pass.
+- Playwright 1440px: hero word/scene sync captured twice — "EMAIL FLOWS" with
+  the paper dart (`v5-hero-3d-1440.jpeg`) and "SHOPIFY STORES" with the
+  storefront (`v5-hero-3d-meta-1440.jpeg`); case-study media visible again
+  with first wipe released and second still pending below fold
+  (`v5-case-media-1440.jpeg`); `/contact` has no backdrop element.
+
+## 2026-06-11 - V3 Polish: Takeover Menu, Footer Floods, Success/404, Media Wipes
+
+### Implemented
+
+- Mobile navigation rebuilt as a full-screen takeover (`SiteHeader` + module):
+  fixed overlay under the sticky header (z 45 vs 50 so the logo and morphing
+  close button stay clickable), giant Bebas links with lime index numbers and
+  per-link staggered mask reveals, footer row with email + Start a project
+  CTA, body scroll lock, Escape-to-close, auto-close on route change
+  (adjust-state-during-render pattern to satisfy `react-hooks/set-state-in-effect`).
+  Overlay must stay OUTSIDE `.headerWrap` — its `backdrop-filter` turns
+  `position: fixed` descendants into locally-positioned boxes (this bug was
+  hit and fixed).
+- Desktop nav links switched to directional sweep underlines (in from left,
+  out to right), matching the global link language.
+- Footer marquee hover now floods full lime with black text and arrow nudge;
+  wordmark fill hover retained.
+- `/contact/success` v2: outlined SENT backdrop, SplitReveal "Got it. / Talk
+  soon.", pulsing inbox status row, magnetic "See the work meanwhile" CTA.
+- New branded `app/not-found.tsx`: outlined 404 backdrop, "This page doesn't
+  convert." SplitReveal, home/work CTAs, noindex metadata.
+- New `components/animation/MediaReveal.tsx`: clip-path wipe + settle scale
+  on scroll; wired around the case-study supporting media (combined with the
+  existing Parallax layer).
+- Accessibility: `.koala-skip-link` (lime, drops in on keyboard focus) added
+  in `app/layout.tsx` targeting `#main-content`.
+
+### Verification Evidence
+
+- lint, build (18 routes), typecheck all pass.
+- Playwright: 390px takeover menu open state (`v4-menu-overlay-390-fixed.jpeg`),
+  link navigation closes overlay and restores body scroll (checked via DOM),
+  404 desktop (`v4-404-1440.jpeg`), success desktop (`v4-success-1440.jpeg`),
+  404 mobile scrollWidth 382 (no overflow). All in `.playwright-mcp/`.
+
+## 2026-06-10 - V2 Reimagining: Signature Interaction Systems + About Removal
+
+### Context Inspected
+
+- Owner feedback on the first lift: too conservative in places; mandate raised to "best website imaginable" across the five routes; `/about` to be removed entirely (homepage, services, and work must carry the sales story).
+- V2 mandate and per-route specs recorded in `docs/redesign-2026-direction.md` ("V2 mandate" section).
+
+### Implemented
+
+- About removal: deleted `app/about/`, removed `about` from `PublicRoute`/`MarketingPageKey`, `pageContent`, navigation (header + footer), `corePublicRoutes` (sitemap follows), and added a permanent `/about -> /` redirect in `next.config.js`. Verified 308 redirect.
+- New signature interaction systems (shared, reduced-motion-aware):
+  - `components/animation/SplitReveal.tsx` — word-mask staggered headline reveals with lime accent words; used on every major heading across home, work, services, contact, and case studies.
+  - `components/site/CursorDot.tsx` — site-wide custom cursor (fine pointers): lime trailing dot that expands into labelled discs via `data-cursor` (VIEW / DRAG / OPEN); mounted in `app/layout.tsx`.
+  - `components/animation/Parallax.tsx` — scrub parallax wrapper for fill images.
+  - `components/site/Magnetic.tsx` — cursor-magnetic CTA wrapper (elastic return).
+  - `components/animation/CountUp.tsx` — in-view count-up stats.
+  - `components/site/ScrollProgress.tsx` — lime read-progress bar (case studies).
+  - `components/site/RotatingBadge.tsx` — spinning circular-text badge.
+  - `app/template.tsx` — route-mount rise-in transition.
+  - Film-grain overlay via `body::after` in `app/globals.css`.
+- Home v2: line-mask hero entrance + cycling word (slower swap, faster fade), magnetic hero CTAs; pillars became `components/home/ServicePillars.tsx` with a cursor-following image preview per service; selected work is an oversized drag carousel (`HomeWorkCarousel` rewritten: 44rem slides, hover headline slide-up, lime progress bar, square controls, DRAG cursor); honest count-up stats strip (06 cases / 03 service lines / 04 steps / 02-day reply); testimonials rewritten as a single-quote spotlight (`HomeTestimonialCarousel` v2: auto-rotating, per-dot progress lines, giant quote glyph); contact band adds the rotating badge.
+- Work v2: `WorkExplorer` replaces `WorkFilterGrid` (deleted) — filter tabs with lime count superscripts and sweep underlines, GRID/INDEX view toggle; grid view is an asymmetric 12-col editorial layout with parallax tiles, staggered entrance, hover shade/arrow; index view is display-type rows with a cursor-following image preview; footer states "0N cases shown — more in production".
+- Services v2: SplitReveal hero; new `components/services/FunnelDiagram.tsx` (BUILD → TRAFFIC → RETENTION rail that draws in on scroll) under "Every offer feeds the next."; magnetic closing CTA.
+- Case study v2: hero rebuilt as full-bleed parallax image with overlaid display title + SplitReveal and four-cell meta band (`CaseStudyHero`); story rebuilt with big split-reveal statement, sticky facts rail (metrics + deliverables), numbered challenge/approach/outcome blocks with arrow outcome list, alternating-width parallax media with captions (`CaseStudyStory`); next-case is a full-width interactive banner with image zoom and giant title (`CaseStudyRelated`); lime scroll-progress bar on the route.
+- Contact v2: giant outlined TALK backdrop; SplitReveal title; live-status row (pulsing lime dot, "Booking new projects", live Toronto clock via `components/contact/LocalClock.tsx`); Netlify form gains "What do you need?" checkbox chips (Shopify build / Meta ads / Email marketing / Not sure) with lime selected state and preserved form semantics; magnetic submit.
+- Fixed `SplitReveal` accent matching to normalize punctuation on both sides ("shop.", "works.", "Grow." now render lime).
+
+### Verification Evidence
+
+- `lint`, `typecheck`, `build` all pass; build shows 18 pages with `/about` gone and a 308 `/about -> /` redirect confirmed by raw HEAD request.
+- Playwright desktop QA at 1440px with real scrolling (scroll-triggered systems verified live): split-reveal headings fire (`v3-home-pillars-1440.jpeg`), drag carousel + counted stats (`v3-home-stats-1440.jpeg`), work grid + index views (`v3-work-top-1440.jpeg`, `v3-work-index-1440.jpeg`), services funnel drawn (`v3-services-funnel-1440.jpeg`), case hero/story/next-banner (`v3-case-hero-1440.jpeg`, `v3-case-story-1440.jpeg`, `v3-case-next-1440.jpeg`), contact with backdrop/chips/clock (`v3-contact-top-1440.jpeg`); all in `.playwright-mcp/`.
+- 390px mobile: scrollWidth 382-386 vs innerWidth 390 (no overflow) on `/`, `/work`, `/work/ara`, `/services`, `/contact`; mobile case hero screenshot `v3-case-hero-390.jpeg`.
+- All active routes return HTTP 200.
+
+### Handoff Notes
+
+- Full-page (non-scrolling) screenshots show SplitReveal headings hidden and stats at 00 — that is the unstarted scroll-trigger state, not a bug; verify with scrolled viewport captures.
+- Hover-preview layers and the custom cursor are desktop/fine-pointer only by design; mobile falls back to plain rows/links.
+- `public/images/redesign/about/` and the about content images are now unreferenced (left in place).
+
+## 2026-06-10 - Blackout Editorial Visual Lift (Home, Services, Work, Case Study, Contact)
+
+### Context Inspected
+
+- Owner request: big visible improvements across the main pages with full creative control; keep only the Bebas Neue font, the logo, and the hard-edge animated CTA; add Meta ad management and email marketing as first-class offers; micro-interactivity throughout.
+- Baseline desktop screenshots captured in `.playwright-mcp/baseline-*-full-1440.jpeg` before changes.
+- Direction and page-by-page plan recorded in `docs/redesign-2026-direction.md` (read that first).
+
+### Implemented
+
+- Tokens (`styles/site/tokens.css`): layered near-black palette, warm off-white ink, readable muted (#a09d92), lime highlight (#a3e635), hairline `--koala-color-line` / `-soft`, display type scale (`--koala-text-display`), lime focus ring and selection.
+- Global utilities (`app/globals.css`): `.koala-eyebrow` (lime tick label), `.koala-chip`, `.koala-underline-link` sweep, `.koala-outline-text`, `.koala-marquee` (CSS loop, hover-pause, reduced-motion off), and a richer `.koala-work-tile` (image zoom, meta slide, lime category, index number, hover arrow chip).
+- New primitives: `components/site/Marquee.tsx`, `components/home/HeroField.tsx` (pointer-reactive dot-field canvas, reduced-motion aware), `components/home/CyclingWord.tsx`.
+- Homepage (`app/page.tsx` + module): full rebuild — dot-field hero with cycling word (Shopify stores / Meta ads / email flows / brands), scroll cue, services marquee, numbered service pillar rows with chips and hover arrows, restyled selected-work carousel, four-step process grid, restyled testimonials, big "Let's build something that sells." contact band. Purple shader wrapper and white paper-plane image removed from the homepage (shader page intact at `/internal/resend-forward-gradient`).
+- Services (`content/pages/services.ts`, `app/services/page.tsx`, module): full rebuild around three flagship offers — 01 Shopify design & build, 02 Meta ad management, 03 Email marketing — each with kicker, deliverable chips, and a "Good fit" note; Design/Build/Grow display hero with proof rail; four-step process; Project vs Growth retainer cards; closing CTA. JSON-LD offer catalog now lists the three new offers. `pageContent.services` SEO/hero and `siteSettings.description` updated in `lib/content/site-content.ts`.
+- Work (`app/work/page.tsx` + module): hero got eyebrow, lime accent, summary; tiles get the global index/arrow/zoom treatment via `WorkFilterGrid`/`HomeWorkCarousel` spans.
+- Case study: hero title to uppercase display scale with muted headline (`CaseStudyHero.module.css`); next-case title to display scale (`CaseStudyRelated.module.css`).
+- Contact (`app/contact/page.tsx` + module): form-first split — left: "Let's talk shop." display title, direct email link, numbered what-happens-next rail; right: framed Netlify form. Form primitives (`components/forms/Input|Textarea|Field`) flattened to hard-edge transparent controls with tracked uppercase labels. Netlify semantics preserved (form name/method/action, hidden form-name, bot-field honeypot).
+- Contact success (`app/contact/success/*`): rebuilt to "Got it. Talk soon." with own CSS module; paper-plane image dropped.
+- Header/footer: nav lime sweep underline; footer marquee CTA strip, columns (site nav + services), giant outlined wordmark.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` — no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` — passed.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` — Next 16.2.6/Turbopack, 19 pages including all six `/work/[slug]` paths.
+- Playwright (dev server on port 3000): `/`, `/work`, `/services`, `/about`, `/contact`, `/contact/success`, `/work/ara` all fetch HTTP 200.
+- 390px mobile: `document.documentElement.scrollWidth` 382-386 vs `innerWidth` 390 on `/`, `/work`, `/contact` — no horizontal overflow.
+- After screenshots: `.playwright-mcp/v2-home-full-1440.jpeg`, `v2-home-full-390.jpeg`, `v2-home-hero-1440.jpeg`, `v2-services-new-full-1440.jpeg`, `v2-services-full-390.jpeg`, `v2-work-full-1440.jpeg`, `v2-contact-full-1440.jpeg`, `v2-case-ara-full-1440.jpeg`, `v2-about-full-1440.jpeg`.
+
+### Handoff Notes
+
+- `/about` still uses the older layout; it inherits the new tokens and footer but has not had its own creative pass.
+- The case-study "next case" image renders lazily; in full-page screenshots it can appear as an empty frame until scrolled.
+- `public/images/redesign/contact/koala-contact-paper-plane-v4-*.webp` and the services desk image are no longer referenced by active routes (assets left in place).
+
+## 2026-06-10 - Commerce Glass Hero Roughness Tuning Controls
+
+### Context Inspected
+
+- Rechecked the roughness-map wiring in `app/internal/commerce-glass-hero/CommerceGlassHero.tsx` after the request to make the roughness prominence variables easy to tune from the top-level visual settings.
+
+### Implemented
+
+- Added top-level glass tuning controls for `roughnessMapStrength`, `roughnessMapContrast`, `roughnessMapRange`, and `roughnessMapRepeat`.
+- Replaced Three.js' default roughness-map multiply behavior with a small shader remap so the cloud JPG can make patches smoother or rougher within the configured range.
+- Applied the roughness shader remap to both the shared glass material and the refraction-buffer glass material.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+
+## 2026-06-10 - Commerce Glass Hero Static Refraction Distortion
+
+### Context Inspected
+
+- Rechecked the custom transmission shader in `app/internal/commerce-glass-hero/CommerceGlassHero.tsx` after feedback that the glass texture/distortion appeared to slide.
+- Confirmed the movement came from `uDistortionTime`, not from the static roughness JPG.
+
+### Implemented
+
+- Removed the animated distortion time uniform from the glass shader path.
+- Changed the refraction distortion sample to static object-space noise, so the glass still has breakup without time-based swimming.
+- Removed the per-frame `uDistortionTime` update from the render loop.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+
+## 2026-06-10 - Commerce Glass Hero Roughness Map
+
+### Context Inspected
+
+- Confirmed `public/images/redesign/commerce-glass/displacement-soft-clouds_small.jpg` exists and is served by the local Next.js app.
+- Rechecked the commerce glass material path in `app/internal/commerce-glass-hero/CommerceGlassHero.tsx`.
+
+### Implemented
+
+- Loaded `displacement-soft-clouds_small.jpg` as a non-color repeated texture for glass surface variation.
+- Applied it to both the shared glass material and refraction-buffer glass material through `roughnessMap` and `clearcoatRoughnessMap`.
+- Kept the existing static HDR-style environment map unchanged.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- `curl.exe -I --max-time 5 http://localhost:3000/internal/commerce-glass-hero` returned `HTTP/1.1 200 OK`.
+- `curl.exe -I --max-time 5 http://localhost:3000/images/redesign/commerce-glass/displacement-soft-clouds_small.jpg` returned `HTTP/1.1 200 OK` with `Content-Type: image/jpeg`.
+- In-app Browser runtime check reported a 1280x720 canvas, `overflowX: 0`, and live status `Drag a glass object into the floating basket.`; no roughness-map load failure was logged. The only warnings were Three.js WebGL program compiler warnings from generated shader code.
+
+## 2026-06-10 - Commerce Glass Hero Static HDR Reflection Map
+
+### Context Inspected
+
+- Rechecked `app/internal/commerce-glass-hero/CommerceGlassHero.tsx` after feedback that the generated image assets should only drive the HDR/reflection environment, not the visible background or a timed environment switch.
+- Confirmed the generated light-map assets remain available under `public/images/redesign/commerce-glass/`, but the runtime now uses a single static map for reflections.
+
+### Implemented
+
+- Replaced the temporary environment-map cycling logic with one static generated HDR-style map assigned through PMREM to `scene.environment`.
+- Left the visible procedural background shader in place; the generated map is only used for glass reflections/refraction lighting.
+- Forced draggable commerce item spawn/render target scale to uniform `1,1,1`; basket part scales remain structural.
+- Updated the route metadata wording so it describes a reflection map rather than changing visible backgrounds.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- `curl.exe -I --max-time 5 http://localhost:3000/internal/commerce-glass-hero` returned `HTTP/1.1 200 OK`.
+- In-app Browser runtime check reported a 1280x720 canvas, `overflowX: 0`, live status `Drag a glass object into the floating basket.`, and no warning/error logs.
+- In-app Browser screenshot capture timed out on the animated WebGL canvas, so this pass has runtime/browser-log evidence but no new screenshot artifact.
+
+## 2026-06-09 - Commerce Glass Hero Shader Tuning Controls
+
+### Context Inspected
+
+- Re-read the active `app/internal/commerce-glass-hero/CommerceGlassHero.tsx` shader after feedback that stronger distortion was needed, but the sliding bright ray should read as a softer highlight instead of a harsh moving texture line.
+- Confirmed the glass is still a custom screen-space refraction shader sampling the captured background render target, not a physically accurate transmission material.
+
+### Implemented
+
+- Added one top-level `heroVisualTuning` object for the commerce hero renderer, background, and shared glass material settings.
+- Moved the important background knobs into that object: color stops, flow speed, noise strength, cursor pull, beam strength, grain, vignette, and title shadow.
+- Moved the important glass knobs into that object: opacity, refraction strength, normal/world/noise bending, texture bend, chromatic split, blur radius, background contrast, edge strength, caustic strength, highlight sharpness, highlight noise breakup, and alpha cap.
+- Increased the refraction bend while changing the captured-background sampling from single-point texture reads to a fixed five-sample soft blur per chromatic channel.
+- Reduced and broadened the previous glint/ray contribution, added procedural highlight breakup, and renamed the normal-space highlight UV so it is not confused with a texture matcap.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- In-app Browser loaded `http://localhost:3000/internal/commerce-glass-hero` and reported a 1280x720 canvas, `overflowX: 0`, live status `Drag a glass object into the floating basket.`, and no warning/error logs.
+- In-app Browser screenshot capture timed out on the animated WebGL canvas. Headless Edge and Chrome screenshot fallbacks were also blocked by Windows crashpad/profile access errors, so this pass has runtime/browser-log evidence but no new screenshot artifact.
+
+## 2026-06-09 - Commerce Glass Hero Grain Restoration
+
+### Context Inspected
+
+- Compared the active commerce glass hero background shader against the older `app/internal/resend-forward-gradient/ForwardGradientTest.tsx` shader.
+- Confirmed the older Forward gradient used high-frequency value noise added into the background color rather than only subtle centered turbulence.
+
+### Implemented
+
+- Restored a stronger additive grain pass to `app/internal/commerce-glass-hero/CommerceGlassHero.tsx`.
+- Kept the existing gradient beams, cursor glow, and title darkening, but changed the grain contribution to a Forward-style high-frequency noise field over the full canvas.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- In-app Browser desktop check reported a 1280x720 canvas, `overflowX: 0`, live status `Drag a glass object into the floating basket.`, and no warning/error logs.
+- In-app Browser screenshot: `C:\Users\Frank\AppData\Local\Temp\koala-commerce-grain-desktop.png`
+
+## 2026-06-09 - Commerce Glass Hero Visibility And Refraction Tuning
+
+### Context Inspected
+
+- Rechecked the Browser QA screenshots after feedback that the gradient background was barely visible and the GLB objects did not read as glass or refractive enough.
+- Inspected the commerce hero background shader, shared glass shader, and route fade overlays.
+
+### Implemented
+
+- Brightened the noisy gradient beams and reduced the center darkening so the background remains visible while the title still sits on a dark enough field.
+- Reduced the route-level veil, top fade, and bottom fade opacity that were suppressing the canvas.
+- Increased the shared glass shader's screen-space refraction, chromatic channel split, and background-driven face contribution.
+- Lowered and retuned face opacity so object faces transmit more of the live gradient while keeping stronger geometry-based rims/specular response for glass definition.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- In-app Browser desktop check reported a 1280x720 canvas, `overflowX: 0`, live status `Drag a glass object into the floating basket.`, and no warning/error logs.
+- In-app Browser mobile check at 390x844 reported a 390x844 canvas, `overflowX: 0`, and no warning/error logs.
+- In-app Browser screenshots:
+  - Desktop: `C:\Users\Frank\AppData\Local\Temp\koala-commerce-glass-tuned-final-desktop.png`
+  - Mobile: `C:\Users\Frank\AppData\Local\Temp\koala-commerce-glass-tuned-final-mobile.png`
+- Supplemental local Edge DevTools timing probe reported route `domContentLoaded: 288ms`, `loadEvent: 445ms`, manifest fetch `3.4ms`, GLB fetch `3.3ms`, canvas nonblank at 9/9 sampled pixels, and a 2.5s frame sample of `120fps`, `8.3ms` average frame, `8.4ms` p95, `8.5ms` max, with `0` frames over `33ms`.
+- The only DevTools log entry during the supplemental timing probe was a browser-level informational lazy-image intervention, not an app warning or error.
+
+## 2026-06-09 - Commerce Glass Hero Browser QA Pass
+
+### Context Inspected
+
+- Used the Browser `control-in-app-browser` workflow against `http://localhost:3000/internal/commerce-glass-hero`.
+- Rechecked the route after the GLB asset pass, with `/objects/3dobjects.glb` and `/objects/commerce-hero-manifest.json` served from the local dev server.
+
+### Verification Evidence
+
+- In-app Browser loaded `/internal/commerce-glass-hero`; the tab title was `Commerce Glass Hero Test | Koala Studios | Koala Studios`.
+- In-app Browser page-assets inspection observed both `/objects/commerce-hero-manifest.json` and `/objects/3dobjects.glb` as page fetch assets.
+- In-app Browser desktop DOM check reported a 1280x720 viewport, a 1280x720 canvas, `data-dragging="false"`, live status `Drag a glass object into the floating basket.`, and `overflowX: 0`.
+- In-app Browser mobile viewport check at 390x844 reported a 390x844 canvas, `overflowX: 0`, and no warning/error logs.
+- In-app Browser drag test moved a visible object into the basket; live status changed to `Checkout cube is spawning from above.`, `data-dragging` returned to `false`, and warning/error logs remained empty.
+- In-app Browser screenshots were captured to the runtime temp directory:
+  - Desktop: `C:\Users\Frank\AppData\Local\Temp\koala-commerce-iab-desktop.png`
+  - Mobile: `C:\Users\Frank\AppData\Local\Temp\koala-commerce-iab-mobile.png`
+  - Drag interaction: `C:\Users\Frank\AppData\Local\Temp\koala-commerce-iab-drag.png`
+- Supplemental local Edge DevTools timing probe reported route `domContentLoaded: 355ms`, `loadEvent: 749ms`, manifest fetch `12.2ms`, GLB fetch `10.9ms`, canvas nonblank at 9/9 sampled pixels, and a 2.5s frame sample of `120fps`, `8.3ms` average frame, `8.4ms` p95, `8.5ms` max, with `0` frames over `33ms`.
+- The only DevTools log entry during the supplemental timing probe was a browser-level informational lazy-image intervention, not an app warning or error.
+
+## 2026-06-09 - Commerce Glass Hero GLB Asset Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted redesign work plus the internal commerce hero route and new `public/objects/3dobjects.glb`.
+- Parsed `public/objects/3dobjects.glb` and confirmed it contains named mesh nodes `Cube`, `Cylinder`, `Icosphere`, and `Torus`.
+- Re-read `app/internal/commerce-glass-hero/CommerceGlassHero.tsx` and `public/objects/commerce-hero-manifest.json` before replacing the procedural object path.
+
+### Implemented
+
+- Removed the procedural geometry factory and OBJ loader path from the commerce hero.
+- Added GLB node selection to the manifest model types with a `node` field.
+- Added one shared GLB scene cache plus per-node prepared template caching, so `/objects/3dobjects.glb` is loaded once and each named object template is normalized/prepared once before cloning.
+- Reworked the fallback manifest and `public/objects/commerce-hero-manifest.json` so all basket parts and draggable objects are cloned from `/objects/3dobjects.glb`.
+- Kept the existing shared transparent glass shader material and interaction model; only the object source changed.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- Existing local port 3000 returned HTTP 200 for `/internal/commerce-glass-hero`, `/objects/3dobjects.glb`, and `/objects/commerce-hero-manifest.json`.
+- Headless Edge visual smoke captures:
+  - Desktop: `C:\tmp\koala-commerce-glb-desktop.png`; 9/9 sampled pixels were nonblack.
+  - Mobile: `C:\tmp\koala-commerce-glb-mobile.png`; 9/9 sampled pixels were nonblack.
+
+## 2026-06-03 - Commerce Glass Hero Runtime Optimization Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted redesign work plus the internal commerce hero route.
+- Re-read `app/internal/commerce-glass-hero/CommerceGlassHero.tsx` after simplifying the route to one shared transparent material and removing the bloom/outline/sprite overlay systems.
+
+### Implemented
+
+- Moved model normalization and vertex-normal computation into cached source preparation, so replacement spawns clone already-prepared model templates instead of recomputing geometry work mid-animation.
+- Reused pointer-plane, drag-offset, and purchase-position vectors instead of allocating new `Vector3` objects during pointer movement and purchase completion.
+- Reduced the purchase particle burst from 18 sprites to 10 sprites to lower canvas/material allocation during the drop animation.
+- Replaced teardown-time `flatMap` array construction with direct `gsap.killTweensOf` calls over existing record and particle children.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- Existing local port 3000 returned HTTP 200 for `/internal/commerce-glass-hero`.
+- Headless Edge visual smoke captures:
+  - Desktop: `C:\tmp\koala-commerce-optimized-desktop.png`; 8/9 sampled pixels were nonblack.
+  - Mobile: `C:\tmp\koala-commerce-optimized-mobile.png`; 6/9 sampled pixels were nonblack.
+
+## 2026-06-03 - Commerce Glass Hero Simplified Shared Material Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted redesign work plus the internal commerce hero route.
+- Re-read `/internal/commerce-glass-hero` after the feedback that the previous glass pass was overcomplicated, too glowy, outline-heavy, and stuttered when replacement items spawned.
+
+### Implemented
+
+- Removed the selective bloom composer and all bloom-layer rendering from the commerce hero route.
+- Removed chromatic `LineSegments`, fat line edge overlays, glow shells, matcap overlays, dark-volume shells, generated 2D outline sprites, basket outline sprite, and per-object glint sprites.
+- Kept one shared transparent refractive `ShaderMaterial` and applied it directly to every real object mesh and basket mesh.
+- Changed procedural object loading to cache source templates by shape, then clone them for new items. `initialise()` now prewarms the basket and all manifest item templates so replacement spawns do not rebuild procedural geometry or overlay materials mid-animation.
+- Kept the background render target for shader refraction, but render output now goes directly through `renderer.render(scene, camera)` with no bloom pass, so the background gradient cannot bloom.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- Headless Edge captures:
+  - Simplified desktop pass: `C:\tmp\koala-commerce-simplified-desktop.png`
+  - Simplified mobile pass: `C:\tmp\koala-commerce-simplified-mobile.png`
+
+### Follow-Up
+
+- The route is intentionally simpler now: all items share the same transparent material and only actual meshes render. Further visual improvements should happen by improving the shared material or actual object geometry, not by adding back line/sprite/bloom overlays.
+
+## 2026-06-03 - Commerce Glass Hero Screen-Space Refraction Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted redesign work plus the internal commerce hero route.
+- Re-read the active `/internal/commerce-glass-hero` Three.js shader/material stack and compared fresh captures against `C:\Users\Frank\Downloads\Generated image 4 (1).png`.
+- Re-checked Three.js `MeshPhysicalMaterial`, `WebGLRenderTarget`, `EffectComposer`, `UnrealBloomPass`, and selective bloom guidance while tuning the glass and bloom pipeline.
+
+### Implemented
+
+- Added a private background-only render target and fed it into the glass shader as `tBackground`, so the glass layer now samples and chromatically offsets the live noisy gradient instead of relying only on a duplicated procedural gradient.
+- Kept the background capture and background plane out of the bloom layer; only glass edge/highlight layers feed the bloom composer.
+- Toned the flat sprite-art layer down heavily, tested physical transmission variants, and kept the darker transmissive/custom shader blend that looked better than the pale acrylic transmission pass.
+- Added normal-driven internal sheen, narrower silhouette rim lighting, tighter object-only bloom settings, stronger fat edge lines, and reduced broad glint/glow contributions after screenshot review.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- Headless Edge visual comparison captures:
+  - Current desktop pass: `C:\tmp\koala-commerce-reference-pass50-desktop.png`
+  - Current mobile pass: `C:\tmp\koala-commerce-reference-pass50-mobile.png`
+
+### Blockers / Follow-Up
+
+- The goal is still not complete. Pass 50 is more interactive and technically refractive than the earlier sprite-heavy/gray-acrylic passes, but it still does not match the reference glass quality. The reference has darker optical interiors, sharper caustic highlights, and more polished ray-traced beveled geometry than the current procedural Three.js assets provide.
+
+## 2026-06-03 - Commerce Glass Hero Art-Directed Glass Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted redesign work plus the internal commerce hero route.
+- Re-read the active `/internal/commerce-glass-hero` material stack and compared the latest captures against `C:\Users\Frank\Downloads\Generated image 4 (1).png`.
+- Re-checked Three.js `MeshPhysicalMaterial`, `UnrealBloomPass`, and selective bloom guidance. True physical transmission with opacity `1`, IOR, thickness, and dispersion remained technically valid but visually too gray/white for the current procedural geometry.
+
+### Implemented
+
+- Added a runtime Three.js sprite-art layer generated from canvas textures for each procedural commerce object and the basket. The real meshes remain in the scene for raycasting, dragging, parallax, and interaction, while the sprite layer contributes art-directed glass silhouettes closer to the reference.
+- Drew glass-specific canvas variants for sphere/coin, torus, rounded cube/gift, card/panel, tag, bottle, shoe, and basket, with dark fills, chromatic blue/gold offsets, softer white highlights, and transparent radial aura.
+- Reduced the underlying neutral mesh, physical body, and edge contributions so the scene no longer reads primarily as frosted white acrylic.
+- Darkened the central title region further and reduced the background cursor glow so the title area stays closer to the dark reference composition.
+- Kept background gradient rendering on the non-bloom layer; only object edges, glow shells, money sprites, and selected highlight layers feed the bloom composer.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- HTTP smoke returned 200 for `/internal/commerce-glass-hero` and `/objects/commerce-hero-manifest.json`.
+- Headless Edge visual comparison captures:
+  - First sprite-art pass, visually too line-art heavy: `C:\tmp\koala-commerce-reference-pass34-desktop.png`
+  - Toned-down sprite-art pass: `C:\tmp\koala-commerce-reference-pass35-desktop.png`
+  - Quieter mesh-underlay pass: `C:\tmp\koala-commerce-reference-pass36-desktop.png`
+  - Mobile companion capture: `C:\tmp\koala-commerce-reference-pass36-mobile.png`
+
+### Blockers / Follow-Up
+
+- The goal is still not complete. Pass 36 is closer than the gray acrylic pass because the objects have clearer silhouettes and chromatic glass highlights, but the result still reads more like stylized glass art than the polished refractive 3D/glass rendering in the reference. Matching the reference likely needs either artist-authored beveled GLB assets with tuned materials or a stronger custom screen-space/refraction capture path for the hero objects.
+
+## 2026-06-03 - Commerce Glass Hero Transmission Audit Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted redesign work plus the internal commerce hero route.
+- Re-read root/app guidance, `.agent/project_state.yaml`, `.agent/current_slice.md`, `docs/project-scope.md`, `docs/operator-guide.md`, and the active `/internal/commerce-glass-hero` implementation before editing.
+- Re-checked Three.js material/postprocessing guidance for `MeshPhysicalMaterial` transmission, `EffectComposer`, `UnrealBloomPass`, and selective bloom layering.
+- Compared each new Headless Edge capture against `C:\Users\Frank\Downloads\Generated image 4 (1).png`.
+
+### Implemented
+
+- Fixed the background gradient plane after discovering it was still using clip-space vertex output. It now renders as a real scene plane behind the glass, so it fills the viewport and can participate in scene-space refraction attempts.
+- Kept the background gradient on the base layer only and continued using layer-1 selective bloom for glass edges, glow shells, glints, and money sprites so the background itself does not feed the bloom pass.
+- Tested a true `MeshPhysicalMaterial` transmission stack using opacity `1`, thickness, IOR, dispersion, PMREM environment panels, and no absorption tint. Visual review showed it returned to a gray/white acrylic look with the current procedural geometry.
+- Reverted the base body to the darker transparent material and kept the screen-space refractive shader, HDR edge colors, and tighter object-only bloom as the better current state.
+- Added neutral PMREM reflection panels and strengthened Fresnel/rim shader math for brighter curved-glass highlights.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- HTTP smoke returned 200 for `/internal/commerce-glass-hero` and `/objects/commerce-hero-manifest.json`.
+- Headless Edge visual comparison captures from this pass:
+  - Background-plane fix before material retune: `C:\tmp\koala-commerce-reference-pass23-desktop.png`
+  - Dark-body fallback after failed physical transmission attempts: `C:\tmp\koala-commerce-reference-pass32-desktop.png`
+  - Mobile companion capture: `C:\tmp\koala-commerce-reference-pass32-mobile.png`
+
+### Blockers / Follow-Up
+
+- The goal is not complete. The current render has the correct dark centered hero, full-scene noisy gradient, working interactive basket, and background-excluded bloom, but the glass still does not match the reference's polished ray-traced quality. The remaining gap is mostly asset/material fidelity: the procedural meshes lack the beveled, internally detailed GLB geometry and high-contrast caustic/reflection treatment visible in the reference.
+
+## 2026-06-03 - Commerce Glass Hero Reference Pass
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch remains `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted site work plus the internal commerce hero route.
+- Re-read the active `/internal/commerce-glass-hero` implementation, manifest, route CSS, and recent visual screenshots against the supplied glass ecommerce reference.
+- Consulted Three.js documentation/examples direction for glass and bloom: `MeshPhysicalMaterial` transmission/thickness/IOR/dispersion, `EffectComposer`, `UnrealBloomPass`, physical transmission examples, and selective bloom layering.
+- Continued the visual comparison after the first reference pass and confirmed the remaining mismatch was mainly muted gray glass and overly speckled background grain rather than whole-frame bloom.
+
+### Implemented
+
+- Reworked the commerce hero away from cube-only OBJ placeholders by adding procedural Three.js glass shapes for rounded cards, product panels, gift blocks, tags, rounded parcels, sphere, torus, coin, bottle, basket bars, and a sneaker-profile shoe.
+- Updated `public/objects/commerce-hero-manifest.json` to start ten floating ecommerce objects instead of five/seven cube variants.
+- Added a custom colored PMREM environment for physical glass reflection, plus a layered glass material stack: screen-space refractive shader, subtle physical glass overlay, chromatic edge lines, fat-line edge highlights, and low-opacity glow shells.
+- Replaced the whole-frame bloom pass with selective object bloom. The background gradient and DOM title now render normally; only edge/glow/money layers feed the bloom composer before compositing over the base render.
+- Reduced noisy gradient brightness/bloom wash, tuned object opacity/refraction, added idle glowing money sprites in the basket, and backed the Three.js camera up on narrow viewports so mobile keeps the basket and side objects framed.
+- Added stronger spectral rim/glint math inside the glass shader, reduced the neutral white edge contribution, softened object-attached prismatic glints after the first version read as detached bars, and lowered the background grain amplitude for a smoother reference-like finish.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- HTTP smoke returned 200 for `/internal/commerce-glass-hero` and `/objects/commerce-hero-manifest.json`.
+- Headless Edge visual comparison captures:
+  - Earlier whole-frame bloom failure: `C:\tmp\koala-commerce-reference-pass1-desktop.png`
+  - Selective-bloom desktop iteration: `C:\tmp\koala-commerce-reference-pass15-desktop.png`
+  - Adjusted mobile camera framing: `C:\tmp\koala-commerce-reference-pass16-mobile.png`
+  - Spectral-glint attempt that was rejected as too artificial: `C:\tmp\koala-commerce-reference-pass18-desktop.png`
+  - Reduced-grain, softened-glint desktop result: `C:\tmp\koala-commerce-reference-pass20-desktop.png`
+  - Reduced-grain, softened-glint mobile result: `C:\tmp\koala-commerce-reference-pass20-mobile.png`
+
+### Blockers / Follow-Up
+
+- The current result is visually much closer to the reference than the cube-placeholder pass, and the background gradients no longer bloom. It is still procedurally modeled rather than built from polished GLB/GLTF hero assets; final production fidelity would improve with artist-modeled beveled ecommerce objects and basket geometry.
+
+## 2026-06-03 - Commerce Glass Hero Material And Throw Refinement
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted site edits plus the internal commerce hero work.
+- Re-read the current `/internal/commerce-glass-hero` implementation, route CSS, the homepage usage of `ForwardGradientHeader`, and the earlier `/internal/resend-forward-gradient` shader code.
+- Compared the current rendered output against the desired reference direction: darker centered hero, noisy/distorted homepage-like gradient, and visibly refractive glass objects.
+
+### Implemented
+
+- Replaced the simpler commerce hero background shader with a Forward-style gradient shader using the same core displacement/noise/warped gradient approach as the homepage/internal Forward canvas.
+- Replaced the gray translucent object material with a custom glass shader material that samples the same gradient in screen space, offsets by normals/noise, adds chromatic split, fresnel rim, caustic lift, and brighter edge treatment.
+- Reduced the page veil opacity so the noisy animated gradient and glass fill read through the objects.
+- Changed object release behavior from snapping/tweening back home to an inertia model. Dragging now records world-space pointer velocity; released objects continue with momentum, damp over time, and bounce inside hero bounds.
+- Added overlap-based basket detection in the animation loop so thrown objects can be caught by the basket after release, not only when dropped directly.
+- Kept immediate drag-overlap purchase behavior so an object crossing the basket while still grabbed also triggers the basket rumble, money burst, scale-down, and replacement spawn.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- HTTP smoke returned 200 for `/internal/commerce-glass-hero`, `/objects/cube_basic.obj`, and `/objects/commerce-hero-manifest.json`.
+- Headless Edge desktop visual evidence after material/background refinement:
+  - `C:\tmp\koala-commerce-glass-fill-desktop.png`
+- Headless Edge desktop/mobile visual evidence before the final fill-opacity bump:
+  - `C:\tmp\koala-commerce-glass-refined-desktop.png`
+  - `C:\tmp\koala-commerce-glass-refined-mobile.png`
+- CDP throw verification released the gift block before the basket and sampled status over time:
+  - Immediate: `Gift block released with momentum.`
+  - Later: `Gift block dropped into the basket. Purchase animation playing.`
+  - Final: `Loyalty chip is spawning from above.`
+- The only observed browser warning was a nonfatal Three.js generated WebGL program precision/info log.
+
+### Blockers / Follow-Up
+
+- No implementation blocker remains for this refinement. The current primitive OBJ constrains object silhouette variety until final GLB/GLTF assets are introduced through the manifest.
+
+## 2026-06-03 - Internal Commerce Glass Hero Test
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 5, behind 1]` with broad pre-existing uncommitted homepage, internal route, site shell, content, testimonial, token, and ledger edits.
+- Re-read root/app/component/style guidance, `.agent/project_state.yaml`, `.agent/current_slice.md`, `docs/project-scope.md`, `docs/operator-guide.md`, and `.agent/verification_registry.yaml`.
+- Inspected the existing `/internal/resend-forward-gradient` shader route and confirmed the new work should stay in a separate internal test page.
+- Confirmed `public/objects/cube_basic.obj` exists in the current worktree as a Blender-exported OBJ with normals and is referenced by the scene manifest for every item and basket part.
+- Researched asset format direction from official Three.js and Khronos glTF documentation. The implementation keeps OBJ support for the placeholder but expects production assets to move toward optimized GLB/GLTF packs.
+
+### Implemented
+
+- Added hidden noindex route `/internal/commerce-glass-hero` with separate Three.js code from the Forward shader page.
+- Added a full-viewport Three.js scene with a noisy dark gradient shader background, centered white homepage-style title, floating glass ecommerce objects, and a floating basket below the title section.
+- Added drag-to-basket interaction: selected objects follow pointer projection, snap into the basket on release, scale down to near-zero, trigger a basket rumble, emit money/plus sprites, and spawn a different object from the top.
+- Added `public/objects/commerce-hero-manifest.json` as the non-code configuration layer for object paths, labels, transforms, basket parts, and OBJ/GLB/GLTF formats.
+- Wired `public/objects/cube_basic.obj` as the current primitive asset for all floating ecommerce objects and the floating basket placeholder.
+- Added direct `three` and `@types/three` dependencies.
+- Included performance controls: capped device pixel ratio, source model promise cache, shared loader routing, offscreen render pause with `IntersectionObserver`, `ResizeObserver` sizing, and reduced-motion behavior.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` completed successfully.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 19 app pages, including `/internal/commerce-glass-hero`.
+- Existing local port 3000 returned HTTP 200 for `/internal/commerce-glass-hero`.
+- Browser route verification reported one full-viewport `data-commerce-glass-canvas`, h1 aria label `Commerce you can feel`, desktop overflowX `0`, and no application console errors.
+- Headless Edge CDP input verification dragged the visible gift block into the floating basket; the live status changed to `Loyalty chip is spawning from above`, confirming the drag, purchase, scale-down, and replacement-spawn path. The only captured warning was a nonfatal Three.js generated shader precision info log.
+- Asset smoke checks returned HTTP 200 for `/objects/commerce-hero-manifest.json` and `/objects/cube_basic.obj`.
+- Headless Chromium screenshot evidence:
+  - Desktop: `C:\tmp\koala-commerce-glass-hero-desktop.png`
+  - Mobile: `C:\tmp\koala-commerce-glass-hero-mobile.png`
+- Screenshot pixel checks confirmed nonblank gradient/3D output:
+  - Desktop: `1097/3240` nonblack samples, `658` green/blue samples, `1164` unique sampled colors.
+  - Mobile: `591/860` nonblack samples, `398` green/blue samples, `577` unique sampled colors.
+
+### Blockers / Follow-Up
+
+- For production, export the full object set and basket as one optimized GLB/GLTF scene pack where practical, then update `public/objects/commerce-hero-manifest.json` without changing the interaction code.
+
+## 2026-06-03 - Bebas Neue Title Font
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 5, behind 1]` with pre-existing uncommitted homepage, internal route, header/footer, content, testimonial, token, and ledger edits.
+- Re-read `.agent/project_state.yaml`, `.agent/current_slice.md`, `styles/AGENTS.md`, and `components/AGENTS.md` before touching the shared style surface.
+- Fetched the current Google Fonts CSS for `Bebas Neue`, which exposed the normal `400` TTF at `fonts.gstatic.com`.
+
+### Implemented
+
+- Added the self-hosted Bebas Neue font asset at `public/fonts/BebasNeue-Regular.ttf`.
+- Added a `Bebas Neue` `@font-face` in `styles/site/tokens.css`.
+- Moved `--koala-font-display` and `--koala-font-heading` to `Bebas Neue` with Roboto Condensed as fallback, leaving `--koala-font-body` and `--koala-font-support` on Roboto Condensed.
+- Normalized shared public heading/title weights to `400` in `app/globals.css`, the homepage hero title, and case-study title/intro styles so the single-weight Bebas file is not synthetically bolded.
+
+### Verification Evidence
+
+- `rg -n --glob "*.css" -- "Bebas Neue|BebasNeue|--koala-font-(display|heading|body|support)|font-family: var\(--koala-font-heading\)|font-weight: 700|font-weight: 600" styles app components` confirmed the shared heading/display tokens use Bebas Neue; remaining public support/body tokens stay Roboto Condensed, and the remaining `600/700` public matches are Roboto font-face declarations or non-title support text.
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 18 app pages.
+- Existing local port 3000 returned HTTP 200 for `/`, `/work`, and `/contact`.
+- In-app Browser computed-style check on `/` reported `--koala-font-heading` and `--koala-font-display` as `Bebas Neue`, homepage `h1` and first `h2` computed to Bebas Neue at weight `400`, body token remained Roboto Condensed, and desktop overflow stayed clean.
+- In-app Browser 390px check reported homepage `h1` and first `h2` computed to Bebas Neue at weight `400`, `innerWidth: 390`, and no horizontal overflow.
+
+### Blockers / Follow-Up
+
+- No implementation blocker remains.
+
+## 2026-06-03 - Internal Gradient Glass Sphere And Cube
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 5, behind 1]` with many pre-existing uncommitted homepage, header, footer, content, token, testimonial, and ledger edits outside this route.
+- Re-read root/app/component/style guidance, durable project docs, `.agent/verification_registry.yaml`, and the `/internal/resend-forward-gradient` route files before changing the shader.
+- Used the Browser skill against `/internal/resend-forward-gradient`; DOM verification reported the shader canvas scoped to the header, clean h1 label `Web experiences that move.`, header height matching canvas height, content below the hero, and no console errors.
+
+### Implemented
+
+- Kept the hero as a dark, centered, white-text Forward-style header.
+- Replaced the earlier screen-space sphere impostor with a shader ray-sphere pass that uses 3D ray intersection, refraction, fresnel/rim shading, and a subtler physical highlight response.
+- Added a shader ray-box cube on the opposite side of the hero. The cube uses box intersection, face normals, refracted gradient sampling, lit edges, and slow rotation from the animation seed.
+- Added smoothed mouse-driven parallax uniforms so the sphere and cube drift independently from the underlying cursor warp.
+- Scoped the `ForwardGradientHeader` canvas to the hero/header only instead of stretching the canvas behind the full page content.
+- Added mobile-specific title lines and a narrower mobile summary measure so the centered hero does not clip at 390px.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 18 app pages, including `/internal/resend-forward-gradient`.
+- Existing local port 3000 returned HTTP 200 for `/internal/resend-forward-gradient`.
+- In-app Browser verification after the cube fix reported `canvasWidth: 1272`, `canvasHeight: 723.328125`, clean h1 label `Web experiences that move.`, no horizontal overflow beyond the viewport shell, and no console warnings or errors.
+- Headless Chrome captured final visual evidence:
+  - `C:\tmp\koala-cube-sphere-final-desktop.png`
+  - `C:\tmp\koala-cube-sphere-final-mobile.png`
+
+### Blockers / Follow-Up
+
+- No implementation blocker remains. In-app Browser screenshot capture still times out on this animated WebGL surface, so Chrome headless was used for visual capture.
+
+## 2026-06-03 - Homepage Gradient Hero Simplification
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 5, behind 1]` with pre-existing uncommitted homepage, footer, header, token, internal gradient, testimonial, content, and ledger edits.
+- Re-read the active homepage route/CSS and the internal `/internal/resend-forward-gradient` route/CSS before changing the homepage hero.
+- Confirmed the public homepage already uses `ForwardGradientHeader`, but the hero still had a two-column title plus generated device image.
+
+### Implemented
+
+- Removed the homepage hero image/dots from the public homepage hero.
+- Changed the hero to a centered, all-caps title treatment that follows the internal gradient concept's large centered headline direction.
+- Changed the hero CTA label to `See our work`, kept it below the title, and kept the target as `/work`.
+- Follow-up alignment fix centered the hero CTA itself after the shared CTA component's default `justify-self: flex-start` left it offset inside the centered hero.
+- Follow-up CTA color fix changed shared circle-icon arrows to use `--koala-color-ink` before hover and `--koala-color-surface` on hover.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 18 app pages.
+- In-app Browser loaded `http://localhost:3000/`; DOM/layout verification reported `heroImageCount: 0`, title `textTransform: uppercase`, title `textAlign: center`, `heroCenterDelta: 0`, CTA text `See our work`, CTA href `/work`, `ctaBelowTitle: true`, and desktop `scrollWidth: 1272` with `innerWidth: 1280`.
+- Follow-up browser measurement reported hero CTA `justifySelf: center` and `centerDelta: 0`; follow-up lint and build both passed.
+- Follow-up browser/source checks reported the hero CTA icon and SVG color resolving to the current `--koala-color-ink` token before hover, with an explicit `.hasCircle:hover .iconCircle` rule for `--koala-color-surface`; follow-up lint and build both passed.
+
+### Blockers / Follow-Up
+
+- In-app Browser screenshot capture timed out on the animated WebGL homepage, matching the known screenshot limitation for this surface. DOM/layout verification and build evidence passed.
+
+## 2026-06-03 - Homepage Testimonial Carousel
+
+### Context Inspected
+
+- Re-ran `git status --short --branch`; the branch is `main...origin/main [ahead 5, behind 1]` with pre-existing uncommitted edits in homepage, global CSS, footer, and the internal gradient route.
+- Re-read root/app/component/content/style guidance, durable project docs, `.agent/verification_registry.yaml`, the active homepage route/CSS, `components/work/HomeWorkCarousel.tsx`, and the typed content helpers.
+- Confirmed the current homepage uses the Forward gradient wrapper and the selected-work carousel is a SwiperCore client component with auto-width slides and explicit previous/next state.
+
+### Implemented
+
+- Added typed `TestimonialContent` and canonical `homepageTestimonials` data in `lib/content`.
+- Added `components/testimonials/HomeTestimonialCarousel.tsx`, following the selected-work carousel's SwiperCore setup, navigation-state syncing, requestAnimationFrame update, and cleanup pattern.
+- Added responsive testimonial card styling with auto-width slides, green textured cards, accessible icon-only previous/next buttons, and mobile slide width constraints.
+- Inserted a new `Testimonials` homepage section between Featured Work and Services.
+
+### Verification Evidence
+
+- `& 'C:\Program Files\nodejs\npm.cmd' run lint` completed with no warnings or errors after fixing escaped quote markup and an unused import warning.
+- `& 'C:\Program Files\nodejs\npm.cmd' run build` completed successfully on Next 16.2.6/Turbopack and generated 18 app pages.
+- Existing local port 3000 returned HTTP 200 for `/`.
+- In-app Browser loaded `http://localhost:3000/`; DOM verification found `Testimonials`, `Previous testimonial`, and `Next testimonial`.
+- In-app Browser interaction clicked `Next testimonial`; the testimonial Swiper wrapper transform changed from `matrix(... 0, 0)` to `matrix(... -863.188, 0)`, confirming horizontal slide movement, with desktop `scrollWidth: 1272` and `innerWidth: 1280`.
+
+### Blockers / Follow-Up
+
+- A separate true 390px Chrome/CDP mobile pass was not completed: no local CDP port was open, and two headless Chrome screenshot attempts against the testimonial anchor produced blank captures. The component CSS includes mobile slide constraints, but the mobile visual check should be repeated when the established CDP path is available.
+
 ## 2026-06-02 - Gradient Homepage Concept Page
 
 ### Context Inspected

@@ -1,0 +1,11 @@
+.bar {
+  background: var(--koala-color-lime);
+  height: 2px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 60;
+}

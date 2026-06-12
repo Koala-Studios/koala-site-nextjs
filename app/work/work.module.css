@@ -1,13 +1,42 @@
 .hero {
-  min-height: clamp(4.75rem, 6vw, 5.35rem);
+  align-content: end;
+  display: grid;
+  isolation: isolate;
+  min-height: clamp(14rem, 26vh, 19rem);
+  padding-bottom: clamp(1rem, 2vw, 1.75rem);
+  position: relative;
 }
 
 .intro {
-  gap: 0;
+  display: grid;
+  gap: var(--koala-space-4);
+  position: relative;
+  z-index: 1;
+}
+
+.heroAccent {
+  color: var(--koala-color-lime);
+}
+
+.heroSummary {
+  color: var(--koala-color-muted);
+  font-size: var(--koala-text-md);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 34rem;
+}
+
+.explorerWrap {
+  isolation: isolate;
+  position: relative;
+}
+
+.explorerAccent {
+  bottom: 1rem;
 }
 
 @media (max-width: 760px) {
   .hero {
-    min-height: auto;
+    padding-bottom: var(--koala-space-4);
   }
 }
