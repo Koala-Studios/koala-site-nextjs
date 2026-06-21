@@ -3,12 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+import { serviceDetails } from "@/content/pages/service-details";
 import { navigationContent } from "@/lib/content";
 
+import { ArrowIcon } from "./ArrowIcon";
 import { Cta } from "./Cta";
 import styles from "./SiteHeader.module.css";
+
+const serviceNavDescriptions: Record<string, string> = {
+  "shopify-design-and-build":
+    "Storefront design and custom theme development built around your product story and made to convert.",
+  "meta-ads-management":
+    "Creative-first Facebook and Instagram campaigns that bring predictable, scalable traffic to your store.",
+  "email-marketing":
+    "Klaviyo flows and campaigns that turn one-time buyers into repeat customers on autopilot.",
+  "packaging-and-3d-renders":
+    "Label and packaging design plus photoreal 3D product renders that win the shelf and lift your store.",
+};
 
 function isActivePath(currentPath: string, href: string): boolean {
   if (href === "/") {
@@ -22,12 +35,30 @@ export function SiteHeader() {
   const pathname = usePathname() ?? "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [lastPathname, setLastPathname] = useState(pathname);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Close the takeover when the route changes (adjust-state-during-render pattern).
+  const openServices = () => {
+    if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current);
+    setServicesOpen(true);
+  };
+
+  const scheduleCloseServices = () => {
+    servicesCloseTimer.current = setTimeout(() => setServicesOpen(false), 180);
+  };
+
+  // Close overlays when the route changes (adjust-state-during-render pattern).
   if (lastPathname !== pathname) {
     setLastPathname(pathname);
     setMenuOpen(false);
+    setServicesOpen(false);
   }
+
+  useEffect(() => {
+    return () => {
+      if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) {
@@ -87,7 +118,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className={styles.headerWrap}>
+      <div className={`${styles.headerWrap} ${servicesOpen ? styles.headerWrapSolid : ""}`}>
         <header className={styles.header}>
         <Link
           className={styles.brand}
@@ -105,21 +136,68 @@ export function SiteHeader() {
         </Link>
 
         <nav className={styles.nav} aria-label="Primary">
-          {navigationContent.primary.map((item) => (
-            <Link
-              key={item.href}
-              className={`${styles.link} ${
-                isActivePath(pathname, item.href) ? styles.linkActive : ""
-              }`}
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigationContent.primary.map((item) => {
+            const linkClassName = `${styles.link} ${
+              isActivePath(pathname, item.href) ? styles.linkActive : ""
+            }`;
+
+            if (item.href !== "/services") {
+              return (
+                <Link className={linkClassName} href={item.href} key={item.href}>
+                  {item.label}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                className={styles.navItem}
+                key={item.href}
+                onMouseEnter={openServices}
+                onMouseLeave={scheduleCloseServices}
+              >
+                <Link
+                  className={linkClassName}
+                  href={item.href}
+                  onClick={() => setServicesOpen(false)}
+                >
+                  {item.label}
+                </Link>
+                <div
+                  className={`${styles.dropdown} ${servicesOpen ? styles.dropdownOpen : ""}`}
+                  onMouseEnter={openServices}
+                  onMouseLeave={scheduleCloseServices}
+                >
+                  <div className={styles.dropdownInner}>
+                    {serviceDetails.map((service) => (
+                      <Link
+                        className={styles.dropdownLink}
+                        href={`/services/${service.slug}`}
+                        key={service.slug}
+                        onClick={() => setServicesOpen(false)}
+                      >
+                        <span className={styles.dropdownLabel}>
+                          {service.navLabel}
+                        </span>
+                        <span className={styles.dropdownDesc}>
+                          {serviceNavDescriptions[service.slug]}
+                        </span>
+                        <span className={styles.dropdownLearn}>
+                          Learn more
+                          <ArrowIcon className={styles.dropdownArrow} />
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </nav>
 
         <Cta
           className={styles.desktopAction}
+          data-analytics-cta="header"
           href={navigationContent.featuredCta.href}
           icon="circle"
           iconPosition="left"
@@ -185,6 +263,7 @@ export function SiteHeader() {
           </a>
           <Cta
             href={navigationContent.featuredCta.href}
+            data-analytics-cta="menu"
             icon="circle"
             iconPosition="left"
             size="medium"

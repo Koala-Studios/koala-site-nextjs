@@ -99,7 +99,7 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
       eyebrow: "Services",
       headline: "Design. Build. Grow.",
       summary:
-        "Three ways to work with us — build the store, drive the traffic, keep the customers. Most brands start with one and grow into the rest.",
+        "Three ways to work with us: build the store, drive the traffic, keep the customers. Most brands start with one and grow into the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },
@@ -129,7 +129,7 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     route: "/contact",
     status: "published",
     seo: {
-      title: "Contact — Start a Project",
+      title: "Contact: Start a Project",
       description:
         "Start a conversation about a redesign, new build, or cleaner ecommerce site.",
       canonicalPath: "/contact",

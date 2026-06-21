@@ -1,0 +1,37 @@
+.work {
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+  scroll-margin-top: var(--koala-space-24);
+}
+
+.sectionHeadRow {
+  align-items: flex-end;
+  display: grid;
+  gap: var(--koala-space-4);
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.sectionHeadRow h2 {
+  max-width: 24ch;
+  text-transform: uppercase;
+}
+
+.sectionHeadRow > div {
+  display: grid;
+  gap: var(--koala-space-4);
+}
+
+.sectionLink {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .sectionHeadRow {
+    align-items: flex-start;
+    grid-template-columns: 1fr;
+  }
+}

@@ -18,6 +18,7 @@ const projectTypes = [
   { value: "Shopify design & build", name: "interest-shopify" },
   { value: "Meta ads", name: "interest-meta-ads" },
   { value: "Email marketing", name: "interest-email" },
+  { value: "Free site audit", name: "interest-audit" },
   { value: "Not sure yet", name: "interest-unsure" },
 ] as const;
 

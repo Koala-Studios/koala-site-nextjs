@@ -380,7 +380,219 @@ function buildEmail(THREE: Three): SceneDef {
   };
 }
 
-/** 3 — brands: an asterisk brand mark on a plinth, surrounded by the
+/** 3 — Packaging: a mailer carton whose flaps breathe open while a labelled
+ * product rises from inside; a hang tag and tape roll orbit around it. */
+function buildPackaging(THREE: Three): SceneDef {
+  const { dark, soft, lime } = makeMaterials(THREE);
+  const group = new THREE.Group();
+  const crate = new THREE.Group();
+
+  // Carton body, open at the top.
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.25, 1.7), soft());
+  body.position.y = -0.5;
+  crate.add(body);
+
+  // A lime tape seam and a label panel on the front face.
+  const seam = new THREE.Mesh(new THREE.BoxGeometry(0.26, 1.27, 0.04), lime(0.4));
+  seam.position.set(0, -0.5, 0.87);
+  const label = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.5, 0.03), dark());
+  label.position.set(0.42, -0.5, 0.88);
+  crate.add(seam, label);
+
+  // Four hinged flaps around the top rim; rotation.x opens them in update().
+  const flaps: Group[] = [];
+  for (let i = 0; i < 4; i += 1) {
+    const hinge = new THREE.Group();
+    hinge.rotation.y = (i * Math.PI) / 2;
+    const arm = new THREE.Group();
+    // Stagger heights slightly so the closed flaps don't z-fight at center.
+    arm.position.set(0, 0.12 + i * 0.012, 0.85);
+    const panel = new THREE.Mesh(
+      new THREE.BoxGeometry(1.66, 0.05, 0.85),
+      i % 2 === 0 ? soft() : lime(0.35)
+    );
+    panel.position.z = -0.42;
+    arm.add(panel);
+    hinge.add(arm);
+    crate.add(hinge);
+    flaps.push(arm);
+  }
+
+  // Product rising out of the box: a bottle with a wrap-around label and cap.
+  const product = new THREE.Group();
+  const bottle = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.3, 0.34, 0.95, 22),
+    dark()
+  );
+  const wrap = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.35, 0.35, 0.42, 22, 1, true),
+    lime(0.55)
+  );
+  const cap = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.2, 0.2, 0.22, 18),
+    lime(0.7)
+  );
+  cap.position.y = 0.58;
+  product.add(bottle, wrap, cap);
+  crate.add(product);
+
+  crate.position.y = 0.1;
+  group.add(crate);
+
+  // A hang tag and a roll of packing tape orbiting the carton.
+  const tag = new THREE.Group();
+  const tagBody = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.32, 0.04), lime(0.75));
+  const tagHole = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.04, 0.04, 0.06, 12),
+    dark()
+  );
+  tagHole.rotation.x = Math.PI / 2;
+  tagHole.position.set(-0.16, 0.08, 0);
+  tag.add(tagBody, tagHole);
+  group.add(tag);
+
+  const tape = new THREE.Mesh(new THREE.TorusGeometry(0.32, 0.13, 12, 28), soft());
+  group.add(tape);
+
+  return {
+    group,
+    update: (elapsed, pointer) => {
+      crate.rotation.y = Math.sin(elapsed * 0.3) * 0.2 + pointer.x * 0.35;
+      crate.rotation.x = pointer.y * 0.12;
+
+      // Flaps breathe open; the product rides up as the box opens.
+      const open = 0.5 + Math.sin(elapsed * 0.8) * 0.5;
+      for (const flap of flaps) {
+        flap.rotation.x = open * 1.25;
+      }
+      product.position.y = -0.55 + open * 0.95;
+      product.rotation.y = elapsed * 0.6;
+
+      const tagAngle = elapsed * 0.7;
+      tag.position.set(
+        Math.cos(tagAngle) * 2.2,
+        0.5 + Math.sin(elapsed * 1.2) * 0.45,
+        Math.sin(tagAngle) * 1.0
+      );
+      tag.rotation.y = tagAngle;
+      tag.rotation.z = Math.sin(elapsed * 1.4) * 0.3;
+
+      const tapeAngle = elapsed * 0.6 + Math.PI;
+      tape.position.set(
+        Math.cos(tapeAngle) * 2.4,
+        -0.2 + Math.sin(elapsed * 1.05 + 1.5) * 0.55,
+        Math.sin(tapeAngle) * 0.9
+      );
+      tape.rotation.x = elapsed * 0.8;
+      tape.rotation.y = elapsed * 0.5;
+    },
+  };
+}
+
+/** 4 — 3D renders: a hero product spinning on a studio turntable inside a lime
+ * wireframe render box, a scan ring resolving up it, and a camera circling. */
+function buildRenders(THREE: Three): SceneDef {
+  const { dark, soft, lime } = makeMaterials(THREE);
+  const group = new THREE.Group();
+  const studio = new THREE.Group();
+
+  // Turntable pedestal.
+  const base = new THREE.Mesh(
+    new THREE.CylinderGeometry(1.0, 1.15, 0.18, 32),
+    dark()
+  );
+  base.position.y = -1.15;
+  const platform = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.82, 0.85, 0.12, 32),
+    soft()
+  );
+  platform.position.y = -1.0;
+  studio.add(base, platform);
+
+  // Hero product on the turntable — a smooth bottle the render shows off.
+  const turntable = new THREE.Group();
+  turntable.position.y = -0.94;
+  const product = new THREE.Mesh(
+    new THREE.CapsuleGeometry(0.42, 0.82, 10, 24),
+    soft()
+  );
+  product.position.y = 0.72;
+  const band = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.44, 0.44, 0.26, 26, 1, true),
+    lime(0.55)
+  );
+  band.position.y = 0.66;
+  const cap = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.18, 0.21, 0.2, 20),
+    dark()
+  );
+  cap.position.y = 1.42;
+  turntable.add(product, band, cap);
+  studio.add(turntable);
+
+  // Lime wireframe render box framing the product like a 3D viewport.
+  const wire = new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.BoxGeometry(1.6, 2.4, 1.6)),
+    new THREE.LineBasicMaterial({ color: LIME, transparent: true, opacity: 0.85 })
+  );
+  wire.position.y = -0.1;
+  studio.add(wire);
+
+  // A scan ring that resolves up the product, like a render pass.
+  const scan = new THREE.Mesh(
+    new THREE.TorusGeometry(0.52, 0.025, 8, 36),
+    lime(0.95)
+  );
+  scan.rotation.x = Math.PI / 2;
+  studio.add(scan);
+
+  studio.position.y = 0.15;
+  group.add(studio);
+
+  // A camera circling the studio, keeping the product framed.
+  const camera3d = new THREE.Group();
+  const camBody = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.3, 0.52), dark());
+  const lens = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.13, 0.16, 0.24, 18),
+    lime(0.7)
+  );
+  lens.rotation.x = Math.PI / 2;
+  lens.position.z = 0.34;
+  const reel = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.14, 0.14, 0.06, 16),
+    soft()
+  );
+  reel.position.set(0.1, 0.24, -0.05);
+  camera3d.add(camBody, lens, reel);
+  group.add(camera3d);
+
+  return {
+    group,
+    update: (elapsed, pointer) => {
+      studio.rotation.y = pointer.x * 0.3;
+      studio.rotation.x = pointer.y * 0.1;
+
+      // The product spins on the turntable for the render.
+      turntable.rotation.y = elapsed * 0.85;
+
+      // Scan ring sweeps up and down the product height.
+      const t = Math.sin(elapsed * 1.1) * 0.5 + 0.5;
+      scan.position.y = -1.0 + t * 1.85;
+      scan.scale.setScalar(0.85 + Math.sin(elapsed * 3) * 0.06);
+
+      // Camera orbits and keeps the product framed.
+      const angle = elapsed * 0.5;
+      camera3d.position.set(
+        Math.cos(angle) * 2.6,
+        0.5 + Math.sin(elapsed * 0.8) * 0.35,
+        Math.sin(angle) * 1.5
+      );
+      camera3d.lookAt(0, 0.2, 0);
+    },
+  };
+}
+
+/** 5 — brands: an asterisk brand mark on a plinth, surrounded by the
  * designer's shape language — circle, square, triangle — in parallax depth. */
 function buildBrand(THREE: Three): SceneDef {
   const { dark, soft, lime } = makeMaterials(THREE);
@@ -490,6 +702,8 @@ function initScene(THREE: Three, host: HTMLDivElement, reducedMotion: boolean) {
     buildStore(THREE),
     buildAds(THREE),
     buildEmail(THREE),
+    buildPackaging(THREE),
+    buildRenders(THREE),
     buildBrand(THREE),
   ];
 
@@ -601,8 +815,9 @@ function initScene(THREE: Three, host: HTMLDivElement, reducedMotion: boolean) {
 
 /**
  * Hero companion: interactive 3D vignettes (storefront + coins, climbing ad
- * chart, pointer-chasing dart, orbiting brand mark) that crossfade in sync
- * with the cycling headline word. three.js loads lazily on the client.
+ * chart, pointer-chasing dart, unboxing carton, render turntable, orbiting
+ * brand mark) that crossfade in sync with the cycling headline word. three.js
+ * loads lazily on the client.
  */
 export function HeroScene() {
   const hostRef = useRef<HTMLDivElement>(null);

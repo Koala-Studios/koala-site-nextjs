@@ -49,7 +49,7 @@ export function FunnelDiagram() {
           observer.disconnect();
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
 
     observer.observe(element);
@@ -59,7 +59,7 @@ export function FunnelDiagram() {
 
   return (
     <div
-      aria-label="Build, traffic, retention — one connected funnel"
+      aria-label="Build, traffic, retention: one connected funnel"
       className={`${styles.funnel} ${active ? styles.active : ""}`}
       ref={ref}
       role="group"
@@ -82,7 +82,6 @@ export function FunnelDiagram() {
           ) : null}
           <span className={styles.stageLabel}>{stage.label}</span>
           <span className={styles.stageTitle}>{stage.title}</span>
-          <span className={styles.stageCopy}>{stage.copy}</span>
         </div>
       ))}
     </div>

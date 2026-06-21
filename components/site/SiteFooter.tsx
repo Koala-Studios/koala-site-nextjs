@@ -8,9 +8,16 @@ import { Marquee } from "./Marquee";
 import styles from "./SiteFooter.module.css";
 
 const serviceLinks = [
-  { label: "Shopify design & build", href: "/services/shopify-design-and-build" },
+  {
+    label: "Shopify design & build",
+    href: "/services/shopify-design-and-build",
+  },
   { label: "Meta ad management", href: "/services/meta-ads-management" },
   { label: "Email marketing", href: "/services/email-marketing" },
+  {
+    label: "Packaging & 3D renders",
+    href: "/services/packaging-and-3d-renders",
+  },
 ];
 
 export function SiteFooter() {
@@ -20,6 +27,7 @@ export function SiteFooter() {
         className={styles.marqueeLink}
         href={navigationContent.featuredCta.href}
         aria-label="Start a project"
+        data-analytics-cta="footer-marquee"
       >
         <Marquee className={styles.marquee} duration={18}>
           {Array.from({ length: 6 }).map((_, index) => (
@@ -77,22 +85,19 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <p className={styles.wordmark} aria-hidden="true">
+        {/* <p className={styles.wordmark} aria-hidden="true">
           Koala Studios
-        </p>
+        </p> */}
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} {siteSettings.name} &mdash;
+            &copy; {new Date().getFullYear()} {siteSettings.name} &middot;
             Toronto, Canada
           </p>
           <div className={styles.bottomLinks}>
             <Link className="koala-underline-link" href="/privacy">
               Privacy
             </Link>
-            <p className={styles.copyright}>
-              Designed and built by Koala &mdash; like everything we ship.
-            </p>
           </div>
         </div>
       </div>

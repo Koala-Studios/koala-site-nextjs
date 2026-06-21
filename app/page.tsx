@@ -15,7 +15,7 @@ import { Marquee } from "@/components/site/Marquee";
 import { RotatingBadge } from "@/components/site/RotatingBadge";
 import { AmbientAccent } from "@/components/three/AmbientAccent";
 import { HomeTestimonialCarousel } from "@/components/testimonials/HomeTestimonialCarousel";
-import { HomeWorkCarousel } from "@/components/work/HomeWorkCarousel";
+import { FeaturedWork } from "@/components/work/FeaturedWork";
 import { getPublishedCaseStudies, homepageTestimonials } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -28,7 +28,14 @@ export const metadata: Metadata = createPageMetadata({
   path: "/",
 });
 
-const heroWords = ["Shopify stores", "Meta ads", "email flows", "brands"];
+const heroWords = [
+  "Shopify stores",
+  "Meta ads",
+  "email flows",
+  "packaging",
+  "3D renders",
+  "brands",
+];
 
 const marqueeItems = [
   "Shopify design & build",
@@ -42,7 +49,7 @@ const pillars: ServicePillar[] = [
   {
     number: "01",
     title: "Shopify design & build",
-    copy: "Storefronts designed around your product story and built clean — fast pages, sharp systems, easy to run after launch.",
+    copy: "Storefronts designed around your product story and built clean. Fast pages, sharp systems, easy to run after launch.",
     chips: ["Store design", "Theme build", "CRO", "Migrations"],
     image: {
       src: "/images/redesign/services/koala-services-desk-1600.webp",
@@ -64,7 +71,7 @@ const pillars: ServicePillar[] = [
   {
     number: "03",
     title: "Email marketing",
-    copy: "Flows and campaigns that turn one-time buyers into repeat customers — designed, written, and wired into your store.",
+    copy: "Flows and campaigns that turn one-time buyers into repeat customers, designed, written, and wired into your store.",
     chips: ["Klaviyo", "Flows", "Campaigns", "Segmentation"],
     image: {
       src: "/images/project/ara/ara_hero.webp",
@@ -72,11 +79,22 @@ const pillars: ServicePillar[] = [
     },
     href: "/services/email-marketing",
   },
+  {
+    number: "04",
+    title: "Packaging & 3D renders",
+    copy: "Label and packaging design paired with photoreal 3D product renders. Shelf-ready artwork and store-ready hero visuals, no photoshoot required.",
+    chips: ["Label design", "Packaging", "3D renders", "Print files"],
+    image: {
+      src: "/images/project/nektr/nektr_plate.png",
+      alt: "Product packaging and 3D render work",
+    },
+    href: "/services/packaging-and-3d-renders",
+  },
 ];
 
 const stats = [
   { value: 6, padTo: 2, label: "Published case studies" },
-  { value: 3, padTo: 2, label: "Service lines, one team" },
+  { value: 4, padTo: 2, label: "Service lines, one team" },
   { value: 4, padTo: 2, label: "Steps from idea to launch" },
   { value: 2, padTo: 2, label: "Business days to a reply" },
 ];
@@ -89,9 +107,6 @@ export default function Home() {
       <section className={styles.hero} aria-labelledby="home-title">
         <HeroField />
         <div className={styles.heroInner}>
-          <p className={`koala-eyebrow ${styles.heroEyebrow}`}>
-            Ecommerce studio
-          </p>
           <h1 id="home-title">
             <span className={styles.heroLineMask}>
               <span className={styles.heroLine}>
@@ -108,6 +123,7 @@ export default function Home() {
             <Magnetic>
               <Cta
                 href="/work"
+                data-analytics-cta="hero"
                 icon="circle"
                 iconPosition="left"
                 size="large"
@@ -138,7 +154,6 @@ export default function Home() {
 
       <section className={styles.pillars} aria-labelledby="home-services-title">
         <div className={styles.sectionHead}>
-          <p className="koala-eyebrow">What we do</p>
           <SplitReveal
             accents={["first", "repeat"]}
             as="h2"
@@ -151,6 +166,12 @@ export default function Home() {
       </section>
 
       <section className={styles.clients} aria-label="Brands we have built for">
+        <AmbientAccent
+          className={styles.clientsAccent}
+          shape="icosphere"
+          side="right"
+          parallax={4}
+        />
         <p className={`koala-eyebrow ${styles.clientsEyebrow}`}>
           Brands we&apos;ve built for
         </p>
@@ -163,65 +184,26 @@ export default function Home() {
         </Marquee>
       </section>
 
-      <section className={styles.work} aria-labelledby="home-work-title">
-        <div className={styles.sectionHeadRow}>
-          <div>
-            <p className="koala-eyebrow">Selected work</p>
-            <SplitReveal
-              accents={["works."]}
-              as="h2"
-              className="koala-section-title"
-              id="home-work-title"
-              text="Work that works."
-            />
-          </div>
-          <Link
-            className={`${styles.sectionLink} koala-underline-link`}
-            href="/work"
-          >
-            See all cases
-          </Link>
-        </div>
-        <HomeWorkCarousel caseStudies={caseStudies} />
-      </section>
+      <FeaturedWork caseStudies={caseStudies} id="home-work-title" />
 
-      <section className={styles.stats} aria-label="Studio facts">
-        <AmbientAccent
-          className={styles.statsAccent}
-          shape="icosphere"
-          side="right"
-          parallax={7}
-        />
-        {stats.map((stat, index) => (
-          <Reveal className={styles.stat} delay={index * 0.06} key={stat.label}>
-            <span className={styles.statValue}>
-              <CountUp padTo={stat.padTo} value={stat.value} />
-            </span>
-            <span className={styles.statLabel}>{stat.label}</span>
-          </Reveal>
-        ))}
-      </section>
-
-      <section
+      {/* <section
         className={styles.testimonials}
         aria-labelledby="home-testimonials-title"
       >
         <div className={styles.sectionHead}>
-          <p className="koala-eyebrow">Kind words</p>
           <SplitReveal
             as="h2"
             className="koala-section-title"
             id="home-testimonials-title"
-            text="Clients keep it simple."
+            text="Testimonials."
           />
         </div>
         <HomeTestimonialCarousel testimonials={homepageTestimonials} />
-      </section>
+      </section> */}
 
       <section className={styles.contact} aria-labelledby="home-contact-title">
         <div className={styles.contactInner}>
           <div className={styles.contactCopy}>
-            <p className="koala-eyebrow">Next</p>
             <SplitReveal
               accents={["sells."]}
               as="h2"
@@ -229,25 +211,6 @@ export default function Home() {
               id="home-contact-title"
               text={"Let's build something\nthat sells."}
             />
-            <div className={styles.contactActions}>
-              <Magnetic>
-                <Cta
-                  href="/contact"
-                  icon="circle"
-                  iconPosition="left"
-                  size="large"
-                  variant="transparent"
-                >
-                  Start your project
-                </Cta>
-              </Magnetic>
-              <a
-                className={`${styles.contactEmail} koala-underline-link`}
-                href="mailto:hello@koalastudios.ca"
-              >
-                hello@koalastudios.ca
-              </a>
-            </div>
           </div>
           <Link
             aria-label="Start a project with Koala Studios"

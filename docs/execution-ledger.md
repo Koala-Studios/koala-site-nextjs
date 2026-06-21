@@ -1,5 +1,77 @@
 # Execution Ledger
 
+## 2026-06-12 - Conversion + Nav + Copy Pass
+
+Owner-requested changes after the launch-readiness work:
+
+- **Free holistic audit** (Section + CTAs, no new page): a "Free audit" section
+  on `/services` ("Not sure where to start? Get a free audit."), a "Get a free
+  audit" link in the homepage contact band, a secondary "Get a free audit" CTA
+  on each `/services/[slug]` page, and a "Free site audit" interest checkbox
+  (`interest-audit`) in the contact form. Audit CTAs link to `/contact` and are
+  tracked via `data-analytics-cta` (services-audit, home-audit, service-audit).
+- **Services nav dropdown**: hover/focus on "Services" in the desktop header
+  opens a panel listing the three services, each with a left `ServiceIcon`
+  (added an `email` glyph; slug→icon map lives in `SiteHeader`). Hover +
+  focus-within, reduced-motion aware, desktop only (mobile keeps the takeover
+  menu, and `/services` cards are now fully clickable).
+- **Fully clickable service cards**: each `/services` offering is now a `<Link>`
+  to its detail page (inner "Full service details" is a visual span with arrow,
+  no nested anchor); border CSS moved from `:last-of-type` to
+  `.offerings > div:last-child`.
+- **Copy pass**: removed em dashes from all visible marketing copy (en dashes in
+  numeric ranges and em dashes in code comments left as-is); de-cheesed
+  headings — `/work` H1 "Work that works." → "Work we've shipped.", homepage
+  work section → "Projects worth a look.", "Clients keep it simple." → "What our
+  clients say.", services funnel "Every offer feeds the next." → "How the pieces
+  fit together.". Homepage hero left unchanged per request.
+
+Verification: typecheck + lint + `next build` pass (23 routes). Prerendered HTML
+confirms three dropdown `ServiceIcon`s in the header, fully clickable offering
+links, the free-audit section/CTAs/`interest-audit` checkbox, and the de-cheesed
+headings; an em-dash grep over visible copy is clean. The Netlify Forms
+end-to-end test (submission + email) and production Lighthouse / share-card /
+real-device passes still require the live deploy.
+
+## 2026-06-12 - Launch-Readiness Verification + Gap Closure
+
+Re-audited every item in `docs/launch-readiness-report.md` against current
+code (code-wins-over-docs). Confirmed the 2026-06-11 fix pass already landed
+the bulk (title dedup, empty socials + conditional `sameAs`, on-brand 1200x630
+OG card, 13.2 MB `public/images`, removed `/internal/*`, woff2 fonts + Bebas
+preload, three service landing pages with Service JSON-LD, ProfessionalService
+schema + Toronto geo copy, `/services` FAQ + FAQPage schema, budget + interest
+fields, success-page expectations, menu focus trap, cycling-H1 aria, pinned
+sitemap date, `/privacy`, favicons). Found and closed four real code gaps:
+
+- **`contact_submit` conversion was dead.** `markPendingContactSubmit()` wrote
+  a sessionStorage flag that nothing read, so the GA4 conversion never fired
+  (the form's synchronous `cta_click` is cut off by the native POST nav). Added
+  `consumePendingContactSubmit()` (`lib/gtag.ts`) and `ContactSubmitTracker`
+  (rendered on `/contact/success`) to fire `contact_submit` once on the
+  confirmation page. Owner still marks it a conversion in GA4 admin.
+- **Per-service-page FAQ + FAQPage schema** (report item 9 spec). The three
+  `/services/[slug]` pages had everything except the FAQ. Added a typed `faq`
+  (4 intent-matched Q&As each — timeline, platform, replatform/takeover,
+  pricing; no invented metrics) to `content/pages/service-details.ts`, plus an
+  FAQ section + FAQPage JSON-LD + matching CSS on the detail template.
+- **CTA-click events** (report item 18). Added `CtaAnalytics` (one delegated
+  listener in layout) firing `cta_click` for `[data-analytics-cta]`; tagged the
+  header, menu, hero, home-contact, and footer-marquee CTAs.
+- **Web manifest** (report item 26). Added `app/manifest.ts` (blackout
+  `#0a0a09` theme, maskable icons) + generated `public/icon-192.png` /
+  `public/icon-512.png` from the 512 app icon.
+
+Verification: typecheck + lint + `next build` pass (23 routes;
+`/manifest.webmanifest` and all three service pages prerender). Prerendered
+HTML confirms `Service` + `FAQPage` JSON-LD and the FAQ copy on
+`/services/meta-ads-management`, `rel="manifest"` + all five `data-analytics-cta`
+tags on `/`, and a correct manifest body. GA event *firing* (contact_submit,
+cta_click) is client-runtime and is owner-verified on the production domain per
+`docs/launch-blockers.md`. Case-study depth (report item 12) left intentionally
+lean per the redesign copy direction + blockers item 13 (metrics need client
+sign-off). No other report item changed status.
+
 ## 2026-06-11 - Launch-Readiness Fix Pass (report implementation)
 
 Implemented everything from `docs/launch-readiness-report.md` that code can

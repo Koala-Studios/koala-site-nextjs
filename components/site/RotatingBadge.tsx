@@ -8,7 +8,7 @@ type RotatingBadgeProps = {
 
 /** Slow-spinning circular text badge with an arrow at its center. */
 export function RotatingBadge({
-  text = "Let's work together — Koala Studios — ",
+  text = "Let's work together · Koala Studios · ",
   className,
 }: RotatingBadgeProps) {
   return (

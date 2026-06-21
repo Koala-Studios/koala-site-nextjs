@@ -31,24 +31,6 @@ const contactJsonLd = {
   },
 };
 
-const nextSteps = [
-  {
-    number: "01",
-    title: "We read it",
-    copy: "A real person reads the note and checks fit. No autoresponder essays.",
-  },
-  {
-    number: "02",
-    title: "We reply",
-    copy: contactPageContent.responseWindow,
-  },
-  {
-    number: "03",
-    title: "We talk",
-    copy: "A short call to align on scope, timeline, and the clearest next step.",
-  },
-];
-
 export default function ContactPage() {
   return (
     <div className={`koala-page ${styles.page}`}>
@@ -61,7 +43,6 @@ export default function ContactPage() {
 
       <section className={styles.split} aria-labelledby="contact-title">
         <div className={styles.intro}>
-          <p className="koala-eyebrow">Contact</p>
           <SplitReveal
             accents={["shop."]}
             as="h1"
@@ -69,39 +50,12 @@ export default function ContactPage() {
             id="contact-title"
             text={"Let's talk\nshop."}
           />
-          <Reveal delay={0.12}>
-            <p className={styles.summary}>
-              Tell us what you&apos;re selling, where the store lives today,
-              and what needs to change. The URL and the goal are enough.
-            </p>
-          </Reveal>
           <a
             className={`${styles.email} koala-underline-link`}
             href="mailto:hello@koalastudios.ca"
           >
             hello@koalastudios.ca
           </a>
-
-          <div className={styles.status}>
-            <span className={styles.statusDot} aria-hidden="true" />
-            <span>Booking new projects</span>
-            <span className={styles.statusTime}>
-              Toronto&nbsp;
-              <LocalClock />
-            </span>
-          </div>
-
-          <div className={styles.steps}>
-            {nextSteps.map((step) => (
-              <div className={styles.step} key={step.number}>
-                <span className={styles.stepNumber}>{step.number}</span>
-                <div className={styles.stepBody}>
-                  <h2 className={styles.stepTitle}>{step.title}</h2>
-                  <p className={styles.stepCopy}>{step.copy}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <Reveal className={styles.formColumn} delay={0.08}>

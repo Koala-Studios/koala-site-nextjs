@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -8,10 +7,14 @@ import { SplitReveal } from "@/components/animation/SplitReveal";
 import { ArrowIcon } from "@/components/site/ArrowIcon";
 import { Cta } from "@/components/site/Cta";
 import { Magnetic } from "@/components/site/Magnetic";
-import { getServiceDetail, serviceDetails } from "@/content/pages/service-details";
-import { getCaseStudyBySlug, siteSettings } from "@/lib/content";
+import { FeaturedWork } from "@/components/work/FeaturedWork";
+import {
+  getServiceDetail,
+  serviceDetails,
+} from "@/content/pages/service-details";
+import { getPublishedCaseStudies, siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
-import { getCaseStudyPath, toAbsoluteUrl } from "@/lib/routes";
+import { toAbsoluteUrl } from "@/lib/routes";
 
 import styles from "./service-detail.module.css";
 
@@ -50,8 +53,7 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
-  const caseStudy = getCaseStudyBySlug(service.caseSlug);
-  const caseImage = caseStudy?.cardImage ?? caseStudy?.media[0];
+  const caseStudies = getPublishedCaseStudies();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -68,19 +70,36 @@ export default async function ServiceDetailPage({
     areaServed: ["Canada", "United States"],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className={`koala-page ${styles.page}`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([jsonLd, faqJsonLd]),
+        }}
       />
 
       <section className={styles.hero} aria-labelledby="service-title">
-        <Link className={`${styles.back} koala-underline-link`} href="/services">
+        <Link
+          className={`${styles.back} koala-underline-link`}
+          href="/services"
+        >
           <ArrowIcon direction="left" />
           All services
         </Link>
-        <p className="koala-eyebrow">{service.eyebrow}</p>
         <SplitReveal
           accents={[service.accent]}
           as="h1"
@@ -128,12 +147,16 @@ export default async function ServiceDetailPage({
         <Reveal className={styles.sectionHead}>
           <p className="koala-eyebrow">How it runs</p>
           <h2 className="koala-section-title" id="service-steps-title">
-            The shape of the work.
+            Our Process
           </h2>
         </Reveal>
         <div className={styles.stepGrid}>
           {service.steps.map((step, index) => (
-            <Reveal className={styles.step} delay={index * 0.05} key={step.number}>
+            <Reveal
+              className={styles.step}
+              delay={index * 0.05}
+              key={step.number}
+            >
               <span className={styles.stepNumber}>{step.number}</span>
               <h3 className={styles.stepTitle}>{step.title}</h3>
               <p className={styles.stepCopy}>{step.copy}</p>
@@ -144,7 +167,6 @@ export default async function ServiceDetailPage({
 
       <section className={styles.fit} aria-labelledby="service-fit-title">
         <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">Good fit if</p>
           <h2 className="koala-section-title" id="service-fit-title">
             This is for you when&hellip;
           </h2>
@@ -158,39 +180,29 @@ export default async function ServiceDetailPage({
         </ul>
       </section>
 
-      {caseStudy && caseImage ? (
-        <section className={styles.proof} aria-labelledby="service-case-title">
-          <Reveal className={styles.sectionHead}>
-            <p className="koala-eyebrow">From the work</p>
-            <h2 className="koala-section-title" id="service-case-title">
-              See it shipped.
-            </h2>
-          </Reveal>
-          <Link
-            className={styles.caseTile}
-            data-cursor="view"
-            href={getCaseStudyPath(caseStudy.slug)}
-          >
-            <span className={styles.caseMedia}>
-              <Image
-                src={caseImage.src}
-                alt={caseImage.alt}
-                fill
-                sizes="(max-width: 900px) 100vw, 70vw"
-                style={{ objectFit: "cover" }}
-              />
-              <span className={styles.caseShade} aria-hidden="true" />
-            </span>
-            <span className={styles.caseBar}>
-              <span className={styles.caseTitle}>{caseStudy.title}</span>
-              <span className={styles.caseHeadline}>{caseStudy.headline}</span>
-              <span className={styles.caseArrow} aria-hidden="true">
-                <ArrowIcon />
-              </span>
-            </span>
-          </Link>
-        </section>
-      ) : null}
+      <FeaturedWork caseStudies={caseStudies} id="service-work-title" />
+
+      <section className={styles.faq} aria-labelledby="service-faq-title">
+        <Reveal className={styles.sectionHead}>
+          <p className="koala-eyebrow">Questions</p>
+          <h2 className="koala-section-title" id="service-faq-title">
+            Good to know.
+          </h2>
+        </Reveal>
+        <div className={styles.faqList}>
+          {service.faq.map((item, index) => (
+            <Reveal delay={index * 0.04} key={item.question}>
+              <details className={styles.faqItem}>
+                <summary className={styles.faqQuestion}>
+                  {item.question}
+                  <span aria-hidden="true" className={styles.faqToggle} />
+                </summary>
+                <p className={styles.faqAnswer}>{item.answer}</p>
+              </details>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.cta} aria-labelledby="service-cta-title">
         <Reveal>
@@ -199,9 +211,10 @@ export default async function ServiceDetailPage({
             {service.ctaTitle}
           </h2>
         </Reveal>
-        <Reveal delay={0.08}>
+        <Reveal className={styles.ctaActions} delay={0.08}>
           <Magnetic>
             <Cta
+              data-analytics-cta="service-contact"
               href="/contact"
               icon="circle"
               iconPosition="left"
@@ -211,6 +224,14 @@ export default async function ServiceDetailPage({
               Contact Koala
             </Cta>
           </Magnetic>
+          <Cta
+            data-analytics-cta="service-audit"
+            href="/contact"
+            size="medium"
+            variant="outlined"
+          >
+            Get a free audit
+          </Cta>
         </Reveal>
       </section>
     </div>

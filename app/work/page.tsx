@@ -11,11 +11,15 @@ import { createPageMetadata } from "@/lib/metadata";
 import styles from "./work.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Ecommerce Case Studies — Shopify Stores That Sell",
+  title: "Ecommerce Case Studies: Shopify Stores That Sell",
   description:
     "Selected Koala Studios case studies: Shopify storefront redesigns, brand systems, and ecommerce builds for consumer brands. Browse by category, then start your own.",
   path: "/work",
-  keywords: ["Koala Studios work", "ecommerce case studies", "Shopify portfolio"],
+  keywords: [
+    "Koala Studios work",
+    "ecommerce case studies",
+    "Shopify portfolio",
+  ],
 });
 
 export default function WorkPage() {
@@ -23,23 +27,19 @@ export default function WorkPage() {
 
   return (
     <div className="koala-page koala-page--compact">
-      <section className={`${styles.hero} koala-route-hero`} aria-labelledby="work-title">
+      <section
+        className={`${styles.hero} koala-route-hero`}
+        aria-labelledby="work-title"
+      >
         <AmbientScene variant="frames" />
         <div className={styles.intro}>
-          <p className="koala-eyebrow">Selected cases</p>
           <SplitReveal
-            accents={["works."]}
+            accents={["shipped."]}
             as="h1"
             className="koala-page-title"
             id="work-title"
-            text="Work that works."
+            text="Work we've shipped."
           />
-          <Reveal delay={0.1}>
-            <p className={styles.heroSummary}>
-              Storefronts, campaigns, and brand systems for ecommerce &mdash;
-              built to be looked at, then bought from.
-            </p>
-          </Reveal>
         </div>
       </section>
       <div className={styles.explorerWrap}>

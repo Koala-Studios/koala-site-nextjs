@@ -18,7 +18,7 @@
 }
 
 .cta::before {
-  background: var(--koala-color-ink);
+  background: var(--koala-color-lime);
   border-radius: var(--koala-radius-pill);
   content: "";
   height: var(--cta-icon-size, 2.75rem);
@@ -231,7 +231,7 @@
 .iconCircle {
   background: var(--koala-color-green);
   border-radius: var(--koala-radius-pill);
-  color: var(--koala-color-ink);
+  color: var(--koala-color-surface);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

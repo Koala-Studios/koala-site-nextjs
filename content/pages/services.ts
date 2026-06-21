@@ -4,17 +4,9 @@ export const servicesContent = {
   ...pageContent.services,
   hero: {
     ...pageContent.services.hero,
-    points: [
-      "Shopify design & build",
-      "Meta ad management",
-      "Email marketing",
-    ],
+    points: ["Shopify design & build", "Meta ad management", "Email marketing"],
   },
   proof: [
-    {
-      label: "Core offers",
-      value: "3",
-    },
     {
       label: "Typical build",
       value: "6-12 weeks",
@@ -59,7 +51,7 @@ export const servicesContent = {
       number: "03",
       title: "Email marketing",
       kicker: "Retention",
-      copy: "Klaviyo flows and campaigns designed and written to sound like your brand. Welcome, abandoned cart, post-purchase, win-back — wired into your store and measured.",
+      copy: "Klaviyo flows and campaigns designed and written to sound like your brand. Welcome, abandoned cart, post-purchase, and win-back, wired into your store and measured.",
       deliverables: [
         "Klaviyo setup",
         "Core flows",
@@ -69,6 +61,21 @@ export const servicesContent = {
       ],
       note: "For brands getting orders but not repeat orders, or where email is an untapped channel.",
       href: "/services/email-marketing",
+    },
+    {
+      number: "04",
+      title: "Packaging & 3D renders",
+      kicker: "Product",
+      copy: "Label and packaging design paired with photoreal 3D product renders. Shelf-ready artwork and store-ready hero visuals, designed in-house, no photoshoot required.",
+      deliverables: [
+        "Label design",
+        "Packaging artwork",
+        "3D modeling",
+        "Photoreal renders",
+        "Print-ready files",
+      ],
+      note: "For brands launching new products, refreshing packaging, or needing premium product visuals before a photoshoot is possible.",
+      href: "/services/packaging-and-3d-renders",
     },
   ],
   delivery: [
@@ -80,7 +87,7 @@ export const servicesContent = {
     {
       number: "02",
       title: "Design",
-      copy: "A storefront and creative system with a point of view — built around hierarchy, not decoration.",
+      copy: "A storefront and creative system with a point of view, built around hierarchy, not decoration.",
     },
     {
       number: "03",
@@ -90,7 +97,7 @@ export const servicesContent = {
     {
       number: "04",
       title: "Grow",
-      copy: "Meta ads and email flows compound the build — one team, one story, every channel.",
+      copy: "Meta ads and email flows compound the build. One team, one story, every channel.",
     },
   ],
   engagement: {
@@ -119,7 +126,7 @@ export const servicesContent = {
     {
       question: "Do you only work with Shopify?",
       answer:
-        "Stores, yes — we design and build on Shopify and Shopify Plus. Meta ad management and email marketing work with whatever stack your store already runs on.",
+        "Stores, yes. We design and build on Shopify and Shopify Plus. Meta ad management and email marketing work with whatever stack your store already runs on.",
     },
     {
       question: "Can you run ads or email for a store you didn't build?",

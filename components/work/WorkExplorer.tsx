@@ -255,7 +255,7 @@ export function WorkExplorer({ caseStudies }: WorkExplorerProps) {
       <div className={styles.footerCta}>
         <p className={styles.footerNote}>
           {String(filtered.length).padStart(2, "0")} case
-          {filtered.length === 1 ? "" : "s"} shown &mdash; more in production.
+          {filtered.length === 1 ? "" : "s"} shown, more in production.
         </p>
         <Cta href="/contact" icon="circle" size="medium" variant="transparent">
           Start a project

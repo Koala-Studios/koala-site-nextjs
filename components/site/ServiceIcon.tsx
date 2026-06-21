@@ -1,4 +1,9 @@
-type ServiceIconName = "strategy" | "design" | "development" | "growth";
+type ServiceIconName =
+  | "strategy"
+  | "design"
+  | "development"
+  | "growth"
+  | "email";
 
 type ServiceIconProps = {
   name: ServiceIconName;
@@ -39,6 +44,12 @@ export function ServiceIcon({ name }: ServiceIconProps) {
         <>
           <path d="M9 34 19 24l7 7 13-17" />
           <path d="M30 14h9v9" />
+        </>
+      ) : null}
+      {name === "email" ? (
+        <>
+          <rect x="8" y="13" width="32" height="22" rx="2" />
+          <path d="M9 15 24 27 39 15" />
         </>
       ) : null}
     </svg>

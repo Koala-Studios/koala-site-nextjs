@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SplitReveal } from "@/components/animation/SplitReveal";
+import { ContactSubmitTracker } from "@/components/contact/ContactSubmitTracker";
 import { Cta } from "@/components/site/Cta";
 import { Magnetic } from "@/components/site/Magnetic";
 import { AmbientScene } from "@/components/three/AmbientScene";
@@ -19,6 +20,7 @@ export const metadata: Metadata = createNoIndexMetadata(
 export default function ContactSuccessPage() {
   return (
     <div className={`koala-page ${styles.page}`}>
+      <ContactSubmitTracker />
       <p aria-hidden="true" className={`koala-outline-text ${styles.backdrop}`}>
         Sent
       </p>
@@ -34,8 +36,8 @@ export default function ContactSuccessPage() {
           text={"Got it.\nTalk soon."}
         />
         <p className={styles.copy}>
-          Your note is in. A real person reads it next &mdash; expect a reply
-          from hello@koalastudios.ca within two business days. Add us to your
+          Your note is in. A real person reads it next and will reply from
+          hello@koalastudios.ca within two business days. Add us to your
           contacts so we don&apos;t land in spam.
         </p>
 

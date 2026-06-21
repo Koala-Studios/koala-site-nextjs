@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { CtaAnalytics } from "@/components/site/CtaAnalytics";
 import { CursorDot } from "@/components/site/CursorDot";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -62,6 +63,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleAnalytics />
+        <CtaAnalytics />
         <SmoothScroll />
         <script
           type="application/ld+json"

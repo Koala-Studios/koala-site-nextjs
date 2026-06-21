@@ -21,7 +21,7 @@ export default function NotFound() {
       <AmbientScene variant="cube" />
 
       <section className={styles.hero} aria-labelledby="not-found-title">
-        <p className="koala-eyebrow">404 — Not found</p>
+        <p className="koala-eyebrow">404 · Not found</p>
         <SplitReveal
           accents={["convert."]}
           as="h1"
@@ -31,7 +31,7 @@ export default function NotFound() {
         />
         <p className={styles.copy}>
           It&apos;s missing, moved, or never shipped. The rest of the site
-          works hard &mdash; pick a better landing spot.
+          works hard, so pick a better landing spot.
         </p>
         <div className={styles.actions}>
           <Magnetic>

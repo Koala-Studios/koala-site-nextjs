@@ -7,6 +7,21 @@
   z-index: 50;
 }
 
+.headerWrap::after {
+  background: var(--koala-color-bg);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 240ms var(--koala-ease-out);
+  z-index: -1;
+}
+
+.headerWrapSolid::after {
+  opacity: 1;
+}
+
 .header {
   align-items: center;
   display: grid;
@@ -73,6 +88,132 @@
   justify-self: flex-end;
 }
 
+/* ---------- Services mega-menu ---------- */
+
+.navItem {
+  align-items: center;
+  display: flex;
+}
+
+.dropdown {
+  background: var(--koala-color-bg);
+  border-bottom: 1px solid var(--koala-color-line);
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transform: translateY(0.3rem);
+  transition: opacity 240ms var(--koala-ease-out), transform 320ms var(--koala-ease-smooth),
+    visibility 0s linear 320ms;
+  visibility: hidden;
+  z-index: 60;
+}
+
+.dropdownInner {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-inline: auto;
+  max-width: var(--koala-container-wide);
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+.dropdownOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 240ms var(--koala-ease-out), transform 320ms var(--koala-ease-smooth);
+  visibility: visible;
+}
+
+.dropdownLink {
+  border-right: 1px solid var(--koala-color-line);
+  color: var(--koala-color-ink);
+  display: flex;
+  flex-direction: column;
+  gap: var(--koala-space-3);
+  padding: clamp(2rem, 3vw, 3rem) clamp(1rem, 2vw, 1.5rem);
+  position: relative;
+  text-decoration: none;
+}
+
+.dropdownLink:first-child {
+  padding-left: 0;
+}
+
+.dropdownLink:last-child {
+  border-right: 0;
+}
+
+/* Lime bottom bar on hover — same gesture as the nav link underline */
+.dropdownLink::after {
+  background: var(--koala-color-lime);
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 360ms var(--koala-ease-smooth);
+}
+
+.dropdownLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.dropdownLabel {
+  color: var(--koala-color-ink);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-sm);
+  font-weight: 500;
+  letter-spacing: var(--koala-label-tracking);
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 200ms var(--koala-ease-out);
+}
+
+.dropdownLink:hover .dropdownLabel {
+  color: var(--koala-color-lime);
+}
+
+.dropdownDesc {
+  color: var(--koala-color-muted);
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  line-height: 1.5;
+}
+
+.dropdownLearn {
+  align-items: center;
+  color: var(--koala-color-muted);
+  display: inline-flex;
+  font-family: var(--koala-font-support);
+  font-size: var(--koala-text-xs);
+  gap: 0.4rem;
+  letter-spacing: var(--koala-label-tracking);
+  margin-top: auto;
+  padding-top: var(--koala-space-2);
+  text-transform: uppercase;
+  transition: color 220ms var(--koala-ease-out);
+}
+
+.dropdownLink:hover .dropdownLearn {
+  color: var(--koala-color-lime);
+}
+
+.dropdownArrow {
+  transition: transform 320ms var(--koala-ease-smooth);
+}
+
+.dropdownLink:hover .dropdownArrow {
+  transform: translateX(0.3rem);
+}
+
 /* ---------- Menu button ---------- */
 
 .menuButton {
@@ -105,8 +246,13 @@
   width: 1rem;
 }
 
+.menuOpen {
+  background: var(--koala-color-lime);
+  color: #0a0a09;
+}
+
 .menuOpen span:nth-child(1) {
-  transform: translateY(0.28rem) rotate(45deg);
+  transform: translateY(0.345rem) rotate(45deg);
 }
 
 .menuOpen span:nth-child(2) {
@@ -114,7 +260,7 @@
 }
 
 .menuOpen span:nth-child(3) {
-  transform: translateY(-0.28rem) rotate(-45deg);
+  transform: translateY(-0.345rem) rotate(-45deg);
 }
 
 /* ---------- Full-screen takeover ---------- */
@@ -125,6 +271,7 @@
   grid-template-rows: minmax(0, 1fr) auto;
   inset: 0;
   opacity: 0;
+  overflow: hidden;
   padding: 5.5rem clamp(1.25rem, 5vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
   pointer-events: none;
   position: fixed;
@@ -143,7 +290,9 @@
 .overlayNav {
   align-content: center;
   display: grid;
-  gap: clamp(0.4rem, 2vh, 1rem);
+  gap: clamp(0.4rem, 2dvh, 1rem);
+  min-height: 0;
+  overflow: hidden;
 }
 
 .overlayLink {
@@ -169,7 +318,7 @@
 .overlayLabel {
   display: block;
   font-family: var(--koala-font-heading);
-  font-size: clamp(3.4rem, 11vh, 5.6rem);
+  font-size: clamp(2.8rem, 11dvh, 5.6rem);
   line-height: 0.95;
   text-transform: uppercase;
   transform: translateY(110%);
@@ -232,6 +381,7 @@
   .overlay,
   .overlayLabel,
   .menuButton span,
+  .dropdown,
   .link::after {
     transition-duration: 1ms;
   }

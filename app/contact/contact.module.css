@@ -134,6 +134,7 @@
 }
 
 .formColumn {
+  backdrop-filter: blur(5px);
   border: 1px solid var(--koala-color-line);
   padding: clamp(1.5rem, 3vw, 2.75rem);
 }

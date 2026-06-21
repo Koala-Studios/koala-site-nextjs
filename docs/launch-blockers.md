@@ -1,8 +1,11 @@
 # Launch Blockers — Needs Owner Action
 
 Items that code alone cannot finish. Everything else from
-`docs/launch-readiness-report.md` has been implemented (see the
-"Launch-Readiness Fix Pass" entry in `docs/execution-ledger.md`).
+`docs/launch-readiness-report.md` has been implemented and re-verified (see the
+"Launch-Readiness Fix Pass" and "Launch-Readiness Verification + Gap Closure"
+entries in `docs/execution-ledger.md`). The `contact_submit` GA4 event now
+actually fires on `/contact/success` (it previously did not) — it still needs
+to be marked as a conversion in GA4 admin (item 5).
 
 ## Must do before DNS cutover
 
