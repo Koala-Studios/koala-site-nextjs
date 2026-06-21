@@ -22,19 +22,6 @@ export const metadata: Metadata = createPageMetadata({
   path: servicesContent.seo.canonicalPath ?? "/services",
 });
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: servicesContent.faq.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
 const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -71,7 +58,7 @@ export default function ServicesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([servicesJsonLd, faqJsonLd]),
+          __html: JSON.stringify(servicesJsonLd),
         }}
       />
 
@@ -149,9 +136,9 @@ export default function ServicesPage() {
           opacity={0.24}
         />
         <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">How it runs</p>
           <h2 className="koala-section-title" id="services-process-title">
-            The same four steps, every time.
+            Our proven workflow,
+            <br /> every time.
           </h2>
         </Reveal>
         <div className={styles.processGrid}>
@@ -167,19 +154,7 @@ export default function ServicesPage() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      <section
-        className={styles.engagement}
-        aria-labelledby="services-engagement-title"
-      >
-        <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">Ways to work</p>
-          <h2 className="koala-section-title" id="services-engagement-title">
-            Project or retainer.
-          </h2>
-        </Reveal>
-        <div className={styles.engagementGrid}>
+        <div className={styles.engagementGrid} style={{ marginTop: "3rem" }}>
           {[
             servicesContent.engagement.project,
             servicesContent.engagement.retainer,
@@ -200,14 +175,13 @@ export default function ServicesPage() {
       <section className={styles.audit} aria-labelledby="services-audit-title">
         <Reveal className={styles.auditInner}>
           <div className={styles.auditCopy}>
-            <p className="koala-eyebrow">Free audit</p>
             <h2 className={styles.auditTitle} id="services-audit-title">
-              Not sure where to start? Get a free audit.
+              Not sure where to start? <br />
+              Get a free audit.
             </h2>
             <p className={styles.auditText}>
-              We&apos;ll go through your site across design, conversion, ads,
-              and email, then show you the few changes that would move the
-              needle most. No pitch, no obligation.
+              We&apos;ll go through your site across design, conversion to show
+              you the few changes that would move the needle most.
             </p>
           </div>
           <Magnetic>
@@ -220,51 +194,6 @@ export default function ServicesPage() {
               variant="transparent"
             >
               Get a free audit
-            </Cta>
-          </Magnetic>
-        </Reveal>
-      </section>
-
-      <section className={styles.faq} aria-labelledby="services-faq-title">
-        <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">Questions</p>
-          <h2 className="koala-section-title" id="services-faq-title">
-            Asked before every project.
-          </h2>
-        </Reveal>
-        <div className={styles.faqList}>
-          {servicesContent.faq.map((item, index) => (
-            <Reveal delay={index * 0.04} key={item.question}>
-              <details className={styles.faqItem}>
-                <summary className={styles.faqQuestion}>
-                  {item.question}
-                  <span aria-hidden="true" className={styles.faqToggle} />
-                </summary>
-                <p className={styles.faqAnswer}>{item.answer}</p>
-              </details>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.cta} aria-labelledby="services-cta-title">
-        <Reveal>
-          <p className="koala-eyebrow">{servicesContent.cta.eyebrow}</p>
-          <h2 className={styles.ctaTitle} id="services-cta-title">
-            {servicesContent.cta.title}
-          </h2>
-          <p className={styles.ctaSummary}>{servicesContent.cta.summary}</p>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <Magnetic>
-            <Cta
-              href="/contact"
-              icon="circle"
-              iconPosition="left"
-              size="large"
-              variant="transparent"
-            >
-              Contact Koala
             </Cta>
           </Magnetic>
         </Reveal>

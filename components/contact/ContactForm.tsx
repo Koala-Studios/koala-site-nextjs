@@ -18,7 +18,7 @@ const projectTypes = [
   { value: "Shopify design & build", name: "interest-shopify" },
   { value: "Meta ads", name: "interest-meta-ads" },
   { value: "Email marketing", name: "interest-email" },
-  { value: "Free site audit", name: "interest-audit" },
+  { value: "Site audit", name: "interest-audit" },
   { value: "Not sure yet", name: "interest-unsure" },
 ] as const;
 
@@ -45,7 +45,8 @@ export function ContactForm() {
         <input type="hidden" name="form-name" value="contact" />
         <p className={styles.hidden}>
           <label>
-            Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
+            Don&apos;t fill this out if you&apos;re human:{" "}
+            <input name="bot-field" />
           </label>
         </p>
 

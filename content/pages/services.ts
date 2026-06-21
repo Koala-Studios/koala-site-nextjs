@@ -117,38 +117,6 @@ export const servicesContent = {
     "Teams that want senior work without a heavy process",
     "Projects where design, traffic, and retention all matter",
   ],
-  faq: [
-    {
-      question: "How long does a Shopify build take?",
-      answer:
-        "Most storefront projects run 6 to 12 weeks from kickoff to launch, depending on scope. Smaller conversion or redesign sprints can land in 3 to 4 weeks.",
-    },
-    {
-      question: "Do you only work with Shopify?",
-      answer:
-        "Stores, yes. We design and build on Shopify and Shopify Plus. Meta ad management and email marketing work with whatever stack your store already runs on.",
-    },
-    {
-      question: "Can you run ads or email for a store you didn't build?",
-      answer:
-        "Yes. We start with a short audit of your store, creative, and tracking, then take over campaigns or flows with a clear first-90-days plan.",
-    },
-    {
-      question: "What does a project cost?",
-      answer:
-        "Builds are scoped per project and growth work runs as a monthly retainer. Share a budget range in the contact form and we'll tell you honestly what fits.",
-    },
-    {
-      question: "Where are you based?",
-      answer:
-        "Toronto, Canada. We work remote-first with ecommerce brands across North America.",
-    },
-    {
-      question: "What happens after I reach out?",
-      answer:
-        "A real person reads your note, replies within two business days, and books a short call to align on scope and the clearest next step.",
-    },
-  ],
   cta: {
     eyebrow: "Next step",
     title: "Tell us what you're selling.",

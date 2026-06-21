@@ -32,7 +32,7 @@ const heroWords = [
   "Shopify stores",
   "Meta ads",
   "email flows",
-  "packaging",
+  "Label Designs",
   "3D renders",
   "brands",
 ];

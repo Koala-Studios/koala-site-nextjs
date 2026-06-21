@@ -31,8 +31,22 @@
   position: relative;
 }
 
-.explorerAccent {
-  bottom: 1rem;
+/* Parallax wireframes drifting through the outer gutters, clear of the grid.
+   Pushed out by ~their own width so only a faded edge meets the column; the
+   bulk sits in the page margin (body clips overflow-x, so no scrollbar). */
+.accent.accentTop {
+  right: calc(2rem - clamp(10rem, 15vw, 16rem));
+  top: 4%;
+}
+
+.accent.accentMid {
+  left: calc(2rem - clamp(10rem, 15vw, 16rem));
+  top: 42%;
+}
+
+.accent.accentLow {
+  right: calc(2rem - clamp(10rem, 15vw, 16rem));
+  top: 76%;
 }
 
 @media (max-width: 760px) {

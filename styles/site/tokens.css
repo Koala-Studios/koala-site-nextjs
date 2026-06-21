@@ -33,7 +33,7 @@
   --koala-text-md: 1.18rem;
   --koala-text-lg: 1.45rem;
   --koala-text-xl: 2rem;
-  --koala-text-2xl: 3.4rem;
+  --koala-text-2xl: 4.2rem;
   --koala-text-3xl: clamp(4rem, 7vw, 6.5rem);
   --koala-text-display: clamp(4.4rem, 10.5vw, 11rem);
   --koala-label-tracking: 0.14em;

@@ -70,25 +70,12 @@ export default async function ServiceDetailPage({
     areaServed: ["Canada", "United States"],
   };
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: service.faq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-
   return (
     <div className={`koala-page ${styles.page}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([jsonLd, faqJsonLd]),
+          __html: JSON.stringify(jsonLd),
         }}
       />
 
@@ -145,7 +132,6 @@ export default async function ServiceDetailPage({
 
       <section className={styles.steps} aria-labelledby="service-steps-title">
         <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">How it runs</p>
           <h2 className="koala-section-title" id="service-steps-title">
             Our Process
           </h2>
@@ -181,28 +167,6 @@ export default async function ServiceDetailPage({
       </section>
 
       <FeaturedWork caseStudies={caseStudies} id="service-work-title" />
-
-      <section className={styles.faq} aria-labelledby="service-faq-title">
-        <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">Questions</p>
-          <h2 className="koala-section-title" id="service-faq-title">
-            Good to know.
-          </h2>
-        </Reveal>
-        <div className={styles.faqList}>
-          {service.faq.map((item, index) => (
-            <Reveal delay={index * 0.04} key={item.question}>
-              <details className={styles.faqItem}>
-                <summary className={styles.faqQuestion}>
-                  {item.question}
-                  <span aria-hidden="true" className={styles.faqToggle} />
-                </summary>
-                <p className={styles.faqAnswer}>{item.answer}</p>
-              </details>
-            </Reveal>
-          ))}
-        </div>
-      </section>
 
       <section className={styles.cta} aria-labelledby="service-cta-title">
         <Reveal>

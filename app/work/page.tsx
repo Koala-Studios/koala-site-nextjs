@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/animation/Reveal";
 import { SplitReveal } from "@/components/animation/SplitReveal";
 import { AmbientAccent } from "@/components/three/AmbientAccent";
-import { AmbientScene } from "@/components/three/AmbientScene";
 import { WorkExplorer } from "@/components/work/WorkExplorer";
 import { getPublishedCaseStudies } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -31,7 +30,6 @@ export default function WorkPage() {
         className={`${styles.hero} koala-route-hero`}
         aria-labelledby="work-title"
       >
-        <AmbientScene variant="frames" />
         <div className={styles.intro}>
           <SplitReveal
             accents={["shipped."]}
@@ -44,11 +42,25 @@ export default function WorkPage() {
       </section>
       <div className={styles.explorerWrap}>
         <AmbientAccent
-          className={styles.explorerAccent}
-          shape="octa"
+          className={`${styles.accent} ${styles.accentTop}`}
+          shape="icosphere"
+          side="right"
+          parallax={9}
+          opacity={0.24}
+        />
+        <AmbientAccent
+          className={`${styles.accent} ${styles.accentMid}`}
+          shape="torus"
           side="left"
+          parallax={7}
+          opacity={0.22}
+        />
+        <AmbientAccent
+          className={`${styles.accent} ${styles.accentLow}`}
+          shape="octa"
+          side="right"
           parallax={8}
-          opacity={0.26}
+          opacity={0.24}
         />
         <Reveal>
           <WorkExplorer caseStudies={caseStudies} />
