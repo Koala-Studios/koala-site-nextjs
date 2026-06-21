@@ -35,16 +35,12 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
         <div className={styles.shade} aria-hidden="true" />
 
         <div className={styles.overlay}>
-          <Link
-            className={`${styles.back} koala-underline-link`}
-            href="/work"
-          >
+          <Link className={`${styles.back} koala-underline-link`} href="/work">
             <ArrowIcon direction="left" />
             All work
           </Link>
 
           <div className={styles.heading}>
-            <p className="koala-eyebrow">{caseStudy.category}</p>
             <SplitReveal
               as="h1"
               className={styles.title}

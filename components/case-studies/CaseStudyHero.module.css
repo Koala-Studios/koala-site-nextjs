@@ -1,26 +1,26 @@
 .hero {
   margin-inline: auto;
-  max-width: var(--koala-container-wide);
-  padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 3vw, 2rem) 0;
+  /* max-width: var(--koala-container-wide); */
+  /* padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 3vw, 2rem) 0; */
   width: 100%;
 }
 
 .stage {
-  min-height: clamp(28rem, 64vh, 42rem);
+  min-height: clamp(28rem, 75vh, 42rem);
   overflow: hidden;
   position: relative;
 }
 
 .media {
   inset: 0;
+  filter:contrast(1.1);
   position: absolute !important;
 }
 
 .shade {
   background: linear-gradient(
-    rgba(10, 10, 9, 0.1) 30%,
-    rgba(10, 10, 9, 0.55) 70%,
-    rgba(10, 10, 9, 0.82)
+    rgba(10, 10, 9, 0) 50%,
+    rgb(10, 10, 9)
   );
   inset: 0;
   pointer-events: none;
@@ -32,7 +32,11 @@
   display: grid;
   align-content: space-between;
   inset: 0;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
+  padding-block: clamp(1.25rem, 3vw, 2.5rem);
+  padding-inline: max(
+    clamp(var(--koala-space-4), 3vw, var(--koala-space-8)),
+    calc((100% - var(--koala-container-wide)) / 2)
+  );
   position: absolute;
   z-index: 2;
 }
@@ -77,15 +81,19 @@
 }
 
 .meta {
-  border-bottom: 1px solid var(--koala-color-line);
+  /* border-bottom: 1px solid var(--koala-color-line); */
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-inline: max(
+    clamp(var(--koala-space-4), 3vw, var(--koala-space-8)),
+    calc((100% - var(--koala-container-wide)) / 2)
+  );
 }
 
 .meta div {
-  border-left: 1px solid var(--koala-color-line);
+  /* border-left: 1px solid var(--koala-color-line); */
   display: grid;
-  gap: 0.45rem;
+  text-transform: uppercase;
   min-height: 5.6rem;
   min-width: 0;
   padding: var(--koala-space-4);
