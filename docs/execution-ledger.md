@@ -1,5 +1,24 @@
 # Execution Ledger
 
+## 2026-06-21 - Netlify Node Version Pin
+
+Netlify auto deployment was connected, but the production build failed before
+compilation because the Netlify build image used Node `18.20.8` while the
+current Next.js stack requires Node `>=20.9.0`.
+
+- Added root `.nvmrc` with Node `22`, which Netlify resolves before UI
+  dependency settings.
+- Updated `docs/operator-guide.md` to record the Netlify build Node pin.
+- Updated the broken user-level Netlify CLI on this Windows machine to
+  `netlify-cli/26.1.0`; the CLI now starts and reports the saved session is
+  expired instead of crashing under Node `25.9.0`.
+
+Verification: `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` passes;
+`& 'C:\Program Files\nodejs\npm.cmd' run lint` exits successfully with the
+known 7 unused-symbol warnings; `& 'C:\Program Files\nodejs\npm.cmd' run build`
+passes on Next 16.2.6 and generates 24 app paths. Netlify redeploy
+confirmation remains the final external check after push.
+
 ## 2026-06-12 - Conversion + Nav + Copy Pass
 
 Owner-requested changes after the launch-readiness work:

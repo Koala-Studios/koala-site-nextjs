@@ -25,6 +25,7 @@ npm run start
 - Default local URL: `http://localhost:3000`
 - Production validation: `next build`
 - Production server after build: `next start`
+- Netlify production builds use the Node version pinned in `.nvmrc` (`22`).
 
 ## Environment
 
