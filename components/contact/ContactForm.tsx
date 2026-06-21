@@ -1,5 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import type { FormEvent } from "react";
+import { useState } from "react";
+
 import { Field, Input, Textarea } from "@/components/forms";
 import { Cta } from "@/components/site/Cta";
 import { Magnetic } from "@/components/site/Magnetic";
@@ -8,11 +12,8 @@ import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
 
 import styles from "./ContactForm.module.css";
 
+const NETLIFY_FORM_ENDPOINT = "/__forms.html";
 const controlWidth = { width: "100%" } as const;
-const netlifyFormAttributes = {
-  "data-netlify": "true",
-  "netlify-honeypot": "bot-field",
-} as const;
 
 const projectTypes = [
   { value: "Shopify design & build", name: "interest-shopify" },
@@ -22,14 +23,51 @@ const projectTypes = [
   { value: "Not sure yet", name: "interest-unsure" },
 ] as const;
 
+function encodeFormData(formData: FormData) {
+  const encoded = new URLSearchParams();
+
+  formData.forEach((value, key) => {
+    if (typeof value === "string") {
+      encoded.append(key, value);
+    }
+  });
+
+  return encoded.toString();
+}
+
 export function ContactForm() {
-  const handleSubmit = () => {
-    markPendingContactSubmit();
+  const router = useRouter();
+  const [submitState, setSubmitState] = useState<
+    "idle" | "submitting" | "error"
+  >("idle");
+  const isSubmitting = submitState === "submitting";
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitState("submitting");
+
     trackEvent({
       action: analyticsConfig.ctaEventName,
       category: "contact",
       label: "contact form submit",
     });
+
+    try {
+      const response = await fetch(NETLIFY_FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData(new FormData(event.currentTarget)),
+      });
+
+      if (!response.ok) {
+        throw new Error("Netlify form submission failed.");
+      }
+
+      markPendingContactSubmit();
+      router.push("/contact/success");
+    } catch {
+      setSubmitState("error");
+    }
   };
 
   return (
@@ -38,9 +76,8 @@ export function ContactForm() {
         className={styles.form}
         name="contact"
         method="POST"
-        action="/contact/success"
+        action={NETLIFY_FORM_ENDPOINT}
         onSubmit={handleSubmit}
-        {...netlifyFormAttributes}
       >
         <input type="hidden" name="form-name" value="contact" />
         <p className={styles.hidden}>
@@ -138,10 +175,15 @@ export function ContactForm() {
 
         <div className={styles.footer}>
           <Magnetic>
-            <Cta type="submit" variant="full">
-              Send message
+            <Cta type="submit" variant="full" disabled={isSubmitting}>
+              {isSubmitting ? "Sending" : "Send message"}
             </Cta>
           </Magnetic>
+          {submitState === "error" ? (
+            <p className={styles.status} role="alert">
+              The form did not send. Email hello@koalastudios.ca instead.
+            </p>
+          ) : null}
         </div>
       </form>
     </div>

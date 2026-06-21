@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/animation/Reveal";
 import { SplitReveal } from "@/components/animation/SplitReveal";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { LocalClock } from "@/components/contact/LocalClock";
 import { AmbientScene } from "@/components/three/AmbientScene";
 import { contactPageContent } from "@/content/pages/contact";
 import { siteSettings } from "@/lib/content";

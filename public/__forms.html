@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Netlify Forms</title>
+  </head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact">
+      <input name="bot-field" type="text">
+      <input name="name" type="text">
+      <input name="company" type="text">
+      <input name="email" type="email">
+      <input name="phone" type="tel">
+      <input name="interest-shopify" type="checkbox" value="Shopify design & build">
+      <input name="interest-meta-ads" type="checkbox" value="Meta ads">
+      <input name="interest-email" type="checkbox" value="Email marketing">
+      <input name="interest-audit" type="checkbox" value="Site audit">
+      <input name="interest-unsure" type="checkbox" value="Not sure yet">
+      <select name="budget">
+        <option value="Under $5k">Under $5k</option>
+        <option value="$5k - $15k">$5k - $15k</option>
+        <option value="$15k - $50k">$15k - $50k</option>
+        <option value="$50k+">$50k+</option>
+        <option value="Ongoing retainer">Ongoing retainer</option>
+        <option value="Not sure yet">Not sure yet</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowIcon } from "@/components/site/ArrowIcon";
-import { Cta } from "@/components/site/Cta";
 import type { CaseStudyContent } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/routes";
 

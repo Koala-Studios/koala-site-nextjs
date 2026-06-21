@@ -1,5 +1,37 @@
 # Execution Ledger
 
+## 2026-06-21 - Netlify Forms Runtime Migration
+
+Netlify auto deploy advanced past the previous Node mismatch after `.nvmrc`, but
+failed in `@netlify/plugin-nextjs@5.15.12` with the documented Netlify Forms
+guard:
+
+`@netlify/plugin-nextjs@5 requires migration steps to support Netlify Forms.`
+
+Implemented the current OpenNext/Netlify Forms workaround:
+
+- Added `public/__forms.html` with the deploy-time hidden `contact` form and
+  every current field name (`form-name`, `bot-field`, contact fields, interest
+  checkboxes, budget, and message).
+- Reworked `components/contact/ContactForm.tsx` so the visible client form no
+  longer carries ineffective `data-netlify` attributes and instead URL-encodes
+  submissions to `/__forms.html`, then navigates to `/contact/success`.
+- Preserved the hidden `form-name`, honeypot field name, contact analytics
+  click event, and deferred `contact_submit` success-page conversion marker.
+- Cleaned stale unused imports/vars that were producing lint warnings.
+- Kept the CLI-generated `.gitignore` ignore rule for `.netlify` and added the
+  same generated folder to the flat ESLint ignore list.
+
+Verification: `& 'C:\Program Files\nodejs\npm.cmd' run lint` passes with no
+warnings; `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` passes;
+`& 'C:\Program Files\nodejs\npm.cmd' run build` passes and generates 24 app
+paths. `netlify build --debug` now gets past the prior Forms guard and completes
+the plugin `onBuild` phase plus function bundling, but fails locally on Windows
+in the plugin `publishStaticDir`/`onPostBuild` static-content rename step; cloud
+deploy remains the authoritative verification for the Linux build environment.
+Built output confirms the active contact page posts to `/__forms.html`, while
+the Netlify detection attributes only exist in `public/__forms.html`.
+
 ## 2026-06-21 - Netlify Node Version Pin
 
 Netlify auto deployment was connected, but the production build failed before

@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { CountUp } from "@/components/animation/CountUp";
-import { Reveal } from "@/components/animation/Reveal";
 import { SplitReveal } from "@/components/animation/SplitReveal";
 import { CyclingWord } from "@/components/home/CyclingWord";
 import { HeroField } from "@/components/home/HeroField";
@@ -14,9 +12,8 @@ import { Magnetic } from "@/components/site/Magnetic";
 import { Marquee } from "@/components/site/Marquee";
 import { RotatingBadge } from "@/components/site/RotatingBadge";
 import { AmbientAccent } from "@/components/three/AmbientAccent";
-import { HomeTestimonialCarousel } from "@/components/testimonials/HomeTestimonialCarousel";
 import { FeaturedWork } from "@/components/work/FeaturedWork";
-import { getPublishedCaseStudies, homepageTestimonials } from "@/lib/content";
+import { getPublishedCaseStudies } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 
 import styles from "./page.module.css";
@@ -90,13 +87,6 @@ const pillars: ServicePillar[] = [
     },
     href: "/services/packaging-and-3d-renders",
   },
-];
-
-const stats = [
-  { value: 6, padTo: 2, label: "Published case studies" },
-  { value: 4, padTo: 2, label: "Service lines, one team" },
-  { value: 4, padTo: 2, label: "Steps from idea to launch" },
-  { value: 2, padTo: 2, label: "Business days to a reply" },
 ];
 
 export default function Home() {
