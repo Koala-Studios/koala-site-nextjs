@@ -43,6 +43,36 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/projects/mercato-di-bellina",
+        destination: "/work/mercato-di-bellina",
+        permanent: true,
+      },
+      {
+        source: "/projects/unity-supplements",
+        destination: "/work/unity-supplements",
+        permanent: true,
+      },
+      {
+        source: "/projects/iron-brothers",
+        destination: "/work/iron-brothers",
+        permanent: true,
+      },
+      {
+        source: "/projects/bull-nutrition",
+        destination: "/work/bull-nutrition",
+        permanent: true,
+      },
+      {
+        source: "/projects/whiskey-road",
+        destination: "/work/whiskey-road",
+        permanent: true,
+      },
+      {
+        source: "/projects/medicrunch",
+        destination: "/work/medicrunch",
+        permanent: true,
+      },
+      {
         source: "/projects/nektr",
         destination: "/work/nektr",
         permanent: true,

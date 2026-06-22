@@ -72,6 +72,10 @@ export interface CaseStudyMedia {
   height?: number;
 }
 
+export interface CaseStudyLogo extends CaseStudyMedia {
+  invert?: boolean;
+}
+
 export interface CaseStudyMetric {
   label: string;
   value: string;
@@ -102,6 +106,7 @@ export interface CaseStudyContent {
   metrics: CaseStudyMetric[];
   media: CaseStudyMedia[];
   cardImage?: CaseStudyMedia;
+  logo?: CaseStudyLogo;
   testimonial?: {
     quote: string;
     author: string;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 import { SplitReveal } from "@/components/animation/SplitReveal";
@@ -168,7 +169,28 @@ export default function Home() {
         <Marquee className={styles.clientsMarquee} duration={38}>
           {caseStudies.map((caseStudy) => (
             <span className={styles.clientMark} key={caseStudy.slug}>
-              {caseStudy.client}
+              {caseStudy.logo ? (
+                <Image
+                  src={caseStudy.logo.src}
+                  alt={caseStudy.logo.alt}
+                  width={caseStudy.logo.width ?? 220}
+                  height={caseStudy.logo.height ?? 80}
+                  loading="eager"
+                  style={{
+                    display: "block",
+                    filter: caseStudy.logo.invert
+                      ? "invert(1)"
+                      : undefined,
+                    height: "clamp(1.7rem, 3vw, 3rem)",
+                    maxHeight: "3rem",
+                    maxWidth: "min(12rem, 34vw)",
+                    objectFit: "contain",
+                    width: "min(12rem, 34vw)",
+                  }}
+                />
+              ) : (
+                caseStudy.client
+              )}
             </span>
           ))}
         </Marquee>

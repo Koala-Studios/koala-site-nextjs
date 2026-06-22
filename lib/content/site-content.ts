@@ -486,12 +486,469 @@ export const caseStudies: CaseStudyContent[] = [
       src: "/images/project/elikai_list.webp",
       alt: "Elikai lifestyle ecommerce case study card image",
     },
-    relatedSlug: "ara",
+    relatedSlug: "mercato-di-bellina",
     seo: {
       title: "Elikai Case Study",
       description:
         "Elikai shows a restrained lifestyle ecommerce presentation with image-led product context.",
       canonicalPath: "/work/elikai",
+    },
+  },
+  {
+    slug: "mercato-di-bellina",
+    status: "published",
+    title: "Mercato di Bellina",
+    client: "Mercato di Bellina",
+    sector: "Italian gourmet ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Catalog UX", "Content"],
+    headline: "A specialty Italian market organized for confident discovery.",
+    intro:
+      "Mercato di Bellina needed a storefront that could carry pantry shopping, brand education, recipes, and restaurant context in one calm path.",
+    services: ["Shopify", "Catalog architecture", "Content design"],
+    challenge:
+      "The catalog spans olive oil, vinegar, pasta, tomatoes, salts, seafood, recipes, and restaurant touchpoints, so shoppers needed faster ways to understand quality and move by category.",
+    approach:
+      "We shaped the experience around ingredient-led collections, product education, and supporting pages that keep the Bellina story close to the buying path.",
+    deliverables: [
+      "Collection hierarchy",
+      "Product detail templates",
+      "Brand and restaurant pages",
+      "Mobile shopping flow",
+    ],
+    outcomes: [
+      "Cleaner pantry navigation",
+      "More confident product discovery",
+      "Stronger gift and restaurant context",
+    ],
+    metrics: [
+      { label: "Priority", value: "Gourmet catalog clarity" },
+      { label: "Scope", value: "Storefront + content system" },
+    ],
+    media: [
+      {
+        src: "/images/project/mercato-di-bellina/01-home.jpg",
+        alt: "Mercato di Bellina homepage presenting premium Italian gourmet gifts",
+      },
+      {
+        src: "/images/project/mercato-di-bellina/02-collection-olive-oil.jpg",
+        alt: "Mercato di Bellina extra virgin olive oil collection page",
+      },
+      {
+        src: "/images/project/mercato-di-bellina/03-collection-pasta.jpg",
+        alt: "Mercato di Bellina short pasta collection with pantry product cards",
+      },
+      {
+        src: "/images/project/mercato-di-bellina/04-product-pici.jpg",
+        alt: "Mercato di Bellina Pici Pasta product page with product options",
+      },
+      {
+        src: "/images/project/mercato-di-bellina/05-product-olive-oil.jpg",
+        alt: "Mercato di Bellina olive oil product page with origin details",
+      },
+      {
+        src: "/images/project/mercato-di-bellina/06-brands-page.jpg",
+        alt: "Mercato di Bellina brands page and customer support content",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/mercato-di-bellina/01-home.jpg",
+      alt: "Mercato di Bellina ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/mercato-di-bellina/logo.png",
+      alt: "Mercato di Bellina logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "unity-supplements",
+    externalUrl: "https://mercatodibellina.com/",
+    seo: {
+      title: "Mercato di Bellina Case Study",
+      description:
+        "Mercato di Bellina shows how Koala Studios organized a premium Italian grocery storefront around catalog clarity, product education, and brand context.",
+      canonicalPath: "/work/mercato-di-bellina",
+    },
+  },
+  {
+    slug: "unity-supplements",
+    status: "published",
+    title: "Unity Supplements",
+    client: "Unity Supplements",
+    sector: "Supplement ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Product UX", "Subscription"],
+    headline: "A supplement catalog built around flavor, choice, and clarity.",
+    intro:
+      "Unity Supplements needed an ecommerce system that made protein, creatine, collagen, samples, and bundles easier to compare without losing the lifestyle energy of the brand.",
+    services: ["Shopify", "Product UX", "Content hierarchy"],
+    challenge:
+      "The offer depends on flavor choice, sample packs, subscriptions, and benefit cues, which can overwhelm shoppers if the catalog and product pages do not explain the decision clearly.",
+    approach:
+      "We kept collections simple, made product options visible, and gave benefit language enough structure for shoppers to compare products quickly.",
+    deliverables: [
+      "Collection structure",
+      "Product option layouts",
+      "Benefit-led product pages",
+      "About-story support",
+    ],
+    outcomes: [
+      "Simpler supplement browsing",
+      "Clearer flavor comparison",
+      "Better support for repeat purchase paths",
+    ],
+    metrics: [
+      { label: "Priority", value: "Choice without overwhelm" },
+      { label: "Scope", value: "Catalog + product system" },
+    ],
+    media: [
+      {
+        src: "/images/project/unity-supplements/01-home.jpg",
+        alt: "Unity Supplements homepage with a Clear ISO mystery offer",
+      },
+      {
+        src: "/images/project/unity-supplements/02-collection-shop-all.jpg",
+        alt: "Unity Supplements shop all collection with supplement product grid",
+      },
+      {
+        src: "/images/project/unity-supplements/03-collection-protein.jpg",
+        alt: "Unity Supplements protein collection with Clear ISO product cards",
+      },
+      {
+        src: "/images/project/unity-supplements/04-product-juice-protein.jpg",
+        alt: "Unity Supplements Juice Protein product page with flavor options",
+      },
+      {
+        src: "/images/project/unity-supplements/05-product-creatine.jpg",
+        alt: "Unity Supplements creatine product page with purchase options",
+      },
+      {
+        src: "/images/project/unity-supplements/06-about.jpg",
+        alt: "Unity Supplements about page telling the brand story",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/unity-supplements/01-home.jpg",
+      alt: "Unity Supplements ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/unity-supplements/logo.png",
+      alt: "Unity Supplements logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "iron-brothers",
+    externalUrl: "https://unitysupplements.com/",
+    seo: {
+      title: "Unity Supplements Case Study",
+      description:
+        "Unity Supplements shows how Koala Studios shaped a supplement storefront around clear collections, product education, flavor choice, and repeat purchase paths.",
+      canonicalPath: "/work/unity-supplements",
+    },
+  },
+  {
+    slug: "iron-brothers",
+    status: "published",
+    title: "Iron Brothers",
+    client: "Iron Brothers",
+    sector: "Performance supplements",
+    category: "Shopify",
+    tags: ["Shopify", "Performance", "Product UX"],
+    headline: "A harder-hitting supplement store with a cleaner product path.",
+    intro:
+      "Iron Brothers needed a storefront that matched the intensity of the brand while keeping supplement categories, product benefits, and purchase options easy to scan.",
+    services: ["Shopify", "Visual direction", "Product templates"],
+    challenge:
+      "The brand is built on training intensity, but the store still had to explain pre-workout, nootropic, amino, and support products with enough discipline for shoppers to make fast choices.",
+    approach:
+      "We paired a bold gym-led visual system with plain collection structure, direct product pages, and recurring FAQ/detail blocks that support informed purchases.",
+    deliverables: [
+      "Bold homepage direction",
+      "Supplement collections",
+      "Product purchase modules",
+      "About and mission page",
+    ],
+    outcomes: [
+      "Stronger brand impact",
+      "Faster product comparison",
+      "More credible supplement education",
+    ],
+    metrics: [
+      { label: "Priority", value: "Performance product clarity" },
+      { label: "Scope", value: "Storefront + detail pages" },
+    ],
+    media: [
+      {
+        src: "/images/project/iron-brothers/01-home.jpg",
+        alt: "Iron Brothers homepage with a train harder recover smarter hero",
+      },
+      {
+        src: "/images/project/iron-brothers/02-collection-all-supplements.jpg",
+        alt: "Iron Brothers all supplements collection page",
+      },
+      {
+        src: "/images/project/iron-brothers/03-collection-pre-workout.jpg",
+        alt: "Iron Brothers pre-workout collection page with FAQ content",
+      },
+      {
+        src: "/images/project/iron-brothers/04-product-ruthless.jpg",
+        alt: "Iron Brothers Ruthless pre-workout product page",
+      },
+      {
+        src: "/images/project/iron-brothers/05-product-prodigy.jpg",
+        alt: "Iron Brothers Prodigy nootropic product page",
+      },
+      {
+        src: "/images/project/iron-brothers/06-about.jpg",
+        alt: "Iron Brothers about page with mission content",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/iron-brothers/01-home.jpg",
+      alt: "Iron Brothers ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/iron-brothers/logo.png",
+      alt: "Iron Brothers logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "bull-nutrition",
+    externalUrl: "https://ironbrothers.com/",
+    seo: {
+      title: "Iron Brothers Case Study",
+      description:
+        "Iron Brothers shows how Koala Studios balanced a bold performance supplement brand with clearer collections, product pages, and purchase modules.",
+      canonicalPath: "/work/iron-brothers",
+    },
+  },
+  {
+    slug: "bull-nutrition",
+    status: "published",
+    title: "Bull Nutrition",
+    client: "Bull Nutrition",
+    sector: "Canadian supplement ecommerce",
+    category: "Development",
+    tags: ["Development", "Shopify", "Retail"],
+    headline: "A Canadian supplement storefront built for stacks and retail reach.",
+    intro:
+      "Bull Nutrition needed a product-led Shopify experience that could sell performance formulas online while also supporting store discovery for retail buyers.",
+    services: ["Shopify", "Product UX", "Retail locator"],
+    challenge:
+      "The site had to make supplement stacks, pre-workouts, creatine, and shaker accessories easy to shop while keeping a strong Canadian performance identity visible.",
+    approach:
+      "We used a direct collection system, product pages with concrete formula details, and a find-us experience that connects ecommerce demand with retail availability.",
+    deliverables: [
+      "Product collection system",
+      "Formula-led product pages",
+      "Retail locator page",
+      "Mobile shopping QA",
+    ],
+    outcomes: [
+      "Clearer supplement stack browsing",
+      "More useful product education",
+      "Better retail discovery support",
+    ],
+    metrics: [
+      { label: "Priority", value: "Online + retail product flow" },
+      { label: "Scope", value: "Storefront and locator" },
+    ],
+    media: [
+      {
+        src: "/images/project/bull-nutrition/01-home.jpg",
+        alt: "Bull Nutrition homepage with a supplement stack promotion",
+      },
+      {
+        src: "/images/project/bull-nutrition/02-collection-shop.jpg",
+        alt: "Bull Nutrition shop collection with supplement product cards",
+      },
+      {
+        src: "/images/project/bull-nutrition/03-collection-pre-workout.jpg",
+        alt: "Bull Nutrition pre-workout collection page",
+      },
+      {
+        src: "/images/project/bull-nutrition/04-product-pre-workout.jpg",
+        alt: "Bull Nutrition 12Strong pre-workout product page",
+      },
+      {
+        src: "/images/project/bull-nutrition/05-product-creatine.jpg",
+        alt: "Bull Nutrition creatine product page with formula details",
+      },
+      {
+        src: "/images/project/bull-nutrition/06-find-us.jpg",
+        alt: "Bull Nutrition find us page with a retail location map",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/bull-nutrition/01-home.jpg",
+      alt: "Bull Nutrition ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/bull-nutrition/logo.png",
+      alt: "Bull Nutrition logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "whiskey-road",
+    externalUrl: "https://www.bullnutrition.com/",
+    seo: {
+      title: "Bull Nutrition Case Study",
+      description:
+        "Bull Nutrition shows how Koala Studios built a Canadian supplement storefront around product stacks, formula detail, and retail discovery.",
+      canonicalPath: "/work/bull-nutrition",
+    },
+  },
+  {
+    slug: "whiskey-road",
+    status: "published",
+    title: "Whiskey Road",
+    client: "Whiskey Road",
+    sector: "Headwear ecommerce",
+    category: "Lifestyle",
+    tags: ["Lifestyle", "Shopify", "Custom products"],
+    headline: "A western headwear catalog shaped for patches, hats, and custom orders.",
+    intro:
+      "Whiskey Road needed an ecommerce experience that could sell ready-made caps, browse hundreds of patches, and introduce a custom hat program without losing its country-club personality.",
+    services: ["Shopify", "Catalog architecture", "Custom order flow"],
+    challenge:
+      "The product system includes hats, patches, collections, accessories, and custom-program leads, so the browsing path had to stay organized while keeping the brand voice visible.",
+    approach:
+      "We brought collection browsing, patch detail pages, and the custom-hat inquiry path into one clear storefront rhythm built around fast scanning and strong product imagery.",
+    deliverables: [
+      "Patch and cap collections",
+      "Product detail layouts",
+      "Custom hat program page",
+      "Lifestyle homepage direction",
+    ],
+    outcomes: [
+      "Easier patch discovery",
+      "Clearer custom-order path",
+      "Stronger lifestyle merchandising",
+    ],
+    metrics: [
+      { label: "Priority", value: "Catalog depth + custom leads" },
+      { label: "Scope", value: "Storefront and inquiry flow" },
+    ],
+    media: [
+      {
+        src: "/images/project/whiskey-road/01-home.jpg",
+        alt: "Whiskey Road homepage with country club headwear merchandising",
+      },
+      {
+        src: "/images/project/whiskey-road/02-collection-caps.jpg",
+        alt: "Whiskey Road caps collection page with hat product grid",
+      },
+      {
+        src: "/images/project/whiskey-road/03-collection-patches.jpg",
+        alt: "Whiskey Road patches collection page with western patch products",
+      },
+      {
+        src: "/images/project/whiskey-road/04-product-copenhagen.jpg",
+        alt: "Whiskey Road Copenhagen patch product page",
+      },
+      {
+        src: "/images/project/whiskey-road/05-product-coors.jpg",
+        alt: "Whiskey Road Coors Banquet patch product page",
+      },
+      {
+        src: "/images/project/whiskey-road/06-custom-hat-program.jpg",
+        alt: "Whiskey Road custom hat program inquiry page",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/whiskey-road/01-home.jpg",
+      alt: "Whiskey Road ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/whiskey-road/logo.png",
+      alt: "Whiskey Road logo",
+      width: 220,
+      height: 80,
+      invert: true,
+    },
+    relatedSlug: "medicrunch",
+    externalUrl: "https://whiskeyroadhatco.com/",
+    seo: {
+      title: "Whiskey Road Case Study",
+      description:
+        "Whiskey Road shows how Koala Studios organized a headwear storefront around patch browsing, cap merchandising, and custom hat inquiries.",
+      canonicalPath: "/work/whiskey-road",
+    },
+  },
+  {
+    slug: "medicrunch",
+    status: "published",
+    title: "Medi-Crunch",
+    client: "Medi-Crunch",
+    sector: "Pet health ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Product education", "Wholesale"],
+    headline: "A pet-health product story that makes medication treats easy to understand.",
+    intro:
+      "Medi-Crunch needed a storefront that could explain a specific medication-treat product, support quick ordering, and make wholesale interest feel legitimate.",
+    services: ["Shopify", "Product education", "Wholesale flow"],
+    challenge:
+      "The product solves a practical pet-care problem, so the site had to explain the benefit, ingredients, trust points, subscription path, and wholesale program without burying the purchase.",
+    approach:
+      "We built the experience around a direct product promise, quick ordering, clear why-it-works content, and a wholesale path for clinics and retail partners.",
+    deliverables: [
+      "Product education flow",
+      "Quick order collection",
+      "Wholesale landing page",
+      "Story and trust pages",
+    ],
+    outcomes: [
+      "Clearer product understanding",
+      "Faster repeat ordering",
+      "More credible wholesale path",
+    ],
+    metrics: [
+      { label: "Priority", value: "Simple pet-care explanation" },
+      { label: "Scope", value: "DTC + wholesale storefront" },
+    ],
+    media: [
+      {
+        src: "/images/project/medicrunch/01-home.jpg",
+        alt: "Medi-Crunch homepage explaining dog medication treats",
+      },
+      {
+        src: "/images/project/medicrunch/02-collection-quick-order.jpg",
+        alt: "Medi-Crunch quick order collection page",
+      },
+      {
+        src: "/images/project/medicrunch/03-product-treat-box.jpg",
+        alt: "Medi-Crunch Treat Box product page with benefit details",
+      },
+      {
+        src: "/images/project/medicrunch/04-why.jpg",
+        alt: "Medi-Crunch why page explaining the medication treat product",
+      },
+      {
+        src: "/images/project/medicrunch/05-wholesale.jpg",
+        alt: "Medi-Crunch wholesale partner page",
+      },
+      {
+        src: "/images/project/medicrunch/06-about.jpg",
+        alt: "Medi-Crunch about page with founder story content",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/medicrunch/01-home.jpg",
+      alt: "Medi-Crunch ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/medicrunch/logo.webp",
+      alt: "Medi-Crunch logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "ara",
+    externalUrl: "https://www.medicrunch.com/",
+    seo: {
+      title: "Medi-Crunch Case Study",
+      description:
+        "Medi-Crunch shows how Koala Studios shaped a pet health storefront around product education, quick ordering, and wholesale trust.",
+      canonicalPath: "/work/medicrunch",
     },
   },
 ];

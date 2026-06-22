@@ -1,6 +1,7 @@
 export { caseStudies, navigationContent, pageContent, siteSettings } from "@/lib/content";
 export type {
   CaseStudyContent,
+  CaseStudyLogo,
   CaseStudyMedia,
   CaseStudyMetric,
   ContentStatus,
@@ -11,4 +12,3 @@ export type {
   SeoContent,
   SiteSettings,
 } from "@/lib/content";
-

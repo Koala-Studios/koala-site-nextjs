@@ -1,5 +1,44 @@
 # Execution Ledger
 
+## 2026-06-22 - Case Study Expansion + Worker Guide
+
+Added six published case studies grounded in the live client sites:
+Mercato di Bellina, Unity Supplements, Iron Brothers, Bull Nutrition, Whiskey
+Road, and Medi-Crunch. Each new entry has original case-study copy, SEO data,
+related-work wiring, six Playwright-captured site screenshots, and a downloaded
+client logo under `public/images/project/<slug>/`.
+
+- Extended `CaseStudyContent` with an optional typed `logo` object and rendered
+  logos in the homepage "Brands we've built for" marquee while preserving the
+  existing text fallback.
+- Added the six published case-study objects to `lib/content/site-content.ts`;
+  the existing `getPublishedCaseStudies()` consumers now populate the homepage
+  brand marquee, homepage featured-work carousel, `/work` grid, service-page
+  carousels, `/work/[slug]` static params, metadata, JSON-LD, and sitemap from
+  the same source data.
+- Added legacy `/projects/<slug>` redirects for the six new cases to their
+  canonical `/work/<slug>` paths.
+- Added `.agent/case-study-addition-guide.md` with the current implementation
+  map, copy rules, Playwright screenshot/logo workflow, update checklist, and
+  verification expectations for future workers.
+- Kept the request's styling constraint: no site CSS files were changed.
+
+Verification: `& 'C:\Program Files\nodejs\npm.cmd' run typecheck` passes;
+`& 'C:\Program Files\nodejs\npm.cmd' run lint` passes; `& 'C:\Program
+Files\nodejs\npm.cmd' run build` passes and generates 30 app paths with
+`/work/[slug]` showing `+9 more paths`. Built sitemap output contains all six
+new `/work/<slug>` URLs, built HTML exists for each with an `<h1>` and
+`CreativeWork` JSON-LD, and all six `/projects/<slug>` legacy URLs return `308`
+redirects to matching `/work/<slug>` paths. Playwright source capture contact
+sheets were visually checked for the six live sites plus logos. A fresh `next
+start` server on port 3037 was checked with Playwright at desktop and mobile
+widths: all six new case-detail pages have one visible H1, expected page
+titles, and `overflowX: 0` at both widths; the homepage brand marquee loads all
+12 duplicated logo image instances with nonzero natural dimensions, and focused
+marquee screenshots show the new logos on the current build. Desktop `/work`
+still reports the existing footer-marquee horizontal overflow; the new
+case-study detail pages do not.
+
 ## 2026-06-21 - Netlify Forms Runtime Migration
 
 Netlify auto deploy advanced past the previous Node mismatch after `.nvmrc`, but

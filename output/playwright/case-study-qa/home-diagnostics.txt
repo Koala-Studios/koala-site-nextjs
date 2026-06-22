@@ -1,0 +1,42 @@
+async (page) => {
+  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.goto("http://localhost:3037/", { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(1000);
+  await page.evaluate(() =>
+    document
+      .querySelector('section[aria-label="Brands we have built for"]')
+      ?.scrollIntoView({ block: "center" })
+  );
+  await page.waitForTimeout(1400);
+  await page.screenshot({
+    path: "output/playwright/case-study-qa/home-brand-strip-1440.jpg",
+    type: "jpeg",
+    quality: 82,
+    fullPage: false,
+  });
+  return await page.evaluate(() => {
+    const brand = document.querySelector(
+      'section[aria-label="Brands we have built for"]'
+    );
+    const imgs = Array.from(brand?.querySelectorAll("img") ?? []).map(
+      (img) => ({
+        alt: img.alt,
+        complete: img.complete,
+        height: Math.round(img.getBoundingClientRect().height),
+        naturalWidth: img.naturalWidth,
+        width: Math.round(img.getBoundingClientRect().width),
+      })
+    );
+    return {
+      brandLogoCount: imgs.length,
+      h1Count: document.querySelectorAll("h1").length,
+      imgs,
+      overflowX:
+        Math.max(
+          document.documentElement.scrollWidth,
+          document.body.scrollWidth
+        ) - innerWidth,
+      title: document.title,
+    };
+  });
+}

@@ -1,0 +1,82 @@
+async (page) => {
+  const brandSelector = 'section[aria-label="Brands we have built for"]';
+
+  async function capture(width, height) {
+    await page.setViewportSize({ width, height });
+    await page.goto("http://127.0.0.1:3037/", {
+      waitUntil: "domcontentloaded",
+      timeout: 45000,
+    });
+    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(
+      () => undefined
+    );
+    const brand = page.locator(brandSelector);
+    await brand.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1200);
+    await brand.screenshot({
+      path: `output/playwright/case-study-qa/home-brand-strip-${width}-current.jpg`,
+      type: "jpeg",
+      quality: 82,
+    });
+    const visibleCurrent = await page.evaluate((selector) => {
+      const section = document.querySelector(selector);
+      return Array.from(section?.querySelectorAll("img") ?? [])
+        .filter((img) => {
+          const rect = img.getBoundingClientRect();
+          return rect.right > 0 && rect.left < window.innerWidth;
+        })
+        .map((img) => img.getAttribute("alt"));
+    }, brandSelector);
+    await page.waitForTimeout(6500);
+    await brand.screenshot({
+      path: `output/playwright/case-study-qa/home-brand-strip-${width}-later.jpg`,
+      type: "jpeg",
+      quality: 82,
+    });
+    const visibleLater = await page.evaluate((selector) => {
+      const section = document.querySelector(selector);
+      return Array.from(section?.querySelectorAll("img") ?? [])
+        .filter((img) => {
+          const rect = img.getBoundingClientRect();
+          return rect.right > 0 && rect.left < window.innerWidth;
+        })
+        .map((img) => img.getAttribute("alt"));
+    }, brandSelector);
+
+    return {
+      width,
+      height,
+      logos: await brand.locator("img").evaluateAll((imgs) =>
+        imgs.map((img) => {
+          const rect = img.getBoundingClientRect();
+          const style = getComputedStyle(img);
+
+          return {
+            alt: img.alt,
+            complete: img.complete,
+            filter: style.filter,
+            height: Math.round(rect.height),
+            naturalHeight: img.naturalHeight,
+            naturalWidth: img.naturalWidth,
+            opacity: style.opacity,
+            width: Math.round(rect.width),
+          };
+        })
+      ),
+      overflowX: await page.evaluate(
+        () =>
+          Math.max(
+            document.documentElement.scrollWidth,
+            document.body.scrollWidth
+          ) - window.innerWidth
+      ),
+      visibleCurrent,
+      visibleLater,
+    };
+  }
+
+  return [
+    await capture(1440, 1100),
+    await capture(390, 900),
+  ];
+}

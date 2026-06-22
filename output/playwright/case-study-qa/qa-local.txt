@@ -1,0 +1,102 @@
+async (page) => {
+  const base = "http://localhost:3037";
+  const slugs = [
+    "mercato-di-bellina",
+    "unity-supplements",
+    "iron-brothers",
+    "bull-nutrition",
+    "whiskey-road",
+    "medicrunch",
+  ];
+
+  async function capture(path, name, width, height) {
+    await page.setViewportSize({ width, height });
+    await page.goto(`${base}${path}`, {
+      waitUntil: "domcontentloaded",
+      timeout: 45000,
+    });
+    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(
+      () => undefined
+    );
+    await page.waitForTimeout(900);
+    const metrics = await page.evaluate(() => {
+      const brand = document.querySelector(
+        'section[aria-label="Brands we have built for"]'
+      );
+      const brandRect = brand?.getBoundingClientRect();
+      const brandLogos = Array.from(brand?.querySelectorAll("img") ?? []).map(
+        (img) => {
+          const rect = img.getBoundingClientRect();
+          return {
+            alt: img.getAttribute("alt"),
+            complete: img.complete,
+            height: Math.round(rect.height),
+            naturalHeight: img.naturalHeight,
+            naturalWidth: img.naturalWidth,
+            width: Math.round(rect.width),
+          };
+        }
+      );
+      const h1s = Array.from(document.querySelectorAll("h1")).filter((h1) => {
+        const rect = h1.getBoundingClientRect();
+        const style = getComputedStyle(h1);
+        return (
+          rect.width > 0 &&
+          rect.height > 0 &&
+          style.visibility !== "hidden" &&
+          style.display !== "none"
+        );
+      });
+      const visibleImages = Array.from(document.images).filter((img) => {
+        const rect = img.getBoundingClientRect();
+        return rect.width > 4 && rect.height > 4;
+      });
+      return {
+        brandLogoCount: brandLogos.length,
+        brandLogos,
+        brandRect: brandRect
+          ? {
+              height: Math.round(brandRect.height),
+              top: Math.round(brandRect.top),
+              width: Math.round(brandRect.width),
+            }
+          : null,
+        h1Count: h1s.length,
+        imageIssues: visibleImages
+          .filter((img) => !img.complete || img.naturalWidth === 0)
+          .map((img) => img.getAttribute("alt") || img.currentSrc),
+        innerWidth: window.innerWidth,
+        overflowX:
+          Math.max(
+            document.documentElement.scrollWidth,
+            document.body.scrollWidth
+          ) - window.innerWidth,
+        title: document.title,
+        visibleImageCount: visibleImages.length,
+      };
+    });
+    await page.screenshot({
+      path: `output/playwright/case-study-qa/${name}-${width}.jpg`,
+      type: "jpeg",
+      quality: 82,
+      fullPage: false,
+    });
+    return { path, name, width, height, ...metrics };
+  }
+
+  const results = [];
+  results.push(await capture("/", "home", 1440, 1100));
+  results.push(await capture("/work", "work", 1440, 1100));
+  for (const slug of slugs) {
+    results.push(await capture(`/work/${slug}`, `case-${slug}`, 1440, 1100));
+  }
+  results.push(await capture("/", "home-mobile", 390, 900));
+  results.push(await capture("/work", "work-mobile", 390, 900));
+  for (const slug of slugs) {
+    results.push(
+      await capture(`/work/${slug}`, `case-${slug}-mobile`, 390, 900)
+    );
+  }
+
+  return results;
+}
