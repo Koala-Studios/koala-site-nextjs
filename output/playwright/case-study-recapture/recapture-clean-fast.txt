@@ -1,0 +1,267 @@
+async (page) => {
+  const activeSlugs = [
+    "mercato-di-bellina",
+    "unity-supplements",
+    "iron-brothers",
+    "bull-nutrition",
+    "whiskey-road",
+    "medicrunch",
+  ];
+  const viewport = { width: 1440, height: 1100 };
+  const jobs = [
+    {
+      slug: "mercato-di-bellina",
+      base: "https://mercatodibellina.com",
+      pages: [
+        ["/", "public/images/project/mercato-di-bellina/01-home.jpg"],
+        ["/collections/extra-virgin-olive-oil", "public/images/project/mercato-di-bellina/02-collection-olive-oil.jpg"],
+        ["/collections/short-pasta", "public/images/project/mercato-di-bellina/03-collection-pasta.jpg"],
+        ["/products/morelli-pici-pasta-di-toscana", "public/images/project/mercato-di-bellina/04-product-pici.jpg"],
+        ["/products/roi-mosto-italian-extra-virgin-olive-oil", "public/images/project/mercato-di-bellina/05-product-olive-oil.jpg"],
+        ["/pages/brands", "public/images/project/mercato-di-bellina/06-brands-page.jpg"],
+      ],
+    },
+    {
+      slug: "unity-supplements",
+      base: "https://unitysupplements.com",
+      pages: [
+        ["/", "public/images/project/unity-supplements/01-home.jpg"],
+        ["/collections/shop-all", "public/images/project/unity-supplements/02-collection-shop-all.jpg"],
+        ["/collections/protein", "public/images/project/unity-supplements/03-collection-protein.jpg"],
+        ["/products/juice-protein-black-cherry-410g", "public/images/project/unity-supplements/04-product-juice-protein.jpg"],
+        ["/products/creatine-framboise-limonade", "public/images/project/unity-supplements/05-product-creatine.jpg"],
+        ["/pages/about-us", "public/images/project/unity-supplements/06-about.jpg"],
+      ],
+    },
+    {
+      slug: "iron-brothers",
+      base: "https://ironbrothers.com",
+      pages: [
+        ["/", "public/images/project/iron-brothers/01-home.jpg"],
+        ["/collections/all-supplements", "public/images/project/iron-brothers/02-collection-all-supplements.jpg"],
+        ["/collections/pre-workout", "public/images/project/iron-brothers/03-collection-pre-workout.jpg"],
+        ["/products/ruthless-pre-workout", "public/images/project/iron-brothers/04-product-ruthless.jpg"],
+        ["/products/prodigy-nootropic", "public/images/project/iron-brothers/05-product-prodigy.jpg"],
+        ["/pages/about-us", "public/images/project/iron-brothers/06-about.jpg"],
+      ],
+    },
+    {
+      slug: "bull-nutrition",
+      base: "https://www.bullnutrition.com",
+      pages: [
+        ["/", "public/images/project/bull-nutrition/01-home.jpg"],
+        ["/collections/shop", "public/images/project/bull-nutrition/02-collection-shop.jpg"],
+        ["/collections/pre-workout", "public/images/project/bull-nutrition/03-collection-pre-workout.jpg"],
+        ["/products/12-strong-pre-workout-blue-raspberry", "public/images/project/bull-nutrition/04-product-pre-workout.jpg"],
+        ["/products/creatine-micronized-monohydrate-440g-88-servings", "public/images/project/bull-nutrition/05-product-creatine.jpg"],
+        ["/pages/find-us", "public/images/project/bull-nutrition/06-find-us.jpg"],
+      ],
+    },
+    {
+      slug: "whiskey-road",
+      base: "https://whiskeyroadhatco.com",
+      pages: [
+        ["/", "public/images/project/whiskey-road/01-home.jpg"],
+        ["/collections/caps", "public/images/project/whiskey-road/02-collection-caps.jpg"],
+        ["/collections/patches", "public/images/project/whiskey-road/03-collection-patches.jpg"],
+        ["/products/copenhagen-patch", "public/images/project/whiskey-road/04-product-copenhagen.jpg"],
+        ["/products/original-coors-banquet-beer-patch", "public/images/project/whiskey-road/05-product-coors.jpg"],
+        ["/pages/custom-hat-program", "public/images/project/whiskey-road/06-custom-hat-program.jpg"],
+      ],
+    },
+    {
+      slug: "medicrunch",
+      base: "https://www.medicrunch.com",
+      pages: [
+        ["/", "public/images/project/medicrunch/01-home.jpg"],
+        ["/collections/quick-order", "public/images/project/medicrunch/02-collection-quick-order.jpg"],
+        ["/products/medi-crunch-treat-box", "public/images/project/medicrunch/03-product-treat-box.jpg"],
+        ["/pages/why-medi-crunch", "public/images/project/medicrunch/04-why.jpg"],
+        ["/pages/wholesale", "public/images/project/medicrunch/05-wholesale.jpg"],
+        ["/pages/about-us", "public/images/project/medicrunch/06-about.jpg"],
+      ],
+    },
+  ];
+
+  async function dismissAndClean() {
+    await page.keyboard.press("Escape").catch(() => undefined);
+    await page.waitForTimeout(300);
+    await page.evaluate(() => {
+      const closeText =
+        /^(close|dismiss|no thanks|no, thanks|maybe later|not now|continue shopping|skip|x|×)$/i;
+      const suspect =
+        /(klaviyo|privy|justuno|smile|rewards|bucks|ltkpopup|newsletter|popup|modal|gorgias|chat|attentive|postscript|spin|discount|coupon|notify|subscribe|sms|email)/i;
+
+      function visible(element) {
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          Number(style.opacity) !== 0 &&
+          rect.width > 4 &&
+          rect.height > 4
+        );
+      }
+
+      function label(element) {
+        return [
+          element.getAttribute("aria-label"),
+          element.getAttribute("title"),
+          element.textContent,
+          typeof element.className === "string" ? element.className : "",
+          element.id,
+        ]
+          .filter(Boolean)
+          .join(" ");
+      }
+
+      const clickable = Array.from(
+        document.querySelectorAll("button, [role='button'], a, [aria-label]")
+      );
+      for (const element of clickable.reverse()) {
+        if (!visible(element)) {
+          continue;
+        }
+        const text = label(element).trim();
+        if (closeText.test(text) || (/close|dismiss/i.test(text) && suspect.test(text))) {
+          element.click();
+        }
+      }
+
+      const viewportArea = window.innerWidth * window.innerHeight;
+      const elements = Array.from(document.querySelectorAll("body *")).reverse();
+      for (const element of elements) {
+        if (!visible(element)) {
+          continue;
+        }
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        const width = Math.max(0, Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0));
+        const height = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+        const areaRatio = (width * height) / viewportArea;
+        const fixed = style.position === "fixed";
+        const centered =
+          rect.left < window.innerWidth * 0.75 &&
+          rect.right > window.innerWidth * 0.25 &&
+          rect.top < window.innerHeight * 0.75 &&
+          rect.bottom > window.innerHeight * 0.18;
+        const highZ = Number.parseInt(style.zIndex, 10) > 999;
+        const text = label(element);
+        const iframe = element.tagName === "IFRAME";
+
+        if (
+          (iframe && fixed && suspect.test(text)) ||
+          (fixed && suspect.test(text)) ||
+          (fixed && centered && highZ && areaRatio > 0.025) ||
+          (fixed && centered && areaRatio > 0.12) ||
+          (highZ && centered && areaRatio > 0.18)
+        ) {
+          element.remove();
+        }
+      }
+
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+    await page.waitForTimeout(500);
+  }
+
+  async function overlayReport() {
+    return await page.evaluate(() => {
+      const viewportArea = window.innerWidth * window.innerHeight;
+      const suspect =
+        /(congratulations|claim|spin|win|discount|coupon|bucks|rewards|notify me|newsletter|sign up|subscribe|sms|email)/i;
+      return Array.from(document.querySelectorAll("body *"))
+        .map((element) => {
+          const style = getComputedStyle(element);
+          const rect = element.getBoundingClientRect();
+          if (
+            style.display === "none" ||
+            style.visibility === "hidden" ||
+            Number(style.opacity) === 0 ||
+            rect.width < 80 ||
+            rect.height < 60
+          ) {
+            return null;
+          }
+          const width = Math.max(0, Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0));
+          const height = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+          const areaRatio = (width * height) / viewportArea;
+          const text = (element.innerText || element.getAttribute("aria-label") || "").slice(0, 140);
+          const fixed = style.position === "fixed";
+          const highZ = Number.parseInt(style.zIndex, 10) > 999;
+          const centered =
+            rect.left < window.innerWidth * 0.75 &&
+            rect.right > window.innerWidth * 0.25 &&
+            rect.top < window.innerHeight * 0.75 &&
+            rect.bottom > window.innerHeight * 0.18;
+
+          if ((fixed && suspect.test(text)) || (fixed && centered && areaRatio > 0.08) || (highZ && centered && areaRatio > 0.12)) {
+            return {
+              tag: element.tagName,
+              areaRatio: Number(areaRatio.toFixed(3)),
+              text,
+              position: style.position,
+              zIndex: style.zIndex,
+            };
+          }
+          return null;
+        })
+        .filter(Boolean)
+        .slice(0, 10);
+    });
+  }
+
+  async function capture(job, path, output) {
+    const url = `${job.base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+    await page.setViewportSize(viewport);
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await page.waitForLoadState("networkidle", { timeout: 8000 }).catch(() => undefined);
+    await page.waitForTimeout(8500);
+    await dismissAndClean();
+    await page.waitForTimeout(1200);
+    await dismissAndClean();
+    await page.evaluate(() => window.scrollTo(0, 0)).catch(() => undefined);
+    await page.waitForTimeout(650);
+    const overlaysBeforeShot = await overlayReport();
+    await page.screenshot({
+      path: output,
+      type: "jpeg",
+      quality: 82,
+      fullPage: false,
+      animations: "disabled",
+      timeout: 45000,
+    });
+    return {
+      slug: job.slug,
+      url,
+      output,
+      overlaysBeforeShot,
+      title: await page.title().catch(() => ""),
+    };
+  }
+
+  const results = [];
+  for (const job of jobs.filter((candidate) => activeSlugs.includes(candidate.slug))) {
+    await page.context().clearCookies().catch(() => undefined);
+    await page.goto("about:blank").catch(() => undefined);
+    for (const [path, output] of job.pages) {
+      try {
+        results.push(await capture(job, path, output));
+      } catch (error) {
+        results.push({
+          slug: job.slug,
+          path,
+          output,
+          error: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }
+  }
+
+  return results;
+}

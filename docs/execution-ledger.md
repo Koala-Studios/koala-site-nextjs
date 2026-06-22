@@ -1,5 +1,25 @@
 # Execution Ledger
 
+## 2026-06-22 - Case Study Screenshot Popover Recapture
+
+Replaced the live-site screenshots for the six newly added case studies after
+the first capture set included third-party popover overlays on some product
+pages. The replacement pass waited on each source page, dismissed available
+close/dismiss controls, cleared remaining fixed third-party overlay widgets in
+the capture context, blurred focused controls, and then overwrote the existing
+JPEGs under `public/images/project/<slug>/`.
+
+Verification: Playwright recaptured all six configured screenshots for Mercato
+di Bellina, Unity Supplements, Iron Brothers, Bull Nutrition, Whiskey Road, and
+Medi-Crunch at 1440x1100. The final run reported `overlaysBeforeShot: []` for
+all 36 pages. Contact sheets generated under
+`output/playwright/case-study-recapture/` were visually checked; the Whiskey
+Road Coors product screenshot no longer has the loyalty popover from the
+reported example, and product sections remain intact after tightening the
+cleanup to fixed overlay widgets only. No site CSS files were changed.
+`& 'C:\Program Files\nodejs\npm.cmd' run build` passes and each of the six
+case-study folders contains six nonempty JPEG screenshots.
+
 ## 2026-06-22 - Case Study Expansion + Worker Guide
 
 Added six published case studies grounded in the live client sites:
