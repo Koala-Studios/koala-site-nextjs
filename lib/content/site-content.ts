@@ -942,13 +942,318 @@ export const caseStudies: CaseStudyContent[] = [
       width: 220,
       height: 80,
     },
-    relatedSlug: "ara",
+    relatedSlug: "wellth-foods",
     externalUrl: "https://www.medicrunch.com/",
     seo: {
       title: "Medi-Crunch Case Study",
       description:
         "Medi-Crunch shows how Koala Studios shaped a pet health storefront around product education, quick ordering, and wholesale trust.",
       canonicalPath: "/work/medicrunch",
+    },
+  },
+  {
+    slug: "wellth-foods",
+    status: "published",
+    title: "Wellth Foods",
+    client: "Wellth Foods",
+    sector: "Functional food ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Food ecommerce", "Product education"],
+    headline: "A polished food storefront built around product trust.",
+    intro:
+      "Wellth Foods shows how a focused Shopify experience can make a technical food product feel simple, premium, and easy to buy.",
+    services: ["Shopify", "Product storytelling", "Wholesale support"],
+    challenge:
+      "High-protein, grain-free pasta has to earn trust quickly. The store needs to explain nutrition, ingredients, taste, wholesale availability, and where to buy without making the shopping path feel clinical.",
+    approach:
+      "We shaped the experience around clear product proof, simple collection browsing, strong nutrition education, and support pages that keep retail and wholesale audiences moving toward the next step.",
+    deliverables: [
+      "Homepage product positioning",
+      "Product detail page",
+      "Nutrition and story pages",
+      "Wholesale and store-locator flows",
+    ],
+    outcomes: [
+      "Stronger product credibility",
+      "Cleaner path from education to purchase",
+      "Better support for retail and wholesale discovery",
+    ],
+    metrics: [
+      { label: "Priority", value: "Trust-first food shopping" },
+      { label: "Scope", value: "DTC + wholesale storefront" },
+    ],
+    media: [
+      {
+        src: "/images/project/wellth-foods/01-home.jpg",
+        alt: "Wellth Foods homepage presenting high protein healthy pasta",
+      },
+      {
+        src: "/images/project/wellth-foods/02-our-story.jpg",
+        alt: "Wellth Foods story page with product positioning and lifestyle imagery",
+      },
+      {
+        src: "/images/project/wellth-foods/03-product-yellow-pea-pasta.jpg",
+        alt: "Wellth Foods yellow pea pasta product page",
+      },
+      {
+        src: "/images/project/wellth-foods/04-nutrition.jpg",
+        alt: "Wellth Foods nutrition page explaining product benefits",
+      },
+      {
+        src: "/images/project/wellth-foods/05-wholesale-partner.jpg",
+        alt: "Wellth Foods wholesale partner page",
+      },
+      {
+        src: "/images/project/wellth-foods/06-store-locator.jpg",
+        alt: "Wellth Foods store locator page",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/wellth-foods/01-home.jpg",
+      alt: "Wellth Foods ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/wellth-foods/logo.png",
+      alt: "Wellth Foods logo",
+      width: 220,
+      height: 80,
+      invert: true,
+    },
+    relatedSlug: "freezo",
+    externalUrl: "https://wellth-foods.com/",
+    seo: {
+      title: "Wellth Foods Case Study",
+      description:
+        "Wellth Foods shows how Koala Studios shaped a food ecommerce storefront around product trust, nutrition education, quick ordering, and wholesale discovery.",
+      canonicalPath: "/work/wellth-foods",
+    },
+  },
+  {
+    slug: "freezo",
+    status: "published",
+    title: "Freezo",
+    client: "Freezo",
+    sector: "Beverage ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Beverage", "Commercial sales"],
+    headline: "An iced coffee storefront with retail and commercial range.",
+    intro:
+      "Freezo balances a bright at-home ordering experience with a credible commercial story for cafes, restaurants, and food-service buyers.",
+    services: ["Shopify", "Product UX", "Commercial sales flow"],
+    challenge:
+      "The brand has to sell the everyday appeal of a blended iced coffee while also giving commercial buyers a more practical path to understand the offer and get in touch.",
+    approach:
+      "We kept the storefront visually refreshing and product-led, then gave the commercial side its own supporting page so consumer shoppers and business buyers both have a clear route.",
+    deliverables: [
+      "Homepage and product presentation",
+      "Order-now collection",
+      "Product education sections",
+      "Commercial buyer page",
+    ],
+    outcomes: [
+      "Clearer beverage merchandising",
+      "More direct at-home purchase flow",
+      "Stronger commercial inquiry support",
+    ],
+    metrics: [
+      { label: "Priority", value: "Retail + commercial clarity" },
+      { label: "Scope", value: "Storefront and buyer path" },
+    ],
+    media: [
+      {
+        src: "/images/project/freezo/01-home.jpg",
+        alt: "Freezo homepage showing iced coffee product packaging",
+      },
+      {
+        src: "/images/project/freezo/02-collection-order-now.jpg",
+        alt: "Freezo order now collection page",
+      },
+      {
+        src: "/images/project/freezo/03-product-details.jpg",
+        alt: "Freezo product detail section with certifications and preparation steps",
+      },
+      {
+        src: "/images/project/freezo/04-product-coffee-freezo.jpg",
+        alt: "Freezo Classic product page with pack options",
+      },
+      {
+        src: "/images/project/freezo/05-commercial.jpg",
+        alt: "Freezo commercial sales page for business buyers",
+      },
+      {
+        src: "/images/project/freezo/06-about.jpg",
+        alt: "Freezo about page with brand story content",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/freezo/01-home.jpg",
+      alt: "Freezo ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/freezo/logo.png",
+      alt: "Freezo logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "hope-harvest",
+    externalUrl: "https://www.drinkfreezo.com/",
+    seo: {
+      title: "Freezo Case Study",
+      description:
+        "Freezo shows how Koala Studios shaped a beverage ecommerce storefront around at-home ordering, product merchandising, and commercial buyer confidence.",
+      canonicalPath: "/work/freezo",
+    },
+  },
+  {
+    slug: "hope-harvest",
+    status: "published",
+    title: "Hope Harvest",
+    client: "Hope Harvest",
+    sector: "Purpose-led food ecommerce",
+    category: "Lifestyle",
+    tags: ["Lifestyle", "Shopify", "Fundraising"],
+    headline: "A purpose-led snack storefront with trust built in.",
+    intro:
+      "Hope Harvest connects snackable product merchandising with farmer stories, fundraising tools, and a mission customers can understand at a glance.",
+    services: ["Shopify", "Mission storytelling", "Fundraising UX"],
+    challenge:
+      "The experience has to sell cashews, explain the purpose behind the brand, and support fundraising audiences without splitting the site into disconnected stories.",
+    approach:
+      "We organized the storefront around a clear snack offer, strong mission proof, farmer-story content, and fundraising pages that make the program feel simple to run and easy to share.",
+    deliverables: [
+      "Mission-led homepage",
+      "Product detail page",
+      "Farmer story page",
+      "Fundraising program pages",
+    ],
+    outcomes: [
+      "Stronger purpose-led positioning",
+      "Clearer product and impact connection",
+      "More usable fundraising journey",
+    ],
+    metrics: [
+      { label: "Priority", value: "Product, story, and impact" },
+      { label: "Scope", value: "Storefront + fundraiser flow" },
+    ],
+    media: [
+      {
+        src: "/images/project/hope-harvest/01-home.jpg",
+        alt: "Hope Harvest homepage showing snack with purpose positioning",
+      },
+      {
+        src: "/images/project/hope-harvest/02-product-cashews.jpg",
+        alt: "Hope Harvest cashews product page",
+      },
+      {
+        src: "/images/project/hope-harvest/03-farmer-stories.jpg",
+        alt: "Hope Harvest farmer stories page",
+      },
+      {
+        src: "/images/project/hope-harvest/04-fundraise.jpg",
+        alt: "Hope Harvest fundraising page",
+      },
+      {
+        src: "/images/project/hope-harvest/05-how-fundraiser-works.jpg",
+        alt: "Hope Harvest how the fundraiser works page",
+      },
+      {
+        src: "/images/project/hope-harvest/06-fundraising-toolkit.jpg",
+        alt: "Hope Harvest fundraising toolkit page",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/hope-harvest/01-home.jpg",
+      alt: "Hope Harvest ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/hope-harvest/logo.png",
+      alt: "Hope Harvest logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "nosh-balls",
+    externalUrl: "https://hopeharvest.ca/",
+    seo: {
+      title: "Hope Harvest Case Study",
+      description:
+        "Hope Harvest shows how Koala Studios shaped a purpose-led snack storefront around product clarity, farmer stories, and a fundraising journey.",
+      canonicalPath: "/work/hope-harvest",
+    },
+  },
+  {
+    slug: "nosh-balls",
+    status: "published",
+    title: "Nosh Balls",
+    client: "Nosh Balls",
+    sector: "Natural snack ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Snack ecommerce", "Wholesale"],
+    headline: "A clean snack catalog built for flavor, bundles, and wholesale.",
+    intro:
+      "Nosh Balls turns a playful snack lineup into a polished ecommerce experience with clear product discovery, bundle shopping, and wholesale support.",
+    services: ["Shopify", "Catalog UX", "Wholesale support"],
+    challenge:
+      "A natural snack brand has to make flavor choice, grab-and-go formats, bundles, and partner inquiries easy to navigate while keeping the experience bright and appetizing.",
+    approach:
+      "We shaped the storefront around fast product scanning, clear collection paths, bundle merchandising, and a wholesale page that gives retail partners a confident next step.",
+    deliverables: [
+      "Snack collection structure",
+      "Product detail pages",
+      "Bundle shopping path",
+      "Wholesale partner page",
+    ],
+    outcomes: [
+      "Clearer flavor discovery",
+      "Stronger bundle merchandising",
+      "More credible wholesale path",
+    ],
+    metrics: [
+      { label: "Priority", value: "Flavor choice + partner leads" },
+      { label: "Scope", value: "DTC + wholesale storefront" },
+    ],
+    media: [
+      {
+        src: "/images/project/nosh-balls/01-home.jpg",
+        alt: "Nosh Balls homepage with natural snack products",
+      },
+      {
+        src: "/images/project/nosh-balls/02-collection-all-products.jpg",
+        alt: "Nosh Balls all products collection page",
+      },
+      {
+        src: "/images/project/nosh-balls/03-collection-grab-go.jpg",
+        alt: "Nosh Balls grab and go collection page",
+      },
+      {
+        src: "/images/project/nosh-balls/04-product-hazelbomb.jpg",
+        alt: "Nosh Balls Hazelbomb product page",
+      },
+      {
+        src: "/images/project/nosh-balls/05-product-mix-match-bundle.jpg",
+        alt: "Nosh Balls mix and match bundle product page",
+      },
+      {
+        src: "/images/project/nosh-balls/06-wholesale-partner.jpg",
+        alt: "Nosh Balls wholesale partner page",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/nosh-balls/01-home.jpg",
+      alt: "Nosh Balls ecommerce case study card image",
+    },
+    logo: {
+      src: "/images/project/nosh-balls/logo.png",
+      alt: "Nosh Balls logo",
+      width: 220,
+      height: 80,
+    },
+    relatedSlug: "ara",
+    externalUrl: "https://www.noshballs.ca/",
+    seo: {
+      title: "Nosh Balls Case Study",
+      description:
+        "Nosh Balls shows how Koala Studios shaped a natural snack storefront around flavor discovery, bundle merchandising, and wholesale partner support.",
+      canonicalPath: "/work/nosh-balls",
     },
   },
 ];

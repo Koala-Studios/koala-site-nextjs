@@ -1,5 +1,47 @@
 # Execution Ledger
 
+## 2026-06-24 - Four Food + Beverage Case Studies
+
+Added four published case studies for Wellth Foods, Freezo, Hope Harvest, and
+Nosh Balls. Each entry uses customer-facing copy, qualitative outcomes only,
+SEO data, downloaded logos, six curated live-site screenshots, and related-work
+wiring from Medi-Crunch through the new cases back to Ara.
+
+- Added the four case-study objects to `lib/content/site-content.ts`, so the
+  homepage brand marquee, homepage/service featured-work carousels, `/work`
+  grid, `/work/[slug]` pages, metadata, JSON-LD, and sitemap all read from the
+  shared content source.
+- Added legacy redirects in `next.config.js` for `/projects/wellth-foods`,
+  `/projects/freezo`, `/projects/hope-harvest`, and `/projects/nosh-balls`.
+- Added six screenshots plus one logo under each new
+  `public/images/project/<slug>/` folder.
+- Rejected and replaced weak captures before finalizing assets: the sparse Hope
+  Harvest collection screenshot, a Hope Harvest black-video about capture, the
+  sparse Wellth quick-order screenshot, and a duplicate Freezo collection
+  screenshot.
+- Updated `.agent/case-study-addition-guide.md` with a screenshot quality gate:
+  workers must reject empty, placeholder, footer-heavy, black-video,
+  unloaded-media, or mostly blank screenshots and visually review a contact
+  sheet before referencing assets.
+
+Verification: final source contact sheets under
+`output/playwright/case-study-additions-2026-06-24/` were visually checked for
+Wellth Foods, Freezo, Hope Harvest, Nosh Balls, and logos. Each new project
+folder contains exactly seven nonempty files: six screenshots and one logo, with
+no leftover `candidate-*` files. `& 'C:\Program Files\nodejs\npm.cmd' run
+typecheck`, `& 'C:\Program Files\nodejs\npm.cmd' run lint`, and `& 'C:\Program
+Files\nodejs\npm.cmd' run build` pass; build generates 34 app paths and
+`/work/[slug]` shows `+13 more paths`. Built sitemap output contains all four
+new `/work/<slug>` URLs, and built HTML for each contains an `<h1>`, expected
+title text, `CreativeWork` JSON-LD, and project image references. Production
+server QA on port 3037 with Playwright checked `/`, `/work`,
+`/services/shopify-design-and-build`, and all four new `/work/<slug>` pages at
+1440x1100 and 390x900. All four new detail pages have one visible H1, expected
+title, no broken visible images, no case-page horizontal overflow, and project
+image references; all four `/projects/<slug>` URLs return `308` redirects to
+their matching `/work/<slug>` paths. The existing desktop `/work` overflow
+remains present and was not introduced by these case-detail pages.
+
 ## 2026-06-22 - Case Study Screenshot Popover Recapture
 
 Replaced the live-site screenshots for the six newly added case studies after

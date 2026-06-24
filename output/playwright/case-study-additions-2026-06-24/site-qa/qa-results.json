@@ -1,0 +1,208 @@
+{
+  "results": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "title": "Shopify Design, Meta Ads & Email Marketing Agency | Koala Studios",
+      "h1s": [
+        "We build Shopify storesShopify storesShopify storesthat sell."
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 93,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/home-desktop.jpg"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/work",
+      "title": "Ecommerce Case Studies: Shopify Stores That Sell | Koala Studios",
+      "h1s": [
+        "Work we've shipped."
+      ],
+      "titleOk": true,
+      "overflowX": 152,
+      "blankImgs": [],
+      "projectRefCount": 16,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-desktop.jpg"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/services/shopify-design-and-build",
+      "title": "Shopify Design & Development Agency in Toronto | Koala Studios",
+      "h1s": [
+        "Shopify stores designed to sell."
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 90,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/services-shopify-design-and-build-desktop.jpg"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/work/wellth-foods",
+      "title": "Wellth Foods Case Study | Koala Studios",
+      "h1s": [
+        "Wellth Foods"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-wellth-foods-desktop.jpg"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/work/freezo",
+      "title": "Freezo Case Study | Koala Studios",
+      "h1s": [
+        "Freezo"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-freezo-desktop.jpg"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/work/hope-harvest",
+      "title": "Hope Harvest Case Study | Koala Studios",
+      "h1s": [
+        "Hope Harvest"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-hope-harvest-desktop.jpg"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/work/nosh-balls",
+      "title": "Nosh Balls Case Study | Koala Studios",
+      "h1s": [
+        "Nosh Balls"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-nosh-balls-desktop.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "title": "Shopify Design, Meta Ads & Email Marketing Agency | Koala Studios",
+      "h1s": [
+        "We build Shopify storesShopify storesShopify storesthat sell."
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 93,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/home-mobile.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/work",
+      "title": "Ecommerce Case Studies: Shopify Stores That Sell | Koala Studios",
+      "h1s": [
+        "Work we've shipped."
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 16,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-mobile.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/services/shopify-design-and-build",
+      "title": "Shopify Design & Development Agency in Toronto | Koala Studios",
+      "h1s": [
+        "Shopify stores designed to sell."
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 90,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/services-shopify-design-and-build-mobile.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/work/wellth-foods",
+      "title": "Wellth Foods Case Study | Koala Studios",
+      "h1s": [
+        "Wellth Foods"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-wellth-foods-mobile.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/work/freezo",
+      "title": "Freezo Case Study | Koala Studios",
+      "h1s": [
+        "Freezo"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-freezo-mobile.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/work/hope-harvest",
+      "title": "Hope Harvest Case Study | Koala Studios",
+      "h1s": [
+        "Hope Harvest"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-hope-harvest-mobile.jpg"
+    },
+    {
+      "viewport": "mobile",
+      "route": "/work/nosh-balls",
+      "title": "Nosh Balls Case Study | Koala Studios",
+      "h1s": [
+        "Nosh Balls"
+      ],
+      "titleOk": true,
+      "overflowX": 0,
+      "blankImgs": [],
+      "projectRefCount": 9,
+      "screenshot": "output/playwright/case-study-additions-2026-06-24/site-qa/work-nosh-balls-mobile.jpg"
+    }
+  ],
+  "redirectResults": [
+    {
+      "slug": "wellth-foods",
+      "status": 308,
+      "location": "/work/wellth-foods"
+    },
+    {
+      "slug": "freezo",
+      "status": 308,
+      "location": "/work/freezo"
+    },
+    {
+      "slug": "hope-harvest",
+      "status": 308,
+      "location": "/work/hope-harvest"
+    },
+    {
+      "slug": "nosh-balls",
+      "status": 308,
+      "location": "/work/nosh-balls"
+    }
+  ]
+}

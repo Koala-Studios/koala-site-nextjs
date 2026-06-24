@@ -73,6 +73,26 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/projects/wellth-foods",
+        destination: "/work/wellth-foods",
+        permanent: true,
+      },
+      {
+        source: "/projects/freezo",
+        destination: "/work/freezo",
+        permanent: true,
+      },
+      {
+        source: "/projects/hope-harvest",
+        destination: "/work/hope-harvest",
+        permanent: true,
+      },
+      {
+        source: "/projects/nosh-balls",
+        destination: "/work/nosh-balls",
+        permanent: true,
+      },
+      {
         source: "/projects/nektr",
         destination: "/work/nektr",
         permanent: true,

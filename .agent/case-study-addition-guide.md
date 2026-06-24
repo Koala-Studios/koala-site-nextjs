@@ -1,6 +1,6 @@
 # Case Study Addition Guide
 
-Last verified against the repo on 2026-06-22.
+Last verified against the repo on 2026-06-24.
 
 Use this guide when a worker is asked to add a new client case study to the Koala site, especially when the user provides a live client website and asks the worker to create the copy from that site.
 
@@ -74,11 +74,19 @@ When the user provides a live website, use the local Playwright skill or Playwri
 Minimum screenshot set per website:
 
 - homepage,
-- at least one collection or category page,
+- at least one useful collection or category page when the live site has one worth showing,
 - at least one product page,
 - at least two additional useful views such as a second collection, second product, about/story page, wholesale page, custom order page, location page, FAQ page, or brand page.
 
 Store at least five screenshots per website. Six is safer because the case-study detail page can use one hero image plus several supporting media frames.
+
+Quality gate before saving assets:
+
+- Do not keep or commit a screenshot just because it was captured from the sitemap. It must showcase something meaningful about the finished site.
+- Reject empty, placeholder, footer-heavy, broken, black-video, unloaded-media, or mostly blank collection screenshots.
+- If a collection page has too little content to sell the work, replace it with a stronger product, story, about, wholesale, FAQ, locator, fundraiser, or other supporting page.
+- Wait for popovers to appear, close them, and confirm they are gone before the screenshot.
+- Make a contact sheet or equivalent visual review for every new case-study asset set. Replace weak captures before referencing them in `lib/content/site-content.ts`.
 
 Preferred paths:
 

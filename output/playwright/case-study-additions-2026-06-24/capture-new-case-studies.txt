@@ -1,0 +1,235 @@
+async (page) => {
+  const viewport = { width: 1440, height: 1100 };
+  const jobs = [
+    {
+      slug: "wellth-foods",
+      base: "https://wellth-foods.com",
+      pages: [
+        ["/", "public/images/project/wellth-foods/01-home.jpg"],
+        ["/collections/quick-order", "public/images/project/wellth-foods/02-collection-quick-order.jpg"],
+        ["/products/yellow-pea-pasta", "public/images/project/wellth-foods/03-product-yellow-pea-pasta.jpg"],
+        ["/pages/nutrition", "public/images/project/wellth-foods/04-nutrition.jpg"],
+        ["/pages/wholesale-partner", "public/images/project/wellth-foods/05-wholesale-partner.jpg"],
+        ["/pages/store-locator", "public/images/project/wellth-foods/06-store-locator.jpg"],
+      ],
+    },
+    {
+      slug: "freezo",
+      base: "https://www.drinkfreezo.com",
+      pages: [
+        ["/", "public/images/project/freezo/01-home.jpg"],
+        ["/collections/order-now", "public/images/project/freezo/02-collection-order-now.jpg"],
+        ["/collections/commercial-sales", "public/images/project/freezo/03-collection-commercial-sales.jpg"],
+        ["/products/coffee-freezo", "public/images/project/freezo/04-product-coffee-freezo.jpg"],
+        ["/pages/commercial", "public/images/project/freezo/05-commercial.jpg"],
+        ["/pages/about-us", "public/images/project/freezo/06-about.jpg"],
+      ],
+    },
+    {
+      slug: "hope-harvest",
+      base: "https://hopeharvest.ca",
+      pages: [
+        ["/", "public/images/project/hope-harvest/01-home.jpg"],
+        ["/collections/frontpage", "public/images/project/hope-harvest/02-collection-frontpage.jpg"],
+        ["/products/cashews", "public/images/project/hope-harvest/03-product-cashews.jpg"],
+        ["/pages/farmer-stories", "public/images/project/hope-harvest/04-farmer-stories.jpg"],
+        ["/pages/fundraise", "public/images/project/hope-harvest/05-fundraise.jpg"],
+        ["/pages/wholesale", "public/images/project/hope-harvest/06-wholesale.jpg"],
+      ],
+    },
+    {
+      slug: "nosh-balls",
+      base: "https://www.noshballs.ca",
+      pages: [
+        ["/", "public/images/project/nosh-balls/01-home.jpg"],
+        ["/collections/all-products", "public/images/project/nosh-balls/02-collection-all-products.jpg"],
+        ["/collections/grab-go", "public/images/project/nosh-balls/03-collection-grab-go.jpg"],
+        ["/products/hazelbomb", "public/images/project/nosh-balls/04-product-hazelbomb.jpg"],
+        ["/products/mix-match-bundle", "public/images/project/nosh-balls/05-product-mix-match-bundle.jpg"],
+        ["/pages/wholesale-partner", "public/images/project/nosh-balls/06-wholesale-partner.jpg"],
+      ],
+    },
+  ];
+
+  async function dismissAndClean() {
+    await page.keyboard.press("Escape").catch(() => undefined);
+    await page.waitForTimeout(300);
+    await page.evaluate(() => {
+      const closeText =
+        /^(close|dismiss|no thanks|no, thanks|maybe later|not now|continue shopping|skip|x|×)$/i;
+      const suspect =
+        /(klaviyo|privy|justuno|smile|rewards|bucks|ltkpopup|newsletter|popup|modal|gorgias|chat|attentive|postscript|spin|discount|coupon|notify|subscribe|sms|email)/i;
+
+      function visible(element) {
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          Number(style.opacity) !== 0 &&
+          rect.width > 4 &&
+          rect.height > 4
+        );
+      }
+
+      function label(element) {
+        return [
+          element.getAttribute("aria-label"),
+          element.getAttribute("title"),
+          element.textContent,
+          typeof element.className === "string" ? element.className : "",
+          element.id,
+        ]
+          .filter(Boolean)
+          .join(" ");
+      }
+
+      const clickable = Array.from(
+        document.querySelectorAll("button, [role='button'], a, [aria-label]")
+      );
+      for (const element of clickable.reverse()) {
+        if (!visible(element)) {
+          continue;
+        }
+        const text = label(element).trim();
+        if (closeText.test(text) || (/close|dismiss/i.test(text) && suspect.test(text))) {
+          element.click();
+        }
+      }
+
+      const viewportArea = window.innerWidth * window.innerHeight;
+      const elements = Array.from(document.querySelectorAll("body *")).reverse();
+      for (const element of elements) {
+        if (!visible(element)) {
+          continue;
+        }
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        const width = Math.max(0, Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0));
+        const height = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+        const areaRatio = (width * height) / viewportArea;
+        const fixed = style.position === "fixed";
+        const centered =
+          rect.left < window.innerWidth * 0.75 &&
+          rect.right > window.innerWidth * 0.25 &&
+          rect.top < window.innerHeight * 0.75 &&
+          rect.bottom > window.innerHeight * 0.18;
+        const highZ = Number.parseInt(style.zIndex, 10) > 999;
+        const text = label(element);
+        const iframe = element.tagName === "IFRAME";
+
+        if (
+          (iframe && fixed && suspect.test(text)) ||
+          (fixed && suspect.test(text)) ||
+          (fixed && centered && highZ && areaRatio > 0.025) ||
+          (fixed && centered && areaRatio > 0.12) ||
+          (highZ && centered && areaRatio > 0.18)
+        ) {
+          element.remove();
+        }
+      }
+
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+    await page.waitForTimeout(500);
+  }
+
+  async function overlayReport() {
+    return await page.evaluate(() => {
+      const viewportArea = window.innerWidth * window.innerHeight;
+      const suspect =
+        /(congratulations|claim|spin|win|discount|coupon|bucks|rewards|notify me|newsletter|sign up|subscribe|sms|email)/i;
+      return Array.from(document.querySelectorAll("body *"))
+        .map((element) => {
+          const style = getComputedStyle(element);
+          const rect = element.getBoundingClientRect();
+          if (
+            style.display === "none" ||
+            style.visibility === "hidden" ||
+            Number(style.opacity) === 0 ||
+            rect.width < 80 ||
+            rect.height < 60
+          ) {
+            return null;
+          }
+          const width = Math.max(0, Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0));
+          const height = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+          const areaRatio = (width * height) / viewportArea;
+          const text = (element.innerText || element.getAttribute("aria-label") || "").slice(0, 140);
+          const fixed = style.position === "fixed";
+          const highZ = Number.parseInt(style.zIndex, 10) > 999;
+          const centered =
+            rect.left < window.innerWidth * 0.75 &&
+            rect.right > window.innerWidth * 0.25 &&
+            rect.top < window.innerHeight * 0.75 &&
+            rect.bottom > window.innerHeight * 0.18;
+
+          if ((fixed && suspect.test(text)) || (fixed && centered && areaRatio > 0.08) || (highZ && centered && areaRatio > 0.12)) {
+            return {
+              tag: element.tagName,
+              areaRatio: Number(areaRatio.toFixed(3)),
+              text,
+              position: style.position,
+              zIndex: style.zIndex,
+            };
+          }
+          return null;
+        })
+        .filter(Boolean)
+        .slice(0, 10);
+    });
+  }
+
+  async function capture(job, path, output) {
+    const url = `${job.base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+    await page.setViewportSize(viewport);
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await page.waitForLoadState("networkidle", { timeout: 9000 }).catch(() => undefined);
+    await page.waitForTimeout(7000);
+    await dismissAndClean();
+    await page.waitForTimeout(1200);
+    await dismissAndClean();
+    await page.evaluate(() => window.scrollTo(0, 0)).catch(() => undefined);
+    await page.waitForTimeout(650);
+    const overlaysBeforeShot = await overlayReport();
+    await page.screenshot({
+      path: output,
+      type: "jpeg",
+      quality: 82,
+      fullPage: false,
+      animations: "disabled",
+      timeout: 45000,
+    });
+    return {
+      slug: job.slug,
+      url,
+      output,
+      overlaysBeforeShot,
+      title: await page.title().catch(() => ""),
+    };
+  }
+
+  const results = [];
+  for (const job of jobs) {
+    await page.context().clearCookies().catch(() => undefined);
+    await page.goto("about:blank").catch(() => undefined);
+    for (const [path, output] of job.pages) {
+      try {
+        results.push(await capture(job, path, output));
+      } catch (error) {
+        results.push({
+          slug: job.slug,
+          path,
+          output,
+          error: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }
+  }
+
+  return results;
+}
