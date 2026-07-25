@@ -1,0 +1,331 @@
+- generic [active] [ref=f1e1]:
+  - link "Skip to content" [ref=f1e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f1e4]:
+    - link "Koala Studios home" [ref=f1e5] [cursor=pointer]:
+      - /url: /
+    - navigation "Primary" [ref=f1e6]:
+      - link "Work" [ref=f1e7] [cursor=pointer]:
+        - /url: /work
+      - link "Services" [ref=f1e9] [cursor=pointer]:
+        - /url: /services
+      - link "Contact" [ref=f1e10] [cursor=pointer]:
+        - /url: /contact
+    - link "Start a project" [ref=f1e11] [cursor=pointer]:
+      - /url: /contact
+  - main [ref=f1e16]:
+    - generic [ref=f1e18]:
+      - region [ref=f1e19]:
+        - generic [ref=f1e20]:
+          - heading "We build Shopify stores that sell." [level=1] [ref=f1e21]:
+            - generic [ref=f1e23]:
+              - text: We build
+              - generic [ref=f1e24]:
+                - generic [ref=f1e25]: Shopify stores
+                - generic [ref=f1e26]: Shopify stores
+            - generic [ref=f1e27]: that sell.
+          - link "See our work" [ref=f1e31] [cursor=pointer]:
+            - /url: /work
+        - generic [ref=f1e37]: Scroll
+      - generic [ref=f1e41]:
+        - generic [ref=f1e42]:
+          - generic [ref=f1e43]: Shopify design & build
+          - generic [ref=f1e45]: Meta ad management
+          - generic [ref=f1e47]: Email marketing
+          - generic [ref=f1e49]: Brand & content
+          - generic [ref=f1e51]: Conversion design
+        - generic [ref=f1e53]:
+          - generic [ref=f1e54]: Shopify design & build
+          - generic [ref=f1e56]: Meta ad management
+          - generic [ref=f1e58]: Email marketing
+          - generic [ref=f1e60]: Brand & content
+          - generic [ref=f1e62]: Conversion design
+      - region [ref=f1e64]:
+        - heading "One team from first click to repeat order." [level=2] [ref=f1e66]:
+          - generic [ref=f1e67]: One
+          - generic [ref=f1e69]: team
+          - generic [ref=f1e71]: from
+          - generic [ref=f1e73]: first
+          - generic [ref=f1e75]: click
+          - generic [ref=f1e77]: to
+          - generic [ref=f1e79]: repeat
+          - generic [ref=f1e81]: order.
+        - generic [ref=f1e83]:
+          - link "01 Shopify design & build Storefronts designed around your product story and built clean. Fast pages, sharp systems, easy to run after launch. Store design Theme build CRO Migrations" [ref=f1e84] [cursor=pointer]:
+            - /url: /services/shopify-design-and-build
+            - generic [ref=f1e85]: "01"
+            - generic [ref=f1e86]:
+              - generic [ref=f1e87]: Shopify design & build
+              - generic [ref=f1e88]: Storefronts designed around your product story and built clean. Fast pages, sharp systems, easy to run after launch.
+              - generic [ref=f1e89]:
+                - generic [ref=f1e90]: Store design
+                - generic [ref=f1e91]: Theme build
+                - generic [ref=f1e92]: CRO
+                - generic [ref=f1e93]: Migrations
+          - link "02 Meta ad management Creative-first campaigns on Facebook and Instagram. We design the ads, run the structure, and report in plain language. Creative Campaigns Testing Reporting" [ref=f1e97] [cursor=pointer]:
+            - /url: /services/meta-ads-management
+            - generic [ref=f1e98]: "02"
+            - generic [ref=f1e99]:
+              - generic [ref=f1e100]: Meta ad management
+              - generic [ref=f1e101]: Creative-first campaigns on Facebook and Instagram. We design the ads, run the structure, and report in plain language.
+              - generic [ref=f1e102]:
+                - generic [ref=f1e103]: Creative
+                - generic [ref=f1e104]: Campaigns
+                - generic [ref=f1e105]: Testing
+                - generic [ref=f1e106]: Reporting
+          - link "03 Email marketing Flows and campaigns that turn one-time buyers into repeat customers, designed, written, and wired into your store. Klaviyo Flows Campaigns Segmentation" [ref=f1e110] [cursor=pointer]:
+            - /url: /services/email-marketing
+            - generic [ref=f1e111]: "03"
+            - generic [ref=f1e112]:
+              - generic [ref=f1e113]: Email marketing
+              - generic [ref=f1e114]: Flows and campaigns that turn one-time buyers into repeat customers, designed, written, and wired into your store.
+              - generic [ref=f1e115]:
+                - generic [ref=f1e116]: Klaviyo
+                - generic [ref=f1e117]: Flows
+                - generic [ref=f1e118]: Campaigns
+                - generic [ref=f1e119]: Segmentation
+          - link "04 Packaging & 3D renders Label and packaging design paired with photoreal 3D product renders. Shelf-ready artwork and store-ready hero visuals, no photoshoot required. Label design Packaging 3D renders Print files" [ref=f1e123] [cursor=pointer]:
+            - /url: /services/packaging-and-3d-renders
+            - generic [ref=f1e124]: "04"
+            - generic [ref=f1e125]:
+              - generic [ref=f1e126]: Packaging & 3D renders
+              - generic [ref=f1e127]: Label and packaging design paired with photoreal 3D product renders. Shelf-ready artwork and store-ready hero visuals, no photoshoot required.
+              - generic [ref=f1e128]:
+                - generic [ref=f1e129]: Label design
+                - generic [ref=f1e130]: Packaging
+                - generic [ref=f1e131]: 3D renders
+                - generic [ref=f1e132]: Print files
+      - region [ref=f1e136]:
+        - paragraph [ref=f1e137]: Brands we've built for
+        - generic [ref=f1e139]:
+          - generic [ref=f1e140]:
+            - img "Magnum logo" [ref=f1e142]
+            - generic [ref=f1e143]: Allo
+            - img "Stlth logo" [ref=f1e146]
+            - img "Mercato di Bellina logo" [ref=f1e148]
+            - img "Unity Supplements logo" [ref=f1e150]
+            - img "Iron Brothers logo" [ref=f1e152]
+            - img "Bull Nutrition logo" [ref=f1e154]
+            - img "Whiskey Road logo" [ref=f1e156]
+            - img "Medi-Crunch logo" [ref=f1e158]
+            - img "Wellth Foods logo" [ref=f1e160]
+            - img "Freezo logo" [ref=f1e162]
+            - img "Hope Harvest logo" [ref=f1e164]
+            - img "Nosh Balls logo" [ref=f1e166]
+          - generic [ref=f1e167]: Allo
+      - region [ref=f1e194]:
+        - generic [ref=f1e195]:
+          - heading "Featured Work" [level=2] [ref=f1e197]:
+            - generic [ref=f1e198]: Featured
+            - generic [ref=f1e200]: Work
+          - link "See all cases" [ref=f1e202] [cursor=pointer]:
+            - /url: /work
+        - generic [ref=f1e203]:
+          - generic [ref=f1e205]:
+            - link "Ara ecommerce case study card image 01 Ara Shopify" [ref=f1e207] [cursor=pointer]:
+              - /url: /work/ara
+              - generic [ref=f1e208]:
+                - img "Ara ecommerce case study card image" [ref=f1e209]
+                - generic [ref=f1e211]: A calmer product story for a niche coffee ritual.
+              - generic [ref=f1e213]:
+                - generic [ref=f1e214]: "01"
+                - generic [ref=f1e215]: Ara
+                - generic [ref=f1e216]: Shopify
+            - link "Magnum ecommerce design case study card image 02 Magnum Design" [ref=f1e221] [cursor=pointer]:
+              - /url: /work/magnum
+              - generic [ref=f1e222]:
+                - img "Magnum ecommerce design case study card image" [ref=f1e223]
+                - generic [ref=f1e225]: A bolder ecommerce story with cleaner proof.
+              - generic [ref=f1e227]:
+                - generic [ref=f1e228]: "02"
+                - generic [ref=f1e229]: Magnum
+                - generic [ref=f1e230]: Design
+            - link "Nektr food and beverage ecommerce case study card image 03 Nektr Lifestyle" [ref=f1e235] [cursor=pointer]:
+              - /url: /work/nektr
+              - generic [ref=f1e236]:
+                - img "Nektr food and beverage ecommerce case study card image" [ref=f1e237]
+                - generic [ref=f1e239]: A disciplined browse path for an expressive product line.
+              - generic [ref=f1e241]:
+                - generic [ref=f1e242]: "03"
+                - generic [ref=f1e243]: Nektr
+                - generic [ref=f1e244]: Lifestyle
+            - link "Allo wellness ecommerce case study card image 04 Allo Development" [ref=f1e249] [cursor=pointer]:
+              - /url: /work/allo
+              - generic [ref=f1e250]:
+                - img "Allo wellness ecommerce case study card image" [ref=f1e251]
+                - generic [ref=f1e253]: A calmer product story with stronger proof.
+              - generic [ref=f1e255]:
+                - generic [ref=f1e256]: "04"
+                - generic [ref=f1e257]: Allo
+                - generic [ref=f1e258]: Development
+            - link "Stlth product devices on a dark studio background 05 Stlth Shopify" [ref=f1e263] [cursor=pointer]:
+              - /url: /work/stlth
+              - generic [ref=f1e264]:
+                - img "Stlth product devices on a dark studio background" [ref=f1e265]
+                - generic [ref=f1e267]: A tighter long-form story for a bold consumer brand.
+              - generic [ref=f1e269]:
+                - generic [ref=f1e270]: "05"
+                - generic [ref=f1e271]: Stlth
+                - generic [ref=f1e272]: Shopify
+            - link "Elikai lifestyle ecommerce case study card image 06 Elikai Lifestyle" [ref=f1e277] [cursor=pointer]:
+              - /url: /work/elikai
+              - generic [ref=f1e278]:
+                - img "Elikai lifestyle ecommerce case study card image" [ref=f1e279]
+                - generic [ref=f1e281]: A quiet product presentation for daily-use lifestyle.
+              - generic [ref=f1e283]:
+                - generic [ref=f1e284]: "06"
+                - generic [ref=f1e285]: Elikai
+                - generic [ref=f1e286]: Lifestyle
+            - link "Mercato di Bellina ecommerce case study card image 07 Mercato di Bellina Shopify" [ref=f1e291] [cursor=pointer]:
+              - /url: /work/mercato-di-bellina
+              - generic [ref=f1e292]:
+                - img "Mercato di Bellina ecommerce case study card image" [ref=f1e293]
+                - generic [ref=f1e295]: A specialty Italian market organized for confident discovery.
+              - generic [ref=f1e297]:
+                - generic [ref=f1e298]: "07"
+                - generic [ref=f1e299]: Mercato di Bellina
+                - generic [ref=f1e300]: Shopify
+            - link "Unity Supplements ecommerce case study card image 08 Unity Supplements Shopify" [ref=f1e305] [cursor=pointer]:
+              - /url: /work/unity-supplements
+              - generic [ref=f1e306]:
+                - img "Unity Supplements ecommerce case study card image" [ref=f1e307]
+                - generic [ref=f1e309]: A supplement catalog built around flavor, choice, and clarity.
+              - generic [ref=f1e311]:
+                - generic [ref=f1e312]: "08"
+                - generic [ref=f1e313]: Unity Supplements
+                - generic [ref=f1e314]: Shopify
+            - link "Iron Brothers ecommerce case study card image 09 Iron Brothers Shopify" [ref=f1e319] [cursor=pointer]:
+              - /url: /work/iron-brothers
+              - generic [ref=f1e320]:
+                - img "Iron Brothers ecommerce case study card image" [ref=f1e321]
+                - generic [ref=f1e323]: A harder-hitting supplement store with a cleaner product path.
+              - generic [ref=f1e325]:
+                - generic [ref=f1e326]: "09"
+                - generic [ref=f1e327]: Iron Brothers
+                - generic [ref=f1e328]: Shopify
+            - link "Bull Nutrition ecommerce case study card image 10 Bull Nutrition Development" [ref=f1e333] [cursor=pointer]:
+              - /url: /work/bull-nutrition
+              - generic [ref=f1e334]:
+                - img "Bull Nutrition ecommerce case study card image" [ref=f1e335]
+                - generic [ref=f1e337]: A Canadian supplement storefront built for stacks and retail reach.
+              - generic [ref=f1e339]:
+                - generic [ref=f1e340]: "10"
+                - generic [ref=f1e341]: Bull Nutrition
+                - generic [ref=f1e342]: Development
+            - link "Whiskey Road ecommerce case study card image 11 Whiskey Road Lifestyle" [ref=f1e347] [cursor=pointer]:
+              - /url: /work/whiskey-road
+              - generic [ref=f1e348]:
+                - img "Whiskey Road ecommerce case study card image" [ref=f1e349]
+                - generic [ref=f1e351]: A western headwear catalog shaped for patches, hats, and custom orders.
+              - generic [ref=f1e353]:
+                - generic [ref=f1e354]: "11"
+                - generic [ref=f1e355]: Whiskey Road
+                - generic [ref=f1e356]: Lifestyle
+            - link "Medi-Crunch ecommerce case study card image 12 Medi-Crunch Shopify" [ref=f1e361] [cursor=pointer]:
+              - /url: /work/medicrunch
+              - generic [ref=f1e362]:
+                - img "Medi-Crunch ecommerce case study card image" [ref=f1e363]
+                - generic [ref=f1e365]: A pet-health product story that makes medication treats easy to understand.
+              - generic [ref=f1e367]:
+                - generic [ref=f1e368]: "12"
+                - generic [ref=f1e369]: Medi-Crunch
+                - generic [ref=f1e370]: Shopify
+            - link "Wellth Foods ecommerce case study card image 13 Wellth Foods Shopify" [ref=f1e375] [cursor=pointer]:
+              - /url: /work/wellth-foods
+              - generic [ref=f1e376]:
+                - img "Wellth Foods ecommerce case study card image" [ref=f1e377]
+                - generic [ref=f1e379]: A polished food storefront built around product trust.
+              - generic [ref=f1e381]:
+                - generic [ref=f1e382]: "13"
+                - generic [ref=f1e383]: Wellth Foods
+                - generic [ref=f1e384]: Shopify
+            - link "Freezo ecommerce case study card image 14 Freezo Shopify" [ref=f1e389] [cursor=pointer]:
+              - /url: /work/freezo
+              - generic [ref=f1e390]:
+                - img "Freezo ecommerce case study card image" [ref=f1e391]
+                - generic [ref=f1e393]: An iced coffee storefront with retail and commercial range.
+              - generic [ref=f1e395]:
+                - generic [ref=f1e396]: "14"
+                - generic [ref=f1e397]: Freezo
+                - generic [ref=f1e398]: Shopify
+            - link "Hope Harvest ecommerce case study card image 15 Hope Harvest Lifestyle" [ref=f1e403] [cursor=pointer]:
+              - /url: /work/hope-harvest
+              - generic [ref=f1e404]:
+                - img "Hope Harvest ecommerce case study card image" [ref=f1e405]
+                - generic [ref=f1e407]: A purpose-led snack storefront with trust built in.
+              - generic [ref=f1e409]:
+                - generic [ref=f1e410]: "15"
+                - generic [ref=f1e411]: Hope Harvest
+                - generic [ref=f1e412]: Lifestyle
+            - link "Nosh Balls ecommerce case study card image 16 Nosh Balls Shopify" [ref=f1e417] [cursor=pointer]:
+              - /url: /work/nosh-balls
+              - generic [ref=f1e418]:
+                - img "Nosh Balls ecommerce case study card image" [ref=f1e419]
+                - generic [ref=f1e421]: A clean snack catalog built for flavor, bundles, and wholesale.
+              - generic [ref=f1e423]:
+                - generic [ref=f1e424]: "16"
+                - generic [ref=f1e425]: Nosh Balls
+                - generic [ref=f1e426]: Shopify
+          - generic "Work carousel controls" [ref=f1e433]:
+            - button "Previous work" [disabled] [ref=f1e434]
+            - button "Next work" [disabled] [ref=f1e437]
+      - region [ref=f1e440]:
+        - generic [ref=f1e441]:
+          - heading "Let's build something that sells." [level=2] [ref=f1e443]:
+            - generic [ref=f1e444]: Let's
+            - generic [ref=f1e446]: build
+            - generic [ref=f1e448]: something
+            - generic [ref=f1e450]: that
+            - generic [ref=f1e452]: sells.
+          - link "Start a project with Koala Studios" [ref=f1e454] [cursor=pointer]:
+            - /url: /contact
+            - img [ref=f1e456]:
+              - generic [ref=f1e457]: Let's work together · Koala Studios · Let's work together · Koala Studios ·
+  - contentinfo [ref=f1e461]:
+    - link "Start a project" [ref=f1e462] [cursor=pointer]:
+      - /url: /contact
+      - generic [ref=f1e464]:
+        - generic [ref=f1e465]:
+          - generic [ref=f1e466]: Start a project
+          - generic [ref=f1e469]: Start a project
+          - generic [ref=f1e472]: Start a project
+          - generic [ref=f1e475]: Start a project
+          - generic [ref=f1e478]: Start a project
+          - generic [ref=f1e481]: Start a project
+        - generic [ref=f1e484]:
+          - generic [ref=f1e485]: Start a project
+          - generic [ref=f1e488]: Start a project
+          - generic [ref=f1e491]: Start a project
+          - generic [ref=f1e494]: Start a project
+          - generic [ref=f1e497]: Start a project
+          - generic [ref=f1e500]: Start a project
+    - generic [ref=f1e503]:
+      - generic [ref=f1e504]:
+        - generic [ref=f1e505]:
+          - img "Koala Studios" [ref=f1e506]
+          - paragraph [ref=f1e507]: Shopify stores, Meta ads, and email marketing for brands that want to grow.
+          - link "hello@koalastudios.ca" [ref=f1e508] [cursor=pointer]:
+            - /url: mailto:hello@koalastudios.ca
+        - navigation "Footer" [ref=f1e509]:
+          - paragraph [ref=f1e510]: Site
+          - link "Work" [ref=f1e511] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=f1e512] [cursor=pointer]:
+            - /url: /services
+          - link "Contact" [ref=f1e513] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=f1e514]:
+          - paragraph [ref=f1e515]: Services
+          - link "Shopify design & build" [ref=f1e516] [cursor=pointer]:
+            - /url: /services/shopify-design-and-build
+          - link "Meta ad management" [ref=f1e517] [cursor=pointer]:
+            - /url: /services/meta-ads-management
+          - link "Email marketing" [ref=f1e518] [cursor=pointer]:
+            - /url: /services/email-marketing
+          - link "Packaging & 3D renders" [ref=f1e519] [cursor=pointer]:
+            - /url: /services/packaging-and-3d-renders
+      - generic [ref=f1e520]:
+        - paragraph [ref=f1e521]: © 2026 Koala Studios· Toronto, Canada
+        - link "Privacy" [ref=f1e523] [cursor=pointer]:
+          - /url: /privacy
+  - button "Open Next.js Dev Tools" [ref=f1e529] [cursor=pointer]

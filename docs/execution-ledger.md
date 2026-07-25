@@ -1,5 +1,92 @@
 # Execution Ledger
 
+## 2026-07-25 - Homepage Helix Settle Overshoot
+
+Replaced an unsuccessful late sinusoidal settle pulse with a quartic
+ease-in-out back curve. Matching controls at both endpoints give the scene zero
+starting and ending velocity, while one slightly raised middle control creates
+a single shallow pass beyond the resting point. There is no separate
+acceleration pulse, spring, or oscillation. Opacity still uses the original
+cubic-bezier progress, and the tuned helix dimensions and duration are
+unchanged.
+
+Verification was intentionally left to the user for this motion-tuning pass;
+no additional browser or build check was requested.
+
+## 2026-07-25 - Homepage Helix Framing And Outward Orientation
+
+Corrected the two remaining homepage 3D transition issues without changing the
+tuned helix radius, height, turn count, duration, or easing.
+
+- Reversed the transition rig yaw so each authored scene's +Z front points
+  along the helix's outward radial vector instead of toward its center. The
+  settled pose remains at zero yaw.
+- Added symmetric vertical WebGL overscan beyond the visual column so entering
+  and leaving models are not sliced at an inner canvas boundary.
+- Expanded the camera's vertical field of view by exactly the overscan ratio
+  and continued measuring scene fit against the original logical frame. This
+  preserves the existing scene size and trajectory while moving only the
+  renderer's clipping boundary.
+
+Verification: `& 'C:\Program Files\nodejs\npm.cmd' run typecheck`,
+`& 'C:\Program Files\nodejs\npm.cmd' run lint`, and
+`& 'C:\Program Files\nodejs\npm.cmd' run build` pass. Playwright at 1720x825
+confirmed the hero WebGL canvas moved from the visual-column bounds
+(y=130.6-699.6) to just beyond the viewport (y=-1.4-831.6), with no console
+errors. A 390x844 responsive check showed no visible scene clipping during
+early or midpoint transition captures; evidence is under
+`output/playwright/hero-spiral/`.
+
+## 2026-07-25 - Homepage Two-Scene Y-Axis Helix Transition
+
+Reworked the homepage 3D scene swap into a discrete transition between exactly
+two scenes. The incoming scene descends from above on a fixed-radius helix
+around Three.js' vertical Y axis while the outgoing scene continues from the
+settled pose down the next segment of that same helix.
+
+- Added a short-lived transition state with explicit `from` and `to` scene
+  indices; all other scene rigs remain hidden.
+- Wrapped each authored scene in a transition rig so helix translation and
+  Y-axis rotation do not corrupt the scene's own animation.
+- Kept the helix radius mathematically constant. Only Y position and angular
+  phase change, with natural perspective coming from the Z component.
+- Restored the destination rig to an identity transform after every swap, so
+  the active scene is stationary on the helix between word changes.
+- Preserved an instant scene change for reduced-motion users.
+
+Verification: `& 'C:\Program Files\nodejs\npm.cmd' run typecheck`,
+`& 'C:\Program Files\nodejs\npm.cmd' run lint`, and
+`& 'C:\Program Files\nodejs\npm.cmd' run build` pass. A numeric trajectory
+sample confirmed constant radius at five points on both the incoming and
+outgoing segments. Production Playwright captured the transition at 1440x1000
+and 390x900 with no console errors and zero mobile horizontal overflow; visual
+evidence is under `output/playwright/hero-spiral/`.
+
+## 2026-07-25 - Shared Brands-Built-For Marquee
+
+Replaced the homepage-local brands marquee with a reusable
+`BrandsBuiltFor` component backed by the shared case-study content source.
+The canonical list excludes Ara, Nektr, and Elikai; includes the supplied
+Magnum and STLTH logo assets; and can be reused by any future placement
+without duplicating the brand selection or presentation.
+
+- Added dedicated white/transparent logo files for Medi-Crunch, Unity
+  Supplements, Bull Nutrition, Whiskey Road, and Wellth Foods instead of
+  applying a blanket CSS colour filter.
+- Preserved original logo artwork where it contains intentional detail,
+  including the coloured product icon in the Nosh Balls mark.
+- Added a brand-specific size treatment for STLTH so its visual weight matches
+  the surrounding marks.
+- Confirmed repo-wide search finds no second active brands-built-for section.
+
+Verification: `& 'C:\Program Files\nodejs\npm.cmd' run typecheck`,
+`& 'C:\Program Files\nodejs\npm.cmd' run lint`, and
+`& 'C:\Program Files\nodejs\npm.cmd' run build` pass. Production Playwright
+checks at 1440x1000 and 390x900 confirmed all 13 intended brands, all images
+loaded, no CSS image filters, STLTH rendered at 28.8px desktop / 22.4px mobile,
+and zero mobile horizontal overflow. Visual evidence is under
+`output/playwright/brands-built-for/`.
+
 ## 2026-06-24 - Four Food + Beverage Case Studies
 
 Added four published case studies for Wellth Foods, Freezo, Hope Harvest, and

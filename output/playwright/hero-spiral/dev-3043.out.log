@@ -1,0 +1,9 @@
+
+> koala-site-nextjs@0.1.0 dev
+> next dev --port 3043
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3043
+- Network:       http://100.81.83.36:3043
+✓ Ready in 378ms
+[?25h

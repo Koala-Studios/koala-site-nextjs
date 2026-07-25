@@ -1,0 +1,14 @@
+/* Extends beyond the visual column so transition scenes are clipped only by
+   the viewport, never by an artificial inner canvas edge. HeroStage widens
+   the camera frustum by this same ratio, preserving the tuned helix path. */
+.host {
+  inset: clamp(-9rem, -16vh, -6rem) 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.host canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}

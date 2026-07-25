@@ -277,6 +277,12 @@ export const caseStudies: CaseStudyContent[] = [
       src: "/images/project/magnum/magnum_desktop_gym.png",
       alt: "Magnum ecommerce design case study card image",
     },
+    logo: {
+      src: "/images/project/magnum/logo.png",
+      alt: "Magnum logo",
+      width: 878,
+      height: 125,
+    },
     relatedSlug: "nektr",
     seo: {
       title: "Magnum Case Study",
@@ -433,6 +439,12 @@ export const caseStudies: CaseStudyContent[] = [
     cardImage: {
       src: "/images/project/stlth/stlth_bg.jpg",
       alt: "Stlth product devices on a dark studio background",
+    },
+    logo: {
+      src: "/images/project/stlth/logo.webp",
+      alt: "Stlth logo",
+      width: 900,
+      height: 256,
     },
     relatedSlug: "elikai",
     seo: {
@@ -632,7 +644,7 @@ export const caseStudies: CaseStudyContent[] = [
       alt: "Unity Supplements ecommerce case study card image",
     },
     logo: {
-      src: "/images/project/unity-supplements/logo.png",
+      src: "/images/project/unity-supplements/logo-white.png",
       alt: "Unity Supplements logo",
       width: 220,
       height: 80,
@@ -784,7 +796,7 @@ export const caseStudies: CaseStudyContent[] = [
       alt: "Bull Nutrition ecommerce case study card image",
     },
     logo: {
-      src: "/images/project/bull-nutrition/logo.png",
+      src: "/images/project/bull-nutrition/logo-white.png",
       alt: "Bull Nutrition logo",
       width: 220,
       height: 80,
@@ -860,11 +872,10 @@ export const caseStudies: CaseStudyContent[] = [
       alt: "Whiskey Road ecommerce case study card image",
     },
     logo: {
-      src: "/images/project/whiskey-road/logo.png",
+      src: "/images/project/whiskey-road/logo-white.png",
       alt: "Whiskey Road logo",
       width: 220,
       height: 80,
-      invert: true,
     },
     relatedSlug: "medicrunch",
     externalUrl: "https://whiskeyroadhatco.com/",
@@ -937,10 +948,10 @@ export const caseStudies: CaseStudyContent[] = [
       alt: "Medi-Crunch ecommerce case study card image",
     },
     logo: {
-      src: "/images/project/medicrunch/logo.webp",
+      src: "/images/project/medicrunch/logo-white.png",
       alt: "Medi-Crunch logo",
-      width: 220,
-      height: 80,
+      width: 300,
+      height: 52,
     },
     relatedSlug: "wellth-foods",
     externalUrl: "https://www.medicrunch.com/",
@@ -1013,11 +1024,10 @@ export const caseStudies: CaseStudyContent[] = [
       alt: "Wellth Foods ecommerce case study card image",
     },
     logo: {
-      src: "/images/project/wellth-foods/logo.png",
+      src: "/images/project/wellth-foods/logo-white.png",
       alt: "Wellth Foods logo",
       width: 220,
       height: 80,
-      invert: true,
     },
     relatedSlug: "freezo",
     externalUrl: "https://wellth-foods.com/",

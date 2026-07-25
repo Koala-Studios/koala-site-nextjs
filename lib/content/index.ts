@@ -6,6 +6,8 @@ import {
   pageContent,
 } from "./site-content";
 
+const brandsBuiltForExclusions = new Set(["ara", "nektr", "elikai"]);
+
 export * from "./types";
 export {
   caseStudies,
@@ -32,6 +34,12 @@ export function getPageContentByRoute(route: Extract<PublicRoute, "/" | "/servic
 
 export function getPublishedCaseStudies() {
   return caseStudies.filter((caseStudy) => caseStudy.status === "published");
+}
+
+export function getBrandsBuiltFor() {
+  return getPublishedCaseStudies().filter(
+    (caseStudy) => !brandsBuiltForExclusions.has(caseStudy.slug)
+  );
 }
 
 export function getCaseStudyBySlug(slug: string) {

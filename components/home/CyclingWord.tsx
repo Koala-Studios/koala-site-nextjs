@@ -9,6 +9,13 @@ type CyclingWordProps = {
   interval?: number;
 };
 
+declare global {
+  interface Window {
+    /** Last index published here, so a late-mounting companion can sync. */
+    koalaHeroWordIndex?: number;
+  }
+}
+
 export function CyclingWord({ words, interval = 3200 }: CyclingWordProps) {
   const [index, setIndex] = useState(0);
 
@@ -24,8 +31,11 @@ export function CyclingWord({ words, interval = 3200 }: CyclingWordProps) {
     return () => window.clearInterval(timer);
   }, [interval, words.length]);
 
-  // Let companions (e.g. the hero 3D scene) follow the active word.
+  // Let companions (e.g. the hero 3D stage) follow the active word. The index
+  // is also parked on `window` because the stage mounts after its three.js
+  // chunk loads and would otherwise miss every swap before that.
   useEffect(() => {
+    window.koalaHeroWordIndex = index;
     window.dispatchEvent(
       new CustomEvent("koala:hero-word", { detail: { index } })
     );

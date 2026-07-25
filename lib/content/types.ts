@@ -72,9 +72,7 @@ export interface CaseStudyMedia {
   height?: number;
 }
 
-export interface CaseStudyLogo extends CaseStudyMedia {
-  invert?: boolean;
-}
+export type CaseStudyLogo = CaseStudyMedia;
 
 export interface CaseStudyMetric {
   label: string;

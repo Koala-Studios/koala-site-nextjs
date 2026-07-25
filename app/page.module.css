@@ -187,44 +187,6 @@
   text-transform: uppercase;
 }
 
-/* ---------- Client logo carousel ---------- */
-
-.clients {
-  display: grid;
-  gap: var(--koala-space-5);
-  isolation: isolate;
-  padding-block: clamp(2rem, 4vw, 3rem);
-  position: relative;
-}
-
-.clientsEyebrow {
-  justify-self: center;
-}
-
-.clientsMarquee {
-  border-block: 0;
-}
-
-.clientsAccent {
-  top: 50%;
-  margin-top: calc(-1 * clamp(5rem, 7.5vw, 8rem));
-}
-
-.clientMark {
-  color: var(--koala-color-muted);
-  display: inline-block;
-  font-family: var(--koala-font-heading);
-  font-size: clamp(2rem, 3.6vw, 3rem);
-  line-height: 1;
-  padding: 0.4rem 0 0.2rem clamp(2.5rem, 5vw, 4.5rem);
-  text-transform: uppercase;
-  transition: color 320ms var(--koala-ease-out);
-}
-
-.clientMark:hover {
-  color: var(--koala-color-ink);
-}
-
 /* ---------- Stats ---------- */
 
 .stats {

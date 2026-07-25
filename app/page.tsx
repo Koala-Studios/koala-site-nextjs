@@ -1,18 +1,17 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 import { SplitReveal } from "@/components/animation/SplitReveal";
+import { BrandsBuiltFor } from "@/components/brands/BrandsBuiltFor";
 import { CyclingWord } from "@/components/home/CyclingWord";
 import { HeroField } from "@/components/home/HeroField";
-import { HeroScene } from "@/components/home/HeroScene";
+import { HeroStage } from "@/components/home/HeroStage";
 import type { ServicePillar } from "@/components/home/ServicePillars";
 import { ServicePillars } from "@/components/home/ServicePillars";
 import { Cta } from "@/components/site/Cta";
 import { Magnetic } from "@/components/site/Magnetic";
 import { Marquee } from "@/components/site/Marquee";
 import { RotatingBadge } from "@/components/site/RotatingBadge";
-import { AmbientAccent } from "@/components/three/AmbientAccent";
 import { FeaturedWork } from "@/components/work/FeaturedWork";
 import { getPublishedCaseStudies } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
@@ -126,7 +125,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.heroVisual}>
-          <HeroScene />
+          <HeroStage />
         </div>
         <div className={styles.heroScroll} aria-hidden="true">
           <span>Scroll</span>
@@ -156,45 +155,7 @@ export default function Home() {
         <ServicePillars pillars={pillars} />
       </section>
 
-      <section className={styles.clients} aria-label="Brands we have built for">
-        <AmbientAccent
-          className={styles.clientsAccent}
-          shape="icosphere"
-          side="right"
-          parallax={4}
-        />
-        <p className={`koala-eyebrow ${styles.clientsEyebrow}`}>
-          Brands we&apos;ve built for
-        </p>
-        <Marquee className={styles.clientsMarquee} duration={38}>
-          {caseStudies.map((caseStudy) => (
-            <span className={styles.clientMark} key={caseStudy.slug}>
-              {caseStudy.logo ? (
-                <Image
-                  src={caseStudy.logo.src}
-                  alt={caseStudy.logo.alt}
-                  width={caseStudy.logo.width ?? 220}
-                  height={caseStudy.logo.height ?? 80}
-                  loading="eager"
-                  style={{
-                    display: "block",
-                    filter: caseStudy.logo.invert
-                      ? "invert(1)"
-                      : undefined,
-                    height: "clamp(1.7rem, 3vw, 3rem)",
-                    maxHeight: "3rem",
-                    maxWidth: "min(12rem, 34vw)",
-                    objectFit: "contain",
-                    width: "min(12rem, 34vw)",
-                  }}
-                />
-              ) : (
-                caseStudy.client
-              )}
-            </span>
-          ))}
-        </Marquee>
-      </section>
+      <BrandsBuiltFor />
 
       <FeaturedWork caseStudies={caseStudies} id="home-work-title" />
 
