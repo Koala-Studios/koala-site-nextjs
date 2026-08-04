@@ -5,6 +5,7 @@ export const corePublicRoutes = {
   workIndex: "/work",
   services: "/services",
   contact: "/contact",
+  newton: "/newton",
   privacy: "/privacy",
 } as const;
 

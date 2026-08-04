@@ -1,0 +1,121 @@
+.page {
+  max-width: 78rem;
+}
+
+.hero {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding-block: clamp(2rem, 7vw, 6.5rem) clamp(3rem, 7vw, 6rem);
+}
+
+.hero h1 {
+  font-family: var(--koala-font-heading);
+  font-size: clamp(3.4rem, 10vw, 8.8rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.86;
+  margin: 0;
+  max-width: 11ch;
+  text-transform: uppercase;
+}
+
+.lede {
+  font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+  line-height: 1.35;
+  margin: 0;
+  max-width: 42rem;
+}
+
+.details {
+  border-top: 1px solid var(--koala-color-border);
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.statement,
+.safeguards {
+  display: grid;
+  gap: var(--koala-space-4);
+}
+
+.statement h2,
+.safeguards h2 {
+  font-family: var(--koala-font-heading);
+  font-size: var(--koala-text-2xl);
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.statement p,
+.safeguardGrid p,
+.contact p {
+  color: var(--koala-color-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.statement p {
+  max-width: 42rem;
+}
+
+.capabilities {
+  border-top: 1px solid var(--koala-color-ink);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.capabilities li {
+  border-bottom: 1px solid var(--koala-color-border);
+  padding: 1rem 0;
+}
+
+.safeguards {
+  background: var(--koala-color-ink);
+  color: var(--koala-color-surface);
+  margin-inline: calc(var(--koala-page-gutter) * -1);
+  padding: clamp(3rem, 7vw, 6rem) var(--koala-page-gutter);
+}
+
+.safeguardGrid {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.safeguardGrid p {
+  color: color-mix(in srgb, var(--koala-color-surface) 78%, transparent);
+}
+
+.contact {
+  align-items: center;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.contact a {
+  color: var(--koala-color-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contact > a {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+  .details,
+  .safeguardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

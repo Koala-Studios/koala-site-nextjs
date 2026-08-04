@@ -1,5 +1,17 @@
 # Execution Ledger
 
+## 2026-08-03 - Newton OAuth Branding Page
+
+### Implemented
+
+- Added a public `/newton` route that identifies the OAuth application as `Koala Studios Newton`, explains its Google Ads purpose, names its internal-only access model, and links to the existing privacy policy.
+- Added the route to the canonical route registry and sitemap.
+
+### Verification
+
+- `npm run typecheck`, `npm run lint`, and `npm run build` completed successfully; the production route table includes `/newton`.
+- Playwright inspected the page at desktop and true 390px mobile viewports with no visible clipping or horizontal overflow.
+
 ## 2026-07-25 - Homepage Helix Settle Overshoot
 
 Replaced an unsuccessful late sinusoidal settle pulse with a quartic
