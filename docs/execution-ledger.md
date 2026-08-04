@@ -3771,3 +3771,15 @@ fix; owner-action items moved to `docs/launch-blockers.md`.
 - Before the public route foundation slice, `/about` was referenced in typed content and navigation while `app/about/page.tsx` was absent.
 - Before the public route foundation slice, `app/sitemap.ts` returned no case-study slug entries.
 - Legacy lint warnings remain in project pages and shared components.
+
+## 2026-08-04 - Merchant Center Domain Verification
+
+### Implemented
+
+- Added the Google site-verification metadata required to verify `koalastudios.ca` for the Koala Studios Merchant Center account.
+- Kept the verification marker in root metadata so it is emitted site-wide without visible interface changes.
+
+### Verification
+
+- Lint, typecheck, and the production build passed against the exact metadata change before deployment.
+- Live deployment and Merchant Center readback are recorded after release.

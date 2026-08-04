@@ -12,11 +12,16 @@ import { SmoothScroll } from "@/components/site/SmoothScroll";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = createPageMetadata({
-  title: siteSettings.defaultSeo.title,
-  description: siteSettings.defaultSeo.description,
-  path: siteSettings.defaultSeo.canonicalPath ?? "/",
-});
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    title: siteSettings.defaultSeo.title,
+    description: siteSettings.defaultSeo.description,
+    path: siteSettings.defaultSeo.canonicalPath ?? "/",
+  }),
+  verification: {
+    google: "t23HTN1oMQl0KcX3f9KqM5QxHd72M0gl3h7DA7d9ksk",
+  },
+};
 
 const socialProfiles = Object.values(siteSettings.social).filter(Boolean);
 
