@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Parallax } from "@/components/animation/Parallax";
 import { SplitReveal } from "@/components/animation/SplitReveal";
 import { ArrowIcon } from "@/components/site/ArrowIcon";
 import type { CaseStudyContent } from "@/lib/content";
@@ -13,28 +12,39 @@ type CaseStudyHeroProps = {
 };
 
 export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
-  const media = caseStudy.media[0];
+  const media = caseStudy.heroImage ?? caseStudy.media[0];
   const focusMetric = caseStudy.metrics[0];
 
   return (
     <section className={styles.hero} aria-labelledby="case-study-title">
       <div className={styles.stage}>
-        <Parallax className={styles.media} strength={9}>
+        <div className={styles.media}>
           {media ? (
-            <Image
-              src={media.src}
-              alt={media.alt}
-              fill
-              priority
-              fetchPriority="high"
-              sizes="100vw"
-              style={{ objectFit: "cover" }}
-            />
+            <>
+              <Image
+                aria-hidden="true"
+                className={styles.backdrop}
+                src={media.src}
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+              />
+              <Image
+                className={styles.image}
+                src={media.src}
+                alt={media.alt}
+                fill
+                priority
+                fetchPriority="high"
+                sizes="100vw"
+              />
+            </>
           ) : null}
-        </Parallax>
+        </div>
         <div className={styles.shade} aria-hidden="true" />
 
-        <div className={styles.overlay}>
+        <div className={styles.lead}>
           <Link className={`${styles.back} koala-underline-link`} href="/work">
             <ArrowIcon direction="left" />
             All work
@@ -56,10 +66,6 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
         className={styles.meta}
         aria-label={`${caseStudy.title} project summary`}
       >
-        <div>
-          <span className="koala-label">Client</span>
-          <strong>{caseStudy.client}</strong>
-        </div>
         <div>
           <span className="koala-label">Sector</span>
           <strong>{caseStudy.sector}</strong>

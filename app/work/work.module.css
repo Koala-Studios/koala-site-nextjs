@@ -28,6 +28,7 @@
 
 .explorerWrap {
   isolation: isolate;
+  overflow: clip;
   position: relative;
 }
 

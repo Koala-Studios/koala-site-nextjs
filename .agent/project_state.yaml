@@ -1,4 +1,4 @@
-last_reviewed: "2026-05-29"
+last_reviewed: "2026-08-06"
 workflow_mode: layered_agents_v1
 
 active_phase:
@@ -49,6 +49,9 @@ preferred_startup_files:
   - "nearest AGENTS.md"
 
 notes:
+  - "2026-08-06 Case-study narrative interlace: removed the Client hero fact across all 16 work routes and distributed every supporting image through Challenge, Approach, and Outcome; production desktop/mobile visual QA passed."
+  - "2026-08-06 Desktop case-study follow-up: restored layered image-overlay heroes, larger editorial supporting media, and cinematic related-case banners while retaining complete uncropped foreground images and the crop-safe mobile layout; all 16 production desktop routes passed visual QA."
+  - "2026-08-06 Work media repair: all 16 case-study heroes and related-project images now preserve full compositions; supporting media uses intrinsic ratios; Work index overflow is fixed; production browser screenshots and verification are recorded in docs/execution-ledger.md."
   - "2026-06-10 V2 Reimagining: /about removed (308 redirect to /); signature interaction systems (SplitReveal, CursorDot, Parallax, Magnetic, CountUp, ScrollProgress, RotatingBadge, route transitions, grain) wired through reimagined home/work/services/case-study/contact; evidence in docs/execution-ledger.md V2 entry."
   - "2026-06-10 Blackout Editorial Visual Lift: dark lime-accent redesign of home/services/work/case-study/contact with new offers (Meta ads, email marketing); direction in docs/redesign-2026-direction.md; evidence in docs/execution-ledger.md."
   - "The repository contains significant pre-existing uncommitted redesign work; do not revert it without explicit instruction."

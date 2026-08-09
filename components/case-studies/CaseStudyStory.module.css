@@ -111,20 +111,25 @@
 
 .narrative {
   display: grid;
-  gap: clamp(2.5rem, 5vw, 4rem);
+  gap: clamp(3.5rem, 7vw, 6rem);
   min-width: 0;
 }
 
-.narrativeBlock {
+.chapter {
   border-top: 1px solid var(--koala-color-line-soft);
   display: grid;
-  gap: var(--koala-space-4);
+  gap: clamp(2rem, 4vw, 3.5rem);
   padding-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.narrativeBlock:first-child {
+.chapter:first-child {
   border-top: 0;
   padding-top: 0;
+}
+
+.narrativeBlock {
+  display: grid;
+  gap: var(--koala-space-4);
 }
 
 .narrativeNumber {
@@ -174,12 +179,11 @@
   flex: 0 0 auto;
 }
 
-/* ---------- Media flow ---------- */
+/* ---------- Interlaced chapter media ---------- */
 
-.mediaFlow {
+.chapterMedia {
   display: grid;
-  gap: clamp(2.5rem, 6vw, 5rem);
-  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem);
+  gap: clamp(2rem, 4vw, 3.5rem);
 }
 
 .mediaItem {
@@ -189,16 +193,28 @@
 
 .mediaItemOffset {
   justify-self: flex-end;
-  width: min(100%, 72%);
+  width: min(100%, 78%);
+}
+
+.mediaItemPortrait {
+  justify-self: center;
+  width: min(100%, 40rem);
+}
+
+.mediaItemTallPortrait {
+  width: min(100%, 28rem);
 }
 
 .mediaFrame {
-  aspect-ratio: 16 / 9;
   background: var(--koala-color-surface-soft);
+  border: 1px solid var(--koala-color-line-soft);
+  overflow: hidden;
 }
 
-.mediaFrameTall {
-  aspect-ratio: 4 / 3;
+.mediaImage {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .mediaCaption {
@@ -227,5 +243,14 @@
   .mediaItemOffset {
     justify-self: stretch;
     width: 100%;
+  }
+
+  .mediaItemPortrait {
+    justify-self: center;
+    width: min(100%, 30rem);
+  }
+
+  .mediaItemTallPortrait {
+    width: min(100%, 24rem);
   }
 }

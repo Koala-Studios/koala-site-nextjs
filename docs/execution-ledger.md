@@ -1,5 +1,53 @@
 # Execution Ledger
 
+## 2026-08-06 - Case-Study Narrative Interlace
+
+### Implemented
+
+- Removed the Client column from the shared case-study hero metadata on all 16 published work routes.
+- Rebalanced Sector, Focus, and Services into three desktop columns, with Services spanning the mobile row for better label fit.
+- Replaced the bottom supporting-media gallery with chapter-level media groups inside Challenge, Approach, and Outcome.
+- Distributed media round-robin across the three chapters: two-image cases use 1-1-0, Stlth uses 1-1-1, and five-image cases use 2-2-1.
+
+### Verification
+
+- `npm run lint`: passed.
+- `npm run typecheck`: passed.
+- `npm run build`: passed; all 35 static pages generated.
+- Production browser diagnostics across all 16 work routes found zero Client labels, the expected chapter media distribution, and exact 1440px document width.
+- Production mobile verification at 390 x 844 found the expected 2-2-1 distribution, exact viewport width, zero incomplete images, and zero console errors.
+- Visual QA: representative full-page desktop/mobile captures were inspected locally; large generated screenshot artifacts are intentionally excluded from version control.
+
+## 2026-08-06 - Work Case-Study Media And Overflow Repair
+
+### Implemented
+
+- Rebuilt all 16 case-study heroes with responsive treatments: layered, image-overlay editorial heroes on desktop and separate crop-safe lead/media regions on mobile.
+- Preserved intrinsic aspect ratios for every supporting image, including deliberately scaled desktop portrait treatments, and restored cinematic image-led related-project banners on desktop while keeping mobile content separated.
+- Added explicit dimensions to legacy case-study assets and selected wide Stlth artwork for its hero while retaining the portrait homepage capture in the story.
+- Clipped the decorative Work index accent to remove responsive horizontal overflow.
+- Replaced deprecated `THREE.Clock` usage with the current `THREE.Timer` lifecycle in both ambient scenes.
+
+### Verification
+
+- `npm run lint`: passed.
+- `npm run typecheck`: passed.
+- `npm run build`: passed; all 35 static pages generated, including all 16 `/work/[slug]` routes.
+- Production Playwright capture: passed at 1440 x 900 and 390 x 844 for all 16 project routes (32 complete full-page screenshots, all images loaded).
+- Browser diagnostics: all 16 heroes and related-project images use contained rendering; all 63 supporting images retain intrinsic aspect ratios; every audited project route matched its viewport width.
+- `/work` width sweep: passed at 701, 768, 900, 1024, 1280, and 1440px with no horizontal overflow.
+- Production console: zero errors; the former `THREE.Clock` deprecation warning was absent.
+- Visual QA: all 16 routes were captured locally at desktop and mobile sizes; large generated screenshot artifacts are intentionally excluded from version control.
+
+### Desktop Visual Follow-Up
+
+- Restored the original desktop case-study character after review: overlay typography, full-bleed atmosphere, large editorial supporting-media rhythm, and image-led next-case banners.
+- The desktop hero and next-case treatments use a complete contained foreground image over a softened full-bleed backdrop, avoiding destructive cropping without flattening the composition.
+- Re-ran lint, typecheck, and the production build successfully.
+- Captured all 16 desktop case-study routes at 1440 x 900 with every image loaded; each route reported exact viewport width and zero horizontal overflow.
+- Verified the crop-safe stacked treatment remains intact at 390 x 844 with zero incomplete images and zero horizontal overflow.
+- Desktop QA: all 16 restored routes were inspected from local full-page captures; large generated screenshot artifacts are intentionally excluded from version control.
+
 ## 2026-08-03 - Newton OAuth Branding Page
 
 ### Implemented

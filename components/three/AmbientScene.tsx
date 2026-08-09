@@ -290,7 +290,8 @@ function initAmbient(
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(host);
 
-  const clock = new THREE.Clock();
+  const timer = new THREE.Timer();
+  timer.connect(document);
   let frame = 0;
   let running = false;
 
@@ -301,8 +302,9 @@ function initAmbient(
     return ((rect.top + rect.height / 2) / viewport - 0.5) * -2;
   };
 
-  const render = () => {
-    const elapsed = clock.getElapsedTime();
+  const render = (timestamp?: number) => {
+    timer.update(timestamp);
+    const elapsed = timer.getElapsed();
     def.update(elapsed, pointer, scrollProgress());
     renderer.render(scene, camera);
 
@@ -354,6 +356,7 @@ function initAmbient(
       mesh.geometry?.dispose?.();
       mesh.material?.dispose?.();
     });
+    timer.dispose();
     renderer.dispose();
     renderer.domElement.remove();
   };

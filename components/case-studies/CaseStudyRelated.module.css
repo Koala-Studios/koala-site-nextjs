@@ -14,8 +14,22 @@
   text-decoration: none;
 }
 
-.image {
+.media {
+  background: var(--koala-color-bg);
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.backdrop {
+  filter: blur(22px) contrast(1.08) saturate(0.82);
   object-fit: cover;
+  opacity: 0.5;
+  transform: scale(1.08);
+}
+
+.image {
+  object-fit: contain;
   transition: transform 1200ms var(--koala-ease-smooth);
 }
 
@@ -26,12 +40,13 @@
 
 .shade {
   background: linear-gradient(
-    rgba(10, 10, 9, 0.55),
-    rgba(10, 10, 9, 0.78)
+    90deg,
+    rgba(10, 10, 9, 0.84),
+    rgba(10, 10, 9, 0.52) 48%,
+    rgba(10, 10, 9, 0.16)
   );
   inset: 0;
   position: absolute;
-  transition: background 420ms var(--koala-ease-out);
   z-index: 1;
 }
 
@@ -92,5 +107,35 @@
   .shade,
   .actionArrow {
     transition-duration: 1ms;
+  }
+}
+
+@media (max-width: 760px) {
+  .banner {
+    border-block: 1px solid var(--koala-color-line);
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    aspect-ratio: 4 / 3;
+    inset: auto;
+    min-height: 0;
+    position: relative;
+  }
+
+  .backdrop,
+  .shade {
+    display: none;
+  }
+
+  .content {
+    background: var(--koala-color-bg);
+    inset: auto;
+    position: relative;
+  }
+
+  .title {
+    font-size: clamp(3rem, 16vw, 5rem);
   }
 }

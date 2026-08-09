@@ -80,12 +80,14 @@ function initAccent(
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(host);
 
-  const clock = new THREE.Clock();
+  const timer = new THREE.Timer();
+  timer.connect(document);
   let frame = 0;
   let running = false;
 
-  const render = () => {
-    const elapsed = clock.getElapsedTime();
+  const render = (timestamp?: number) => {
+    timer.update(timestamp);
+    const elapsed = timer.getElapsed();
     object.rotation.y = elapsed * 0.16 + pointer.x * 0.25;
     object.rotation.x = elapsed * 0.1 + pointer.y * 0.2;
     renderer.render(scene, camera);
@@ -130,6 +132,7 @@ function initAccent(
     window.removeEventListener("pointermove", handlePointer);
     object.geometry.dispose();
     object.material.dispose();
+    timer.dispose();
     renderer.dispose();
     renderer.domElement.remove();
   };

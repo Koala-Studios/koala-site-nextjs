@@ -219,10 +219,14 @@ export const caseStudies: CaseStudyContent[] = [
       {
         src: "/images/project/ara/ara_plants.jpg",
         alt: "Ara product and ingredient story image",
+        width: 1365,
+        height: 1706,
       },
       {
         src: "/images/project/ara/ara_product_desktop.png",
         alt: "Ara desktop product page layout",
+        width: 1900,
+        height: 950,
       },
     ],
     cardImage: {
@@ -267,10 +271,14 @@ export const caseStudies: CaseStudyContent[] = [
       {
         src: "/images/project/magnum/product_page_desktop_magnum.png",
         alt: "Magnum desktop product page",
+        width: 1919,
+        height: 952,
       },
       {
         src: "/images/project/magnum/product_list_magum.png",
         alt: "Magnum product listing page",
+        width: 388,
+        height: 843,
       },
     ],
     cardImage: {
@@ -325,10 +333,14 @@ export const caseStudies: CaseStudyContent[] = [
       {
         src: "/images/project/nektr/mobile_hero.jpg",
         alt: "Nektr mobile hero composition",
+        width: 1080,
+        height: 1080,
       },
       {
         src: "/images/project/nektr/nektr_plate.png",
         alt: "Nektr product plate and nutrients image",
+        width: 1456,
+        height: 901,
       },
     ],
     cardImage: {
@@ -376,10 +388,14 @@ export const caseStudies: CaseStudyContent[] = [
       {
         src: "/images/project/allo/allo-product-desktop.png",
         alt: "Allo desktop product page",
+        width: 1910,
+        height: 1007,
       },
       {
         src: "/images/project/allo/vanilla_noncreamer.webp",
         alt: "Allo vanilla non-creamer product image",
+        width: 512,
+        height: 512,
       },
     ],
     cardImage: {
@@ -426,16 +442,26 @@ export const caseStudies: CaseStudyContent[] = [
       {
         src: "/images/project/stlth/home-page-new-photo.png",
         alt: "Stlth homepage redesign image",
+        width: 452,
+        height: 880,
       },
       {
         src: "/images/project/stlth/stlth-device.jpg",
         alt: "Stlth device-focused product image",
+        width: 1920,
+        height: 1920,
       },
       {
         src: "/images/project/stlth/stlth-new-menu.png",
         alt: "Stlth navigation and menu design",
+        width: 450,
+        height: 873,
       },
     ],
+    heroImage: {
+      src: "/images/project/stlth/stlth_bg.jpg",
+      alt: "Stlth product devices on a dark studio background",
+    },
     cardImage: {
       src: "/images/project/stlth/stlth_bg.jpg",
       alt: "Stlth product devices on a dark studio background",
@@ -488,10 +514,14 @@ export const caseStudies: CaseStudyContent[] = [
       {
         src: "/images/project/elikai/shot4_3_ps.jpg",
         alt: "Elikai product detail with pastel accessories on marble",
+        width: 1080,
+        height: 1080,
       },
       {
         src: "/images/project/elikai/water1_test1_ps.jpg",
         alt: "Elikai product detail shown with running water",
+        width: 1080,
+        height: 1080,
       },
     ],
     cardImage: {

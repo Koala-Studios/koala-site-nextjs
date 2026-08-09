@@ -1,11 +1,10 @@
 .hero {
   margin-inline: auto;
-  /* max-width: var(--koala-container-wide); */
-  /* padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 3vw, 2rem) 0; */
   width: 100%;
 }
 
 .stage {
+  background: var(--koala-color-bg);
   min-height: clamp(28rem, 75vh, 42rem);
   overflow: hidden;
   position: relative;
@@ -13,24 +12,35 @@
 
 .media {
   inset: 0;
-  filter:contrast(1.1);
-  position: absolute !important;
+  overflow: hidden;
+  position: absolute;
+}
+
+.backdrop {
+  filter: blur(24px) contrast(1.08) saturate(0.82);
+  object-fit: cover;
+  opacity: 0.48;
+  transform: scale(1.08);
+}
+
+.image {
+  object-fit: contain;
+  object-position: center;
 }
 
 .shade {
-  background: linear-gradient(
-    rgba(10, 10, 9, 0) 50%,
-    rgb(10, 10, 9)
-  );
+  background:
+    linear-gradient(90deg, rgba(10, 10, 9, 0.48), transparent 58%),
+    linear-gradient(0deg, rgba(10, 10, 9, 0.94), transparent 62%);
   inset: 0;
   pointer-events: none;
   position: absolute;
   z-index: 1;
 }
 
-.overlay {
-  display: grid;
+.lead {
   align-content: space-between;
+  display: grid;
   inset: 0;
   padding-block: clamp(1.25rem, 3vw, 2.5rem);
   padding-inline: max(
@@ -83,7 +93,7 @@
 .meta {
   /* border-bottom: 1px solid var(--koala-color-line); */
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding-inline: max(
     clamp(var(--koala-space-4), 3vw, var(--koala-space-8)),
     calc((100% - var(--koala-container-wide)) / 2)
@@ -125,20 +135,45 @@
 
 @media (max-width: 900px) {
   .stage {
-    min-height: clamp(22rem, 60vh, 30rem);
+    display: grid;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .lead {
+    background: var(--koala-color-bg);
+    gap: var(--koala-space-8);
+    inset: auto;
+    order: 1;
+    position: relative;
+  }
+
+  .media {
+    inset: auto;
+    min-height: clamp(18rem, 75vw, 24rem);
+    order: 2;
+    position: relative;
+  }
+
+  .backdrop,
+  .shade {
+    display: none;
   }
 
   .meta {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .meta div:nth-child(odd) {
-    border-left: 0;
-    padding-left: 0;
+  .meta div:last-child {
+    grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: clamp(3.5rem, 17vw, 5rem);
+  }
+
   .headline {
     font-size: var(--koala-text-base);
   }

@@ -103,6 +103,7 @@ export interface CaseStudyContent {
   outcomes: string[];
   metrics: CaseStudyMetric[];
   media: CaseStudyMedia[];
+  heroImage?: CaseStudyMedia;
   cardImage?: CaseStudyMedia;
   logo?: CaseStudyLogo;
   testimonial?: {

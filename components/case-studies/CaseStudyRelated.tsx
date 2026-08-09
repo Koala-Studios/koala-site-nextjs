@@ -20,15 +20,27 @@ export function CaseStudyRelated({ current, related }: CaseStudyRelatedProps) {
   return (
     <section className={styles.related} aria-labelledby="case-study-next-title">
       <Link className={styles.banner} data-cursor="view" href={href}>
-        {image ? (
-          <Image
-            className={styles.image}
-            src={image.src}
-            alt=""
-            fill
-            sizes="100vw"
-          />
-        ) : null}
+        <span className={styles.media}>
+          {image ? (
+            <>
+              <Image
+                aria-hidden="true"
+                className={styles.backdrop}
+                src={image.src}
+                alt=""
+                fill
+                sizes="100vw"
+              />
+              <Image
+                className={styles.image}
+                src={image.src}
+                alt=""
+                fill
+                sizes="100vw"
+              />
+            </>
+          ) : null}
+        </span>
         <span className={styles.shade} aria-hidden="true" />
         <span className={styles.content}>
           <span className="koala-eyebrow">
