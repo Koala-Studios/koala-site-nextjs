@@ -1287,13 +1287,83 @@ export const caseStudies: CaseStudyContent[] = [
       width: 220,
       height: 80,
     },
-    relatedSlug: "ara",
+    relatedSlug: "wuxly",
     externalUrl: "https://www.noshballs.ca/",
     seo: {
       title: "Nosh Balls Case Study",
       description:
         "Nosh Balls shows how Koala Studios shaped a natural snack storefront around flavor discovery, bundle merchandising, and wholesale partner support.",
       canonicalPath: "/work/nosh-balls",
+    },
+  },
+  {
+    slug: "wuxly",
+    status: "published",
+    title: "Wuxly",
+    client: "Wuxly",
+    sector: "Canadian outerwear ecommerce",
+    category: "Shopify",
+    tags: ["Shopify", "Outerwear", "Made in Canada"],
+    headline: "A performance outerwear storefront built around proof and provenance.",
+    intro:
+      "Wuxly brings Canadian-made, animal-free outerwear into a technical ecommerce experience where warmth, materials, certification, and product confidence work together.",
+    services: ["Shopify", "Catalog UX", "Product storytelling"],
+    challenge:
+      "Performance outerwear has to make warmth, fit, materials, manufacturing standards, and price feel credible before a shopper can confidently choose a parka or jacket.",
+    approach:
+      "We structured the storefront around fast gender and collection paths, temperature-led product proof, Canadian manufacturing, materials education, and detailed product pages that carry technical credibility without losing the fashion story.",
+    deliverables: [
+      "Homepage and collection architecture",
+      "Product merchandising system",
+      "Materials and certification story",
+      "Brand and provenance pages",
+    ],
+    outcomes: [
+      "Clearer outerwear discovery",
+      "Stronger performance and quality proof",
+      "More confident path from story to product",
+    ],
+    metrics: [
+      { label: "Priority", value: "Performance + provenance" },
+      { label: "Scope", value: "DTC outerwear storefront" },
+    ],
+    media: [
+      {
+        src: "/images/project/wuxly/01-home.jpg",
+        alt: "Wuxly consumer outerwear homepage with performance-led campaign imagery",
+      },
+      {
+        src: "/images/project/wuxly/02-collection-womens.jpg",
+        alt: "Wuxly women's outerwear collection and filtering experience",
+      },
+      {
+        src: "/images/project/wuxly/03-collection-mens.jpg",
+        alt: "Wuxly men's outerwear collection and product merchandising",
+      },
+      {
+        src: "/images/project/wuxly/04-product-union-parka.jpg",
+        alt: "Wuxly Union Parka product page with product gallery and buying options",
+      },
+      {
+        src: "/images/project/wuxly/05-materials.jpg",
+        alt: "Wuxly materials page explaining insulation and Canadian manufacturing standards",
+      },
+      {
+        src: "/images/project/wuxly/06-our-story.jpg",
+        alt: "Wuxly apparel brand story page with Canadian outerwear imagery",
+      },
+    ],
+    cardImage: {
+      src: "/images/project/wuxly/01-home.jpg",
+      alt: "Wuxly consumer outerwear ecommerce case study card image",
+    },
+    relatedSlug: "ara",
+    externalUrl: "https://wuxly.com/",
+    seo: {
+      title: "Wuxly Case Study",
+      description:
+        "Wuxly shows how Koala Studios shaped a Canadian outerwear storefront around technical product proof, collection discovery, materials education, and Made-in-Canada credibility.",
+      canonicalPath: "/work/wuxly",
     },
   },
 ];

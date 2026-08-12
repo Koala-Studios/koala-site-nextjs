@@ -1,5 +1,23 @@
 # Execution Ledger
 
+## 2026-08-11 - Wuxly Consumer Outerwear Case Study
+
+### Implemented
+
+- Added Wuxly's consumer outerwear storefront at `wuxly.com` as the 17th published case study; the separate Wuxly Defense site is not used.
+- Captured six current consumer-storefront views for the homepage, women's and men's collections, Union Parka product page, materials education, and apparel brand story.
+- Added the Wuxly story, services, outcomes, SEO metadata, Work index card, and related-case sequence through the typed case-study registry.
+- Preserved the shared case-study treatment: no Client hero column and five supporting views interlaced through Challenge, Approach, and Outcome in a 2-2-1 rhythm.
+
+### Verification
+
+- `npm run lint`: passed.
+- `npm run typecheck`: passed.
+- `npm run build`: passed; all 36 static pages generated, including 17 `/work/[slug]` routes.
+- Production Playwright diagnostics: `/work` exposes 17 unique project links including `/work/wuxly`, all Work images completed, and the 1440px document width matches the viewport.
+- `/work/wuxly` desktop and 390px mobile full-page captures show the complete interlaced story, no Client label, no horizontal overflow, and zero incomplete Wuxly images.
+- Production browser console: zero errors; inspected visual evidence is stored locally under `output/playwright/wuxly-case-study-2026-08-11/` and excluded from version control.
+
 ## 2026-08-06 - Case-Study Narrative Interlace
 
 ### Implemented

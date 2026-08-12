@@ -1,4 +1,4 @@
-last_reviewed: "2026-08-06"
+last_reviewed: "2026-08-11"
 workflow_mode: layered_agents_v1
 
 active_phase:
@@ -49,6 +49,7 @@ preferred_startup_files:
   - "nearest AGENTS.md"
 
 notes:
+  - "2026-08-11 Wuxly case study: added the consumer outerwear brand at wuxly.com as the 17th published project, using six verified storefront views and the established interlaced case-study layout; production desktop/mobile visual QA passed."
   - "2026-08-06 Case-study narrative interlace: removed the Client hero fact across all 16 work routes and distributed every supporting image through Challenge, Approach, and Outcome; production desktop/mobile visual QA passed."
   - "2026-08-06 Desktop case-study follow-up: restored layered image-overlay heroes, larger editorial supporting media, and cinematic related-case banners while retaining complete uncropped foreground images and the crop-safe mobile layout; all 16 production desktop routes passed visual QA."
   - "2026-08-06 Work media repair: all 16 case-study heroes and related-project images now preserve full compositions; supporting media uses intrinsic ratios; Work index overflow is fixed; production browser screenshots and verification are recorded in docs/execution-ledger.md."
