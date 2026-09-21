@@ -38,21 +38,19 @@ export type Addons = {
 };
 
 /**
- * The whole stage paints from the site's own palette and nothing else: the page
- * background, two greys off it, and lime. No white, no warm neutrals — anything
- * outside this set immediately reads as foreign against the rest of the page.
+ * The stage uses the site's dark gray and selective green palette.
  */
 export const PALETTE = {
-  bg: 0x0a0a09,
+  bg: 0xfafafa,
   /** Primary structural surface. */
-  dark: 0x232720,
+  dark: 0x343638,
   /** Secondary volumes, one step up from `dark`. */
-  soft: 0x31362c,
+  soft: 0x424548,
   /** Panels that need to separate from `soft` without going pale. */
-  panel: 0x3d4438,
+  panel: 0x505457,
   /** Screens, insets and shadow gaps. */
-  ink: 0x151812,
-  lime: 0xa3e635,
+  ink: 0x222527,
+  lime: 0x32684a,
 } as const;
 
 export type Pointer = { x: number; y: number };
@@ -212,13 +210,13 @@ export function makeKit(THREE: Three, addons: Addons): Kit {
     graphite: () =>
       physical("graphite", {
         color: PALETTE.dark,
-        metalness: 0.2,
+        metalness: 0,
         roughness: 0.46,
       }),
     charcoal: () =>
       physical("charcoal", {
         color: PALETTE.soft,
-        metalness: 0.15,
+        metalness: 0,
         roughness: 0.52,
       }),
     ink: () =>
@@ -230,13 +228,13 @@ export function makeKit(THREE: Three, addons: Addons): Kit {
     bone: () =>
       physical("bone", {
         color: PALETTE.panel,
-        metalness: 0.05,
+        metalness: 0,
         roughness: 0.62,
       }),
     kraft: () =>
       physical("kraft", {
         color: PALETTE.soft,
-        metalness: 0.05,
+        metalness: 0,
         roughness: 0.66,
       }),
     // Scenes ask for intensities on a 0.4–3.0 scale. Damping to main's range

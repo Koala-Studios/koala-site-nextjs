@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import { Reveal } from "@/components/animation/Reveal";
 import { SplitReveal } from "@/components/animation/SplitReveal";
@@ -58,7 +59,7 @@ export default function ContactPage() {
         </div>
 
         <Reveal className={styles.formColumn} delay={0.08}>
-          <ContactForm />
+          <Suspense fallback={<p>Loading contact form...</p>}><ContactForm /></Suspense>
         </Reveal>
       </section>
     </div>

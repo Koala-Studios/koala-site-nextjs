@@ -1,5 +1,46 @@
 # Execution Ledger
 
+## 2026-09-21 - Frank's site review corrections
+
+Removed CursorDot and Lenis from the global layout and disabled CSS smooth scrolling. Removed page grain; updated canvas/surfaces and scene background to near-white/light-gray. Shortened route entry animation to a small 250ms rise without hiding content. Added small CTA press/arrow, footer underline, logo hover, and story-rule interactions with reduced-motion support.
+
+Rebuilt Maya: two-line rotating headline; asymmetric SVG portrait clipping changes with native scroll via passive listener and frame-coalesced updates; identity/title below image; logos immediately below hero. Intro heading/body split left/right. Four results use a 2x2 desktop layout and stack below 800px. Removed partnership section, redundant eyebrows, numeric theme column and fit/scheduling/30-minute copy from all audit placements. Profile PDF remains in the introduction. Current framing: Maya works at Koala Studios. This supersedes earlier partnership discovery language.
+
+Logo repair uses inspected originals: native color Bull/Unity/etc restored; white-only marks converted to separate dark pixel assets, with no CSS brightness filter on the brand strip. Nosh ball's entire color bounding region is preserved byte-for-byte. Reproduction script: scripts/prepare-brand-logos.py. Originals unchanged. Flyer drafts updated to cool neutrals and same affiliation/offer corrections.
+
+Verification: build and ESLint passed; attribution checks passed. Browser 1440px positions confirm 2x2 results; 390px has no overflow, no eyebrows, no CursorDot nodes or Lenis class, and computed scroll-behavior auto. SVG path changes on scroll. Reduced-motion test disables word cycling and retains a readable static first phrase. Every carousel logo loaded. Screenshots: output/playwright/maya-review/revision-desktop.png and revision-mobile.png. Tailscale preview rebuilt at the same URL; public site/DNS unchanged.
+
+## 2026-09-20 - Private Tailscale preview and two flyer editions
+
+Frank explicitly authorized private Tailscale access for MacBook review and autonomous flyer production, superseding the earlier hold. Added tailnet-only HTTPS port 3038, preserving pre-existing Serve mappings. Verified MacBook peer reachable and HTTP 200 over the private URL. Proxy points to the compiled local-preview server on port 3039, avoiding development HMR websocket failures through the proxy. Local dev remains on 3037.
+
+Built evergreen and CHFA two-sided 4x6 screen PDFs and CMYK review PDFs with 0.125-inch bleed and crop marks. Same provisional seated taupe photo, existing fonts, approved palette, executive statement, four quantified results, partnership, audit CTA and direct contacts. CHFA edition adds only the unmodified official logo from the CHFA NOW Toronto site. One vector QR encodes exactly https://mayaamani.com. The domain itself was not modified.
+
+Verification: screen/print pages rendered and inspected; QR decoded correctly; edition backs identical; print trim/bleed dimensions and DeviceCMYK image spaces checked. Fonts embedded, generic Agfa SWOP output profile included. Portrait effective resolution is about 269 ppi at placed width. These are review exports, not printer-approved final production. Final portrait and printer profile remain pending. `/maya/flyers` and a whitelist-only file route are gated by local-preview mode. Build passed (39 pages), ESLint passed; private review page at 1440px and 390px had loaded proof images and no horizontal overflow. No push, live-site deployment, DNS mutation, printing or external communication.
+
+## 2026-09-20 - Maya and palette local preview
+
+Implemented the subsequent explicit local-only authorization: four portrait options, `/maya` executive story with source-backed figures, public executive-profile PDF, existing homepage brand carousel, shared audit offer, light/nude palette with selective green, required text website input, first/latest/Maya attribution with 60-day expiry, and form/analytics integration. Portrait 03 is provisional. Kept both previous portraits. No flyer work, publication, DNS, provider setup, or live form submission.
+
+Verification: Next production build succeeded (38 static pages); ESLint passed. Standalone attribution checks passed navigation, returns, competing campaigns, expiry, corrupt data, blocked storage, and Netlify field parity. Browser checks at 1440px and 390px across home, Maya, contact, services, work, Iron Brothers and portrait review found no horizontal overflow. Lazy images loaded after scrolling on home, Iron Brothers and all four portrait options. Browser form check confirmed an empty website blocks submission, plain text `website coming soon` succeeds locally, audit selection is preselected, and Maya campaign attribution survives an intervening Services visit. Preview has no GA tag and saves form data only in session storage. Source: July 2026 executive CV; Nosh/Whiskey six-month periods are Frank's explicit instruction.
+
+Local preview and future launch dependencies: `docs/maya-local-review.md`. Historical Docket entries were not modified in this local task. Production Netlify delivery, GA4 reporting configuration, and domain routing remain unverified and deferred.
+
+## 2026-09-04 - Rejected Maya work removed; fresh discovery
+
+Frank rejected all creative, design, copy, implementation and collateral from task 01a06455-cc16-73b3-a962-901f2ddedad7. Replacement task: 01a06e58-cfaf-79e3-bf6c-a8fa5f3d9cf0. Do not restore or reuse that package.
+
+Ownership was established from the prior task's full available history (five turns, no older cursor), file-change records, and the saved repository diff. Its seven tracked-file edits were reverted exactly to commit 6e167be: .agent/current_slice.md, .agent/known_gaps.yaml, .agent/project_state.yaml, components/contact/ContactForm.tsx, docs/execution-ledger.md, lib/content/index.ts, and lib/content/site-content.ts. Deleted its app/maya source pair, content/pages/maya-campaign.json, content/pages/maya.ts, two Maya planning documents, scripts/build_maya_chfa_collateral.py, both output/pdf/maya-chfa-*-review-proof.pdf files, and its output/playwright/maya-chfa-review captures. Unrelated QA outputs and all original site/assets were preserved. The replacement worktree already matched the clean pre-Maya commit; previous Newton worktree 3310 was clean.
+
+Verification: saved-repository tracked diff was empty after removal; production build passed with all 36 original pages and no /maya route. First build exposed stale generated .next/dev/types/validator.ts and routes.d.ts; removing those two generated files resolved it. Original CV SHA256 remains 8FB47E144E25D030FB246FF7F1FEF9F30D3446E02C627489018E0ED4898E696E. No live site, DNS, provider, email or printing action occurred.
+
+Existing Docket items docketitem_20260901233310_p_qty5mv and docketitem_20260901233310_y5rts2fa now record rejection and in-progress rework; old completion summaries cleared, audit history retained.
+
+Resolved: evergreen consulting/capabilities presence grounded in Maya's four-page July 2026 CV; public title Chief Marketing & Growth Officer; founders and senior leaders at established consumer/ecommerce brands; Maya and Koala are business partners, one integrated relationship, with Koala branding and Maya's continuing involvement. CHFA is one collateral use case. Preserve general Koala website.
+
+CTA resolved by Frank: use the existing Koala /contact page. Live homepage and Services desktop views plus Contact at 1440px and 390px were inspected through Newton Browser; local route, form, brand tokens, header and logo assets were read. Contact renders the existing inquiry form; no live submission was made. Open discovery before new copy/layout/code: mayaamani.com routing; visual direction and portrait status. Print format/timing follows page alignment. No replacement creative has been generated yet. Frank owns decisions and acceptance.
+
+
 ## 2026-08-11 - Wuxly Consumer Outerwear Case Study
 
 ### Implemented
@@ -3861,3 +3902,21 @@ fix; owner-action items moved to `docs/launch-blockers.md`.
 
 - Lint, typecheck, and the production build passed against the exact metadata change before deployment.
 - Live deployment and Merchant Center readback are recorded after release.
+
+## 2026-09-21 Maya motion, CPG and contact refinement
+
+Re-read original executive-profile PDF and verified explicit CPG, food/beverage, supplements, health/wellness, Wellth portfolio and Shopify/Amazon/Costco.ca experience. Added that experience to the intro and verified LinkedIn URL from the PDF annotation. Hero and closing audit now include LinkedIn icon links. Maya headline uses the actual shared homepage CyclingWord component. Portrait SVG now follows a subtle eight-second continuous yoyo morph, with no scroll/parallax dependency; pauses offscreen/hidden and respects reduced motion. Intro title vertically centered, contacts incorporated beside closing heading, repetitive section/stat/marquee dividers removed selectively. Shared numeric MetricValue/CountUp renders accessible final text, animates once on viewport entry, and is wired into Maya and case-study metric surfaces. Non-numeric labels remain static.
+
+Verification: production build and ESLint passed. Chromium desktop/mobile checks: continuous shape change without scroll; 303% counted from 0% to 303%; both LinkedIn anchors resolve to https://ca.linkedin.com/in/mayaamani; reduced-motion shape static and all seven Maya metrics final; intro center delta under 0.01px. Fixed closing CTA overflow and verified 390px viewport/document widths both 390px. Private Tailscale page returned HTTP 200. Production preview restarted on 127.0.0.1:3039, existing HTTPS 3038 proxy retained. Screenshots under output/playwright/maya-review/refinement-production-*.png. No public deployment or DNS changes. Safari-specific rendering not directly tested.
+
+## 2026-09-21 Four-page Maya brochure rebuild
+User rejected the two-sided flyer and requested a highly designed four-page brochure. Created sibling outputs under output/pdf/maya-brochure-v2, preserving prior flyers and all portraits. Standard letter bifold, 5.5 x 8.5 closed. Four-page reader PDFs and imposed outside 4|1 / inside 2|3 spreads for evergreen and CHFA editions. Current website portrait with matching vector clipping, 15+ years, explicit CPG experience, six native-color brand logos, custom growth icons, numeric results and single QR to mayaamani.com. CHFA version only adds logo. Rendered and visually inspected all four pages and CHFA outside spread. Page-count/content checks and rendered QR decoding passed. RGB review output; printer-specific conversion remains pending. Website unchanged; no build required for standalone PDF/script output. No public publishing.
+
+## 2026-09-21 Monograph brochure revision
+Version 3 preserves earlier exports. Replaced cover portrait with large typographic composition and vector contour motif; moved website portrait with shaped crop inside page 2. Removed repeated MAYA AMANI / KOALA STUDIOS footer. Replaced fixed paragraph positions with measured flow and consistent 9pt paragraph spacing; tightened results-body spacing. Four-page reading PDFs and imposed spreads regenerated for evergreen and CHFA. All reading pages and final CHFA outside spread rendered and inspected, page counts/content verified, QR decoded to mayaamani.com. No website changes or publishing.
+
+## 2026-09-21 Cover-inspired website accents and white 3D
+Added restrained cropped green arcs to shared footer and Maya audit section, shaped audit corner and tighter results heading tracking. Converted warm gray hero materials to white nonmetallic surfaces; increased neutral ambient light and reduced green rim cast so objects visually read clean white. Tailscale Serve mapping was intact; upstream 3039 server had stopped. Restarted built preview on 3039 and confirmed private HTTPS homepage and Maya load. Detached process command was blocked by command policy; managed exec process used instead. Build passed; desktop white 3D and mobile audit/footer screenshots inspected; mobile document width equals viewport 390px and CTA wraps without clipping. No public deployment.
+
+## 2026-09-21 Audit hover fill and dark-gray hero
+Thickened audit corner ring to 1.8rem. A clipped circular green layer expands from its origin on hover or keyboard focus; heading/body/contact text becomes white, CTA and LinkedIn become white with dark-green foreground. Reduced-motion removes transitions; hover is restricted to hover-capable devices. Replaced white hero structural surfaces with dark-gray palette, retaining green details. Build passed; private Tailscale browser hover screenshot confirmed full fill and contrast colors; homepage dark-gray scene visually checked. Preview restarted on 3039. No public deployment.

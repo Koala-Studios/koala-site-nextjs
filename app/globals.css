@@ -20,16 +20,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Film grain over everything; purely decorative */
-body::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  content: "";
-  inset: 0;
-  opacity: 0.05;
-  pointer-events: none;
-  position: fixed;
-  z-index: 70;
-}
 
 main {
   background: var(--koala-color-bg);
@@ -93,7 +83,7 @@ textarea:focus-visible {
 /* Hidden until keyboard focus, then drops in over the header */
 .koala-skip-link {
   background: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
   font-family: var(--koala-font-support);
   font-size: var(--koala-text-sm);
   left: 1rem;
@@ -232,12 +222,12 @@ textarea:focus-visible {
 }
 
 .koala-outline-text {
-  -webkit-text-stroke: 1px rgba(244, 243, 238, 0.22);
+  -webkit-text-stroke: 1px var(--koala-color-line);
   color: transparent;
 }
 
 .koala-marquee {
-  border-block: 1px solid var(--koala-color-line);
+  border-block: 0;
   mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   overflow: hidden;
@@ -303,6 +293,7 @@ textarea:focus-visible {
 }
 
 .koala-work-tile {
+  --koala-color-lime: #E5EBE2;
   color: var(--koala-color-ink);
   display: block;
   position: relative;
@@ -484,3 +475,7 @@ textarea:focus-visible {
     padding-top: var(--koala-space-10);
   }
 }
+
+/* The longer audit offer wraps without changing the shared button geometry. */
+.koala-audit-cta, [data-analytics-cta="services-audit"], [data-analytics-cta="service-audit"] { white-space: normal; line-height: 1.35; max-width: 100%; }
+.koala-audit-cta { margin-top: 1.5rem; }

@@ -4,6 +4,7 @@ import Script from "next/script";
 import * as gtag from "@/lib/gtag";
 
 const GoogleAnalytics = () => {
+  if (process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true") return null;
   return (
     <>
       <Script

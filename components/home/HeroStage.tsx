@@ -93,9 +93,9 @@ function initStage(
   // site's greys.
   const key = new THREE.DirectionalLight(0xffffff, 1.15);
   key.position.set(4, 6, 6);
-  const limeRim = new THREE.PointLight(PALETTE.lime, 12, 15, 2);
+  const limeRim = new THREE.PointLight(PALETTE.lime, 2, 15, 2);
   limeRim.position.set(-3.5, 2.2, 3.5);
-  scene.add(new THREE.AmbientLight(0xffffff, 0.5), key, limeRim);
+  scene.add(new THREE.AmbientLight(0xffffff, 2.5), key, limeRim);
 
   /* ---------- Vignettes ---------- */
 

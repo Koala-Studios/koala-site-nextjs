@@ -11,13 +11,12 @@ export const metadata: Metadata = createPageMetadata({
   path: "/privacy",
 });
 
-const LAST_UPDATED = "June 11, 2026";
+const LAST_UPDATED = "September 20, 2026";
 
 export default function PrivacyPage() {
   return (
     <div className={`koala-page ${styles.page}`}>
       <section className={styles.intro}>
-        <p className="koala-eyebrow">Legal</p>
         <h1 className={styles.title}>Privacy policy.</h1>
         <p className={styles.updated}>Last updated: {LAST_UPDATED}</p>
       </section>
@@ -26,7 +25,7 @@ export default function PrivacyPage() {
         <h2>What we collect</h2>
         <p>
           When you submit the contact form we collect the information you
-          provide: your name, company, email, optional phone number, the
+          provide: your name, company, email, website, optional phone number, the
           services you&apos;re interested in, an optional budget range, and
           your message. Form submissions are processed by Netlify Forms and
           delivered to our inbox.
@@ -47,6 +46,9 @@ export default function PrivacyPage() {
           </a>
           .
         </p>
+
+        <h2>Referral tracking</h2>
+        <p>We store first and latest campaign sources and Maya referral information in your browser for up to 60 days. If you submit an inquiry, those source details are included with it so we can understand how you found us. Clearing browser storage removes this saved attribution.</p>
 
         <h2>How we use your information</h2>
         <p>

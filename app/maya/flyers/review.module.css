@@ -1,0 +1,6 @@
+.proofs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin: 3rem 0; }
+.proofs h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+.proofs img { width: 100%; height: auto; border: 1px solid var(--koala-color-line); }
+.links { display: grid; gap: .75rem; margin-top: 1rem; }
+.links a { text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 900px) { .proofs { grid-template-columns: 1fr; max-width: 32rem; } }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auditOffer } from "@/lib/content/audit";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -113,9 +114,6 @@ export default async function ServiceDetailPage({
       </section>
 
       <section className={styles.deliverables} aria-label="What's included">
-        <Reveal className={styles.sectionHead}>
-          <p className="koala-eyebrow">What&apos;s included</p>
-        </Reveal>
         <div className={styles.chipGrid}>
           {service.deliverables.map((item, index) => (
             <Reveal delay={index * 0.04} key={item}>
@@ -170,7 +168,6 @@ export default async function ServiceDetailPage({
 
       <section className={styles.cta} aria-labelledby="service-cta-title">
         <Reveal>
-          <p className="koala-eyebrow">Next step</p>
           <h2 className={styles.ctaTitle} id="service-cta-title">
             {service.ctaTitle}
           </h2>
@@ -190,11 +187,11 @@ export default async function ServiceDetailPage({
           </Magnetic>
           <Cta
             data-analytics-cta="service-audit"
-            href="/contact"
+            href={auditOffer.href}
             size="medium"
             variant="outlined"
           >
-            Get a free audit
+            {auditOffer.cta}
           </Cta>
         </Reveal>
       </section>

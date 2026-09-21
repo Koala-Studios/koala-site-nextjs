@@ -5,7 +5,8 @@ export type PublicRoute =
   | "/work"
   | "/work/[slug]"
   | "/services"
-  | "/contact";
+  | "/contact"
+  | "/maya";
 
 export type MarketingPageKey = "home" | "services" | "contact";
 

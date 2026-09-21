@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auditOffer } from "@/lib/content/audit";
 import type { Metadata } from "next";
 
 import { SplitReveal } from "@/components/animation/SplitReveal";
@@ -184,6 +185,8 @@ export default function Home() {
               id="home-contact-title"
               text={"Let's build something\nthat sells."}
             />
+            <p className="koala-muted-copy">{auditOffer.summary}</p>
+            <Cta href={auditOffer.href} data-analytics-cta="home-audit" variant="outlined" className="koala-audit-cta">{auditOffer.cta}</Cta>
           </div>
           <Link
             aria-label="Start a project with Koala Studios"

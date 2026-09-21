@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auditOffer } from "@/lib/content/audit";
 import type { Metadata } from "next";
 
 import { Reveal } from "@/components/animation/Reveal";
@@ -177,23 +178,22 @@ export default function ServicesPage() {
           <div className={styles.auditCopy}>
             <h2 className={styles.auditTitle} id="services-audit-title">
               Not sure where to start? <br />
-              Get a free audit.
+              {auditOffer.title}.
             </h2>
             <p className={styles.auditText}>
-              We&apos;ll go through your site across design, conversion to show
-              you the few changes that would move the needle most.
+              {auditOffer.summary}
             </p>
           </div>
           <Magnetic>
             <Cta
               data-analytics-cta="services-audit"
-              href="/contact"
+              href={auditOffer.href}
               icon="circle"
               iconPosition="left"
               size="large"
               variant="transparent"
             >
-              Get a free audit
+              {auditOffer.cta}
             </Cta>
           </Magnetic>
         </Reveal>

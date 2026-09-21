@@ -153,7 +153,7 @@
 .control:hover {
   background: var(--koala-color-lime);
   border-color: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
   position: relative;
   z-index: 1;
 }

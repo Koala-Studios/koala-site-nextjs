@@ -23,9 +23,9 @@ type VariantDef = {
   update: (elapsed: number, pointer: Pointer, scroll: number) => void;
 };
 
-const BG = 0x0a0a09;
-const DARK = 0x2a2e26;
-const LIME = 0xa3e635;
+const BG = 0xfafafa;
+const DARK = 0xd8cec5;
+const LIME = 0x32684a;
 
 function wire(THREE: Three, geometry: BufferGeometry, opacity: number, color = LIME) {
   return new THREE.LineSegments(
@@ -161,7 +161,7 @@ function buildDart(THREE: Three): VariantDef {
   );
   wingGeometry.computeVertexNormals();
   const wingMaterial = new THREE.MeshStandardMaterial({
-    color: 0x39402f,
+    color: 0xc6b8a8,
     metalness: 0.15,
     roughness: 0.5,
     side: THREE.DoubleSide,

@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { Marquee } from "@/components/site/Marquee";
-import { AmbientAccent } from "@/components/three/AmbientAccent";
 import { getBrandsBuiltFor } from "@/lib/content";
 
 import styles from "./BrandsBuiltFor.module.css";
@@ -10,19 +9,7 @@ export function BrandsBuiltFor() {
   const brands = getBrandsBuiltFor();
 
   return (
-    <section className={styles.section} aria-labelledby="brands-built-for-title">
-      <AmbientAccent
-        className={styles.accent}
-        shape="icosphere"
-        side="right"
-        parallax={4}
-      />
-      <p
-        className={`koala-eyebrow ${styles.eyebrow}`}
-        id="brands-built-for-title"
-      >
-        Brands we&apos;ve built for
-      </p>
+    <section className={styles.section} aria-label="Brands we've built for">
       <Marquee className={styles.marquee} duration={38}>
         {brands.map((brand) => (
           <span
@@ -33,7 +20,7 @@ export function BrandsBuiltFor() {
             {brand.logo ? (
               <Image
                 className={styles.logo}
-                src={brand.logo.src}
+                src={`/images/brands/light/${brand.slug}.png`}
                 alt={brand.logo.alt}
                 width={brand.logo.width ?? 220}
                 height={brand.logo.height ?? 80}

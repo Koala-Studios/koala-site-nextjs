@@ -1,3 +1,4 @@
+import { MetricValue } from "@/components/animation/MetricValue";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -73,7 +74,7 @@ export function CaseStudyHero({ caseStudy }: CaseStudyHeroProps) {
         {focusMetric ? (
           <div>
             <span className="koala-label">Focus</span>
-            <strong>{focusMetric.value}</strong>
+            <strong><MetricValue value={focusMetric.value} /></strong>
           </div>
         ) : null}
         <div>

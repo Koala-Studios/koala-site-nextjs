@@ -72,8 +72,8 @@ export function HeroField() {
           context.beginPath();
           context.arc(x, y, radius, 0, Math.PI * 2);
           context.fillStyle = lime
-            ? `rgba(163, 230, 53, ${Math.min(alpha, 0.9)})`
-            : `rgba(143, 196, 116, ${Math.min(alpha, 0.7)})`;
+            ? `rgba(50, 104, 74, ${Math.min(alpha, 0.9)})`
+            : `rgba(116, 109, 102, ${Math.min(alpha, 0.7)})`;
           context.fill();
         }
       }

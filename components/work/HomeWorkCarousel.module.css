@@ -80,7 +80,7 @@
 
 .bar {
   align-items: baseline;
-  border-bottom: 1px solid var(--koala-color-line);
+
   display: grid;
   gap: var(--koala-space-4);
   grid-template-columns: auto minmax(0, 1fr) auto auto;
@@ -164,7 +164,7 @@
 .control:hover:not(:disabled) {
   background: var(--koala-color-lime);
   border-color: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
   position: relative;
   z-index: 1;
 }

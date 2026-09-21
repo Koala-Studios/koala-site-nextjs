@@ -1,5 +1,24 @@
 # Current Slice
 
+Latest refinement: explicit CV-backed CPG experience, verified LinkedIn buttons, shared homepage CyclingWord animation, continuous subtle portrait morph without scroll linkage, centered intro, integrated contacts, fewer dividers, and viewport-triggered numeric counters. Build/lint and private Tailscale desktop/mobile checks passed; no public deployment. See latest execution-ledger entry.
+
+## Latest: 2026-09-21 review corrections
+
+Native scrolling and normal cursor restored globally. Warm palette replaced with #FAFAFA / #F0F1F0; grain removed. Maya is part of Koala, not a partnership: removed that section and audit fit/conversation qualifiers. Compact rotating hero, continuously morphing SVG portrait with identity below, brand carousel directly after hero, stronger intro in two columns, 2x2 results on desktop, stacked mobile, no eyebrows/numbered theme column. Individual logo assets in public/images/brands/light preserve native brand colors including the Nosh ball. Private Tailscale URL remains unchanged. Flyer color/affiliation/offer wording also aligned. No publishing.
+
+## Latest: private MacBook review and flyer drafts
+
+Frank subsequently authorized Tailscale serving and autonomous flyer work. Private preview: https://desktop-0t205dj.tailf000ee.ts.net:3038/maya; flyer proofs at `/maya/flyers`. Tailscale Serve uses its own HTTPS port 3038 and proxies the built preview on 127.0.0.1:3039; existing Serve routes are preserved. Both 4x6 two-sided editions are generated under `output/pdf/maya`, screen and CMYK review files, with the provisional taupe portrait. Shared QR encodes https://mayaamani.com. Domain routing remains unchanged. See `docs/maya-flyer-review.md`.
+
+## Current: Maya and light palette local review, 2026-09-20
+
+Frank authorized local implementation after discovery. `/maya`, four portrait variants (03 seated taupe provisional), the light/nude/selective-green palette, unified free brand and growth audit, required plain-text website field, and 60-day attribution are implemented for review. Preview: http://localhost:3037/maya. `.env.local` sets `NEXT_PUBLIC_LOCAL_PREVIEW=true`, suppressing live analytics and form delivery. See `docs/maya-local-review.md` for checks and launch dependencies. No live push, DNS change, or flyer work. Earlier fresh-start and overhaul sections below are historical.
+
+## Active Maya fresh start - 2026-09-04
+
+Rejected prior package removed; see the 2026-09-04 execution-ledger entry. Evergreen CV-led consulting presence; exact title Chief Marketing & Growth Officer; integrated Maya/Koala partnership. CTA is resolved by Frank: link to the existing Koala /contact page. Domain routing, visual direction and portrait remain discovery decisions before authoring. Preserve the unrelated general Koala site. Existing Docket items remain in progress for rework, not acceptance of old proofs.
+
+
 ## Fast Start
 
 1. `AGENTS.md`

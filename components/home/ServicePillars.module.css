@@ -37,7 +37,7 @@
 
 .row {
   align-items: center;
-  border-top: 1px solid var(--koala-color-line);
+
   color: var(--koala-color-ink);
   display: grid;
   gap: clamp(1rem, 3vw, 2.5rem);
@@ -50,7 +50,7 @@
 }
 
 .row:last-child {
-  border-bottom: 1px solid var(--koala-color-line);
+
 }
 
 .row:hover {
@@ -109,7 +109,7 @@
 .row:hover .arrow {
   background: var(--koala-color-lime);
   border-color: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
   transform: translateX(0.35rem) rotate(-45deg);
 }
 

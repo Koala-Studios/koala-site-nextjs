@@ -3,6 +3,12 @@
   gap: var(--koala-space-4);
 }
 
+.auditNote {  padding-bottom: 1rem; }
+.auditNote h2 { font-size: 2rem; line-height: 1.1; margin-bottom: .75rem; }
+.auditNote p { font-size: 1rem; margin-bottom: .5rem; }
+.auditNote p:last-child { color: var(--koala-color-muted); font-size: .85rem; }
+.previewNote { font-size: .85rem; color: var(--koala-color-muted); border-left: 2px solid var(--koala-color-green); padding-left: .8rem; margin: 0; }
+
 .form {
   display: grid;
   gap: var(--koala-space-4);
@@ -100,7 +106,7 @@
 .typeInput:checked + .typeLabel {
   background: var(--koala-color-lime);
   border-color: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
 }
 
 .typeInput:focus-visible + .typeLabel {

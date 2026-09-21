@@ -1,14 +1,16 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Field, Input, Textarea } from "@/components/forms";
 import { Cta } from "@/components/site/Cta";
 import { Magnetic } from "@/components/site/Magnetic";
 import { analyticsConfig } from "@/lib/analytics";
 import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
+import { attributionEventParams, attributionFields, captureAttribution } from "@/lib/attribution";
+import { auditOffer } from "@/lib/content/audit";
 
 import styles from "./ContactForm.module.css";
 
@@ -19,7 +21,7 @@ const projectTypes = [
   { value: "Shopify design & build", name: "interest-shopify" },
   { value: "Meta ads", name: "interest-meta-ads" },
   { value: "Email marketing", name: "interest-email" },
-  { value: "Site audit", name: "interest-audit" },
+  { value: "Brand and growth audit", name: "interest-audit" },
   { value: "Not sure yet", name: "interest-unsure" },
 ] as const;
 
@@ -37,6 +39,17 @@ function encodeFormData(formData: FormData) {
 
 export function ContactForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const auditRef = useRef<HTMLInputElement>(null);
+  const isAudit = searchParams.get("interest") === "brand-growth-audit";
+  const [attribution, setAttribution] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (isAudit && auditRef.current) auditRef.current.checked = true;
+  }, [isAudit]);
+  useEffect(() => {
+    const id = window.setTimeout(() => setAttribution(attributionFields(captureAttribution())), 0);
+    return () => window.clearTimeout(id);
+  }, [searchParams]);
   const [submitState, setSubmitState] = useState<
     "idle" | "submitting" | "error"
   >("idle");
@@ -53,17 +66,26 @@ export function ContactForm() {
     });
 
     try {
+      const current = captureAttribution();
+      const formData = new FormData(event.currentTarget);
+      Object.entries(attributionFields(current)).forEach(([key, value]) => formData.set(key, value));
+      if (process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true") {
+        // An explicit local-only build never posts inquiries to the live service.
+        window.sessionStorage.setItem("koala:preview-submission", JSON.stringify(Object.fromEntries(formData)));
+        router.push("/contact/success");
+        return;
+      }
       const response = await fetch(NETLIFY_FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodeFormData(new FormData(event.currentTarget)),
+        body: encodeFormData(formData),
       });
 
       if (!response.ok) {
         throw new Error("Netlify form submission failed.");
       }
 
-      markPendingContactSubmit();
+      markPendingContactSubmit(attributionEventParams(current));
       router.push("/contact/success");
     } catch {
       setSubmitState("error");
@@ -72,6 +94,8 @@ export function ContactForm() {
 
   return (
     <div className={styles.formBlock}>
+      {isAudit && <div className={styles.auditNote}><h2>{auditOffer.title}</h2><p>{auditOffer.summary}</p></div>}
+      {process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" && <p className={styles.previewNote}>Local preview: submissions stay in this browser and are not sent.</p>}
       <form
         className={styles.form}
         name="contact"
@@ -80,6 +104,7 @@ export function ContactForm() {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact" />
+        {Object.entries(attribution).map(([key, value]) => <input type="hidden" key={key} name={key} value={value} />)}
         <p className={styles.hidden}>
           <label>
             Don&apos;t fill this out if you&apos;re human:{" "}
@@ -130,6 +155,10 @@ export function ContactForm() {
           </Field>
         </div>
 
+        <Field label="Website URL">
+          <Input name="website" type="text" aria-label="Website URL" autoComplete="url" required style={controlWidth} />
+        </Field>
+
         <fieldset className={styles.typeFieldset}>
           <legend className={styles.typeLegend}>What do you need?</legend>
           <div className={styles.typeChips}>
@@ -140,6 +169,8 @@ export function ContactForm() {
                   name={type.name}
                   type="checkbox"
                   value={type.value}
+                  ref={type.name === "interest-audit" ? auditRef : undefined}
+                  defaultChecked={type.name === "interest-audit" && isAudit}
                 />
                 <span className={styles.typeLabel}>{type.value}</span>
               </label>

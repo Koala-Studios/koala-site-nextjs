@@ -1,5 +1,5 @@
 .headerWrap {
-  background: linear-gradient(var(--koala-color-bg), #0000002e);
+  background: color-mix(in srgb, var(--koala-color-bg) 96%, transparent);
   backdrop-filter: blur(5px);
   pointer-events: auto;
   position: sticky;
@@ -42,6 +42,7 @@
 }
 
 .brand img {
+  filter: brightness(0);
   height: auto;
   width: 8.4rem;
 }
@@ -235,7 +236,7 @@
 
 .menuButton:hover {
   background: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
 }
 
 .menuButton span {
@@ -248,7 +249,7 @@
 
 .menuOpen {
   background: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
 }
 
 .menuOpen span:nth-child(1) {
@@ -368,6 +369,7 @@
   }
 
   .brand img {
+  filter: brightness(0);
     width: 7.2rem;
   }
 

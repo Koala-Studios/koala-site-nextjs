@@ -21,7 +21,7 @@ type AmbientAccentProps = {
   className?: string;
 };
 
-const LIME = 0xa3e635;
+const LIME = 0x32684a;
 
 function buildGeometry(THREE: Three, shape: AccentShape) {
   switch (shape) {

@@ -1,14 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { CtaAnalytics } from "@/components/site/CtaAnalytics";
-import { CursorDot } from "@/components/site/CursorDot";
+import { AttributionTracker } from "@/components/site/AttributionTracker";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { SmoothScroll } from "@/components/site/SmoothScroll";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -67,9 +67,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Suspense fallback={null}><AttributionTracker /></Suspense>
         <GoogleAnalytics />
         <CtaAnalytics />
-        <SmoothScroll />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -79,7 +79,6 @@ export default function RootLayout({
         <a className="koala-skip-link" href="#main-content">
           Skip to content
         </a>
-        <CursorDot />
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />

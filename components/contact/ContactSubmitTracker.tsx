@@ -9,11 +9,13 @@ import { consumePendingContactSubmit, trackEvent } from "@/lib/gtag";
 // loads, completing the flag set in ContactForm before the native form POST.
 export function ContactSubmitTracker() {
   useEffect(() => {
-    if (consumePendingContactSubmit()) {
+    const params = consumePendingContactSubmit();
+    if (params) {
       trackEvent({
         action: analyticsConfig.contactSubmitEventName,
         category: "contact",
         label: "contact form submit",
+        params,
       });
     }
   }, []);

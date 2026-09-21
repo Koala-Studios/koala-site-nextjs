@@ -200,6 +200,12 @@
   opacity: 0.5;
 }
 
+.cta:not(:disabled):active { transform: translateY(1px); }
+.cta:hover .iconInline, .cta:focus-visible .iconInline { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .cta, .cta *, .cta::before { transition: none !important; }
+}
+
 .fullWidth {
   width: 100%;
 }

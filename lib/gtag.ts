@@ -1,4 +1,4 @@
-export const GA_TRACKING_ID: string | undefined = "G-3BWBGYMGHR";
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID ?? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-3BWBGYMGHR";
 
 type GtagWindow = Window & {
   gtag?: (...args: unknown[]) => void;
@@ -10,6 +10,7 @@ export type AnalyticsEvent = {
   category: string;
   label?: string;
   value?: number;
+  params?: Record<string, string>;
 };
 
 export const pageview = (url: string) => {
@@ -45,8 +46,9 @@ export function trackEvent({
   category,
   label,
   value,
+  params,
 }: AnalyticsEvent) {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true") {
     return;
   }
 
@@ -60,39 +62,41 @@ export function trackEvent({
     event_category: category,
     event_label: label,
     value,
+    ...params,
   });
 }
 
 const CONTACT_SUBMIT_PENDING_KEY = "koala:contact-submit-pending";
 
-export function markPendingContactSubmit() {
+export function markPendingContactSubmit(params: Record<string, string> = {}) {
   if (typeof window === "undefined") {
     return;
   }
 
   try {
-    window.sessionStorage.setItem(CONTACT_SUBMIT_PENDING_KEY, "true");
+    window.sessionStorage.setItem(CONTACT_SUBMIT_PENDING_KEY, JSON.stringify({ params, at: Date.now() }));
   } catch {
     // Storage can be blocked; analytics should not prevent form submission.
   }
 }
 
-// The contact form is a native POST that navigates to /contact/success before a
-// synchronous event reliably reaches GA, so the conversion is deferred: marked
-// here and fired once the confirmation page reads (and clears) this flag.
-export function consumePendingContactSubmit(): boolean {
+// Mark only after a successful form response. The confirmation page consumes
+// the marker once so refreshes do not report duplicate conversions.
+export function consumePendingContactSubmit(): Record<string, string> | null {
   if (typeof window === "undefined") {
-    return false;
+    return null;
   }
 
   try {
-    if (window.sessionStorage.getItem(CONTACT_SUBMIT_PENDING_KEY)) {
+    const stored = window.sessionStorage.getItem(CONTACT_SUBMIT_PENDING_KEY);
+    if (stored) {
       window.sessionStorage.removeItem(CONTACT_SUBMIT_PENDING_KEY);
-      return true;
+      const pending = JSON.parse(stored);
+      if (pending.at && Date.now() - pending.at < 10 * 60 * 1000) return pending.params;
     }
   } catch {
     // Storage can be blocked; treat as no pending submit.
   }
 
-  return false;
+  return null;
 }

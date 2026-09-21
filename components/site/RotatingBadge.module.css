@@ -29,7 +29,7 @@
 .center {
   align-items: center;
   background: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
   display: inline-flex;
   height: 3.2rem;
   justify-content: center;

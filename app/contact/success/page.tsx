@@ -27,18 +27,18 @@ export default function ContactSuccessPage() {
       <AmbientScene variant="dart" />
 
       <section className={styles.hero} aria-labelledby="success-title">
-        <p className="koala-eyebrow">Message sent</p>
+        <p className="koala-eyebrow">{process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" ? "Local preview only" : "Message sent"}</p>
         <SplitReveal
           accents={["soon."]}
           as="h1"
           className={styles.title}
           id="success-title"
-          text={"Got it.\nTalk soon."}
+          text={process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" ? "Preview complete." : "Got it.\nTalk soon."}
         />
         <p className={styles.copy}>
-          Your note is in. A real person reads it next and will reply from
+          {process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" ? "The form passed validation. Your preview submission is stored in this browser session only. No inquiry or analytics event was sent." : <>Your note is in. A real person reads it next and will reply from
           hello@koalastudios.ca within two business days. Add us to your
-          contacts so we don&apos;t land in spam.
+          contacts so we don&apos;t land in spam.</>}
         </p>
 
         <div className={styles.statusRow}>

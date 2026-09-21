@@ -26,6 +26,10 @@ The current stack is not a hard constraint. The overhaul may upgrade framework/r
 
 ## Redesign Direction
 
+Latest review (2026-09-21): Frank superseded the warm palette and partnership framing. Use near-white/light-gray backgrounds, native scrolling, no cursor follower, no redundant eyebrows, and describe Maya as part of Koala Studios. `/maya` now uses a shorter rotating hero, morphing SVG portrait, immediately following brand carousel with individually prepared logo assets, side-by-side introductory heading/body, and 2x2 desktop growth results. Keep the private-only publication boundary.
+
+The current Maya/local palette slice is governed by `docs/maya-implementation-proposal.md` and `docs/maya-local-review.md`. Frank authorized off-white/nude surfaces and selective green accents while preserving existing fonts, navigation, button treatment, and general copy, except the agreed audit offer and form changes. This narrower scope takes precedence over the older overhaul guidance below. Publication and flyer production are not authorized in this slice.
+
 - Treat the project as a technical and visual overhaul, not a visual reskin.
 - Prefer `/work` and `/work/[slug]` for the new case-study experience.
 - Treat `/projects`, `/blogs`, and `/home` as retired URL surfaces handled by redirects in `next.config.js`.

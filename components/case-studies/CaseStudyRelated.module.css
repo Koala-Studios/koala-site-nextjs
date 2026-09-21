@@ -89,7 +89,7 @@
 .actionArrow {
   align-items: center;
   background: var(--koala-color-lime);
-  color: #0a0a09;
+  color: var(--koala-color-surface);
   display: inline-flex;
   height: 2.6rem;
   justify-content: center;

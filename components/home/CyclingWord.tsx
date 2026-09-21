@@ -7,6 +7,7 @@ import styles from "./CyclingWord.module.css";
 type CyclingWordProps = {
   words: string[];
   interval?: number;
+  syncHero?: boolean;
 };
 
 declare global {
@@ -16,7 +17,7 @@ declare global {
   }
 }
 
-export function CyclingWord({ words, interval = 3200 }: CyclingWordProps) {
+export function CyclingWord({ words, interval = 3200, syncHero = true }: CyclingWordProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -24,22 +25,29 @@ export function CyclingWord({ words, interval = 3200 }: CyclingWordProps) {
       return;
     }
 
-    const timer = window.setInterval(() => {
-      setIndex((value) => (value + 1) % words.length);
-    }, interval);
-
-    return () => window.clearInterval(timer);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number | undefined;
+    const configure = () => {
+      window.clearInterval(timer);
+      if (!motion.matches) timer = window.setInterval(() => {
+        if (!document.hidden) setIndex(value => (value + 1) % words.length);
+      }, interval);
+    };
+    configure();
+    motion.addEventListener("change", configure);
+    return () => { window.clearInterval(timer); motion.removeEventListener("change", configure); };
   }, [interval, words.length]);
 
   // Let companions (e.g. the hero 3D stage) follow the active word. The index
   // is also parked on `window` because the stage mounts after its three.js
   // chunk loads and would otherwise miss every swap before that.
   useEffect(() => {
+    if (!syncHero) return;
     window.koalaHeroWordIndex = index;
     window.dispatchEvent(
       new CustomEvent("koala:hero-word", { detail: { index } })
     );
-  }, [index]);
+  }, [index, syncHero]);
 
   const longest = words.reduce(
     (current, word) => (word.length > current.length ? word : current),

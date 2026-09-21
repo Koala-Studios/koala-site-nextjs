@@ -116,7 +116,7 @@
 }
 
 .chapter {
-  border-top: 1px solid var(--koala-color-line-soft);
+  border-top: 0;
   display: grid;
   gap: clamp(2rem, 4vw, 3.5rem);
   padding-top: clamp(1.5rem, 3vw, 2.5rem);

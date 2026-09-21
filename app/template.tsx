@@ -20,8 +20,8 @@ export default function Template({ children }: { children: ReactNode }) {
 
     const animation = gsap.fromTo(
       element,
-      { autoAlpha: 0, y: 28 },
-      { autoAlpha: 1, y: 0, duration: 0.65, ease: "power3.out" }
+      { y: 8 },
+      { y: 0, duration: 0.25, ease: "power2.out", clearProps: "transform" }
     );
 
     return () => {

@@ -43,8 +43,8 @@ export function Magnetic({ children, className, pull = 14 }: MagneticProps) {
       gsap.to(element, {
         x: 0,
         y: 0,
-        duration: 0.7,
-        ease: "elastic.out(1, 0.4)",
+        duration: 0.2,
+        ease: "power2.out",
       });
     };
 

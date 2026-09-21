@@ -24,7 +24,6 @@ export default function NewtonPage() {
   return (
     <div className={`koala-page ${styles.page}`}>
       <section className={styles.hero}>
-        <p className="koala-eyebrow">Internal marketing technology</p>
         <h1>Koala Studios Newton</h1>
         <p className={styles.lede}>
           Newton is Koala Studios&apos; private internal tool for managing Google

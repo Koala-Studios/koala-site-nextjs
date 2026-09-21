@@ -1,21 +1,21 @@
 :root {
-  --koala-color-bg: #0a0a09;
-  --koala-color-surface: #0a0a09;
-  --koala-color-surface-soft: #141511;
-  --koala-color-ink: #f4f3ee;
-  --koala-color-muted: #a09d92;
-  --koala-color-line: rgba(244, 243, 238, 0.14);
-  --koala-color-line-soft: rgba(244, 243, 238, 0.08);
-  --koala-color-green: #a3e635;
-  --koala-color-lime: #a3e635;
-  --koala-color-green-dark: #14351c;
-  --koala-color-green-soft: #dfe9d9;
+  --koala-color-bg: #FAFAFA;
+  --koala-color-surface: #FAFAFA;
+  --koala-color-surface-soft: #F0F1F0;
+  --koala-color-ink: #191A18;
+  --koala-color-muted: #666B67;
+  --koala-color-line: #DDDFDD;
+  --koala-color-line-soft: rgba(25, 26, 24, 0.10);
+  --koala-color-green: #32684A;
+  --koala-color-lime: #32684A;
+  --koala-color-green-dark: #264E38;
+  --koala-color-green-soft: #E5EBE2;
   --koala-color-clay: #b98c67;
   --koala-color-sky: #dfe6e3;
-  --koala-color-danger: #c4604e;
+  --koala-color-danger: #A64232;
 
-  --koala-color-panel: var(--koala-color-green-dark);
-  --koala-color-panel-soft: #29462d;
+  --koala-color-panel: var(--koala-color-surface-soft);
+  --koala-color-panel-soft: #F0F1F0;
   --koala-color-ink-muted: var(--koala-color-muted);
   --koala-color-accent: var(--koala-color-green);
   --koala-color-accent-strong: var(--koala-color-green);
@@ -71,7 +71,7 @@
   --koala-container-max: 72rem;
   --koala-container-wide: 92rem;
   --koala-border-width: 1px;
-  --koala-focus-ring: 0 0 0 3px rgba(163, 230, 53, 0.35);
+  --koala-focus-ring: 0 0 0 3px rgba(50, 104, 74, 0.35);
 
   --koala-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --koala-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -125,7 +125,7 @@ html {
   color-scheme: light;
   background: var(--koala-color-bg);
   color: var(--koala-color-ink);
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -168,6 +168,6 @@ button {
 }
 
 ::selection {
-  background: rgba(163, 230, 53, 0.32);
+  background: #32684A;
   color: #ffffff;
 }

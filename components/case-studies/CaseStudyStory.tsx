@@ -1,3 +1,4 @@
+import { MetricValue } from "@/components/animation/MetricValue";
 import Image from "next/image";
 
 import { MediaReveal } from "@/components/animation/MediaReveal";
@@ -61,7 +62,6 @@ function ChapterMedia({ chapterIndex, media }: ChapterMediaProps) {
     </div>
   );
 }
-
 export function CaseStudyStory({ caseStudy }: CaseStudyStoryProps) {
   const supportingMedia =
     caseStudy.heroImage && caseStudy.heroImage.src !== caseStudy.media[0]?.src
@@ -100,7 +100,7 @@ export function CaseStudyStory({ caseStudy }: CaseStudyStoryProps) {
                 {caseStudy.metrics.map((metric) => (
                   <div key={metric.label}>
                     <dt>{metric.label}</dt>
-                    <dd>{metric.value}</dd>
+                    <dd><MetricValue value={metric.value} /></dd>
                   </div>
                 ))}
               </dl>
