@@ -3920,3 +3920,9 @@ Added restrained cropped green arcs to shared footer and Maya audit section, sha
 
 ## 2026-09-21 Audit hover fill and dark-gray hero
 Thickened audit corner ring to 1.8rem. A clipped circular green layer expands from its origin on hover or keyboard focus; heading/body/contact text becomes white, CTA and LinkedIn become white with dark-green foreground. Reduced-motion removes transitions; hover is restricted to hover-capable devices. Replaced white hero structural surfaces with dark-gray palette, retaining green details. Build passed; private Tailscale browser hover screenshot confirmed full fill and contrast colors; homepage dark-gray scene visually checked. Preview restarted on 3039. No public deployment.
+
+## 2026-09-21 Public launch
+
+Published the site-wide light palette, selective green accents, dark-gray homepage hero objects, refined motion, free brand and growth audit conversion path, 60-day Maya attribution, required website field, native-color brand carousel assets, and Maya executive landing page.
+
+Verification: ESLint, TypeScript, attribution regression checks, `git diff --check`, and the Next.js production build passed. Commit `bebbd09c8a8223d1960c8c8207b8679702a26e67` was pushed to `origin/main`; remote readback returned the same SHA. Netlify reported the production deploy complete at `https://koalastudios.ca`. Live HTTP readback returned 200 for `/`, `/maya`, `/contact`, and `/sitemap.xml`; private `/maya/portraits` and `/maya/flyers` review routes returned 404 in production as intended.
