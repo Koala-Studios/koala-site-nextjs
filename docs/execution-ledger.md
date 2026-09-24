@@ -3992,3 +3992,7 @@ Production readback: commit 0cc0117746215330010ca8883d5b156ff96d3f53 is on origi
 
 ## 2026-09-24 — Short Maya intake
 Added /contact-short using the existing contact-page design and shared ContactForm submission handler. Short mode shows Name, Email, Company (required), and Website (optional plain text), with the existing contact form identity, spam trap, attribution and success route. Maya audit links now target /contact-short with audit/source query parameters. The standard contact form retains its complete fields and required website; static Netlify schema permits missing website for short submissions. Added the public route to the sitemap. Build, lint, typecheck, attribution regression and git diff checks passed. Desktop/mobile screenshots inspected; zero mobile overflow and native required-field validation verified. No test inquiry sent to the live inbox.
+Production verified: /contact-short returns HTTP 200 and renders the four-field form with optional Website; Maya HTML contains both updated /contact-short audit links. Released commit ad251a8. Live inbox delivery was not tested.
+
+## 2026-09-24 — Black contact labels
+Changed the shared Field label color and contact fieldset legend to #000 for /contact and /contact-short. Production build passed; browser computed colors verified rgb(0, 0, 0) for every field label and the standard form legend. Both page screenshots inspected.

@@ -54,7 +54,7 @@
 }
 
 .typeLegend {
-  color: var(--koala-color-muted);
+  color: #000;
   font-family: var(--koala-font-support);
   font-size: var(--koala-text-xs);
   letter-spacing: var(--koala-label-tracking);

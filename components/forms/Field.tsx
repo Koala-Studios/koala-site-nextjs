@@ -22,7 +22,7 @@ export function Field({ label, hint, error, children, className, style }: FieldP
     >
       <span
         style={{
-          color: "var(--koala-color-muted)",
+          color: "#000",
           fontFamily: "var(--koala-font-support)",
           fontSize: "var(--koala-text-xs)",
           letterSpacing: "var(--koala-label-tracking)",
