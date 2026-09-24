@@ -37,7 +37,7 @@ function encodeFormData(formData: FormData) {
   return encoded.toString();
 }
 
-export function ContactForm() {
+export function ContactForm({ short = false }: { short?: boolean }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const auditRef = useRef<HTMLInputElement>(null);
@@ -94,7 +94,7 @@ export function ContactForm() {
 
   return (
     <div className={styles.formBlock}>
-      {isAudit && <div className={styles.auditNote}><h2>{auditOffer.title}</h2><p>{auditOffer.summary}</p></div>}
+      {isAudit && !short && <div className={styles.auditNote}><h2>{auditOffer.title}</h2><p>{auditOffer.summary}</p></div>}
       {process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" && <p className={styles.previewNote}>Local preview: submissions stay in this browser and are not sent.</p>}
       <form
         className={styles.form}
@@ -112,6 +112,17 @@ export function ContactForm() {
           </label>
         </p>
 
+        {short ? <>
+          <div className={styles.row}>
+            <Field label="Name"><Input name="name" aria-label="Name" autoComplete="name" required style={controlWidth} /></Field>
+            <Field label="Email"><Input name="email" type="email" aria-label="Email" autoComplete="email" required style={controlWidth} /></Field>
+          </div>
+          <div className={styles.row}>
+            <Field label="Company"><Input name="company" aria-label="Company" autoComplete="organization" required style={controlWidth} /></Field>
+            <Field label="Website (optional)"><Input name="website" type="text" aria-label="Website (optional)" autoComplete="url" style={controlWidth} /></Field>
+          </div>
+          {isAudit && <input type="hidden" name="interest-audit" value="Brand and growth audit" />}
+        </> : <>
         <div className={styles.row}>
           <Field label="Name">
             <Input
@@ -203,6 +214,8 @@ export function ContactForm() {
             style={{ ...controlWidth, minHeight: "10rem" }}
           />
         </Field>
+
+        </>}
 
         <div className={styles.footer}>
           <Magnetic>

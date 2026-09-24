@@ -5,6 +5,7 @@ export const corePublicRoutes = {
   workIndex: "/work",
   services: "/services",
   contact: "/contact",
+  contactShort: "/contact-short",
   maya: "/maya",
   newton: "/newton",
   privacy: "/privacy",
