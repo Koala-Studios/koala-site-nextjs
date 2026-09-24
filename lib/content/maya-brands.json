@@ -1,0 +1,118 @@
+{
+  "brands": [
+    {
+      "id": "allo",
+      "name": "Allo Nutrition",
+      "description": "Protein for hot coffee",
+      "logo": "/images/maya/brands/allo.svg",
+      "url": "https://liveallo.com/"
+    },
+    {
+      "id": "plantropy",
+      "name": "Plantropy",
+      "description": "Plant-based meals & snacks",
+      "logo": "/images/maya/brands/plantropy.png",
+      "url": "https://plantropy.ca/"
+    },
+    {
+      "id": "healthy-crunch",
+      "name": "Healthy Crunch",
+      "description": "Snacks, seed butters & pantry foods",
+      "logo": "/images/maya/brands/healthy-crunch.png",
+      "url": "https://shophealthycrunch.com/"
+    },
+    {
+      "id": "freezo",
+      "name": "Freezo",
+      "description": "Blended coffee & beverage mixes",
+      "logo": "/images/maya/brands/freezo.png",
+      "url": "https://freezochino.com/"
+    },
+    {
+      "id": "mercato-di-bellina",
+      "name": "Mercato di Bellina",
+      "description": "Premium Italian pantry foods",
+      "logo": "/images/brands/light/mercato-di-bellina.png",
+      "url": "https://mercatodibellina.com/"
+    },
+    {
+      "id": "unity-supplements",
+      "name": "Unity Supplements",
+      "description": "Protein & sports nutrition",
+      "logo": "/images/brands/light/unity-supplements.png",
+      "url": "https://unitysupplements.com/"
+    },
+    {
+      "id": "nosh-balls",
+      "name": "Nosh Balls",
+      "description": "Protein snack balls",
+      "logo": "/images/brands/light/nosh-balls.png",
+      "url": "https://www.noshballs.ca/"
+    },
+    {
+      "id": "iron-brothers",
+      "name": "Iron Brothers",
+      "description": "Performance supplements",
+      "logo": "/images/brands/light/iron-brothers.png",
+      "url": "https://ironbrotherssupplements.com/"
+    },
+    {
+      "id": "whiskey-road",
+      "name": "Whiskey Road Hat Co.",
+      "description": "Hats & lifestyle apparel",
+      "logo": "/images/brands/light/whiskey-road.png",
+      "url": "https://whiskeyroadhatco.com/"
+    },
+    {
+      "id": "magnum",
+      "name": "Magnum Nutraceuticals",
+      "description": "Sports nutrition & supplements",
+      "logo": "/images/brands/light/magnum.png",
+      "url": "https://magnumsupps.com/"
+    }
+  ],
+  "channels": [
+    {
+      "id": "unfi",
+      "name": "UNFI",
+      "description": "Distribution",
+      "logo": "/images/maya/brands/unfi.png"
+    },
+    {
+      "id": "purity-life",
+      "name": "Purity Life",
+      "description": "Distribution",
+      "logo": "/images/maya/brands/purity-life.png"
+    },
+    {
+      "id": "costco",
+      "name": "Costco",
+      "description": "Retail",
+      "logo": "/images/maya/brands/costco.png"
+    },
+    {
+      "id": "walmart",
+      "name": "Walmart",
+      "description": "Retail",
+      "logo": "/images/maya/brands/walmart.svg"
+    },
+    {
+      "id": "bulk-barn",
+      "name": "Bulk Barn",
+      "description": "Retail",
+      "logo": "/images/maya/brands/bulk-barn.png"
+    },
+    {
+      "id": "metro",
+      "name": "Metro",
+      "description": "Retail",
+      "logo": "/images/maya/brands/metro.svg"
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "description": "Marketplace",
+      "logo": "/images/maya/brands/amazon.svg"
+    }
+  ]
+}

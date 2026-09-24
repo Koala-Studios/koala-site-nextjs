@@ -9,7 +9,7 @@ import styles from "./maya.module.css";
 
 export function MayaHeadline() {
   return <h1 id="maya-title" className={styles.headline}>
-    I build brands<br /><CyclingWord words={["worth choosing.", "worth backing.", "worth buying."]} syncHero={false} />
+    Elevate your brand.<br /><CyclingWord words={["Grow online sales.", "Build repeat sales.", "Get noticed."]} syncHero={false} />
   </h1>;
 }
 
@@ -47,6 +47,6 @@ export function MayaPortrait() {
     <div className={styles.portraitImage} style={{ clipPath: `url(#${id})` }}>
       <Image src={maya.portrait} alt="Maya Amani, Chief Marketing & Growth Officer at Koala Studios" width={941} height={1672} sizes="(max-width: 800px) 90vw, 42vw" priority />
     </div>
-    <figcaption><div className={styles.identityRow}><strong>{maya.name}</strong><LinkedInButton /></div><span>{maya.title}</span></figcaption>
+    <figcaption><div className={styles.identityRow}><strong>{maya.name}</strong><LinkedInButton /></div><span>{maya.title}</span><span className={styles.focus}>{maya.focus}</span></figcaption>
   </figure>;
 }

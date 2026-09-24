@@ -3926,3 +3926,64 @@ Thickened audit corner ring to 1.8rem. A clipped circular green layer expands fr
 Published the site-wide light palette, selective green accents, dark-gray homepage hero objects, refined motion, free brand and growth audit conversion path, 60-day Maya attribution, required website field, native-color brand carousel assets, and Maya executive landing page.
 
 Verification: ESLint, TypeScript, attribution regression checks, `git diff --check`, and the Next.js production build passed. Commit `bebbd09c8a8223d1960c8c8207b8679702a26e67` was pushed to `origin/main`; remote readback returned the same SHA. Netlify reported the production deploy complete at `https://koalastudios.ca`. Live HTTP readback returned 200 for `/`, `/maya`, `/contact`, and `/sitemap.xml`; private `/maya/portraits` and `/maya/flyers` review routes returned 404 in production as intended.
+
+## 2026-09-23 Maya ecommerce feedback revision
+
+Prepared local website and v5 brochure revisions from Frank's supplied Maya feedback. Added ecommerce positioning, visibility/DTC/margin/retail connection, icon-led services, bullet results, Allo first, smaller Magnum last, product descriptors and authentic brand/channel logos, including Unity. Mercato appears without the unconfirmed Bull 350+ claim; Sammy D's awaits exact brand identification. Preserved v4 source and selected cover artwork, adding ecommerce subtitle; generated evergreen/CHFA readers and review spreads.
+
+Production build, lint, typecheck, attribution regression and diff whitespace checks passed. Desktop/mobile browser layouts inspected; no browser errors or horizontal overflow observed. Rendered PDF layouts inspected; four reader pages at 396×612pt and two spread pages at 792×612pt verified; final QR decoded to https://mayaamani.com. Sources, reproduction details and remaining content questions are in `docs/maya-ecommerce-revision.md` and `docs/maya-logo-sources.json`. No public publication.
+
+### CHFA cover follow-up
+
+Added the authentic CHFA mark in white over the upper green cover shape, per Frank's September 23 request. Updated CHFA reader and imposed spreads; evergreen unchanged. Rendered and visually verified cover placement and contrast. White mark derives from the same official SVG with its fill changed to white.
+
+### Plantropy correction
+
+Replaced Trophy Foods with Plantropy in the shared website/brochchure brand data, using the original logo from plantropy.ca and the descriptor “Plant-based meals & snacks,” grounded in the brand's own snack/frozen product categories. Regenerated all four v5 PDFs and visually checked the revised brand grid. Retained the larger, higher white CHFA cover logo.
+
+## 2026-09-24 Maya v6 brochure and branding section
+
+Applied Frank's new feedback. Brochure: replaced the Magnum logo/result panel with Wellth Foods' existing authentic logo and qualitative Shopify/product-storytelling/wholesale copy; no transfer of Magnum's 303% claim. Added supplied native-color Freezo logo, retained Healthy Crunch, added Canadian and US direct numbers with flag artwork, centered all service columns, and drew a three-eye visibility icon. Produced v6 evergreen/CHFA reader PDFs and imposed review spreads, preserving v5.
+
+Edited the existing taupe portrait through imagegen per the explicit current correction: fuller natural proportions, same professional clothing/pose/setting. Original retained; new asset `05-taupe-seated-refined.webp` used by brochure and local Maya page. Added “Bring your brand to life” section with existing NEKTR and ARA imagery and case-study links. Video source fields are empty by design and display the real project stills until Frank supplies footage. Removed direct phone display from local Maya page; numbers are in the brochure only.
+
+Verification: build, lint, typecheck, attribution checks and diff whitespace passed. New section inspected at 1440×1000 and 390×844. PDF pages 2–4 rendered and inspected; counts and Wellth/contact text checked in all four exports; QR decoded to https://mayaamani.com. No Git push or website deployment.
+
+GoDaddy: Frank explicitly requested domain forwarding. Authenticated GoDaddy UI confirmed apex mayaamani.com permanent (301) destination https://koalastudios.ca/maya. Updated forwarding A records are 15.197.225.128 and 3.33.251.168; normal resolver initially retained old website IPs. GoDaddy states propagation can take up to 48 hours and HTTPS certificate activation a few hours. Public propagation verification is separate from saved configuration.
+
+Forwarding readback: www.mayaamani.com was also configured to the same HTTPS destination with permanent forwarding; GoDaddy displayed “Domain forwarding: Done!” with the exact www hostname and destination. HTTPS GET against the newly configured apex forwarding IP (using curl --resolve with normal certificate verification) returned 301 and Location https://koalastudios.ca/maya. Ordinary DNS still used old apex IPs at that check; global propagation is pending, not claimed complete.
+
+## 2026-09-24 v7 brochure spacing and portrait follow-up
+
+Replaced uneven 4/3/3 brand grid with two equal columns of five logo/descriptor pairs. Shortened all brochure brand descriptors to a single line and tightened intro copy to allow more breathing room. Get Noticed now uses an upward chart; Sell More Online uses a shopping bag. Both remain centered with their headings/copy. Made the explicitly requested slight neckline adjustment through imagegen, preserving prior generations; v7 brochure uses 06-taupe-neckline-refined.webp. Regenerated evergreen/CHFA readers and review spreads, preserving v6. Rendered and visually inspected changed pages. Website unchanged by this brochure-specific follow-up.
+
+## 2026-09-24 — User-selected portrait (v8)
+
+- Applied Frank's supplied portrait unchanged as `public/images/maya/07-maya-approved.png` to the local Maya page and both brochure editions. Source and saved PNG SHA-256 match: `51d5ccfaf315687214d814325e12cf13be5b57671a915cfe5ceb5d1d7849eaca`.
+- Preserved all previous portraits and PDF versions. Rebuilt v8 evergreen/CHFA reader PDFs and print spreads; visually checked the rendered portrait page and local website crop.
+- Next.js production build passed. Website changes remain local, not deployed.
+
+## 2026-09-24 — Brochure callout spacing (v9)
+
+Moved the complete three-icon callout row up 14 points on page 4, including headings and descriptions, to balance the space between the audit paragraph and commercialization section. Rebuilt both reader editions and imposed review spreads; inspected rendered CHFA page 4. Prior versions preserved.
+
+## 2026-09-24 — Maya channel section order
+
+Moved “Experience taking brands to market” immediately after “More visibility. More of the next sale”, before the ecommerce services. Production build passed; local browser confirmed section order and layout. Changes remain local.
+
+## 2026-09-24 — Maya copy, Shopify and SVG motion
+
+Removed the two requested sentences and channel captions. Added the official full-colour Shopify logo from https://www.shopify.com/brand-assets with a Shopify homepage link; eight logos use balanced responsive columns. Added looping SVG eye blink, chart draw and envelope motion to website services, respecting reduced-motion preferences. Brochures unchanged. Production build passed; browser confirmed copy, Shopify rendering and five active animation names. Changes remain local.
+
+## 2026-09-24 — Correct service icon motion
+
+Replaced the flattening eye, disappearing chart and inverted envelope flap animations after operator feedback. Complete icon silhouettes now stay intact: pupil shifts subtly, chart rises gently, and the closed envelope floats as one shape. Removed the detached envelope line. Build passed; inspected multiple desktop browser frames and live transforms, then restored viewport. Local only.
+
+## 2026-09-24 — Slower audit fill
+
+Changed the closing green fill transition from 700ms with a fast ease-out to 1800ms with gentle ease-in-out. Build passed; refreshed browser computed style confirms 1.8s and cubic-bezier(.45,0,.55,1). Local preview updated.
+
+Audit fill duration refined to 1100ms at Frank's request. Build passed; refreshed browser confirms 1.1s. Easing retained.
+
+## 2026-09-24 — Maya release preparation
+Frank explicitly requested publication of the accumulated Maya refinements. Set audit fill to 880ms; removed the Make an impression and Build a world around your product media blocks, retaining the brand-life introduction. Browser mobile QA exposed hero CTA intrinsic-width overflow; constrained the hero flex child and wrapped its CTA label. Rebuilt successfully and visually inspected desktop/mobile; browser readback confirms 0.88s and zero document horizontal overflow. ESLint and TypeScript passed. Latest four brochure v9 files remain local deliverables (4 reader pages / 2 imposed spreads). Production publication uses the existing Git main deployment integration; local preview environments and PDF working files are excluded.
