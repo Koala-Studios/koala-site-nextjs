@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { navigationContent, siteSettings } from "@/lib/content";
+
+import { auditOffer } from "@/lib/content/audit";
 
 import { ArrowIcon } from "./ArrowIcon";
 import { Marquee } from "./Marquee";
@@ -21,11 +26,12 @@ const serviceLinks = [
 ];
 
 export function SiteFooter() {
+  const pathname = usePathname();
   return (
     <footer className={styles.footer}>
       <Link
         className={styles.marqueeLink}
-        href={navigationContent.featuredCta.href}
+        href={pathname === "/maya" ? auditOffer.mayaHref : navigationContent.featuredCta.href}
         aria-label="Start a project"
         data-analytics-cta="footer-marquee"
       >
@@ -64,7 +70,7 @@ export function SiteFooter() {
               <Link
                 className="koala-underline-link"
                 key={item.href}
-                href={item.href}
+                href={pathname === "/maya" && item.href === "/contact" ? auditOffer.mayaHref : item.href}
               >
                 {item.label}
               </Link>

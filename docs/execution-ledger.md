@@ -3996,3 +3996,6 @@ Production verified: /contact-short returns HTTP 200 and renders the four-field 
 
 ## 2026-09-24 — Black contact labels
 Changed the shared Field label color and contact fieldset legend to #000 for /contact and /contact-short. Production build passed; browser computed colors verified rgb(0, 0, 0) for every field label and the standard form legend. Both page screenshots inspected.
+
+## 2026-09-24 — Maya contact destination consistency
+Verified short intake already live. Updated shared header/footer Contact and Start a project links specifically on /maya to use the same attributed /contact-short destination as both audit buttons, including mobile navigation. Other pages retain the standard contact destination. Build and lint passed; local browser readback verified all eight rendered contact links use the short intake.

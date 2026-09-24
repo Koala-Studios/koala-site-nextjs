@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react";
 import { serviceDetails } from "@/content/pages/service-details";
 import { navigationContent } from "@/lib/content";
 
+import { auditOffer } from "@/lib/content/audit";
+
 import { ArrowIcon } from "./ArrowIcon";
 import { Cta } from "./Cta";
 import styles from "./SiteHeader.module.css";
@@ -143,7 +145,7 @@ export function SiteHeader() {
 
             if (item.href !== "/services") {
               return (
-                <Link className={linkClassName} href={item.href} key={item.href}>
+                <Link className={linkClassName} href={pathname === "/maya" && item.href === "/contact" ? auditOffer.mayaHref : item.href} key={item.href}>
                   {item.label}
                 </Link>
               );
@@ -198,7 +200,7 @@ export function SiteHeader() {
         <Cta
           className={styles.desktopAction}
           data-analytics-cta="header"
-          href={navigationContent.featuredCta.href}
+          href={pathname === "/maya" ? auditOffer.mayaHref : navigationContent.featuredCta.href}
           icon="circle"
           iconPosition="left"
           size="medium"
@@ -234,7 +236,7 @@ export function SiteHeader() {
               className={`${styles.overlayLink} ${
                 isActivePath(pathname, item.href) ? styles.overlayLinkActive : ""
               }`}
-              href={item.href}
+              href={pathname === "/maya" && item.href === "/contact" ? auditOffer.mayaHref : item.href}
               tabIndex={menuOpen ? 0 : -1}
               onClick={() => setMenuOpen(false)}
             >
@@ -262,7 +264,7 @@ export function SiteHeader() {
             hello@koalastudios.ca
           </a>
           <Cta
-            href={navigationContent.featuredCta.href}
+            href={pathname === "/maya" ? auditOffer.mayaHref : navigationContent.featuredCta.href}
             data-analytics-cta="menu"
             icon="circle"
             iconPosition="left"
