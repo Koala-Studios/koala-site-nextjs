@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { HomeWorkCarousel } from "@/components/work/HomeWorkCarousel";
+import { getPublishedCaseStudies } from "@/lib/content";
 import { Reveal } from "@/components/animation/Reveal";
 import { MetricValue } from "@/components/animation/MetricValue";
 import { Marquee } from "@/components/site/Marquee";
@@ -42,7 +44,7 @@ export default function MayaPage() {
       {maya.services.map(service => <Reveal key={service.title}><GrowthIcon kind={service.icon} /><h2>{service.title}</h2><p>{service.copy}</p></Reveal>)}
     </section>
     <section className={styles.brandLife} aria-labelledby="maya-brand-life">
-      <div className={styles.brandLifeIntro}><Reveal><h2 id="maya-brand-life">{maya.brandLife.title}</h2></Reveal><Reveal><p>{maya.brandLife.copy}</p><p>{maya.brandLife.detail}</p></Reveal></div>
+      <div className={styles.brandLifeIntro}><Reveal><h2 id="maya-brand-life">{maya.brandLife.title}</h2></Reveal><Reveal><p>{maya.brandLife.copy}</p><p>{maya.brandLife.detail}</p></Reveal></div><HomeWorkCarousel caseStudies={getPublishedCaseStudies()} />
     </section>
     <section className={styles.proof} aria-label="Career results">
       {maya.proof.map(item => <div className={styles.proofItem} key={item.value}><strong><MetricValue value={item.value} /></strong><h2>{item.label}</h2><p>{item.context}</p></div>)}

@@ -157,3 +157,6 @@
 @keyframes mayaChart { 0%,20%,100% { transform: translateY(0); } 45%,65% { transform: translateY(-1.5px); } }
 @keyframes mayaMail { 0%,20%,100% { transform: translateY(0); } 45%,65% { transform: translateY(-2px); } }
 @media (prefers-reduced-motion: reduce) { .growthIconEye,.growthIconRays,.growthIconChart,.growthIconMail { animation: none; } }
+
+.portrait .welcome { font-size:1.1rem; line-height:1.55; margin:1.25rem 0 .4rem; max-width:36rem; }
+.letsTalk { font-family:"Snell Roundhand", "Segoe Script", cursive; font-style:italic; font-size:2rem; color:var(--koala-color-green); text-underline-offset:.2em; width:fit-content; }

@@ -16,10 +16,10 @@ export const mayaContent = {
   brandLife: {
     title: "Bring your brand to life.",
     copy: "Give people something to stop for. Distinctive packaging, vivid product imagery and a brand world that makes your product feel as good as it is.",
-    detail: "We connect the creative with the buying experience, from a first impression in a campaign to a product page that makes the next step feel natural.",
+    detail: "Start with the brand, packaging and website. Then connect organic social content, Meta and Google ads, and email marketing to help turn that attention into sales.",
   },
   services: [
-    { icon: "visibility", title: "Get noticed", copy: "Brand positioning, creative and campaigns that make your product easier to choose." },
+    { icon: "visibility", title: "Get noticed", copy: "Brand positioning, creative and organic social content that build awareness and give people a reason to choose you." },
     { icon: "store", title: "Turn visits into sales", copy: "Website and shopping experiences that help more customers complete their purchase." },
     { icon: "email", title: "Bring customers back", copy: "Email marketing, retention and subscriptions that build the next layer of revenue." },
   ],
@@ -35,11 +35,11 @@ export const mayaContent = {
     { brand: "whiskey-road", metric: "34%", metricLabel: "Revenue growth", secondary: "Within six months", bullets: ["Shopify and mobile conversion improvements.", "Wholesale infrastructure and customer experience."] },
   ],
   engagements: [
-    { brand: "mercato-di-bellina", title: "A clearer path from discovery to purchase.", copy: "Shopify optimization, email marketing and conversion improvements for a premium Italian food retailer." },
+    { brand: "mercato-di-bellina", title: "A clearer path from discovery to purchase.", copy: "Shopify optimization, email marketing and conversion improvements for a premium Italian food brand." },
     { brand: "unity-supplements", title: "Make the right product easier to find.", copy: "A clearer supplement storefront, with product education, flavour choice, bundles and repeat purchase paths." },
   ],
   channelTitle: "Experience taking brands to market.",
-  channelCopy: "Our experience commercializing brands spans retail, distribution and marketplaces, including these channels.",
+  channelCopy: "Our experience spans retail, distribution, marketplaces and direct-to-consumer ecommerce, including subscriptions that give customers a reason to come back.",
   auditTitle: "Unlock your next stage of ecommerce growth.",
   auditSummary: "A free brand and growth audit of your website, positioning and email marketing. Find practical opportunities to convert more visitors, bring customers back and grow online revenue.",
 } as const;

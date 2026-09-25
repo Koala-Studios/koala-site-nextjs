@@ -8,6 +8,8 @@ import { navigationContent, siteSettings } from "@/lib/content";
 
 import { auditOffer } from "@/lib/content/audit";
 
+import { MayaServiceIcons } from "./MayaServiceIcons";
+
 import { ArrowIcon } from "./ArrowIcon";
 import { Marquee } from "./Marquee";
 import styles from "./SiteFooter.module.css";
@@ -28,7 +30,7 @@ const serviceLinks = [
 export function SiteFooter() {
   const pathname = usePathname();
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${pathname === "/maya" ? styles.mayaFooter : ""}`}>
       <Link
         className={styles.marqueeLink}
         href={pathname === "/maya" ? auditOffer.mayaHref : navigationContent.featuredCta.href}
@@ -46,21 +48,22 @@ export function SiteFooter() {
       </Link>
 
       <div className={styles.frame}>
+        {pathname === "/maya" && <MayaServiceIcons />}
         <div className={styles.columns}>
           <div className={styles.brandColumn}>
-            <Image
+            {pathname === "/maya" ? <div className={styles.mayaWordmark}>KOALA <span>STUDIOS</span></div> : <Image
               className={styles.logo}
               src="/images/koala_logo_white.png"
               alt="Koala Studios"
               width={134}
               height={25}
-            />
+            />}
             <p className={styles.statement}>{siteSettings.description}</p>
             <a
               className={`${styles.email} koala-underline-link`}
-              href="mailto:hello@koalastudios.ca"
+              href={pathname === "/maya" ? "mailto:maya@koalastudios.ca" : "mailto:hello@koalastudios.ca"}
             >
-              hello@koalastudios.ca
+              {pathname === "/maya" ? "maya@koalastudios.ca" : "hello@koalastudios.ca"}
             </a>
           </div>
 

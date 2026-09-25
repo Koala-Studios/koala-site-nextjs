@@ -69,6 +69,13 @@
       "description": "Sports nutrition & supplements",
       "logo": "/images/brands/light/magnum.png",
       "url": "https://magnumsupps.com/"
+    },
+    {
+      "id": "dilligaf",
+      "name": "Dilligaf",
+      "description": "Selected brand experience",
+      "logo": "/images/maya/brands/dilligaf.png",
+      "url": ""
     }
   ],
   "channels": [

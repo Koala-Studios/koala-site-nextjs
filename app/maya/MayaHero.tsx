@@ -2,7 +2,8 @@
 import Image from "next/image";
 import gsap from "gsap";
 import { CyclingWord } from "@/components/home/CyclingWord";
-import { LinkedInButton } from "./LinkedInButton";
+import Link from "next/link";
+import { auditOffer } from "@/lib/content/audit";
 import { useEffect, useId, useRef } from "react";
 import { mayaContent as maya } from "@/lib/content/maya";
 import styles from "./maya.module.css";
@@ -47,6 +48,6 @@ export function MayaPortrait() {
     <div className={styles.portraitImage} style={{ clipPath: `url(#${id})` }}>
       <Image src={maya.portrait} alt="Maya Amani, Chief Marketing & Growth Officer at Koala Studios" width={941} height={1672} sizes="(max-width: 800px) 90vw, 42vw" priority />
     </div>
-    <figcaption><div className={styles.identityRow}><strong>{maya.name}</strong><LinkedInButton /></div><span>{maya.title}</span><span className={styles.focus}>{maya.focus}</span></figcaption>
+    <figcaption><div className={styles.identityRow}><strong>{maya.name}</strong></div><span>{maya.title}</span><span className={styles.focus}>{maya.focus}</span><p className={styles.welcome}><em>Hey, I’m Maya. I’ve helped brands grow, build trust and sell more with a clear plan for what comes next.</em></p><Link className={styles.letsTalk} href={auditOffer.mayaHref}>Let’s talk!</Link></figcaption>
   </figure>;
 }

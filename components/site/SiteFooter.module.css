@@ -187,3 +187,7 @@
 /* A restrained echo of the brochure's cropped circles. */
 .frame { position: relative; isolation: isolate; overflow: hidden; }
 .frame::after { content: ""; position: absolute; width: 7rem; height: 7rem; border: 1.4rem solid var(--koala-color-green); border-radius: 50%; right: -4.8rem; top: 2rem; z-index: -1; pointer-events: none; }
+
+.mayaFooter .frame::after { display:none; }
+.mayaWordmark { font-family:var(--koala-font-support); font-size:2rem; font-weight:700; letter-spacing:.04em; }
+.mayaWordmark span { font-size:1rem; letter-spacing:.1em; }
