@@ -4008,3 +4008,8 @@ Implemented Frank's supplied Maya feedback: italic personal welcome and cursive 
 - Changed Let's talk to self-hosted Caveat Medium in black; removed hero Ecommerce growth line.
 - Dilligaf descriptor corrected to Clothing brand. Published project helper now reverses append-order catalog so newest additions appear first across lists/carousels.
 - Verification: production build and lint passed; browser inspected logo and hero/script, no horizontal overflow. Shared list order checked as Wuxly, Nosh Balls, Hope Harvest. Git production deploy authorized by ongoing request.
+
+## 2026-09-25 — Selected cursive and smaller portrait
+- Presented Dancing Script, Allura, Great Vibes, Parisienne visually; Frank selected Allura. Self-hosted regular font, black CTA.
+- Portrait image reduced to 80% of its column, maximum 23rem wide / 25rem high; unchanged source and crop.
+- Production build passed. Browser verified Allura computed font and compact 280×302px mobile portrait with no horizontal overflow; inspected screenshot.
