@@ -4002,3 +4002,9 @@ Verified short intake already live. Updated shared header/footer Contact and Sta
 
 ## 2026-09-25 — Maya personal welcome and creative showcase
 Implemented Frank's supplied Maya feedback: italic personal welcome and cursive short-intake link; LinkedIn retained only in the closing section; existing approved portrait unchanged. Added supplied Dilligaf logo unchanged to brand carousel. Added all 17 existing published case studies to an interactive image carousel, using existing factual project content rather than inventing sales claims. Mercato now described as a food brand; canonical case study has no verified sales metric. Added subscriptions and organic-social-to-sales copy. Maya-only header/footer use legible Koala Studios text lockups; footer circle removed and five service icons added for brand development, graphic design, Meta ads, Google ads and email marketing; footer email now Maya's. Build and lint passed. Desktop/mobile browser screenshots inspected, carousel Next control verified, zero mobile horizontal overflow and one LinkedIn link confirmed. Brochures unchanged.
+
+## 2026-09-25 — Logo selection and Maya refinements
+- Selected imagegen custom curved-letter KOALA STUDIOS asset for Maya header/footer; retained prior generated alternatives locally.
+- Changed Let's talk to self-hosted Caveat Medium in black; removed hero Ecommerce growth line.
+- Dilligaf descriptor corrected to Clothing brand. Published project helper now reverses append-order catalog so newest additions appear first across lists/carousels.
+- Verification: production build and lint passed; browser inspected logo and hero/script, no horizontal overflow. Shared list order checked as Wuxly, Nosh Balls, Hope Harvest. Git production deploy authorized by ongoing request.

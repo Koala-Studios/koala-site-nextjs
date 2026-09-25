@@ -128,7 +128,7 @@ export function SiteHeader() {
           aria-label="Koala Studios home"
           onClick={() => setMenuOpen(false)}
         >
-          {pathname === "/maya" ? <span className={styles.mayaWordmark}>KOALA <span>STUDIOS</span></span> : <Image
+          {pathname === "/maya" ? <Image src="/images/koala-studios-custom-v3.png" alt="Koala Studios" width={1773} height={531} priority /> : <Image
             src="/images/koala_logo_white.png"
             alt=""
             width={134}

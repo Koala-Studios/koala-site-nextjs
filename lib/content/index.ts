@@ -33,7 +33,8 @@ export function getPageContentByRoute(route: Extract<PublicRoute, "/" | "/servic
 }
 
 export function getPublishedCaseStudies() {
-  return caseStudies.filter((caseStudy) => caseStudy.status === "published");
+  // The source catalog is appended in addition order; show newest additions first.
+  return caseStudies.filter((caseStudy) => caseStudy.status === "published").reverse();
 }
 
 export function getBrandsBuiltFor() {

@@ -393,5 +393,3 @@
   }
 }
 
-.mayaWordmark { display:flex; flex-direction:column; font-family:var(--koala-font-support); font-size:1.6rem; font-weight:700; line-height:1; letter-spacing:.06em; }
-.mayaWordmark span { font-size:.75rem; letter-spacing:.25em; margin-top:.35rem; }

@@ -51,7 +51,7 @@ export function SiteFooter() {
         {pathname === "/maya" && <MayaServiceIcons />}
         <div className={styles.columns}>
           <div className={styles.brandColumn}>
-            {pathname === "/maya" ? <div className={styles.mayaWordmark}>KOALA <span>STUDIOS</span></div> : <Image
+            {pathname === "/maya" ? <Image className={styles.logo} src="/images/koala-studios-custom-v3.png" alt="Koala Studios" width={1773} height={531} /> : <Image
               className={styles.logo}
               src="/images/koala_logo_white.png"
               alt="Koala Studios"
