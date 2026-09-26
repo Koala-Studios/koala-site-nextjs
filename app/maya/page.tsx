@@ -1,7 +1,9 @@
 import Image from "next/image";
 
 import { Reveal } from "@/components/animation/Reveal";
+import { Stagger } from "@/components/animation/Stagger";
 import { MetricValue } from "@/components/animation/MetricValue";
+import { HeroReel } from "@/components/home/HeroReel";
 import { Cta } from "@/components/site/Cta";
 import { Marquee } from "@/components/site/Marquee";
 import { Arch, Folio, SectionHead, StatRows } from "@/components/system";
@@ -14,6 +16,7 @@ import { auditOffer } from "@/lib/content/audit";
 import { mayaContent as maya, mayaWork } from "@/lib/content/maya";
 import { brands, channels } from "@/lib/content/maya-brands.json";
 import { createPageMetadata } from "@/lib/metadata";
+import { titleFit } from "@/lib/title-fit";
 
 import styles from "./maya.module.css";
 
@@ -22,14 +25,13 @@ export const metadata = createPageMetadata({
   description:
     "Maya Amani, Chief Marketing & Growth Officer at Koala Studios. 15+ years growing consumer brands across CPG, food, supplements and wellness, from retail channels to Shopify, email and paid growth.",
   path: "/maya",
-  image: maya.portrait,
+  image: maya.portraitShare,
 });
 
 const heroStats = [
   { value: "300+", label: "Canadian sales channels", source: "Allo Nutrition" },
   { value: "45%", label: "Increase in DTC revenue", source: "Iron Brothers" },
   { value: "37%", label: "Online revenue growth", source: "Nosh Balls" },
-  { value: "15+", label: "Years growing consumer brands", source: "CPG, food and wellness" },
 ];
 
 const growIcons: Record<string, IconName> = { visibility: "eye", store: "cart", email: "repeat" };
@@ -42,17 +44,22 @@ export default function MayaPage() {
   const work = getCaseStudiesBySlugs(mayaWork);
 
   return (
-    <div className="ks-page">
-      {/* ---------- Hero ---------- */}
+    <div className={`ks-page ${styles.page}`}>
+      {/* ---------- Hero: the studio reel, Maya's portrait set into its corner, then her name ---------- */}
       <section className={styles.hero} aria-labelledby="maya-title">
         <Folio items={["Koala Studios", maya.event?.greeting ?? "Consumer brands", "Growth"]} />
+        <HeroReel
+          className={styles.reel}
+          label="Koala Studios reel: Shopify storefronts, product video and 3D work for Mercato di Bellina, Freezo, Wellth Foods, Whiskey Road and more"
+        />
         <div className={styles.heroGrid}>
-          <Arch className={styles.portrait} src={maya.portrait} alt="Maya Amani, Chief Marketing & Growth Officer at Koala Studios" sizes="(max-width: 900px) 92vw, 40vw" position="center 18%" priority />
-          <div className={styles.heroCopy}>
-            <h1 className={`ks-x ${styles.name}`} id="maya-title">
-              Maya <br />
-              Amani
+          <Arch className={styles.portrait} src={maya.portrait} alt="Maya Amani, Chief Marketing & Growth Officer at Koala Studios" sizes="(max-width: 900px) 50vw, 26vw" position="center 20%" priority />
+          <div className={styles.nameFit}>
+            <h1 className={`ks-x ${styles.name}`} id="maya-title" style={titleFit(maya.name, { oneLine: true })}>
+              <span>{maya.name}</span>
             </h1>
+          </div>
+          <div className={styles.heroCopy}>
             <p className={`ks-it ${styles.role}`}>{maya.title}</p>
             <p className="ks-lede">
               15+ years taking consumer brands from <em>shelf to cart</em> across CPG, food, supplements and wellness.
@@ -65,14 +72,14 @@ export default function MayaPage() {
                 Download my profile
               </Cta>
             </div>
-            <StatRows className={styles.heroStats} items={heroStats} />
           </div>
+          <StatRows className={styles.heroStats} items={heroStats} />
         </div>
       </section>
 
       {/* ---------- Brands ---------- */}
-      <section className={`ks-section ${styles.brands}`} aria-label="Brands Maya has helped grow">
-        <Folio items={["Brands I’ve helped grow", "CPG · Food · Wellness"]} />
+      <section className={styles.brands} aria-label="Brands Maya has helped grow">
+        <Folio className={styles.brandsFolio} items={["Brands I’ve helped grow", "CPG · Food · Wellness"]} />
         <Marquee className={styles.marquee} duration={50}>
           {brands.map((item) => (
             <span className={styles.brandMark} key={item.id}>
@@ -85,21 +92,18 @@ export default function MayaPage() {
 
       {/* ---------- Belief ---------- */}
       <section className="ks-section" aria-labelledby="maya-belief">
-        <SectionHead index="01" id="maya-belief" title={<>More visibility. <em>More sales.</em></>} />
-        <Reveal className={styles.twoCol}>
-          {maya.belief.map((copy) => (
-            <p className="ks-body" key={copy}>
-              {copy}
-            </p>
-          ))}
+        <SectionHead id="maya-belief" title={<>More visibility. <em>More sales.</em></>} />
+        <Reveal className={styles.belief}>
+          <p className="ks-lede">{maya.belief[0]}</p>
+          <p className="ks-body ks-muted">{maya.belief[1]}</p>
         </Reveal>
       </section>
 
       {/* ---------- Channels ---------- */}
       <section className="ks-section" aria-labelledby="maya-channels">
-        <SectionHead index="02" id="maya-channels" title={<>Shelf <em>to cart</em></>} />
+        <SectionHead id="maya-channels" title={<>Shelf <em>to cart</em></>} />
         <p className={`ks-lede ${styles.channelCopy}`}>{maya.channelCopy}</p>
-        <ul className={styles.channels} aria-label="Retail, distribution and marketplace experience">
+        <Stagger as="ul" className={styles.channels} aria-label="Retail, distribution and marketplace experience">
           {channels.map((channel) => (
             <li className={styles.channel} data-channel={channel.id} key={channel.id}>
               <Image src={channel.logo} alt={`${channel.name} logo`} width={150} height={60} sizes="150px" />
@@ -110,15 +114,15 @@ export default function MayaPage() {
             <Image src="/images/maya/brands/shopify.svg" alt="Shopify logo" width={150} height={60} sizes="150px" />
             <span className="ks-label ks-muted">Direct to consumer</span>
           </li>
-        </ul>
+        </Stagger>
       </section>
 
       {/* ---------- How we grow ---------- */}
       <section className="ks-section" aria-labelledby="maya-grow">
-        <SectionHead index="03" id="maya-grow" title={<>How we <em>grow brands</em></>} />
+        <SectionHead id="maya-grow" title={<>How we <em>grow brands</em></>} />
         <div className={styles.grow}>
           <Arch className={styles.growArch} src="/images/project/allo/allo_image_wide.jpg" alt="Allo protein for coffee packaging on sand-coloured plinths" sizes="(max-width: 900px) 92vw, 34vw" position="55% center" />
-          <div className="ks-index">
+          <Stagger className="ks-index">
             {maya.services.map((service, index) => (
               <div className={`ks-index__row ${styles.growRow}`} key={service.title}>
                 <span className="ks-label">{String(index + 1).padStart(2, "0")}</span>
@@ -132,13 +136,13 @@ export default function MayaPage() {
                 <span />
               </div>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* ---------- Stories ---------- */}
       <section className="ks-section" aria-labelledby="maya-stories">
-        <SectionHead index="04" id="maya-stories" title={<>Growth you can <em>measure</em></>} />
+        <SectionHead id="maya-stories" title={<>Growth you can <em>measure</em></>} />
         <div className={styles.stories}>
           {maya.stories.map((story) => {
             const item = brand(story.brand);
@@ -169,7 +173,7 @@ export default function MayaPage() {
             );
           })}
         </div>
-        <div className={styles.engagements}>
+        <Stagger className={styles.engagements}>
           {maya.engagements.map((engagement) => {
             const item = brand(engagement.brand);
             return (
@@ -187,12 +191,12 @@ export default function MayaPage() {
             </h3>
             <p className="ks-muted">Sports nutrition and supplements.</p>
           </div>
-        </div>
+        </Stagger>
       </section>
 
       {/* ---------- Work ---------- */}
       <section className="ks-section" aria-labelledby="maya-work">
-        <SectionHead index="05" id="maya-work" title={<>Bring your brand <em>to life</em></>} />
+        <SectionHead id="maya-work" title={<>Bring your brand <em>to life</em></>} />
         <p className={`ks-lede ${styles.channelCopy}`}>{maya.brandLife.copy}</p>
         <WorkGrid caseStudies={work} variant="rail" />
       </section>

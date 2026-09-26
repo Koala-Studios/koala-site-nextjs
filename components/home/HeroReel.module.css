@@ -5,6 +5,13 @@
   position: relative;
 }
 
+/* Keep in step with the portrait media query in HeroReel.tsx. */
+@media (max-width: 700px) {
+  .reel {
+    aspect-ratio: 2 / 3;
+  }
+}
+
 .video {
   display: block;
   height: 100%;

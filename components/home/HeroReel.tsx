@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./HeroReel.module.css";
 
 const base = "/videos/reel/koala-reel-v13";
+// Phones get the 2:3 portrait cut; keep in step with the breakpoint in HeroReel.module.css.
+const portrait = "(max-width: 700px)";
 
 /**
  * The studio reel: muted, inline and looping. The poster paints first (AVIF,
@@ -13,7 +15,14 @@ const base = "/videos/reel/koala-reel-v13";
  * until most of it is on screen so the opening is seen, pauses once it leaves,
  * stays on the poster for reduced motion, and always offers a pause control.
  */
-export function HeroReel({ className, label }: { className?: string; label: string }) {
+type HeroReelProps = {
+  className?: string;
+  label: string;
+  /** Start downloading once the page has loaded. Off for reels further down a page, which load as they near the screen. */
+  eager?: boolean;
+};
+
+export function HeroReel({ className, label, eager = true }: HeroReelProps) {
   const ref = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(true);
   const [held, setHeld] = useState(false);
@@ -44,8 +53,10 @@ export function HeroReel({ className, label }: { className?: string; label: stri
       const idle = window.requestIdleCallback ?? ((callback: () => void) => window.setTimeout(callback, 200));
       idle(startLoading);
     };
-    if (document.readyState === "complete") whenLoaded();
-    else window.addEventListener("load", whenLoaded, { once: true });
+    if (eager) {
+      if (document.readyState === "complete") whenLoaded();
+      else window.addEventListener("load", whenLoaded, { once: true });
+    }
 
     let inView = false;
     let frame = 0;
@@ -81,7 +92,7 @@ export function HeroReel({ className, label }: { className?: string; label: stri
       window.cancelAnimationFrame(frame);
       window.clearInterval(retry);
     };
-  }, []);
+  }, [eager]);
 
   const toggle = () => {
     const video = ref.current;
@@ -112,11 +123,14 @@ export function HeroReel({ className, label }: { className?: string; label: stri
         onPause={() => setPaused(true)}
       >
         {/* H.264 first: it plays everywhere, Safari included, at the same size as the VP9 encode */}
+        <source src={`${base}-portrait-1080.mp4`} type="video/mp4" media={portrait} />
         <source src={`${base}-1280.mp4`} type="video/mp4" media="(max-width: 900px)" />
         <source src={`${base}-1920.mp4`} type="video/mp4" />
         <source src={`${base}-1920.webm`} type="video/webm" />
       </video>
       <picture className={[styles.poster, started ? styles.posterHidden : ""].filter(Boolean).join(" ")}>
+        <source type="image/avif" media={portrait} srcSet={`${base}-portrait-poster.avif`} />
+        <source type="image/webp" media={portrait} srcSet={`${base}-portrait-poster.webp`} />
         <source type="image/avif" media="(max-width: 900px)" srcSet={`${base}-poster-1280.avif`} />
         <source type="image/avif" srcSet={`${base}-poster-1920.avif`} />
         <source type="image/webp" media="(max-width: 900px)" srcSet={`${base}-poster-1280.webp`} />

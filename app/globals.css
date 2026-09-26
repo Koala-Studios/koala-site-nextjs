@@ -681,3 +681,14 @@ a.ks-index__row:focus-visible {
   color: var(--ks-danger);
   font-size: var(--ks-small);
 }
+
+/* ============ Stagger (components/animation/Stagger.tsx) ============ */
+.ks-stagger[data-stagger="wait"] > * {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.ks-stagger[data-stagger="in"] > * {
+  transition: opacity 0.6s var(--ks-ease), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}

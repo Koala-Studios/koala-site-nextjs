@@ -4,7 +4,9 @@ export const mayaContent = {
   focus: "Ecommerce growth",
   hero: "Elevate your brand. Grow your online sales.",
   heroSummary: "Build a brand more people know, a store more people buy from, and a reason to come back.",
-  portrait: "/images/maya/07-maya-approved.webp",
+  portrait: "/images/maya/08-maya-portrait.webp",
+  /** JPEG copy for link previews, since some platforms still skip WebP. */
+  portraitShare: "/images/maya/08-maya-portrait.jpg",
   email: "maya@koalastudios.ca",
   /** Trade-show greeting shown on /maya; remove or change after the event. */
   event: { greeting: "Hello, CHFA", closing: "Met at CHFA?" } as { greeting: string; closing: string } | null,

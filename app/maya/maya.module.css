@@ -1,27 +1,55 @@
+/* A tighter section rhythm than the homepage: this page runs as one continuous profile. */
+.page {
+  --ks-section: clamp(4rem, 8vw, 7.25rem);
+}
+
 /* ---------- hero ---------- */
 .hero {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   padding-top: 0.75rem;
 }
 
+/* The name fills one line of its own column, sized like the /work titles. */
+.nameFit {
+  container-type: inline-size;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.name {
+  font-size: clamp(2rem, 7vw, 4.25rem);
+  font-size: min(4.25rem, 100cqi * var(--fit));
+  white-space: nowrap;
+}
+
+.name > span {
+  display: inline-block;
+}
+
+.reel {
+  margin-top: 0.25rem;
+}
+
+/* The portrait sits in the reel's lower-left corner, set off by a paper ring. */
 .heroGrid {
   display: grid;
   gap: 1.75rem;
+  position: relative;
+  z-index: 1;
 }
 
 .portrait {
   aspect-ratio: 4 / 5;
-  width: 100%;
+  box-shadow: 0 0 0 0.55rem var(--ks-paper);
+  margin-left: clamp(0.9rem, 3vw, 2.25rem);
+  margin-top: -34%;
+  width: 50%;
 }
 
 .heroCopy {
   display: grid;
   gap: 1.1rem;
-}
-
-.name {
-  font-size: clamp(2.9rem, 13vw, 7.5rem);
 }
 
 .role {
@@ -41,14 +69,61 @@
   margin-top: 0.5rem;
 }
 
-.heroStats {
-  margin-top: 1.25rem;
+/* Entrance: the reel opens top to bottom, then the portrait lifts, the name
+   rises into its line and the copy follows. */
+@media (prefers-reduced-motion: no-preference) {
+  .reel {
+    animation: maya-open 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.1s both;
+  }
+
+  .portrait {
+    animation: maya-lift 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.65s both;
+  }
+
+  .name > span {
+    animation: maya-rise 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.75s both;
+  }
+
+  .heroCopy > *,
+  .heroStats {
+    animation: maya-lift 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  }
+
+  .heroCopy > :nth-child(1) { animation-delay: 0.9s; }
+  .heroCopy > :nth-child(2) { animation-delay: 1s; }
+  .heroCopy > :nth-child(3) { animation-delay: 1.1s; }
+  .heroStats { animation-delay: 1.2s; }
 }
 
-/* ---------- brands ---------- */
+@keyframes maya-rise {
+  from { transform: translateY(105%); }
+}
+
+@keyframes maya-open {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes maya-lift {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+
+/* ---------- brands: a strip that closes the hero ---------- */
 .brands {
+  border-bottom: var(--ks-rule-soft);
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
+  padding-block: clamp(3rem, 6vw, 4.5rem) clamp(1.75rem, 3vw, 2.5rem);
+}
+
+/* On phones only the first label fits on one line. */
+@media (max-width: 699px) {
+  .brandsFolio > :last-child {
+    display: none;
+  }
 }
 
 .brandMark {
@@ -74,13 +149,22 @@
 }
 
 /* ---------- belief ---------- */
-.twoCol {
+.belief {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
-.twoCol p {
+.belief :global(.ks-lede) {
+  max-width: 34ch;
+}
+
+.belief :global(.ks-body) {
   max-width: 52ch;
+}
+
+/* ---------- reel ---------- */
+.reel {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 /* ---------- channels ---------- */
@@ -90,7 +174,7 @@
 }
 
 .channels {
-  border-top: var(--ks-rule);
+  border-top: var(--ks-rule-soft);
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -309,24 +393,47 @@
 @media (min-width: 900px) {
   .heroGrid {
     align-items: start;
-    gap: 4rem;
-    grid-template-columns: 1fr 1.05fr;
+    column-gap: clamp(2rem, 4vw, 4rem);
+    grid-template-areas:
+      "portrait name name"
+      "portrait copy stats";
+    grid-template-columns: 26% minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 0;
   }
 
-  .portrait {
-    aspect-ratio: 5 / 6;
-    position: sticky;
-    top: calc(var(--ks-header-h) + 1.5rem);
+  .nameFit {
+    grid-area: name;
+    padding-top: 2.25rem;
   }
 
   .heroCopy {
-    padding-top: 1rem;
+    grid-area: copy;
+  }
+
+  .heroStats {
+    grid-area: stats;
+  }
+
+  .portrait {
+    grid-area: portrait;
+    margin-left: clamp(1.25rem, 2.5vw, 2.5rem);
+    margin-top: -62%;
+    width: auto;
+  }
+
+  .heroCopy {
+    padding-top: 1.25rem;
+  }
+
+  .heroStats {
+    margin-top: 1.5rem;
   }
 
   .actions {
     align-items: center;
     display: flex;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
   }
 
   .actions :global(.ks-btn--full) {
@@ -334,14 +441,14 @@
     width: auto;
   }
 
-  .twoCol {
-    gap: 3rem;
-    grid-template-columns: 1fr 1fr;
-    margin-left: 9rem;
+  .belief {
+    align-items: end;
+    gap: 4rem;
+    grid-template-columns: 1.3fr 1fr;
   }
 
-  .channelCopy {
-    margin-left: 9rem;
+  .belief :global(.ks-lede) {
+    font-size: clamp(1.6rem, 2.4vw, 2.3rem);
   }
 
   .channels {
