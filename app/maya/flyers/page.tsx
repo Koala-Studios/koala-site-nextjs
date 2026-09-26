@@ -10,8 +10,8 @@ export default function FlyerReview() {
   if (process.env.NEXT_PUBLIC_LOCAL_PREVIEW !== "true") notFound();
   return (
     <div className="koala-page">
-      <p className="koala-eyebrow">Private review</p>
-      <h1 className="koala-page-title">Maya flyer proofs</h1>
+      <p className="ks-label">Private review</p>
+      <h1 className="ks-x ks-h2">Maya flyer proofs</h1>
       <p>Two-sided, 4 × 6 inches. The seated portrait is provisional. Both editions use the same back and QR code.</p>
       <p>The QR points to mayaamani.com. Its redirect has not been changed. These are review exports; confirm the final portrait and printer profile before printing.</p>
       <Link className="koala-underline-link" href="/maya">Back to Maya&apos;s page</Link>

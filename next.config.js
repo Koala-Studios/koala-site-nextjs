@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  devIndicators: false,
   async redirects() {
     return [
       {
@@ -34,7 +35,12 @@ const nextConfig = {
       },
       {
         source: "/projects/elikai",
-        destination: "/work/elikai",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/elikai",
+        destination: "/work",
         permanent: true,
       },
       {

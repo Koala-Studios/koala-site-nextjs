@@ -71,6 +71,8 @@ export interface CaseStudyMedia {
   alt: string;
   width?: number;
   height?: number;
+  /** CSS object-position focal point for cropped displays. */
+  position?: string;
 }
 
 export type CaseStudyLogo = CaseStudyMedia;
@@ -106,6 +108,8 @@ export interface CaseStudyContent {
   media: CaseStudyMedia[];
   heroImage?: CaseStudyMedia;
   cardImage?: CaseStudyMedia;
+  /** Editorial photograph (product or campaign) used for arches and covers. */
+  coverImage?: CaseStudyMedia;
   logo?: CaseStudyLogo;
   testimonial?: {
     quote: string;

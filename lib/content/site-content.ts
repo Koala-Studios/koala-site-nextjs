@@ -99,7 +99,7 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
       eyebrow: "Services",
       headline: "Design. Build. Grow.",
       summary:
-        "Three ways to work with us: build the store, drive the traffic, keep the customers. Most brands start with one and grow into the rest.",
+        "Four ways to work with us: build the store, make the product shine, drive the traffic and keep the customers. Most brands start with one and grow into the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },
@@ -229,6 +229,10 @@ export const caseStudies: CaseStudyContent[] = [
         height: 950,
       },
     ],
+    coverImage: {
+      src: "/images/project/ara/ara_plants.jpg",
+      alt: "ÄRA protein coffee tub among trailing plants",
+    },
     cardImage: {
       src: "/images/project/ara/ara_hero.webp",
       alt: "Ara ecommerce case study card image",
@@ -343,6 +347,10 @@ export const caseStudies: CaseStudyContent[] = [
         height: 901,
       },
     ],
+    coverImage: {
+      src: "/images/project/nektr/mobile_hero.jpg",
+      alt: "Nektr greens tubs in a 3D render with fruit and splash",
+    },
     cardImage: {
       src: "/images/project/nektr/wide_hero_new3_ps.jpg",
       alt: "Nektr food and beverage ecommerce case study card image",
@@ -398,6 +406,10 @@ export const caseStudies: CaseStudyContent[] = [
         height: 512,
       },
     ],
+    coverImage: {
+      src: "/images/project/allo/allo_image_wide.jpg",
+      alt: "Allo protein for coffee packaging on sand-coloured plinths",
+    },
     cardImage: {
       src: "/images/project/allo/allo_image_wide.jpg",
       alt: "Allo wellness ecommerce case study card image",
@@ -462,6 +474,10 @@ export const caseStudies: CaseStudyContent[] = [
       src: "/images/project/stlth/stlth_bg.jpg",
       alt: "Stlth product devices on a dark studio background",
     },
+    coverImage: {
+      src: "/images/project/stlth/stlth-device.jpg",
+      alt: "Stlth device product render",
+    },
     cardImage: {
       src: "/images/project/stlth/stlth_bg.jpg",
       alt: "Stlth product devices on a dark studio background",
@@ -472,68 +488,12 @@ export const caseStudies: CaseStudyContent[] = [
       width: 900,
       height: 256,
     },
-    relatedSlug: "elikai",
+    relatedSlug: "mercato-di-bellina",
     seo: {
       title: "Stlth Case Study",
       description:
         "Stlth demonstrates a more disciplined long-form case-study structure for Koala Studios.",
       canonicalPath: "/work/stlth",
-    },
-  },
-  {
-    slug: "elikai",
-    status: "published",
-    title: "Elikai",
-    client: "Elikai",
-    sector: "Lifestyle ecommerce",
-    category: "Lifestyle",
-    tags: ["Lifestyle", "Design", "Development"],
-    headline: "A quiet product presentation for daily-use lifestyle.",
-    intro:
-      "Elikai needed a calm product story led by material detail and use context.",
-    services: ["Direction", "Storytelling", "Frontend"],
-    challenge:
-      "The visuals worked best when simple, but the use case still needed structure.",
-    approach:
-      "We treated imagery as lead proof and kept the surrounding language restrained.",
-    deliverables: ["Image-led direction", "Product details", "Mobile flow"],
-    outcomes: [
-      "Calmer product hierarchy",
-      "Clearer lifestyle context",
-      "More balanced work index",
-    ],
-    metrics: [
-      { label: "Priority", value: "Product context" },
-      { label: "Scope", value: "Lifestyle presentation" },
-    ],
-    media: [
-      {
-        src: "/images/project/elikai/elikai_bg.jpg",
-        alt: "Elikai lifestyle product collage in a calm bathroom setting",
-      },
-      {
-        src: "/images/project/elikai/shot4_3_ps.jpg",
-        alt: "Elikai product detail with pastel accessories on marble",
-        width: 1080,
-        height: 1080,
-      },
-      {
-        src: "/images/project/elikai/water1_test1_ps.jpg",
-        alt: "Elikai product detail shown with running water",
-        width: 1080,
-        height: 1080,
-      },
-    ],
-    cardImage: {
-      src: "/images/project/elikai_list.webp",
-      alt: "Elikai lifestyle ecommerce case study card image",
-    },
-    relatedSlug: "mercato-di-bellina",
-    seo: {
-      title: "Elikai Case Study",
-      description:
-        "Elikai shows a restrained lifestyle ecommerce presentation with image-led product context.",
-      canonicalPath: "/work/elikai",
     },
   },
   {
@@ -593,6 +553,11 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Mercato di Bellina brands page and customer support content",
       },
     ],
+    coverImage: {
+      src: "/images/project/mercato-di-bellina/gift-baskets.webp",
+      alt: "Mercato di Bellina gift boxes filled with Italian pantry goods on a sunlit patio table",
+      position: "center 62%",
+    },
     cardImage: {
       src: "/images/project/mercato-di-bellina/01-home.jpg",
       alt: "Mercato di Bellina ecommerce case study card image",
@@ -669,6 +634,11 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Unity Supplements about page telling the brand story",
       },
     ],
+    coverImage: {
+      src: "/images/project/unity-supplements/shaker.webp",
+      alt: "Woman drinking a pink Clear Iso shake from a Unity shaker in front of a graffiti wall",
+      position: "center 12%",
+    },
     cardImage: {
       src: "/images/project/unity-supplements/01-home.jpg",
       alt: "Unity Supplements ecommerce case study card image",
@@ -745,6 +715,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Iron Brothers about page with mission content",
       },
     ],
+    coverImage: {
+      src: "/images/project/iron-brothers/cover.webp",
+      alt: "Athlete holding an Iron Brothers protein tub in the gym",
+    },
     cardImage: {
       src: "/images/project/iron-brothers/01-home.jpg",
       alt: "Iron Brothers ecommerce case study card image",
@@ -821,6 +795,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Bull Nutrition find us page with a retail location map",
       },
     ],
+    coverImage: {
+      src: "/images/project/bull-nutrition/cover.webp",
+      alt: "Bull Nutrition pre-workout tub on a bed of cherries",
+    },
     cardImage: {
       src: "/images/project/bull-nutrition/01-home.jpg",
       alt: "Bull Nutrition ecommerce case study card image",
@@ -897,6 +875,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Whiskey Road custom hat program inquiry page",
       },
     ],
+    coverImage: {
+      src: "/images/project/whiskey-road/cover.webp",
+      alt: "Two people wearing Whiskey Road hats outdoors in autumn",
+    },
     cardImage: {
       src: "/images/project/whiskey-road/01-home.jpg",
       alt: "Whiskey Road ecommerce case study card image",
@@ -973,6 +955,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Medi-Crunch about page with founder story content",
       },
     ],
+    coverImage: {
+      src: "/images/project/medicrunch/cover.webp",
+      alt: "Black lab sitting beside Medicrunch treat boxes on a blue set",
+    },
     cardImage: {
       src: "/images/project/medicrunch/01-home.jpg",
       alt: "Medi-Crunch ecommerce case study card image",
@@ -1049,6 +1035,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Wellth Foods store locator page",
       },
     ],
+    coverImage: {
+      src: "/images/project/wellth-foods/cover.webp",
+      alt: "Wellth Foods pasta boxes with rotini and spinach in the air",
+    },
     cardImage: {
       src: "/images/project/wellth-foods/01-home.jpg",
       alt: "Wellth Foods ecommerce case study card image",
@@ -1125,6 +1115,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Freezo about page with brand story content",
       },
     ],
+    coverImage: {
+      src: "/images/project/freezo/cover.webp",
+      alt: "Freezo coffee frappe mix pouch beside a finished frappe",
+    },
     cardImage: {
       src: "/images/project/freezo/01-home.jpg",
       alt: "Freezo ecommerce case study card image",
@@ -1201,6 +1195,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Hope Harvest fundraising toolkit page",
       },
     ],
+    coverImage: {
+      src: "/images/project/hope-harvest/cover.webp",
+      alt: "Cashew farmer holding fresh cashews in the orchard",
+    },
     cardImage: {
       src: "/images/project/hope-harvest/01-home.jpg",
       alt: "Hope Harvest ecommerce case study card image",
@@ -1277,6 +1275,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Nosh Balls wholesale partner page",
       },
     ],
+    coverImage: {
+      src: "/images/project/nosh-balls/cover.webp",
+      alt: "Nosh Balls cookie dough pouch with energy bites on a teal set",
+    },
     cardImage: {
       src: "/images/project/nosh-balls/01-home.jpg",
       alt: "Nosh Balls ecommerce case study card image",
@@ -1353,6 +1355,10 @@ export const caseStudies: CaseStudyContent[] = [
         alt: "Wuxly apparel brand story page with Canadian outerwear imagery",
       },
     ],
+    coverImage: {
+      src: "/images/project/wuxly/cover.webp",
+      alt: "Model in a Wuxly jacket against a limestone wall",
+    },
     cardImage: {
       src: "/images/project/wuxly/01-home.jpg",
       alt: "Wuxly consumer outerwear ecommerce case study card image",

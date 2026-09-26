@@ -4,11 +4,14 @@ export const mayaContent = {
   focus: "Ecommerce growth",
   hero: "Elevate your brand. Grow your online sales.",
   heroSummary: "Build a brand more people know, a store more people buy from, and a reason to come back.",
-  portrait: "/images/maya/07-maya-approved.png",
+  portrait: "/images/maya/07-maya-approved.webp",
   email: "maya@koalastudios.ca",
+  /** Trade-show greeting shown on /maya; remove or change after the event. */
+  event: { greeting: "Hello, CHFA", closing: "Met at CHFA?" } as { greeting: string; closing: string } | null,
+  intro: "15+ years taking consumer brands from shelf to cart across CPG, food, supplements and wellness.",
   linkedin: "https://ca.linkedin.com/in/mayaamani",
   profile: "/documents/maya-amani-executive-profile.pdf",
-  beliefTitle: "More visibility. More of the next sale.",
+  beliefTitle: "More visibility. More sales.",
   belief: [
     "A stronger brand gives customers a reason to choose you. We connect that visibility to a better website, effective email marketing, and more repeat purchases, helping you grow direct-to-consumer sales and improve margins.",
     "The same recognition can help your products move more effectively through retail channels. My experience spans 15+ years across consumer packaged goods, food and beverage, supplements, and health and wellness, from ecommerce growth to commercialization and acquisition.",
@@ -25,7 +28,7 @@ export const mayaContent = {
   ],
   proof: [
     { value: "15+", label: "Years of experience", context: "Consumer brands and commerce" },
-    { value: "2", label: "Brands built and acquired", context: "Allo Nutrition and STLTH" },
+    { value: "1", label: "Brand built and acquired", context: "Allo Nutrition" },
     { value: "300+", label: "Canadian sales channels", context: "Allo Nutrition, before international expansion and acquisition" },
   ],
   stories: [
@@ -44,9 +47,5 @@ export const mayaContent = {
   auditSummary: "A free brand and growth audit of your website, positioning and email marketing. Find practical opportunities to convert more visitors, bring customers back and grow online revenue.",
 } as const;
 
-export const mayaPortraits = [
-  { file: "01-cream-office", label: "01 / Cream · Office", description: "Closer portrait in cream tailoring" },
-  { file: "02-green-atrium", label: "02 / Green · Atrium", description: "Closer portrait in deep green" },
-  { file: "03-taupe-seated", label: "03 / Taupe · Seated", description: "Full-torso seated portrait, currently used on the page" },
-  { file: "04-black-standing", label: "04 / Black · Standing", description: "Full-torso standing portrait" },
-] as const;
+/** Case studies shown on /maya, led by food, wellness and CPG work. */
+export const mayaWork = ["mercato-di-bellina", "nosh-balls", "freezo", "hope-harvest", "nektr", "allo", "unity-supplements", "wellth-foods"];

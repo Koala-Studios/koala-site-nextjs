@@ -1,0 +1,55 @@
+.intro {
+  display: grid;
+  gap: 1.5rem;
+  align-content: start;
+}
+
+.title {
+  font-size: clamp(2.8rem, 8vw, 6.5rem);
+}
+
+.intro :global(.ks-lede) {
+  max-width: 32ch;
+}
+
+.person {
+  align-items: end;
+  border-top: var(--ks-rule);
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.person > div {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.personArch {
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+  width: 5.5rem;
+}
+
+.personName {
+  font-size: 1.35rem;
+}
+
+.person :global(.ks-it) {
+  color: var(--ks-green);
+  font-size: 1.15rem;
+}
+
+.direct {
+  display: grid;
+  gap: 0.6rem;
+  justify-items: start;
+}
+
+.mail {
+  align-items: center;
+}
+
+.mail :global(.ks-icon) {
+  color: var(--ks-green);
+}

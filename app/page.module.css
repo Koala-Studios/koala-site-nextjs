@@ -1,349 +1,128 @@
-.homePage {
-  color: var(--koala-color-ink);
-  position: relative;
+.folio {
+  margin-top: 1rem;
 }
-
-/* ---------- Hero ---------- */
 
 .hero {
-  align-items: center;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.heroTitle {
+  color: var(--ks-ink);
+  font-size: clamp(2.6rem, 9vw, 7rem);
+  margin-top: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.intro {
   display: grid;
-  gap: clamp(1rem, 3vw, 3rem);
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  min-height: min(46rem, calc(100dvh - 6rem));
-  padding-block: clamp(var(--koala-space-12), 6vw, var(--koala-space-20));
-  position: relative;
+  gap: 1.25rem;
+  padding-top: clamp(2.5rem, 6vw, 5rem);
 }
 
-.heroInner {
-  display: grid;
-  gap: var(--koala-space-6);
-  justify-items: flex-start;
-  position: relative;
-  z-index: 1;
-}
-
-.heroVisual {
-  align-self: stretch;
-  min-height: min(32rem, 60vh);
-  position: relative;
-  z-index: 1;
-}
-
-.heroEyebrow {
-  animation: hero-fade-in 800ms var(--koala-ease-out) 200ms both;
-}
-
-.heroInner h1 {
-  font-family: var(--koala-font-heading);
-  font-size: clamp(3.6rem, 7.4vw, 7.8rem);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 0.9;
-  margin: 0;
-  max-width: 100%;
-  min-width: 0;
-  text-transform: uppercase;
-}
-
-.heroLineMask {
-  display: block;
-  max-width: 100%;
-  overflow: hidden;
-  padding-bottom: 0.06em;
-}
-
-.heroLine {
-  animation: hero-line-up 950ms var(--koala-ease-smooth) 150ms both;
-  display: block;
-}
-
-.heroLineSecond {
-  animation-delay: 280ms;
-}
-
-.heroCtas {
+.actions {
   align-items: center;
-  animation: hero-fade-in 800ms var(--koala-ease-out) 700ms both;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--koala-space-6);
-  margin-top: var(--koala-space-4);
+  gap: 1.25rem 2rem;
+  margin-top: 2rem;
 }
 
-@keyframes hero-line-up {
-  from {
-    transform: translateY(110%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes hero-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.6rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.heroScroll {
-  align-items: center;
-  bottom: clamp(1rem, 3vw, 2.5rem);
-  color: var(--koala-color-muted);
-  display: flex;
-  flex-direction: column;
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-xs);
-  gap: 0.5rem;
-  letter-spacing: var(--koala-label-tracking);
-  position: absolute;
-  right: 0.5rem;
-  text-transform: uppercase;
-  z-index: 1;
-}
-
-.heroScrollLine {
-  background: var(--koala-color-line);
-  display: block;
-  height: 3.4rem;
-  overflow: hidden;
-  position: relative;
-  width: 1px;
-}
-
-.heroScrollLine::after {
-  animation: hero-scroll-drip 2.2s var(--koala-ease-smooth) infinite;
-  background: var(--koala-color-lime);
-  content: "";
-  height: 1.2rem;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1px;
-}
-
-@keyframes hero-scroll-drip {
-  from {
-    transform: translateY(-1.4rem);
-  }
-  to {
-    transform: translateY(3.6rem);
-  }
-}
-
-/* ---------- Marquee ---------- */
-
-.marquee {
-  /* Cancel the page side padding without 100vw (vw includes the scrollbar
-     and overflows the layout, which makes phones zoom the page out). */
-  margin-inline: calc(-1 * clamp(var(--koala-space-4), 3vw, var(--koala-space-8)));
-}
-
-.marqueeItem {
+.workAside {
   align-items: center;
   display: inline-flex;
-  font-family: var(--koala-font-heading);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  gap: 2.2rem;
-  line-height: 1;
-  padding: 1rem 0 0.8rem 2.2rem;
-  text-transform: uppercase;
-  white-space: nowrap;
+  gap: 0.6rem;
 }
 
-.marqueeTick {
-  background: var(--koala-color-lime);
-  display: inline-block;
-  height: 0.55rem;
-  width: 0.55rem;
+.services {
+  display: grid;
+  gap: 2rem;
 }
 
-/* ---------- Shared section scaffolding ---------- */
-
-.pillars,
-.testimonials,
-.contact {
-  padding-block: clamp(3.5rem, 7vw, 6.5rem);
-  scroll-margin-top: var(--koala-space-24);
+.servicesArch :global(.ks-arch) {
+  aspect-ratio: 3 / 4;
 }
 
-.marquee + .pillars {
+.archFolio {
   border-top: 0;
 }
 
-.sectionHead {
-  display: grid;
-  gap: var(--koala-space-4);
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+.serviceRow {
+  align-items: start;
+  padding-block: 1.25rem;
 }
 
-.sectionHead h2 {
-  max-width: 24ch;
-  text-transform: uppercase;
+.serviceTitle {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
 }
 
-/* ---------- Stats ---------- */
+.serviceTitle :global(.ks-icon) {
+  color: var(--ks-green);
+}
 
-.stats {
+.serviceCopy {
+  color: var(--ks-muted);
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  max-width: 46ch;
+}
+
+.audit {
+  padding-bottom: 0;
+}
+
+.auditPanel {
+  overflow: hidden;
+  position: relative;
+  background: var(--ks-paper-2);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  isolation: isolate;
-  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  gap: 1.25rem;
+  justify-items: start;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+.auditPanel > :not(.auditArt) {
   position: relative;
 }
 
-.statsAccent {
-  top: -5rem;
+.auditArt {
+  bottom: -1px;
+  color: var(--ks-stone);
+  position: absolute;
+  right: clamp(1rem, 4vw, 4rem);
+  width: clamp(7rem, 22vw, 15rem);
 }
 
-.stat {
-
-  display: grid;
-  gap: var(--koala-space-3);
-  padding: 0.4rem clamp(1rem, 2.5vw, 2rem);
+.auditPanel p {
+  max-width: 52ch;
 }
 
-.stat:first-child {
-  border-left: 0;
-  padding-left: 0;
-}
-
-.statValue {
-  color: var(--koala-color-ink);
-  font-family: var(--koala-font-heading);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.9;
-}
-
-.statLabel {
-  color: var(--koala-color-muted);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-xs);
-  letter-spacing: var(--koala-label-tracking);
-  text-transform: uppercase;
-}
-
-/* ---------- Contact band ---------- */
-
-.contact {
-  padding-bottom: clamp(2rem, 4vw, 3.5rem);
-}
-
-.contactInner {
-  align-items: center;
-  display: grid;
-  gap: var(--koala-space-8);
-  grid-template-columns: minmax(0, 1fr) auto;
-}
-
-.contactCopy {
-  display: grid;
-  gap: var(--koala-space-8);
-  justify-items: flex-start;
-}
-
-.contactTitle {
-  font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-3xl);
-  font-weight: 400;
-  line-height: 0.92;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.contactActions {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--koala-space-8);
-}
-
-.contactEmail {
-  color: var(--koala-color-ink);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-md);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.contactBadge {
-  color: inherit;
-  display: inline-block;
-  text-decoration: none;
-}
-
-/* ---------- Responsive ---------- */
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    min-height: min(44rem, calc(100dvh - 5rem));
-    row-gap: 0;
+@media (min-width: 900px) {
+  .intro {
+    grid-template-columns: 1fr 1.4fr;
   }
 
-  .heroVisual {
-    min-height: 19rem;
+  .intro :global(.ks-lede) {
+    font-size: clamp(1.5rem, 2.3vw, 2.2rem);
   }
 
-  .heroScroll {
-    display: none;
+  .services {
+    align-items: start;
+    gap: 3.5rem;
+    grid-template-columns: 1fr 1.6fr;
   }
 
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: var(--koala-space-8);
-  }
-
-  .stat:nth-child(odd) {
-    border-left: 0;
-    padding-left: 0;
-  }
-
-  .contactInner {
-    grid-template-columns: 1fr;
-  }
-
-  .contactBadge {
-    display: none;
+  .servicesArch {
+    position: sticky;
+    top: calc(var(--ks-header-h) + 2rem);
   }
 }
 
-@media (max-width: 540px) {
-  /* "WE BUILD SHOPIFY STORES" (longest hero line, ~7.05x the font size)
-     must fit one line; any wider and phones zoom the whole page out. */
-  .heroInner h1 {
-    font-size: clamp(2.4rem, 12vw, 3.05rem);
-  }
-
-  .heroCtas {
-    gap: var(--koala-space-4);
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .stat {
-    border-left: 0;
-    padding-inline: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroEyebrow,
-  .heroLine,
-  .heroLineSecond,
-  .heroCtas {
-    animation-duration: 1ms;
-    animation-delay: 0ms;
-  }
-
-  .heroScrollLine::after {
-    animation: none;
+/* on phones the arch motif sits in its own space below the call to action */
+@media (max-width: 699px) {
+  .auditPanel {
+    padding-bottom: 8.5rem;
   }
 }

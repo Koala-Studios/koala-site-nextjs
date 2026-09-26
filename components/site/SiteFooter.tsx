@@ -1,113 +1,71 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Logo } from "@/components/system";
+import { serviceDetails } from "@/content/pages/service-details";
 import { navigationContent, siteSettings } from "@/lib/content";
+import { getPageContext } from "@/lib/content/page-context";
 
-import { auditOffer } from "@/lib/content/audit";
-
-import { MayaServiceIcons } from "./MayaServiceIcons";
-
-import { ArrowIcon } from "./ArrowIcon";
-import { Marquee } from "./Marquee";
+import { Cta } from "./Cta";
 import styles from "./SiteFooter.module.css";
 
-const serviceLinks = [
-  {
-    label: "Shopify design & build",
-    href: "/services/shopify-design-and-build",
-  },
-  { label: "Meta ad management", href: "/services/meta-ads-management" },
-  { label: "Email marketing", href: "/services/email-marketing" },
-  {
-    label: "Packaging & 3D renders",
-    href: "/services/packaging-and-3d-renders",
-  },
-];
-
 export function SiteFooter() {
-  const pathname = usePathname();
+  const context = getPageContext(usePathname());
+
   return (
-    <footer className={`${styles.footer} ${pathname === "/maya" ? styles.mayaFooter : ""}`}>
-      <Link
-        className={styles.marqueeLink}
-        href={pathname === "/maya" ? auditOffer.mayaHref : navigationContent.featuredCta.href}
-        aria-label="Start a project"
-        data-analytics-cta="footer-marquee"
-      >
-        <Marquee className={styles.marquee} duration={18}>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <span className={styles.marqueeItem} key={index}>
-              Start a project
-              <ArrowIcon className={styles.marqueeArrow} />
-            </span>
-          ))}
-        </Marquee>
-      </Link>
-
+    <footer className={styles.footer}>
       <div className={styles.frame}>
-        {pathname === "/maya" && <MayaServiceIcons />}
-        <div className={styles.columns}>
-          <div className={styles.brandColumn}>
-            {pathname === "/maya" ? <Image className={styles.logo} src="/images/koala-studios-custom-v3.png" alt="Koala Studios" width={1773} height={531} /> : <Image
-              className={styles.logo}
-              src="/images/koala_logo_white.png"
-              alt="Koala Studios"
-              width={134}
-              height={25}
-            />}
-            <p className={styles.statement}>{siteSettings.description}</p>
-            <a
-              className={`${styles.email} koala-underline-link`}
-              href={pathname === "/maya" ? "mailto:maya@koalastudios.ca" : "mailto:hello@koalastudios.ca"}
-            >
-              {pathname === "/maya" ? "maya@koalastudios.ca" : "hello@koalastudios.ca"}
-            </a>
+        {context.footerLead ? (
+          <div className={styles.lead}>
+            <h2 className={`ks-x ${styles.title}`}>
+              Let’s build something <em>that sells.</em>
+            </h2>
+            <div className={styles.leadAction}>
+              <p className={styles.statement}>{siteSettings.description}</p>
+              <Cta href={context.ctaHref} variant="light" data-analytics-cta="footer">
+                {context.ctaLabel}
+              </Cta>
+            </div>
           </div>
+        ) : null}
 
-          <nav className={styles.column} aria-label="Footer">
-            <p className={styles.columnTitle}>Site</p>
+        <div className={`${styles.columns} ${context.footerLead ? "" : styles.columnsFirst}`}>
+          <nav aria-label="Footer">
+            <p className="ks-label">Site</p>
             {navigationContent.footer.map((item) => (
-              <Link
-                className="koala-underline-link"
-                key={item.href}
-                href={pathname === "/maya" && item.href === "/contact" ? auditOffer.mayaHref : item.href}
-              >
+              <Link className="koala-underline-link" key={item.href} href={item.href === "/contact" ? context.contactHref : item.href}>
                 {item.label}
               </Link>
             ))}
           </nav>
-
-          <div className={styles.column}>
-            <p className={styles.columnTitle}>Services</p>
-            {serviceLinks.map((service) => (
-              <Link
-                className="koala-underline-link"
-                key={service.href}
-                href={service.href}
-              >
-                {service.label}
+          <div>
+            <p className="ks-label">Services</p>
+            {serviceDetails.map((service) => (
+              <Link className="koala-underline-link" key={service.slug} href={`/services/${service.slug}`}>
+                {service.navLabel}
               </Link>
             ))}
           </div>
+          <div>
+            <p className="ks-label">Studio</p>
+            <a className="koala-underline-link" href={`mailto:${context.email}`} data-contact-method="email">
+              {context.email}
+            </a>
+            <span>Toronto, Canada</span>
+          </div>
         </div>
 
-        {/* <p className={styles.wordmark} aria-hidden="true">
-          Koala Studios
-        </p> */}
+        <Logo className={styles.masthead} />
 
-        <div className={styles.bottom}>
-          <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} {siteSettings.name} &middot;
-            Toronto, Canada
-          </p>
-          <div className={styles.bottomLinks}>
-            <Link className="koala-underline-link" href="/privacy">
-              Privacy
-            </Link>
-          </div>
+        <div className={`ks-label ${styles.bottom}`}>
+          <span>
+            © {new Date().getFullYear()} {siteSettings.name}
+          </span>
+          <Link className="koala-underline-link" href="/privacy">
+            Privacy
+          </Link>
         </div>
       </div>
     </footer>

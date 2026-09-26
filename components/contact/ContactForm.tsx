@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 
 import { Field, Input, Textarea } from "@/components/forms";
 import { Cta } from "@/components/site/Cta";
-import { Magnetic } from "@/components/site/Magnetic";
 import { analyticsConfig } from "@/lib/analytics";
 import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
 import { attributionEventParams, attributionFields, captureAttribution } from "@/lib/attribution";
@@ -15,7 +14,6 @@ import { auditOffer } from "@/lib/content/audit";
 import styles from "./ContactForm.module.css";
 
 const NETLIFY_FORM_ENDPOINT = "/__forms.html";
-const controlWidth = { width: "100%" } as const;
 
 const projectTypes = [
   { value: "Shopify design & build", name: "interest-shopify" },
@@ -94,7 +92,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
 
   return (
     <div className={styles.formBlock}>
-      {isAudit && !short && <div className={styles.auditNote}><h2>{auditOffer.title}</h2><p>{auditOffer.summary}</p></div>}
+      {isAudit && !short && <div className={styles.auditNote}><span className="ks-label">{auditOffer.title}</span><p>{auditOffer.summary}</p></div>}
       {process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" && <p className={styles.previewNote}>Local preview: submissions stay in this browser and are not sent.</p>}
       <form
         className={styles.form}
@@ -114,12 +112,12 @@ export function ContactForm({ short = false }: { short?: boolean }) {
 
         {short ? <>
           <div className={styles.row}>
-            <Field label="Name"><Input name="name" aria-label="Name" autoComplete="name" required style={controlWidth} /></Field>
-            <Field label="Email"><Input name="email" type="email" aria-label="Email" autoComplete="email" required style={controlWidth} /></Field>
+            <Field label="Name"><Input name="name" aria-label="Name" autoComplete="name" required /></Field>
+            <Field label="Email"><Input name="email" type="email" aria-label="Email" autoComplete="email" required /></Field>
           </div>
           <div className={styles.row}>
-            <Field label="Company"><Input name="company" aria-label="Company" autoComplete="organization" required style={controlWidth} /></Field>
-            <Field label="Website (optional)"><Input name="website" type="text" aria-label="Website (optional)" autoComplete="url" style={controlWidth} /></Field>
+            <Field label="Company"><Input name="company" aria-label="Company" autoComplete="organization" required /></Field>
+            <Field label="Website (optional)"><Input name="website" type="text" aria-label="Website (optional)" autoComplete="url" /></Field>
           </div>
           {isAudit && <input type="hidden" name="interest-audit" value="Brand and growth audit" />}
         </> : <>
@@ -130,7 +128,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
               aria-label="Name"
               autoComplete="name"
               required
-              style={controlWidth}
+             
             />
           </Field>
           <Field label="Company">
@@ -139,7 +137,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
               aria-label="Company"
               autoComplete="organization"
               required
-              style={controlWidth}
+             
             />
           </Field>
         </div>
@@ -152,7 +150,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
               aria-label="Email"
               autoComplete="email"
               required
-              style={controlWidth}
+             
             />
           </Field>
           <Field label="Phone">
@@ -161,13 +159,13 @@ export function ContactForm({ short = false }: { short?: boolean }) {
               type="tel"
               aria-label="Phone"
               autoComplete="tel"
-              style={controlWidth}
+             
             />
           </Field>
         </div>
 
         <Field label="Website URL">
-          <Input name="website" type="text" aria-label="Website URL" autoComplete="url" required style={controlWidth} />
+          <Input name="website" type="text" aria-label="Website URL" autoComplete="url" required />
         </Field>
 
         <fieldset className={styles.typeFieldset}>
@@ -211,18 +209,15 @@ export function ContactForm({ short = false }: { short?: boolean }) {
             name="message"
             aria-label="Project details"
             required
-            style={{ ...controlWidth, minHeight: "10rem" }}
           />
         </Field>
 
         </>}
 
         <div className={styles.footer}>
-          <Magnetic>
-            <Cta type="submit" variant="full" disabled={isSubmitting}>
-              {isSubmitting ? "Sending" : "Send message"}
-            </Cta>
-          </Magnetic>
+          <Cta type="submit" fullWidth disabled={isSubmitting}>
+            {isSubmitting ? "Sending" : short && isAudit ? "Request the audit" : "Send message"}
+          </Cta>
           {submitState === "error" ? (
             <p className={styles.status} role="alert">
               The form did not send. Email hello@koalastudios.ca instead.

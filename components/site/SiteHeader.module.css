@@ -1,394 +1,348 @@
-.headerWrap {
-  background: color-mix(in srgb, var(--koala-color-bg) 96%, transparent);
-  backdrop-filter: blur(5px);
-  pointer-events: auto;
+.bar {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: rgba(244, 243, 239, 0.9);
   position: sticky;
   top: 0;
-  z-index: 50;
+  transition: background-color 250ms var(--ks-ease), color 250ms var(--ks-ease);
+  z-index: 60;
 }
 
-.headerWrap::after {
-  background: var(--koala-color-bg);
-  content: "";
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  transition: opacity 240ms var(--koala-ease-out);
-  z-index: -1;
-}
-
-.headerWrapSolid::after {
-  opacity: 1;
+.barMenu {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: transparent;
+  color: var(--ks-paper);
 }
 
 .header {
   align-items: center;
   display: grid;
-  gap: var(--koala-space-4);
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr var(--ks-slot-w) 1fr;
+  height: var(--ks-header-h);
   margin-inline: auto;
-  max-width: var(--koala-container-wide);
-  padding: 0.6rem clamp(1rem, 3vw, 2rem);
-  pointer-events: auto;
-}
-
-.brand {
-  align-items: center;
-  display: inline-flex;
-  min-height: var(--koala-space-10);
+  max-width: var(--ks-max);
+  padding-inline: var(--ks-gutter);
   position: relative;
-  z-index: 56;
 }
 
-.brand img {
-  filter: brightness(0);
-  height: auto;
-  width: 8.4rem;
+/* One logo: in the nav everywhere; on the homepage it starts as the masthead
+   (--p = 0) and shrinks into the centre slot as the page scrolls (--p = 1). */
+.brand {
+  --q: calc(1 - var(--p, 1));
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: calc((var(--ks-header-h) + var(--ks-mast-top)) * var(--q) + (var(--ks-header-h) - var(--ks-slot-w) * 0.2994) / 2 * var(--p, 1));
+  transform: translateX(-50%);
+  /* width eases out faster than the logo rises, so it never crowds the nav controls */
+  width: calc(var(--ks-slot-w) + (var(--ks-mast-w) - var(--ks-slot-w)) * var(--q) * var(--q) * var(--q));
+  z-index: 2;
+}
+
+.barHome {
+  --p: 0;
+}
+
+/* a short ease smooths both the scroll morph and docking when a menu opens or closes */
+.barHome .brand {
+  transition: top 180ms var(--ks-ease), width 180ms var(--ks-ease);
+}
+
+.barMenu,
+.barDocked {
+  --p: 1 !important;
+}
+
+.barHome.barMenu .brand,
+.barHome.barDocked .brand {
+  transition-duration: 350ms;
 }
 
 .nav {
+  display: none;
+  grid-column: 1;
+}
+
+.right {
   align-items: center;
   display: flex;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  justify-content: center;
+  grid-column: 3;
+  justify-content: flex-end;
 }
 
-.link {
-  color: var(--koala-color-ink);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-sm);
-  font-weight: 500;
-  line-height: 1;
-  min-height: var(--koala-space-8);
-  padding-top: 0.45rem;
-  position: relative;
-  text-transform: uppercase;
+.action {
+  display: none;
 }
-
-.link::after {
-  background: var(--koala-color-lime);
-  bottom: 0;
-  content: "";
-  height: 1px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform 380ms var(--koala-ease-smooth);
-}
-
-.link:hover::after,
-.linkActive::after {
-  transform: scaleX(1);
-  transform-origin: left center;
-}
-
-.desktopAction {
-  justify-self: flex-end;
-}
-
-/* ---------- Services mega-menu ---------- */
-
-.navItem {
-  align-items: center;
-  display: flex;
-}
-
-.dropdown {
-  background: var(--koala-color-bg);
-  border-bottom: 1px solid var(--koala-color-line);
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  transform: translateY(0.3rem);
-  transition: opacity 240ms var(--koala-ease-out), transform 320ms var(--koala-ease-smooth),
-    visibility 0s linear 320ms;
-  visibility: hidden;
-  z-index: 60;
-}
-
-.dropdownInner {
-  display: grid;
-  gap: 0;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-inline: auto;
-  max-width: var(--koala-container-wide);
-  padding-inline: clamp(1rem, 3vw, 2rem);
-}
-
-.dropdownOpen {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-  transition: opacity 240ms var(--koala-ease-out), transform 320ms var(--koala-ease-smooth);
-  visibility: visible;
-}
-
-.dropdownLink {
-  border-right: 1px solid var(--koala-color-line);
-  color: var(--koala-color-ink);
-  display: flex;
-  flex-direction: column;
-  gap: var(--koala-space-3);
-  padding: clamp(2rem, 3vw, 3rem) clamp(1rem, 2vw, 1.5rem);
-  position: relative;
-  text-decoration: none;
-}
-
-.dropdownLink:first-child {
-  padding-left: 0;
-}
-
-.dropdownLink:last-child {
-  border-right: 0;
-}
-
-/* Lime bottom bar on hover — same gesture as the nav link underline */
-.dropdownLink::after {
-  background: var(--koala-color-lime);
-  bottom: 0;
-  content: "";
-  height: 2px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform 360ms var(--koala-ease-smooth);
-}
-
-.dropdownLink:hover::after {
-  transform: scaleX(1);
-  transform-origin: left center;
-}
-
-.dropdownLabel {
-  color: var(--koala-color-ink);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-sm);
-  font-weight: 500;
-  letter-spacing: var(--koala-label-tracking);
-  line-height: 1;
-  text-transform: uppercase;
-  transition: color 200ms var(--koala-ease-out);
-}
-
-.dropdownLink:hover .dropdownLabel {
-  color: var(--koala-color-lime);
-}
-
-.dropdownDesc {
-  color: var(--koala-color-muted);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-xs);
-  line-height: 1.5;
-}
-
-.dropdownLearn {
-  align-items: center;
-  color: var(--koala-color-muted);
-  display: inline-flex;
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-xs);
-  gap: 0.4rem;
-  letter-spacing: var(--koala-label-tracking);
-  margin-top: auto;
-  padding-top: var(--koala-space-2);
-  text-transform: uppercase;
-  transition: color 220ms var(--koala-ease-out);
-}
-
-.dropdownLink:hover .dropdownLearn {
-  color: var(--koala-color-lime);
-}
-
-.dropdownArrow {
-  transition: transform 320ms var(--koala-ease-smooth);
-}
-
-.dropdownLink:hover .dropdownArrow {
-  transform: translateX(0.3rem);
-}
-
-/* ---------- Menu button ---------- */
 
 .menuButton {
   align-items: center;
-  background: var(--koala-color-green);
+  background: none;
   border: 0;
-  color: #ffffff;
   display: inline-flex;
-  flex-direction: column;
-  gap: 0.22rem;
-  height: 3rem;
-  justify-content: center;
-  padding: 0;
-  position: relative;
-  transition: background-color 240ms var(--koala-ease-out), color 240ms var(--koala-ease-out);
-  width: 3rem;
-  z-index: 56;
+  gap: 0.75rem;
+  margin-right: -0.5rem;
+  min-height: 3rem;
+  padding: 0 0.5rem;
 }
 
-.menuButton:hover {
-  background: var(--koala-color-lime);
-  color: var(--koala-color-surface);
-}
-
-.menuButton span {
-  background: currentColor;
+.burger {
+  border-bottom: 1.5px solid currentColor;
+  border-top: 1.5px solid currentColor;
   display: block;
-  height: 2px;
-  transition: opacity 200ms var(--koala-ease-out), transform 280ms var(--koala-ease-smooth);
-  width: 1rem;
+  height: 9px;
+  position: relative;
+  transition: height 250ms var(--ks-ease), border-color 250ms var(--ks-ease);
+  width: 24px;
 }
 
-.menuOpen {
-  background: var(--koala-color-lime);
-  color: var(--koala-color-surface);
+.burgerOpen {
+  border-bottom-color: transparent;
+  height: 0;
 }
 
-.menuOpen span:nth-child(1) {
-  transform: translateY(0.345rem) rotate(45deg);
+.burgerOpen::before,
+.burgerOpen::after {
+  background: currentColor;
+  content: "";
+  height: 1.5px;
+  left: 0;
+  position: absolute;
+  top: -1px;
+  width: 24px;
 }
 
-.menuOpen span:nth-child(2) {
-  opacity: 0;
+.burgerOpen::before {
+  transform: rotate(35deg);
 }
 
-.menuOpen span:nth-child(3) {
-  transform: translateY(-0.345rem) rotate(-45deg);
+.burgerOpen::after {
+  transform: rotate(-35deg);
 }
 
-/* ---------- Full-screen takeover ---------- */
+/* ---------- desktop ---------- */
+@media (min-width: 900px) {
+  .nav {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    gap: 2.25rem;
+  }
 
+  /* full header height, so the pointer never crosses a gap on its way to the panel */
+  .navItem {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    position: static;
+  }
+
+  .link {
+    padding-block: 0.5rem;
+    position: relative;
+    transition: color 200ms var(--ks-ease);
+  }
+
+  .link::after {
+    background: currentColor;
+    bottom: 0.2rem;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 350ms var(--ks-ease);
+    width: 100%;
+  }
+
+  .link:hover::after,
+  .link:focus-visible::after,
+  .linkActive::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .action {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.6rem;
+    padding-block: 0.75rem;
+    transition: color 200ms var(--ks-ease);
+  }
+
+  .actionArrow {
+    transition: transform 250ms var(--ks-ease);
+  }
+
+  .action:hover,
+  .action:focus-visible {
+    color: var(--ks-green);
+  }
+
+  .action:hover .actionArrow,
+  .action:focus-visible .actionArrow {
+    transform: translateX(4px);
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .dropdown {
+    background: var(--ks-paper);
+    border-bottom: var(--ks-rule);
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    transform: translate(-50%, -6px);
+    width: 100vw;
+    z-index: 3;
+    transition: opacity 220ms var(--ks-ease), transform 300ms var(--ks-ease);
+  }
+
+  .dropdownOpen {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+
+  .dropdownInner {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    margin-inline: auto;
+    max-width: var(--ks-max);
+    padding: 1.75rem var(--ks-gutter) 2.25rem;
+  }
+
+  .dropdownLink {
+    border-top: var(--ks-rule);
+    display: grid;
+    gap: 0.6rem;
+    padding-top: 0.8rem;
+    transition: color 200ms var(--ks-ease);
+  }
+
+  .dropdownLink :global(.ks-x) {
+    font-size: 1.1rem;
+    line-height: 1.05;
+  }
+
+  .dropdownLink:hover,
+  .dropdownLink:focus-visible {
+    color: var(--ks-green);
+  }
+}
+
+/* ---------- phone menu ---------- */
 .overlay {
-  background: var(--koala-color-bg);
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  background: var(--ks-ink);
+  color: var(--ks-paper);
+  display: flex;
+  flex-direction: column;
   inset: 0;
+  justify-content: space-between;
   opacity: 0;
-  overflow: hidden;
-  padding: 5.5rem clamp(1.25rem, 5vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
+  overflow-y: auto;
+  padding: calc(var(--ks-header-h) + 1.5rem) var(--ks-gutter) 2rem;
   pointer-events: none;
   position: fixed;
-  transition: opacity 360ms var(--koala-ease-out), visibility 0s linear 360ms;
+  transition: opacity 300ms var(--ks-ease);
   visibility: hidden;
-  z-index: 45;
+  z-index: 55;
 }
 
 .overlayOpen {
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 360ms var(--koala-ease-out);
   visibility: visible;
 }
 
 .overlayNav {
-  align-content: center;
   display: grid;
-  gap: clamp(0.4rem, 2dvh, 1rem);
-  min-height: 0;
-  overflow: hidden;
 }
 
 .overlayLink {
   align-items: baseline;
-  color: var(--koala-color-ink);
+  border-bottom: 1px solid rgba(244, 243, 239, 0.2);
   display: flex;
   gap: 1rem;
-  text-decoration: none;
+  justify-content: space-between;
+  opacity: 0;
+  padding: 1.1rem 0;
+  transform: translateY(12px);
+  transition: opacity 400ms var(--ks-ease), transform 500ms var(--ks-ease);
 }
 
-.overlayIndex {
-  color: var(--koala-color-lime);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-xs);
-  letter-spacing: var(--koala-label-tracking);
+.overlayOpen .overlayLink {
+  opacity: 1;
+  transform: none;
 }
 
-.overlayMask {
-  display: block;
-  overflow: hidden;
+.overlayLink :global(.ks-x) {
+  font-size: clamp(1.9rem, 9vw, 3rem);
 }
 
-.overlayLabel {
-  display: block;
-  font-family: var(--koala-font-heading);
-  font-size: clamp(2.8rem, 11dvh, 5.6rem);
-  line-height: 0.95;
-  text-transform: uppercase;
-  transform: translateY(110%);
-  transition: transform 600ms var(--koala-ease-smooth), color 240ms var(--koala-ease-out);
+.overlayLink :global(.ks-it) {
+  color: #B9B6AD;
+  font-size: 1.15rem;
+  text-align: right;
+  white-space: nowrap;
 }
 
-.overlayOpen .overlayLabel {
-  transform: translateY(0);
-}
-
-.overlayLink:hover .overlayLabel,
-.overlayLinkActive .overlayLabel {
-  color: var(--koala-color-lime);
+.overlayLinkActive :global(.ks-x) {
+  color: var(--ks-green-soft);
 }
 
 .overlayFooter {
-  align-items: center;
-  border-top: 1px solid var(--koala-color-line);
+  display: grid;
+  gap: 1.25rem;
+  padding-top: 2.5rem;
+}
+
+.latest {
+  align-items: flex-end;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--koala-space-5);
-  justify-content: space-between;
-  padding-top: var(--koala-space-5);
+  gap: 0.9rem;
+}
+
+.latestArch {
+  display: block;
+  flex-shrink: 0;
+  height: 5.5rem;
+  width: 4.25rem;
+}
+
+.latest :global(.ks-label) {
+  display: block;
+  opacity: 0.6;
+}
+
+.latestName {
+  display: block;
+  font-size: 1.45rem;
+  margin-top: 0.2rem;
 }
 
 .overlayEmail {
-  color: var(--koala-color-ink);
-  font-family: var(--koala-font-support);
-  font-size: var(--koala-text-sm);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  opacity: 0.6;
 }
 
-/* ---------- Breakpoints ---------- */
-
-@media (min-width: 901px) {
-  .menuButton,
+@media (min-width: 900px) {
   .overlay {
     display: none;
   }
 }
 
-@media (max-width: 900px) {
-  .header {
-    grid-template-columns: auto 3rem;
-    justify-content: space-between;
-  }
-
-  .brand img {
-  filter: brightness(0);
-    width: 7.2rem;
-  }
-
-  .nav,
-  .desktopAction {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
+  .bar,
   .overlay,
-  .overlayLabel,
-  .menuButton span,
-  .dropdown,
-  .link::after {
-    transition-duration: 1ms;
-  }
-
-  .overlayLabel {
-    transition-delay: 0ms !important;
+  .overlayLink,
+  .burger,
+  .dropdown {
+    transition: none;
   }
 }

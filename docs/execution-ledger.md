@@ -1,5 +1,25 @@
 # Execution Ledger
 
+## 2026-09-25 - Performance pass, icons and line art
+
+Performance: the homepage arch window now uses one image plus a masked grayscale backdrop filter (was two copies of the hero), Google Analytics loads with `lazyOnload`, app icons recompressed (icon-512 470KB to 97KB, icon-192 82KB to 23KB), Instrument Serif loads italic only, the Services hero image is prioritised, and the contact form fallback reserves height. Lighthouse mobile with devtools throttling on the production build: home 95 to 98 (LCP 1.6s), /maya 96 to 98 (LCP 1.9 to 2.0s), /services 97 to 99; live site measured the same way: home 68 (LCP 2.7s, TBT 810ms), /maya 74 (LCP 4.7s). Accessibility, best practices and SEO 100 on every page tested. Lighthouse's default simulated mode still reports 4 to 7s LCP for the hero images; real throttled runs do not reproduce it.
+
+Icons and line art: `components/system/Icons.tsx` (24px, 1.5 stroke) used on homepage service rows, Maya's growth pillars and the contact email link; `components/system/LineArt.tsx` draws service illustrations (store, ads, mail, package) and a nested-arch motif on scroll (pathLength dash animation, off under reduced motion). The arch in each drawing is Koala green.
+
+## 2026-09-25 - Masthead review round: Instrument Serif, morphing logo, header fixes
+
+Frank's review: Instrument Serif replaces EB Garamond as the italic accent (`next/font`, `--ks-serif`, `--ks-it-scale: 1.2`). One logo only: the homepage masthead (`.ks-masthead-space`, max 44rem on desktop) shrinks into the centred nav slot as the page scrolls (`--p` set by `SiteHeader`, width/top interpolated in CSS); every other page shows the logo centred in the nav. Nav is now three columns: links, logo, "Start a project" text link with arrow (the green status dot was removed site-wide). Services dropdown is full width, above the logo, docks the logo while open, and has no hover gap. Em dashes removed from all site copy. A temporary dev-only accent switcher was used for the review and then removed. `devIndicators` disabled.
+
+## 2026-09-25 - Masthead design system: full-site redesign
+
+Frank approved "System A" (Kaizen × Neighborhood references) with arches from the Payá/Casano direction, forest-ink instead of black, no bracketed buttons, and asked for it to be generalized across the site. Reference board and final spec live locally in `public/design-directions/` (untracked review files, not for deploy).
+
+System: `styles/site/tokens.css` (paper #F4F3EF, forest ink #0F1B15, Koala green #2F5D43; legacy `--koala-*` names aliased), `app/globals.css` utilities (`ks-x` wide caps, `ks-it`/`em` Garamond italic, `ks-folio`, `ks-split`, `ks-section-head`, `ks-arch`, `ks-index`, `ks-stats`, `ks-btn`, `ks-tlink`, `ks-status`, underline form controls). Fonts: Archivo (width axis) + EB Garamond via `next/font` (since replaced by Instrument Serif); Bebas/Roboto Condensed/Allura no longer used by the site (files kept for the brochure builder). One wordmark everywhere: `public/images/brand/koala-wordmark.png` (50KB, rendered as a CSS mask so it takes any colour). Shared components in `components/system/` (Logo, Folio, SectionHead, Arch, IndexList, StatRows, ArchWindow) plus `components/work/WorkGrid.tsx` and a rewritten `components/site/Cta.tsx` (primary/ghost/light/text). Route context (Maya CTA, email, footer lead) now comes from `lib/content/page-context.ts` instead of scattered `pathname === "/maya"` checks.
+
+Rebuilt: header (status-dot CTA, services dropdown, forest-ink phone menu), footer, home, work, case studies (`components/case-studies/CaseStudy.tsx`; photographic `coverImage` added for ÄRA, Nektr, Allo, Stlth, Elikai), services, service detail, contact, contact-short (Maya-aware intro), success, 404, privacy type. Maya: arch portrait (WebP 145KB instead of 2.2MB PNG), CHFA greeting/closing via `mayaContent.event` (set to null after the show), stat rows, retail channel grid, stories, CPG-led work rail. Headlines render in server HTML; no above-the-fold text is hidden by animation. Removed SplitReveal, 3D ambient scenes, hero stage, Swiper carousels, CursorDot, Magnetic, RotatingBadge, ScrollProgress and the local-only portrait picker.
+
+Verification: `tsc --noEmit`, ESLint and `next build` (39 pages) passed. Dev-server browser checks at 1440px and 375px for home, Maya, work, Nektr case, services, packaging service, contact-short (Maya), 404 and the phone menu. Automated check of 13 routes at 375px and 14 routes at 320px: no horizontal overflow and exactly one h1 per page (one 320px overflow on long "next case" titles found and fixed). Not yet deployed; no push.
+
 ## 2026-09-21 - Frank's site review corrections
 
 Removed CursorDot and Lenis from the global layout and disabled CSS smooth scrolling. Removed page grain; updated canvas/surfaces and scene background to near-white/light-gray. Shortened route entry animation to a small 250ms rise without hiding content. Added small CTA press/arrow, footer underline, logo hover, and story-rule interactions with reduced-motion support.
@@ -4013,3 +4033,17 @@ Implemented Frank's supplied Maya feedback: italic personal welcome and cursive 
 - Presented Dancing Script, Allura, Great Vibes, Parisienne visually; Frank selected Allura. Self-hosted regular font, black CTA.
 - Portrait image reduced to 80% of its column, maximum 23rem wide / 25rem high; unchanged source and crop.
 - Production build passed. Browser verified Allura computed font and compact 280×302px mobile portrait with no horizontal overflow; inspected screenshot.
+
+## 2026-09-25 - Case study fixes, Mercato lead, Elikai removed
+- Case study titles size from the measured width of their longest word (`--word`, Archivo caps widths in `CaseStudy.tsx`), so no mid-word breaks. Checked all titles at 320/375/1000/1440px: no overflow.
+- Case study hero is a plain colour image; the ArchWindow grayscale effect remains only on the home and Services heroes.
+- `leadCaseStudySlug` ("mercato-di-bellina") leads `getPublishedCaseStudies()`, Maya's work rail and the phone menu featured card.
+- Elikai case study and images removed; `/work/elikai` and `/projects/elikai` redirect to `/work`. Services band now Ära render, 404 arch Ära plants.
+- New covers from the brands' live sites: Mercato gift basket banner (`gift-baskets.webp`), Unity shaker lifestyle shot (`shaker.webp`). `CaseStudyMedia.position` sets crop focal points.
+- Verification: tsc, lint and production build (38 pages) passed; redirects return 308; crops inspected.
+
+## 2026-09-25 - Homepage line art and Safari title fix
+- Frank rejected the standalone journey illustration section; removed it. Replaced with small `Doodle` marks inside existing sections (components/system/Doodle.tsx): green underline under "sell more." (intro), nudging arrow beside "All work", twinkling spark on "What we do".
+- `DrawOnView` + `useDrawn` (components/system/DrawOnView.tsx) drive LineArt, doodle and icon draw-in. Homepage service icons draw in row by row and redraw on hover (hover devices only). Reduced motion: drawn, no loops.
+- Safari showed case study titles tiny. Title now sits in its own `.titleFit` container, sizes with `100cqi * var(--fit)` (multiplication, not division), has a large clamp() default and an `@supports not (width: 1cqi)` viewport fallback. WebKit (Playwright 2272) verified: Mercato title 104px desktop / 46px phone, no overflow on six sampled case studies.
+- Verification: tsc, lint, production build passed; Chrome and WebKit screenshots inspected.

@@ -1,8 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Archivo, Instrument_Serif } from "next/font/google";
 import { Suspense } from "react";
-import "swiper/css";
-import "swiper/css/navigation";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { CtaAnalytics } from "@/components/site/CtaAnalytics";
@@ -23,6 +22,21 @@ export const metadata: Metadata = {
   },
 };
 
+const archivo = Archivo({
+  subsets: ["latin"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  variable: "--font-serif",
+  display: "swap",
+});
+
 const socialProfiles = Object.values(siteSettings.social).filter(Boolean);
 
 const organizationJsonLd = {
@@ -30,7 +44,7 @@ const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService"],
   name: siteSettings.name,
   url: siteSettings.url,
-  logo: `${siteSettings.url}/images/koala_logo_white.png`,
+  logo: `${siteSettings.url}/images/brand/koala-wordmark.png`,
   email: "hello@koalastudios.ca",
   address: {
     "@type": "PostalAddress",
@@ -56,16 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="preload"
-          href="/fonts/BebasNeue-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
+    <html lang="en" className={`${archivo.variable} ${instrument.variable}`}>
       <body>
         <Suspense fallback={null}><AttributionTracker /></Suspense>
         <GoogleAnalytics />

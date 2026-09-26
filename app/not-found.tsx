@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
-import { SplitReveal } from "@/components/animation/SplitReveal";
 import { Cta } from "@/components/site/Cta";
-import { Magnetic } from "@/components/site/Magnetic";
-import { AmbientScene } from "@/components/three/AmbientScene";
+import { Arch, Folio } from "@/components/system";
 
 import styles from "./not-found.module.css";
 
@@ -14,40 +12,23 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className={`koala-page ${styles.page}`}>
-      <p aria-hidden="true" className={`koala-outline-text ${styles.backdrop}`}>
-        404
-      </p>
-      <AmbientScene variant="cube" />
-
+    <div className="ks-page">
       <section className={styles.hero} aria-labelledby="not-found-title">
-        <p className="koala-eyebrow">404 · Not found</p>
-        <SplitReveal
-          accents={["convert."]}
-          as="h1"
-          className={styles.title}
-          id="not-found-title"
-          text={"This page\ndoesn't convert."}
-        />
-        <p className={styles.copy}>
-          It&apos;s missing, moved, or never shipped. The rest of the site
-          works hard, so pick a better landing spot.
-        </p>
-        <div className={styles.actions}>
-          <Magnetic>
-            <Cta
-              href="/"
-              icon="circle"
-              iconPosition="left"
-              size="large"
-              variant="transparent"
-            >
-              Back home
-            </Cta>
-          </Magnetic>
-          <Cta href="/work" size="medium" variant="outlined">
-            See the work
-          </Cta>
+        <Folio items={["No. 404", "Not found", "Toronto, Canada"]} />
+        <div className={styles.body}>
+          <div className={styles.copy}>
+            <h1 className={`ks-x ${styles.title}`} id="not-found-title">
+              This page <em>didn’t ship.</em>
+            </h1>
+            <p className="ks-lede">It’s missing, moved or never existed. The rest of the site works hard, so pick a better landing spot.</p>
+            <div className={styles.actions}>
+              <Cta href="/">Back home</Cta>
+              <Cta href="/work" variant="text">
+                See the work
+              </Cta>
+            </div>
+          </div>
+          <Arch className={styles.arch} src="/images/project/ara/ara_plants.jpg" alt="" sizes="(max-width: 900px) 60vw, 26vw" />
         </div>
       </section>
     </div>

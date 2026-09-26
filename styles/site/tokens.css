@@ -1,173 +1,101 @@
+/*
+ * Koala Studios · Masthead System, edition 01.
+ * Paper, forest ink and Koala green. Archivo (wide caps) + Instrument Serif (italic).
+ * The --koala-* names below are kept as aliases so smaller legacy modules
+ * (privacy, newton, maya flyers) inherit the new system without rewrites.
+ */
 :root {
-  --koala-color-bg: #FAFAFA;
-  --koala-color-surface: #FAFAFA;
-  --koala-color-surface-soft: #F0F1F0;
-  --koala-color-ink: #191A18;
-  --koala-color-muted: #666B67;
-  --koala-color-line: #DDDFDD;
-  --koala-color-line-soft: rgba(25, 26, 24, 0.10);
-  --koala-color-green: #32684A;
-  --koala-color-lime: #32684A;
-  --koala-color-green-dark: #264E38;
-  --koala-color-green-soft: #E5EBE2;
-  --koala-color-clay: #b98c67;
-  --koala-color-sky: #dfe6e3;
-  --koala-color-danger: #A64232;
+  /* colour */
+  --ks-paper: #F4F3EF;
+  --ks-paper-2: #EAE8E1;
+  --ks-stone: #CFC9BB;
+  --ks-muted: #56605A;
+  --ks-ink: #0F1B15;
+  --ks-green: #2F5D43;
+  --ks-green-deep: #1F3A2A;
+  --ks-green-soft: #9FC3A9;
+  --ks-danger: #9C3B22;
 
-  --koala-color-panel: var(--koala-color-surface-soft);
-  --koala-color-panel-soft: #F0F1F0;
-  --koala-color-ink-muted: var(--koala-color-muted);
-  --koala-color-accent: var(--koala-color-green);
-  --koala-color-accent-strong: var(--koala-color-green);
-  --koala-color-warm: var(--koala-color-bg);
-  --koala-color-highlight: var(--koala-color-green-soft);
+  /* type */
+  --ks-sans: var(--font-archivo), "Archivo", system-ui, sans-serif;
+  --ks-serif: var(--font-serif), "Instrument Serif", Georgia, serif;
+  --ks-wide: "wdth" 125;
+  /* size of the italic accent relative to the caps around it (tuned per italic face) */
+  --ks-it-scale: 1.2;
+  --ks-display: clamp(2.5rem, 7vw, 7rem);
+  --ks-h2: clamp(1.9rem, 4.4vw, 4rem);
+  --ks-h3: clamp(1.15rem, 1.6vw, 1.4rem);
+  --ks-lede: clamp(1.25rem, 2vw, 1.65rem);
+  --ks-body: clamp(1rem, 1.1vw, 1.125rem);
+  --ks-small: 0.9rem;
+  --ks-label: 0.7rem;
+  --ks-label-tracking: 0.14em;
 
-  --koala-font-body: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
-  --koala-font-display: "Bebas Neue", "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
-  --koala-font-heading: "Bebas Neue", "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
-  --koala-font-support: "Roboto Condensed", "Arial Narrow", "Aptos Narrow", Arial, sans-serif;
+  /* shape & space */
+  --ks-arch: 999px 999px 0 0;
+  --ks-gutter: 1.25rem;
+  --ks-max: 90rem;
+  --ks-section: clamp(4.5rem, 10vw, 10rem);
+  --ks-rule: 1px solid var(--ks-ink);
+  --ks-rule-soft: 1px solid var(--ks-stone);
+  --ks-header-h: 4rem;
+  /* nav logo width, and the homepage masthead it grows from */
+  --ks-slot-w: 6.5rem;
+  --ks-mast-top: 0.75rem;
+  --ks-mast-w: calc(100vw - 2 * var(--ks-gutter));
+  --ks-ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ks-focus: 0 0 0 3px rgba(47, 93, 67, 0.4);
 
-  --koala-text-xs: 0.78rem;
-  --koala-text-sm: 1rem;
-  --koala-text-base: 1rem;
-  --koala-text-md: 1.18rem;
-  --koala-text-lg: 1.45rem;
-  --koala-text-xl: 2rem;
-  --koala-text-2xl: 4.2rem;
-  --koala-text-3xl: clamp(4rem, 7vw, 6.5rem);
-  --koala-text-display: clamp(4.4rem, 10.5vw, 11rem);
-  --koala-label-tracking: 0.14em;
-
-  --koala-space-1: 0.25rem;
+  /* legacy aliases */
+  --koala-color-bg: var(--ks-paper);
+  --koala-color-surface: var(--ks-paper);
+  --koala-color-surface-soft: var(--ks-paper-2);
+  --koala-color-ink: var(--ks-ink);
+  --koala-color-muted: var(--ks-muted);
+  --koala-color-line: var(--ks-stone);
+  --koala-color-line-soft: rgba(15, 27, 21, 0.12);
+  --koala-color-green: var(--ks-green);
+  --koala-color-lime: var(--ks-green);
+  --koala-color-green-dark: var(--ks-green-deep);
+  --koala-color-green-soft: #DDE5DD;
+  --koala-color-danger: var(--ks-danger);
+  --koala-color-panel: var(--ks-paper-2);
+  --koala-color-ink-muted: var(--ks-muted);
+  --koala-color-accent: var(--ks-green);
+  --koala-color-accent-strong: var(--ks-green);
+  --koala-font-body: var(--ks-sans);
+  --koala-font-support: var(--ks-sans);
+  --koala-font-heading: var(--ks-sans);
+  --koala-font-display: var(--ks-sans);
+  --koala-text-xs: var(--ks-label);
+  --koala-text-sm: var(--ks-small);
+  --koala-text-base: var(--ks-body);
+  --koala-text-md: 1.1rem;
+  --koala-text-lg: 1.35rem;
+  --koala-text-xl: 1.75rem;
+  --koala-text-2xl: var(--ks-h2);
+  --koala-text-3xl: var(--ks-display);
+  --koala-label-tracking: var(--ks-label-tracking);
   --koala-space-2: 0.5rem;
-  --koala-space-3: 0.75rem;
   --koala-space-4: 1rem;
-  --koala-space-5: 1.25rem;
   --koala-space-6: 1.5rem;
   --koala-space-8: 2rem;
   --koala-space-10: 2.5rem;
   --koala-space-12: 3rem;
-  --koala-space-16: 4rem;
-  --koala-space-20: 5rem;
-  --koala-space-24: 6rem;
-
   --koala-radius-xs: 0;
   --koala-radius-sm: 0;
-  --koala-radius-md: 0;
-  --koala-radius-lg: 0;
-  --koala-radius-xl: 0;
-  --koala-radius-pill: 0;
-  /* --koala-radius-xs: 0.5rem;
-  --koala-radius-sm: 0.5rem;
-  --koala-radius-md: 0.75rem;
-  --koala-radius-lg: 1rem;
-  --koala-radius-xl: 1.25rem;
-  --koala-radius-pill: 999px; */
-
-  --koala-shadow-soft: none;
-  --koala-shadow-panel: none;
-  --koala-shadow-card: none;
-
-  --koala-container-max: 72rem;
-  --koala-container-wide: 92rem;
-  --koala-border-width: 1px;
-  --koala-focus-ring: 0 0 0 3px rgba(50, 104, 74, 0.35);
-
-  --koala-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --koala-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --koala-focus-ring: var(--ks-focus);
+  --koala-ease-out: var(--ks-ease);
+  --koala-ease-smooth: var(--ks-ease);
+  --koala-container-wide: var(--ks-max);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 900px) {
   :root {
-    --koala-text-lg: 1.28rem;
-    --koala-text-xl: 1.72rem;
-    --koala-text-2xl: 2.3rem;
-    --koala-text-3xl: 3.1rem;
-    --koala-text-display: clamp(3.4rem, 15vw, 4.6rem);
+    --ks-gutter: 2.5rem;
+    --ks-header-h: 4.5rem;
+    --ks-slot-w: 7.5rem;
+    --ks-mast-top: 1.5rem;
+    --ks-mast-w: min(100vw - 2 * var(--ks-gutter), 44rem);
   }
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Bebas Neue";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/BebasNeue-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/RobotoCondensed-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  src: url("/fonts/RobotoCondensed-SemiBold.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  src: url("/fonts/RobotoCondensed-Bold.woff2") format("woff2");
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  color-scheme: light;
-  background: var(--koala-color-bg);
-  color: var(--koala-color-ink);
-  scroll-behavior: auto;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--koala-color-bg);
-  color: var(--koala-color-ink);
-  font-family: var(--koala-font-body);
-  font-size: var(--koala-text-base);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-a {
-  color: inherit;
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.18em;
-}
-
-a:hover {
-  color: var(--koala-color-accent-strong);
-}
-
-img,
-video {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-::selection {
-  background: #32684A;
-  color: #ffffff;
 }

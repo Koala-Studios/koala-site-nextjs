@@ -4,10 +4,7 @@ import { notFound } from "next/navigation";
 import { createCaseStudyMetadata } from "@/lib/metadata";
 import { getCaseStudyBySlug, getPublishedCaseStudies } from "@/lib/content";
 import { getCaseStudyPath, toAbsoluteUrl } from "@/lib/routes";
-import { CaseStudyHero } from "@/components/case-studies/CaseStudyHero";
-import { CaseStudyRelated } from "@/components/case-studies/CaseStudyRelated";
-import { CaseStudyStory } from "@/components/case-studies/CaseStudyStory";
-import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { CaseStudyHero, CaseStudyNext, CaseStudyStory } from "@/components/case-studies/CaseStudy";
 
 type CaseStudyPageProps = {
   params: Promise<{
@@ -49,6 +46,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
+  const number = getPublishedCaseStudies().findIndex((item) => item.slug === caseStudy.slug) + 1;
   const related = caseStudy.relatedSlug
     ? getCaseStudyBySlug(caseStudy.relatedSlug)
     : undefined;
@@ -90,15 +88,14 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   };
 
   return (
-    <>
+    <div className="ks-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ScrollProgress />
-      <CaseStudyHero caseStudy={caseStudy} />
+      <CaseStudyHero caseStudy={caseStudy} number={number} />
       <CaseStudyStory caseStudy={caseStudy} />
-      <CaseStudyRelated current={caseStudy} related={related} />
-    </>
+      <CaseStudyNext related={related} />
+    </div>
   );
 }

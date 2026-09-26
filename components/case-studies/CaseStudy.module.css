@@ -1,0 +1,278 @@
+.hero {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.back {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-self: start;
+  min-height: 2.75rem;
+}
+
+.back:hover {
+  color: var(--ks-green);
+}
+
+.titleBlock {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* The title's own column is the size container (Safari mis-sizes when the grid itself is). */
+.titleFit {
+  container-type: inline-size;
+  min-width: 0;
+}
+
+/* Sized from the longest word (--fit = 1 / its width in em) so words never break mid-word.
+   Multiplication plus a large default keep older Safari from dropping the rule. */
+.title {
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  font-size: min(10rem, 100cqi * var(--fit));
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+.headline {
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  line-height: 1.1;
+  max-width: 26ch;
+}
+
+.heroMedia {
+  aspect-ratio: 4 / 5;
+  position: relative;
+}
+
+.heroMedia {
+  overflow: hidden;
+}
+
+.heroPhoto img {
+  object-fit: cover;
+}
+
+.heroShot {
+  background: var(--ks-paper-2);
+  overflow: hidden;
+}
+
+.heroShot img {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.facts {
+  border-bottom: var(--ks-rule-soft);
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 0;
+}
+
+.facts dd {
+  margin-top: 0.35rem;
+}
+
+/* ---------- story ---------- */
+.story {
+  display: grid;
+  gap: var(--ks-section);
+  padding-top: var(--ks-section);
+}
+
+.intro {
+  font-size: clamp(1.5rem, 3.2vw, 2.8rem);
+  max-width: 30ch;
+}
+
+.chapter {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.chapterText {
+  border-top: var(--ks-rule);
+  display: grid;
+  gap: 1rem;
+  padding-top: 0.9rem;
+}
+
+.copy {
+  font-size: var(--ks-body);
+  line-height: 1.6;
+  max-width: 58ch;
+}
+
+.outcomes {
+  display: grid;
+}
+
+.outcomes li {
+  border-bottom: var(--ks-rule-soft);
+  font-family: var(--ks-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  padding: 0.75rem 0;
+}
+
+.gallery {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.figure {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.figure img {
+  background: var(--ks-paper-2);
+  height: auto;
+  width: 100%;
+}
+
+.deliverables {
+  display: grid;
+  gap: 1rem;
+}
+
+.live {
+  justify-self: start;
+  margin-top: 1rem;
+}
+
+.quote {
+  background: var(--ks-ink);
+  color: var(--ks-paper);
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.75rem, 6vw, 5rem);
+}
+
+/* ---------- next ---------- */
+.next {
+  padding-top: var(--ks-section);
+}
+
+.nextLink {
+  border-top: var(--ks-rule);
+  display: grid;
+  gap: 1.25rem;
+  padding-top: 0.9rem;
+}
+
+.nextBody {
+  align-items: end;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+}
+
+.nextArch {
+  aspect-ratio: 3 / 4;
+}
+
+.nextTitle {
+  display: block;
+  font-size: clamp(1.7rem, 7vw, 6rem);
+  font-size: min(7rem, 100cqi * var(--fit));
+  hyphens: none;
+  overflow-wrap: normal;
+  transition: color 200ms var(--ks-ease);
+}
+
+.nextBody > span:last-child {
+  container-type: inline-size;
+}
+
+.nextHeadline {
+  display: block;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.nextLink:hover .nextTitle,
+.nextLink:focus-visible .nextTitle {
+  color: var(--ks-green);
+}
+
+@media (min-width: 700px) {
+  .heroMedia {
+    aspect-ratio: 16 / 9;
+  }
+
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .titleBlock {
+    align-items: end;
+    grid-template-columns: 1.3fr 1fr;
+  }
+
+  .headline {
+    justify-self: end;
+    text-align: right;
+  }
+
+  .heroMedia {
+    aspect-ratio: auto;
+    height: min(46vw, 44rem);
+  }
+
+  .chapterText {
+    align-items: baseline;
+    grid-template-columns: 7.5rem 1fr 1.2fr;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery .figure:only-child {
+    grid-column: 1 / -1;
+  }
+
+  .portrait {
+    max-width: 36rem;
+  }
+
+  .deliverables {
+    grid-template-columns: 7.5rem 1fr;
+  }
+
+  .deliverables .live {
+    grid-column: 2;
+  }
+
+  .nextBody {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+}
+
+/* No container units: estimate the title column from the viewport instead. */
+@supports not (width: 1cqi) {
+  .title {
+    font-size: min(10rem, (100vw - 2 * var(--ks-gutter)) * var(--fit));
+  }
+
+  .nextTitle {
+    font-size: min(7rem, (100vw - 2 * var(--ks-gutter) - 7rem) * var(--fit));
+  }
+
+  @media (min-width: 900px) {
+    .title {
+      font-size: min(10rem, (100vw - 2 * var(--ks-gutter)) * 0.55 * var(--fit));
+    }
+
+    .nextTitle {
+      font-size: min(7rem, (100vw - 2 * var(--ks-gutter) - 16rem) * var(--fit));
+    }
+  }
+}

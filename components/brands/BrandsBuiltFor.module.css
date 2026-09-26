@@ -1,9 +1,6 @@
 .section {
   display: grid;
-  gap: var(--koala-space-5);
-  isolation: isolate;
-  padding-block: clamp(2rem, 4vw, 3rem);
-  position: relative;
+  gap: clamp(1.75rem, 4vw, 3rem);
 }
 
 .eyebrow {
@@ -48,8 +45,10 @@
 
 .wordmark {
   color: var(--koala-color-ink);
-  font-family: var(--koala-font-heading);
-  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-family: var(--ks-sans);
+  font-variation-settings: var(--ks-wide);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
   text-transform: uppercase;
   white-space: nowrap;
 }

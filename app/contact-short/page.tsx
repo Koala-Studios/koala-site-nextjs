@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import { Reveal } from "@/components/animation/Reveal";
-import { SplitReveal } from "@/components/animation/SplitReveal";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { AmbientScene } from "@/components/three/AmbientScene";
+import { ContactIntro, ContactIntroView } from "@/components/contact/ContactIntro";
+import { Folio } from "@/components/system";
 import { siteSettings } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { toAbsoluteUrl } from "@/lib/routes";
@@ -32,34 +31,21 @@ const contactJsonLd = {
 
 export default function ContactShortPage() {
   return (
-    <div className={`koala-page ${styles.page}`}>
+    <div className="ks-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
-
-      <AmbientScene variant="dart" />
-
+      <Folio className={styles.folio} items={["Contact", "Short intake", "Toronto, Canada"]} />
       <section className={styles.split} aria-labelledby="contact-title">
         <div className={styles.intro}>
-          <SplitReveal
-            accents={["shop."]}
-            as="h1"
-            className={styles.title}
-            id="contact-title"
-            text={"Let's talk\nshop."}
-          />
-          <a
-            className={`${styles.email} koala-underline-link`}
-            href="mailto:hello@koalastudios.ca"
-          >
-            hello@koalastudios.ca
-          </a>
+          <Suspense fallback={<ContactIntroView isAudit />}>
+            <ContactIntro />
+          </Suspense>
         </div>
-
-        <Reveal className={styles.formColumn} delay={0.08}>
-          <Suspense fallback={<p>Loading contact form...</p>}><ContactForm short /></Suspense>
-        </Reveal>
+        <Suspense fallback={<p className="ks-label ks-muted" style={{ minHeight: "24rem" }}>Loading the form…</p>}>
+          <ContactForm short />
+        </Suspense>
       </section>
     </div>
   );

@@ -8,7 +8,7 @@ import { attributionEventParams } from "@/lib/attribution";
 
 // One delegated listener tracks every CTA tagged with `data-analytics-cta`
 // (header, hero, footer marquee, …) without each call site wiring its own
-// handler — and without forcing the shared Cta into a client boundary.
+// handler, and without forcing the shared Cta into a client boundary.
 export function CtaAnalytics() {
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {

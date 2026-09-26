@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Marquee } from "@/components/site/Marquee";
+import { Folio } from "@/components/system";
 import { getBrandsBuiltFor } from "@/lib/content";
 
 import styles from "./BrandsBuiltFor.module.css";
@@ -9,7 +10,8 @@ export function BrandsBuiltFor() {
   const brands = getBrandsBuiltFor();
 
   return (
-    <section className={styles.section} aria-label="Brands we've built for">
+    <section className={`ks-section ${styles.section}`} aria-label="Brands we've built for">
+      <Folio items={["Brands we’ve built for", "Food · Wellness · Lifestyle"]} />
       <Marquee className={styles.marquee} duration={38}>
         {brands.map((brand) => (
           <span

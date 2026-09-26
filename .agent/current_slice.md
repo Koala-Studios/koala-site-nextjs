@@ -1,5 +1,9 @@
 # Current Slice
 
+## Latest: 2026-09-25 Masthead design system (branch `redesign/masthead-system`)
+
+Whole site rebuilt on the Masthead system (paper, forest ink, Koala green; Archivo wide caps + EB Garamond italic; arches). Start from `app/globals.css`, `styles/site/tokens.css` and `components/system/`. Use `ks-*` utilities and system components for new UI; do not reintroduce Bebas, pills, brackets, circles or animations that hide above-the-fold text. See the 2026-09-25 execution-ledger entry. Not deployed.
+
 Latest refinement: explicit CV-backed CPG experience, verified LinkedIn buttons, shared homepage CyclingWord animation, continuous subtle portrait morph without scroll linkage, centered intro, integrated contacts, fewer dividers, and viewport-triggered numeric counters. Build/lint and private Tailscale desktop/mobile checks passed; no public deployment. See latest execution-ledger entry.
 
 ## Latest: 2026-09-21 review corrections

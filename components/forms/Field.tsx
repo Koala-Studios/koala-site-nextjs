@@ -11,29 +11,11 @@ type FieldProps = {
 
 export function Field({ label, hint, error, children, className, style }: FieldProps) {
   return (
-    <label
-      className={className}
-      style={{
-        display: "grid",
-        gap: "0.5rem",
-        color: "var(--koala-color-ink)",
-        ...style,
-      }}
-    >
-      <span
-        style={{
-          color: "#000",
-          fontFamily: "var(--koala-font-support)",
-          fontSize: "var(--koala-text-xs)",
-          letterSpacing: "var(--koala-label-tracking)",
-          textTransform: "uppercase",
-        }}
-      >
-        {label}
-      </span>
+    <label className={["ks-field", className].filter(Boolean).join(" ")} style={style}>
+      <span className="ks-label">{label}</span>
       {children}
-      {hint ? <span style={{ fontSize: "var(--koala-text-xs)", color: "var(--koala-color-ink-muted)" }}>{hint}</span> : null}
-      {error ? <span style={{ fontSize: "var(--koala-text-xs)", color: "var(--koala-color-danger)" }}>{error}</span> : null}
+      {hint ? <span className="ks-field__hint">{hint}</span> : null}
+      {error ? <span className="ks-field__error">{error}</span> : null}
     </label>
   );
 }

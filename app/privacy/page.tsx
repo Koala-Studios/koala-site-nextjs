@@ -17,7 +17,7 @@ export default function PrivacyPage() {
   return (
     <div className={`koala-page ${styles.page}`}>
       <section className={styles.intro}>
-        <h1 className={styles.title}>Privacy policy.</h1>
+        <h1 className={styles.title}>Privacy <em className="ks-it">policy.</em></h1>
         <p className={styles.updated}>Last updated: {LAST_UPDATED}</p>
       </section>
 

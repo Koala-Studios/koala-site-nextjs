@@ -9,9 +9,10 @@
 }
 
 .title {
-  font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-3xl);
-  font-weight: 400;
+  font-family: var(--ks-sans);
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  font-variation-settings: var(--ks-wide);
+  font-weight: 800;
   line-height: 0.92;
   margin: 0;
   text-transform: uppercase;
@@ -33,8 +34,11 @@
 }
 
 .body h2 {
-  font-family: var(--koala-font-heading);
-  font-size: var(--koala-text-xl);
+  border-top: var(--ks-rule);
+  font-family: var(--ks-sans);
+  font-size: 1.2rem;
+  font-variation-settings: var(--ks-wide);
+  padding-top: 0.9rem;
   line-height: 1;
   margin: var(--koala-space-6) 0 0;
   text-transform: uppercase;

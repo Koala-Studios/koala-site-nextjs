@@ -1,17 +1,15 @@
-import Link from "next/link";
-import { auditOffer } from "@/lib/content/audit";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { Reveal } from "@/components/animation/Reveal";
-import { SplitReveal } from "@/components/animation/SplitReveal";
-import { FunnelDiagram } from "@/components/services/FunnelDiagram";
-import { ArrowIcon } from "@/components/site/ArrowIcon";
 import { Cta } from "@/components/site/Cta";
-import { Magnetic } from "@/components/site/Magnetic";
-import { AmbientAccent } from "@/components/three/AmbientAccent";
-import { AmbientScene } from "@/components/three/AmbientScene";
+import { ArchWindow } from "@/components/system/ArchWindow";
+import { Folio, IndexList, SectionHead } from "@/components/system";
+import { serviceIcon } from "@/components/system/Icons";
+import { LineArt } from "@/components/system/LineArt";
 import { servicesContent } from "@/content/pages/services";
 import { siteSettings } from "@/lib/content";
+import { auditOffer } from "@/lib/content/audit";
 import { createPageMetadata } from "@/lib/metadata";
 import { toAbsoluteUrl } from "@/lib/routes";
 
@@ -26,177 +24,116 @@ export const metadata: Metadata = createPageMetadata({
 const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Shopify design, Meta ad management, and email marketing",
+  name: "Shopify design, packaging, Meta ad management, and email marketing",
   description: servicesContent.seo.description,
   url: toAbsoluteUrl("/services"),
-  provider: {
-    "@type": "Organization",
-    name: siteSettings.name,
-    url: toAbsoluteUrl("/"),
-  },
-  areaServed: {
-    "@type": "Country",
-    name: "Canada",
-  },
+  provider: { "@type": "Organization", name: siteSettings.name, url: toAbsoluteUrl("/") },
+  areaServed: { "@type": "Country", name: "Canada" },
   serviceType: servicesContent.offerings.map((offering) => offering.title),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Koala Studios services",
     itemListElement: servicesContent.offerings.map((offering) => ({
       "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: offering.title,
-        description: offering.copy,
-      },
+      itemOffered: { "@type": "Service", name: offering.title, description: offering.copy },
     })),
   },
 };
 
 export default function ServicesPage() {
   return (
-    <div className={`koala-page ${styles.page}`}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(servicesJsonLd),
-        }}
-      />
+    <div className="ks-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
 
       <section className={styles.hero} aria-labelledby="services-title">
-        <AmbientScene variant="blueprint" />
-        <div className={styles.heroInner}>
-          <SplitReveal
-            accents={["Grow."]}
-            as="h1"
-            className={styles.heroTitle}
-            id="services-title"
-            text={"Design.\nBuild.\nGrow."}
-          />
+        <Folio items={["Services", "Build · Product · Traffic · Retention", "Toronto"]} />
+        <h1 className={`ks-x ${styles.title}`} id="services-title">
+          Design. Build. <em>Grow.</em>
+        </h1>
+        <div className={styles.heroFoot}>
+          <p className="ks-lede">{servicesContent.hero.summary}</p>
+          <dl className={styles.proof}>
+            {servicesContent.proof.map((item) => (
+              <div key={item.label}>
+                <dt className="ks-label ks-muted">{item.label}</dt>
+                <dd className="ks-x">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <Reveal className={styles.heroProof} delay={0.1}>
-          {servicesContent.proof.map((item) => (
-            <div className={styles.proofItem} key={item.label}>
-              <span className={styles.proofValue}>{item.value}</span>
-              <span className={styles.proofLabel}>{item.label}</span>
+      </section>
+
+      <ArchWindow
+        className={styles.band}
+        src="/images/project/ara/ara_hero.webp"
+        alt="Ära protein coffee sachet, mug and box rendered in warm morning light"
+        sizes="100vw"
+        archX={50}
+        priority
+      >
+        <p className={`ks-label ${styles.bandCaption}`}>Ära · 3D renders</p>
+      </ArchWindow>
+
+      {servicesContent.offerings.map((offering) => (
+        <section className="ks-section" aria-labelledby={`service-${offering.number}`} key={offering.href}>
+          <SectionHead
+            index={offering.number}
+            id={`service-${offering.number}`}
+            title={offering.title}
+            aside={<span className={`ks-it ${styles.kicker}`}>{offering.kicker}</span>}
+          />
+          <div className={styles.offering}>
+            <Reveal className={styles.offeringCopy}>
+              <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              <p className="ks-lede">{offering.copy}</p>
+              <p className={`ks-it ${styles.note}`}>{offering.note}</p>
+              <Link className="ks-tlink" href={offering.href}>
+                Full service details <span aria-hidden="true">↗</span>
+              </Link>
+            </Reveal>
+            <IndexList items={offering.deliverables.map((item, index) => ({ key: item, lead: String(index + 1).padStart(2, "0"), name: item }))} />
+          </div>
+        </section>
+      ))}
+
+      <section className="ks-section" aria-labelledby="services-process-title">
+        <SectionHead index="05" id="services-process-title" title={<>How we <em>work</em></>} />
+        <ol className={styles.steps}>
+          {servicesContent.delivery.map((step) => (
+            <li className={styles.step} key={step.number}>
+              <span className="ks-num">{step.number}</span>
+              <h3 className="ks-x ks-h3">{step.title}</h3>
+              <p>{step.copy}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="ks-section" aria-labelledby="services-engagement-title">
+        <SectionHead index="06" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
+        <div className={styles.engagements}>
+          {[servicesContent.engagement.project, servicesContent.engagement.retainer].map((mode) => (
+            <div className={styles.engagement} key={mode.title}>
+              <h3 className="ks-x ks-h3">{mode.title}</h3>
+              <p>{mode.copy}</p>
+              <IndexList items={mode.points.map((point) => ({ key: point, name: point, lead: "·" }))} />
             </div>
           ))}
-        </Reveal>
-      </section>
-
-      <section
-        className={styles.funnel}
-        aria-labelledby="services-funnel-title"
-      >
-        <Reveal className={styles.sectionHead}>
-          <h2 className="koala-section-title" id="services-funnel-title">
-            Our Process
-          </h2>
-        </Reveal>
-        <FunnelDiagram />
-      </section>
-
-      <section className={styles.offerings} aria-label="Service offerings">
-        {servicesContent.offerings.map((offering, index) => (
-          <Reveal delay={index * 0.05} key={offering.title}>
-            <Link className={styles.offering} href={offering.href}>
-              <div className={styles.offeringHead}>
-                <span className={styles.offeringNumber}>{offering.number}</span>
-                <span className={styles.offeringKicker}>{offering.kicker}</span>
-              </div>
-              <div className={styles.offeringBody}>
-                <h2 className={styles.offeringTitle}>{offering.title}</h2>
-                <p className={styles.offeringCopy}>{offering.copy}</p>
-                <div className={styles.offeringChips}>
-                  {offering.deliverables.map((deliverable) => (
-                    <span className="koala-chip" key={deliverable}>
-                      {deliverable}
-                    </span>
-                  ))}
-                </div>
-
-                <span className={styles.offeringLink}>
-                  Full service details
-                  <ArrowIcon className={styles.offeringArrow} />
-                </span>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
-      </section>
-
-      <section
-        className={styles.process}
-        aria-labelledby="services-process-title"
-      >
-        <AmbientAccent
-          className={styles.processAccent}
-          shape="torus"
-          side="left"
-          parallax={6}
-          opacity={0.24}
-        />
-        <Reveal className={styles.sectionHead}>
-          <h2 className="koala-section-title" id="services-process-title">
-            Our proven workflow,
-            <br /> every time.
-          </h2>
-        </Reveal>
-        <div className={styles.processGrid}>
-          {servicesContent.delivery.map((step, index) => (
-            <Reveal
-              className={styles.processStep}
-              delay={index * 0.05}
-              key={step.number}
-            >
-              <span className={styles.processNumber}>{step.number}</span>
-              <h3 className={styles.processTitle}>{step.title}</h3>
-              <p className={styles.processCopy}>{step.copy}</p>
-            </Reveal>
-          ))}
-        </div>
-        <div className={styles.engagementGrid} style={{ marginTop: "3rem" }}>
-          {[
-            servicesContent.engagement.project,
-            servicesContent.engagement.retainer,
-          ].map((mode) => (
-            <Reveal className={styles.engagementCard} key={mode.title}>
-              <h3 className={styles.engagementTitle}>{mode.title}</h3>
-              <p className={styles.engagementCopy}>{mode.copy}</p>
-              <ul className={styles.engagementList}>
-                {mode.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
         </div>
       </section>
 
-      <section className={styles.audit} aria-labelledby="services-audit-title">
-        <Reveal className={styles.auditInner}>
-          <div className={styles.auditCopy}>
-            <h2 className={styles.auditTitle} id="services-audit-title">
-              Not sure where to start? <br />
-              {auditOffer.title}.
-            </h2>
-            <p className={styles.auditText}>
-              {auditOffer.summary}
-            </p>
-          </div>
-          <Magnetic>
-            <Cta
-              data-analytics-cta="services-audit"
-              href={auditOffer.href}
-              icon="circle"
-              iconPosition="left"
-              size="large"
-              variant="transparent"
-            >
-              {auditOffer.cta}
-            </Cta>
-          </Magnetic>
-        </Reveal>
+      <section className="ks-section" aria-labelledby="services-audit-title">
+        <div className={styles.audit}>
+          <LineArt className={styles.auditArt} name="arches" />
+          <span className="ks-label">{auditOffer.title}</span>
+          <h2 className="ks-x ks-h2" id="services-audit-title">
+            Not sure where <em>to start?</em>
+          </h2>
+          <p>{auditOffer.summary}</p>
+          <Cta href={auditOffer.href} data-analytics-cta="services-audit">
+            {auditOffer.cta}
+          </Cta>
+        </div>
       </section>
     </div>
   );

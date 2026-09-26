@@ -1,4 +1,0 @@
-.services { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:2rem; list-style:none; padding:0 0 2rem; margin:0; border-bottom:1px solid var(--koala-color-line); }
-.services li { display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center; font-size:1rem; }
-.services svg { width:2.4rem; height:2.4rem; color:var(--koala-color-green); }
-@media(max-width:650px) { .services { grid-template-columns:repeat(2,minmax(0,1fr)); } .services li:last-child { grid-column:1/-1; } }

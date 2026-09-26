@@ -1,0 +1,42 @@
+.reel {
+  aspect-ratio: 16 / 9;
+  background: var(--ks-paper);
+  overflow: hidden;
+  position: relative;
+}
+
+.video {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.toggle {
+  align-items: center;
+  background: rgba(15, 27, 21, 0.55);
+  border: 0;
+  border-radius: 999px;
+  bottom: 0.75rem;
+  color: var(--ks-paper);
+  cursor: pointer;
+  display: flex;
+  height: 2.25rem;
+  justify-content: center;
+  opacity: 0.7;
+  position: absolute;
+  right: 0.75rem;
+  transition: opacity 0.2s ease;
+  width: 2.25rem;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  opacity: 1;
+}
+
+.toggle svg {
+  fill: currentColor;
+  height: 0.9rem;
+  width: 0.9rem;
+}
