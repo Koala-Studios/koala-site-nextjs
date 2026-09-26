@@ -1,6 +1,5 @@
 "use client";
 
-import gsap from "gsap";
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 
@@ -18,14 +17,14 @@ export default function Template({ children }: { children: ReactNode }) {
       return;
     }
 
-    const animation = gsap.fromTo(
-      element,
-      { y: 8 },
-      { y: 0, duration: 0.25, ease: "power2.out", clearProps: "transform" }
-    );
+    // power2.out
+    const animation = element.animate([{ transform: "translateY(8px)" }, { transform: "none" }], {
+      duration: 250,
+      easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+    });
 
     return () => {
-      animation.kill();
+      animation.cancel();
     };
   }, []);
 

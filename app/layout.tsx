@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Archivo, Instrument_Serif } from "next/font/google";
 import { Suspense } from "react";
+import { preload } from "react-dom";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { CtaAnalytics } from "@/components/site/CtaAnalytics";
@@ -69,6 +70,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // The wordmark is a CSS mask (fetched in CORS mode), which the browser would
+  // otherwise find only after parsing CSS.
+  preload("/images/brand/koala-wordmark.svg", { as: "image", fetchPriority: "high", crossOrigin: "anonymous" });
+
   return (
     <html lang="en" className={`${archivo.variable} ${instrument.variable}`}>
       <body>

@@ -1,7 +1,5 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 
@@ -21,28 +19,31 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
+    let animation: Animation | undefined;
+    element.style.transform = "translateY(24px)";
 
-    const animation = gsap.fromTo(
-      element,
-      { y: 24 },
-      {
-        y: 0,
-        delay,
-        duration: 0.8,
-        ease: "power3.out",
-        clearProps: "transform",
-        scrollTrigger: {
-          trigger: element,
-          start: "top 88%",
-          once: true,
-        },
-      }
+    // Rise once its top passes 88% of the viewport height.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        element.style.transform = "";
+        // power3.out
+        animation = element.animate([{ transform: "translateY(24px)" }, { transform: "none" }], {
+          delay: delay * 1000,
+          duration: 800,
+          easing: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+          fill: "backwards",
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px" }
     );
+    observer.observe(element);
 
     return () => {
-      animation.scrollTrigger?.kill();
-      animation.kill();
+      observer.disconnect();
+      animation?.cancel();
+      element.style.transform = "";
     };
   }, [delay]);
 

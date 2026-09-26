@@ -4,17 +4,20 @@ import { useEffect, useRef, useState } from "react";
 
 import styles from "./HeroReel.module.css";
 
-const base = "/videos/reel/koala-reel";
+const base = "/videos/reel/koala-reel-v13";
 
 /**
- * The studio reel: muted, inline and looping. It waits until most of it is on
- * screen so the opening is seen, pauses once it leaves, stays on its poster for
- * reduced motion, and always offers a pause control.
+ * The studio reel: muted, inline and looping. The poster paints first (AVIF,
+ * high priority) and the video only downloads once the page has loaded or the
+ * reel nears the screen, so it never competes with first paint. Playback waits
+ * until most of it is on screen so the opening is seen, pauses once it leaves,
+ * stays on the poster for reduced motion, and always offers a pause control.
  */
 export function HeroReel({ className, label }: { className?: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(true);
   const [held, setHeld] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const video = ref.current;
@@ -30,15 +33,32 @@ export function HeroReel({ className, label }: { className?: string; label: stri
     // motion, so visibility is measured directly on each scroll frame instead.
     // Playback is retried while in view, because Safari can reject the first
     // play() while the file is still loading.
+    let loading = false;
+    const startLoading = () => {
+      if (loading) return;
+      loading = true;
+      video.preload = "auto";
+      video.load();
+    };
+    const whenLoaded = () => {
+      const idle = window.requestIdleCallback ?? ((callback: () => void) => window.setTimeout(callback, 200));
+      idle(startLoading);
+    };
+    if (document.readyState === "complete") whenLoaded();
+    else window.addEventListener("load", whenLoaded, { once: true });
+
     let inView = false;
     let frame = 0;
     const tryPlay = () => {
-      if (inView && video.paused && !video.dataset.held) video.play().catch(() => {});
+      if (!inView || !video.paused || video.dataset.held) return;
+      startLoading();
+      video.play().catch(() => {});
     };
     const measure = () => {
       frame = 0;
       const rect = video.getBoundingClientRect();
       const visible = Math.max(0, Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top));
+      if (rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5 && visible > 0) startLoading();
       inView = rect.height > 0 && visible / rect.height >= 0.6;
       if (inView) tryPlay();
       else if (visible === 0 && !video.paused) video.pause();
@@ -53,6 +73,7 @@ export function HeroReel({ className, label }: { className?: string; label: stri
     video.addEventListener("loadeddata", tryPlay);
     const retry = window.setInterval(tryPlay, 500);
     return () => {
+      window.removeEventListener("load", whenLoaded);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       video.removeEventListener("canplay", tryPlay);
@@ -81,12 +102,12 @@ export function HeroReel({ className, label }: { className?: string; label: stri
       <video
         ref={ref}
         className={styles.video}
-        poster={`${base}-poster.webp`}
         muted
         loop
         playsInline
-        preload="auto"
+        preload="none"
         aria-label={label}
+        onPlaying={() => setStarted(true)}
         onPlay={() => setPaused(false)}
         onPause={() => setPaused(true)}
       >
@@ -95,6 +116,12 @@ export function HeroReel({ className, label }: { className?: string; label: stri
         <source src={`${base}-1920.mp4`} type="video/mp4" />
         <source src={`${base}-1920.webm`} type="video/webm" />
       </video>
+      <picture className={[styles.poster, started ? styles.posterHidden : ""].filter(Boolean).join(" ")}>
+        <source type="image/avif" media="(max-width: 900px)" srcSet={`${base}-poster-1280.avif`} />
+        <source type="image/avif" srcSet={`${base}-poster-1920.avif`} />
+        <source type="image/webp" media="(max-width: 900px)" srcSet={`${base}-poster-1280.webp`} />
+        <img src={`${base}-poster-1920.webp`} alt="" fetchPriority="high" decoding="async" />
+      </picture>
       <button type="button" className={styles.toggle} onClick={toggle} aria-label={paused || held ? "Play reel" : "Pause reel"}>
         {paused || held ? (
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" /></svg>

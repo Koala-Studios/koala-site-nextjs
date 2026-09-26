@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  images: {
+    // AVIF first (smaller at the same quality), WebP for older browsers.
+    formats: ["image/avif", "image/webp"],
+    qualities: [80],
+  },
   async redirects() {
     return [
       {

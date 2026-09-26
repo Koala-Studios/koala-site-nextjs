@@ -234,8 +234,8 @@ summary:focus-visible {
   aspect-ratio: 1600 / 479;
   background: currentColor;
   display: block;
-  -webkit-mask: url("/images/brand/koala-wordmark.png") center / contain no-repeat;
-  mask: url("/images/brand/koala-wordmark.png") center / contain no-repeat;
+  -webkit-mask: url("/images/brand/koala-wordmark.svg") center / contain no-repeat;
+  mask: url("/images/brand/koala-wordmark.svg") center / contain no-repeat;
 }
 
 /* Space the homepage wordmark occupies before it scrolls up into the nav. */

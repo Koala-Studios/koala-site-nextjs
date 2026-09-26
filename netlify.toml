@@ -1,0 +1,21 @@
+# Browser caching for files served straight from public/.
+# Next's own /_next/static assets are already hashed and cached for a year.
+
+# The reel files carry a version in their names (koala-reel-v13-*), so they
+# never change in place: a new cut ships under a new name.
+[[headers]]
+  for = "/videos/reel/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images keep stable names and are sometimes replaced, so cache for a day and
+# refresh quietly in the background for a week after that.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/_next/image*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"

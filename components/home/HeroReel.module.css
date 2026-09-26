@@ -12,6 +12,24 @@
   width: 100%;
 }
 
+.poster {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.2s ease;
+}
+
+.poster img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.posterHidden {
+  opacity: 0;
+}
+
 .toggle {
   align-items: center;
   background: rgba(15, 27, 21, 0.55);
