@@ -22,7 +22,7 @@ export default function ContactSuccessPage() {
     <div className="ks-page">
       <ContactSubmitTracker />
       <section className={styles.hero} aria-labelledby="success-title">
-        <Folio items={["Contact", preview ? "Local preview only" : "Message sent", "Toronto, Canada"]} />
+        <Folio items={["Contact", preview ? "Local preview only" : "Message sent", "Canada"]} />
         <h1 className={`ks-x ${styles.title}`} id="success-title">
           {preview ? (
             <>

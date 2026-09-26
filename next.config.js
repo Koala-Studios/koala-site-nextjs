@@ -110,7 +110,12 @@ const nextConfig = {
       },
       {
         source: "/projects/stlth",
-        destination: "/work/stlth",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/stlth",
+        destination: "/work",
         permanent: true,
       },
     ];

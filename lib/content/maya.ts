@@ -8,8 +8,8 @@ export const mayaContent = {
   /** JPEG copy for link previews, since some platforms still skip WebP. */
   portraitShare: "/images/maya/08-maya-portrait.jpg",
   email: "maya@koalastudios.ca",
-  /** Trade-show greeting shown on /maya; remove or change after the event. */
-  event: { greeting: "Hello, CHFA", closing: "Met at CHFA?" } as { greeting: string; closing: string } | null,
+  /** Trade-show closing line on /maya; set to null after the event. */
+  event: { closing: "Met at CHFA?" } as { closing: string } | null,
   intro: "15+ years taking consumer brands from shelf to cart across CPG, food, supplements and wellness.",
   linkedin: "https://ca.linkedin.com/in/mayaamani",
   profile: "/documents/maya-amani-executive-profile.pdf",

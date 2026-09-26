@@ -53,7 +53,7 @@ export function SiteFooter() {
             <a className="koala-underline-link" href={`mailto:${context.email}`} data-contact-method="email">
               {context.email}
             </a>
-            <span>Toronto, Canada</span>
+            <span>Canada</span>
           </div>
         </div>
 

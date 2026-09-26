@@ -47,7 +47,7 @@ export default function MayaPage() {
     <div className={`ks-page ${styles.page}`}>
       {/* ---------- Hero: the studio reel, Maya's portrait set into its corner, then her name ---------- */}
       <section className={styles.hero} aria-labelledby="maya-title">
-        <Folio items={["Koala Studios", maya.event?.greeting ?? "Consumer brands", "Growth"]} />
+        <Folio items={["Koala Studios", "Consumer brands", "Growth"]} />
         <HeroReel
           className={styles.reel}
           label="Koala Studios reel: Shopify storefronts, product video and 3D work for Mercato di Bellina, Freezo, Wellth Foods, Whiskey Road and more"
@@ -79,7 +79,7 @@ export default function MayaPage() {
 
       {/* ---------- Brands ---------- */}
       <section className={styles.brands} aria-label="Brands Maya has helped grow">
-        <Folio className={styles.brandsFolio} items={["Brands I’ve helped grow", "CPG · Food · Wellness"]} />
+        <Folio items={["Brands I’ve helped grow", "CPG · Food · Wellness"]} />
         <Marquee className={styles.marquee} duration={50}>
           {brands.map((item) => (
             <span className={styles.brandMark} key={item.id}>

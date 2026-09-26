@@ -340,17 +340,29 @@ summary:focus-visible {
 }
 
 /* ============ Editorial structure ============ */
+/* Always one line: items that no longer fit (like the place name on phones)
+   wrap to a hidden second row instead of breaking the line in two. */
 .ks-folio {
   border-bottom: var(--ks-rule);
   border-top: var(--ks-rule);
   display: flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 2rem 0.75rem;
+  height: calc(1.3em + 1.2rem + 2px);
   justify-content: space-between;
+  overflow: hidden;
   padding: 0.6rem 0;
 }
 
 .ks-folio > * {
   min-width: 0;
+  white-space: nowrap;
+}
+
+.ks-folio > :first-child {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ks-split {

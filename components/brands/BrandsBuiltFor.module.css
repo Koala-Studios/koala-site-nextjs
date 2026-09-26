@@ -38,11 +38,6 @@
 .mark:hover .logo { transform: translateY(-3px); }
 @media (prefers-reduced-motion: reduce) { .logo { transition: none; } .mark:hover .logo { transform: none; } }
 
-.mark[data-brand="stlth"] .logo {
-  height: clamp(1.4rem, 2vw, 2rem);
-  max-height: 2rem;
-}
-
 .wordmark {
   color: var(--koala-color-ink);
   font-family: var(--ks-sans);

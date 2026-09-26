@@ -21,8 +21,11 @@
   max-width: 14ch;
 }
 
+/* "that sells." always sits together on its own line. */
 .title em {
   color: var(--ks-green-soft);
+  display: block;
+  white-space: nowrap;
 }
 
 .leadAction {

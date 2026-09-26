@@ -53,8 +53,8 @@ export const homeContent = {
       title: "Theme development",
       copy:
         "Build or extend Shopify themes with reusable sections and cleaner frontend patterns your team can actually keep working with.",
-      imageSrc: "/images/project/stlth/stlth-shop-new.png",
-      imageAlt: "Stlth storefront theme preview",
+      imageSrc: "/images/project/whiskey-road/cover.webp",
+      imageAlt: "Whiskey Road storefront theme preview",
       detail: "Reusable sections, custom layouts, and durable frontend code.",
     },
     {

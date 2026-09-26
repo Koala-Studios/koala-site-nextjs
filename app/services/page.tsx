@@ -46,7 +46,7 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
 
       <section className={styles.hero} aria-labelledby="services-title">
-        <Folio items={["Services", "Build · Product · Traffic · Retention", "Toronto"]} />
+        <Folio items={["Services", "Build · Product · Traffic · Retention", "Canada"]} />
         <h1 className={`ks-x ${styles.title}`} id="services-title">
           Design. Build. <em>Grow.</em>
         </h1>

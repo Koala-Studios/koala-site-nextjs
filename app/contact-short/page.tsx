@@ -36,7 +36,7 @@ export default function ContactShortPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
-      <Folio className={styles.folio} items={["Contact", "Short intake", "Toronto, Canada"]} />
+      <Folio className={styles.folio} items={["Contact", "Short intake", "Canada"]} />
       <section className={styles.split} aria-labelledby="contact-title">
         <div className={styles.intro}>
           <Suspense fallback={<ContactIntroView isAudit />}>

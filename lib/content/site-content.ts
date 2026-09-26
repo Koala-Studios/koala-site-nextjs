@@ -414,86 +414,12 @@ export const caseStudies: CaseStudyContent[] = [
       src: "/images/project/allo/allo_image_wide.jpg",
       alt: "Allo wellness ecommerce case study card image",
     },
-    relatedSlug: "stlth",
+    relatedSlug: "nosh-balls",
     seo: {
       title: "Allo Case Study",
       description:
         "Allo highlights a more curated, conversion-aware case-study structure for Koala Studios.",
       canonicalPath: "/work/allo",
-    },
-  },
-  {
-    slug: "stlth",
-    status: "published",
-    title: "Stlth",
-    client: "Stlth",
-    sector: "Consumer ecommerce",
-    category: "Shopify",
-    tags: ["Shopify", "Content", "Development"],
-    headline: "A tighter long-form story for a bold consumer brand.",
-    intro: "Stlth needed rhythm and proof without a heavy page.",
-    services: ["Content", "Interaction", "Frontend"],
-    challenge:
-      "The previous version was too long, making the best evidence harder to extract.",
-    approach: "We tightened the sequence from challenge to craft to outcome.",
-    deliverables: [
-      "Long-form pacing",
-      "Results modules",
-      "Related-work handoff",
-    ],
-    outcomes: [
-      "Less reading fatigue",
-      "Better section rhythm",
-      "Sharper proof",
-    ],
-    metrics: [
-      { label: "Priority", value: "Long-form rhythm" },
-      { label: "Scope", value: "Proof density" },
-    ],
-    media: [
-      {
-        src: "/images/project/stlth/home-page-new-photo.png",
-        alt: "Stlth homepage redesign image",
-        width: 452,
-        height: 880,
-      },
-      {
-        src: "/images/project/stlth/stlth-device.jpg",
-        alt: "Stlth device-focused product image",
-        width: 1920,
-        height: 1920,
-      },
-      {
-        src: "/images/project/stlth/stlth-new-menu.png",
-        alt: "Stlth navigation and menu design",
-        width: 450,
-        height: 873,
-      },
-    ],
-    heroImage: {
-      src: "/images/project/stlth/stlth_bg.jpg",
-      alt: "Stlth product devices on a dark studio background",
-    },
-    coverImage: {
-      src: "/images/project/stlth/stlth-device.jpg",
-      alt: "Stlth device product render",
-    },
-    cardImage: {
-      src: "/images/project/stlth/stlth_bg.jpg",
-      alt: "Stlth product devices on a dark studio background",
-    },
-    logo: {
-      src: "/images/project/stlth/logo.webp",
-      alt: "Stlth logo",
-      width: 900,
-      height: 256,
-    },
-    relatedSlug: "mercato-di-bellina",
-    seo: {
-      title: "Stlth Case Study",
-      description:
-        "Stlth demonstrates a more disciplined long-form case-study structure for Koala Studios.",
-      canonicalPath: "/work/stlth",
     },
   },
   {

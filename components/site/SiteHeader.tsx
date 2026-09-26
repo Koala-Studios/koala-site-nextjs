@@ -229,7 +229,7 @@ export function SiteHeader() {
             {context.ctaLabel}
           </Cta>
           <a className={`ks-label ${styles.overlayEmail}`} href={`mailto:${context.email}`} tabIndex={menuOpen ? 0 : -1}>
-            {context.email} · Toronto
+            {context.email} · Canada
           </a>
         </div>
       </div>

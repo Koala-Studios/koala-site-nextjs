@@ -119,12 +119,6 @@
   padding-block: clamp(3rem, 6vw, 4.5rem) clamp(1.75rem, 3vw, 2.5rem);
 }
 
-/* On phones only the first label fits on one line. */
-@media (max-width: 699px) {
-  .brandsFolio > :last-child {
-    display: none;
-  }
-}
 
 .brandMark {
   align-items: center;

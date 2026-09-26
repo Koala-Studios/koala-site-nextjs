@@ -33,7 +33,7 @@ export default function Home() {
     <div className="ks-page">
       <section aria-labelledby="home-title">
         <div className="ks-masthead-space" aria-hidden="true" />
-        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Toronto, Canada"]} />
+        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Canada"]} />
 
         <h1 className={`ks-x ks-split ${styles.heroTitle}`} id="home-title">
           <span>Brands</span> <em>that sell.</em>

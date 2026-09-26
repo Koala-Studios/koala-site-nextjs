@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <div className="ks-page">
       <section className={styles.hero} aria-labelledby="not-found-title">
-        <Folio items={["No. 404", "Not found", "Toronto, Canada"]} />
+        <Folio items={["No. 404", "Not found", "Canada"]} />
         <div className={styles.body}>
           <div className={styles.copy}>
             <h1 className={`ks-x ${styles.title}`} id="not-found-title">
