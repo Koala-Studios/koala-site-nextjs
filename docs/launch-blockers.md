@@ -75,5 +75,5 @@ to be marked as a conversion in GA4 admin (item 5).
   `/services/shopify-design-and-build`, `/contact` (3D + fonts changed
   since the last recorded audit).
 - Share-card preview (Facebook debugger / LinkedIn inspector) — new
-  `koala_meta.jpg` is 1200×630, current branding.
+  `koala-og-2026-10.jpg` is 1200×630, Masthead branding.
 - Real-device pass: iPhone Safari + mid-range Android Chrome.

@@ -53,7 +53,7 @@ Google nothing. Replace with real profile URLs or remove both the links and
 the `sameAs` entries until profiles exist.
 
 ### 3. OG / share image predates the redesign (S–M)
-`public/images/koala_meta.jpg` is the default share card for every page.
+`public/images/koala-og-2026-10.jpg` is the default share card for every page.
 It must be verified: 1200×630, current blackout/lime branding, readable at
 thumbnail size. A stale light-theme card on every LinkedIn/iMessage share
 undercuts the new brand. Consider per-page OG images later (case studies

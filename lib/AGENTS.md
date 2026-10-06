@@ -33,4 +33,4 @@
 ## Avoid Assumptions
 
 - `lib/gtag.ts` contains both the legacy `pageview`/`event` helpers and newer `trackEvent`/`markPendingContactSubmit` helpers.
-- `siteConfig.defaultOgImage` points to the existing `/images/koala_meta.jpg`.
+- `siteConfig.defaultOgImage` points to the existing `/images/koala-og-2026-10.jpg`.

@@ -1,5 +1,5 @@
 const DEFAULT_SITE_URL = "https://koalastudios.ca";
-const DEFAULT_OG_IMAGE = "/images/koala_meta.jpg";
+const DEFAULT_OG_IMAGE = "/images/koala-og-2026-10.jpg";
 
 function normalizeSiteUrl(value?: string): string {
   const url = value?.trim();
