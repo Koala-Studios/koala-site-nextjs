@@ -50,7 +50,7 @@ export const blogPosts: BlogPostContent[] = [
           "The homepage sends people to a trial pack, and the trial pack is sold out. The next-best option is on the same page, but nothing points to it.",
           [
             { text: "Fix:", strong: true },
-            " when a featured product sells out, change the button, or turn the product page into a bridge: “The trial is back on [date]. Most people start with this instead.”",
+            " when a featured product sells out, change the button, or turn the product page into a bridge: “The trial is back on November 12. Most people start with this instead.”",
           ],
         ],
       },
@@ -102,7 +102,7 @@ export const blogPosts: BlogPostContent[] = [
           "Flavour, quantity, one-time or subscription, plus a gift. By the time a buyer reaches Add to cart, they’ve lost track of what they picked.",
           [
             { text: "Fix:", strong: true },
-            " one plain line beside the button that repeats their choice: “2 bags, Chocolate, every 4 weeks, $X.” It also reduces wrong-flavour orders.",
+            " one plain line beside the button that repeats their choice: “2 bags, Chocolate, every 4 weeks, $78.” It also reduces wrong-flavour orders.",
           ],
         ],
       },
