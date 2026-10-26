@@ -103,8 +103,9 @@
   margin: 0;
 }
 
+/* The invented store's own colours: black and cobalt. */
 .announce {
-  background: var(--ks-green-deep);
+  background: #111;
   color: var(--ks-paper);
   font-size: 0.6rem;
   font-weight: 600;
@@ -226,7 +227,7 @@
 
 /* ---------- Pieces used by single figures ---------- */
 .hero {
-  background: var(--ks-green);
+  background: #1F4FD8;
   color: var(--ks-paper);
   display: grid;
   gap: 0.5rem;
@@ -315,7 +316,7 @@
 }
 
 .review span {
-  color: var(--ks-green);
+  color: #1F4FD8;
   margin-right: 0.3rem;
 }
 
@@ -363,7 +364,7 @@
 }
 
 .chip {
-  background: var(--ks-green);
+  background: #1F4FD8;
   color: var(--ks-paper);
   font-size: 0.52rem;
   letter-spacing: 0.06em;

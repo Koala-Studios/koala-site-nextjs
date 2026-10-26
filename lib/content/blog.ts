@@ -27,7 +27,7 @@ export const blogPosts: BlogPostContent[] = [
     tags: ["Shopify", "Supplements", "Conversion", "Store audit", "Klaviyo"],
     cover: {
       src: "/images/blog/supplement-store-sales-leaks.jpg",
-      alt: "A phone showing a greens powder product page beside two tubs of the same powder, a shipping box and a receipt.",
+      alt: "A phone showing a protein product page beside two protein tubs, a shaker, a shipping box and a receipt.",
       width: 1536,
       height: 1024,
     },
@@ -197,7 +197,7 @@ export const blogPosts: BlogPostContent[] = [
           "Shoppers who can’t see what they picked scroll back up to check, which is where many of them drift off, or they add the wrong thing and turn into a refund or a support email.",
         ],
         steps: [
-          [{ text: "Add one plain line", strong: true }, " right above the button that repeats the choices and the total: “2 bags · Chocolate · every 4 weeks · $78”."],
+          [{ text: "Add one plain line", strong: true }, " right above the button that repeats the choices and the total: “2 tubs · Chocolate · every 4 weeks · $78”."],
           [{ text: "Keep it live.", strong: true }, " Update the line every time an option changes."],
           [{ text: "Use the same words in the cart", strong: true }, " so nothing changes between the page and checkout."],
         ],

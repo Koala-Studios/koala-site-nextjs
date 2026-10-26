@@ -8,20 +8,20 @@ import styles from "./LeakFigure.module.css";
 /*
  * Before/after phone mock-ups for the store-leak posts. The screens are HTML so
  * they stay sharp and readable by screen readers through each figure's caption;
- * the products are packshots of Fernlow, an invented brand.
+ * the products are packshots of IRONVOLT, an invented brand.
  */
 
 const packs = {
-  greens: "/images/blog/fernlow/daily-greens.jpg",
-  trial: "/images/blog/fernlow/trial-pack.jpg",
-  samplesBefore: "/images/blog/fernlow/sample-pack-before.jpg",
-  samplesAfter: "/images/blog/fernlow/sample-pack-after.jpg",
+  whey: "/images/blog/ironvolt/iso-whey.jpg",
+  trial: "/images/blog/ironvolt/trial-pack.jpg",
+  samplesBefore: "/images/blog/ironvolt/sample-pack-before.jpg",
+  samplesAfter: "/images/blog/ironvolt/sample-pack-after.jpg",
 };
 
 type PackName = keyof typeof packs;
 
-/** A Fernlow product photo, sized by the class it's given. */
-function Pack({ name = "greens", className }: { name?: PackName; className?: string }) {
+/** An IRONVOLT product photo, sized by the class it's given. */
+function Pack({ name = "whey", className }: { name?: PackName; className?: string }) {
   return <Image alt="" className={className} height={600} sizes="12rem" src={packs[name]} width={600} />;
 }
 
@@ -29,7 +29,7 @@ function Phone({ children, url }: { children: ReactNode; url?: string }) {
   return (
     <div className={styles.phone}>
       <div className={styles.bar}>
-        <span className={styles.url}>{url ?? "fernlow.com"}</span>
+        <span className={styles.url}>{url ?? "ironvolt.com"}</span>
       </div>
       <div className={styles.screen}>{children}</div>
     </div>
@@ -102,7 +102,7 @@ function Shipping() {
               <div className={styles.announce}>Free shipping on every order</div>
             </Mark>
             <Shot />
-            <p className={styles.ptitle}>Daily Greens</p>
+            <p className={styles.ptitle}>ISO Whey</p>
             <p className={styles.price}>$49</p>
             <div className={styles.btn}>Add to cart</div>
             <Mark tag="Promise 2" tone="bad">
@@ -116,7 +116,7 @@ function Shipping() {
           <Phone>
             <div className={styles.announce}>Free shipping over $75</div>
             <Shot />
-            <p className={styles.ptitle}>Daily Greens</p>
+            <p className={styles.ptitle}>ISO Whey</p>
             <p className={styles.price}>$49</p>
             <Mark tone="good">
               <p className={styles.note}>
@@ -163,7 +163,7 @@ function SoldOut() {
                 <Pack className={styles.cardTub} />
                 <div>
                   <p className={styles.cardKicker}>Most people start with</p>
-                  <p className={styles.cardTitle}>Starter Bundle · $39</p>
+                  <p className={styles.cardTitle}>Starter Bundle · $59</p>
                 </div>
               </div>
             </Mark>
@@ -180,7 +180,7 @@ function DeadLink() {
       alt="Before: a homepage button opens an address ending in -draft and shows Page not found. After: the same button opens the published guide."
       before={
         <Panel caption="Fine in the theme editor, broken for every shopper." title={before} tone="bad">
-          <Phone url="fernlow.com/pages/starter-guide-draft">
+          <Phone url="ironvolt.com/pages/starter-guide-draft">
             <Mark tag="404" tone="bad">
               <div className={styles.error}>
                 <p className={styles.errorCode}>404</p>
@@ -193,7 +193,7 @@ function DeadLink() {
       }
       after={
         <Panel caption="The button points at the live page, and the old address redirects." title={after} tone="good">
-          <Phone url="fernlow.com/pages/starter-guide">
+          <Phone url="ironvolt.com/pages/starter-guide">
             <Mark tone="good">
               <p className={styles.articleTitle}>Which one is right for you?</p>
             </Mark>
@@ -264,7 +264,7 @@ function PerMonth() {
       before={
         <Panel caption="The cheapest option per month looks like the dearest." title={before} tone="bad">
           <Phone>
-            <p className={styles.ptitle}>Daily Greens</p>
+            <p className={styles.ptitle}>ISO Whey</p>
             <Option name="One-time" price="$45" selected />
             <Option name="Subscribe" price="$40.50" />
             <Mark tag="Looks dearest" tone="bad">
@@ -277,7 +277,7 @@ function PerMonth() {
       after={
         <Panel caption="The page does the division for them." title={after} tone="good">
           <Phone>
-            <p className={styles.ptitle}>Daily Greens</p>
+            <p className={styles.ptitle}>ISO Whey</p>
             <Option name="One-time" price="$45/mo" />
             <Option name="Subscribe" price="$40.50/mo" />
             <Mark tone="good">
@@ -294,7 +294,7 @@ function PerMonth() {
 function SummaryLine() {
   return (
     <Pair
-      alt="Before: the flavour, size and delivery choices have scrolled off screen when the shopper reaches Add to cart. After: one line above the button repeats 2 bags, Chocolate, every 4 weeks, $78."
+      alt="Before: the flavour, size and delivery choices have scrolled off screen when the shopper reaches Add to cart. After: one line above the button repeats 2 tubs, Chocolate, every 4 weeks, $78."
       before={
         <Panel caption="By the button, the choices have scrolled away." title={before} tone="bad">
           <Phone>
@@ -328,7 +328,7 @@ function SummaryLine() {
               <span />
             </div>
             <Mark tone="good">
-              <p className={styles.summary}>2 bags · Chocolate · every 4 weeks · $78</p>
+              <p className={styles.summary}>2 tubs · Chocolate · every 4 weeks · $78</p>
             </Mark>
             <div className={styles.btn}>Add to cart</div>
           </Phone>
@@ -372,7 +372,7 @@ function ReorderEmail() {
             <Timeline />
             <Mark tag="Nothing sent" tone="bad">
               <div className={styles.inbox}>
-                <p>No new mail from Fernlow</p>
+                <p>No new mail from IRONVOLT</p>
               </div>
             </Mark>
             <Lines count={3} />
@@ -385,7 +385,7 @@ function ReorderEmail() {
             <Timeline reminder />
             <Mark tone="good">
               <div className={styles.email}>
-                <p className={styles.emailSubject}>Running low on Daily Greens?</p>
+                <p className={styles.emailSubject}>Running low on ISO Whey?</p>
                 <Pack className={styles.emailTub} />
                 <p className={styles.note}>$49 one-time · $44.10 when you subscribe</p>
                 <div className={styles.btn}>Reorder</div>
@@ -404,8 +404,8 @@ function GuideToProduct() {
       alt="Before: a buying guide ends with no product, and the reader has to go and find it. After: the guide ends with a product card showing the starter pack, what is in it, the price and an add to cart button."
       before={
         <Panel caption="The guide answers the question, then just ends." title={before} tone="bad">
-          <Phone url="fernlow.com/blogs/which-greens">
-            <p className={styles.articleTitle}>Which greens powder is right for you?</p>
+          <Phone url="ironvolt.com/blogs/which-protein">
+            <p className={styles.articleTitle}>Which protein is right for you?</p>
             <Lines count={5} />
             <Lines count={3} />
             <Mark tag="Page ends" tone="bad">
@@ -416,15 +416,15 @@ function GuideToProduct() {
       }
       after={
         <Panel caption="The answer comes with the product, ready to buy." title={after} tone="good">
-          <Phone url="fernlow.com/blogs/which-greens">
-            <p className={styles.articleTitle}>Which greens powder is right for you?</p>
+          <Phone url="ironvolt.com/blogs/which-protein">
+            <p className={styles.articleTitle}>Which protein is right for you?</p>
             <Lines count={4} />
             <Mark tone="good">
               <div className={styles.product}>
                 <Pack className={styles.productTub} />
                 <div>
                   <p className={styles.cardTitle}>Starter Pack</p>
-                  <p className={styles.small}>2 tubs + shaker · $59</p>
+                  <p className={styles.small}>1 tub + shaker · $59</p>
                 </div>
               </div>
               <div className={styles.btn}>Add to cart</div>
