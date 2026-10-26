@@ -17,6 +17,7 @@
 
 - `lib/content/site-content.ts` is the current canonical content store; files under `content/` mostly re-export or expose slices.
 - Keep `MarketingPageKey`, `PublicRoute`, and published content aligned when adding or removing pages.
+- Journal posts live in `lib/content/blog.ts` (`BlogPostContent`); keep post copy there, not in `app/blog`. Only `published` posts render, list, and enter the sitemap.
 - Case studies should include SEO, media alt text, services, outcomes, and status before being treated as publishable.
 - Navigation changes must be checked against actual route files under `app/`.
 

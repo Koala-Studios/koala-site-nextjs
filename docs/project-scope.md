@@ -32,7 +32,8 @@ The current Maya/local palette slice is governed by `docs/maya-implementation-pr
 
 - Treat the project as a technical and visual overhaul, not a visual reskin.
 - Prefer `/work` and `/work/[slug]` for the new case-study experience.
-- Treat `/projects`, `/blogs`, and `/home` as retired URL surfaces handled by redirects in `next.config.js`.
+- Treat `/projects`, `/blogs`, and `/home` as retired URL surfaces handled by redirects in `next.config.js`; `/blogs` now redirects to the `/blog` journal.
+- Journal posts live as typed content in `lib/content/blog.ts`; `/blog` is linked from the footer only until Frank decides on the main nav.
 - Keep navigation, sitemap, robots, and route constants aligned before promoting a route as public.
 - Build pages from typed content and shared components instead of hard-coded duplicate copy where practical.
 - Include SEO, AEO, performance, accessibility, and package modernization in the implementation plan.
@@ -48,4 +49,4 @@ The current Maya/local palette slice is governed by `docs/maya-implementation-pr
 
 ## Current Scope Caveat
 
-The repository is currently mid-transition. The current build passes on Next 16, `/about` has been restored, `/projects`, `/blogs`, and `/home` have permanent redirects, and sitemap/robots are aligned with the redesign route set. Three.js has been removed, lint is clean, npm audit reports 0 vulnerabilities, and legacy compatibility components, old style modules, and stale `app/assets` JSON have been pruned after import verification.
+The repository is currently mid-transition. The current build passes on Next 16, `/about` has been restored, `/projects`, `/blogs` (to `/blog`), and `/home` have permanent redirects, and sitemap/robots are aligned with the redesign route set. Three.js has been removed, lint is clean, npm audit reports 0 vulnerabilities, and legacy compatibility components, old style modules, and stale `app/assets` JSON have been pruned after import verification.

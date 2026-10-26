@@ -49,6 +49,7 @@ preferred_startup_files:
   - "nearest AGENTS.md"
 
 notes:
+  - "2026-10-26 Journal: /blog and /blog/[slug] added on branch blog/first-post from typed lib/content/blog.ts, with BlogPosting JSON-LD, sitemap entries and a footer-only Journal link; /blogs redirects to /blog. Not merged or deployed."
   - "2026-08-11 Wuxly case study: added the consumer outerwear brand at wuxly.com as the 17th published project, using six verified storefront views and the established interlaced case-study layout; production desktop/mobile visual QA passed."
   - "2026-08-06 Case-study narrative interlace: removed the Client hero fact across all 16 work routes and distributed every supporting image through Challenge, Approach, and Outcome; production desktop/mobile visual QA passed."
   - "2026-08-06 Desktop case-study follow-up: restored layered image-overlay heroes, larger editorial supporting media, and cinematic related-case banners while retaining complete uncropped foreground images and the crop-safe mobile layout; all 16 production desktop routes passed visual QA."

@@ -1,5 +1,13 @@
 # Execution Ledger
 
+## 2026-10-26 - Journal (/blog) and first post
+
+Branch `blog/first-post` (not merged, not deployed). Added the journal: `/blog` lists published posts (date, reading time, title, one-line summary) and `/blog/[slug]` renders a post. Posts are typed `BlogPostContent` in `lib/content/blog.ts` (intro, numbered sections, inline bold/italic/link runs, sign-off, SEO), with `getPublishedBlogPosts`, `getBlogPostBySlug`, `formatPostDate` and `getReadingMinutes` in `lib/content/index.ts`; index copy is `blogIndexContent`. Routes: `corePublicRoutes.blog` and `getBlogPostPath` in `lib/routes.ts`. Metadata: `createBlogPostMetadata` in `lib/metadata.ts`; `createBaseMetadata` in `lib/seo.ts` now accepts Open Graph article details (published time, author, tags). The post route emits BlogPosting JSON-LD with a breadcrumb; the index emits Blog JSON-LD. Sitemap adds post entries dated by the post, and the `/blog` entry takes the newest post's date. `/blogs` now 308s to `/blog` and is no longer disallowed in robots so crawlers can follow it. Footer "Site" column gains "Journal"; the main nav is unchanged pending Frank's decision.
+
+First post: `supplement-store-sales-leaks`, "8 places supplement stores lose the sale (from 10 store audits)", dated October 26, 2026, wording from Frank's draft (typographic quotes and apostrophes; closing link to `/contact`).
+
+Verification: `npm run lint`, `npm run typecheck` and `npm run build` (39 pages) pass. `next start` smoke: `/blog` and the post 200, `/blogs` 308 to `/blog`, unknown slug 404, sitemap and robots as above, article Open Graph tags present. Chrome DevTools Protocol full-page captures at 1440px and true 390px: no horizontal overflow, one h1 per page.
+
 ## 2026-09-25 - Performance pass, icons and line art
 
 Performance: the homepage arch window now uses one image plus a masked grayscale backdrop filter (was two copies of the hero), Google Analytics loads with `lazyOnload`, app icons recompressed (icon-512 470KB to 97KB, icon-192 82KB to 23KB), Instrument Serif loads italic only, the Services hero image is prioritised, and the contact form fallback reserves height. Lighthouse mobile with devtools throttling on the production build: home 95 to 98 (LCP 1.6s), /maya 96 to 98 (LCP 1.9 to 2.0s), /services 97 to 99; live site measured the same way: home 68 (LCP 2.7s, TBT 810ms), /maya 74 (LCP 4.7s). Accessibility, best practices and SEO 100 on every page tested. Lighthouse's default simulated mode still reports 4 to 7s LCP for the hero images; real throttled runs do not reproduce it.

@@ -1,5 +1,9 @@
 # Current Slice
 
+## Latest: 2026-10-26 Journal (branch `blog/first-post`)
+
+`/blog` and `/blog/[slug]` with the first post, typed in `lib/content/blog.ts`. Footer-only link; main nav pending Frank. Not merged or deployed. See the 2026-10-26 execution-ledger entry.
+
 ## Latest: 2026-09-25 Masthead design system (branch `redesign/masthead-system`)
 
 Whole site rebuilt on the Masthead system (paper, forest ink, Koala green; Archivo wide caps + EB Garamond italic; arches). Start from `app/globals.css`, `styles/site/tokens.css` and `components/system/`. Use `ks-*` utilities and system components for new UI; do not reintroduce Bebas, pills, brackets, circles or animations that hide above-the-fold text. See the 2026-09-25 execution-ledger entry. Not deployed.
