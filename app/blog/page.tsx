@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ArrowIcon } from "@/components/site/ArrowIcon";
+import { LeakCover } from "@/components/blog/LeakFigure";
 import { Folio } from "@/components/system";
 import {
   blogIndexContent,
@@ -46,7 +47,7 @@ export default function BlogIndexPage() {
 
       <section className={styles.hero} aria-labelledby="blog-title">
         <Folio items={["Koala Studios", `${posts.length} ${posts.length === 1 ? "post" : "posts"}`, "Journal"]} />
-        <h1 className={`ks-x ks-split ${styles.title}`} id="blog-title">
+        <h1 className={`ks-x ${styles.title}`} id="blog-title">
           <span>{blogIndexContent.title}</span> <em>{blogIndexContent.titleAccent}</em>
         </h1>
         <p className={`ks-lede ${styles.lede}`}>{blogIndexContent.lede}</p>
@@ -56,12 +57,15 @@ export default function BlogIndexPage() {
         {posts.map((post) => (
           <li key={post.slug}>
             <Link className={styles.row} href={getBlogPostPath(post.slug)}>
+              <span className={styles.cover}>
+                <LeakCover />
+              </span>
               <span className={`ks-label ${styles.meta}`}>
                 <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt)}</time>
                 <span className="ks-muted">{getReadingMinutes(post)} min read</span>
               </span>
               <span className={styles.text}>
-                <span className={`ks-x ${styles.postTitle}`}>
+                <span className={styles.postTitle}>
                   {post.title}
                   {post.titleAccent ? (
                     <>

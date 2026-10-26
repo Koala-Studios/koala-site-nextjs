@@ -111,7 +111,15 @@ function paragraphText(paragraph: BlogParagraph) {
 export function getReadingMinutes(post: BlogPostContent) {
   const text = [
     ...post.intro,
-    ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
+    ...(post.takeaways?.items ?? []),
+    ...post.sections.flatMap((section) => [
+      section.heading,
+      ...section.paragraphs,
+      ...(section.why ?? []),
+      ...(section.steps ?? []),
+      section.check ?? "",
+    ]),
+    ...(post.checklist?.items ?? []),
   ]
     .map(paragraphText)
     .join(" ");

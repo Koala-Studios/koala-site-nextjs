@@ -10,7 +10,9 @@ function renderRun(run: BlogInline, index: number): ReactNode {
   if (run.em) node = <em>{node}</em>;
   if (run.strong) node = <strong>{node}</strong>;
   if (run.href) {
-    node = run.href.startsWith("/") ? (
+    node = run.href.startsWith("#") ? (
+      <a href={run.href}>{node}</a>
+    ) : run.href.startsWith("/") ? (
       <Link href={run.href}>{node}</Link>
     ) : (
       <a href={run.href} rel="noopener noreferrer" target="_blank">

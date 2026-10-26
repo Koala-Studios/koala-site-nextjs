@@ -136,13 +136,44 @@ export type BlogInline =
 /** A paragraph is plain text or a list of inline runs. */
 export type BlogParagraph = string | BlogInline[];
 
+/** Before/after illustrations drawn by components/blog/LeakFigure. */
+export type BlogFigureKey =
+  | "shipping"
+  | "soldOut"
+  | "deadLink"
+  | "samplePack"
+  | "perMonth"
+  | "summaryLine"
+  | "reorderEmail"
+  | "guideToProduct";
+
 export interface BlogSection {
   /** Anchor id for the section heading. */
   id: string;
   /** Shown before the heading when the post is a numbered list. */
   number?: string;
+  /** Where on the store this happens, e.g. "Product page". */
+  area?: string;
+  /** Rough time the fix takes. */
+  fixTime?: string;
   heading: string;
+  /** What we saw. */
   paragraphs: BlogParagraph[];
+  figure?: BlogFigureKey;
+  /** Why it costs sales. */
+  why?: BlogParagraph[];
+  /** How to fix it, in order. */
+  steps?: BlogParagraph[];
+  /** One test a reader can run on their own store. */
+  check?: string;
+}
+
+/** A stage of the buyer's path on the post's opening map. */
+export interface BlogMapStage {
+  label: string;
+  note: string;
+  /** Section ids of the leaks at this stage. */
+  sectionIds: string[];
 }
 
 export interface BlogPostContent {
@@ -159,7 +190,12 @@ export interface BlogPostContent {
   author: string;
   tags: string[];
   intro: BlogParagraph[];
+  map?: { title: string; stages: BlogMapStage[] };
+  /** The few fixes to do first, shown after the intro. */
+  takeaways?: { title: string; items: BlogParagraph[] };
   sections: BlogSection[];
+  checklist?: { title: string; note: string; items: string[] };
+  cta?: { title: string; text: string; label: string; href: string };
   /** Closing italic note about the studio. */
   signoff?: string;
   seo: SeoContent;
