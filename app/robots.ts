@@ -10,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [
         draftOrRetiredRoutes.admin,
-        draftOrRetiredRoutes.blogs,
         draftOrRetiredRoutes.contactSuccess,
         draftOrRetiredRoutes.internal,
         draftOrRetiredRoutes.process,

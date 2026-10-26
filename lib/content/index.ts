@@ -1,4 +1,6 @@
-import type { CaseStudyContent, MarketingPageKey, PublicRoute } from "./types";
+import type { BlogParagraph, BlogPostContent, CaseStudyContent, MarketingPageKey, PublicRoute } from "./types";
+
+import { blogPosts } from "./blog";
 
 import {
   caseStudies,
@@ -9,6 +11,7 @@ import {
 const brandsBuiltForExclusions = new Set(["ara", "nektr"]);
 
 export * from "./types";
+export { blogIndexContent, blogPosts } from "./blog";
 export {
   caseStudies,
   homepageTestimonials,
@@ -69,4 +72,48 @@ export function getCaseStudyBySlug(slug: string) {
 
 export function getPrimaryNavigation() {
   return navigationContent.primary;
+}
+
+/** Published journal posts, newest first. */
+export function getPublishedBlogPosts() {
+  return blogPosts
+    .filter((post) => post.status === "published")
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+}
+
+export function getBlogPostBySlug(slug: string) {
+  return blogPosts.find((post) => post.slug === slug && post.status === "published");
+}
+
+export function getBlogPostTitle(post: BlogPostContent) {
+  return post.titleAccent ? `${post.title} ${post.titleAccent}` : post.title;
+}
+
+const postDateFormat = new Intl.DateTimeFormat("en-US", {
+  day: "numeric",
+  month: "long",
+  timeZone: "UTC",
+  year: "numeric",
+});
+
+/** "October 26, 2026" from an ISO date, independent of the server time zone. */
+export function formatPostDate(isoDate: string) {
+  return postDateFormat.format(new Date(`${isoDate}T00:00:00Z`));
+}
+
+function paragraphText(paragraph: BlogParagraph) {
+  return typeof paragraph === "string"
+    ? paragraph
+    : paragraph.map((run) => (typeof run === "string" ? run : run.text)).join("");
+}
+
+/** Whole minutes at 220 words a minute, never less than one. */
+export function getReadingMinutes(post: BlogPostContent) {
+  const text = [
+    ...post.intro,
+    ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
+  ]
+    .map(paragraphText)
+    .join(" ");
+  return Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 220));
 }

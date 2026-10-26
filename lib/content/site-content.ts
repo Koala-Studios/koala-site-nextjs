@@ -38,6 +38,7 @@ export const navigationContent: NavigationContent = {
   footer: [
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
+    { label: "Journal", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   featuredCta: {

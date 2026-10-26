@@ -11,6 +11,13 @@ export type MetadataInput = {
   image?: string;
   openGraphType?: OpenGraphType;
   keywords?: string[];
+  /** Open Graph article details; implies the "article" type. */
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    authors?: string[];
+    tags?: string[];
+  };
 };
 
 export function ensureLeadingSlash(path: string): string {
@@ -49,6 +56,18 @@ export function createBaseMetadata(input: MetadataInput): Metadata {
   const url = absoluteUrl(path);
   const imageUrl = resolveImageUrl(input.image);
   const title = buildPageTitle(input.title);
+  const openGraph = {
+    locale: siteConfig.defaultLocale,
+    url,
+    title,
+    description: input.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: imageUrl,
+      },
+    ],
+  };
 
   return {
     metadataBase: siteConfig.metadataBase,
@@ -58,19 +77,9 @@ export function createBaseMetadata(input: MetadataInput): Metadata {
     alternates: {
       canonical: url,
     },
-    openGraph: {
-      type: input.openGraphType ?? "website",
-      locale: siteConfig.defaultLocale,
-      url,
-      title,
-      description: input.description,
-      siteName: siteConfig.name,
-      images: [
-        {
-          url: imageUrl,
-        },
-      ],
-    },
+    openGraph: input.article
+      ? { ...openGraph, type: "article", ...input.article }
+      : { ...openGraph, type: input.openGraphType ?? "website" },
     twitter: {
       card: "summary_large_image",
       title,

@@ -4,6 +4,7 @@ export const corePublicRoutes = {
   home: "/",
   workIndex: "/work",
   services: "/services",
+  blog: "/blog",
   contact: "/contact",
   contactShort: "/contact-short",
   maya: "/maya",
@@ -25,6 +26,10 @@ export type CorePublicRouteKey = keyof typeof corePublicRoutes;
 
 export function getCaseStudyPath(slug: string): string {
   return `${corePublicRoutes.workIndex}/${slug}`;
+}
+
+export function getBlogPostPath(slug: string): string {
+  return `${corePublicRoutes.blog}/${slug}`;
 }
 
 export function toAbsoluteUrl(path: string): string {

@@ -6,7 +6,9 @@ export type PublicRoute =
   | "/work/[slug]"
   | "/services"
   | "/contact"
-  | "/maya";
+  | "/maya"
+  | "/blog"
+  | "/blog/[slug]";
 
 export type MarketingPageKey = "home" | "services" | "contact";
 
@@ -119,4 +121,54 @@ export interface CaseStudyContent {
   relatedSlug?: string;
   externalUrl?: string;
   seo: SeoContent;
+}
+
+/** A run of post text: plain, or bold, italic or linked. */
+export type BlogInline =
+  | string
+  | {
+      text: string;
+      strong?: boolean;
+      em?: boolean;
+      href?: string;
+    };
+
+/** A paragraph is plain text or a list of inline runs. */
+export type BlogParagraph = string | BlogInline[];
+
+export interface BlogSection {
+  /** Anchor id for the section heading. */
+  id: string;
+  /** Shown before the heading when the post is a numbered list. */
+  number?: string;
+  heading: string;
+  paragraphs: BlogParagraph[];
+}
+
+export interface BlogPostContent {
+  slug: string;
+  status: ContentStatus;
+  /** Main title; `titleAccent` follows it in the italic serif. */
+  title: string;
+  titleAccent?: string;
+  /** One line for the journal index and the meta description. */
+  summary: string;
+  /** ISO date, YYYY-MM-DD. */
+  publishedAt: string;
+  updatedAt?: string;
+  author: string;
+  tags: string[];
+  intro: BlogParagraph[];
+  sections: BlogSection[];
+  /** Closing italic note about the studio. */
+  signoff?: string;
+  seo: SeoContent;
+}
+
+export interface BlogIndexContent {
+  seo: SeoContent;
+  title: string;
+  titleAccent: string;
+  lede: string;
+  backLabel: string;
 }

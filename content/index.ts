@@ -1,5 +1,7 @@
-export { caseStudies, navigationContent, pageContent, siteSettings } from "@/lib/content";
+export { blogIndexContent, blogPosts, caseStudies, navigationContent, pageContent, siteSettings } from "@/lib/content";
 export type {
+  BlogIndexContent,
+  BlogPostContent,
   CaseStudyContent,
   CaseStudyLogo,
   CaseStudyMedia,

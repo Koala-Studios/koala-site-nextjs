@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { createBaseMetadata } from "@/lib/seo";
-import { getCaseStudyPath } from "@/lib/routes";
+import { getBlogPostPath, getCaseStudyPath } from "@/lib/routes";
 
 export type PageMetadataInput = {
   title: string;
@@ -18,6 +18,17 @@ export type CaseStudyMetadataInput = {
   summary: string;
   image?: string;
   keywords?: string[];
+};
+
+export type BlogPostMetadataInput = {
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  updatedAt?: string;
+  author: string;
+  tags?: string[];
+  image?: string;
 };
 
 export function createPageMetadata(input: PageMetadataInput): Metadata {
@@ -41,6 +52,23 @@ export function createCaseStudyMetadata(
     image: input.image,
     keywords: [input.clientName, "case study", ...(input.keywords ?? [])],
     openGraphType: "article",
+  });
+}
+
+export function createBlogPostMetadata(input: BlogPostMetadataInput): Metadata {
+  return createBaseMetadata({
+    title: input.title,
+    description: input.description,
+    path: getBlogPostPath(input.slug),
+    image: input.image,
+    keywords: input.tags,
+    openGraphType: "article",
+    article: {
+      publishedTime: input.publishedAt,
+      modifiedTime: input.updatedAt,
+      authors: [input.author],
+      tags: input.tags,
+    },
   });
 }
 
