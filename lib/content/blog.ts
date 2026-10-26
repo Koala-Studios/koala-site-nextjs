@@ -27,7 +27,7 @@ export const blogPosts: BlogPostContent[] = [
     tags: ["Shopify", "Supplements", "Conversion", "Store audit", "Klaviyo"],
     cover: {
       src: "/images/blog/supplement-store-sales-leaks.jpg",
-      alt: "A phone showing a supplement product page beside two supplement tubs, a shipping box and a receipt.",
+      alt: "A phone showing a greens powder product page beside two tubs of the same powder, a shipping box and a receipt.",
       width: 1536,
       height: 1024,
     },

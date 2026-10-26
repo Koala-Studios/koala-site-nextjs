@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 import type { BlogFigureKey } from "@/lib/content";
@@ -5,50 +6,40 @@ import type { BlogFigureKey } from "@/lib/content";
 import styles from "./LeakFigure.module.css";
 
 /*
- * Before/after phone mock-ups for the store-leak posts. Everything is drawn in
- * HTML and SVG so it stays sharp, themeable and readable by screen readers
- * through each figure's caption. The store in them is invented.
+ * Before/after phone mock-ups for the store-leak posts. The screens are HTML so
+ * they stay sharp and readable by screen readers through each figure's caption;
+ * the products are packshots of Fernlow, an invented brand.
  */
 
-const flavours = {
-  greens: "#7FA36B",
-  chocolate: "#6B4A36",
-  vanilla: "#E2CF9E",
-  berry: "#A34D6A",
-  mango: "#E0A13E",
-  mint: "#8CC3AE",
+const packs = {
+  greens: "/images/blog/fernlow/daily-greens.jpg",
+  trial: "/images/blog/fernlow/trial-pack.jpg",
+  samplesBefore: "/images/blog/fernlow/sample-pack-before.jpg",
+  samplesAfter: "/images/blog/fernlow/sample-pack-after.jpg",
 };
 
-type Flavour = keyof typeof flavours;
+type PackName = keyof typeof packs;
 
-/** A supplement tub: lid, body and a coloured label band. */
-export function Tub({ flavour = "greens", className }: { flavour?: Flavour; className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} viewBox="0 0 60 72">
-      <rect fill="#1F3A2A" height="11" rx="3" width="44" x="8" y="4" />
-      <rect fill="#FBFAF7" height="54" rx="7" stroke="#CFC9BB" width="50" x="5" y="14" />
-      <rect fill={flavours[flavour]} height="22" width="50" x="5" y="30" />
-      <rect fill="#FBFAF7" height="3" opacity="0.85" rx="1.5" width="22" x="19" y="38" />
-      <rect fill="#FBFAF7" height="2" opacity="0.6" rx="1" width="14" x="23" y="44" />
-    </svg>
-  );
+/** A Fernlow product photo, sized by the class it's given. */
+function Pack({ name = "greens", className }: { name?: PackName; className?: string }) {
+  return <Image alt="" className={className} height={600} sizes="12rem" src={packs[name]} width={600} />;
 }
 
 function Phone({ children, url }: { children: ReactNode; url?: string }) {
   return (
     <div className={styles.phone}>
       <div className={styles.bar}>
-        <span className={styles.url}>{url ?? "yourstore.com"}</span>
+        <span className={styles.url}>{url ?? "fernlow.com"}</span>
       </div>
       <div className={styles.screen}>{children}</div>
     </div>
   );
 }
 
-function Shot({ flavour, children }: { flavour?: Flavour; children?: ReactNode }) {
+function Shot({ pack, children }: { pack?: PackName; children?: ReactNode }) {
   return (
     <div className={styles.shot}>
-      <Tub className={styles.tub} flavour={flavour} />
+      <Pack className={styles.tub} name={pack} />
       {children}
     </div>
   );
@@ -152,7 +143,7 @@ function SoldOut() {
               <span>Shop the trial</span>
             </div>
             <p className={styles.tap}>↓ tap</p>
-            <Shot flavour="mint" />
+            <Shot pack="trial" />
             <p className={styles.ptitle}>Trial pack</p>
             <Mark tag="Dead end" tone="bad">
               <div className={`${styles.btn} ${styles.btnOff}`}>Sold out</div>
@@ -163,13 +154,13 @@ function SoldOut() {
       after={
         <Panel caption="The sold-out page sends them somewhere they can buy." title={after} tone="good">
           <Phone>
-            <Shot flavour="mint" />
+            <Shot pack="trial" />
             <p className={styles.ptitle}>Trial pack</p>
             <p className={styles.note}>Back on November 12.</p>
             <div className={`${styles.btn} ${styles.btnGhost}`}>Email me when it’s back</div>
             <Mark tone="good">
               <div className={styles.card}>
-                <Tub className={styles.cardTub} flavour="greens" />
+                <Pack className={styles.cardTub} />
                 <div>
                   <p className={styles.cardKicker}>Most people start with</p>
                   <p className={styles.cardTitle}>Starter Bundle · $39</p>
@@ -189,7 +180,7 @@ function DeadLink() {
       alt="Before: a homepage button opens an address ending in -draft and shows Page not found. After: the same button opens the published guide."
       before={
         <Panel caption="Fine in the theme editor, broken for every shopper." title={before} tone="bad">
-          <Phone url="…/pages/starter-guide-draft">
+          <Phone url="fernlow.com/pages/starter-guide-draft">
             <Mark tag="404" tone="bad">
               <div className={styles.error}>
                 <p className={styles.errorCode}>404</p>
@@ -202,12 +193,12 @@ function DeadLink() {
       }
       after={
         <Panel caption="The button points at the live page, and the old address redirects." title={after} tone="good">
-          <Phone url="…/pages/starter-guide">
+          <Phone url="fernlow.com/pages/starter-guide">
             <Mark tone="good">
               <p className={styles.articleTitle}>Which one is right for you?</p>
             </Mark>
             <Lines count={4} />
-            <Shot flavour="greens" />
+            <Shot />
             <Lines count={2} />
           </Phone>
         </Panel>
@@ -217,21 +208,13 @@ function DeadLink() {
 }
 
 function SamplePack() {
-  const tubs = (list: Flavour[]) => (
-    <div className={styles.quad}>
-      {list.map((flavour) => (
-        <Tub className={styles.quadTub} flavour={flavour} key={flavour} />
-      ))}
-    </div>
-  );
-
   return (
     <Pair
       alt="Before: the four-flavour sample pack leaves out chocolate, the flavour with 3,200 reviews, and its own reviews ask for more flavours. After: chocolate is in the pack."
       before={
         <Panel caption="The flavour most regulars buy isn’t in the box." title={before} tone="bad">
           <Phone>
-            <div className={styles.shot}>{tubs(["vanilla", "berry", "mango", "mint"])}</div>
+            <Shot pack="samplesBefore" />
             <p className={styles.ptitle}>Sample pack · 4 flavours</p>
             <Mark tag="Missing" tone="bad">
               <p className={styles.note}>Chocolate · ★ 4.9 · 3,200 reviews</p>
@@ -246,7 +229,7 @@ function SamplePack() {
         <Panel caption="The best seller leads the pack." title={after} tone="good">
           <Phone>
             <Mark tone="good">
-              <div className={styles.shot}>{tubs(["chocolate", "vanilla", "berry", "mango"])}</div>
+              <Shot pack="samplesAfter" />
             </Mark>
             <p className={styles.ptitle}>Sample pack · 4 flavours</p>
             <p className={styles.note}>
@@ -389,7 +372,7 @@ function ReorderEmail() {
             <Timeline />
             <Mark tag="Nothing sent" tone="bad">
               <div className={styles.inbox}>
-                <p>No new mail from Daily Greens</p>
+                <p>No new mail from Fernlow</p>
               </div>
             </Mark>
             <Lines count={3} />
@@ -403,7 +386,7 @@ function ReorderEmail() {
             <Mark tone="good">
               <div className={styles.email}>
                 <p className={styles.emailSubject}>Running low on Daily Greens?</p>
-                <Tub className={styles.emailTub} />
+                <Pack className={styles.emailTub} />
                 <p className={styles.note}>$49 one-time · $44.10 when you subscribe</p>
                 <div className={styles.btn}>Reorder</div>
               </div>
@@ -421,7 +404,7 @@ function GuideToProduct() {
       alt="Before: a buying guide ends with no product, and the reader has to go and find it. After: the guide ends with a product card showing the starter pack, what is in it, the price and an add to cart button."
       before={
         <Panel caption="The guide answers the question, then just ends." title={before} tone="bad">
-          <Phone url="…/blogs/which-greens">
+          <Phone url="fernlow.com/blogs/which-greens">
             <p className={styles.articleTitle}>Which greens powder is right for you?</p>
             <Lines count={5} />
             <Lines count={3} />
@@ -433,12 +416,12 @@ function GuideToProduct() {
       }
       after={
         <Panel caption="The answer comes with the product, ready to buy." title={after} tone="good">
-          <Phone url="…/blogs/which-greens">
+          <Phone url="fernlow.com/blogs/which-greens">
             <p className={styles.articleTitle}>Which greens powder is right for you?</p>
             <Lines count={4} />
             <Mark tone="good">
               <div className={styles.product}>
-                <Tub className={styles.productTub} />
+                <Pack className={styles.productTub} />
                 <div>
                   <p className={styles.cardTitle}>Starter Pack</p>
                   <p className={styles.small}>2 tubs + shaker · $59</p>
