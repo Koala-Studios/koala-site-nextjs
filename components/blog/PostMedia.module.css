@@ -1,0 +1,307 @@
+/*
+ * Chart colours: a stronger step of Koala green and an ochre, checked for
+ * colour-blind separation on paper. The ochre is light, so its values are
+ * always labelled in ink, never in the series colour.
+ */
+.chart,
+.statsFigure {
+  --series-1: #2E7A4C;
+  --series-2: #D19A2E;
+  --quiet: #C9D3CB;
+  --rule: #DAD7CF;
+  background: var(--ks-paper-2);
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.head {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.subtitle {
+  color: var(--ks-muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.source {
+  color: var(--ks-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.source a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/* ---------- Bars ---------- */
+.bars {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.bars li {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.barLabel {
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.barTrack {
+  align-items: center;
+  display: flex;
+  gap: 0.6rem;
+  /* Leave room so the longest bar's value never runs off the edge. */
+  padding-right: 4.5rem;
+}
+
+.bar {
+  background: var(--series-1);
+  border-radius: 0 4px 4px 0;
+  display: block;
+  flex: none;
+  height: 1.1rem;
+  min-width: 2px;
+}
+
+.barQuiet {
+  background: var(--quiet);
+}
+
+.barValue {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- Lines ---------- */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  gap: 0.4rem 1.25rem;
+}
+
+.legend li {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.45rem;
+}
+
+.key {
+  border-radius: 2px;
+  display: inline-block;
+  height: 3px;
+  width: 1.1rem;
+}
+
+.key.series1 {
+  background: var(--series-1);
+}
+
+.key.series2 {
+  background: var(--series-2);
+}
+
+.plotWrap {
+  padding: 0.5rem 3.5rem 0 3rem;
+}
+
+.plot {
+  height: clamp(11rem, 30vw, 16rem);
+  position: relative;
+}
+
+.grid {
+  border-top: 1px solid var(--rule);
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.tick {
+  color: var(--ks-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  position: absolute;
+  right: calc(100% + 0.5rem);
+  top: -0.55rem;
+  white-space: nowrap;
+}
+
+.lines {
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+}
+
+.lines polyline {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+
+.lines .series1 {
+  stroke: var(--series-1);
+}
+
+.lines .series2 {
+  stroke: var(--series-2);
+}
+
+.dot {
+  border: 2px solid var(--ks-paper-2);
+  border-radius: 50%;
+  height: 0.75rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 0.75rem;
+}
+
+.dot.series1 {
+  background: var(--series-1);
+}
+
+.dot.series2 {
+  background: var(--series-2);
+}
+
+.endLabel {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  left: calc(100% + 0.6rem);
+  position: absolute;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.xAxis {
+  height: 1.6rem;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.xAxis span {
+  color: var(--ks-muted);
+  font-size: 0.75rem;
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* ---------- Numbers table ---------- */
+.numbers {
+  font-size: 0.85rem;
+}
+
+.numbers summary {
+  color: var(--ks-muted);
+  cursor: pointer;
+  width: max-content;
+}
+
+.numbers table {
+  border-collapse: collapse;
+  margin-top: 0.6rem;
+  width: 100%;
+}
+
+.numbers th,
+.numbers td {
+  border-top: 1px solid var(--rule);
+  padding: 0.35rem 0.5rem 0.35rem 0;
+  text-align: left;
+}
+
+.numbers td {
+  font-variant-numeric: tabular-nums;
+}
+
+.numbers thead th {
+  border-top: 0;
+  color: var(--ks-muted);
+  font-weight: 600;
+}
+
+/* ---------- Headline numbers ---------- */
+.stats {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.stat {
+  border-top: 2px solid var(--series-1);
+  display: grid;
+  gap: 0.4rem;
+  padding-top: 0.75rem;
+}
+
+.statValue {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  order: -1;
+}
+
+.statLabel {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ---------- Pictures ---------- */
+.imageFigure {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.image {
+  height: auto;
+  width: 100%;
+}
+
+.caption {
+  color: var(--ks-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.credit {
+  font-size: 0.8rem;
+}
+
+@media (min-width: 720px) {
+  .stats {
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+  }
+
+  .xMinor {
+    display: inline;
+  }
+}
+
+@media (max-width: 719px) {
+  .xMinor {
+    display: none;
+  }
+}

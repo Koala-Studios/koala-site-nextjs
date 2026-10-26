@@ -147,11 +147,69 @@ export type BlogFigureKey =
   | "reorderEmail"
   | "guideToProduct";
 
+/** Where a figure's facts come from. Every chart and stat names one. */
+export interface BlogSource {
+  label: string;
+  href?: string;
+}
+
+/** A number shown on a chart: "$" before, "%" after, and how many decimals. */
+export interface BlogUnit {
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}
+
+/** A picture: a photo, an ImageGen render or a screenshot, stored under public/images/blog/. */
+export interface BlogImageFigure {
+  kind: "image";
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+  credit?: string;
+}
+
+/** One series compared across categories, as horizontal bars. */
+export interface BlogBarChart {
+  kind: "bar";
+  title: string;
+  subtitle?: string;
+  unit?: BlogUnit;
+  /** Bars marked highlight carry the colour; the rest stay quiet. */
+  rows: { label: string; value: number; highlight?: boolean }[];
+  source: BlogSource;
+}
+
+/** One or two series over time, as lines on one axis. */
+export interface BlogLineChart {
+  kind: "line";
+  title: string;
+  subtitle?: string;
+  unit?: BlogUnit;
+  /** Labels along the bottom, one per value. */
+  x: string[];
+  series: { name: string; values: number[] }[];
+  source: BlogSource;
+}
+
+/** Two to four headline numbers in a row. */
+export interface BlogStatsFigure {
+  kind: "stats";
+  items: { value: string; label: string }[];
+  source: BlogSource;
+}
+
+export type BlogMedia = BlogImageFigure | BlogBarChart | BlogLineChart | BlogStatsFigure;
+
 export interface BlogSection {
   /** Anchor id for the section heading. */
   id: string;
   /** Shown before the heading when the post is a numbered list. */
   number?: string;
+  /** The closing section: big caps heading, no figures. */
+  closing?: boolean;
   /** Where on the store this happens, e.g. "Product page". */
   area?: string;
   /** Rough time the fix takes. */
@@ -160,9 +218,11 @@ export interface BlogSection {
   /** What we saw. */
   paragraphs: BlogParagraph[];
   figure?: BlogFigureKey;
-  /** Why it costs sales. */
+  /** Charts, numbers and pictures, shown after the paragraphs. */
+  media?: BlogMedia[];
+  /** Why it matters. */
   why?: BlogParagraph[];
-  /** How to fix it, in order. */
+  /** What to do, in order. */
   steps?: BlogParagraph[];
   /** One test a reader can run on their own store. */
   check?: string;
@@ -189,6 +249,11 @@ export interface BlogPostContent {
   updatedAt?: string;
   author: string;
   tags: string[];
+  /** Word before each section number, e.g. "Leak" gives "Leak 1". */
+  sectionLabel?: string;
+  /** Headings over each section's why and steps. */
+  whyHeading?: string;
+  stepsHeading?: string;
   /** Cover image for the index, the post's opening and link previews. */
   cover?: { src: string; alt: string; width: number; height: number };
   intro: BlogParagraph[];
@@ -200,6 +265,8 @@ export interface BlogPostContent {
   cta?: { title: string; text: string; label: string; href: string };
   /** Closing italic note about the studio. */
   signoff?: string;
+  /** Every study, report or data set the post draws on. */
+  sources?: BlogSource[];
   seo: SeoContent;
 }
 

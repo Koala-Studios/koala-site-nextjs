@@ -25,6 +25,9 @@ export const blogPosts: BlogPostContent[] = [
     publishedAt: "2026-10-26",
     author: "Koala Studios",
     tags: ["Shopify", "Supplements", "Conversion", "Store audit", "Klaviyo"],
+    sectionLabel: "Leak",
+    whyHeading: "Why it costs sales",
+    stepsHeading: "How to fix it",
     cover: {
       src: "/images/blog/supplement-store-sales-leaks.jpg",
       alt: "A phone showing a protein product page beside two protein tubs, a shaker, a shipping box and a receipt.",
@@ -256,6 +259,7 @@ export const blogPosts: BlogPostContent[] = [
       },
       {
         id: "the-pattern",
+        closing: true,
         heading: "None of these is a traffic problem",
         paragraphs: [
           "Every store we looked at had already paid to bring people in, through ads, email, influencers and word of mouth. The sales were lost in the last few seconds of the visit, in the gap between what one page promised and what the next one delivered.",

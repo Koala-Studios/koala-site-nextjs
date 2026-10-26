@@ -19,6 +19,7 @@ import { corePublicRoutes, getBlogPostPath, toAbsoluteUrl } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 import { LeakFigure } from "@/components/blog/LeakFigure";
+import { PostMedia } from "@/components/blog/PostMedia";
 
 import { PostParagraph } from "./PostText";
 import styles from "./post.module.css";
@@ -186,14 +187,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
 
           {post.sections.map((section) =>
-            section.number ? (
+            !section.closing ? (
               <section aria-labelledby={section.id} className={styles.section} key={section.id}>
                 <div className={styles.sectionHead}>
-                  <p className={`ks-label ${styles.kicker}`}>
-                    <span className={styles.kickerNumber}>Leak {section.number}</span>
-                    {section.area ? <span>{section.area}</span> : null}
-                    {section.fixTime ? <span className="ks-muted">Fix: {section.fixTime}</span> : null}
-                  </p>
+                  {section.number || section.area || section.fixTime ? (
+                    <p className={`ks-label ${styles.kicker}`}>
+                      {section.number ? (
+                        <span className={styles.kickerNumber}>
+                          {post.sectionLabel ? `${post.sectionLabel} ` : ""}
+                          {section.number}
+                        </span>
+                      ) : null}
+                      {section.area ? <span>{section.area}</span> : null}
+                      {section.fixTime ? <span className="ks-muted">Fix: {section.fixTime}</span> : null}
+                    </p>
+                  ) : null}
                   <h2 className={styles.heading} id={section.id}>
                     {section.heading}
                   </h2>
@@ -209,9 +217,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                 ) : null}
 
+                {section.media?.map((media, index) => (
+                  <div className={media.kind === "image" ? styles.wide : styles.chartSlot} key={index}>
+                    <PostMedia media={media} />
+                  </div>
+                ))}
+
                 {section.why?.length ? (
                   <>
-                    <h3 className={styles.subhead}>Why it costs sales</h3>
+                    <h3 className={styles.subhead}>{post.whyHeading ?? "Why it matters"}</h3>
                     {section.why.map((paragraph, index) => (
                       <PostParagraph className={styles.copy} key={index} paragraph={paragraph} />
                     ))}
@@ -220,7 +234,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                 {section.steps?.length ? (
                   <>
-                    <h3 className={styles.subhead}>How to fix it</h3>
+                    <h3 className={styles.subhead}>{post.stepsHeading ?? "What to do"}</h3>
                     <ol className={styles.steps}>
                       {section.steps.map((step, index) => (
                         <li key={index}>
@@ -281,6 +295,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
 
           {post.signoff ? <p className={styles.signoff}>{post.signoff}</p> : null}
+
+          {post.sources?.length ? (
+            <aside aria-labelledby="post-sources" className={styles.sources}>
+              <h2 className="ks-label" id="post-sources">
+                Sources
+              </h2>
+              <ol>
+                {post.sources.map((source) => (
+                  <li key={source.label}>
+                    {source.href ? (
+                      <a href={source.href} rel="noopener noreferrer" target="_blank">
+                        {source.label}
+                      </a>
+                    ) : (
+                      source.label
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          ) : null}
 
           <Link className={`ks-tlink ${styles.back}`} href={corePublicRoutes.blog}>
             <ArrowIcon direction="left" />

@@ -32,6 +32,6 @@
 
 - `/projects` is legacy; its app route modules are removed and matching URLs permanently redirect from `next.config.js`.
 - `/home` route modules are removed and redirect from `next.config.js`; legacy `/blogs` permanently redirects to `/blog`.
-- `/blog` and `/blog/[slug]` are the journal; posts are typed content in `lib/content/blog.ts`, and the post route renders their BlogPosting JSON-LD.
+- `/blog` and `/blog/[slug]` are the journal; posts are typed content in `lib/content/blog.ts`, and the post route renders their BlogPosting JSON-LD. To add a post, follow `.agent/journal-post-guide.md`.
 - `app/sitemap.ts` emits published case-study slug entries from typed content.
 - `app/layout.tsx` renders the redesign `SiteHeader` and `SiteFooter`.

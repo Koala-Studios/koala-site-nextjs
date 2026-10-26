@@ -238,6 +238,15 @@
   width: 100%;
 }
 
+/* Charts sit a little wider than the text but narrower than pictures. */
+.section > .chartSlot {
+  grid-column: wide;
+  justify-self: center;
+  margin-block: 0.75rem;
+  max-width: 50rem;
+  width: 100%;
+}
+
 .sectionHead {
   border-top: var(--ks-rule);
   display: grid;
@@ -416,6 +425,29 @@
   font-size: clamp(1.2rem, 1.8vw, 1.4rem);
   font-style: italic;
   line-height: 1.3;
+}
+
+.sources {
+  border-top: var(--ks-rule);
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 0.9rem;
+}
+
+.sources ol {
+  color: var(--ks-muted);
+  display: grid;
+  font-size: 0.9rem;
+  gap: 0.4rem;
+  line-height: 1.45;
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.sources a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
 .back {

@@ -118,6 +118,9 @@ export function getReadingMinutes(post: BlogPostContent) {
       ...(section.why ?? []),
       ...(section.steps ?? []),
       section.check ?? "",
+      ...(section.media ?? []).flatMap((media) =>
+        media.kind === "stats" ? media.items.map((item) => item.label) : "caption" in media ? [media.caption ?? ""] : [],
+      ),
     ]),
     ...(post.checklist?.items ?? []),
   ]

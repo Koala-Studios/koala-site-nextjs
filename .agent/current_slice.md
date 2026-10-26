@@ -1,8 +1,8 @@
 # Current Slice
 
-## Latest: 2026-10-26 Journal (branch `blog/first-post`)
+## Latest: 2026-10-26 Journal (live)
 
-`/blog` and `/blog/[slug]` with the first post, typed in `lib/content/blog.ts`. Footer-only link; main nav pending Frank. Not merged or deployed. See the 2026-10-26 execution-ledger entry.
+`/blog` and `/blog/[slug]` with the first post, typed in `lib/content/blog.ts`, deployed 2026-10-26. Footer-only link; main nav pending Frank. Posts can carry charts, headline numbers, pictures and a source list without new components; how to add one is in `.agent/journal-post-guide.md`. Cleo drafts one post a week on a `journal/<slug>` branch for Frank's review (Newton guide `marketing/koala-journal`).
 
 ## Latest: 2026-09-25 Masthead design system (branch `redesign/masthead-system`)
 
