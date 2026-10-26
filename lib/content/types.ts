@@ -189,6 +189,8 @@ export interface BlogPostContent {
   updatedAt?: string;
   author: string;
   tags: string[];
+  /** Cover image for the index, the post's opening and link previews. */
+  cover?: { src: string; alt: string; width: number; height: number };
   intro: BlogParagraph[];
   map?: { title: string; stages: BlogMapStage[] };
   /** The few fixes to do first, shown after the intro. */

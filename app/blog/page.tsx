@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowIcon } from "@/components/site/ArrowIcon";
-import { LeakCover } from "@/components/blog/LeakFigure";
 import { Folio } from "@/components/system";
 import {
   blogIndexContent,
@@ -57,9 +57,17 @@ export default function BlogIndexPage() {
         {posts.map((post) => (
           <li key={post.slug}>
             <Link className={styles.row} href={getBlogPostPath(post.slug)}>
-              <span className={styles.cover}>
-                <LeakCover />
-              </span>
+              {post.cover ? (
+                <span className={styles.cover}>
+                  <Image
+                    alt={post.cover.alt}
+                    height={post.cover.height}
+                    sizes="(min-width: 900px) 24rem, 100vw"
+                    src={post.cover.src}
+                    width={post.cover.width}
+                  />
+                </span>
+              ) : null}
               <span className={`ks-label ${styles.meta}`}>
                 <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt)}</time>
                 <span className="ks-muted">{getReadingMinutes(post)} min read</span>

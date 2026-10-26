@@ -25,6 +25,12 @@ export const blogPosts: BlogPostContent[] = [
     publishedAt: "2026-10-26",
     author: "Koala Studios",
     tags: ["Shopify", "Supplements", "Conversion", "Store audit", "Klaviyo"],
+    cover: {
+      src: "/images/blog/supplement-store-sales-leaks.jpg",
+      alt: "A phone showing a supplement product page beside two supplement tubs, a shipping box and a receipt.",
+      width: 1536,
+      height: 1024,
+    },
     intro: [
       "This month we audited ten supplement and wellness stores on Shopify. We didn’t run a tool over them. We opened each one on a phone and tried to buy, the way someone who just tapped an Instagram ad would.",
       "They were good brands: real products, real reviews and founders who clearly care. And most of them were losing sales in the same places. Not in the ads, and not because of the design, but in small gaps between what one page promises and what the shopper finds next.",
@@ -284,6 +290,7 @@ export const blogPosts: BlogPostContent[] = [
       description:
         "From 10 supplement store audits on a phone: the eight places Shopify stores lose the sale, with before-and-after examples and step-by-step fixes.",
       canonicalPath: "/blog/supplement-store-sales-leaks",
+      ogImage: "/images/blog/supplement-store-sales-leaks-og.jpg",
     },
   },
 ];

@@ -44,6 +44,14 @@
   width: 100%;
 }
 
+.cover {
+  height: auto;
+  justify-self: center;
+  margin-top: clamp(0.75rem, 3vw, 2rem);
+  max-width: var(--wide);
+  width: 100%;
+}
+
 /* ---------- Map of the leaks ---------- */
 .map {
   border-top: var(--ks-rule);

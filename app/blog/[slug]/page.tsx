@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -119,6 +120,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : null}
           </h1>
           <p className={`ks-lede ${styles.deck}`}>{post.summary}</p>
+          {post.cover ? (
+            <Image
+              alt={post.cover.alt}
+              className={styles.cover}
+              height={post.cover.height}
+              priority
+              sizes="(min-width: 1100px) 64rem, 100vw"
+              src={post.cover.src}
+              width={post.cover.width}
+            />
+          ) : null}
         </header>
 
         {post.map ? (

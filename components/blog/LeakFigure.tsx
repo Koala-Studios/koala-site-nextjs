@@ -468,15 +468,3 @@ export function LeakFigure({ figure }: { figure: BlogFigureKey }) {
   const Figure = figures[figure];
   return <Figure />;
 }
-
-/** Cover art for the journal index: three tubs on the green panel. */
-export function LeakCover() {
-  return (
-    <div className={styles.cover} aria-hidden="true">
-      <Tub className={styles.coverTub} flavour="berry" />
-      <Tub className={`${styles.coverTub} ${styles.coverTubMain}`} flavour="greens" />
-      <Tub className={styles.coverTub} flavour="chocolate" />
-      <span className={styles.coverTag}>8 leaks · 10 audits</span>
-    </div>
-  );
-}

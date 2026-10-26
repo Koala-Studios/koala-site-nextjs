@@ -22,8 +22,17 @@
 }
 
 .cover {
+  aspect-ratio: 3 / 2;
+  background: var(--ks-paper-2);
   display: block;
+  overflow: hidden;
   transition: opacity 250ms var(--ks-ease);
+}
+
+.cover img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .row:hover .cover,

@@ -481,39 +481,6 @@
   background: var(--ks-danger);
 }
 
-/* ---------- Index cover ---------- */
-.cover {
-  align-items: end;
-  aspect-ratio: 4 / 3;
-  background: var(--ks-green-deep);
-  display: flex;
-  gap: 4%;
-  justify-content: center;
-  padding: 12% 10% 16%;
-  position: relative;
-}
-
-.coverTub {
-  aspect-ratio: 60 / 72;
-  height: 52%;
-  width: auto;
-}
-
-.coverTubMain {
-  height: 72%;
-}
-
-.coverTag {
-  bottom: 1rem;
-  color: var(--ks-paper);
-  font-size: var(--ks-label);
-  font-weight: 500;
-  left: 1rem;
-  letter-spacing: var(--ks-label-tracking);
-  position: absolute;
-  text-transform: uppercase;
-}
-
 @media (min-width: 720px) {
   .pair {
     gap: clamp(1rem, 3vw, 2.5rem);
