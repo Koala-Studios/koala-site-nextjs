@@ -32,6 +32,12 @@
   gap: 0.6rem;
 }
 
+.resultsNote {
+  color: var(--ks-muted);
+  margin-bottom: 2.5rem;
+  max-width: 52ch;
+}
+
 .services {
   display: grid;
   gap: 2rem;
@@ -102,6 +108,10 @@
 @media (min-width: 900px) {
   .intro {
     grid-template-columns: 1fr 1.4fr;
+  }
+
+  .intro > div {
+    grid-column: 2;
   }
 
   .intro :global(.ks-lede) {

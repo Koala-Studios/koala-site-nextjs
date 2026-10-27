@@ -10,8 +10,8 @@ export function BrandsBuiltFor() {
   const brands = getBrandsBuiltFor();
 
   return (
-    <section className={`ks-section ${styles.section}`} aria-label="Brands we've built for">
-      <Folio items={["Brands we’ve built for", "Food · Wellness · Lifestyle"]} />
+    <section className={`ks-section ${styles.section}`} aria-label="Brands we've worked with">
+      <Folio items={["Brands we’ve worked with", "Supplements · Wellness · Food"]} />
       <Marquee className={styles.marquee} duration={38}>
         {brands.map((brand) => (
           <span

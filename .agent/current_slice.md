@@ -1,5 +1,9 @@
 # Current Slice
 
+## Latest: 2026-10-27 Match the cold email (branch `growth/free-audit-landing`, not deployed)
+
+`/free-audit` landing page (Netlify form `free-audit`), supplement-first work order, the deck's three plans on Services, and draft client results that stay hidden until Frank clears each number (`lib/content/results.ts`). See the 2026-10-27 ledger entry.
+
 ## Latest: 2026-10-26 Journal (live)
 
 `/blog` and `/blog/[slug]` with the first post, typed in `lib/content/blog.ts`, deployed 2026-10-26. Footer-only link; main nav pending Frank. Posts can carry charts, headline numbers, pictures and a source list without new components; how to add one is in `.agent/journal-post-guide.md`. Cleo drafts one post a week on a `journal/<slug>` branch for Frank's review (Newton guide `marketing/koala-journal`).

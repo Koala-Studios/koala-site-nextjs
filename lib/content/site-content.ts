@@ -10,7 +10,7 @@ import type {
 export const siteSettings: SiteSettings = {
   name: "Koala Studios",
   description:
-    "Shopify stores, Meta ads, and email marketing for brands that want to grow.",
+    "We run the Shopify store, email and ads for supplement, wellness and food brands.",
   url: "https://koalastudios.ca",
   locale: "en-CA",
   defaultSeo: {
@@ -39,11 +39,12 @@ export const navigationContent: NavigationContent = {
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
     { label: "Journal", href: "/blog" },
+    { label: "Free audit", href: "/free-audit" },
     { label: "Contact", href: "/contact" },
   ],
   featuredCta: {
-    label: "Start a project",
-    href: "/contact",
+    label: "Get a free audit",
+    href: "/free-audit",
   },
 };
 
@@ -100,7 +101,7 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
       eyebrow: "Services",
       headline: "Design. Build. Grow.",
       summary:
-        "Four ways to work with us: build the store, make the product shine, drive the traffic and keep the customers. Most brands start with one and grow into the rest.",
+        "We run the Shopify store, email and ads for supplement, wellness and food brands, and design the packaging and product visuals they sell with. Most brands start with one plan and add the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },
@@ -592,25 +593,26 @@ export const caseStudies: CaseStudyContent[] = [
     client: "Iron Brothers",
     sector: "Performance supplements",
     category: "Shopify",
-    tags: ["Shopify", "Performance", "Product UX"],
+    tags: ["Shopify", "Email", "Meta ads"],
     headline: "A harder-hitting supplement store with a cleaner product path.",
     intro:
-      "Iron Brothers needed a storefront that matched the intensity of the brand while keeping supplement categories, product benefits, and purchase options easy to scan.",
-    services: ["Shopify", "Visual direction", "Product templates"],
+      "We run Iron Brothers’ Shopify store, email and Meta ads, month to month. The store had to match the intensity of the brand while keeping supplement categories, product benefits and purchase options easy to scan.",
+    services: ["Shopify", "Klaviyo email", "Meta ads"],
     challenge:
       "The brand is built on training intensity, but the store still had to explain pre-workout, nootropic, amino, and support products with enough discipline for shoppers to make fast choices.",
     approach:
-      "We paired a bold gym-led visual system with plain collection structure, direct product pages, and recurring FAQ/detail blocks that support informed purchases.",
+      "We paired a bold gym-led visual system with plain collection structure, direct product pages and recurring FAQ blocks, then built the automated emails and the Meta ads around the same products.",
     deliverables: [
       "Bold homepage direction",
       "Supplement collections",
       "Product purchase modules",
-      "About and mission page",
+      "Klaviyo email flows",
+      "Meta ads, run weekly",
     ],
     outcomes: [
-      "Stronger brand impact",
-      "Faster product comparison",
-      "More credible supplement education",
+      "Store, email and Meta ads run by one team",
+      "Automated emails sending since spring 2026",
+      "A rebuilt store live in October 2026",
     ],
     metrics: [
       { label: "Priority", value: "Performance product clarity" },

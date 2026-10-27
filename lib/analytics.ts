@@ -9,6 +9,7 @@ export const analyticsConfig = {
   pageViewEventName: "page_view",
   ctaEventName: "cta_click",
   contactSubmitEventName: "contact_submit",
+  auditRequestEventName: "audit_request",
 } as const;
 
 export function isAnalyticsEnabled(): boolean {

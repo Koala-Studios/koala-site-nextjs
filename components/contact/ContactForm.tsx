@@ -16,10 +16,10 @@ import styles from "./ContactForm.module.css";
 const NETLIFY_FORM_ENDPOINT = "/__forms.html";
 
 const projectTypes = [
-  { value: "Shopify design & build", name: "interest-shopify" },
+  { value: "Shopify store", name: "interest-shopify" },
   { value: "Meta ads", name: "interest-meta-ads" },
   { value: "Email marketing", name: "interest-email" },
-  { value: "Brand and growth audit", name: "interest-audit" },
+  { value: "Free website audit", name: "interest-audit" },
   { value: "Not sure yet", name: "interest-unsure" },
 ] as const;
 
@@ -187,28 +187,10 @@ export function ContactForm({ short = false }: { short?: boolean }) {
           </div>
         </fieldset>
 
-        <Field label="Budget (optional)">
-          <select
-            name="budget"
-            aria-label="Budget"
-            className={styles.select}
-            defaultValue=""
-          >
-            <option value="">Select a range</option>
-            <option value="Under $5k">Under $5k</option>
-            <option value="$5k - $15k">$5k &ndash; $15k</option>
-            <option value="$15k - $50k">$15k &ndash; $50k</option>
-            <option value="$50k+">$50k+</option>
-            <option value="Ongoing retainer">Ongoing retainer</option>
-            <option value="Not sure yet">Not sure yet</option>
-          </select>
-        </Field>
-
-        <Field label="Project details">
+        <Field label="Anything we should know? (optional)">
           <Textarea
             name="message"
-            aria-label="Project details"
-            required
+            aria-label="Anything we should know"
           />
         </Field>
 

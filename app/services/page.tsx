@@ -10,6 +10,7 @@ import { LineArt } from "@/components/system/LineArt";
 import { servicesContent } from "@/content/pages/services";
 import { siteSettings } from "@/lib/content";
 import { auditOffer } from "@/lib/content/audit";
+import { plansContent } from "@/lib/content/plans";
 import { createPageMetadata } from "@/lib/metadata";
 import { toAbsoluteUrl } from "@/lib/routes";
 
@@ -46,7 +47,7 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
 
       <section className={styles.hero} aria-labelledby="services-title">
-        <Folio items={["Services", "Build · Product · Traffic · Retention", "Canada"]} />
+        <Folio items={["Services", "Store · Email · Ads", "Toronto"]} />
         <h1 className={`ks-x ${styles.title}`} id="services-title">
           Design. Build. <em>Grow.</em>
         </h1>
@@ -109,25 +110,38 @@ export default function ServicesPage() {
         </ol>
       </section>
 
-      <section className="ks-section" aria-labelledby="services-engagement-title">
-        <SectionHead index="06" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
-        <div className={styles.engagements}>
-          {[servicesContent.engagement.project, servicesContent.engagement.retainer].map((mode) => (
-            <div className={styles.engagement} key={mode.title}>
-              <h3 className="ks-x ks-h3">{mode.title}</h3>
-              <p>{mode.copy}</p>
-              <IndexList items={mode.points.map((point) => ({ key: point, name: point, lead: "·" }))} />
+      <section className="ks-section" aria-labelledby="services-plans-title" id="plans">
+        <SectionHead index="06" id="services-plans-title" title={<>{plansContent.title} <em>{plansContent.titleAccent}</em></>} />
+        <p className={`ks-lede ${styles.plansLede}`}>{plansContent.lede}</p>
+        <div className={styles.plans}>
+          {plansContent.plans.map((plan) => (
+            <div className={styles.plan} key={plan.name}>
+              <h3 className="ks-x ks-h3">{plan.name}</h3>
+              <p className={styles.planLine}>{plan.line}</p>
+              <ul className={styles.planPoints}>
+                {plan.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
             </div>
           ))}
+        </div>
+        <div className={styles.planTerms}>
+          <p className={`ks-x ${styles.startingPrice}`}>{plansContent.startingPrice}</p>
+          {plansContent.terms.map((term) => (
+            <p key={term.title}>
+              <strong>{term.title}.</strong> {term.copy}
+            </p>
+          ))}
+          <p className="ks-muted">{servicesContent.projects}</p>
         </div>
       </section>
 
       <section className="ks-section" aria-labelledby="services-audit-title">
         <div className={styles.audit}>
           <LineArt className={styles.auditArt} name="arches" />
-          <span className="ks-label">{auditOffer.title}</span>
           <h2 className="ks-x ks-h2" id="services-audit-title">
-            Not sure where <em>to start?</em>
+            Get a free audit <em>of your website.</em>
           </h2>
           <p>{auditOffer.summary}</p>
           <Cta href={auditOffer.href} data-analytics-cta="services-audit">

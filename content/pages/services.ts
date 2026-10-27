@@ -8,12 +8,12 @@ export const servicesContent = {
   },
   proof: [
     {
-      label: "Typical build",
-      value: "6-12 weeks",
+      label: "Plans from",
+      value: "600 a month",
     },
     {
-      label: "Growth retainers",
-      value: "Monthly",
+      label: "Contract",
+      value: "Month to month",
     },
   ],
   offerings: [
@@ -100,18 +100,8 @@ export const servicesContent = {
       copy: "Meta ads and email flows compound the build. One team, one story, every channel.",
     },
   ],
-  engagement: {
-    project: {
-      title: "Project",
-      copy: "A scoped design and build with a clear start and finish. Strategy, design, development, launch.",
-      points: ["Fixed scope", "6-12 weeks", "Launch-ready handoff"],
-    },
-    retainer: {
-      title: "Growth retainer",
-      copy: "Ongoing ads and email with monthly creative, testing, and reporting. Cancel any month.",
-      points: ["Monthly creative", "Weekly testing", "Plain-language reports"],
-    },
-  },
+  projects:
+    "Need a one-off build instead? We also design and build Shopify stores, packaging and 3D renders as fixed-scope projects.",
   fitNotes: [
     "Ecommerce brands that need a clearer message",
     "Teams that want senior work without a heavy process",

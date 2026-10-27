@@ -23,6 +23,14 @@ const nextConfig = {
         destination: "/blog",
         permanent: true,
       },
+      // Older audit links point at the long contact form; Maya's keep their own short form.
+      {
+        source: "/contact",
+        has: [{ type: "query", key: "interest", value: "brand-growth-audit" }],
+        missing: [{ type: "query", key: "source", value: "maya" }],
+        destination: "/free-audit",
+        permanent: false,
+      },
       {
         source: "/projects",
         destination: "/work",

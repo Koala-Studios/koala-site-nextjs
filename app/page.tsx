@@ -13,7 +13,9 @@ import { Icon, serviceIcon } from "@/components/system/Icons";
 import { LineArt } from "@/components/system/LineArt";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { servicesContent } from "@/content/pages/services";
+import { ClientResults } from "@/components/results/ClientResults";
 import { getPublishedCaseStudies } from "@/lib/content";
+import { getVisibleResults } from "@/lib/content/results";
 import { auditOffer } from "@/lib/content/audit";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -22,18 +24,19 @@ import styles from "./page.module.css";
 export const metadata: Metadata = createPageMetadata({
   title: "Shopify Design, Meta Ads & Email Marketing Agency",
   description:
-    "Koala Studios is a Toronto ecommerce studio that designs and builds Shopify storefronts, packaging, 3D renders, Meta ads and email programs for consumer brands that want to grow. See the work, then start a project.",
+    "Koala Studios is a small Toronto team that runs the Shopify store, email and ads for supplement, wellness and food brands, month to month. See the work, then get a free audit of your website.",
   path: "/",
 });
 
 export default function Home() {
   const caseStudies = getPublishedCaseStudies().slice(0, 6);
+  const results = getVisibleResults();
 
   return (
     <div className="ks-page">
       <section aria-labelledby="home-title">
         <div className="ks-masthead-space" aria-hidden="true" />
-        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Canada"]} />
+        <Folio className={styles.folio} items={["Shopify · Email · Ads", "Toronto"]} />
 
         <h1 className={`ks-x ks-split ${styles.heroTitle}`} id="home-title">
           <span>Brands</span> <em>that sell.</em>
@@ -44,19 +47,18 @@ export default function Home() {
         />
       </section>
 
-      <section className={styles.intro} aria-label="The studio">
-        <span className="ks-label">The studio</span>
+      <section className={styles.intro} aria-label="What we do">
         <div>
           <p className="ks-lede">
-            We design and build <em>Shopify stores,</em> packaging, 3D renders and campaigns for consumer brands that want to{" "}
+            We run the <em>Shopify store,</em> email and ads for supplement, wellness and food brands. One small Toronto team, month to month, so you can{" "}
             <span className="ks-doodle-wrap">
               <em>sell more.</em>
               <Doodle className="ks-doodle-under" name="underline" />
             </span>
           </p>
           <div className={styles.actions}>
-            <Cta href="/contact" data-analytics-cta="home-hero">
-              Start a project
+            <Cta href={auditOffer.href} data-analytics-cta="home-hero">
+              {auditOffer.cta}
             </Cta>
             <Cta href="/work" variant="text">
               See the work
@@ -84,6 +86,23 @@ export default function Home() {
         />
         <WorkGrid caseStudies={caseStudies} variant="rail" />
       </section>
+
+      {results.length ? (
+        <section className="ks-section" aria-labelledby="home-results-title">
+          <SectionHead
+            id="home-results-title"
+            title={
+              <>
+                What changed <em>for them</em>
+              </>
+            }
+          />
+          <p className={`ks-body ${styles.resultsNote}`}>
+            Growth since we started, shown as an index or a percentage so each brand&apos;s own figures stay theirs.
+          </p>
+          <ClientResults results={results} />
+        </section>
+      ) : null}
 
       <section className="ks-section" aria-labelledby="home-services-title">
         <SectionHead
@@ -123,9 +142,8 @@ export default function Home() {
       <section className={`ks-section ${styles.audit}`} aria-labelledby="home-audit-title">
         <div className={styles.auditPanel}>
           <LineArt className={styles.auditArt} name="arches" />
-          <span className="ks-label">{auditOffer.title}</span>
           <h2 className="ks-x ks-h2" id="home-audit-title">
-            Not sure where <em>to start?</em>
+            Get a free audit <em>of your website.</em>
           </h2>
           <p className="ks-body">{auditOffer.summary}</p>
           <Cta href={auditOffer.href} data-analytics-cta="home-audit">

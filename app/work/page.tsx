@@ -10,7 +10,7 @@ import styles from "./work.module.css";
 export const metadata: Metadata = createPageMetadata({
   title: "Ecommerce Case Studies: Shopify Stores That Sell",
   description:
-    "Selected Koala Studios case studies: Shopify storefronts, packaging, 3D renders and brand systems for food, wellness and lifestyle brands.",
+    "Selected Koala Studios case studies: Shopify stores, email and ads for supplement, wellness and food brands, plus packaging and 3D work.",
   path: "/work",
   keywords: ["Koala Studios work", "ecommerce case studies", "Shopify portfolio"],
 });
@@ -26,7 +26,7 @@ export default function WorkPage() {
           <span>Selected</span> <em>work</em>
         </h1>
         <p className={`ks-lede ${styles.lede}`}>
-          Storefronts, packaging, 3D renders and campaigns for <em>food, wellness</em> and lifestyle brands.
+          Stores, email and ads for <em>supplement, wellness</em> and food brands, plus the packaging they sell with.
         </p>
       </section>
       <WorkGrid caseStudies={caseStudies} priorityCount={2} />

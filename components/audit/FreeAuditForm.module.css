@@ -1,0 +1,20 @@
+.form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.preview {
+  border-left: 2px solid var(--ks-green);
+  color: var(--ks-muted);
+  font-size: var(--ks-small);
+  padding-left: 0.8rem;
+}
+
+.error {
+  color: var(--ks-danger);
+  font-size: var(--ks-small);
+}

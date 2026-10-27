@@ -38,13 +38,31 @@ export function getPageContentByRoute(route: Extract<PublicRoute, "/" | "/servic
 /** Leads every work showcase, ahead of the newest-first order. */
 export const leadCaseStudySlug = "mercato-di-bellina";
 
+/**
+ * Follow the lead case, in this order: the supplement and wellness brands our
+ * cold emails name, then food. Everything else keeps the newest-first order.
+ */
+export const showcaseOrder = [
+  leadCaseStudySlug,
+  "iron-brothers",
+  "unity-supplements",
+  "bull-nutrition",
+  "nosh-balls",
+  "wellth-foods",
+  "medicrunch",
+];
+
 export function getPublishedCaseStudies() {
   // The source catalog is appended in addition order; show newest additions first.
   const published = caseStudies.filter((caseStudy) => caseStudy.status === "published").reverse();
-  return [
-    ...published.filter((caseStudy) => caseStudy.slug === leadCaseStudySlug),
-    ...published.filter((caseStudy) => caseStudy.slug !== leadCaseStudySlug),
-  ];
+  const rank = (slug: string) => {
+    const index = showcaseOrder.indexOf(slug);
+    return index === -1 ? showcaseOrder.length : index;
+  };
+  return published
+    .map((caseStudy, index) => ({ caseStudy, index }))
+    .sort((a, b) => rank(a.caseStudy.slug) - rank(b.caseStudy.slug) || a.index - b.index)
+    .map(({ caseStudy }) => caseStudy);
 }
 
 export function getBrandsBuiltFor() {

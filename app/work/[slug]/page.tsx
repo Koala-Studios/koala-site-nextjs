@@ -5,6 +5,9 @@ import { createCaseStudyMetadata } from "@/lib/metadata";
 import { getCaseStudyBySlug, getPublishedCaseStudies } from "@/lib/content";
 import { getCaseStudyPath, toAbsoluteUrl } from "@/lib/routes";
 import { CaseStudyHero, CaseStudyNext, CaseStudyStory } from "@/components/case-studies/CaseStudy";
+import { ClientResults } from "@/components/results/ClientResults";
+import { SectionHead } from "@/components/system";
+import { getVisibleResults } from "@/lib/content/results";
 
 type CaseStudyPageProps = {
   params: Promise<{
@@ -51,6 +54,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     ? getCaseStudyBySlug(caseStudy.relatedSlug)
     : undefined;
   const caseStudyPath = getCaseStudyPath(caseStudy.slug);
+  const results = getVisibleResults(caseStudy.slug);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -95,6 +99,12 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       />
       <CaseStudyHero caseStudy={caseStudy} number={number} />
       <CaseStudyStory caseStudy={caseStudy} />
+      {results.length ? (
+        <section className="ks-section" aria-labelledby="case-results-title">
+          <SectionHead id="case-results-title" title={<>The <em>numbers</em></>} />
+          <ClientResults results={results} linked={false} />
+        </section>
+      ) : null}
       <CaseStudyNext related={related} />
     </div>
   );

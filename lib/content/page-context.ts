@@ -31,5 +31,8 @@ const mayaContext: PageContext = {
 export function getPageContext(pathname: string | null): PageContext {
   if (pathname === "/maya" || pathname?.startsWith("/maya/")) return mayaContext;
   if (pathname?.startsWith("/contact")) return { ...defaultContext, footerLead: false };
+  // The ad landing page keeps one action: the form at the top of the page.
+  if (pathname === "/free-audit") return { ...defaultContext, ctaHref: "#audit-form", ctaLabel: "Get my free audit", footerLead: false };
+  if (pathname?.startsWith("/free-audit/")) return { ...defaultContext, footerLead: false };
   return defaultContext;
 }

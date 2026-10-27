@@ -89,18 +89,53 @@
   max-width: 34ch;
 }
 
-.engagements {
-  display: grid;
-  gap: 3rem;
+.plansLede {
+  margin-bottom: 2.5rem;
+  max-width: 40ch;
 }
 
-.engagement {
+.plans {
   display: grid;
-  gap: 1rem;
+  gap: 2.5rem;
 }
 
-.engagement > p {
-  max-width: 44ch;
+.plan {
+  align-content: start;
+  border-top: var(--ks-rule);
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+}
+
+.planLine {
+  font-family: var(--ks-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+}
+
+.planPoints {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.planPoints li {
+  border-top: var(--ks-rule-soft);
+  color: var(--ks-muted);
+  padding-top: 0.6rem;
+}
+
+.planTerms {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 3rem;
+  max-width: 60ch;
+}
+
+.startingPrice {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
 }
 
 .audit {
@@ -158,9 +193,9 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .engagements {
-    gap: 4rem;
-    grid-template-columns: 1fr 1fr;
+  .plans {
+    gap: 3rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
