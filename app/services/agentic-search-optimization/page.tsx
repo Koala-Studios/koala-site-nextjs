@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { ArrowIcon } from "@/components/site/ArrowIcon";
 import { Cta } from "@/components/site/Cta";
-import { Folio, SectionHead } from "@/components/system";
 import { agenticSearchPage as page } from "@/content/pages/agentic-search";
 import { getServiceDetail } from "@/content/pages/service-details";
 import { siteSettings } from "@/lib/content";
@@ -38,8 +37,21 @@ function Title({ text, accent }: { text: string; accent: string }) {
   );
 }
 
+/** Section heading: small green label over a one-line title, no rule. */
+function Head({ id, label, title, accent, children }: { id: string; label: string; title: string; accent: string; children?: ReactNode }) {
+  return (
+    <div className={styles.head}>
+      <span className={`ks-label ${styles.eyebrow}`}>{label}</span>
+      <h2 className={`ks-x ${styles.h2}`} id={id}>
+        <Title text={title} accent={accent} />
+      </h2>
+      {children}
+    </div>
+  );
+}
+
 export default function AgenticSearchPage() {
-  const { offer } = page;
+  const { offer, ctaLabel } = page;
 
   const jsonLd = [
     {
@@ -73,72 +85,57 @@ export default function AgenticSearchPage() {
         <Link className={`ks-label ${styles.back}`} href="/services">
           <ArrowIcon direction="left" /> All services
         </Link>
-        <Folio items={[page.hero.folio[0], page.hero.folio[1], <em className="ks-it" key="e">{page.hero.folio[2]}</em>]} />
+        <span className={`ks-label ${styles.eyebrow} ${styles.heroLabel}`}>{page.hero.label}</span>
+        <h1 className={`ks-x ${styles.heroTitle}`} id="aso-title">
+          <Title text={page.hero.headline} accent={page.hero.accent} />
+        </h1>
         <div className={styles.heroGrid}>
-          <h1 className={`ks-x ${styles.heroTitle}`} id="aso-title">
-            <Title text={page.hero.headline} accent={page.hero.accent} />
-          </h1>
           <div className={styles.heroCopy}>
-            <p className={`ks-body ${styles.heroLede}`}>{page.hero.lede}</p>
+            <p className={styles.heroLede}>{page.hero.lede}</p>
+            <ul className={styles.ticks}>
+              {page.hero.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
             <div className={styles.actions}>
               <Cta href={offer.href} data-analytics-cta="service-hero">
-                Request the free audit
+                {ctaLabel}
               </Cta>
               <Cta href="#aso-included" variant="text" arrow={false}>
-                See what’s included
+                See what you get
               </Cta>
             </div>
-            <p className={`ks-label ks-muted ${styles.heroNote}`}>{page.hero.note}</p>
           </div>
           <figure className={styles.heroMedia}>
-            <Image
-              src={page.hero.image.src}
-              alt={page.hero.image.alt}
-              fill
-              priority
-              sizes="(min-width: 900px) 52vw, 100vw"
-            />
+            <Image src={page.hero.image.src} alt={page.hero.image.alt} fill priority sizes="(min-width: 900px) 50vw, 100vw" />
           </figure>
         </div>
       </section>
 
       {/* ---------- The question changed ---------- */}
-      <section className="ks-section" aria-labelledby="aso-shift-title">
-        <SectionHead index="01" id="aso-shift-title" title={<Title text={page.shift.title} accent={page.shift.accent} />} />
-        <div className={styles.indent}>
-          <p className={`ks-lede ${styles.shiftIntro}`}>{page.shift.intro}</p>
-          <div className={styles.shift}>
-            <div className={styles.shiftCard}>
-              <span className="ks-label ks-muted">{page.shift.then.label}</span>
-              <div className={styles.searchBox}>
-                <SearchGlyph />
-                <span>{page.shift.then.query}</span>
-              </div>
-              <ul className={styles.links} aria-hidden="true">
-                <li /><li /><li /><li />
-              </ul>
-              <p className={styles.shiftResult}>{page.shift.then.result}</p>
+      <section className={styles.section} aria-labelledby="aso-shift-title">
+        <Head id="aso-shift-title" label={page.shift.label} title={page.shift.title} accent={page.shift.accent} />
+        <div className={styles.shift}>
+          <div className={styles.shiftCard}>
+            <span className="ks-label ks-muted">{page.shift.then.label}</span>
+            <div className={styles.searchBox}>
+              <SearchGlyph />
+              <span>{page.shift.then.query}</span>
             </div>
-            <div className={`${styles.shiftCard} ${styles.shiftNow}`}>
-              <span className="ks-label">{page.shift.now.label}</span>
-              <p className={styles.bubble}>{page.shift.now.query}</p>
-              <div className={styles.answer} aria-hidden="true">
-                <span className={styles.answerLine} />
-                <span className={styles.answerLine} />
-                <div className={styles.answerPicks}>
-                  <span /><span /><span />
-                </div>
-              </div>
-              <p className={styles.shiftResult}>{page.shift.now.result}</p>
-            </div>
+            <p className={styles.shiftResult}>{page.shift.then.result}</p>
           </div>
-          <p className={`ks-quote ${styles.point}`}>{page.shift.point}</p>
+          <div className={`${styles.shiftCard} ${styles.shiftNow}`}>
+            <span className="ks-label">{page.shift.now.label}</span>
+            <p className={styles.bubble}>{page.shift.now.query}</p>
+            <p className={styles.shiftResult}>{page.shift.now.result}</p>
+          </div>
+          <p className={styles.point}>{page.shift.point}</p>
         </div>
       </section>
 
-      {/* ---------- What AI reads ---------- */}
-      <section className="ks-section" aria-labelledby="aso-reads-title">
-        <SectionHead index="02" id="aso-reads-title" title={<Title text={page.reads.title} accent={page.reads.accent} />} />
+      {/* ---------- What AI can read ---------- */}
+      <section className={styles.section} aria-labelledby="aso-reads-title">
+        <Head id="aso-reads-title" label={page.reads.label} title={page.reads.title} accent={page.reads.accent} />
         <div className={styles.reads}>
           <figure className={styles.readsMedia}>
             <Image src={page.reads.image.src} alt={page.reads.image.alt} fill sizes="(min-width: 900px) 58vw, 100vw" />
@@ -158,7 +155,7 @@ export default function AgenticSearchPage() {
               <li key={point.title}>
                 <span className="ks-num">{String(index + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 className="ks-x ks-h3">{point.title}</h3>
+                  <h3 className={`ks-x ${styles.h3}`}>{point.title}</h3>
                   <p>{point.copy}</p>
                 </div>
               </li>
@@ -168,30 +165,33 @@ export default function AgenticSearchPage() {
       </section>
 
       {/* ---------- Who it's for ---------- */}
-      <section className="ks-section" aria-labelledby="aso-for-title">
-        <SectionHead index="03" id="aso-for-title" title={<Title text={page.categories.title} accent={page.categories.accent} />} />
-        <p className={`ks-lede ${styles.indent} ${styles.catIntro}`}>{page.categories.intro}</p>
-        <ul className={styles.cats}>
-          {page.categories.items.map((item) => (
-            <li className={styles.cat} key={item.name}>
-              <div className={styles.catMedia}>
-                <Image src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw" />
+      <section className={styles.section} aria-labelledby="aso-for-title">
+        <Head id="aso-for-title" label={page.brands.label} title={page.brands.title} accent={page.brands.accent} />
+        <ul className={styles.brands}>
+          {page.brands.items.map((item) => (
+            <li className={styles.brand} key={item.brand}>
+              <div className={styles.brandMedia}>
+                <Image src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 1000px) 19vw, 70vw" />
               </div>
-              <h3 className="ks-label">{item.name}</h3>
-              <p className={styles.catQuestion}>“{item.question}”</p>
+              <p className={styles.brandMeta}>
+                <span className="ks-x">{item.brand}</span>
+                <span className="ks-label ks-muted">{item.category}</span>
+              </p>
+              <p className={styles.brandQuestion}>“{item.question}”</p>
             </li>
           ))}
         </ul>
-        <p className={`ks-muted ${styles.fit}`}>{page.categories.fit}</p>
+        <p className={`ks-muted ${styles.small}`}>{page.brands.note}</p>
       </section>
 
-      {/* ---------- What's included ---------- */}
-      <section className="ks-section" aria-labelledby="aso-included-title" id="aso-included">
-        <SectionHead index="04" id="aso-included-title" title={<Title text={page.included.title} accent={page.included.accent} />} />
-        <div className={`${styles.tracks} ${styles.indent}`}>
-          {page.included.tracks.map((track) => (
-            <div className={styles.track} key={track.label}>
-              <span className="ks-label">{track.label}</span>
+      {/* ---------- What you get ---------- */}
+      <section className={styles.section} aria-labelledby="aso-included-title" id="aso-included">
+        <Head id="aso-included-title" label={page.included.label} title={page.included.title} accent={page.included.accent} />
+        <div className={styles.tracks}>
+          {page.included.tracks.map((track, index) => (
+            <div className={styles.track} key={track.title}>
+              <span className="ks-num">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className={`ks-x ${styles.h3}`}>{track.title}</h3>
               <ul>
                 {track.items.map((item) => (
                   <li key={item}>{item}</li>
@@ -200,42 +200,36 @@ export default function AgenticSearchPage() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* ---------- How it runs ---------- */}
-      <section className="ks-section" aria-labelledby="aso-steps-title">
-        <SectionHead index="05" id="aso-steps-title" title={<Title text={page.steps.title} accent={page.steps.accent} />} />
-        <ol className={`${styles.steps} ${styles.indent}`}>
-          {page.steps.items.map((step) => (
-            <li className={styles.step} key={step.number}>
-              <span className="ks-num">{step.number}</span>
-              <h3 className="ks-x ks-h3">{step.title}</h3>
-              <p>{step.copy}</p>
+        <ol className={styles.steps} aria-label="How it works">
+          {page.included.steps.map((step) => (
+            <li key={step.number}>
+              <span className="ks-label">{step.number}</span>
+              <strong className="ks-x">{step.title}</strong>
+              <span className={styles.stepCopy}>{step.copy}</span>
             </li>
           ))}
         </ol>
       </section>
 
       {/* ---------- Free audit ---------- */}
-      <section className="ks-section" aria-labelledby="aso-audit-title">
+      <section className={styles.section} aria-labelledby="aso-audit-title">
         <div className={styles.audit}>
           <figure className={styles.auditMedia}>
             <Image src={page.audit.image.src} alt={page.audit.image.alt} fill sizes="(min-width: 900px) 50vw, 100vw" />
           </figure>
           <div className={styles.auditCopy}>
-            <span className="ks-label">{page.audit.label}</span>
-            <h2 className="ks-x ks-h2" id="aso-audit-title">
+            <span className={`ks-label ${styles.eyebrow}`}>{page.audit.label}</span>
+            <h2 className={`ks-x ${styles.h2}`} id="aso-audit-title">
               <Title text={page.audit.title} accent={page.audit.accent} />
             </h2>
-            <p>We check:</p>
-            <ul className={styles.checks}>
+            <ul className={styles.ticks}>
               {page.audit.checks.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
             <p className={styles.outcome}>{page.audit.outcome}</p>
             <Cta href={offer.href} data-analytics-cta="service-audit-offer">
-              {offer.cta}
+              {ctaLabel}
             </Cta>
             <p className={`ks-muted ${styles.small}`}>{offer.qualification}</p>
           </div>
@@ -243,34 +237,36 @@ export default function AgenticSearchPage() {
       </section>
 
       {/* ---------- FAQ ---------- */}
-      <section className="ks-section" aria-labelledby="aso-faq-title">
-        <SectionHead index="06" id="aso-faq-title" title={<Title text={page.faq.title} accent={page.faq.accent} />} />
-        <div className={`${styles.faq} ${styles.indent}`}>
-          {page.faq.items.map((item) => (
-            <details className={styles.faqItem} key={item.q}>
-              <summary>
-                <span className="ks-x">{item.q}</span>
-                <span aria-hidden="true" className={styles.faqIcon} />
-              </summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
+      <section className={styles.section} aria-labelledby="aso-faq-title">
+        <div className={styles.faqGrid}>
+          <Head id="aso-faq-title" label={page.faq.label} title={page.faq.title} accent={page.faq.accent} />
+          <div className={styles.faq}>
+            {page.faq.items.map((item) => (
+              <details className={styles.faqItem} key={item.q}>
+                <summary>
+                  <span>{item.q}</span>
+                  <span aria-hidden="true" className={styles.faqIcon} />
+                </summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ---------- Closing CTA ---------- */}
-      <section className="ks-section" aria-labelledby="aso-cta-title">
+      <section className={styles.section} aria-labelledby="aso-cta-title">
         <div className={styles.cta}>
           <div className={styles.ctaMedia}>
             <Image src={page.cta.image.src} alt="" fill sizes="100vw" />
           </div>
           <div className={styles.ctaCopy}>
-            <h2 className="ks-x ks-h2" id="aso-cta-title">
+            <h2 className={`ks-x ${styles.h2}`} id="aso-cta-title">
               <Title text={page.cta.title} accent={page.cta.accent} />
             </h2>
             <p>{page.cta.copy}</p>
             <Cta href={offer.href} variant="light" data-analytics-cta="service-contact">
-              Request the free audit
+              {ctaLabel}
             </Cta>
           </div>
         </div>

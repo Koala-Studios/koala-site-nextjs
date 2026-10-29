@@ -1,5 +1,9 @@
 # Execution Ledger
 
+## 2026-10-29 - Agentic Search Optimization page, round 2
+
+Frank's review: titles too large and wrapping, unnecessary divider rules crowding headings, empty placeholder example brands, too much text and empty space for a sales page. The page drops the Folio and section rules for a small green label over one-line titles (hero sized to the container, one line from 1280px up), cuts copy to short selling lines with three hero ticks and a "Get your free audit" button, merges inclusions and steps, puts the FAQ beside its heading and halves section spacing (desktop page 8,743px to 5,917px). Example brands are now five complete fictional brands: IRONVOLT plus Oatwick, Saltmere, Wickloft and Brightling (briefs, logos, packshots and prompts in the koala-studios project under knowledge/fictional-brands). The Oct 29 factual wording corrections are kept. Same verification as before passes at 1440px and 390px.
+
 ## 2026-10-29 - Agentic Search Optimization page redesign
 
 Branch `cleo/aso-service-page-redesign` (not merged, not deployed). Frank rejected the Oct 19 text-only ASO candidate as plain and untargeted. The branch carries that candidate's service entry, nav/footer/sitemap, enquiry interest, audit offer and OpenAI click-reference capture unchanged (applied from its saved patch onto current main), then gives `/services/agentic-search-optimization` its own route and layout (`app/services/agentic-search-optimization/`, copy in `content/pages/agentic-search.ts`); `[slug]` no longer generates that slug. Sections: hero with image, then-vs-now search comparison, annotated product page ("what AI reads"), four category tiles with shopper questions, three-track inclusions, steps, free readiness audit panel, FAQ (FAQPage JSON-LD), dark closing CTA. Visuals are ImageGen stills with the invented brands IRONVOLT and Morrow Cove, WebP in `public/images/services/agentic-search/`.
