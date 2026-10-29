@@ -1,3 +1,5 @@
+import { agenticAuditOffer } from "@/lib/content/audit";
+
 export type ServiceDetail = {
   slug: string;
   navLabel: string;
@@ -10,7 +12,12 @@ export type ServiceDetail = {
   deliverables: string[];
   steps: Array<{ number: string; title: string; copy: string }>;
   fit: string[];
-  caseSlug: string;
+  caseSlug?: string;
+  showWork?: boolean;
+  contactHref?: string;
+  contactLabel?: string;
+  showAudit?: boolean;
+  introOffer?: { title: string; summary: string; qualification: string };
   ctaTitle: string;
 };
 
@@ -210,6 +217,42 @@ export const serviceDetails: ServiceDetail[] = [
     ],
     caseSlug: "nektr",
     ctaTitle: "Have a product to show off?",
+  },
+  {
+    slug: "agentic-search-optimization",
+    navLabel: "Agentic Search Optimization",
+    seoTitle: "Agentic Search Optimization for Ecommerce",
+    seoDescription: "Product information, store readiness and marketing strategy for ecommerce brands exploring AI shopping and agentic platforms such as ChatGPT.",
+    eyebrow: "Discovery",
+    headline: "Make your products\neasier to understand.",
+    accent: "understand.",
+    lede: "When shoppers use AI to research what to buy, clear product information matters. Koala Studios offers Agentic Search Optimization for ecommerce: reviewing your store’s product facts and buying journey, then prioritizing practical improvements. We also plan marketing for agentic platforms such as ChatGPT around the opportunities available to your brand.",
+    deliverables: [
+      "Product descriptions, variants and buying information review",
+      "Product data and structured information checks",
+      "Shipping, returns and availability clarity",
+      "Store readiness priorities and agreed improvements",
+      "Agentic-platform messaging and landing-page strategy",
+      "Measurement plan tied to enquiries and purchases",
+    ],
+    steps: [
+      { number: "01", title: "Review", copy: "We start with your store URL, audience and current product information. We identify missing or conflicting buying facts." },
+      { number: "02", title: "Prioritize", copy: "You get a practical improvement plan. We agree the scope, responsibilities and measurement before implementation." },
+      { number: "03", title: "Improve", copy: "We clarify agreed product and policy content, strengthen supporting data and check the path from discovery to purchase." },
+      { number: "04", title: "Measure", copy: "We review the signals available to your store. Platform visibility, ad access and results vary; no placement, ranking or sales outcome is guaranteed." },
+    ],
+    fit: [
+      "Shopify brands with an established product range",
+      "Stores where product details or buying policies need clarity",
+      "Teams exploring AI shopping alongside existing acquisition channels",
+      "Brands that want a scoped plan before committing to a new channel",
+    ],
+    showWork: false,
+    showAudit: false,
+    introOffer: agenticAuditOffer,
+    contactHref: agenticAuditOffer.href,
+    contactLabel: agenticAuditOffer.cta,
+    ctaTitle: "How ready is your store?",
   },
 ];
 

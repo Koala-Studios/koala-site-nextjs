@@ -4,7 +4,7 @@ export const servicesContent = {
   ...pageContent.services,
   hero: {
     ...pageContent.services.hero,
-    points: ["Shopify design & build", "Meta ad management", "Email marketing"],
+    points: ["Shopify design & build", "Meta ad management", "Email marketing", "Agentic Search Optimization"],
   },
   proof: [
     {
@@ -76,6 +76,15 @@ export const servicesContent = {
       ],
       note: "For brands launching new products, refreshing packaging, or needing premium product visuals before a photoshoot is possible.",
       href: "/services/packaging-and-3d-renders",
+    },
+    {
+      number: "05",
+      title: "Agentic Search Optimization",
+      kicker: "Discovery",
+      copy: "Make your products easier to understand when shoppers use AI to research what to buy. We review product information and the buying journey, prioritize store improvements, and plan marketing for agentic platforms such as ChatGPT.",
+      deliverables: ["Store readiness review", "Product information", "Supporting product data", "Platform strategy", "Measurement plan"],
+      note: "For ecommerce brands exploring AI shopping. Platform access and results vary; visibility and sales are not guaranteed.",
+      href: "/services/agentic-search-optimization",
     },
   ],
   delivery: [

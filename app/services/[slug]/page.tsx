@@ -105,13 +105,18 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
         </div>
         <div className={styles.heroFoot}>
           <p className="ks-lede">{service.lede}</p>
-          <div className={styles.actions}>
-            <Cta href="/contact" data-analytics-cta="service-hero">
-              Start a project
+          <div className={service.introOffer ? styles.offerPanel : styles.actions}>
+            {service.introOffer && <>
+              <h2 className="ks-x ks-h3">{service.introOffer.title}</h2>
+              <p>{service.introOffer.summary}</p>
+              <p className="ks-muted">{service.introOffer.qualification}</p>
+            </>}
+            <Cta href={service.contactHref ?? "/contact"} data-analytics-cta="service-hero">
+              {service.contactLabel ?? "Start a project"}
             </Cta>
-            <Cta href={auditOffer.href} variant="text" data-analytics-cta="service-audit">
+            {service.showAudit !== false && <Cta href={auditOffer.href} variant="text" data-analytics-cta="service-audit">
               Or get a free audit
-            </Cta>
+            </Cta>}
           </div>
         </div>
       </section>
@@ -143,7 +148,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
         </ul>
       </section>
 
-      <section className="ks-section" aria-labelledby="service-work-title">
+      {service.showWork !== false && <section className="ks-section" aria-labelledby="service-work-title">
         <SectionHead
           index="04"
           id="service-work-title"
@@ -155,7 +160,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
           }
         />
         <WorkGrid caseStudies={caseStudies} variant="rail" />
-      </section>
+      </section>}
 
       <section className="ks-section" aria-labelledby="service-cta-title">
         <div className={styles.cta}>
@@ -163,12 +168,12 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             {service.ctaTitle}
           </h2>
           <div className={styles.actions}>
-            <Cta href="/contact" variant="light" data-analytics-cta="service-contact">
-              Start a project
+            <Cta href={service.contactHref ?? "/contact"} variant="light" data-analytics-cta="service-contact">
+              {service.contactLabel ?? "Start a project"}
             </Cta>
-            <Cta href={auditOffer.href} variant="text" data-analytics-cta="service-audit-footer">
+            {service.showAudit !== false && <Cta href={auditOffer.href} variant="text" data-analytics-cta="service-audit-footer">
               {auditOffer.cta}
-            </Cta>
+            </Cta>}
           </div>
         </div>
       </section>

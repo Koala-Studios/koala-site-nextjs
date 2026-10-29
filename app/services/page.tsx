@@ -24,7 +24,7 @@ export const metadata: Metadata = createPageMetadata({
 const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Shopify design, packaging, Meta ad management, and email marketing",
+  name: servicesContent.offerings.map((offering) => offering.title).join(", "),
   description: servicesContent.seo.description,
   url: toAbsoluteUrl("/services"),
   provider: { "@type": "Organization", name: siteSettings.name, url: toAbsoluteUrl("/") },
@@ -97,7 +97,7 @@ export default function ServicesPage() {
       ))}
 
       <section className="ks-section" aria-labelledby="services-process-title">
-        <SectionHead index="05" id="services-process-title" title={<>How we <em>work</em></>} />
+        <SectionHead index="06" id="services-process-title" title={<>How we <em>work</em></>} />
         <ol className={styles.steps}>
           {servicesContent.delivery.map((step) => (
             <li className={styles.step} key={step.number}>
@@ -110,7 +110,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="ks-section" aria-labelledby="services-engagement-title">
-        <SectionHead index="06" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
+        <SectionHead index="07" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
         <div className={styles.engagements}>
           {[servicesContent.engagement.project, servicesContent.engagement.retainer].map((mode) => (
             <div className={styles.engagement} key={mode.title}>

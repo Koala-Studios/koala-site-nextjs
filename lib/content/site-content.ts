@@ -91,16 +91,16 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     route: "/services",
     status: "published",
     seo: {
-      title: "Shopify Design, Meta Ads & Email Marketing Services",
+      title: "Ecommerce Services & Agentic Search Optimization",
       description:
-        "Shopify design and build, Meta ad management, and email marketing for ecommerce brands. One team across the full funnel.",
+        "Shopify design, Meta ads, email, packaging and Agentic Search Optimization for ecommerce brands. One team across the buying journey.",
       canonicalPath: "/services",
     },
     hero: {
       eyebrow: "Services",
       headline: "Design. Build. Grow.",
       summary:
-        "Four ways to work with us: build the store, make the product shine, drive the traffic and keep the customers. Most brands start with one and grow into the rest.",
+        "Five ways to work with us: build the store, make the product shine, drive traffic, keep customers and prepare for AI shopping. Most brands start with one and grow into the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },

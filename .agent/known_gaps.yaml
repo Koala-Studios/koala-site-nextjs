@@ -234,3 +234,9 @@ workflow_notes:
   - id: next_dev_localhost
     severity: low
     summary: "Use http://localhost:3029 for hydrated Next dev visual QA; http://127.0.0.1:3029 can block dev client hydration and leave client components inert."
+
+# 2026-10-10 task-local follow-up (does not replace historical Windows gaps):
+# Historical Newton Browser container-local failure was resolved for preview QA
+# with task-local Chromium on October 19. Current local campaign candidate adds
+# the approved free audit and session-only oppref; Pixel/CAPI, consent review,
+# real recipient delivery and public deployment remain unverified/unperformed.

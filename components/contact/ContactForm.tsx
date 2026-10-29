@@ -9,7 +9,8 @@ import { Cta } from "@/components/site/Cta";
 import { analyticsConfig } from "@/lib/analytics";
 import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
 import { attributionEventParams, attributionFields, captureAttribution } from "@/lib/attribution";
-import { auditOffer } from "@/lib/content/audit";
+import { agenticAuditOffer, auditOffer } from "@/lib/content/audit";
+import { openAIClickFields } from "@/lib/openai-click";
 
 import styles from "./ContactForm.module.css";
 
@@ -19,6 +20,7 @@ const projectTypes = [
   { value: "Shopify design & build", name: "interest-shopify" },
   { value: "Meta ads", name: "interest-meta-ads" },
   { value: "Email marketing", name: "interest-email" },
+  { value: "Agentic Search Optimization", name: "interest-agentic-search" },
   { value: "Brand and growth audit", name: "interest-audit" },
   { value: "Not sure yet", name: "interest-unsure" },
 ] as const;
@@ -39,13 +41,18 @@ export function ContactForm({ short = false }: { short?: boolean }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const auditRef = useRef<HTMLInputElement>(null);
+  const agenticRef = useRef<HTMLInputElement>(null);
   const isAudit = searchParams.get("interest") === "brand-growth-audit";
+  const isAgenticSearch = searchParams.get("interest") === "agentic-search-optimization";
+  const isAgenticAudit = isAgenticSearch && searchParams.get("offer") === agenticAuditOffer.id;
+  const wantsAudit = isAudit || isAgenticAudit;
   const [attribution, setAttribution] = useState<Record<string, string>>({});
   useEffect(() => {
-    if (isAudit && auditRef.current) auditRef.current.checked = true;
-  }, [isAudit]);
+    if (wantsAudit && auditRef.current) auditRef.current.checked = true;
+    if (isAgenticSearch && agenticRef.current) agenticRef.current.checked = true;
+  }, [wantsAudit, isAgenticSearch]);
   useEffect(() => {
-    const id = window.setTimeout(() => setAttribution(attributionFields(captureAttribution())), 0);
+    const id = window.setTimeout(() => setAttribution({ ...attributionFields(captureAttribution()), ...openAIClickFields() }), 0);
     return () => window.clearTimeout(id);
   }, [searchParams]);
   const [submitState, setSubmitState] = useState<
@@ -67,6 +74,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
       const current = captureAttribution();
       const formData = new FormData(event.currentTarget);
       Object.entries(attributionFields(current)).forEach(([key, value]) => formData.set(key, value));
+      Object.entries(openAIClickFields()).forEach(([key, value]) => formData.set(key, value));
       if (process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true") {
         // An explicit local-only build never posts inquiries to the live service.
         window.sessionStorage.setItem("koala:preview-submission", JSON.stringify(Object.fromEntries(formData)));
@@ -92,7 +100,11 @@ export function ContactForm({ short = false }: { short?: boolean }) {
 
   return (
     <div className={styles.formBlock}>
-      {isAudit && !short && <div className={styles.auditNote}><span className="ks-label">{auditOffer.title}</span><p>{auditOffer.summary}</p></div>}
+      {wantsAudit && !short && <div className={styles.auditNote}>
+        <span className="ks-label">{isAgenticAudit ? agenticAuditOffer.title : auditOffer.title}</span>
+        <p>{isAgenticAudit ? agenticAuditOffer.summary : auditOffer.summary}</p>
+        {isAgenticAudit && <p>{agenticAuditOffer.qualification}</p>}
+      </div>}
       {process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" && <p className={styles.previewNote}>Local preview: submissions stay in this browser and are not sent.</p>}
       <form
         className={styles.form}
@@ -102,6 +114,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact" />
+        {isAgenticAudit && <input type="hidden" name="offer_id" value={agenticAuditOffer.id} />}
         {Object.entries(attribution).map(([key, value]) => <input type="hidden" key={key} name={key} value={value} />)}
         <p className={styles.hidden}>
           <label>
@@ -119,7 +132,8 @@ export function ContactForm({ short = false }: { short?: boolean }) {
             <Field label="Company"><Input name="company" aria-label="Company" autoComplete="organization" required /></Field>
             <Field label="Website (optional)"><Input name="website" type="text" aria-label="Website (optional)" autoComplete="url" /></Field>
           </div>
-          {isAudit && <input type="hidden" name="interest-audit" value="Brand and growth audit" />}
+          {wantsAudit && <input type="hidden" name="interest-audit" value="Brand and growth audit" />}
+          {isAgenticSearch && <input type="hidden" name="interest-agentic-search" value="Agentic Search Optimization" />}
         </> : <>
         <div className={styles.row}>
           <Field label="Name">
@@ -178,8 +192,8 @@ export function ContactForm({ short = false }: { short?: boolean }) {
                   name={type.name}
                   type="checkbox"
                   value={type.value}
-                  ref={type.name === "interest-audit" ? auditRef : undefined}
-                  defaultChecked={type.name === "interest-audit" && isAudit}
+                  ref={type.name === "interest-audit" ? auditRef : type.name === "interest-agentic-search" ? agenticRef : undefined}
+                  defaultChecked={(type.name === "interest-audit" && wantsAudit) || (type.name === "interest-agentic-search" && isAgenticSearch)}
                 />
                 <span className={styles.typeLabel}>{type.value}</span>
               </label>
@@ -216,7 +230,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
 
         <div className={styles.footer}>
           <Cta type="submit" fullWidth disabled={isSubmitting}>
-            {isSubmitting ? "Sending" : short && isAudit ? "Request the audit" : "Send message"}
+            {isSubmitting ? "Sending" : (short && isAudit) || isAgenticAudit ? "Request the audit" : "Send message"}
           </Cta>
           {submitState === "error" ? (
             <p className={styles.status} role="alert">

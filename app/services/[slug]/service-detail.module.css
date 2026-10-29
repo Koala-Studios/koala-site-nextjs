@@ -46,6 +46,18 @@
   gap: 1.25rem 2rem;
 }
 
+.offerPanel {
+  border-top: var(--ks-rule);
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  order: -1;
+}
+
+.offerPanel :global(.ks-btn) {
+  justify-self: start;
+}
+
 .steps {
   display: grid;
   gap: 1.5rem;
@@ -99,6 +111,9 @@
 }
 
 @media (min-width: 900px) {
+  .offerPanel {
+    order: 0;
+  }
   .heroFoot {
     align-items: end;
     grid-template-columns: 1.4fr 1fr;

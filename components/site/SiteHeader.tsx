@@ -26,6 +26,7 @@ const serviceNotes: Record<string, string> = {
   "meta-ads-management": "Creative-first paid social",
   "email-marketing": "Flows that bring buyers back",
   "packaging-and-3d-renders": "Shelf-ready, render-ready",
+  "agentic-search-optimization": "Clearer products for AI shopping",
 };
 
 const featured = caseStudies.find((caseStudy) => caseStudy.slug === leadCaseStudySlug && caseStudy.status === "published");
