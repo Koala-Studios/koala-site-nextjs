@@ -25,7 +25,10 @@ type ServiceDetailPageProps = {
 };
 
 export function generateStaticParams() {
-  return serviceDetails.map((service) => ({ slug: service.slug }));
+  // Agentic Search Optimization has its own route and layout.
+  return serviceDetails
+    .filter((service) => service.slug !== "agentic-search-optimization")
+    .map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({
