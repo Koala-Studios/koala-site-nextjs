@@ -4,6 +4,8 @@
 
 Branch `cleo/aso-service-page-redesign` (not merged, not deployed). Frank rejected the Oct 19 text-only ASO candidate as plain and untargeted. The branch carries that candidate's service entry, nav/footer/sitemap, enquiry interest, audit offer and OpenAI click-reference capture unchanged (applied from its saved patch onto current main), then gives `/services/agentic-search-optimization` its own route and layout (`app/services/agentic-search-optimization/`, copy in `content/pages/agentic-search.ts`); `[slug]` no longer generates that slug. Sections: hero with image, then-vs-now search comparison, annotated product page ("what AI reads"), four category tiles with shopper questions, three-track inclusions, steps, free readiness audit panel, FAQ (FAQPage JSON-LD), dark closing CTA. Visuals are ImageGen stills with the invented brands IRONVOLT and Morrow Cove, WebP in `public/images/services/agentic-search/`.
 
+Oct 29 wording pass: AI-shopping statements reworded to match OpenAI's "Shopping with ChatGPT Search" help article and Shopify's "Shopify Catalog and product discovery for agentic storefronts" help page; no absolute claims about how assistants choose products and no implied selection guarantee.
+
 Verification: `tsc --noEmit`, ESLint, `scripts/check-openai-click.cjs` and `next build` pass. Playwright with system Chromium at 1440px and 390px: no horizontal overflow, no page errors, all images load; hero CTA opens the enquiry with ASO and the offer ID preselected and the click reference retained; local preview submission reaches success with zero POSTs and zero external requests.
 
 ## 2026-10-26 - Journal (/blog) and first post
