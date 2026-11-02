@@ -15,6 +15,289 @@ export const blogIndexContent: BlogIndexContent = {
 
 /** Posts in publication order; the journal lists them newest first. */
 export const blogPosts: BlogPostContent[] = [
+{
+  "slug": "bfcm-without-sitewide-discount",
+  "status": "draft",
+  "title": "BFCM without a",
+  "titleAccent": "sitewide discount",
+  "summary": "A BFCM without a sitewide discount plan for supplement brands: cost the offer, choose a useful bonus, and test the whole order before Black Friday.",
+  "publishedAt": "2026-11-04",
+  "author": "Koala Studios",
+  "tags": [
+    "Shopify",
+    "Supplements",
+    "BFCM",
+    "Offers"
+  ],
+  "sectionLabel": "Step",
+  "cover": {
+    "src": "/images/blog/bfcm-without-sitewide-discount/cover.jpg",
+    "alt": "An IRONVOLT whey tub, black shaker and shipping carton on a concrete gym bench. Fictional brand illustration.",
+    "width": 1536,
+    "height": 1024
+  },
+  "intro": [
+    "Your best-selling protein tub sells at full price in October. Then November arrives and the easiest campaign brief is “30% off everything”. The banner takes an afternoon. Recovering the money you gave away can take much longer.",
+    "For a supplement founder, the useful question is what a customer gets for buying during Black Friday that you can afford to provide. That might be a starter bundle, a shaker with a qualifying order, or early access to a flavour. It still needs a clear reason to buy now.",
+    "Black Friday falls on November 27 this year. There is time to choose one offer, check its economics and walk the order on a phone. Here is how we would do it. IRONVOLT is our fictional supplement brand; every price and cost in its worked example is illustrative, never a client result."
+  ],
+  "takeaways": {
+    "title": "Start here if you only have an hour",
+    "items": [
+      [
+        {
+          "text": "Calculate contribution per order",
+          "href": "#cost-the-offer"
+        },
+        " before choosing the incentive."
+      ],
+      [
+        {
+          "text": "Choose one useful offer",
+          "href": "#choose-the-job"
+        },
+        " for one customer situation."
+      ],
+      [
+        {
+          "text": "Walk the qualifying cart",
+          "href": "#walk-the-order"
+        },
+        " and one cart that should not qualify."
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "id": "read-the-evidence",
+      "number": "1",
+      "heading": "A bigger weekend does not set your discount",
+      "paragraphs": [
+        "Klaviyo’s 2025 recap reports an 11% rise in same-site sales alongside a 10% year-over-year decline in discounts. Its performance analysis uses a stable cohort of 10,000 brands. These are relative changes, not percentage-point changes in the discount offered.",
+        "Shopify reported US$14.6 billion of global BFCM sales in 2025. That is platform-wide GMV, including specified taxes and shipping, not supplement revenue or merchant profit. Neither report tells you what your store will earn this November."
+      ],
+      "why": [
+        "The evidence gives you permission to test a less expensive incentive. It does not prove that removing discounts causes growth. Your product mix, repeat customers, acquisition costs and stock are the decision inputs."
+      ],
+      "steps": [
+        "Write the job of this campaign in one sentence: acquire first-time buyers, bring back replenishment customers, or move a specific stock position.",
+        "Choose a primary measure that matches that job. For acquisition, use contribution after acquisition cost; for returning buyers, track contribution and the later reorder.",
+        "Compare the result with a similar trading period and separate new from returning customers. A crowded sale weekend is not a controlled experiment."
+      ],
+      "check": "Can you explain success without quoting gross sales alone?",
+      "media": [
+        {
+          "kind": "stats",
+          "items": [
+            {
+              "value": "+11%",
+              "label": "same-site sales, year over year"
+            },
+            {
+              "value": "−10%",
+              "label": "discounts, year over year"
+            }
+          ],
+          "source": {
+            "label": "Klaviyo, 2025 BFCM recap, December 2, 2025",
+            "href": "https://www.klaviyo.com/newsroom/bfcm-holiday-shopping"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cost-the-offer",
+      "number": "2",
+      "heading": "Cost the offer before you write the headline",
+      "paragraphs": [
+        "A useful first calculation is net product revenue minus product cost, payment fees, fulfilment, shipping you fund and the incentive. Then subtract acquisition cost where relevant. Taxes collected for remittance are not money available to fund a gift.",
+        "Consider an invented CAD $49 IRONVOLT tub. Assume $20 product cost and $9 total variable payment, packing and net shipping costs. Full-price contribution before advertising is $20. A 30% markdown removes $14.70, leaving $5.30. Keeping the price and adding a shaker costing $4 leaves $16.",
+        "At those assumed costs, matching $200 of contribution takes 10 full-price orders, 13 gift orders or 38 discounted orders, rounded up. This holds costs fixed to isolate the offer. Actual fees, shipping, returns and acquisition costs can change with the basket. Replace every assumption with your own numbers."
+      ],
+      "why": [
+        "A gift has a retail value to the customer and a different cost to you. The gap can make it attractive, but only if the customer actually wants it and fulfilment can deliver it. A warehouse full of unwanted accessories does not become a good offer by calling them free."
+      ],
+      "steps": [
+        "Pull recent fulfilled orders for the products you plan to feature. Use actual landed costs and shipping by destination, not the cheapest quoted rate.",
+        "Calculate contribution for the normal cart, the promotional cart and the worst eligible cart. Include the extra parcel weight or packing step created by a gift.",
+        "Set a minimum acceptable contribution. If the offer falls below it, change the qualifying basket, the incentive or the acquisition budget before approving creative."
+      ],
+      "check": "Does the least profitable eligible order still leave the contribution you need?",
+      "media": [
+        {
+          "kind": "image",
+          "src": "/images/blog/bfcm-without-sitewide-discount/offer-math.png",
+          "alt": "Illustrative CAD contribution calculation: full price $20, 30 percent discount $5.30, full price plus a $4 gift $16. Before ads, tax excluded.",
+          "width": 1000,
+          "height": 1400,
+          "caption": "Illustrative IRONVOLT economics, not observed performance. $49 revenue less $20 product cost and $9 other variable costs. Replace all assumptions.",
+          "credit": "Diagram: Koala Studios"
+        }
+      ]
+    },
+    {
+      "id": "choose-the-job",
+      "number": "3",
+      "heading": "Choose a bonus that fits the buying decision",
+      "paragraphs": [
+        "A first-time buyer may want a simpler way to start. A regular buyer may already own your shaker and care more about their usual flavour being available. Giving both the same bonus can waste margin without helping either decision.",
+        "For IRONVOLT, the existing fictional Starter Bundle is $59 for a tub and shaker. Simply advertising that normal bundle price is not a new Black Friday saving. An alternative campaign could offer a shaker with a qualifying full-price tub, subject to stock and the cost check above. That is a proposed example, not an active offer.",
+        "A fixed bundle can simplify product choice. A gift can preserve the headline price of the core product. Early access can reward an existing customer when stock or a release genuinely gives them something to access. Each needs a concrete benefit the buyer understands."
+      ],
+      "why": [
+        "A bundle of products someone will not use is just a larger bill. Start with the customer’s routine and make the combination easy to explain. Avoid adding several unfamiliar supplements merely to reach a higher basket value."
+      ],
+      "steps": [
+        "Write two customer sentences: “I am trying this brand” and “I need my next tub”. Pick the one this offer serves.",
+        "Choose one incentive and list its real limits: eligible products, market, purchase type, quantity, start and end time, and what happens if the bonus sells out.",
+        "Keep the same core promise from the first email through the landing page and cart. If Monday has a different offer, explain its different purpose before anyone buys on Friday."
+      ],
+      "check": "Would the customer still find the bonus useful if its retail price were hidden?"
+    },
+    {
+      "id": "make-costs-clear",
+      "number": "4",
+      "heading": "Make the delivered cost easy to understand",
+      "paragraphs": [
+        "Baymard’s current abandonment research puts excessive extra costs at 40% among the reported checkout reasons after setting aside the browsing-only segment. Slow delivery is 20%; inability to calculate the total upfront is 12%. These are selected US shopper responses, not a forecast for Canadian supplement stores, and the reasons should not be added together.",
+        "The practical lesson is to test the delivered basket, not just the product saving. In the fictional IRONVOLT brief, a $49 tub is below the $60 free-shipping threshold. A free shaker does not automatically make the paid subtotal reach $60. The customer can receive a gift and still owe shipping."
+      ],
+      "why": [
+        "An offer loses credibility when the banner sounds all-inclusive but checkout adds a charge the customer did not expect. A threshold should follow shipping economics and real basket options; raising it merely to make customers buy more can make the offer harder to use."
+      ],
+      "steps": [
+        "Put the qualifying rule and shipping rule near the offer button. State when tax is added and where delivery estimates apply.",
+        "Price the most likely single-item and bundle carts for the markets you serve. Check a remote destination as well as a local one.",
+        "If a shipping incentive is the offer, cost it separately from a product gift. Do not casually stack both because they look inexpensive in isolation."
+      ],
+      "check": "Can a customer estimate the delivered cost before entering payment details?",
+      "media": [
+        {
+          "kind": "bar",
+          "title": "Reasons shoppers give for leaving checkout",
+          "subtitle": "Selected US shopper responses in Baymard’s 2026 presentation; browsing-only segment set aside. Multiple reasons may apply.",
+          "unit": {
+            "suffix": "%"
+          },
+          "rows": [
+            {
+              "label": "Extra costs too high",
+              "value": 40,
+              "highlight": true
+            },
+            {
+              "label": "Delivery too slow",
+              "value": 20
+            },
+            {
+              "label": "Total not visible upfront",
+              "value": 12,
+              "highlight": true
+            }
+          ],
+          "source": {
+            "label": "Baymard Institute, cart and checkout abandonment reasons, 2026 data; accessed November 2, 2026",
+            "href": "https://baymard.com/lists/cart-abandonment-rate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "walk-the-order",
+      "number": "5",
+      "heading": "Build the rule, then walk the order",
+      "paragraphs": [
+        "A product picture beside the words “free shaker” does not make the checkout apply the offer. Shopify’s native Buy X get Y discount requires the shopper to add both the qualifying purchase and the gift. It does not insert the gift automatically.",
+        "If you want automatic insertion, you need separate cart behaviour and must test that implementation. Otherwise say plainly that the customer should add the shaker. The fewer surprises between the button and payment, the easier the offer is to trust."
+      ],
+      "why": [
+        "Most expensive promotion mistakes happen at the edges: an excluded subscription qualifies, a second gift discounts, a code stacks, or the campaign ends in a different time zone from the banner."
+      ],
+      "steps": [
+        "In Shopify, open Discounts → Create discount → Buy X get Y. Choose the method, qualifying products or amount, gift product, and Free as the discounted value.",
+        "Set the maximum uses per order, eligibility, combinations and active dates deliberately. Shopify uses the store’s configured time zone for discount start and end.",
+        "Test one eligible cart, one just below the requirement, excluded items, two gifts, another discount, and the subscription purchase option if offered. Check the final order summary before payment.",
+        "Write the customer instructions to match what you just observed. If the gift must be added manually, make its selection obvious and test the link from the email on a phone."
+      ],
+      "check": "Can someone who did not build the offer get the promised result without coaching?"
+    },
+    {
+      "id": "measure-and-prepare",
+      "number": "6",
+      "heading": "Use November to remove the weak assumptions",
+      "paragraphs": [
+        "You have more than three weeks before November 27. Use this week to choose the offer and cost it, next week to finish the page and email, and the following week to rehearse fulfilment and checkout. These are planning targets, not reasons to invent a countdown.",
+        "For the campaign, give a new buyer help choosing a flavour or starter option. Give a returning buyer a clear route to the product they already use. Use only people eligible to receive the channel’s marketing, and keep your existing consent and suppression rules in force.",
+        "After the weekend, split first orders from repeat orders. Count the gifts actually fulfilled, discounts actually taken and shipping actually paid. Compare contribution per order and total contribution, then revisit the reorder once enough time has passed. Attribution in an email or ad platform should remain separate from store totals.",
+        [
+          {
+            "text": "Walk the eight common supplement-store sales leaks",
+            "href": "/blog/supplement-store-sales-leaks"
+          },
+          " before launch, or ",
+          {
+            "text": "see how we work across Shopify and email",
+            "href": "/services"
+          },
+          "."
+        ]
+      ],
+      "why": [
+        "A low-cost bonus can still fail if it goes mostly to people who would have purchased anyway. A larger basket can also pull future orders forward. The weekend result is the start of the evaluation, not proof of durable customer value."
+      ],
+      "steps": [
+        "Before launch, save the offer terms, normal prices, cost assumptions and success measure together. Assign someone to stock, customer questions and removing the offer when it ends.",
+        "Give the warehouse a sample order showing exactly what to pack. Decide the customer remedy before a gift runs out, and update every promotion surface together.",
+        "Review the weakest part of the buying path before buying more reach. Our earlier article on supplement-store sales leaks gives a phone walkthrough; our services page explains how we connect store and email work."
+      ],
+      "check": "Can the team explain the offer, pack it correctly and measure its contribution from the same written brief?"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Klaviyo, 2025 BFCM recap, December 2, 2025",
+      "href": "https://www.klaviyo.com/newsroom/bfcm-holiday-shopping"
+    },
+    {
+      "label": "Shopify, 2025 BFCM results, December 2, 2025",
+      "href": "https://www.shopify.com/news/bfcm-data-2025"
+    },
+    {
+      "label": "Baymard Institute, cart and checkout abandonment reasons, 2026 data; accessed November 2, 2026",
+      "href": "https://baymard.com/lists/cart-abandonment-rate"
+    },
+    {
+      "label": "Shopify Help Center, Buy X get Y discounts; accessed November 2, 2026",
+      "href": "https://help.shopify.com/en/manual/discounts/discount-types/buy-x-get-y"
+    }
+  ],
+  "seo": {
+    "title": "BFCM without a sitewide discount for supplement brands",
+    "description": "Build a supplement BFCM offer around contribution, useful gifts and clear checkout rules. Includes a worked example and a launch checklist.",
+    "ogImage": "/images/blog/bfcm-without-sitewide-discount/share.jpg",
+    "canonicalPath": "/blog/bfcm-without-sitewide-discount"
+  },
+  "checklist": {
+    "title": "Before the first campaign goes out",
+    "note": "One offer, one set of terms, one tested order.",
+    "items": [
+      "Choose the buyer and the buying problem.",
+      "Cost the least profitable eligible basket, including the gift and shipping.",
+      "Label bundle savings against a real comparison price.",
+      "State eligible products, purchase types, market and dates.",
+      "Explain how to add the gift and when shipping is free.",
+      "Test eligibility, stacking, quantities and the store time zone.",
+      "Confirm gift stock and the packing instructions.",
+      "Save contribution and reorder measures before launch."
+    ]
+  },
+  "cta": {
+    "title": "Make the offer work all the way to checkout.",
+    "text": "We help supplement and CPG brands connect the offer, Shopify store and email campaign. Bring us the cart you want customers to buy.",
+    "label": "Talk through your offer",
+    "href": "/contact"
+  }
+},
   {
     slug: "supplement-store-sales-leaks",
     status: "published",
