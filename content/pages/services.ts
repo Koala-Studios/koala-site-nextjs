@@ -84,7 +84,7 @@ export const servicesContent = {
       ],
       note: "For brands getting orders but not repeat orders, or where email is an untapped channel.",
       href: "/services/email-marketing",
-      image: { src: "/images/services/iron-brothers-email.webp", alt: "An Iron Brothers email we designed: Missed Prime Days? 20% off direct", ratio: "3 / 4" },
+      image: { src: "/images/services/iron-brothers-email.webp", alt: "An Iron Brothers email we designed: Missed Prime Days? 20% off direct", ratio: "600 / 676" },
     },
     {
       number: "04",
