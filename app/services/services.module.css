@@ -60,6 +60,12 @@
   max-width: 13rem;
 }
 
+/* Maya's arch portrait takes the line drawing's place on Consulting. */
+.portrait {
+  aspect-ratio: 3 / 4;
+  width: min(100%, 13rem);
+}
+
 .note {
   color: var(--ks-muted);
   font-size: 1.2rem;

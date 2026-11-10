@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/animation/Reveal";
 import { Cta } from "@/components/site/Cta";
 import { ArchWindow } from "@/components/system/ArchWindow";
-import { Folio, IndexList, SectionHead } from "@/components/system";
+import { Arch, Folio, IndexList, SectionHead } from "@/components/system";
 import { serviceIcon } from "@/components/system/Icons";
 import { LineArt } from "@/components/system/LineArt";
 import { servicesContent } from "@/content/pages/services";
@@ -40,6 +40,13 @@ const servicesJsonLd = {
   },
 };
 
+type Offering = (typeof servicesContent.offerings)[number] & {
+  linkLabel?: string;
+  portrait?: { src: string; alt: string };
+};
+
+const offerings: Offering[] = [...servicesContent.offerings, ...servicesContent.moreOfferings];
+
 export default function ServicesPage() {
   return (
     <div className="ks-page">
@@ -74,7 +81,7 @@ export default function ServicesPage() {
         <p className={`ks-label ${styles.bandCaption}`}>Ära · 3D renders</p>
       </ArchWindow>
 
-      {servicesContent.offerings.map((offering) => (
+      {offerings.map((offering) => (
         <section className="ks-section" aria-labelledby={`service-${offering.number}`} key={offering.href}>
           <SectionHead
             index={offering.number}
@@ -84,11 +91,15 @@ export default function ServicesPage() {
           />
           <div className={styles.offering}>
             <Reveal className={styles.offeringCopy}>
-              <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              {offering.portrait ? (
+                <Arch className={styles.portrait} src={offering.portrait.src} alt={offering.portrait.alt} sizes="13rem" />
+              ) : (
+                <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              )}
               <p className="ks-lede">{offering.copy}</p>
               <p className={`ks-it ${styles.note}`}>{offering.note}</p>
               <Link className="ks-tlink" href={offering.href}>
-                Full service details <span aria-hidden="true">↗</span>
+                {offering.linkLabel ?? "Full service details"} <span aria-hidden="true">↗</span>
               </Link>
             </Reveal>
             <IndexList items={offering.deliverables.map((item, index) => ({ key: item, lead: String(index + 1).padStart(2, "0"), name: item }))} />
@@ -97,7 +108,7 @@ export default function ServicesPage() {
       ))}
 
       <section className="ks-section" aria-labelledby="services-process-title">
-        <SectionHead index="05" id="services-process-title" title={<>How we <em>work</em></>} />
+        <SectionHead index="07" id="services-process-title" title={<>How we <em>work</em></>} />
         <ol className={styles.steps}>
           {servicesContent.delivery.map((step) => (
             <li className={styles.step} key={step.number}>
@@ -110,7 +121,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="ks-section" aria-labelledby="services-engagement-title">
-        <SectionHead index="06" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
+        <SectionHead index="08" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
         <div className={styles.engagements}>
           {[servicesContent.engagement.project, servicesContent.engagement.retainer].map((mode) => (
             <div className={styles.engagement} key={mode.title}>

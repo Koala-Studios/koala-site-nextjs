@@ -1,0 +1,45 @@
+/* Index-row rhythm from the service list above it: soft rules, label type,
+   marks in Koala green like the service icons (masked, as .ks-logo is). */
+.platforms {
+  display: grid;
+  gap: 0.9rem;
+  padding-top: 2rem;
+}
+
+.label {
+  color: var(--ks-muted);
+}
+
+.list {
+  border-top: var(--ks-rule);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  align-items: center;
+  border-bottom: var(--ks-rule-soft);
+  display: flex;
+  gap: 0.75rem;
+  min-height: 3.6rem;
+  padding: 0.85rem 0;
+}
+
+.mark {
+  background: currentColor;
+  color: var(--ks-green);
+  flex-shrink: 0;
+  height: 1.25rem;
+  -webkit-mask: var(--mark) center / contain no-repeat;
+  mask: var(--mark) center / contain no-repeat;
+  width: 1.25rem;
+}
+
+@media (min-width: 700px) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
