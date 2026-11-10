@@ -2,5 +2,5 @@ import { pageContent } from "@/lib/content";
 
 export const contactPageContent = {
   ...pageContent.contact,
-  responseWindow: "Replies usually land within two business days.",
+  responseWindow: "A real person reads every note.",
 } as const;

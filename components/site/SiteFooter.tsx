@@ -4,9 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/system";
-import { serviceDetails } from "@/content/pages/service-details";
+import { servicesContent } from "@/content/pages/services";
 import { navigationContent, siteSettings } from "@/lib/content";
-import { asoPage } from "@/lib/content/aso";
 import { getPageContext } from "@/lib/content/page-context";
 
 import { Cta } from "./Cta";
@@ -43,14 +42,11 @@ export function SiteFooter() {
           </nav>
           <div>
             <p className="ks-label">Services</p>
-            {serviceDetails.map((service) => (
-              <Link className="koala-underline-link" key={service.slug} href={`/services/${service.slug}`}>
-                {service.navLabel}
+            {servicesContent.offerings.map((service) => (
+              <Link className="koala-underline-link" key={service.href} href={service.href}>
+                {service.title}
               </Link>
             ))}
-            <Link className="koala-underline-link" href={asoPage.path}>
-              {asoPage.navLabel}
-            </Link>
           </div>
           <div>
             <p className="ks-label">Studio</p>

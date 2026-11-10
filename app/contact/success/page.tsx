@@ -37,7 +37,7 @@ export default function ContactSuccessPage() {
         <p className="ks-lede">
           {preview
             ? "The form passed validation. Your preview submission is stored in this browser session only. No inquiry or analytics event was sent."
-            : "Your note is in. A real person reads it next and replies within two business days. Add hello@koalastudios.ca to your contacts so we don’t land in spam."}
+            : "Your note is in. A real person reads it next. Add hello@koalastudios.ca to your contacts so we don’t land in spam."}
         </p>
         <p className="ks-label ks-muted">Inbox: hello@koalastudios.ca</p>
         <div className={styles.actions}>

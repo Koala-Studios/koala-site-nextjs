@@ -88,7 +88,7 @@ export default function ServicesPage() {
           <div className={styles.offering}>
             <Reveal className={styles.offeringCopy}>
               {offering.image ? (
-                <Image className={styles.offeringImage} src={offering.image.src} alt={offering.image.alt} width={640} height={480} sizes="(max-width: 900px) 60vw, 18rem" />
+                <Image className={styles.offeringImage} src={offering.image.src} alt={offering.image.alt} width={640} height={480} sizes="(max-width: 900px) 60vw, 18rem" style={offering.image.ratio ? { aspectRatio: offering.image.ratio, width: "min(100%, 14rem)" } : undefined} />
               ) : (
                 <LineArt className={styles.art} name={serviceIcon(offering.href)} />
               )}

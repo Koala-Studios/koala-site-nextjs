@@ -57,7 +57,7 @@ export function ContactIntroView({
           ? mayaCall.formIntro
           : isAudit
             ? auditOffer.summary
-            : "Tell us what you’re selling and where you want it to go. A real person reads every note and replies within two business days."}
+            : "Tell us what you’re selling and where you want it to go. A real person reads every note."}
       </p>
 
       {fromMaya || isCall ? (

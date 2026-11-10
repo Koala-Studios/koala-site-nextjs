@@ -84,6 +84,7 @@ export default function AgenticSearchOptimizationPage() {
               width={1536}
               height={1024}
               sizes="(max-width: 900px) 92vw, 46vw"
+              loading="eager"
             />
           </figure>
           <dl className={styles.facts}>
@@ -109,7 +110,7 @@ export default function AgenticSearchOptimizationPage() {
           </p>
           <Reveal className={styles.record}>
             <div className={styles.recordHead}>
-              <Image src="/images/blog/ironvolt/iso-whey.jpg" alt="IRONVOLT ISO Whey Chocolate tub" width={96} height={96} sizes="96px" />
+              <Image src="/images/blog/ironvolt/iso-whey.jpg" alt="IRONVOLT ISO Whey Chocolate tub" width={96} height={96} sizes="96px" loading="eager" />
               <span>
                 <span className={styles.recordName}>IRONVOLT · ISO Whey</span>
                 <span className={styles.recordMeta}>
@@ -156,7 +157,7 @@ export default function AgenticSearchOptimizationPage() {
             alt="Five IRONVOLT ISO Whey flavours in a row: chocolate, vanilla, strawberry, cookies and cream, mint chip"
             width={1672}
             height={941}
-            sizes="(max-width: 1440px) 92vw, 84rem"
+            sizes="(max-width: 1440px) 92vw, 84rem" loading="eager"
           />
         </figure>
         <ol className={styles.fixes}>
@@ -180,7 +181,7 @@ export default function AgenticSearchOptimizationPage() {
               alt="A printed ISO Whey product sheet corrected in red pen beside an IRONVOLT tub"
               width={1536}
               height={1024}
-              sizes="(max-width: 900px) 92vw, 44vw"
+              sizes="(max-width: 900px) 92vw, 44vw" loading="eager"
             />
           </figure>
           <ol className={styles.steps}>
@@ -202,7 +203,7 @@ export default function AgenticSearchOptimizationPage() {
           {faq.title} <em>{faq.accent}</em>
         </h2>
         <div className={styles.faqWrap}>
-          <Arch className={styles.faqArch} src="/images/aso/aso-label.webp" alt="Side label of an IRONVOLT tub: 25 g protein per scoop, 30 servings" sizes="(max-width: 900px) 60vw, 24vw" />
+          <Arch loading="eager" className={styles.faqArch} src="/images/aso/aso-label.webp" alt="Side label of an IRONVOLT tub: 25 g protein per scoop, 30 servings" sizes="(max-width: 900px) 60vw, 24vw" />
           <dl className={styles.faq}>
             {faq.items.map((item) => (
               <div key={item.q}>

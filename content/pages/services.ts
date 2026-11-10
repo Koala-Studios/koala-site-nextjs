@@ -16,7 +16,7 @@ export type ServiceOffering = {
   /** Icon on the homepage list when the service has no line drawing of its own. */
   icon?: IconName;
   /** A photo instead of the line drawing, for services without one. */
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; /** CSS aspect ratio; default 4 / 3. */ ratio?: string };
 };
 
 export const servicesContent = {
@@ -51,6 +51,7 @@ export const servicesContent = {
       note: "For brands launching, replatforming, or stuck with a store that looks fine and converts badly.",
       href: "/services/shopify-design-and-build",
       platforms: ["shopify"],
+      image: { src: "/images/project/iron-brothers/01-home.jpg", alt: "The Iron Brothers Shopify store homepage" },
     },
     {
       number: "02",
@@ -83,6 +84,7 @@ export const servicesContent = {
       ],
       note: "For brands getting orders but not repeat orders, or where email is an untapped channel.",
       href: "/services/email-marketing",
+      image: { src: "/images/services/iron-brothers-email.webp", alt: "An Iron Brothers email we designed: Missed Prime Days? 20% off direct", ratio: "3 / 4" },
     },
     {
       number: "04",
@@ -134,6 +136,7 @@ export const servicesContent = {
       ],
       note: "For brands launching new products, refreshing packaging, or needing premium product visuals before a photoshoot is possible.",
       href: "/services/packaging-and-3d-renders",
+      image: { src: "/images/project/allo/vanilla_noncreamer.webp", alt: "Allo protein powder for hot coffee: box, sachet and a cup of coffee" },
     },
   ] as ServiceOffering[],
   delivery: [

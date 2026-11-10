@@ -51,12 +51,13 @@ type ArchProps = {
   className?: string;
   priority?: boolean;
   position?: string;
+  loading?: "eager" | "lazy";
 };
 
-export function Arch({ src, alt, sizes, className, priority, position }: ArchProps) {
+export function Arch({ src, alt, sizes, className, priority, position, loading }: ArchProps) {
   return (
     <div className={["ks-arch", className].filter(Boolean).join(" ")}>
-      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} style={position ? { objectPosition: position } : undefined} />
+      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} loading={priority ? undefined : loading} style={position ? { objectPosition: position } : undefined} />
     </div>
   );
 }
