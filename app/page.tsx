@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { Reveal } from "@/components/animation/Reveal";
 import { HeroReel } from "@/components/home/HeroReel";
 import { BrandsBuiltFor } from "@/components/brands/BrandsBuiltFor";
+import { PlatformLogos } from "@/components/brands/PlatformLogos";
 import { Cta } from "@/components/site/Cta";
 import { Arch, Folio, SectionHead } from "@/components/system";
 import { Doodle } from "@/components/system/Doodle";
@@ -100,21 +101,24 @@ export default function Home() {
             <Arch src="/images/project/ara/ara_plants.jpg" alt="ÄRA protein coffee packaging among trailing plants" sizes="(max-width: 900px) 100vw, 36vw" />
             <Folio className={styles.archFolio} items={["ÄRA × Magnum", <em key="k" className="ks-it">Packaging</em>]} />
           </Reveal>
-          <DrawOnView className="ks-index">
-            {servicesContent.offerings.map((offering, index) => (
-              <Link className={`ks-index__row ${styles.serviceRow}`} href={offering.href} key={offering.href} style={{ "--i": index } as CSSProperties}>
-                <span className="ks-label">{offering.number}</span>
-                <span>
-                  <span className={styles.serviceTitle}>
-                    <Icon name={serviceIcon(offering.href)} />
-                    <span className="ks-x ks-index__name">{offering.title}</span>
+          <div>
+            <DrawOnView className="ks-index">
+              {servicesContent.offerings.map((offering, index) => (
+                <Link className={`ks-index__row ${styles.serviceRow}`} href={offering.href} key={offering.href} style={{ "--i": index } as CSSProperties}>
+                  <span className="ks-label">{offering.number}</span>
+                  <span>
+                    <span className={styles.serviceTitle}>
+                      <Icon name={serviceIcon(offering.href)} />
+                      <span className="ks-x ks-index__name">{offering.title}</span>
+                    </span>
+                    <span className={styles.serviceCopy}>{offering.copy}</span>
                   </span>
-                  <span className={styles.serviceCopy}>{offering.copy}</span>
-                </span>
-                <span className="ks-index__meta">{offering.kicker}</span>
-              </Link>
-            ))}
-          </DrawOnView>
+                  <span className="ks-index__meta">{offering.kicker}</span>
+                </Link>
+              ))}
+            </DrawOnView>
+            <PlatformLogos />
+          </div>
         </div>
       </section>
 

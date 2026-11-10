@@ -1,4 +1,6 @@
 import { pageContent } from "@/lib/content";
+import { asoPage } from "@/lib/content/aso";
+import { mayaContent } from "@/lib/content/maya";
 
 export const servicesContent = {
   ...pageContent.services,
@@ -76,6 +78,42 @@ export const servicesContent = {
       ],
       note: "For brands launching new products, refreshing packaging, or needing premium product visuals before a photoshoot is possible.",
       href: "/services/packaging-and-3d-renders",
+    },
+  ],
+  /** Listed on /services and in the footer after the four above; the homepage list keeps those four. */
+  moreOfferings: [
+    {
+      number: "05",
+      title: asoPage.navLabel,
+      kicker: "AI shopping",
+      copy: "Shoppers now ask ChatGPT, Gemini and Copilot what to buy. We fix the product information those assistants read from your Shopify store.",
+      deliverables: [
+        "Product titles & descriptions",
+        "Variants & photos",
+        "Store policies",
+        "AI channel settings",
+        "Custom field mapping",
+      ],
+      note: "For Shopify brands that want AI assistants to get their products right.",
+      href: asoPage.path,
+      linkLabel: "Full service details",
+    },
+    {
+      number: "06",
+      title: "Consulting",
+      kicker: "Growth",
+      copy: `Ecommerce growth consulting with ${mayaContent.name}, our ${mayaContent.title}. ${mayaContent.intro}`,
+      deliverables: [
+        "Brand positioning",
+        "Website & conversion",
+        "Email & retention",
+        "Subscriptions",
+        "Retail & distribution",
+      ],
+      note: mayaContent.heroSummary,
+      href: "/maya",
+      linkLabel: `Meet ${mayaContent.name.split(" ")[0]}`,
+      portrait: { src: mayaContent.portrait, alt: `${mayaContent.name}, ${mayaContent.title}` },
     },
   ],
   delivery: [

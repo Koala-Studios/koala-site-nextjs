@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/system";
 import { serviceDetails } from "@/content/pages/service-details";
+import { servicesContent } from "@/content/pages/services";
 import { navigationContent, siteSettings } from "@/lib/content";
 import { getPageContext } from "@/lib/content/page-context";
 
@@ -45,6 +46,11 @@ export function SiteFooter() {
             {serviceDetails.map((service) => (
               <Link className="koala-underline-link" key={service.slug} href={`/services/${service.slug}`}>
                 {service.navLabel}
+              </Link>
+            ))}
+            {servicesContent.moreOfferings.map((service) => (
+              <Link className="koala-underline-link" key={service.href} href={service.href}>
+                {service.title}
               </Link>
             ))}
           </div>

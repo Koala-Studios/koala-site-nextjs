@@ -1,0 +1,394 @@
+/* Agentic Search Optimization. Plain titles with no rule above them, one
+   visual per section, short copy. Sizes stay below the site's display scale. */
+
+.page {
+  padding-bottom: clamp(2rem, 6vw, 5rem);
+}
+
+.section {
+  padding-top: clamp(4.5rem, 9vw, 8rem);
+}
+
+.h2 {
+  font-size: clamp(1.75rem, 3.4vw, 3.1rem);
+  line-height: 1;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.source {
+  color: var(--ks-green);
+  font-size: var(--ks-small);
+  white-space: nowrap;
+}
+
+.source:hover,
+.source:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-top: calc(var(--ks-header-h) + clamp(1.5rem, 4vw, 3.5rem));
+}
+
+.heroCopy {
+  align-content: center;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4.3vw, 4.1rem);
+  line-height: 0.95;
+}
+
+.heroCopy :global(.ks-lede) {
+  max-width: 34ch;
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.heroArch {
+  aspect-ratio: 4 / 5;
+  justify-self: center;
+  width: min(100%, 26rem);
+}
+
+/* ---------- Why ---------- */
+.why {
+  display: grid;
+  gap: 2rem;
+}
+
+.whyImage,
+.lineup,
+.stepsImage {
+  background: var(--ks-paper-2);
+  margin: 0;
+  overflow: hidden;
+}
+
+.whyImage img,
+.lineup img,
+.stepsImage img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.facts {
+  display: grid;
+  margin: 0;
+}
+
+.fact {
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 0;
+}
+
+.fact:last-child {
+  border-bottom: var(--ks-rule-soft);
+}
+
+.fact dt {
+  color: var(--ks-green);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+}
+
+.fact dd {
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* ---------- What AI reads ---------- */
+.reads {
+  display: grid;
+  gap: 2rem;
+}
+
+.readsCopy {
+  max-width: 34ch;
+}
+
+.record {
+  background: #fff;
+  border: var(--ks-rule-soft);
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.recordHead {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.recordHead img {
+  background: var(--ks-paper-2);
+  flex-shrink: 0;
+  height: 4.5rem;
+  object-fit: cover;
+  width: 4.5rem;
+}
+
+.recordHead > span {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.recordName {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.recordMeta {
+  color: var(--ks-muted);
+  font-size: var(--ks-small);
+}
+
+.recordCols {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.recordCols dl {
+  display: grid;
+  margin: 0.6rem 0 0;
+}
+
+.recordCols dl > div {
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.6rem 0;
+}
+
+.recordCols dt {
+  color: var(--ks-muted);
+  font-size: var(--ks-label);
+  letter-spacing: var(--ks-label-tracking);
+  text-transform: uppercase;
+}
+
+.recordCols dd {
+  margin: 0;
+}
+
+.tag {
+  font-size: var(--ks-label);
+  font-weight: 600;
+  letter-spacing: var(--ks-label-tracking);
+  text-transform: uppercase;
+}
+
+.tagBefore {
+  color: var(--ks-danger);
+}
+
+.tagAfter {
+  color: var(--ks-green);
+}
+
+.recordCols > div:first-child dd {
+  color: var(--ks-muted);
+}
+
+.recordFoot {
+  border-top: var(--ks-rule-soft);
+  color: var(--ks-muted);
+  font-size: var(--ks-small);
+  padding-top: 0.75rem;
+}
+
+/* ---------- Fixes ---------- */
+.lineup {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.fixes {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fixes li {
+  align-items: baseline;
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  gap: 1rem;
+  grid-template-columns: 2rem 1fr;
+  padding: 0.9rem 0;
+}
+
+/* ---------- Steps ---------- */
+.stepsWrap {
+  display: grid;
+  gap: 2rem;
+}
+
+.steps {
+  display: grid;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.steps li {
+  align-items: start;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 4rem 1fr;
+}
+
+.steps :global(.ks-num) {
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+}
+
+.steps h3 {
+  margin-bottom: 0.4rem;
+}
+
+.steps p {
+  color: var(--ks-muted);
+  max-width: 38ch;
+}
+
+/* ---------- FAQ ---------- */
+.faqWrap {
+  display: grid;
+  gap: 2rem;
+}
+
+.faqArch {
+  aspect-ratio: 4 / 5;
+  width: min(55%, 20rem);
+}
+
+.faq {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.faq > div {
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 1.1rem;
+}
+
+.faq dd {
+  color: var(--ks-muted);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---------- Closing ---------- */
+.closing {
+  background: var(--ks-paper-2);
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+  overflow: hidden;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+  position: relative;
+}
+
+.closing > :not(.closingArt) {
+  position: relative;
+}
+
+.closing .h2 {
+  margin-bottom: 0;
+}
+
+.closing p {
+  max-width: 48ch;
+}
+
+.closingArt {
+  bottom: -1px;
+  color: var(--ks-stone);
+  position: absolute;
+  right: clamp(1rem, 4vw, 4rem);
+  width: clamp(6rem, 18vw, 13rem);
+}
+
+.closing .checked {
+  color: var(--ks-muted);
+  font-size: var(--ks-small);
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    align-items: center;
+    grid-template-columns: 1.7fr 1fr;
+  }
+
+  .heroArch {
+    justify-self: end;
+  }
+
+  .why {
+    align-items: center;
+    gap: 4rem;
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .reads {
+    align-items: start;
+    gap: 4rem;
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .recordCols {
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fixes {
+    column-gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stepsWrap {
+    align-items: center;
+    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .faqWrap {
+    align-items: start;
+    gap: 4rem;
+    grid-template-columns: 20rem 1fr;
+  }
+
+  .faqArch {
+    width: 100%;
+  }
+
+  .faq {
+    column-gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .closing {
+    padding-bottom: 7rem;
+  }
+}
