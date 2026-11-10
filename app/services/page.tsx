@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/animation/Reveal";
+import { PlatformLogos } from "@/components/brands/PlatformLogos";
 import { Cta } from "@/components/site/Cta";
 import { ArchWindow } from "@/components/system/ArchWindow";
 import { Folio, IndexList, SectionHead } from "@/components/system";
@@ -25,7 +27,7 @@ export const metadata: Metadata = createPageMetadata({
 const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Shopify design, packaging, Meta ad management, and email marketing",
+  name: "Shopify design, ads and ad creative, email marketing, SEO, Agentic Search Optimization and packaging",
   description: servicesContent.seo.description,
   url: toAbsoluteUrl("/services"),
   provider: { "@type": "Organization", name: siteSettings.name, url: toAbsoluteUrl("/") },
@@ -85,11 +87,16 @@ export default function ServicesPage() {
           />
           <div className={styles.offering}>
             <Reveal className={styles.offeringCopy}>
-              <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              {offering.image ? (
+                <Image className={styles.offeringImage} src={offering.image.src} alt={offering.image.alt} width={640} height={480} sizes="(max-width: 900px) 60vw, 18rem" />
+              ) : (
+                <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              )}
               <p className="ks-lede">{offering.copy}</p>
               <p className={`ks-it ${styles.note}`}>{offering.note}</p>
+              {offering.platforms ? <PlatformLogos ids={offering.platforms} compact /> : null}
               <Link className="ks-tlink" href={offering.href}>
-                Full service details <span aria-hidden="true">↗</span>
+                {offering.linkLabel ?? "Full service details"} <span aria-hidden="true">↗</span>
               </Link>
             </Reveal>
             <IndexList items={offering.deliverables.map((item, index) => ({ key: item, lead: String(index + 1).padStart(2, "0"), name: item }))} />
@@ -98,7 +105,7 @@ export default function ServicesPage() {
       ))}
 
       <section className="ks-section" aria-labelledby="services-process-title">
-        <SectionHead index="05" id="services-process-title" title={<>How we <em>work</em></>} />
+        <SectionHead index="07" id="services-process-title" title={<>How we <em>work</em></>} />
         <ol className={styles.steps}>
           {servicesContent.delivery.map((step) => (
             <li className={styles.step} key={step.number}>
@@ -111,7 +118,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="ks-section" aria-labelledby="services-plans-title" id="plans">
-        <SectionHead index="06" id="services-plans-title" title={<>{plansContent.title} <em>{plansContent.titleAccent}</em></>} />
+        <SectionHead index="08" id="services-plans-title" title={<>{plansContent.title} <em>{plansContent.titleAccent}</em></>} />
         <p className={`ks-lede ${styles.plansLede}`}>{plansContent.lede}</p>
         <div className={styles.plans}>
           {plansContent.plans.map((plan) => (
@@ -127,7 +134,6 @@ export default function ServicesPage() {
           ))}
         </div>
         <div className={styles.planTerms}>
-          <p className={`ks-x ${styles.startingPrice}`}>{plansContent.startingPrice}</p>
           {plansContent.terms.map((term) => (
             <p key={term.title}>
               <strong>{term.title}.</strong> {term.copy}

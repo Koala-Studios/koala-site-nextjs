@@ -13,6 +13,7 @@ import { Icon, serviceIcon } from "@/components/system/Icons";
 import { LineArt } from "@/components/system/LineArt";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { servicesContent } from "@/content/pages/services";
+import { PlatformLogos } from "@/components/brands/PlatformLogos";
 import { ClientResults } from "@/components/results/ClientResults";
 import { getPublishedCaseStudies } from "@/lib/content";
 import { getVisibleResults } from "@/lib/content/results";
@@ -22,9 +23,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Shopify Design, Meta Ads & Email Marketing Agency",
+  title: "Shopify, Ads, Email & SEO Agency for Supplement Brands",
   description:
-    "Koala Studios is a small Toronto team that runs the Shopify store, email and ads for supplement, wellness and food brands, month to month. See the work, then get a free audit of your website.",
+    "Koala Studios is a small Toronto team that runs the Shopify store, email, Meta and Google ads, ad creative and SEO for supplement, wellness and food brands. See the work, then get a free audit of your website.",
   path: "/",
 });
 
@@ -50,7 +51,7 @@ export default function Home() {
       <section className={styles.intro} aria-label="What we do">
         <div>
           <p className="ks-lede">
-            We run the <em>Shopify store,</em> email and ads for supplement, wellness and food brands. One small Toronto team, month to month, so you can{" "}
+            We run the <em>Shopify store,</em> email and ads for supplement, wellness and food brands, and make the ad creative ourselves. One small Toronto team, month to month, so you can{" "}
             <span className="ks-doodle-wrap">
               <em>sell more.</em>
               <Doodle className="ks-doodle-under" name="underline" />
@@ -125,7 +126,7 @@ export default function Home() {
                 <span className="ks-label">{offering.number}</span>
                 <span>
                   <span className={styles.serviceTitle}>
-                    <Icon name={serviceIcon(offering.href)} />
+                    <Icon name={offering.icon ?? serviceIcon(offering.href)} />
                     <span className="ks-x ks-index__name">{offering.title}</span>
                   </span>
                   <span className={styles.serviceCopy}>{offering.copy}</span>
@@ -135,6 +136,7 @@ export default function Home() {
             ))}
           </DrawOnView>
         </div>
+        <PlatformLogos className={styles.platforms} />
       </section>
 
       <BrandsBuiltFor />

@@ -4067,3 +4067,14 @@ Implemented Frank's supplied Maya feedback: italic personal welcome and cursive 
 - `DrawOnView` + `useDrawn` (components/system/DrawOnView.tsx) drive LineArt, doodle and icon draw-in. Homepage service icons draw in row by row and redraw on hover (hover devices only). Reduced motion: drawn, no loops.
 - Safari showed case study titles tiny. Title now sits in its own `.titleFit` container, sizes with `100cqi * var(--fit)` (multiplication, not division), has a large clamp() default and an `@supports not (width: 1cqi)` viewport fallback. WebKit (Playwright 2272) verified: Mercato title 104px desktop / 46px phone, no overflow on six sampled case studies.
 - Verification: tsc, lint, production build passed; Chrome and WebKit screenshots inspected.
+
+## 2026-11-10 Services, ASO page, Maya call, cold-email match (branch `mara/site-services-aso-audit`, not deployed)
+
+Built on `growth/free-audit-landing` (9741e42). Cold-email drift fixed against the batch 1 emails Frank sent on Oct 28-29 ("a small Toronto team that runs the Shopify store and email for supplement brands like Iron Brothers Supplements", free PDF, 2-minute video, no prices): public starting price removed from Services, two-working-day promises removed, audit replies come from frank@, 15-minute call instead of 20, Iron Brothers outcomes without unverified dates. Draft client results stay hidden (`NEXT_PUBLIC_SHOW_DRAFT_RESULTS` unset).
+
+- `/services/agentic-search-optimization`: new static route, content in `lib/content/aso.ts`; every platform fact cites the Shopify or OpenAI help page it came from (checked 2026-11-10). Enquiry goes to `/free-audit?focus=ai-shopping`, which adds a `focus` field to the `free-audit` form.
+- Services list now six: Shopify, Ads & ad creative (Meta, Google, TikTok creative), Email, SEO & Google Maps (no detail page; links to `/contact?interest=seo`), Agentic Search Optimization, Packaging. Platform marks in `public/images/platforms` (Simple Icons, CC0; see SOURCE.md) via `PlatformLogos`. No partner or certification claims.
+- `/maya`: six explicit service rows and Meta, Instagram, Google, TikTok marks in the hero.
+- `/contact`: Maya's name, role, email and "Book a 15-minute call". No booking calendar exists, so the button opens `/contact-short?interest=call&source=maya` (hidden `interest-call` field); swap `mayaCall.href` for a scheduling link when Maya has one.
+- New IRONVOLT images rendered with ImageGen, prompts in koala-studios `work/site-images-2026-11-10/`.
+- Checks: `tsc --noEmit`, `eslint`, `next build` pass; 1440/390 full-page captures with no horizontal overflow.

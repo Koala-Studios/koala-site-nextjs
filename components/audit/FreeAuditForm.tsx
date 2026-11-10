@@ -28,6 +28,8 @@ export function FreeAuditForm() {
   const searchParams = useSearchParams();
   const [attribution, setAttribution] = useState<Record<string, string>>({});
   const [state, setState] = useState<"idle" | "submitting" | "error">("idle");
+  // Links from the Agentic Search Optimization page ask for the AI shopping check too.
+  const aiShopping = searchParams.get("focus") === "ai-shopping";
 
   useEffect(() => {
     const id = window.setTimeout(() => setAttribution(attributionFields(captureAttribution())), 0);
@@ -76,6 +78,7 @@ export function FreeAuditForm() {
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value={FREE_AUDIT_FORM_NAME} />
+      {aiShopping ? <input type="hidden" name="focus" value="AI shopping check" /> : null}
       {Object.entries(attribution).map(([key, value]) => (
         <input type="hidden" key={key} name={key} value={value} />
       ))}
@@ -87,6 +90,7 @@ export function FreeAuditForm() {
       {process.env.NEXT_PUBLIC_LOCAL_PREVIEW === "true" ? (
         <p className={styles.preview}>Local preview: requests stay in this browser and are not sent.</p>
       ) : null}
+      {aiShopping ? <p className={styles.focus}>Includes the AI shopping check: what ChatGPT, Gemini and Copilot get about your products.</p> : null}
       <Field label="Email">
         <Input name="email" type="email" autoComplete="email" inputMode="email" required />
       </Field>

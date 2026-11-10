@@ -18,3 +18,10 @@
   color: var(--ks-danger);
   font-size: var(--ks-small);
 }
+
+.focus {
+  border-left: 2px solid var(--ks-green);
+  font-size: var(--ks-small);
+  line-height: 1.45;
+  padding-left: 0.75rem;
+}

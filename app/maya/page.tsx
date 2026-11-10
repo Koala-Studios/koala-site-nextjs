@@ -4,6 +4,7 @@ import { Reveal } from "@/components/animation/Reveal";
 import { Stagger } from "@/components/animation/Stagger";
 import { MetricValue } from "@/components/animation/MetricValue";
 import { HeroReel } from "@/components/home/HeroReel";
+import { PlatformLogos } from "@/components/brands/PlatformLogos";
 import { Cta } from "@/components/site/Cta";
 import { Marquee } from "@/components/site/Marquee";
 import { Arch, Folio, SectionHead, StatRows } from "@/components/system";
@@ -23,7 +24,7 @@ import styles from "./maya.module.css";
 export const metadata = createPageMetadata({
   title: "Maya Amani | Ecommerce Growth at Koala Studios",
   description:
-    "Maya Amani, Chief Marketing & Growth Officer at Koala Studios. 15+ years growing consumer brands across CPG, food, supplements and wellness, from retail channels to Shopify, email and paid growth.",
+    "Maya Amani, Chief Marketing & Growth Officer at Koala Studios. 15+ years growing consumer brands: ad creative, Meta and Google ads, SEO, Google Maps, Shopify and email.",
   path: "/maya",
   image: maya.portraitShare,
 });
@@ -33,8 +34,6 @@ const heroStats = [
   { value: "45%", label: "Increase in DTC revenue", source: "Iron Brothers" },
   { value: "37%", label: "Online revenue growth", source: "Nosh Balls" },
 ];
-
-const growIcons: Record<string, IconName> = { visibility: "eye", store: "cart", email: "repeat" };
 
 function brand(id: string) {
   return brands.find((item) => item.id === id)!;
@@ -72,6 +71,7 @@ export default function MayaPage() {
                 Download my profile
               </Cta>
             </div>
+            <PlatformLogos className={styles.heroPlatforms} ids={["meta", "instagram", "google", "tiktok"]} compact />
           </div>
           <StatRows className={styles.heroStats} items={heroStats} />
         </div>
@@ -128,7 +128,7 @@ export default function MayaPage() {
                 <span className="ks-label">{String(index + 1).padStart(2, "0")}</span>
                 <span>
                   <span className={styles.growTitle}>
-                    <Icon name={growIcons[service.icon] ?? "arch"} />
+                    <Icon name={service.icon as IconName} />
                     <span className="ks-x ks-index__name">{service.title}</span>
                   </span>
                   <span className={styles.growCopy}>{service.copy}</span>

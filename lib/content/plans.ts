@@ -1,13 +1,12 @@
 /**
  * The monthly plans, worded as the audit decks word them (Newton's
- * marketing/pricing-and-estimates guide holds the prices). Publicly we show one
- * starting price; each plan's own fee is set on the call.
+ * marketing/pricing-and-estimates guide holds the prices). No public price: the
+ * cold emails and audit decks carry none, so the site doesn't either.
  */
 export const plansContent = {
   title: "Three plans,",
   titleAccent: "month to month.",
   lede: "One small team runs your store, email and ads. Start with one plan and add the rest when it pays for itself.",
-  startingPrice: "Plans start at 600 a month, billed in your store's currency.",
   plans: [
     {
       name: "Essentials",

@@ -1,15 +1,34 @@
+import type { PlatformId } from "@/components/brands/PlatformLogos";
+import type { IconName } from "@/components/system/Icons";
 import { pageContent } from "@/lib/content";
+
+export type ServiceOffering = {
+  number: string;
+  title: string;
+  kicker: string;
+  copy: string;
+  deliverables: string[];
+  note: string;
+  href: string;
+  /** Link text on /services; defaults to "Full service details". */
+  linkLabel?: string;
+  platforms?: PlatformId[];
+  /** Icon on the homepage list when the service has no line drawing of its own. */
+  icon?: IconName;
+  /** A photo instead of the line drawing, for services without one. */
+  image?: { src: string; alt: string };
+};
 
 export const servicesContent = {
   ...pageContent.services,
   hero: {
     ...pageContent.services.hero,
-    points: ["Shopify design & build", "Meta ad management", "Email marketing"],
+    points: ["Shopify design & build", "Ads & ad creative", "Email marketing"],
   },
   proof: [
     {
-      label: "Plans from",
-      value: "600 a month",
+      label: "Start with",
+      value: "A free audit",
     },
     {
       label: "Contract",
@@ -31,21 +50,24 @@ export const servicesContent = {
       ],
       note: "For brands launching, replatforming, or stuck with a store that looks fine and converts badly.",
       href: "/services/shopify-design-and-build",
+      platforms: ["shopify"],
     },
     {
       number: "02",
-      title: "Meta ad management",
+      title: "Ads & ad creative",
       kicker: "Traffic",
-      copy: "Full-service Facebook and Instagram advertising. We design the creative, build the campaign structure, test weekly, and report in plain language.",
+      copy: "Meta and Google ads, run for you. We make the ad creative ourselves: image and video ads for Facebook, Instagram, Google and TikTok.",
       deliverables: [
         "Ad creative",
-        "Campaign structure",
-        "Audience testing",
-        "Landing pages",
-        "Plain-language reporting",
+        "Meta ads: Facebook & Instagram",
+        "Google Ads",
+        "TikTok ad creative",
+        "Weekly tests, plain reports",
       ],
-      note: "For brands with proven product demand that want traffic they can predict and scale.",
+      note: "For brands with products people want that need more of the right traffic.",
       href: "/services/meta-ads-management",
+      platforms: ["meta", "instagram", "facebook", "googleads", "tiktok"],
+      image: { src: "/images/services/ads-creative.webp", alt: "Three printed IRONVOLT ads taped to a concrete wall" },
     },
     {
       number: "03",
@@ -64,6 +86,42 @@ export const servicesContent = {
     },
     {
       number: "04",
+      title: "SEO & Google Maps",
+      kicker: "Search",
+      copy: "Search basics done properly on your Shopify store, and a Google Business Profile that puts your hours, photos and reviews on Google Search and Maps.",
+      deliverables: [
+        "Technical SEO",
+        "Product & collection pages",
+        "Google Business Profile",
+        "Google Maps listing",
+        "Search Console",
+      ],
+      note: "Often the small project that starts a bigger one.",
+      href: "/contact?interest=seo",
+      linkLabel: "Ask about SEO",
+      icon: "eye",
+      platforms: ["google", "googlemaps"],
+      image: { src: "/images/services/local-shop.webp", alt: "A small nutrition shop on a quiet Toronto street in the morning" },
+    },
+    {
+      number: "05",
+      title: "Agentic Search Optimization",
+      kicker: "AI shopping",
+      copy: "Shoppers now ask ChatGPT, Gemini and Copilot what to buy. We fix the product information those assistants read from your Shopify store.",
+      deliverables: [
+        "Product titles & descriptions",
+        "Variants & photos",
+        "Store policies",
+        "AI channel settings",
+        "Free AI shopping check",
+      ],
+      note: "For Shopify brands that want AI assistants to get their products right.",
+      href: "/services/agentic-search-optimization",
+      icon: "cart",
+      image: { src: "/images/aso/aso-lineup.webp", alt: "Five IRONVOLT ISO Whey flavours in a row" },
+    },
+    {
+      number: "06",
       title: "Packaging & 3D renders",
       kicker: "Product",
       copy: "Label and packaging design paired with photoreal 3D product renders. Shelf-ready artwork and store-ready hero visuals, designed in-house, no photoshoot required.",
@@ -77,7 +135,7 @@ export const servicesContent = {
       note: "For brands launching new products, refreshing packaging, or needing premium product visuals before a photoshoot is possible.",
       href: "/services/packaging-and-3d-renders",
     },
-  ],
+  ] as ServiceOffering[],
   delivery: [
     {
       number: "01",

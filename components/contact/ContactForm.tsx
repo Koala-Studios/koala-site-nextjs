@@ -10,17 +10,21 @@ import { analyticsConfig } from "@/lib/analytics";
 import { markPendingContactSubmit, trackEvent } from "@/lib/gtag";
 import { attributionEventParams, attributionFields, captureAttribution } from "@/lib/attribution";
 import { auditOffer } from "@/lib/content/audit";
+import { mayaCall } from "@/lib/content/maya";
 
 import styles from "./ContactForm.module.css";
 
 const NETLIFY_FORM_ENDPOINT = "/__forms.html";
 
+// `interest` query values that tick a box on arrival, e.g. /contact?interest=seo.
 const projectTypes = [
-  { value: "Shopify store", name: "interest-shopify" },
-  { value: "Meta ads", name: "interest-meta-ads" },
-  { value: "Email marketing", name: "interest-email" },
-  { value: "Free website audit", name: "interest-audit" },
-  { value: "Not sure yet", name: "interest-unsure" },
+  { value: "Shopify store", name: "interest-shopify", query: "shopify" },
+  { value: "Ads & ad creative", name: "interest-meta-ads", query: "ads" },
+  { value: "Email marketing", name: "interest-email", query: "email" },
+  { value: "SEO & Google Maps", name: "interest-seo", query: "seo" },
+  { value: "AI shopping (ChatGPT & co.)", name: "interest-ai-shopping", query: "ai-shopping" },
+  { value: "Free website audit", name: "interest-audit", query: "brand-growth-audit" },
+  { value: "Not sure yet", name: "interest-unsure", query: "unsure" },
 ] as const;
 
 function encodeFormData(formData: FormData) {
@@ -38,12 +42,16 @@ function encodeFormData(formData: FormData) {
 export function ContactForm({ short = false }: { short?: boolean }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const auditRef = useRef<HTMLInputElement>(null);
-  const isAudit = searchParams.get("interest") === "brand-growth-audit";
+  const formRef = useRef<HTMLFormElement>(null);
+  const interest = searchParams.get("interest");
+  const isAudit = interest === "brand-growth-audit";
+  const isCall = interest === mayaCall.interest;
   const [attribution, setAttribution] = useState<Record<string, string>>({});
   useEffect(() => {
-    if (isAudit && auditRef.current) auditRef.current.checked = true;
-  }, [isAudit]);
+    const match = projectTypes.find((type) => type.query === interest);
+    const box = match ? formRef.current?.querySelector<HTMLInputElement>(`input[name="${match.name}"]`) : null;
+    if (box) box.checked = true;
+  }, [interest]);
   useEffect(() => {
     const id = window.setTimeout(() => setAttribution(attributionFields(captureAttribution())), 0);
     return () => window.clearTimeout(id);
@@ -98,6 +106,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
         className={styles.form}
         name="contact"
         method="POST"
+        ref={formRef}
         action={NETLIFY_FORM_ENDPOINT}
         onSubmit={handleSubmit}
       >
@@ -120,6 +129,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
             <Field label="Website (optional)"><Input name="website" type="text" aria-label="Website (optional)" autoComplete="url" /></Field>
           </div>
           {isAudit && <input type="hidden" name="interest-audit" value="Brand and growth audit" />}
+          {isCall && <input type="hidden" name="interest-call" value={mayaCall.formValue} />}
         </> : <>
         <div className={styles.row}>
           <Field label="Name">
@@ -178,8 +188,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
                   name={type.name}
                   type="checkbox"
                   value={type.value}
-                  ref={type.name === "interest-audit" ? auditRef : undefined}
-                  defaultChecked={type.name === "interest-audit" && isAudit}
+                  defaultChecked={type.query === interest}
                 />
                 <span className={styles.typeLabel}>{type.value}</span>
               </label>
@@ -198,7 +207,7 @@ export function ContactForm({ short = false }: { short?: boolean }) {
 
         <div className={styles.footer}>
           <Cta type="submit" fullWidth disabled={isSubmitting}>
-            {isSubmitting ? "Sending" : short && isAudit ? "Request the audit" : "Send message"}
+            {isSubmitting ? "Sending" : short && isCall ? "Ask for a call" : short && isAudit ? "Request the audit" : "Send message"}
           </Cta>
           {submitState === "error" ? (
             <p className={styles.status} role="alert">

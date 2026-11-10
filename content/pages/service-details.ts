@@ -66,19 +66,19 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "meta-ads-management",
-    navLabel: "Meta ad management",
-    seoTitle: "Meta Ads Management for Ecommerce Brands",
+    navLabel: "Ads & ad creative",
+    seoTitle: "Meta & Google Ads Management with In-House Ad Creative",
     seoDescription:
-      "Creative-first Facebook and Instagram ad management for ecommerce. We design the ads, run the structure, test weekly, and report in plain language.",
+      "Meta and Google ads for ecommerce brands, with the ad creative made in-house: image and video ads for Facebook, Instagram, Google and TikTok. Weekly tests, plain reports.",
     eyebrow: "Traffic",
-    headline: "Meta ads with\ncreative that earns it.",
+    headline: "Ads with\ncreative that earns it.",
     accent: "creative",
-    lede: "Facebook and Instagram campaigns for ecommerce brands. We design the ad creative ourselves, run a clean account structure, and report in plain language, no dashboard theatre.",
+    lede: "Meta and Google ads for ecommerce brands. We make the ad creative ourselves, image and video for Facebook, Instagram, Google and TikTok, run a clean account and report in plain language.",
     deliverables: [
       "Ad creative",
-      "Campaign structure",
-      "Weekly testing",
-      "Audience strategy",
+      "Meta ads",
+      "Google Ads",
+      "TikTok creative",
       "Tracking & CAPI",
       "Plain reports",
     ],
@@ -86,17 +86,17 @@ export const serviceDetails: ServiceDetail[] = [
       {
         number: "01",
         title: "Audit",
-        copy: "Account, pixel, creative, and landing pages. We find what's actually limiting return.",
+        copy: "Accounts, tracking, creative and landing pages. We find what's actually limiting return.",
       },
       {
         number: "02",
         title: "Creative",
-        copy: "Static and motion ads designed in-house, on brand, built to stop the scroll.",
+        copy: "Static and video ads designed in-house from your own products, sized for each platform.",
       },
       {
         number: "03",
         title: "Run",
-        copy: "Clean campaign structure with weekly creative and audience tests.",
+        copy: "Clean campaign structure on Meta and Google with weekly creative and audience tests.",
       },
       {
         number: "04",

@@ -24,9 +24,12 @@ export const mayaContent = {
     detail: "Start with the brand, packaging and website. Then connect organic social content, Meta and Google ads, and email marketing to help turn that attention into sales.",
   },
   services: [
-    { icon: "visibility", title: "Get noticed", copy: "Brand positioning, creative and organic social content that build awareness and give people a reason to choose you." },
-    { icon: "store", title: "Turn visits into sales", copy: "Website and shopping experiences that help more customers complete their purchase." },
-    { icon: "email", title: "Bring customers back", copy: "Email marketing, retention and subscriptions that build the next layer of revenue." },
+    { icon: "eye", title: "Ad creative", copy: "Image and video ads made from your own products, for Facebook, Instagram and TikTok." },
+    { icon: "ads", title: "Meta & Google ads", copy: "Campaigns planned, tested every week and reported in plain language." },
+    { icon: "cart", title: "SEO & search", copy: "Product and collection pages that search engines and AI assistants can read and rank." },
+    { icon: "arch", title: "Google Maps & Business Profile", copy: "Your hours, photos and reviews showing up on Google Search and Maps." },
+    { icon: "store", title: "Shopify stores", copy: "Design, build and the fixes that help more visitors finish their order." },
+    { icon: "repeat", title: "Email & retention", copy: "Klaviyo welcome, cart and reorder emails that bring customers back." },
   ],
   proof: [
     { value: "15+", label: "Years of experience", context: "Consumer brands and commerce" },
@@ -47,6 +50,17 @@ export const mayaContent = {
   channelCopy: "Our experience spans retail, distribution, marketplaces and direct-to-consumer ecommerce, including subscriptions that give customers a reason to come back.",
   auditTitle: "Unlock your next stage of ecommerce growth.",
   auditSummary: "A free brand and growth audit of your website, positioning and email marketing. Find practical opportunities to convert more visitors, bring customers back and grow online revenue.",
+} as const;
+
+/** Maya's 15-minute call. No booking calendar exists yet, so the button opens a
+ * short request form and Maya replies with times. Swap href for a scheduling
+ * link once she has one. */
+export const mayaCall = {
+  label: "Book a 15-minute call",
+  interest: "call",
+  href: "/contact-short?interest=call&source=maya",
+  formIntro: "Leave your details and Maya will email you a few times that work. Fifteen minutes, no prep needed.",
+  formValue: "15-minute call with Maya",
 } as const;
 
 /** Case studies shown on /maya, led by food, wellness and CPG work. */

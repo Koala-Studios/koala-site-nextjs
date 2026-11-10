@@ -75,6 +75,12 @@
   max-width: 46ch;
 }
 
+.platforms {
+  border-top: var(--ks-rule-soft);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.5rem;
+}
+
 .audit {
   padding-bottom: 0;
 }

@@ -14,12 +14,64 @@
 
 .title {
   color: var(--ks-ink);
-  font-size: clamp(2.4rem, 6.4vw, 5.6rem);
+  font-size: clamp(2.2rem, 4.3vw, 4.1rem);
   line-height: 0.95;
 }
 
-.promise {
+.promiseWrap {
   grid-area: promise;
+  display: grid;
+  gap: 1.75rem;
+  align-content: start;
+}
+
+.heroImage {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.h2 {
+  font-size: clamp(1.75rem, 3.4vw, 3.1rem);
+  line-height: 1;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.stepsWrap,
+.checksWrap {
+  display: grid;
+  gap: 2rem;
+}
+
+.stepsArch {
+  aspect-ratio: 4 / 5;
+  width: min(70%, 22rem);
+}
+
+.checks {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checks li {
+  align-items: baseline;
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  gap: 1rem;
+  grid-template-columns: 2rem 1fr;
+  padding: 0.9rem 0;
+}
+
+.checksImage {
+  background: var(--ks-paper-2);
+  height: auto;
+  width: min(70%, 24rem);
+}
+
+.promise {
   align-self: start;
   display: grid;
   gap: 0.6rem;
@@ -135,9 +187,18 @@
 }
 
 .steps li {
+  align-items: start;
   display: grid;
-  gap: 0.75rem;
-  align-content: start;
+  gap: 1.25rem;
+  grid-template-columns: 4rem 1fr;
+}
+
+.steps h3 {
+  margin-bottom: 0.4rem;
+}
+
+.steps :global(.ks-num) {
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
 }
 
 .steps p {
@@ -165,7 +226,27 @@
 }
 
 .again {
+  align-items: center;
+  background: var(--ks-paper-2);
+  display: grid;
   margin-top: 3rem;
+}
+
+.againImage {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.againCopy {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.againCopy :global(.ks-lede) {
+  max-width: 26ch;
 }
 
 @media (min-width: 900px) {
@@ -184,13 +265,37 @@
     grid-template-columns: 1fr 1.6fr;
   }
 
-  .steps {
-    gap: 3rem;
-    grid-template-columns: repeat(3, 1fr);
+  .stepsWrap {
+    align-items: center;
+    gap: 4rem;
+    grid-template-columns: 22rem 1fr;
+  }
+
+  .stepsArch {
+    width: 100%;
+  }
+
+  .checksWrap {
+    align-items: center;
+    gap: 4rem;
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  .checksImage {
+    justify-self: end;
+    width: 100%;
+  }
+
+  .again {
+    grid-template-columns: 1.2fr 1fr;
   }
 
   .faq {
     column-gap: 4rem;
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.section {
+  padding-top: clamp(4.5rem, 9vw, 8rem);
 }

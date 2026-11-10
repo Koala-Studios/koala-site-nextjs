@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { FreeAuditForm } from "@/components/audit/FreeAuditForm";
 import { BrandsBuiltFor } from "@/components/brands/BrandsBuiltFor";
 import { Cta } from "@/components/site/Cta";
-import { IndexList, SectionHead } from "@/components/system";
+import { Arch } from "@/components/system";
 import { freeAuditPage } from "@/lib/content/audit";
 import { createPageMetadata } from "@/lib/metadata";
 import { toAbsoluteUrl } from "@/lib/routes";
@@ -15,7 +15,7 @@ import styles from "./free-audit.module.css";
 export const metadata: Metadata = createPageMetadata({
   title: "Free Shopify Website Audit for Supplement and Wellness Brands",
   description:
-    "Send us your store and get a free PDF audit within two working days: the three to five things most likely costing you orders, with screenshots and a sketch of each fix.",
+    "Send us your store and get a free PDF audit: the three to five things most likely costing you orders, with screenshots and a sketch of each fix.",
   path: "/free-audit",
 });
 
@@ -41,11 +41,22 @@ export default function FreeAuditPage() {
           </h1>
           <p className="ks-lede">{freeAuditPage.lede}</p>
         </div>
-        <ul className={styles.promise}>
-          {freeAuditPage.promise.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <div className={styles.promiseWrap}>
+          <ul className={styles.promise}>
+            {freeAuditPage.promise.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <Image
+            className={styles.heroImage}
+            src="/images/audit/audit-printout.webp"
+            alt="A printed store audit: phone screenshots with problems circled in red and a sketch of each fix"
+            width={1536}
+            height={1024}
+            sizes="(max-width: 900px) 92vw, 46vw"
+            priority
+          />
+        </div>
         <div className={styles.formPanel} id="audit-form">
           <h2 className="ks-x ks-h3">{freeAuditPage.formTitle}</h2>
           <Suspense fallback={<p className="ks-muted" style={{ minHeight: "22rem" }}>Loading the form…</p>}>
@@ -56,8 +67,10 @@ export default function FreeAuditPage() {
 
       <BrandsBuiltFor />
 
-      <section className="ks-section" aria-labelledby="free-audit-sample-title">
-        <SectionHead id="free-audit-sample-title" title={freeAuditPage.sampleTitle} />
+      <section className={styles.section} aria-labelledby="free-audit-sample-title">
+        <h2 className={`ks-x ${styles.h2}`} id="free-audit-sample-title">
+          {freeAuditPage.sampleTitle}
+        </h2>
         <div className={styles.sample}>
           <p className={`ks-body ${styles.sampleCopy}`}>{freeAuditPage.sampleCopy}</p>
           <figure className={styles.page}>
@@ -94,26 +107,59 @@ export default function FreeAuditPage() {
         </div>
       </section>
 
-      <section className="ks-section" aria-labelledby="free-audit-steps-title">
-        <SectionHead id="free-audit-steps-title" title={<>How it <em>works</em></>} />
-        <ol className={styles.steps}>
-          {freeAuditPage.steps.map((step, index) => (
-            <li key={step.title}>
-              <span className="ks-num">{String(index + 1).padStart(2, "0")}</span>
-              <h3 className="ks-x ks-h3">{step.title}</h3>
-              <p>{step.copy}</p>
-            </li>
-          ))}
-        </ol>
+      <section className={styles.section} aria-labelledby="free-audit-steps-title">
+        <h2 className={`ks-x ${styles.h2}`} id="free-audit-steps-title">
+          How it <em>works</em>
+        </h2>
+        <div className={styles.stepsWrap}>
+          <Arch
+            className={styles.stepsArch}
+            src="/images/audit/audit-phone.webp"
+            alt="A phone showing the IRONVOLT store's ISO Whey product page"
+            sizes="(max-width: 900px) 70vw, 22rem"
+          />
+          <ol className={styles.steps}>
+            {freeAuditPage.steps.map((step, index) => (
+              <li key={step.title}>
+                <span className="ks-num">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="ks-x ks-h3">{step.title}</h3>
+                  <p>{step.copy}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
-      <section className="ks-section" aria-labelledby="free-audit-checks-title">
-        <SectionHead id="free-audit-checks-title" title={freeAuditPage.checksTitle} />
-        <IndexList items={freeAuditPage.checks.map((item, index) => ({ key: item, lead: String(index + 1).padStart(2, "0"), name: item }))} />
+      <section className={styles.section} aria-labelledby="free-audit-checks-title">
+        <h2 className={`ks-x ${styles.h2}`} id="free-audit-checks-title">
+          {freeAuditPage.checksTitle}
+        </h2>
+        <div className={styles.checksWrap}>
+          <ol className={styles.checks}>
+            {freeAuditPage.checks.map((item, index) => (
+              <li key={item}>
+                <span className="ks-label">{String(index + 1).padStart(2, "0")}</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ol>
+          <Image
+            className={styles.checksImage}
+            src="/images/blog/ironvolt/trial-pack.jpg"
+            alt="IRONVOLT Trial Pack carton with two single-serve sachets"
+            width={800}
+            height={800}
+            sizes="(max-width: 900px) 70vw, 24rem"
+          />
+        </div>
       </section>
 
-      <section className="ks-section" aria-labelledby="free-audit-faq-title">
-        <SectionHead id="free-audit-faq-title" title={<>Fair <em>questions</em></>} />
+      <section className={styles.section} aria-labelledby="free-audit-faq-title">
+        <h2 className={`ks-x ${styles.h2}`} id="free-audit-faq-title">
+          Fair <em>questions</em>
+        </h2>
         <dl className={styles.faq}>
           {freeAuditPage.faq.map((item) => (
             <div key={item.q}>
@@ -123,9 +169,20 @@ export default function FreeAuditPage() {
           ))}
         </dl>
         <div className={styles.again}>
-          <Cta href="#audit-form" data-analytics-cta="free-audit-bottom">
-            {freeAuditPage.submitLabel}
-          </Cta>
+          <Image
+            className={styles.againImage}
+            src="/images/redesign/contact/koala-contact-paper-plane-v4-1500.webp"
+            alt=""
+            width={1500}
+            height={938}
+            sizes="(max-width: 900px) 92vw, 40vw"
+          />
+          <div className={styles.againCopy}>
+            <p className="ks-lede">{freeAuditPage.againCopy}</p>
+            <Cta href="#audit-form" data-analytics-cta="free-audit-bottom">
+              {freeAuditPage.submitLabel}
+            </Cta>
+          </div>
         </div>
       </section>
     </div>

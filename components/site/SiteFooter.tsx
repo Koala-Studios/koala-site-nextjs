@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Logo } from "@/components/system";
 import { serviceDetails } from "@/content/pages/service-details";
 import { navigationContent, siteSettings } from "@/lib/content";
+import { asoPage } from "@/lib/content/aso";
 import { getPageContext } from "@/lib/content/page-context";
 
 import { Cta } from "./Cta";
@@ -47,6 +48,9 @@ export function SiteFooter() {
                 {service.navLabel}
               </Link>
             ))}
+            <Link className="koala-underline-link" href={asoPage.path}>
+              {asoPage.navLabel}
+            </Link>
           </div>
           <div>
             <p className="ks-label">Studio</p>

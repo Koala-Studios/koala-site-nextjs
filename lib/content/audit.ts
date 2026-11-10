@@ -12,7 +12,7 @@ export const freeAuditPage = {
   title: "Get a free audit",
   titleAccent: "of your website.",
   lede:
-    "Send us your store. Within two working days you get a short PDF with the three to five things most likely costing you orders, screenshots from your own site and a sketch of each fix.",
+    "Send us your store. You get a short PDF with the three to five things most likely costing you orders, screenshots from your own site and a sketch of each fix.",
   promise: ["Free, with no call needed", "Your public site only, no logins", "Yours to use, with or without us"],
   formTitle: "Where should we send it?",
   submitLabel: "Get my free audit",
@@ -57,11 +57,12 @@ export const freeAuditPage = {
     },
     {
       q: "What happens after?",
-      a: "We email the PDF and ask once if you'd like a 2-minute video or a 20-minute call about it. You don't need either to use it.",
+      a: "We email you the PDF and offer a 2-minute video walking through it on your own site, or a 15-minute call. You don't need either to use it.",
     },
   ],
+  againCopy: "Three fields, then we do the work. The PDF is yours either way.",
   thanksTitle: "Thanks.",
   thanksAccent: "It's on our list.",
   thanksCopy:
-    "We'll shop your store this week and email the PDF within two working days. Add hello@koalastudios.ca to your contacts so it doesn't land in spam.",
+    "We'll shop your store and email the PDF from frank@koalastudios.ca. Add that address to your contacts so it doesn't land in spam.",
 } as const;

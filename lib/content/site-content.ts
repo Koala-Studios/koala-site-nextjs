@@ -92,16 +92,16 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     route: "/services",
     status: "published",
     seo: {
-      title: "Shopify Design, Meta Ads & Email Marketing Services",
+      title: "Shopify, Ads, Email, SEO & AI Shopping Services",
       description:
-        "Shopify design and build, Meta ad management, and email marketing for ecommerce brands. One team across the full funnel.",
+        "Shopify design and build, Meta and Google ads with in-house ad creative, Klaviyo email, SEO and Google Maps, and Agentic Search Optimization for ecommerce brands. One team.",
       canonicalPath: "/services",
     },
     hero: {
       eyebrow: "Services",
       headline: "Design. Build. Grow.",
       summary:
-        "We run the Shopify store, email and ads for supplement, wellness and food brands, and design the packaging and product visuals they sell with. Most brands start with one plan and add the rest.",
+        "We run the Shopify store, email and ads for supplement, wellness and food brands, make the ad creative, and get them found on Google, Maps and AI assistants. Most brands start with one plan and add the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },
@@ -611,8 +611,8 @@ export const caseStudies: CaseStudyContent[] = [
     ],
     outcomes: [
       "Store, email and Meta ads run by one team",
-      "Automated emails sending since spring 2026",
-      "A rebuilt store live in October 2026",
+      "Supplement collections shoppers can scan fast",
+      "Product pages with clear purchase options",
     ],
     metrics: [
       { label: "Priority", value: "Performance product clarity" },
