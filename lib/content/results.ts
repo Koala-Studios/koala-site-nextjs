@@ -24,7 +24,7 @@ export const serviceResults: Record<string, ResultItem[]> = {
   ],
   "email-marketing": [
     { value: "3.7×", label: "Monthly email revenue, July to October 2026", ...ironBrothers },
-    { value: "3.7×", label: "Email revenue in the first 30 days of five new flows", ...dilligaf },
+    { value: "3.7×", label: "Email revenue in the 30 days to Nov 11, against the 30 days before", ...dilligaf },
     { value: "+57%", label: "Store conversion rate, 1.45% to 2.28%", ...dilligaf },
   ],
 };
