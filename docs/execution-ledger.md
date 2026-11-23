@@ -4055,3 +4055,17 @@ Implemented Frank's supplied Maya feedback: italic personal welcome and cursive 
 - `DrawOnView` + `useDrawn` (components/system/DrawOnView.tsx) drive LineArt, doodle and icon draw-in. Homepage service icons draw in row by row and redraw on hover (hover devices only). Reduced motion: drawn, no loops.
 - Safari showed case study titles tiny. Title now sits in its own `.titleFit` container, sizes with `100cqi * var(--fit)` (multiplication, not division), has a large clamp() default and an `@supports not (width: 1cqi)` viewport fallback. WebKit (Playwright 2272) verified: Mercato title 104px desktop / 46px phone, no overflow on six sampled case studies.
 - Verification: tsc, lint, production build passed; Chrome and WebKit screenshots inspected.
+
+## 2026-11-02 - Journal draft: BFCM without a sitewide discount
+
+Added the November calendar topic as typed draft content on `journal/bfcm-without-sitewide-discount`. Four origin sources support the article, with a Baymard bar chart, Klaviyo stats, an explicitly hypothetical IRONVOLT contribution diagram, ImageGen cover and share crop. No shared route, helper, component or stylesheet change retained.
+
+Verification: `npm run lint`, `npx tsc --noEmit -p .`, `npm run build` passed. Production draft lookup returns 404 and the draft slug is absent from `/blog` and `/sitemap.xml`. A local-only temporary lookup relaxation rendered the draft through the existing production article components; it was restored before final checks. Full-page renders at 1440 and 390 px: zero horizontal overflow, no broken images, three media figures inspected at both widths. Responsive standalone preview, screenshots, sources, prompts and LinkedIn copy live in the Koala project under `marketing/journal/bfcm-without-sitewide-discount/`.
+
+Dependency observation: unchanged lockfile `npm ci` reported 25 vulnerabilities (16 moderate, 8 high, 1 critical). No dependency upgrade was attempted in this editorial task. This is separate from the successful build checks.
+
+Publication is held for Frank's approval of this post. No main merge, main push, live deployment or social posting performed. `publishedAt` is a proposed date while status remains draft; use the actual approval/publication day when publishing.
+
+## 2026-11-23 - Journal: BFCM post readied for review
+
+Rechecked the four sources at their original pages (Klaviyo Dec 2 2025 recap: +11% same-site sales, -10% discounts, 10,000-brand cohort; Shopify Dec 2 2025: US$14.6B global GMV; Baymard list updated Oct 28 2026: 40/20/12% of US shoppers' non-browsing reasons; Shopify Help: Buy X get Y gift never auto-added, store time zone). Worked example arithmetic holds (20.00 / 5.30 / 16.00; 10 / 13 / 38 orders for $200). Timing rewritten for publication on Tuesday Nov 24; the offer-math PNG (default system font, 1,400 px tall at full width) is replaced by a native bar chart of the same illustrative numbers; Baymard label and chart subtitle now match what the page states. Status set to published on the branch so the deploy preview shows the post, index, sitemap and JSON-LD as they will go live; merging to main is the publication and waits for Frank. lint, tsc and production build passed.
