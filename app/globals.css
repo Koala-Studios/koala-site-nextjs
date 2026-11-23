@@ -718,7 +718,7 @@ a.ks-index__row:focus-visible {
 }
 
 .ks-results__value {
-  font-size: clamp(3.4rem, 9vw, 6.5rem);
+  font-size: clamp(3.4rem, 6.2vw, 5.5rem);
   line-height: 0.9;
   white-space: nowrap;
 }
@@ -742,6 +742,10 @@ a.ks-index__row:focus-visible {
 a.ks-results__client:hover,
 a.ks-results__client:focus-visible {
   color: var(--ks-green);
+}
+
+.ks-results--stack .ks-results__value {
+  font-size: clamp(3.4rem, 9vw, 6.5rem);
 }
 
 .ks-results--compact .ks-results__item {
