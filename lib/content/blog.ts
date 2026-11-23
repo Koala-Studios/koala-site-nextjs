@@ -32,7 +32,7 @@ export const blogPosts: BlogPostContent[] = [
   "sectionLabel": "Step",
   "cover": {
     "src": "/images/blog/bfcm-without-sitewide-discount/cover.jpg",
-    "alt": "An IRONVOLT whey tub, black shaker and shipping carton on a concrete gym bench. Fictional brand illustration.",
+    "alt": "An IRONVOLT whey tub, Oatwick granola pouch, Brightling soda can and Saltmere serum on a daylight-lit packing bench beside an open carton. Fictional brands.",
     "width": 1536,
     "height": 1024
   },
