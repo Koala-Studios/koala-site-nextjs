@@ -4065,3 +4065,7 @@ Verification: `npm run lint`, `npx tsc --noEmit -p .`, `npm run build` passed. P
 Dependency observation: unchanged lockfile `npm ci` reported 25 vulnerabilities (16 moderate, 8 high, 1 critical). No dependency upgrade was attempted in this editorial task. This is separate from the successful build checks.
 
 Publication is held for Frank's approval of this post. No main merge, main push, live deployment or social posting performed. `publishedAt` is a proposed date while status remains draft; use the actual approval/publication day when publishing.
+
+## 2026-11-23 - Journal: BFCM post readied for review
+
+Rechecked the four sources at their original pages (Klaviyo Dec 2 2025 recap: +11% same-site sales, -10% discounts, 10,000-brand cohort; Shopify Dec 2 2025: US$14.6B global GMV; Baymard list updated Oct 28 2026: 40/20/12% of US shoppers' non-browsing reasons; Shopify Help: Buy X get Y gift never auto-added, store time zone). Worked example arithmetic holds (20.00 / 5.30 / 16.00; 10 / 13 / 38 orders for $200). Timing rewritten for publication on Tuesday Nov 24; Baymard label and chart subtitle now match what the page states. Status set to published on the branch so the deploy preview shows the post, index, sitemap and JSON-LD as they will go live; merging to main is the publication and waits for Frank. lint, tsc and production build passed.

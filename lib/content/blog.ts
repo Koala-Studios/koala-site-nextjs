@@ -17,11 +17,11 @@ export const blogIndexContent: BlogIndexContent = {
 export const blogPosts: BlogPostContent[] = [
 {
   "slug": "bfcm-without-sitewide-discount",
-  "status": "draft",
+  "status": "published",
   "title": "BFCM without a",
   "titleAccent": "sitewide discount",
-  "summary": "A BFCM without a sitewide discount plan for supplement brands: cost the offer, choose a useful bonus, and test the whole order before Black Friday.",
-  "publishedAt": "2026-11-04",
+  "summary": "How a supplement brand can run BFCM without a sitewide discount: cost the offer, choose a useful bonus and test the whole order before Friday.",
+  "publishedAt": "2026-11-24",
   "author": "Koala Studios",
   "tags": [
     "Shopify",
@@ -39,7 +39,7 @@ export const blogPosts: BlogPostContent[] = [
   "intro": [
     "Your best-selling protein tub sells at full price in October. Then November arrives and the easiest campaign brief is “30% off everything”. The banner takes an afternoon. Recovering the money you gave away can take much longer.",
     "For a supplement founder, the useful question is what a customer gets for buying during Black Friday that you can afford to provide. That might be a starter bundle, a shaker with a qualifying order, or early access to a flavour. It still needs a clear reason to buy now.",
-    "Black Friday falls on November 27 this year. There is time to choose one offer, check its economics and walk the order on a phone. Here is how we would do it. IRONVOLT is our fictional supplement brand; every price and cost in its worked example is illustrative, never a client result."
+    "Black Friday is this Friday, November 27. That still leaves time to cost one offer, set it up and walk the order on a phone, and if your offer is already live, the same checks catch the expensive mistakes before customers do. Here is how we would do it. IRONVOLT is our fictional supplement brand; every price and cost in its worked example is illustrative, never a client result."
   ],
   "takeaways": {
     "title": "Start here if you only have an hour",
@@ -175,7 +175,7 @@ export const blogPosts: BlogPostContent[] = [
         {
           "kind": "bar",
           "title": "Reasons shoppers give for leaving checkout",
-          "subtitle": "Selected US shopper responses in Baymard’s 2026 presentation; browsing-only segment set aside. Multiple reasons may apply.",
+          "subtitle": "Three of the eleven reasons US online shoppers gave in Baymard’s latest survey, with “just browsing” set aside. Multiple reasons may apply.",
           "unit": {
             "suffix": "%"
           },
@@ -196,7 +196,7 @@ export const blogPosts: BlogPostContent[] = [
             }
           ],
           "source": {
-            "label": "Baymard Institute, cart and checkout abandonment reasons, 2026 data; accessed November 2, 2026",
+            "label": "Baymard Institute, cart abandonment rate statistics, updated October 28, 2026; accessed November 23, 2026",
             "href": "https://baymard.com/lists/cart-abandonment-rate"
           }
         }
@@ -224,9 +224,9 @@ export const blogPosts: BlogPostContent[] = [
     {
       "id": "measure-and-prepare",
       "number": "6",
-      "heading": "Use November to remove the weak assumptions",
+      "heading": "Use the days before Friday to remove the weak assumptions",
       "paragraphs": [
-        "You have more than three weeks before November 27. Use this week to choose the offer and cost it, next week to finish the page and email, and the following week to rehearse fulfilment and checkout. These are planning targets, not reasons to invent a countdown.",
+        "Give each day before November 27 one job. Tuesday: choose the offer and cost it. Wednesday: finish the page and email, then walk the order. Thursday: brief the warehouse and fix what the walk-through found. If that is too tight for a new offer, run one you have already tested and keep this plan for Boxing Day. These are planning targets, not reasons to invent a countdown.",
         "For the campaign, give a new buyer help choosing a flavour or starter option. Give a returning buyer a clear route to the product they already use. Use only people eligible to receive the channel’s marketing, and keep your existing consent and suppression rules in force.",
         "After the weekend, split first orders from repeat orders. Count the gifts actually fulfilled, discounts actually taken and shipping actually paid. Compare contribution per order and total contribution, then revisit the reorder once enough time has passed. Attribution in an email or ad platform should remain separate from store totals.",
         [
@@ -263,11 +263,11 @@ export const blogPosts: BlogPostContent[] = [
       "href": "https://www.shopify.com/news/bfcm-data-2025"
     },
     {
-      "label": "Baymard Institute, cart and checkout abandonment reasons, 2026 data; accessed November 2, 2026",
+      "label": "Baymard Institute, cart abandonment rate statistics, updated October 28, 2026; accessed November 23, 2026",
       "href": "https://baymard.com/lists/cart-abandonment-rate"
     },
     {
-      "label": "Shopify Help Center, Buy X get Y discounts; accessed November 2, 2026",
+      "label": "Shopify Help Center, Buy X get Y discounts; accessed November 23, 2026",
       "href": "https://help.shopify.com/en/manual/discounts/discount-types/buy-x-get-y"
     }
   ],
