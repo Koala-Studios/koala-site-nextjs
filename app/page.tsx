@@ -20,10 +20,12 @@ import { createPageMetadata } from "@/lib/metadata";
 
 import styles from "./page.module.css";
 
+const homeHeroLine = "Shopify stores, Meta ads and email for food, supplement and wellness brands. Toronto.";
+
 export const metadata: Metadata = createPageMetadata({
   title: "Shopify Design, Meta Ads & Email Marketing Agency",
   description:
-    "Koala Studios is a Toronto ecommerce studio that designs and builds Shopify storefronts, packaging, 3D renders, Meta ads and email programs for consumer brands that want to grow. See the work, then start a project.",
+    "Koala Studios is a Toronto ecommerce studio for food, supplement and wellness brands: Shopify stores, Meta ads, Klaviyo email, packaging and 3D renders. See the work, then start a project.",
   path: "/",
 });
 
@@ -34,11 +36,17 @@ export default function Home() {
     <div className="ks-page">
       <section aria-labelledby="home-title">
         <div className="ks-masthead-space" aria-hidden="true" />
-        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Canada"]} />
+        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Toronto"]} />
 
         <h1 className={`ks-x ks-split ${styles.heroTitle}`} id="home-title">
           <span>Brands</span> <em>that sell.</em>
         </h1>
+        <div className={styles.heroLead}>
+          <p className={styles.heroLine}>{homeHeroLine}</p>
+          <Cta href="/contact" data-analytics-cta="home-first-screen">
+            Start a project
+          </Cta>
+        </div>
         <HeroReel
           className={styles.hero}
           label="Koala Studios reel: Shopify storefronts, product video and 3D work for Mercato di Bellina, Freezo, Wellth Foods, Whiskey Road and more"

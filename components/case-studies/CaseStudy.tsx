@@ -25,6 +25,46 @@ function MediaFrame({ item, priority }: { item: CaseStudyMedia; priority?: boole
   );
 }
 
+function Shot({ item, tag, sizes }: { item: CaseStudyMedia; tag: string; sizes: string }) {
+  return (
+    <figure className={styles.shot}>
+      <span className="ks-label">{tag}</span>
+      <Image src={item.src} alt={item.alt} width={item.width ?? 1440} height={item.height ?? 1100} sizes={sizes} />
+    </figure>
+  );
+}
+
+function BeforeAfter({ beforeAfter }: { beforeAfter: NonNullable<CaseStudyContent["beforeAfter"]> }) {
+  return (
+    <section className={styles.compare} aria-labelledby="before-after-title">
+      <div className={styles.chapterText}>
+        <span className="ks-label">Nov 2026</span>
+        <h2 className="ks-x ks-h2" id="before-after-title">
+          Before <em>and after</em>
+        </h2>
+        <p className={styles.copy}>{beforeAfter.note}</p>
+      </div>
+      {beforeAfter.pairs.map((pair) => (
+        <div className={styles.pair} key={pair.label}>
+          <p className={`ks-label ${styles.pairLabel}`}>{pair.label}</p>
+          <Shot item={pair.before} tag="Before" sizes="(max-width: 900px) 100vw, 45vw" />
+          <Shot item={pair.after} tag="After" sizes="(max-width: 900px) 100vw, 45vw" />
+        </div>
+      ))}
+      {beforeAfter.phone?.length ? (
+        <div className={styles.phones}>
+          <p className={`ks-label ${styles.pairLabel}`}>The new store on a phone</p>
+          {beforeAfter.phone.map((item) => (
+            <figure className={styles.phone} key={item.src}>
+              <Image src={item.src} alt={item.alt} width={item.width ?? 780} height={item.height ?? 1688} sizes="(max-width: 700px) 46vw, 22vw" />
+            </figure>
+          ))}
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
 export function CaseStudyHero({ caseStudy, number }: Props) {
   const hero = caseStudy.heroImage ?? caseStudy.coverImage ?? caseStudy.media[0];
   const photographic = Boolean(caseStudy.coverImage || caseStudy.heroImage);
@@ -93,6 +133,8 @@ export function CaseStudyStory({ caseStudy }: { caseStudy: CaseStudyContent }) {
   return (
     <div className={styles.story}>
       <p className={`ks-lede ${styles.intro}`}>{caseStudy.intro}</p>
+
+      {caseStudy.beforeAfter ? <BeforeAfter beforeAfter={caseStudy.beforeAfter} /> : null}
 
       {chapters.map((chapter, index) => (
         <section className={styles.chapter} key={index}>

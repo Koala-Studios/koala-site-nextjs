@@ -10,6 +10,7 @@ import { AttributionTracker } from "@/components/site/AttributionTracker";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { siteSettings } from "@/lib/content";
+import { mayaContent } from "@/lib/content/maya";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
@@ -54,6 +55,18 @@ const organizationJsonLd = {
     addressCountry: "CA",
   },
   areaServed: ["Canada", "United States"],
+  description: siteSettings.description,
+  knowsAbout: ["Shopify design and development", "Meta ads", "Klaviyo email marketing", "Packaging design", "3D product renders"],
+  audience: { "@type": "BusinessAudience", audienceType: "Food, supplement and wellness brands" },
+  employee: {
+    "@type": "Person",
+    name: mayaContent.name,
+    jobTitle: mayaContent.title,
+    email: mayaContent.email,
+    url: `${siteSettings.url}/maya`,
+    image: `${siteSettings.url}${mayaContent.portraitShare}`,
+    sameAs: [mayaContent.linkedin],
+  },
   ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
 };
 

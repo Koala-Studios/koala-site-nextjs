@@ -28,16 +28,39 @@ const servicesJsonLd = {
   description: servicesContent.seo.description,
   url: toAbsoluteUrl("/services"),
   provider: { "@type": "Organization", name: siteSettings.name, url: toAbsoluteUrl("/") },
-  areaServed: { "@type": "Country", name: "Canada" },
+  areaServed: [
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United States" },
+  ],
+  audience: { "@type": "BusinessAudience", audienceType: "Food, supplement and wellness brands" },
   serviceType: servicesContent.offerings.map((offering) => offering.title),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Koala Studios services",
-    itemListElement: servicesContent.offerings.map((offering) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: offering.title, description: offering.copy },
-    })),
+    itemListElement: [
+      ...servicesContent.offerings.map((offering) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: offering.title, description: offering.copy },
+      })),
+      ...servicesContent.plans.items.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        description: plan.copy,
+        price: plan.price.replace(/[$,]/g, ""),
+        priceCurrency: "CAD",
+      })),
+    ],
   },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: servicesContent.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
 };
 
 type Offering = (typeof servicesContent.offerings)[number] & {
@@ -50,10 +73,10 @@ const offerings: Offering[] = [...servicesContent.offerings, ...servicesContent.
 export default function ServicesPage() {
   return (
     <div className="ks-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([servicesJsonLd, faqJsonLd]) }} />
 
       <section className={styles.hero} aria-labelledby="services-title">
-        <Folio items={["Services", "Build · Product · Traffic · Retention", "Canada"]} />
+        <Folio items={["Services", "Build · Product · Traffic · Retention", "Toronto, Canada"]} />
         <h1 className={`ks-x ${styles.title}`} id="services-title">
           Design. Build. <em>Grow.</em>
         </h1>
@@ -131,6 +154,42 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="ks-section" aria-labelledby="services-plans-title">
+        <SectionHead index="09" id="services-plans-title" title={<>Plans and <em>prices</em></>} />
+        <ul className={styles.plans}>
+          {servicesContent.plans.items.map((plan) => (
+            <li className={styles.plan} key={plan.name}>
+              <h3 className="ks-x ks-h3">{plan.name}</h3>
+              <p className={styles.price}>
+                {"was" in plan && plan.was ? (
+                  <>
+                    <s className={styles.was}>
+                      <span className="koala-sr-only">Normally </span>
+                      {plan.was}
+                    </s>{" "}
+                  </>
+                ) : null}
+                <span className="ks-x">{plan.price}</span> <span className={styles.unit}>{plan.unit}</span>
+              </p>
+              <p className={styles.planCopy}>{plan.copy}</p>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.planNote}>{servicesContent.plans.note}</p>
+      </section>
+
+      <section className="ks-section" aria-labelledby="services-faq-title">
+        <SectionHead index="10" id="services-faq-title" title={<>Common <em>questions</em></>} />
+        <dl className={styles.faq}>
+          {servicesContent.faq.map((item) => (
+            <div className={styles.faqItem} key={item.question}>
+              <dt className="ks-x ks-h3">{item.question}</dt>
+              <dd>{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="ks-section" aria-labelledby="services-audit-title">

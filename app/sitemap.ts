@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site-config";
 
 // Bump when page content meaningfully changes; a per-build timestamp is a
 // meaningless freshness signal to crawlers.
-const LAST_CONTENT_UPDATE = new Date("2026-09-24");
+const LAST_CONTENT_UPDATE = new Date("2026-11-23");
 
 function createStaticEntry(
   path: string,

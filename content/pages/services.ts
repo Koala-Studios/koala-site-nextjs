@@ -150,6 +150,63 @@ export const servicesContent = {
       points: ["Monthly creative", "Weekly testing", "Plain-language reports"],
     },
   },
+  /** Monthly plans and fees from the house pricing guide (newton-brain marketing/pricing-and-estimates). */
+  plans: {
+    note: "Prices in Canadian dollars, plus tax. Monthly plans run month to month. Ad spend is separate and stays in your own ad account. Store builds and packaging are quoted per project after a free audit.",
+    items: [
+      {
+        name: "Essentials",
+        price: "$600",
+        was: "$800",
+        unit: "a month",
+        copy: "We look after your Shopify store: fixes, updates and small improvements every month.",
+      },
+      {
+        name: "Meta ads management",
+        price: "$600",
+        unit: "a month",
+        copy: "We run your Facebook and Instagram ads: the creative, the campaigns, weekly testing and plain-language reports.",
+      },
+      {
+        name: "Growth",
+        price: "$1,500",
+        unit: "a month",
+        copy: "We run your store, your Meta ads and your Klaviyo email together, with a short weekly report and a monthly strategy meeting.",
+      },
+      {
+        name: "Per promo",
+        price: "$300",
+        unit: "a promotion",
+        copy: "One sale or launch planned and set up for you, when you don't need a monthly plan.",
+      },
+    ],
+  },
+  faq: [
+    {
+      question: "Who do you work with?",
+      answer:
+        "Food, supplement and wellness brands that sell on Shopify, from new launches to brands already in national retail. Brands we have worked with include Unity Supplements, Iron Brothers, Wellth Foods, Nosh Balls and Magnum Nutraceuticals.",
+    },
+    {
+      question: "Where are you based?",
+      answer: "Toronto, Canada. We work with brands across Canada and the United States.",
+    },
+    {
+      question: "What does it cost?",
+      answer:
+        "Monthly plans start at $600: Essentials (Shopify upkeep) is normally $800 and $600 for you, Meta ads management is $600, and Growth, which runs your store, Meta ads and email together, is $1,500. A single promotion is $300. Prices are in Canadian dollars, plus tax, month to month. Store builds and packaging are quoted after a free audit.",
+    },
+    {
+      question: "How fast can you start?",
+      answer:
+        "Monthly plans start as soon as you give us the go-ahead, with a first update by the end of week one. A full Shopify design and build typically takes 6 to 12 weeks.",
+    },
+    {
+      question: "Is ad spend included?",
+      answer:
+        "No. Your ad budget is paid directly to Meta or Google from your own account. We agree the budget with you once we have seen what you spend today.",
+    },
+  ],
   fitNotes: [
     "Ecommerce brands that need a clearer message",
     "Teams that want senior work without a heavy process",
