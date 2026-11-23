@@ -125,13 +125,32 @@ export const blogPosts: BlogPostContent[] = [
       "check": "Does the least profitable eligible order still leave the contribution you need?",
       "media": [
         {
-          "kind": "image",
-          "src": "/images/blog/bfcm-without-sitewide-discount/offer-math.png",
-          "alt": "Illustrative CAD contribution calculation: full price $20, 30 percent discount $5.30, full price plus a $4 gift $16. Before ads, tax excluded.",
-          "width": 1000,
-          "height": 1400,
-          "caption": "Illustrative IRONVOLT economics, not observed performance. $49 revenue less $20 product cost and $9 other variable costs. Replace all assumptions.",
-          "credit": "Diagram: Koala Studios"
+          "kind": "bar",
+          "title": "What one $49 order leaves, by offer",
+          "subtitle": "Illustrative IRONVOLT example in CAD: contribution before ads, tax excluded. $49 tub less $20 product cost and $9 other variable costs, held fixed.",
+          "unit": {
+            "prefix": "$",
+            "decimals": 2
+          },
+          "rows": [
+            {
+              "label": "Full price",
+              "value": 20
+            },
+            {
+              "label": "Full price plus a $4 shaker",
+              "value": 16,
+              "highlight": true
+            },
+            {
+              "label": "30% off the tub",
+              "value": 5.3,
+              "highlight": true
+            }
+          ],
+          "source": {
+            "label": "Koala Studios worked example with invented IRONVOLT costs, not observed results. Replace every assumption with your own."
+          }
         }
       ]
     },
