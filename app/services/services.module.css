@@ -141,6 +141,7 @@
 }
 
 .plan {
+  align-content: start;
   border-top: var(--ks-rule-soft);
   display: grid;
   gap: 0.6rem;
