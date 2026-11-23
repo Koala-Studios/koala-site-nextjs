@@ -1328,7 +1328,7 @@ export const caseStudies: CaseStudyContent[] = [
       "We wrote and designed five flows in the brand's own red, black and attitude, led by a welcome series that walks a new subscriber through the sayings, the hoodies and the women's Gia line. Then a campaign calendar on top, starting with Halloween: 30% off and a free tee with bigger orders.",
     deliverables: ["Five Klaviyo flows", "Welcome series", "Email design system", "Halloween campaign", "Monthly reports"],
     outcomes: [
-      "3.7× email revenue in the first 30 days of the flows",
+      "3.7× email revenue in the 30 days to November 11",
       "Store conversion up from 1.45% to 2.28%",
       "Store sales up 121% on the same weeks of 2025",
       "23.4% open rate on the Halloween email",
@@ -1394,8 +1394,8 @@ export const caseStudies: CaseStudyContent[] = [
     coverImage: {
       src: "/images/project/dilligaf/cover.webp",
       alt: "Top of the DILLIGAF Halloween email: 30% off and a free tee",
-      width: 600,
-      height: 750,
+      width: 560,
+      height: 700,
       position: "top center",
     },
     logo: {

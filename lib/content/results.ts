@@ -12,7 +12,7 @@ const dilligaf = { client: "DILLIGAF", href: getCaseStudyPath("dilligaf") };
 
 export const homeResults: ResultItem[] = [
   { value: "3.7×", label: "Monthly email revenue, July to October 2026", ...ironBrothers },
-  { value: "3.95×", label: "Return on ad spend from a five-day flash sale on Meta", ...ironBrothers },
+  { value: "3.95×", label: "Return on ad spend from the Full Send flash sale on Meta", ...ironBrothers },
   { value: "+57%", label: "Store conversion rate after we built their email program", ...dilligaf },
 ];
 
