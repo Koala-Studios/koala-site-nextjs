@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/system";
 import { serviceDetails } from "@/content/pages/service-details";
+import { servicesContent } from "@/content/pages/services";
 import { navigationContent, siteSettings } from "@/lib/content";
+import { mayaContent } from "@/lib/content/maya";
 import { getPageContext } from "@/lib/content/page-context";
 
 import { Cta } from "./Cta";
@@ -47,13 +49,26 @@ export function SiteFooter() {
                 {service.navLabel}
               </Link>
             ))}
+            {servicesContent.moreOfferings.map((service) => (
+              <Link className="koala-underline-link" key={service.href} href={service.href}>
+                {service.title}
+              </Link>
+            ))}
           </div>
           <div>
             <p className="ks-label">Studio</p>
             <a className="koala-underline-link" href={`mailto:${context.email}`} data-contact-method="email">
               {context.email}
             </a>
-            <span>Canada</span>
+            <span>Toronto, Canada</span>
+            <Link className="koala-underline-link" href="/maya">
+              {mayaContent.name}, {mayaContent.title}
+            </Link>
+            {siteSettings.social.linkedin ? (
+              <a className="koala-underline-link" href={siteSettings.social.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+            ) : null}
           </div>
         </div>
 

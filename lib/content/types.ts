@@ -29,6 +29,7 @@ export interface SiteSettings {
     instagram?: string;
     linkedin?: string;
     behance?: string;
+    googleBusinessProfile?: string;
   };
   cta: {
     primaryLabel: string;
@@ -84,6 +85,21 @@ export interface CaseStudyMetric {
   value: string;
 }
 
+/** One page of a store we rebuilt, shown as it was and as it is now. */
+export interface CaseStudyComparison {
+  label: string;
+  before: CaseStudyMedia;
+  after: CaseStudyMedia;
+}
+
+export interface CaseStudyBeforeAfter {
+  /** One line naming what "before" and "after" are, with dates. */
+  note: string;
+  pairs: CaseStudyComparison[];
+  /** Phone screens of the new store, shown after the pairs. */
+  phone?: CaseStudyMedia[];
+}
+
 export interface TestimonialContent {
   quote: string;
   author: string;
@@ -108,6 +124,7 @@ export interface CaseStudyContent {
   outcomes: string[];
   metrics: CaseStudyMetric[];
   media: CaseStudyMedia[];
+  beforeAfter?: CaseStudyBeforeAfter;
   heroImage?: CaseStudyMedia;
   cardImage?: CaseStudyMedia;
   /** Editorial photograph (product or campaign) used for arches and covers. */

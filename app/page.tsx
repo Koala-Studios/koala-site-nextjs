@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { Reveal } from "@/components/animation/Reveal";
 import { HeroReel } from "@/components/home/HeroReel";
 import { BrandsBuiltFor } from "@/components/brands/BrandsBuiltFor";
+import { PlatformLogos } from "@/components/brands/PlatformLogos";
 import { Cta } from "@/components/site/Cta";
 import { Arch, Folio, SectionHead } from "@/components/system";
 import { Doodle } from "@/components/system/Doodle";
@@ -19,10 +20,12 @@ import { createPageMetadata } from "@/lib/metadata";
 
 import styles from "./page.module.css";
 
+const homeHeroLine = "Shopify stores, Meta ads and email for food, supplement and wellness brands. Toronto.";
+
 export const metadata: Metadata = createPageMetadata({
   title: "Shopify Design, Meta Ads & Email Marketing Agency",
   description:
-    "Koala Studios is a Toronto ecommerce studio that designs and builds Shopify storefronts, packaging, 3D renders, Meta ads and email programs for consumer brands that want to grow. See the work, then start a project.",
+    "Koala Studios is a Toronto ecommerce studio for food, supplement and wellness brands: Shopify stores, Meta ads, Klaviyo email, packaging and 3D renders. See the work, then start a project.",
   path: "/",
 });
 
@@ -33,11 +36,17 @@ export default function Home() {
     <div className="ks-page">
       <section aria-labelledby="home-title">
         <div className="ks-masthead-space" aria-hidden="true" />
-        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Canada"]} />
+        <Folio className={styles.folio} items={["Shopify · Packaging · Growth", "Toronto"]} />
 
         <h1 className={`ks-x ks-split ${styles.heroTitle}`} id="home-title">
           <span>Brands</span> <em>that sell.</em>
         </h1>
+        <div className={styles.heroLead}>
+          <p className={styles.heroLine}>{homeHeroLine}</p>
+          <Cta href="/contact" data-analytics-cta="home-first-screen">
+            Start a project
+          </Cta>
+        </div>
         <HeroReel
           className={styles.hero}
           label="Koala Studios reel: Shopify storefronts, product video and 3D work for Mercato di Bellina, Freezo, Wellth Foods, Whiskey Road and more"
@@ -100,21 +109,24 @@ export default function Home() {
             <Arch src="/images/project/ara/ara_plants.jpg" alt="ÄRA protein coffee packaging among trailing plants" sizes="(max-width: 900px) 100vw, 36vw" />
             <Folio className={styles.archFolio} items={["ÄRA × Magnum", <em key="k" className="ks-it">Packaging</em>]} />
           </Reveal>
-          <DrawOnView className="ks-index">
-            {servicesContent.offerings.map((offering, index) => (
-              <Link className={`ks-index__row ${styles.serviceRow}`} href={offering.href} key={offering.href} style={{ "--i": index } as CSSProperties}>
-                <span className="ks-label">{offering.number}</span>
-                <span>
-                  <span className={styles.serviceTitle}>
-                    <Icon name={serviceIcon(offering.href)} />
-                    <span className="ks-x ks-index__name">{offering.title}</span>
+          <div>
+            <DrawOnView className="ks-index">
+              {servicesContent.offerings.map((offering, index) => (
+                <Link className={`ks-index__row ${styles.serviceRow}`} href={offering.href} key={offering.href} style={{ "--i": index } as CSSProperties}>
+                  <span className="ks-label">{offering.number}</span>
+                  <span>
+                    <span className={styles.serviceTitle}>
+                      <Icon name={serviceIcon(offering.href)} />
+                      <span className="ks-x ks-index__name">{offering.title}</span>
+                    </span>
+                    <span className={styles.serviceCopy}>{offering.copy}</span>
                   </span>
-                  <span className={styles.serviceCopy}>{offering.copy}</span>
-                </span>
-                <span className="ks-index__meta">{offering.kicker}</span>
-              </Link>
-            ))}
-          </DrawOnView>
+                  <span className="ks-index__meta">{offering.kicker}</span>
+                </Link>
+              ))}
+            </DrawOnView>
+            <PlatformLogos />
+          </div>
         </div>
       </section>
 

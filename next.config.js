@@ -35,7 +35,13 @@ const nextConfig = {
       },
       {
         source: "/projects/ara",
-        destination: "/work/ara",
+        destination: "/work/allo",
+        permanent: true,
+      },
+      {
+        // ÄRA is Allo relaunched by Magnum; the two cases are one.
+        source: "/work/ara",
+        destination: "/work/allo",
         permanent: true,
       },
       {

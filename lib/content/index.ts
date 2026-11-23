@@ -8,7 +8,7 @@ import {
   pageContent,
 } from "./site-content";
 
-const brandsBuiltForExclusions = new Set(["ara", "nektr"]);
+const brandsBuiltForExclusions = new Set(["nektr"]);
 
 export * from "./types";
 export { blogIndexContent, blogPosts } from "./blog";

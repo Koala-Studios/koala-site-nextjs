@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
 
 import { serviceDetails } from "@/content/pages/service-details";
+import { asoPage } from "@/lib/content/aso";
 import { getPublishedBlogPosts, getPublishedCaseStudies } from "@/lib/content";
 import { corePublicRoutes, getBlogPostPath, getCaseStudyPath } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 // Bump when page content meaningfully changes; a per-build timestamp is a
 // meaningless freshness signal to crawlers.
-const LAST_CONTENT_UPDATE = new Date("2026-09-24");
+const LAST_CONTENT_UPDATE = new Date("2026-11-23");
 
 function createStaticEntry(
   path: string,
@@ -41,9 +42,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postEntries = posts.map((post) =>
     createStaticEntry(getBlogPostPath(post.slug), postDate(post))
   );
-  const serviceEntries = serviceDetails.map((service) =>
-    createStaticEntry(`/services/${service.slug}`)
-  );
+  const serviceEntries = [
+    ...serviceDetails.map((service) => createStaticEntry(`/services/${service.slug}`)),
+    createStaticEntry(asoPage.path, new Date("2026-11-10")),
+  ];
 
   return [...coreEntries, ...serviceEntries, ...getCaseStudyEntries(), ...postEntries];
 }

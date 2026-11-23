@@ -12,6 +12,21 @@
   margin-top: clamp(1.25rem, 3vw, 2.5rem);
 }
 
+.heroLead {
+  align-items: start;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+  margin-top: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+.heroLine {
+  color: var(--ks-ink);
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  line-height: 1.35;
+  max-width: 34ch;
+}
+
 .intro {
   display: grid;
   gap: 1.25rem;
@@ -100,6 +115,15 @@
 }
 
 @media (min-width: 900px) {
+  .heroLead {
+    align-items: center;
+    grid-template-columns: 1fr auto;
+  }
+
+  .heroLine {
+    max-width: none;
+  }
+
   .intro {
     grid-template-columns: 1fr 1.4fr;
   }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/animation/Reveal";
 import { Cta } from "@/components/site/Cta";
 import { ArchWindow } from "@/components/system/ArchWindow";
-import { Folio, IndexList, SectionHead } from "@/components/system";
+import { Arch, Folio, IndexList, SectionHead } from "@/components/system";
 import { serviceIcon } from "@/components/system/Icons";
 import { LineArt } from "@/components/system/LineArt";
 import { servicesContent } from "@/content/pages/services";
@@ -28,25 +28,55 @@ const servicesJsonLd = {
   description: servicesContent.seo.description,
   url: toAbsoluteUrl("/services"),
   provider: { "@type": "Organization", name: siteSettings.name, url: toAbsoluteUrl("/") },
-  areaServed: { "@type": "Country", name: "Canada" },
+  areaServed: [
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United States" },
+  ],
+  audience: { "@type": "BusinessAudience", audienceType: "Food, supplement and wellness brands" },
   serviceType: servicesContent.offerings.map((offering) => offering.title),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Koala Studios services",
-    itemListElement: servicesContent.offerings.map((offering) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: offering.title, description: offering.copy },
-    })),
+    itemListElement: [
+      ...servicesContent.offerings.map((offering) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: offering.title, description: offering.copy },
+      })),
+      ...servicesContent.plans.items.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        description: plan.copy,
+        price: plan.price.replace(/[$,]/g, ""),
+        priceCurrency: "CAD",
+      })),
+    ],
   },
 };
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: servicesContent.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+type Offering = (typeof servicesContent.offerings)[number] & {
+  linkLabel?: string;
+  portrait?: { src: string; alt: string };
+};
+
+const offerings: Offering[] = [...servicesContent.offerings, ...servicesContent.moreOfferings];
 
 export default function ServicesPage() {
   return (
     <div className="ks-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([servicesJsonLd, faqJsonLd]) }} />
 
       <section className={styles.hero} aria-labelledby="services-title">
-        <Folio items={["Services", "Build · Product · Traffic · Retention", "Canada"]} />
+        <Folio items={["Services", "Build · Product · Traffic · Retention", "Toronto, Canada"]} />
         <h1 className={`ks-x ${styles.title}`} id="services-title">
           Design. Build. <em>Grow.</em>
         </h1>
@@ -74,7 +104,7 @@ export default function ServicesPage() {
         <p className={`ks-label ${styles.bandCaption}`}>Ära · 3D renders</p>
       </ArchWindow>
 
-      {servicesContent.offerings.map((offering) => (
+      {offerings.map((offering) => (
         <section className="ks-section" aria-labelledby={`service-${offering.number}`} key={offering.href}>
           <SectionHead
             index={offering.number}
@@ -84,11 +114,15 @@ export default function ServicesPage() {
           />
           <div className={styles.offering}>
             <Reveal className={styles.offeringCopy}>
-              <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              {offering.portrait ? (
+                <Arch className={styles.portrait} src={offering.portrait.src} alt={offering.portrait.alt} sizes="13rem" />
+              ) : (
+                <LineArt className={styles.art} name={serviceIcon(offering.href)} />
+              )}
               <p className="ks-lede">{offering.copy}</p>
               <p className={`ks-it ${styles.note}`}>{offering.note}</p>
               <Link className="ks-tlink" href={offering.href}>
-                Full service details <span aria-hidden="true">↗</span>
+                {offering.linkLabel ?? "Full service details"} <span aria-hidden="true">↗</span>
               </Link>
             </Reveal>
             <IndexList items={offering.deliverables.map((item, index) => ({ key: item, lead: String(index + 1).padStart(2, "0"), name: item }))} />
@@ -97,7 +131,7 @@ export default function ServicesPage() {
       ))}
 
       <section className="ks-section" aria-labelledby="services-process-title">
-        <SectionHead index="05" id="services-process-title" title={<>How we <em>work</em></>} />
+        <SectionHead index="07" id="services-process-title" title={<>How we <em>work</em></>} />
         <ol className={styles.steps}>
           {servicesContent.delivery.map((step) => (
             <li className={styles.step} key={step.number}>
@@ -110,7 +144,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="ks-section" aria-labelledby="services-engagement-title">
-        <SectionHead index="06" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
+        <SectionHead index="08" id="services-engagement-title" title={<>Two ways <em>in</em></>} />
         <div className={styles.engagements}>
           {[servicesContent.engagement.project, servicesContent.engagement.retainer].map((mode) => (
             <div className={styles.engagement} key={mode.title}>
@@ -120,6 +154,42 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="ks-section" aria-labelledby="services-plans-title">
+        <SectionHead index="09" id="services-plans-title" title={<>Plans and <em>prices</em></>} />
+        <ul className={styles.plans}>
+          {servicesContent.plans.items.map((plan) => (
+            <li className={styles.plan} key={plan.name}>
+              <h3 className="ks-x ks-h3">{plan.name}</h3>
+              <p className={styles.price}>
+                {"was" in plan && plan.was ? (
+                  <>
+                    <s className={styles.was}>
+                      <span className="koala-sr-only">Normally </span>
+                      {plan.was}
+                    </s>{" "}
+                  </>
+                ) : null}
+                <span className="ks-x">{plan.price}</span> <span className={styles.unit}>{plan.unit}</span>
+              </p>
+              <p className={styles.planCopy}>{plan.copy}</p>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.planNote}>{servicesContent.plans.note}</p>
+      </section>
+
+      <section className="ks-section" aria-labelledby="services-faq-title">
+        <SectionHead index="10" id="services-faq-title" title={<>Common <em>questions</em></>} />
+        <dl className={styles.faq}>
+          {servicesContent.faq.map((item) => (
+            <div className={styles.faqItem} key={item.question}>
+              <dt className="ks-x ks-h3">{item.question}</dt>
+              <dd>{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="ks-section" aria-labelledby="services-audit-title">
