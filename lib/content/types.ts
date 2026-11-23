@@ -100,6 +100,35 @@ export interface CaseStudyBeforeAfter {
   phone?: CaseStudyMedia[];
 }
 
+/** One headline result: a multiple or a percentage, never a dollar amount or a count. */
+export interface CaseStudyResult {
+  value: string;
+  /** One line saying what the number measures and over which dates. */
+  label: string;
+}
+
+/** A result shown outside its case page, credited to the client and linked to the case. */
+export interface ResultItem {
+  value: string;
+  label: string;
+  client?: string;
+  href?: string;
+}
+
+/** A real ad or email we made, shown at its own ratio. */
+export interface CaseStudyCreative extends CaseStudyMedia {
+  kind: "ad" | "email";
+  caption: string;
+}
+
+export interface CaseStudyCreativeGroup {
+  title: string;
+  /** Word in the title set in the serif italic. */
+  accent?: string;
+  note: string;
+  items: CaseStudyCreative[];
+}
+
 export interface TestimonialContent {
   quote: string;
   author: string;
@@ -112,7 +141,9 @@ export interface CaseStudyContent {
   title: string;
   client: string;
   sector: string;
-  category: "Shopify" | "Design" | "Development" | "Lifestyle";
+  category: "Shopify" | "Design" | "Development" | "Lifestyle" | "Marketing";
+  /** Channels we ran, shown after the sector on marketing cases, e.g. "Meta ads · Email". */
+  channels?: string;
   tags: string[];
   featured?: boolean;
   headline: string;
@@ -125,6 +156,12 @@ export interface CaseStudyContent {
   metrics: CaseStudyMetric[];
   media: CaseStudyMedia[];
   beforeAfter?: CaseStudyBeforeAfter;
+  /** Three headline results, shown big at the top of a marketing case. */
+  results?: CaseStudyResult[];
+  /** When and where the results come from. */
+  resultsNote?: string;
+  /** The ads and emails, grouped; the first item leads beside the results. */
+  creatives?: CaseStudyCreativeGroup[];
   heroImage?: CaseStudyMedia;
   cardImage?: CaseStudyMedia;
   /** Editorial photograph (product or campaign) used for arches and covers. */

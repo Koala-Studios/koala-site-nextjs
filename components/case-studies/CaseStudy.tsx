@@ -2,11 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/animation/Reveal";
+import { Creative } from "@/components/results/Creative";
+import { ResultsRow } from "@/components/results/ResultsRow";
 import { ArrowIcon } from "@/components/site/ArrowIcon";
 import { Cta } from "@/components/site/Cta";
 import { Arch, Folio, IndexList } from "@/components/system";
 import type { CaseStudyContent, CaseStudyMedia } from "@/lib/content";
-import { getCaseStudyCover } from "@/lib/content";
+import { getCaseStudyCover, getLeadCreative } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/routes";
 import { titleFit } from "@/lib/title-fit";
 
@@ -65,17 +67,63 @@ function BeforeAfter({ beforeAfter }: { beforeAfter: NonNullable<CaseStudyConten
   );
 }
 
+/** Marketing cases open on their numbers, with the work that earned them beside. */
+function ResultsLead({ caseStudy }: { caseStudy: CaseStudyContent }) {
+  const lead = getLeadCreative(caseStudy);
+  return (
+    <div className={`${styles.resultsLead} ${lead?.kind === "email" ? styles.resultsLeadEmail : ""}`}>
+      <div className={styles.resultsNumbers}>
+        <ResultsRow items={caseStudy.results ?? []} layout="stack" />
+        {caseStudy.resultsNote ? <p className={`ks-label ks-muted ${styles.resultsNote}`}>{caseStudy.resultsNote}</p> : null}
+      </div>
+      {lead ? <Creative className={styles.leadCreative} item={lead} priority sizes="(max-width: 900px) 100vw, 40vw" /> : null}
+    </div>
+  );
+}
+
+/** The ads and emails, group by group, leaving out the one already shown at the top. */
+function Creatives({ caseStudy }: { caseStudy: CaseStudyContent }) {
+  const lead = getLeadCreative(caseStudy);
+  const groups = (caseStudy.creatives ?? [])
+    .map((group) => ({ ...group, items: group.items.filter((item) => item !== lead) }))
+    .filter((group) => group.items.length);
+
+  return groups.map((group) => (
+    <section className={styles.creatives} key={group.title} aria-label={group.title}>
+      <Reveal className={styles.chapterText}>
+        <span aria-hidden="true" />
+        <h2 className="ks-x ks-h2">
+          {group.title.split(" ").map((word, index) => (
+            <span key={`${word}-${index}`}>
+              {index > 0 ? " " : null}
+              {word === group.accent ? <em>{word}</em> : word}
+            </span>
+          ))}
+        </h2>
+        <p className={styles.copy}>{group.note}</p>
+      </Reveal>
+      <div className={`${styles.creativeGrid} ${styles[`creativeGrid${Math.min(group.items.length, 3)}`]}`}>
+        {group.items.map((item) => (
+          <Creative item={item} key={item.src} sizes="(max-width: 700px) 80vw, (max-width: 1200px) 33vw, 28rem" />
+        ))}
+      </div>
+    </section>
+  ));
+}
+
 export function CaseStudyHero({ caseStudy, number }: Props) {
   const hero = caseStudy.heroImage ?? caseStudy.coverImage ?? caseStudy.media[0];
   const photographic = Boolean(caseStudy.coverImage || caseStudy.heroImage);
   const focus = caseStudy.metrics[0];
+  const marketing = Boolean(caseStudy.results?.length);
+  const line = caseStudy.channels ? `${caseStudy.sector} · ${caseStudy.channels}` : caseStudy.client;
 
   return (
     <section className={styles.hero} aria-labelledby="case-study-title">
-      <Link className={`ks-label ${styles.back}`} href="/work">
+      <Link className={`ks-label ${styles.back}`} href={marketing ? "/work#marketing" : "/work"}>
         <ArrowIcon direction="left" /> All work
       </Link>
-      <Folio items={[`No. ${String(number).padStart(2, "0")}`, caseStudy.client, <em key="c" className="ks-it">{caseStudy.category}</em>]} />
+      <Folio items={[`No. ${String(number).padStart(2, "0")}`, line, <em key="c" className="ks-it">{caseStudy.category}</em>]} />
       <div className={styles.titleBlock}>
         <div className={styles.titleFit}>
           <h1 className={`ks-x ${styles.title}`} id="case-study-title" style={titleFit(caseStudy.title)}>
@@ -85,7 +133,9 @@ export function CaseStudyHero({ caseStudy, number }: Props) {
         <p className={`ks-it ${styles.headline}`}>{caseStudy.headline}</p>
       </div>
 
-      {hero ? (
+      {marketing ? (
+        <ResultsLead caseStudy={caseStudy} />
+      ) : hero ? (
         <div className={`${styles.heroMedia} ${photographic ? styles.heroPhoto : styles.heroShot}`}>
           <Image src={hero.src} alt={hero.alt} fill priority sizes="100vw" style={hero.position ? { objectPosition: hero.position } : undefined} />
         </div>
@@ -100,7 +150,7 @@ export function CaseStudyHero({ caseStudy, number }: Props) {
           <dt className="ks-label">Services</dt>
           <dd>{caseStudy.services.join(" · ")}</dd>
         </div>
-        {focus ? (
+        {focus && !marketing ? (
           <div>
             <dt className="ks-label">{focus.label}</dt>
             <dd>{focus.value}</dd>
@@ -135,6 +185,8 @@ export function CaseStudyStory({ caseStudy }: { caseStudy: CaseStudyContent }) {
       <p className={`ks-lede ${styles.intro}`}>{caseStudy.intro}</p>
 
       {caseStudy.beforeAfter ? <BeforeAfter beforeAfter={caseStudy.beforeAfter} /> : null}
+
+      <Creatives caseStudy={caseStudy} />
 
       {chapters.map((chapter, index) => (
         <section className={styles.chapter} key={index}>

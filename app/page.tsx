@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 
 import { Reveal } from "@/components/animation/Reveal";
 import { HeroReel } from "@/components/home/HeroReel";
+import { ResultsRow } from "@/components/results/ResultsRow";
 import { BrandsBuiltFor } from "@/components/brands/BrandsBuiltFor";
 import { PlatformLogos } from "@/components/brands/PlatformLogos";
 import { Cta } from "@/components/site/Cta";
@@ -16,6 +17,7 @@ import { WorkGrid } from "@/components/work/WorkGrid";
 import { servicesContent } from "@/content/pages/services";
 import { getPublishedCaseStudies } from "@/lib/content";
 import { auditOffer } from "@/lib/content/audit";
+import { homeResults } from "@/lib/content/results";
 import { createPageMetadata } from "@/lib/metadata";
 
 import styles from "./page.module.css";
@@ -51,6 +53,23 @@ export default function Home() {
           className={styles.hero}
           label="Koala Studios reel: Shopify storefronts, product video and 3D work for Mercato di Bellina, Freezo, Wellth Foods, Whiskey Road and more"
         />
+      </section>
+
+      <section className={styles.results} aria-labelledby="home-results-title">
+        <SectionHead
+          id="home-results-title"
+          title={
+            <>
+              Marketing that <em>pays</em>
+            </>
+          }
+          aside={
+            <Link className="ks-tlink" href="/work#marketing">
+              See the ads and emails <span aria-hidden="true">↗</span>
+            </Link>
+          }
+        />
+        <ResultsRow items={homeResults} />
       </section>
 
       <section className={styles.intro} aria-label="The studio">

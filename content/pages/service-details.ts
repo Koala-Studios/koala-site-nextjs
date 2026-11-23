@@ -110,7 +110,7 @@ export const serviceDetails: ServiceDetail[] = [
       "Accounts stuck at the same return for months",
       "New launches that need their first paid traction",
     ],
-    caseSlug: "magnum",
+    caseSlug: "iron-brothers-ads-and-email",
     ctaTitle: "Ready to scale traffic?",
   },
   {
@@ -159,7 +159,7 @@ export const serviceDetails: ServiceDetail[] = [
       "Flows set up once and never touched since",
       "Brands that want retention before more ad spend",
     ],
-    caseSlug: "allo",
+    caseSlug: "dilligaf",
     ctaTitle: "Want your list working?",
   },
   {

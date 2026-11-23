@@ -27,6 +27,10 @@
   max-width: 34ch;
 }
 
+.results {
+  padding-top: clamp(3rem, 7vw, 5.5rem);
+}
+
 .intro {
   display: grid;
   gap: 1.25rem;

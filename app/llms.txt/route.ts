@@ -48,7 +48,13 @@ export function GET() {
     "## Work",
     "",
     ...getPublishedCaseStudies().map((caseStudy) =>
-      link(`${caseStudy.client} (${caseStudy.sector})`, getCaseStudyPath(caseStudy.slug), caseStudy.headline),
+      link(
+        `${caseStudy.client} (${caseStudy.channels ? `${caseStudy.sector}, ${caseStudy.channels}` : caseStudy.sector})`,
+        getCaseStudyPath(caseStudy.slug),
+        caseStudy.results?.length
+          ? `${caseStudy.headline} ${caseStudy.results.map((result) => `${result.value}: ${result.label}.`).join(" ")}`
+          : caseStudy.headline,
+      ),
     ),
     "",
     "## Journal",
