@@ -1,0 +1,51 @@
+.creative {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.frame {
+  background: var(--ks-paper-2);
+  border: 1px solid var(--ks-stone);
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.frame img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* Long emails show their top, like the first scroll on a phone, and fade out. */
+.cropped .frame {
+  aspect-ratio: 2 / 5;
+}
+
+.cropped .frame::after {
+  background: linear-gradient(to bottom, rgb(244 243 239 / 0), var(--ks-paper));
+  bottom: 0;
+  content: "";
+  height: 18%;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.caption {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--ks-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  gap: 0.25rem 1rem;
+  justify-content: space-between;
+  line-height: 1.25;
+}
+
+.caption :global(.ks-tlink) {
+  font-size: 1rem;
+}

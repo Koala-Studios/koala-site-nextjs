@@ -1,5 +1,13 @@
 # Execution Ledger
 
+## 2026-11-23 - Growth round 1: findability, plans, Unity before/after
+
+Branch `growth/round-1` (from `mara/aso-consulting-platforms`, so PR 5's Agentic Search Optimization page is included). Not merged, not deployed; Frank reviews the Netlify preview first.
+
+Home first screen: one line under the headline (who, what, Toronto) and Start a project beside it; layout and mosaic unchanged. `/services`: plans and prices from the house pricing guide (Essentials shown as normally $800, $600; Meta ads $600; Growth $1,500; per promo $300; CAD), a five-question FAQ with FAQPage structured data. Toronto and food/supplement/wellness in visible copy on `/services`, the four service pages and the footer. `/llms.txt` is a static route built from the same content. Organization structured data: LinkedIn company page in `sameAs`, Maya as a Person; `siteSettings.social.googleBusinessProfile` is an empty slot until the profile exists. Footer links `/maya`. Case studies: Unity gets a `beforeAfter` block (June 2026 store vs the Nov 5 redesign, desktop pairs plus phone screens of the new store; no phone capture of the old store exists); Magnum, Nektr and Allo rewritten as client facts; Ara folded into Allo, `/work/ara` and `/projects/ara` 308 to `/work/allo`.
+
+Verification: `npm run lint` and `npm run build` pass. Preview captures at 1440 and 390 beside live are listed in the PR.
+
 ## 2026-10-26 - Journal (/blog) and first post
 
 Branch `blog/first-post` (not merged, not deployed). Added the journal: `/blog` lists published posts (date, reading time, title, one-line summary) and `/blog/[slug]` renders a post. Posts are typed `BlogPostContent` in `lib/content/blog.ts` (intro, numbered sections, inline bold/italic/link runs, sign-off, SEO), with `getPublishedBlogPosts`, `getBlogPostBySlug`, `formatPostDate` and `getReadingMinutes` in `lib/content/index.ts`; index copy is `blogIndexContent`. Routes: `corePublicRoutes.blog` and `getBlogPostPath` in `lib/routes.ts`. Metadata: `createBlogPostMetadata` in `lib/metadata.ts`; `createBaseMetadata` in `lib/seo.ts` now accepts Open Graph article details (published time, author, tags). The post route emits BlogPosting JSON-LD with a breadcrumb; the index emits Blog JSON-LD. Sitemap adds post entries dated by the post, and the `/blog` entry takes the newest post's date. `/blogs` now 308s to `/blog` and is no longer disallowed in robots so crawlers can follow it. Footer "Site" column gains "Journal"; the main nav is unchanged pending Frank's decision.

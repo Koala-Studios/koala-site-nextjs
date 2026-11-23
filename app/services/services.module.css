@@ -60,6 +60,12 @@
   max-width: 13rem;
 }
 
+/* Maya's arch portrait takes the line drawing's place on Consulting. */
+.portrait {
+  aspect-ratio: 3 / 4;
+  width: min(100%, 13rem);
+}
+
 .note {
   color: var(--ks-muted);
   font-size: 1.2rem;
@@ -129,6 +135,68 @@
   max-width: 52ch;
 }
 
+.plans {
+  display: grid;
+  gap: 0;
+}
+
+.plan {
+  align-content: start;
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.25rem 0 1.5rem;
+}
+
+.price {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.price :global(.ks-x) {
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1;
+}
+
+.was {
+  color: var(--ks-muted);
+  font-size: 1.25rem;
+}
+
+.unit {
+  color: var(--ks-muted);
+  flex-basis: 100%;
+}
+
+.planCopy {
+  max-width: 34ch;
+}
+
+.planNote {
+  border-top: var(--ks-rule-soft);
+  color: var(--ks-muted);
+  max-width: 70ch;
+  padding-top: 1rem;
+}
+
+.faq {
+  display: grid;
+}
+
+.faqItem {
+  border-top: var(--ks-rule-soft);
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
+}
+
+.faqItem dd {
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
 @media (min-width: 700px) {
   .band {
     aspect-ratio: 21 / 9;
@@ -161,6 +229,27 @@
   .engagements {
     gap: 4rem;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .plans {
+    column-gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Plan names run to two lines at most; keep every price on one baseline. */
+  .plan h3 {
+    min-height: 2.2em;
+  }
+
+  .faqItem {
+    gap: 3rem;
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  .plans,
+  .planNote,
+  .faq {
+    margin-left: 9rem;
   }
 }
 

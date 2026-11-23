@@ -10,17 +10,21 @@ import type {
 export const siteSettings: SiteSettings = {
   name: "Koala Studios",
   description:
-    "Shopify stores, Meta ads, and email marketing for brands that want to grow.",
+    "Shopify stores, Meta ads and email marketing for food, supplement and wellness brands. Toronto, Canada.",
   url: "https://koalastudios.ca",
   locale: "en-CA",
   defaultSeo: {
     title: "Shopify Design, Meta Ads & Email Marketing Agency",
     description:
-      "Koala Studios helps ecommerce brands redesign storefronts, build Shopify features, and improve the way customers move through the site.",
+      "Koala Studios is a Toronto studio for food, supplement and wellness brands: Shopify stores, Meta ads, Klaviyo email, packaging and 3D renders.",
     canonicalPath: "/",
   },
-  // Add real profile URLs before linking socially anywhere (see docs/launch-blockers.md).
-  social: {},
+  // Only real profile URLs. An empty slot stays out of the page and the structured data.
+  social: {
+    linkedin: "https://www.linkedin.com/company/koala-studios",
+    // Google Business Profile: Frank to paste the profile's share URL here once it exists.
+    googleBusinessProfile: "",
+  },
   cta: {
     primaryLabel: "Start a conversation",
     primaryHref: "/contact",
@@ -93,14 +97,14 @@ export const pageContent: Record<MarketingPageKey, PageContent> = {
     seo: {
       title: "Shopify Design, Meta Ads & Email Marketing Services",
       description:
-        "Shopify design and build, Meta ad management, and email marketing for ecommerce brands. One team across the full funnel.",
+        "Shopify design and build, Meta ad management and Klaviyo email marketing for food, supplement and wellness brands. One Toronto team across the full funnel, with monthly plans from $600.",
       canonicalPath: "/services",
     },
     hero: {
       eyebrow: "Services",
       headline: "Design. Build. Grow.",
       summary:
-        "Four ways to work with us: build the store, make the product shine, drive the traffic and keep the customers. Most brands start with one and grow into the rest.",
+        "For food, supplement and wellness brands on Shopify. Four ways to work with us: build the store, make the product shine, drive the traffic and keep the customers. Most brands start with one and grow into the rest.",
       ctas: [
         { label: "See the work", href: "/work" },
         { label: "Contact", href: "/contact" },
@@ -191,104 +195,49 @@ export const homepageTestimonials: TestimonialContent[] = [
 
 export const caseStudies: CaseStudyContent[] = [
   {
-    slug: "ara",
-    status: "published",
-    title: "Ara",
-    client: "Ara",
-    sector: "Ecommerce",
-    category: "Shopify",
-    tags: ["Shopify", "Design", "Content"],
-    featured: true,
-    headline: "A calmer product story for a niche coffee ritual.",
-    intro: "Ara needed a premium page that explained the offer fast.",
-    services: ["Design", "Frontend", "Content"],
-    challenge:
-      "The old page took too long to explain the product and why it deserved trust.",
-    approach:
-      "We centered the daily ritual, tightened the rhythm, and made proof easier to scan.",
-    deliverables: ["Product story", "Benefit flow", "Mobile proof"],
-    outcomes: ["Clearer offer", "Better mobile scanning", "More premium feel"],
-    metrics: [
-      { label: "Priority", value: "Product clarity" },
-      { label: "Scope", value: "Launch-ready narrative" },
-    ],
-    media: [
-      {
-        src: "/images/project/ara/ara_hero.webp",
-        alt: "Ara hero image showing the product in a premium coffee setting",
-      },
-      {
-        src: "/images/project/ara/ara_plants.jpg",
-        alt: "Ara product and ingredient story image",
-        width: 1365,
-        height: 1706,
-      },
-      {
-        src: "/images/project/ara/ara_product_desktop.png",
-        alt: "Ara desktop product page layout",
-        width: 1900,
-        height: 950,
-      },
-    ],
-    coverImage: {
-      src: "/images/project/ara/ara_plants.jpg",
-      alt: "ÄRA protein coffee tub among trailing plants",
-    },
-    cardImage: {
-      src: "/images/project/ara/ara_hero.webp",
-      alt: "Ara ecommerce case study card image",
-    },
-    relatedSlug: "magnum",
-    seo: {
-      title: "Ara Case Study",
-      description:
-        "Ara shows how Koala Studios turns a product-heavy page into a clearer proof story.",
-      canonicalPath: "/work/ara",
-    },
-  },
-  {
     slug: "magnum",
     status: "published",
     title: "Magnum",
-    client: "Magnum",
-    sector: "Brand ecommerce",
+    client: "Magnum Nutraceuticals",
+    sector: "Sports nutrition",
     category: "Design",
-    tags: ["Design", "Strategy", "Development"],
+    tags: ["Design", "Shopify", "Product UX"],
     featured: true,
-    headline: "A bolder ecommerce story with cleaner proof.",
-    intro: "Magnum needed a premium presentation without a wall of visuals.",
-    services: ["Strategy", "Design system", "Build"],
+    headline: "A sports-nutrition store that gets athletes to the right tub.",
+    intro:
+      "Magnum Nutraceuticals makes proteins, pre-workouts, fat burners and greens for athletes. We designed store pages that put the products first: best-sellers by goal, product pages with flavours, sizes and subscriptions laid out plainly, and a buy button that stays in reach.",
+    services: ["Store design", "Product pages", "Collections"],
     challenge:
-      "The strongest proof was hard to find inside a spectacle-heavy page.",
+      "Magnum has a deep catalogue and loyal customers who know exactly what they want. The store had to get them to the right product fast, and still give a first-time buyer enough to choose between a dozen tubs.",
     approach:
-      "We edited the page into a clearer hierarchy with fewer, stronger moments.",
-    deliverables: ["Editorial layout", "Proof flow", "Related work"],
-    outcomes: ["Better scanning", "Clearer proof", "More polished feel"],
+      "We organised the catalogue around best-sellers and goals, gave every product card its one-line job, built a product page where flavour, size and subscribe-and-save sit together, and kept the add-to-cart bar on screen as people scroll.",
+    deliverables: ["Best-seller collection", "Product page template", "Subscribe-and-save options", "Phone product list"],
+    outcomes: ["A faster path to the right product", "A clear choice between one-time and subscription", "The buy button always in reach"],
     metrics: [
-      { label: "Priority", value: "System confidence" },
-      { label: "Scope", value: "Editorial case study" },
+      { label: "Focus", value: "Product pages and collections" },
+      { label: "Scope", value: "Store design" },
     ],
     media: [
       {
         src: "/images/project/magnum/magnum_desktop_gym.png",
-        alt: "Magnum brand hero image",
+        alt: "Magnum protein, pre-workout and fat-burner tubs on a gym bench",
       },
       {
         src: "/images/project/magnum/product_page_desktop_magnum.png",
-        alt: "Magnum desktop product page",
+        alt: "Magnum Vegan Quattro product page with size, flavour and subscribe-and-save options",
         width: 1919,
         height: 952,
       },
       {
         src: "/images/project/magnum/product_list_magum.png",
-        alt: "Magnum product listing page",
+        alt: "Magnum best-sellers on a phone, each card with its one-line job",
         width: 388,
         height: 843,
       },
     ],
     cardImage: {
       src: "/images/project/magnum/magnum_desktop_gym.png",
-      alt: "Magnum ecommerce design case study card image",
+      alt: "Magnum Nutraceuticals supplement tubs on a gym bench",
     },
     logo: {
       src: "/images/project/magnum/logo.png",
@@ -298,9 +247,9 @@ export const caseStudies: CaseStudyContent[] = [
     },
     relatedSlug: "nektr",
     seo: {
-      title: "Magnum Case Study",
+      title: "Magnum Nutraceuticals Case Study",
       description:
-        "Magnum shows the redesigned case-study structure in a concise proof-first format.",
+        "How Koala Studios designed store pages for Magnum Nutraceuticals, a sports-nutrition brand: best-sellers by goal, product pages with flavours, sizes and subscribe-and-save, and a phone layout that keeps the buy button in reach.",
       canonicalPath: "/work/magnum",
     },
   },
@@ -308,42 +257,39 @@ export const caseStudies: CaseStudyContent[] = [
     slug: "nektr",
     status: "published",
     title: "Nektr",
-    client: "Nektr",
-    sector: "Food ecommerce",
-    category: "Lifestyle",
-    tags: ["Lifestyle", "Design", "Development"],
+    client: "NEKTR by Magnum",
+    sector: "Greens supplement",
+    category: "Design",
+    tags: ["Design", "3D renders", "Product graphics"],
     featured: true,
-    headline: "A disciplined browse path for an expressive product line.",
-    intro: "Nektr needed energy without sacrificing mobile clarity.",
-    services: ["Strategy", "Direction", "Frontend"],
+    headline: "Launch visuals for a daily greens powder.",
+    intro:
+      "NEKTR is Magnum Nutraceuticals' daily greens and superfoods powder. We made its launch visuals: photoreal 3D renders of the tubs in bright fruit scenes, and a graphic that shows what is inside at a glance.",
+    services: ["3D renders", "Art direction", "Product graphics"],
     challenge:
-      "Oversized media made the work expressive but harder to understand quickly.",
+      "A greens powder is hard to sell in a picture: a tub, a scoop, a green drink. NEKTR needed images that said flavour and freshness on the store, in ads and on social, before a photoshoot was possible.",
     approach:
-      "We tightened the pacing and made each image support a specific point.",
-    deliverables: ["Case narrative", "Proof modules", "Mobile media flow"],
-    outcomes: [
-      "Cleaner story flow",
-      "Better mobile comprehension",
-      "Stronger media hierarchy",
-    ],
+      "We modelled the tubs in 3D and set them in fruit-and-splash scenes for each flavour, cropped for wide banners, phones and square posts, and designed a nutrient plate that turns the ingredient list into something you can read in a second.",
+    deliverables: ["3D tub models", "Flavour renders", "Wide, phone and square crops", "Ingredient graphic"],
+    outcomes: ["Launch images with no photoshoot", "One look across store, ads and social", "Ingredients explained in one picture"],
     metrics: [
-      { label: "Priority", value: "Mobile-first proof" },
-      { label: "Scope", value: "Story pacing" },
+      { label: "Focus", value: "3D renders and launch graphics" },
+      { label: "Scope", value: "Product launch visuals" },
     ],
     media: [
       {
         src: "/images/project/nektr/wide_hero_new3_ps.jpg",
-        alt: "Nektr hero image with a strong product landscape composition",
+        alt: "NEKTR daily greens tubs rendered in 3D with pineapple, peach and splash",
       },
       {
         src: "/images/project/nektr/mobile_hero.jpg",
-        alt: "Nektr mobile hero composition",
+        alt: "Square crop of the NEKTR tub renders for phones and social posts",
         width: 1080,
         height: 1080,
       },
       {
         src: "/images/project/nektr/nektr_plate.png",
-        alt: "Nektr product plate and nutrients image",
+        alt: "NEKTR ingredient graphic: a plate of greens labelled spirulina, fibre, leafy and cruciferous vegetables",
         width: 1456,
         height: 901,
       },
@@ -354,13 +300,13 @@ export const caseStudies: CaseStudyContent[] = [
     },
     cardImage: {
       src: "/images/project/nektr/wide_hero_new3_ps.jpg",
-      alt: "Nektr food and beverage ecommerce case study card image",
+      alt: "NEKTR daily greens 3D render",
     },
     relatedSlug: "allo",
     seo: {
-      title: "Nektr Case Study",
+      title: "NEKTR Daily Greens Case Study",
       description:
-        "Nektr shows how Koala Studios reframes energetic brand work into a clearer proof story.",
+        "Koala Studios made the launch visuals for NEKTR, Magnum Nutraceuticals' daily greens powder: photoreal 3D tub renders in fruit scenes for the store, ads and social, plus an ingredient graphic.",
       canonicalPath: "/work/nektr",
     },
   },
@@ -368,43 +314,55 @@ export const caseStudies: CaseStudyContent[] = [
     slug: "allo",
     status: "published",
     title: "Allo",
-    client: "Allo",
-    sector: "Wellness ecommerce",
-    category: "Development",
-    tags: ["Development", "Design", "Shopify"],
-    headline: "A calmer product story with stronger proof.",
-    intro: "Allo needed a curated page that felt premium at a glance.",
-    services: ["Design system", "Frontend", "Conversion"],
+    client: "Allo Nutrition",
+    sector: "Protein for coffee",
+    category: "Shopify",
+    tags: ["Shopify", "Packaging", "3D renders"],
+    featured: true,
+    headline: "Protein for coffee, from Allo to ÄRA.",
+    intro:
+      "Allo made a protein powder you stir into coffee. We worked on it under two names: Allo's own Shopify store, then ÄRA, the same product relaunched by Magnum Nutraceuticals after it acquired Allo.",
+    services: ["Shopify", "Packaging", "3D renders"],
     challenge:
-      "The old presentation repeated too much and hid the strongest moments.",
+      "A new kind of product has seconds to explain itself: what it is, how it goes in your coffee, and why it beats a creamer. After the acquisition it also had to move to a new name and a new store without losing what customers already knew.",
     approach:
-      "We narrowed the story to the visuals, outcomes, and service decisions that mattered.",
-    deliverables: ["Editorial structure", "Selected media", "Outcome framing"],
-    outcomes: [
-      "Stronger visual hierarchy",
-      "Less repetition",
-      "Clearer conversion story",
-    ],
+      "On Allo's store we led with the cup: the product in coffee, flavours up front, and a plain choice between creamer and non-creamer. For ÄRA we designed the packaging, made photoreal 3D renders of the sachet, tub and box, and built its product page on Magnum's store.",
+    deliverables: ["Allo Shopify store", "Product pages and flavour picker", "ÄRA packaging design", "3D product renders", "ÄRA product page"],
+    outcomes: ["The product explained at a glance", "One look carried across two names", "Launch images ready before any photoshoot"],
     metrics: [
-      { label: "Priority", value: "Product education" },
-      { label: "Scope", value: "Conversion refinement" },
+      { label: "Brands", value: "Allo, then ÄRA by Magnum" },
+      { label: "Scope", value: "Store, packaging and renders" },
     ],
     media: [
       {
-        src: "/images/project/allo/allo_image_wide.jpg",
-        alt: "Allo hero image",
-      },
-      {
         src: "/images/project/allo/allo-product-desktop.png",
-        alt: "Allo desktop product page",
+        alt: "Allo vanilla protein powder product page with flavour picker and a coffee cup",
         width: 1910,
         height: 1007,
       },
       {
-        src: "/images/project/allo/vanilla_noncreamer.webp",
-        alt: "Allo vanilla non-creamer product image",
-        width: 512,
-        height: 512,
+        src: "/images/project/ara/ara_hero.webp",
+        alt: "ÄRA protein powder sachet, mug and box rendered in 3D in warm morning light",
+        width: 2318,
+        height: 982,
+      },
+      {
+        src: "/images/project/allo/allo-shop-page.png",
+        alt: "Allo shop page on a phone with creamer and non-creamer protein powders",
+        width: 401,
+        height: 869,
+      },
+      {
+        src: "/images/project/ara/ara_product_desktop.png",
+        alt: "ÄRA creamer product page on the Magnum Nutraceuticals store",
+        width: 1900,
+        height: 950,
+      },
+      {
+        src: "/images/project/ara/ara_plants.jpg",
+        alt: "ÄRA protein powder tub rendered among trailing plants",
+        width: 1365,
+        height: 1706,
       },
     ],
     coverImage: {
@@ -413,13 +371,13 @@ export const caseStudies: CaseStudyContent[] = [
     },
     cardImage: {
       src: "/images/project/allo/allo_image_wide.jpg",
-      alt: "Allo wellness ecommerce case study card image",
+      alt: "Allo protein for coffee packaging",
     },
     relatedSlug: "nosh-balls",
     seo: {
-      title: "Allo Case Study",
+      title: "Allo and ÄRA Case Study",
       description:
-        "Allo highlights a more curated, conversion-aware case-study structure for Koala Studios.",
+        "Koala Studios' work for Allo, a protein powder for coffee: the Allo Shopify store, then packaging, 3D renders and a product page for its relaunch as ÄRA by Magnum Nutraceuticals.",
       canonicalPath: "/work/allo",
     },
   },
@@ -511,54 +469,105 @@ export const caseStudies: CaseStudyContent[] = [
     client: "Unity Supplements",
     sector: "Supplement ecommerce",
     category: "Shopify",
-    tags: ["Shopify", "Product UX", "Subscription"],
-    headline: "A supplement catalog built around flavor, choice, and clarity.",
+    tags: ["Shopify", "Redesign", "Product UX"],
+    headline: "The same brand, rebuilt as a premium supplement store.",
     intro:
-      "Unity Supplements needed an ecommerce system that made protein, creatine, collagen, samples, and bundles easier to compare without losing the lifestyle energy of the brand.",
-    services: ["Shopify", "Product UX", "Content hierarchy"],
+      "Unity Supplements, based in Laval, Quebec, makes clear whey protein, creatine and collagen. In November 2026 we redesigned their Shopify store to look as premium as the product, keeping their colours and logo.",
+    services: ["Shopify redesign", "Product pages", "Lifestyle imagery"],
     challenge:
-      "The offer depends on flavor choice, sample packs, subscriptions, and benefit cues, which can overwhelm shoppers if the catalog and product pages do not explain the decision clearly.",
+      "The store sold the products but not the brand. The homepage was one promo banner over a product grid, product pages were a list of options, and nothing showed people actually using what Unity makes.",
     approach:
-      "We kept collections simple, made product options visible, and gave benefit language enough structure for shoppers to compare products quickly.",
+      "We kept Unity's navy, sky blue and logo and rebuilt the theme around them: a first screen with the numbers that sell clear protein (27 g of protein, 0 g of sugar), shop-by-category tiles, new product templates for CLEAR ISO, creatine and collagen with benefit tags and a nutrition-facts popup, a matching icon family, and new lifestyle images of athletes with the real packs.",
     deliverables: [
-      "Collection structure",
-      "Product option layouts",
-      "Benefit-led product pages",
-      "About-story support",
+      "Homepage redesign",
+      "Product templates for protein, creatine and collagen",
+      "Collection pages",
+      "Lifestyle imagery",
+      "Icon family",
+      "Phone layouts",
     ],
     outcomes: [
-      "Simpler supplement browsing",
-      "Clearer flavor comparison",
-      "Better support for repeat purchase paths",
+      "A store that looks as premium as the product",
+      "The key numbers on the first screen",
+      "Product pages that answer what is in it and who it is for",
     ],
     metrics: [
-      { label: "Priority", value: "Choice without overwhelm" },
-      { label: "Scope", value: "Catalog + product system" },
+      { label: "Launched", value: "November 5, 2026" },
+      { label: "Scope", value: "Homepage, product and collection redesign" },
     ],
+    beforeAfter: {
+      note: "Before: the store as it stood in June 2026. After: the redesign we launched on November 5, 2026.",
+      pairs: [
+        {
+          label: "Home page",
+          before: {
+            src: "/images/project/unity-supplements/01-home.jpg",
+            alt: "Unity Supplements home page before the redesign, led by a single Clear ISO promo banner",
+            width: 1440,
+            height: 1100,
+          },
+          after: {
+            src: "/images/project/unity-supplements/2026-home-desktop.jpg",
+            alt: "Unity Supplements home page after the redesign, with a CLEAR ISO hero video and tiles for 27 g of protein and 0 g of sugar",
+            width: 1440,
+            height: 1100,
+          },
+        },
+        {
+          label: "Product page",
+          before: {
+            src: "/images/project/unity-supplements/05-product-creatine.jpg",
+            alt: "Unity creatine product page before the redesign, with a plain list of flavours and purchase options",
+            width: 1440,
+            height: 1100,
+          },
+          after: {
+            src: "/images/project/unity-supplements/2026-product-desktop.jpg",
+            alt: "Unity creatine product page after the redesign, with benefit tags, a nutrition-facts button and flavour cards",
+            width: 1440,
+            height: 1100,
+          },
+        },
+      ],
+      phone: [
+        {
+          src: "/images/project/unity-supplements/2026-home-phone.jpg",
+          alt: "The redesigned Unity home page on a phone",
+          width: 780,
+          height: 1688,
+        },
+        {
+          src: "/images/project/unity-supplements/2026-product-phone.jpg",
+          alt: "The redesigned Unity creatine product page on a phone",
+          width: 780,
+          height: 1688,
+        },
+        {
+          src: "/images/project/unity-supplements/2026-collection-phone.jpg",
+          alt: "The redesigned Unity protein collection on a phone",
+          width: 780,
+          height: 1688,
+        },
+      ],
+    },
     media: [
       {
-        src: "/images/project/unity-supplements/01-home.jpg",
-        alt: "Unity Supplements homepage with a Clear ISO mystery offer",
+        src: "/images/project/unity-supplements/2026-category-tiles.jpg",
+        alt: "Shop-by-category tiles for protein, creatine and collagen on the new Unity home page",
+        width: 1440,
+        height: 810,
       },
       {
-        src: "/images/project/unity-supplements/02-collection-shop-all.jpg",
-        alt: "Unity Supplements shop all collection with supplement product grid",
+        src: "/images/project/unity-supplements/2026-clear-iso-section.jpg",
+        alt: "CLEAR ISO section with protein by weight, calories, how to mix and the five fruit flavours",
+        width: 1440,
+        height: 1236,
       },
       {
-        src: "/images/project/unity-supplements/03-collection-protein.jpg",
-        alt: "Unity Supplements protein collection with Clear ISO product cards",
-      },
-      {
-        src: "/images/project/unity-supplements/04-product-juice-protein.jpg",
-        alt: "Unity Supplements Juice Protein product page with flavor options",
-      },
-      {
-        src: "/images/project/unity-supplements/05-product-creatine.jpg",
-        alt: "Unity Supplements creatine product page with purchase options",
-      },
-      {
-        src: "/images/project/unity-supplements/06-about.jpg",
-        alt: "Unity Supplements about page telling the brand story",
+        src: "/images/project/unity-supplements/2026-creatine-dosage.jpg",
+        alt: "Creatine product page chart showing the optional loading phase and one scoop a day after",
+        width: 1440,
+        height: 775,
       },
     ],
     coverImage: {
@@ -567,8 +576,8 @@ export const caseStudies: CaseStudyContent[] = [
       position: "center 12%",
     },
     cardImage: {
-      src: "/images/project/unity-supplements/01-home.jpg",
-      alt: "Unity Supplements ecommerce case study card image",
+      src: "/images/project/unity-supplements/2026-home-desktop.jpg",
+      alt: "Unity Supplements redesigned home page",
     },
     logo: {
       src: "/images/project/unity-supplements/logo-white.png",
@@ -581,7 +590,8 @@ export const caseStudies: CaseStudyContent[] = [
     seo: {
       title: "Unity Supplements Case Study",
       description:
-        "Unity Supplements shows how Koala Studios shaped a supplement storefront around clear collections, product education, flavor choice, and repeat purchase paths.",
+        "How Koala Studios redesigned the Shopify store of Unity Supplements, a Quebec supplement brand, in November 2026: a premium home page, new product pages for clear protein, creatine and collagen, and lifestyle imagery, shown before and after.",
+      ogImage: "/images/project/unity-supplements/2026-home-desktop.jpg",
       canonicalPath: "/work/unity-supplements",
     },
   },
@@ -1290,13 +1300,233 @@ export const caseStudies: CaseStudyContent[] = [
       src: "/images/project/wuxly/01-home.jpg",
       alt: "Wuxly consumer outerwear ecommerce case study card image",
     },
-    relatedSlug: "ara",
+    relatedSlug: "magnum",
     externalUrl: "https://wuxly.com/",
     seo: {
       title: "Wuxly Case Study",
       description:
         "Wuxly shows how Koala Studios shaped a Canadian outerwear storefront around technical product proof, collection discovery, materials education, and Made-in-Canada credibility.",
       canonicalPath: "/work/wuxly",
+    },
+  },
+  {
+    slug: "dilligaf",
+    status: "published",
+    title: "DILLIGAF",
+    client: "DILLIGAF",
+    sector: "Apparel",
+    channels: "Klaviyo email",
+    category: "Marketing",
+    tags: ["Email marketing", "Klaviyo", "Email design"],
+    headline: "An email program built from zero.",
+    intro:
+      "DILLIGAF by Bohica Bill is a US apparel brand: tees, hoodies and long sleeves that say what the wearer thinks. We built its Klaviyo email program from nothing, with five automated flows live on October 8, then campaigns on top.",
+    services: ["Klaviyo flows", "Email design", "Campaigns"],
+    challenge:
+      "The store had a list but no automated email. A new subscriber or a first-time buyer heard nothing until the next sale, and the brand's loud, funny voice never reached the inbox.",
+    approach:
+      "We wrote and designed five flows in the brand's own red, black and attitude, led by a welcome series that walks a new subscriber through the sayings, the hoodies and the women's Gia line. Then a campaign calendar on top, starting with Halloween: 30% off and a free tee with bigger orders.",
+    deliverables: ["Five Klaviyo flows", "Welcome series", "Email design system", "Halloween campaign", "Monthly reports"],
+    outcomes: [
+      "3.7× email revenue in the 30 days to November 11",
+      "Store conversion up from 1.45% to 2.28%",
+      "Store sales up 121% on the same weeks of 2025",
+      "23.4% open rate on the Halloween email",
+    ],
+    metrics: [
+      { label: "Email revenue", value: "3.7× in 30 days" },
+      { label: "Scope", value: "Klaviyo flows and campaigns" },
+    ],
+    results: [
+      { value: "3.7×", label: "Email revenue, 30 days to Nov 11 against the 30 days before" },
+      { value: "+57%", label: "Store conversion rate, 1.45% to 2.28%" },
+      { value: "+121%", label: "Store sales against the same weeks of 2025" },
+    ],
+    resultsNote: "Klaviyo and Shopify, Oct 13 to Nov 11, 2026",
+    creatives: [
+      {
+        title: "Halloween",
+        note: "One campaign to the whole list on October 24: 30% off and a free tee with bigger orders. 23.4% of the people it reached opened it.",
+        items: [
+          {
+            kind: "email",
+            src: "/images/project/dilligaf/email-halloween.webp",
+            alt: "DILLIGAF Halloween email: 30% off and a free tee, with skull hoodies",
+            width: 600,
+            height: 2322,
+            caption: "Halloween campaign, Oct 24 · 23.4% open rate",
+          },
+        ],
+      },
+      {
+        title: "The welcome series",
+        accent: "welcome",
+        note: "Five flows went live on October 8. These are three of the welcome emails a new subscriber gets, as they land on a phone.",
+        items: [
+          {
+            kind: "email",
+            src: "/images/project/dilligaf/email-welcome-hoodies.webp",
+            alt: "DILLIGAF welcome email: Hoodie season, three back prints and the We the People zip hoodie",
+            width: 600,
+            height: 3423,
+            caption: "Welcome 3 · Hoodie season",
+          },
+          {
+            kind: "email",
+            src: "/images/project/dilligaf/email-welcome-gia.webp",
+            alt: "DILLIGAF welcome email for the women's Gia collection, 15% off the first order",
+            width: 600,
+            height: 2522,
+            caption: "Welcome 4 · The Gia collection",
+          },
+          {
+            kind: "email",
+            src: "/images/project/dilligaf/email-welcome-reminder.webp",
+            alt: "DILLIGAF welcome reminder email: We don't beg. We remind you once.",
+            width: 600,
+            height: 2548,
+            caption: "Welcome 5 · The one reminder",
+          },
+        ],
+      },
+    ],
+    media: [],
+    coverImage: {
+      src: "/images/project/dilligaf/cover.webp",
+      alt: "Top of the DILLIGAF Halloween email: 30% off and a free tee",
+      width: 560,
+      height: 700,
+      position: "top center",
+    },
+    logo: {
+      src: "/images/project/dilligaf/logo.png",
+      alt: "DILLIGAF by Bohica Bill logo",
+      width: 600,
+      height: 162,
+    },
+    relatedSlug: "iron-brothers-ads-and-email",
+    externalUrl: "https://dilligafusa.com/",
+    seo: {
+      title: "DILLIGAF Klaviyo Email Case Study",
+      description:
+        "How Koala Studios built the Klaviyo email program for DILLIGAF, a US apparel brand: five flows from zero and seasonal campaigns. Email revenue up 3.7× in 30 days and store conversion up 57%.",
+      ogImage: "/images/project/dilligaf/cover.webp",
+      canonicalPath: "/work/dilligaf",
+    },
+  },
+  {
+    slug: "iron-brothers-ads-and-email",
+    status: "published",
+    title: "Iron Brothers",
+    client: "Iron Brothers",
+    sector: "Supplements",
+    channels: "Meta ads · Email",
+    category: "Marketing",
+    tags: ["Meta ads", "Email marketing", "Ad creative"],
+    headline: "Campaigns that pay for themselves.",
+    intro:
+      "Iron Brothers is a Canadian supplement brand: pre-workout, creatine and aminos for people who train hard. Since September 2026 we have run its Meta ads and its email, and we make every ad and email in-house.",
+    services: ["Meta ads", "Email marketing", "Ad creative"],
+    challenge:
+      "In the summer, email was an afterthought and most orders came from people who had bought before. The brand needed new customers, and a list that bought more than once in a while.",
+    approach:
+      "We took over email campaigns on September 4 and Meta ads alongside them. The first big push was Full Send, a 48-hour, 30%-off storewide flash sale: three ad concepts and three emails in the brand's black and gold, launched in Canada and the US on September 15. Since then, a steady calendar of campaigns and ads, reported monthly.",
+    deliverables: ["Meta ad creative", "Campaign setup and placements", "Klaviyo campaigns", "Flash-sale plan", "Monthly reports"],
+    outcomes: [
+      "3.7× monthly email revenue, July to October",
+      "2.1× monthly store sales over the same months",
+      "New-customer orders up 120%",
+      "3.95× return on ad spend on the Full Send sale",
+    ],
+    metrics: [
+      { label: "Email revenue", value: "3.7× in four months" },
+      { label: "Scope", value: "Meta ads and email" },
+    ],
+    results: [
+      { value: "3.7×", label: "Monthly email revenue, July to October 2026" },
+      { value: "2.1×", label: "Monthly store sales over the same months" },
+      { value: "3.95×", label: "Return on ad spend, Full Send flash sale, Sep 15 to 19" },
+    ],
+    resultsNote: "Shopify, Klaviyo and Meta, July to October 2026",
+    creatives: [
+      {
+        title: "The ads",
+        accent: "ads",
+        note: "Full Send ran on three Meta feed ads, made in-house at the 4:5 ratio Facebook and Instagram show them. The first is at the top of this page; these are the other two.",
+        items: [
+          {
+            kind: "ad",
+            src: "/images/project/iron-brothers/marketing/meta-full-send.webp",
+            alt: "Iron Brothers Meta ad: Full Send, 30% off storewide, 48 hours only",
+            width: 960,
+            height: 1200,
+            caption: "Full Send · Meta feed ad",
+          },
+          {
+            kind: "ad",
+            src: "/images/project/iron-brothers/marketing/meta-pack-heavy.webp",
+            alt: "Iron Brothers Meta ad: Pack heavy, pay less, 30% off storewide",
+            width: 960,
+            height: 1200,
+            caption: "Pack Heavy · Meta feed ad",
+          },
+          {
+            kind: "ad",
+            src: "/images/project/iron-brothers/marketing/meta-go-all-in.webp",
+            alt: "Iron Brothers Meta ad: Go all in, 30% off storewide",
+            width: 960,
+            height: 1200,
+            caption: "Go All In · Meta feed ad",
+          },
+        ],
+      },
+      {
+        title: "The emails",
+        accent: "emails",
+        note: "Three emails for the same sale, built in Klaviyo with every product clickable.",
+        items: [
+          {
+            kind: "email",
+            src: "/images/project/iron-brothers/marketing/email-full-send.webp",
+            alt: "Iron Brothers Full Send email: 30% off storewide, 48 hours only, Go Ruthless on the restock",
+            width: 640,
+            height: 1600,
+            caption: "Full Send · email",
+          },
+          {
+            kind: "email",
+            src: "/images/project/iron-brothers/marketing/email-pack-heavy.webp",
+            alt: "Iron Brothers Pack Heavy email: restock your stack at 30% off",
+            width: 640,
+            height: 1600,
+            caption: "Pack Heavy · email",
+          },
+          {
+            kind: "email",
+            src: "/images/project/iron-brothers/marketing/email-break-the-routine.webp",
+            alt: "Iron Brothers Break the Routine email: 30% off, big restock energy",
+            width: 640,
+            height: 1600,
+            caption: "Break the Routine · email",
+          },
+        ],
+      },
+    ],
+    media: [],
+    coverImage: {
+      src: "/images/project/iron-brothers/marketing/meta-full-send.webp",
+      alt: "Iron Brothers Full Send Meta ad: 30% off storewide",
+      width: 960,
+      height: 1200,
+      position: "center 30%",
+    },
+    relatedSlug: "dilligaf",
+    seo: {
+      title: "Iron Brothers Meta Ads & Email Case Study",
+      description:
+        "How Koala Studios runs Meta ads and email for Iron Brothers, a Canadian supplement brand: monthly email revenue up 3.7×, store sales up 2.1× and a flash sale that returned 3.95× its ad spend.",
+      ogImage: "/images/project/iron-brothers/marketing/meta-full-send.webp",
+      canonicalPath: "/work/iron-brothers-ads-and-email",
     },
   },
 ];

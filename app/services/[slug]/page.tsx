@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 
+import { ResultsRow } from "@/components/results/ResultsRow";
 import { ArrowIcon } from "@/components/site/ArrowIcon";
 import { Cta } from "@/components/site/Cta";
 import { Folio, IndexList, SectionHead } from "@/components/system";
@@ -10,6 +11,7 @@ import { serviceIcon } from "@/components/system/Icons";
 import { LineArt } from "@/components/system/LineArt";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { auditOffer } from "@/lib/content/audit";
+import { serviceResults } from "@/lib/content/results";
 import {
   getServiceDetail,
   serviceDetails,
@@ -76,6 +78,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   const lead = all.find((caseStudy) => caseStudy.slug === service.caseSlug);
   const caseStudies = lead ? [lead, ...all.filter((caseStudy) => caseStudy !== lead)].slice(0, 6) : all.slice(0, 6);
   const number = String(serviceDetails.indexOf(service) + 1).padStart(2, "0");
+  const results = serviceResults[service.slug];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -115,6 +118,21 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
           </div>
         </div>
       </section>
+
+      {results ? (
+        <section className="ks-section" aria-labelledby="service-results-title">
+          <SectionHead
+            id="service-results-title"
+            title={<>What it <em>returned</em></>}
+            aside={
+              <Link className="ks-tlink" href="/work#marketing">
+                See the ads and emails <span aria-hidden="true">↗</span>
+              </Link>
+            }
+          />
+          <ResultsRow items={results} />
+        </section>
+      ) : null}
 
       <section className="ks-section" aria-labelledby="service-deliverables-title">
         <SectionHead index="01" id="service-deliverables-title" title={<>What’s <em>included</em></>} />

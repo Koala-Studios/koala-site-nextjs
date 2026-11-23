@@ -49,6 +49,7 @@ preferred_startup_files:
   - "nearest AGENTS.md"
 
 notes:
+  - "2026-11-23 Round 2 (branch growth/round-2): marketing results. Two Marketing-category cases (iron-brothers-ads-and-email, dilligaf) carry results, resultsNote and creatives; results outside cases live in lib/content/results.ts (multiples and percentages only, never $ or counts). Home results band, service-page results rows, and a Stores / Marketing switch on /work (/work#marketing opens marketing)."
   - "2026-10-26 Journal: /blog and /blog/[slug] added on branch blog/first-post from typed lib/content/blog.ts, with BlogPosting JSON-LD, sitemap entries and a footer-only Journal link; /blogs redirects to /blog. Not merged or deployed."
   - "2026-08-11 Wuxly case study: added the consumer outerwear brand at wuxly.com as the 17th published project, using six verified storefront views and the established interlaced case-study layout; production desktop/mobile visual QA passed."
   - "2026-08-06 Case-study narrative interlace: removed the Client hero fact across all 16 work routes and distributed every supporting image through Challenge, Approach, and Outcome; production desktop/mobile visual QA passed."

@@ -8,7 +8,8 @@ import {
   pageContent,
 } from "./site-content";
 
-const brandsBuiltForExclusions = new Set(["ara", "nektr"]);
+// Nektr is Magnum's; the Iron Brothers marketing case shares its brand with the store case.
+const brandsBuiltForExclusions = new Set(["nektr", "iron-brothers-ads-and-email"]);
 
 export * from "./types";
 export { blogIndexContent, blogPosts } from "./blog";
@@ -58,6 +59,16 @@ export function getCaseStudyCover(caseStudy: CaseStudyContent) {
   const image = caseStudy.coverImage ?? caseStudy.cardImage ?? caseStudy.media[0];
   const isScreenshot = !caseStudy.coverImage;
   return { image, isScreenshot, position: image?.position ?? (isScreenshot ? "top center" : "center") };
+}
+
+/** Marketing cases (ads and email) as opposed to store, design and packaging work. */
+export function isMarketingCase(caseStudy: CaseStudyContent) {
+  return caseStudy.category === "Marketing";
+}
+
+/** The ad or email shown beside a marketing case's numbers: the first of its first group. */
+export function getLeadCreative(caseStudy: CaseStudyContent) {
+  return caseStudy.creatives?.[0]?.items[0];
 }
 
 export function getCaseStudiesBySlugs(slugs: string[]) {

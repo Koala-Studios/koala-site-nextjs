@@ -77,6 +77,55 @@
   margin-top: 0.35rem;
 }
 
+/* ---------- marketing results lead ---------- */
+.resultsLead {
+  display: grid;
+  gap: 2rem;
+}
+
+.resultsNumbers {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.resultsNote {
+  border-top: var(--ks-rule-soft);
+  padding-top: 0.75rem;
+}
+
+.leadCreative {
+  justify-self: center;
+  max-width: 34rem;
+  width: 100%;
+}
+
+/* ---------- creatives ---------- */
+.creatives {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.creativeGrid {
+  display: flex;
+  gap: 1rem;
+  margin-inline: calc(var(--ks-gutter) * -1);
+  overflow-x: auto;
+  padding-inline: var(--ks-gutter);
+  scroll-padding-inline: var(--ks-gutter);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.creativeGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.creativeGrid > * {
+  flex: 0 0 78%;
+  scroll-snap-align: start;
+}
+
 /* ---------- story ---------- */
 .story {
   display: grid;
@@ -151,6 +200,67 @@
   display: grid;
   gap: 1.5rem;
   padding: clamp(1.75rem, 6vw, 5rem);
+}
+
+/* ---------- before and after ---------- */
+.compare {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.pair {
+  display: grid;
+  gap: 1rem;
+}
+
+.pairLabel {
+  border-top: var(--ks-rule-soft);
+  padding-top: 0.75rem;
+}
+
+.shot {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.shot img,
+.phone img {
+  background: var(--ks-paper-2);
+  border: 1px solid var(--ks-stone);
+  height: auto;
+  width: 100%;
+}
+
+.phones {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.phones .pairLabel {
+  grid-column: 1 / -1;
+}
+
+.phone {
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .phones {
+    column-gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .pair {
+    column-gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pair .pairLabel {
+    grid-column: 1 / -1;
+  }
 }
 
 /* ---------- next ---------- */
@@ -253,6 +363,42 @@
 
   .nextBody {
     grid-template-columns: 14rem minmax(0, 1fr);
+  }
+
+  .resultsLead {
+    align-items: start;
+    column-gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .resultsLeadEmail {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+
+  .leadCreative {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 700px) {
+  .creativeGrid {
+    display: grid;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-inline: 0;
+    overflow: visible;
+    padding-inline: 0;
+  }
+
+  .creativeGrid3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .creativeGrid2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .creativeGrid1 {
+    max-width: 28rem;
   }
 }
 
